@@ -5,8 +5,16 @@
     "da": "Dansk"
   },
   "categories": {
-    "traffic": {"en": "Traffic", "ru": "Движение", "da": "Trafik"},
-    "car": {"en": "The car", "ru": "Автомобиль", "da": "Bilen"}
+    "traffic": {
+      "en": "Traffic",
+      "ru": "Движение",
+      "da": "Trafik"
+    },
+    "car": {
+      "en": "The car",
+      "ru": "Автомобиль",
+      "da": "Bilen"
+    }
   },
   "ui": {
     "en": {
@@ -24,6 +32,7 @@
       "prompt": "Choose the correct translation",
       "correct": "Correct!",
       "wrong": "Wrong — the correct answer is shown in green",
+      "tapToContinue": "Tap anywhere to continue",
       "loadError": "Could not load languages.json. The app must be opened from a web server."
     },
     "ru": {
@@ -41,6 +50,7 @@
       "prompt": "Выберите правильный перевод",
       "correct": "Правильно!",
       "wrong": "Неверно — правильный ответ выделен зелёным",
+      "tapToContinue": "Нажмите в любом месте, чтобы продолжить",
       "loadError": "Не удалось загрузить languages.json. Приложение должно быть открыто с веб-сервера."
     },
     "da": {
@@ -58,151 +68,808 @@
       "prompt": "Vælg den rigtige oversættelse",
       "correct": "Rigtigt!",
       "wrong": "Forkert — det rigtige svar er markeret med grønt",
+      "tapToContinue": "Tryk hvor som helst for at fortsætte",
       "loadError": "Kunne ikke indlæse languages.json. Appen skal åbnes fra en webserver."
     }
   },
   "words": [
-    {"cat": "traffic", "en": "speed limit", "ru": "ограничение скорости", "da": "hastighedsgrænse"},
-    {"cat": "traffic", "en": "right of way", "ru": "преимущество (право проезда)", "da": "forkørselsret"},
-    {"cat": "traffic", "en": "give way / yield", "ru": "уступить дорогу", "da": "vigepligt"},
-    {"cat": "traffic", "en": "pedestrian crossing", "ru": "пешеходный переход", "da": "fodgængerfelt"},
-    {"cat": "traffic", "en": "roundabout", "ru": "круговое движение", "da": "rundkørsel"},
-    {"cat": "traffic", "en": "traffic lights", "ru": "светофор", "da": "trafiklys"},
-    {"cat": "traffic", "en": "intersection / junction", "ru": "перекрёсток", "da": "vejkryds"},
-    {"cat": "traffic", "en": "motorway", "ru": "автомагистраль", "da": "motorvej"},
-    {"cat": "traffic", "en": "lane", "ru": "полоса движения", "da": "vognbane"},
-    {"cat": "traffic", "en": "overtaking", "ru": "обгон", "da": "overhaling"},
-    {"cat": "traffic", "en": "braking distance", "ru": "тормозной путь", "da": "bremselængde"},
-    {"cat": "traffic", "en": "stopping distance", "ru": "остановочный путь", "da": "standselængde"},
-    {"cat": "traffic", "en": "reaction time", "ru": "время реакции", "da": "reaktionstid"},
-    {"cat": "traffic", "en": "pedestrian", "ru": "пешеход", "da": "fodgænger"},
-    {"cat": "traffic", "en": "cyclist", "ru": "велосипедист", "da": "cyklist"},
-    {"cat": "traffic", "en": "cycle path", "ru": "велосипедная дорожка", "da": "cykelsti"},
-    {"cat": "traffic", "en": "pavement (sidewalk)", "ru": "тротуар", "da": "fortov"},
-    {"cat": "traffic", "en": "kerb", "ru": "бордюр", "da": "kantsten"},
-    {"cat": "traffic", "en": "road sign", "ru": "дорожный знак", "da": "færdselstavle"},
-    {"cat": "traffic", "en": "warning sign", "ru": "предупреждающий знак", "da": "advarselstavle"},
-    {"cat": "traffic", "en": "prohibition sign", "ru": "запрещающий знак", "da": "forbudstavle"},
-    {"cat": "traffic", "en": "mandatory sign", "ru": "предписывающий знак", "da": "påbudstavle"},
-    {"cat": "traffic", "en": "stop sign", "ru": "знак «стоп»", "da": "stopskilt"},
-    {"cat": "traffic", "en": "one-way street", "ru": "улица с односторонним движением", "da": "ensrettet gade"},
-    {"cat": "traffic", "en": "no entry", "ru": "въезд запрещён", "da": "indkørsel forbudt"},
-    {"cat": "traffic", "en": "no parking", "ru": "стоянка запрещена", "da": "parkering forbudt"},
-    {"cat": "traffic", "en": "no stopping", "ru": "остановка запрещена", "da": "standsning forbudt"},
-    {"cat": "traffic", "en": "level crossing", "ru": "железнодорожный переезд", "da": "jernbaneoverskæring"},
-    {"cat": "traffic", "en": "built-up area", "ru": "населённый пункт", "da": "tættere bebygget område"},
-    {"cat": "traffic", "en": "slippery road", "ru": "скользкая дорога", "da": "glat vej"},
-    {"cat": "traffic", "en": "black ice", "ru": "гололёд", "da": "isslag"},
-    {"cat": "traffic", "en": "visibility", "ru": "видимость", "da": "sigtbarhed"},
-    {"cat": "traffic", "en": "fog", "ru": "туман", "da": "tåge"},
-    {"cat": "traffic", "en": "skid", "ru": "занос", "da": "udskridning"},
-    {"cat": "traffic", "en": "aquaplaning", "ru": "аквапланирование", "da": "akvaplaning"},
-    {"cat": "traffic", "en": "drink-driving", "ru": "вождение в нетрезвом виде", "da": "spirituskørsel"},
-    {"cat": "traffic", "en": "blood alcohol level", "ru": "уровень алкоголя в крови", "da": "promille"},
-    {"cat": "traffic", "en": "fine (penalty)", "ru": "штраф", "da": "bøde"},
-    {"cat": "traffic", "en": "driving licence", "ru": "водительские права", "da": "kørekort"},
-    {"cat": "traffic", "en": "insurance", "ru": "страховка", "da": "forsikring"},
-    {"cat": "traffic", "en": "vehicle inspection", "ru": "техосмотр", "da": "syn"},
-    {"cat": "traffic", "en": "emergency vehicle", "ru": "машина экстренных служб", "da": "udrykningskøretøj"},
-    {"cat": "traffic", "en": "ambulance", "ru": "скорая помощь", "da": "ambulance"},
-    {"cat": "traffic", "en": "hard shoulder", "ru": "аварийная полоса (обочина)", "da": "nødspor"},
-    {"cat": "traffic", "en": "first aid", "ru": "первая помощь", "da": "førstehjælp"},
-    {"cat": "traffic", "en": "U-turn", "ru": "разворот", "da": "U-vending"},
-    {"cat": "traffic", "en": "reversing", "ru": "движение задним ходом", "da": "bakning"},
-    {"cat": "traffic", "en": "parking space", "ru": "парковочное место", "da": "parkeringsplads"},
-    {"cat": "traffic", "en": "speed bump", "ru": "лежачий полицейский", "da": "vejbump"},
-    {"cat": "traffic", "en": "oncoming traffic", "ru": "встречное движение", "da": "modkørende trafik"},
-    {"cat": "traffic", "en": "road works", "ru": "дорожные работы", "da": "vejarbejde"},
-    {"cat": "traffic", "en": "detour / diversion", "ru": "объезд", "da": "omkørsel"},
-    {"cat": "traffic", "en": "stop line", "ru": "стоп-линия", "da": "stoplinje"},
-
-    {"cat": "car", "en": "seat belt", "ru": "ремень безопасности", "da": "sikkerhedssele"},
-    {"cat": "car", "en": "windscreen", "ru": "лобовое стекло", "da": "forrude"},
-    {"cat": "car", "en": "rear-view mirror", "ru": "зеркало заднего вида", "da": "bakspejl"},
-    {"cat": "car", "en": "wing mirror (side mirror)", "ru": "боковое зеркало", "da": "sidespejl"},
-    {"cat": "car", "en": "blind spot", "ru": "слепая зона", "da": "blind vinkel"},
-    {"cat": "car", "en": "indicator / turn signal", "ru": "указатель поворота", "da": "blinklys"},
-    {"cat": "car", "en": "headlights", "ru": "фары", "da": "forlygter"},
-    {"cat": "car", "en": "dipped headlights (low beam)", "ru": "ближний свет", "da": "nærlys"},
-    {"cat": "car", "en": "main beam (high beam)", "ru": "дальний свет", "da": "fjernlys"},
-    {"cat": "car", "en": "fog lights", "ru": "противотуманные фары", "da": "tågelygter"},
-    {"cat": "car", "en": "hazard warning lights", "ru": "аварийная сигнализация", "da": "havariblink"},
-    {"cat": "car", "en": "brake lights", "ru": "стоп-сигналы", "da": "bremselys"},
-    {"cat": "car", "en": "number plate", "ru": "номерной знак", "da": "nummerplade"},
-    {"cat": "car", "en": "tyre", "ru": "шина", "da": "dæk"},
-    {"cat": "car", "en": "tread depth", "ru": "глубина протектора", "da": "mønsterdybde"},
-    {"cat": "car", "en": "brakes", "ru": "тормоза", "da": "bremser"},
-    {"cat": "car", "en": "handbrake (parking brake)", "ru": "ручной тормоз", "da": "håndbremse"},
-    {"cat": "car", "en": "clutch", "ru": "сцепление", "da": "kobling"},
-    {"cat": "car", "en": "accelerator", "ru": "педаль газа", "da": "speeder"},
-    {"cat": "car", "en": "steering wheel", "ru": "руль", "da": "rat"},
-    {"cat": "car", "en": "horn", "ru": "звуковой сигнал (клаксон)", "da": "horn"},
-    {"cat": "car", "en": "windscreen wipers", "ru": "стеклоочистители (дворники)", "da": "vinduesviskere"},
-    {"cat": "car", "en": "boot (trunk)", "ru": "багажник", "da": "bagagerum"},
-    {"cat": "car", "en": "bonnet (hood)", "ru": "капот", "da": "motorhjelm"},
-    {"cat": "car", "en": "engine", "ru": "двигатель", "da": "motor"},
-    {"cat": "car", "en": "gearbox", "ru": "коробка передач", "da": "gearkasse"},
-    {"cat": "car", "en": "gear lever", "ru": "рычаг переключения передач", "da": "gearstang"},
-    {"cat": "car", "en": "battery", "ru": "аккумулятор", "da": "batteri"},
-    {"cat": "car", "en": "exhaust pipe", "ru": "выхлопная труба", "da": "udstødningsrør"},
-    {"cat": "car", "en": "fuel", "ru": "топливо", "da": "brændstof"},
-    {"cat": "car", "en": "fuel gauge", "ru": "указатель уровня топлива", "da": "brændstofmåler"},
-    {"cat": "car", "en": "dashboard", "ru": "приборная панель", "da": "instrumentbræt"},
-    {"cat": "car", "en": "speedometer", "ru": "спидометр", "da": "speedometer"},
-    {"cat": "car", "en": "airbag", "ru": "подушка безопасности", "da": "airbag"},
-    {"cat": "car", "en": "headrest", "ru": "подголовник", "da": "nakkestøtte"},
-    {"cat": "car", "en": "child seat", "ru": "детское кресло", "da": "autostol"},
-    {"cat": "car", "en": "shock absorbers", "ru": "амортизаторы", "da": "støddæmpere"},
-    {"cat": "car", "en": "suspension", "ru": "подвеска", "da": "affjedring"},
-    {"cat": "car", "en": "windscreen washer fluid", "ru": "жидкость стеклоомывателя", "da": "sprinklervæske"},
-    {"cat": "car", "en": "engine oil", "ru": "моторное масло", "da": "motorolie"},
-    {"cat": "car", "en": "coolant", "ru": "охлаждающая жидкость", "da": "kølervæske"},
-    {"cat": "car", "en": "towbar", "ru": "фаркоп", "da": "anhængertræk"},
-    {"cat": "car", "en": "trailer", "ru": "прицеп", "da": "anhænger"},
-    {"cat": "car", "en": "towing", "ru": "буксировка", "da": "bugsering"},
-    {"cat": "car", "en": "load (cargo)", "ru": "груз", "da": "last"},
-    {"cat": "car", "en": "gross weight", "ru": "полная масса", "da": "totalvægt"},
-    {"cat": "car", "en": "breakdown", "ru": "поломка (автомобиля)", "da": "motorstop"},
-    {"cat": "car", "en": "warning triangle", "ru": "знак аварийной остановки", "da": "advarselstrekant"}
+    {
+      "cat": "traffic",
+      "en": "speed limit",
+      "ru": "ограничение скорости",
+      "da": "hastighedsgrænse"
+    },
+    {
+      "cat": "traffic",
+      "en": "right of way",
+      "ru": "преимущество (право проезда)",
+      "da": "forkørselsret"
+    },
+    {
+      "cat": "traffic",
+      "en": "give way / yield",
+      "ru": "уступить дорогу",
+      "da": "vigepligt"
+    },
+    {
+      "cat": "traffic",
+      "en": "pedestrian crossing",
+      "ru": "пешеходный переход",
+      "da": "fodgængerfelt"
+    },
+    {
+      "cat": "traffic",
+      "en": "roundabout",
+      "ru": "круговое движение",
+      "da": "rundkørsel"
+    },
+    {
+      "cat": "traffic",
+      "en": "traffic lights",
+      "ru": "светофор",
+      "da": "trafiklys"
+    },
+    {
+      "cat": "traffic",
+      "en": "intersection / junction",
+      "ru": "перекрёсток",
+      "da": "vejkryds"
+    },
+    {
+      "cat": "traffic",
+      "en": "motorway",
+      "ru": "автомагистраль",
+      "da": "motorvej"
+    },
+    {
+      "cat": "traffic",
+      "en": "lane",
+      "ru": "полоса движения",
+      "da": "vognbane"
+    },
+    {
+      "cat": "traffic",
+      "en": "overtaking",
+      "ru": "обгон",
+      "da": "overhaling"
+    },
+    {
+      "cat": "traffic",
+      "en": "braking distance",
+      "ru": "тормозной путь",
+      "da": "bremselængde"
+    },
+    {
+      "cat": "traffic",
+      "en": "stopping distance",
+      "ru": "остановочный путь",
+      "da": "standselængde"
+    },
+    {
+      "cat": "traffic",
+      "en": "reaction time",
+      "ru": "время реакции",
+      "da": "reaktionstid"
+    },
+    {
+      "cat": "traffic",
+      "en": "pedestrian",
+      "ru": "пешеход",
+      "da": "fodgænger"
+    },
+    {
+      "cat": "traffic",
+      "en": "cyclist",
+      "ru": "велосипедист",
+      "da": "cyklist"
+    },
+    {
+      "cat": "traffic",
+      "en": "cycle path",
+      "ru": "велосипедная дорожка",
+      "da": "cykelsti"
+    },
+    {
+      "cat": "traffic",
+      "en": "pavement (sidewalk)",
+      "ru": "тротуар",
+      "da": "fortov"
+    },
+    {
+      "cat": "traffic",
+      "en": "kerb",
+      "ru": "бордюр",
+      "da": "kantsten"
+    },
+    {
+      "cat": "traffic",
+      "en": "road sign",
+      "ru": "дорожный знак",
+      "da": "færdselstavle"
+    },
+    {
+      "cat": "traffic",
+      "en": "warning sign",
+      "ru": "предупреждающий знак",
+      "da": "advarselstavle"
+    },
+    {
+      "cat": "traffic",
+      "en": "prohibition sign",
+      "ru": "запрещающий знак",
+      "da": "forbudstavle"
+    },
+    {
+      "cat": "traffic",
+      "en": "mandatory sign",
+      "ru": "предписывающий знак",
+      "da": "påbudstavle"
+    },
+    {
+      "cat": "traffic",
+      "en": "stop sign",
+      "ru": "знак «стоп»",
+      "da": "stopskilt"
+    },
+    {
+      "cat": "traffic",
+      "en": "one-way street",
+      "ru": "улица с односторонним движением",
+      "da": "ensrettet gade"
+    },
+    {
+      "cat": "traffic",
+      "en": "no entry",
+      "ru": "въезд запрещён",
+      "da": "indkørsel forbudt"
+    },
+    {
+      "cat": "traffic",
+      "en": "no parking",
+      "ru": "стоянка запрещена",
+      "da": "parkering forbudt"
+    },
+    {
+      "cat": "traffic",
+      "en": "no stopping",
+      "ru": "остановка запрещена",
+      "da": "standsning forbudt"
+    },
+    {
+      "cat": "traffic",
+      "en": "level crossing",
+      "ru": "железнодорожный переезд",
+      "da": "jernbaneoverskæring"
+    },
+    {
+      "cat": "traffic",
+      "en": "built-up area",
+      "ru": "населённый пункт",
+      "da": "tættere bebygget område"
+    },
+    {
+      "cat": "traffic",
+      "en": "slippery road",
+      "ru": "скользкая дорога",
+      "da": "glat vej"
+    },
+    {
+      "cat": "traffic",
+      "en": "black ice",
+      "ru": "гололёд",
+      "da": "isslag"
+    },
+    {
+      "cat": "traffic",
+      "en": "visibility",
+      "ru": "видимость",
+      "da": "sigtbarhed"
+    },
+    {
+      "cat": "traffic",
+      "en": "fog",
+      "ru": "туман",
+      "da": "tåge"
+    },
+    {
+      "cat": "traffic",
+      "en": "skid",
+      "ru": "занос",
+      "da": "udskridning"
+    },
+    {
+      "cat": "traffic",
+      "en": "aquaplaning",
+      "ru": "аквапланирование",
+      "da": "akvaplaning"
+    },
+    {
+      "cat": "traffic",
+      "en": "drink-driving",
+      "ru": "вождение в нетрезвом виде",
+      "da": "spirituskørsel"
+    },
+    {
+      "cat": "traffic",
+      "en": "blood alcohol level",
+      "ru": "уровень алкоголя в крови",
+      "da": "promille"
+    },
+    {
+      "cat": "traffic",
+      "en": "fine (penalty)",
+      "ru": "штраф",
+      "da": "bøde"
+    },
+    {
+      "cat": "traffic",
+      "en": "driving licence",
+      "ru": "водительские права",
+      "da": "kørekort"
+    },
+    {
+      "cat": "traffic",
+      "en": "insurance",
+      "ru": "страховка",
+      "da": "forsikring"
+    },
+    {
+      "cat": "traffic",
+      "en": "vehicle inspection",
+      "ru": "техосмотр",
+      "da": "syn"
+    },
+    {
+      "cat": "traffic",
+      "en": "emergency vehicle",
+      "ru": "машина экстренных служб",
+      "da": "udrykningskøretøj"
+    },
+    {
+      "cat": "traffic",
+      "en": "ambulance",
+      "ru": "скорая помощь",
+      "da": "ambulance"
+    },
+    {
+      "cat": "traffic",
+      "en": "hard shoulder",
+      "ru": "аварийная полоса (обочина)",
+      "da": "nødspor"
+    },
+    {
+      "cat": "traffic",
+      "en": "first aid",
+      "ru": "первая помощь",
+      "da": "førstehjælp"
+    },
+    {
+      "cat": "traffic",
+      "en": "U-turn",
+      "ru": "разворот",
+      "da": "U-vending"
+    },
+    {
+      "cat": "traffic",
+      "en": "reversing",
+      "ru": "движение задним ходом",
+      "da": "bakning"
+    },
+    {
+      "cat": "traffic",
+      "en": "parking space",
+      "ru": "парковочное место",
+      "da": "parkeringsplads"
+    },
+    {
+      "cat": "traffic",
+      "en": "speed bump",
+      "ru": "лежачий полицейский",
+      "da": "vejbump"
+    },
+    {
+      "cat": "traffic",
+      "en": "oncoming traffic",
+      "ru": "встречное движение",
+      "da": "modkørende trafik"
+    },
+    {
+      "cat": "traffic",
+      "en": "road works",
+      "ru": "дорожные работы",
+      "da": "vejarbejde"
+    },
+    {
+      "cat": "traffic",
+      "en": "detour / diversion",
+      "ru": "объезд",
+      "da": "omkørsel"
+    },
+    {
+      "cat": "traffic",
+      "en": "stop line",
+      "ru": "стоп-линия",
+      "da": "stoplinje"
+    },
+    {
+      "cat": "car",
+      "en": "seat belt",
+      "ru": "ремень безопасности",
+      "da": "sikkerhedssele"
+    },
+    {
+      "cat": "car",
+      "en": "windscreen",
+      "ru": "лобовое стекло",
+      "da": "forrude"
+    },
+    {
+      "cat": "car",
+      "en": "rear-view mirror",
+      "ru": "зеркало заднего вида",
+      "da": "bakspejl"
+    },
+    {
+      "cat": "car",
+      "en": "wing mirror (side mirror)",
+      "ru": "боковое зеркало",
+      "da": "sidespejl"
+    },
+    {
+      "cat": "car",
+      "en": "blind spot",
+      "ru": "слепая зона",
+      "da": "blind vinkel"
+    },
+    {
+      "cat": "car",
+      "en": "indicator / turn signal",
+      "ru": "указатель поворота",
+      "da": "blinklys"
+    },
+    {
+      "cat": "car",
+      "en": "headlights",
+      "ru": "фары",
+      "da": "forlygter"
+    },
+    {
+      "cat": "car",
+      "en": "dipped headlights (low beam)",
+      "ru": "ближний свет",
+      "da": "nærlys"
+    },
+    {
+      "cat": "car",
+      "en": "main beam (high beam)",
+      "ru": "дальний свет",
+      "da": "fjernlys"
+    },
+    {
+      "cat": "car",
+      "en": "fog lights",
+      "ru": "противотуманные фары",
+      "da": "tågelygter"
+    },
+    {
+      "cat": "car",
+      "en": "hazard warning lights",
+      "ru": "аварийная сигнализация",
+      "da": "havariblink"
+    },
+    {
+      "cat": "car",
+      "en": "brake lights",
+      "ru": "стоп-сигналы",
+      "da": "bremselys"
+    },
+    {
+      "cat": "car",
+      "en": "number plate",
+      "ru": "номерной знак",
+      "da": "nummerplade"
+    },
+    {
+      "cat": "car",
+      "en": "tyre",
+      "ru": "шина",
+      "da": "dæk"
+    },
+    {
+      "cat": "car",
+      "en": "tread depth",
+      "ru": "глубина протектора",
+      "da": "mønsterdybde"
+    },
+    {
+      "cat": "car",
+      "en": "brakes",
+      "ru": "тормоза",
+      "da": "bremser"
+    },
+    {
+      "cat": "car",
+      "en": "handbrake (parking brake)",
+      "ru": "ручной тормоз",
+      "da": "håndbremse"
+    },
+    {
+      "cat": "car",
+      "en": "clutch",
+      "ru": "сцепление",
+      "da": "kobling"
+    },
+    {
+      "cat": "car",
+      "en": "accelerator",
+      "ru": "педаль газа",
+      "da": "speeder"
+    },
+    {
+      "cat": "car",
+      "en": "steering wheel",
+      "ru": "руль",
+      "da": "rat"
+    },
+    {
+      "cat": "car",
+      "en": "horn",
+      "ru": "звуковой сигнал (клаксон)",
+      "da": "horn"
+    },
+    {
+      "cat": "car",
+      "en": "windscreen wipers",
+      "ru": "стеклоочистители (дворники)",
+      "da": "vinduesviskere"
+    },
+    {
+      "cat": "car",
+      "en": "boot (trunk)",
+      "ru": "багажник",
+      "da": "bagagerum"
+    },
+    {
+      "cat": "car",
+      "en": "bonnet (hood)",
+      "ru": "капот",
+      "da": "motorhjelm"
+    },
+    {
+      "cat": "car",
+      "en": "engine",
+      "ru": "двигатель",
+      "da": "motor"
+    },
+    {
+      "cat": "car",
+      "en": "gearbox",
+      "ru": "коробка передач",
+      "da": "gearkasse"
+    },
+    {
+      "cat": "car",
+      "en": "gear lever",
+      "ru": "рычаг переключения передач",
+      "da": "gearstang"
+    },
+    {
+      "cat": "car",
+      "en": "battery",
+      "ru": "аккумулятор",
+      "da": "batteri"
+    },
+    {
+      "cat": "car",
+      "en": "exhaust pipe",
+      "ru": "выхлопная труба",
+      "da": "udstødningsrør"
+    },
+    {
+      "cat": "car",
+      "en": "fuel",
+      "ru": "топливо",
+      "da": "brændstof"
+    },
+    {
+      "cat": "car",
+      "en": "fuel gauge",
+      "ru": "указатель уровня топлива",
+      "da": "brændstofmåler"
+    },
+    {
+      "cat": "car",
+      "en": "dashboard",
+      "ru": "приборная панель",
+      "da": "instrumentbræt"
+    },
+    {
+      "cat": "car",
+      "en": "speedometer",
+      "ru": "спидометр",
+      "da": "speedometer"
+    },
+    {
+      "cat": "car",
+      "en": "airbag",
+      "ru": "подушка безопасности",
+      "da": "airbag"
+    },
+    {
+      "cat": "car",
+      "en": "headrest",
+      "ru": "подголовник",
+      "da": "nakkestøtte"
+    },
+    {
+      "cat": "car",
+      "en": "child seat",
+      "ru": "детское кресло",
+      "da": "autostol"
+    },
+    {
+      "cat": "car",
+      "en": "shock absorbers",
+      "ru": "амортизаторы",
+      "da": "støddæmpere"
+    },
+    {
+      "cat": "car",
+      "en": "suspension",
+      "ru": "подвеска",
+      "da": "affjedring"
+    },
+    {
+      "cat": "car",
+      "en": "windscreen washer fluid",
+      "ru": "жидкость стеклоомывателя",
+      "da": "sprinklervæske"
+    },
+    {
+      "cat": "car",
+      "en": "engine oil",
+      "ru": "моторное масло",
+      "da": "motorolie"
+    },
+    {
+      "cat": "car",
+      "en": "coolant",
+      "ru": "охлаждающая жидкость",
+      "da": "kølervæske"
+    },
+    {
+      "cat": "car",
+      "en": "towbar",
+      "ru": "фаркоп",
+      "da": "anhængertræk"
+    },
+    {
+      "cat": "car",
+      "en": "trailer",
+      "ru": "прицеп",
+      "da": "anhænger"
+    },
+    {
+      "cat": "car",
+      "en": "towing",
+      "ru": "буксировка",
+      "da": "bugsering"
+    },
+    {
+      "cat": "car",
+      "en": "load (cargo)",
+      "ru": "груз",
+      "da": "last"
+    },
+    {
+      "cat": "car",
+      "en": "gross weight",
+      "ru": "полная масса",
+      "da": "totalvægt"
+    },
+    {
+      "cat": "car",
+      "en": "breakdown",
+      "ru": "поломка (автомобиля)",
+      "da": "motorstop"
+    },
+    {
+      "cat": "car",
+      "en": "warning triangle",
+      "ru": "знак аварийной остановки",
+      "da": "advarselstrekant"
+    }
   ],
   "sentences": [
-    {"en": "You must give way to traffic from the right.", "ru": "Вы должны уступить дорогу транспорту справа.", "da": "Du skal holde tilbage for trafik fra højre."},
-    {"en": "What is the speed limit in built-up areas?", "ru": "Какое ограничение скорости в населённых пунктах?", "da": "Hvad er hastighedsgrænsen i tættere bebygget område?"},
-    {"en": "Overtaking is prohibited near a pedestrian crossing.", "ru": "Обгон запрещён вблизи пешеходного перехода.", "da": "Overhaling er forbudt nær et fodgængerfelt."},
-    {"en": "You must stop at the stop line.", "ru": "Вы должны остановиться у стоп-линии.", "da": "Du skal standse ved stoplinjen."},
-    {"en": "Check your mirrors before changing lanes.", "ru": "Проверьте зеркала перед сменой полосы.", "da": "Tjek dine spejle, før du skifter vognbane."},
-    {"en": "Reduce your speed in fog.", "ru": "Снизьте скорость в тумане.", "da": "Sæt farten ned i tåge."},
-    {"en": "The braking distance increases on wet roads.", "ru": "Тормозной путь увеличивается на мокрой дороге.", "da": "Bremselængden øges på våd vej."},
-    {"en": "All passengers must wear a seat belt.", "ru": "Все пассажиры должны пристёгиваться ремнём безопасности.", "da": "Alle passagerer skal bruge sikkerhedssele."},
-    {"en": "You must use dipped headlights during the day.", "ru": "Днём необходимо использовать ближний свет.", "da": "Du skal bruge nærlys om dagen."},
-    {"en": "Give way to pedestrians at the crossing.", "ru": "Уступите дорогу пешеходам на переходе.", "da": "Hold tilbage for fodgængere ved fodgængerfeltet."},
-    {"en": "It is illegal to use a hand-held phone while driving.", "ru": "Запрещено пользоваться телефоном в руке во время вождения.", "da": "Det er ulovligt at bruge håndholdt telefon under kørsel."},
-    {"en": "Signal before you turn.", "ru": "Подавайте сигнал перед поворотом.", "da": "Giv tegn, før du drejer."},
-    {"en": "Keep a safe distance to the vehicle in front.", "ru": "Держите безопасную дистанцию до автомобиля впереди.", "da": "Hold sikker afstand til køretøjet foran."},
-    {"en": "You may not park within 10 metres of an intersection.", "ru": "Нельзя парковаться ближе 10 метров от перекрёстка.", "da": "Du må ikke parkere inden for 10 meter fra et kryds."},
-    {"en": "Emergency vehicles have the right of way.", "ru": "Машины экстренных служб имеют преимущество.", "da": "Udrykningskøretøjer har forkørselsret."},
-    {"en": "Watch out for cyclists when turning right.", "ru": "Следите за велосипедистами при повороте направо.", "da": "Vær opmærksom på cyklister, når du drejer til højre."},
-    {"en": "Slow down when approaching a school.", "ru": "Снизьте скорость при приближении к школе.", "da": "Sæt farten ned, når du nærmer dig en skole."},
-    {"en": "The road may be slippery in winter.", "ru": "Зимой дорога может быть скользкой.", "da": "Vejen kan være glat om vinteren."},
-    {"en": "You must not drive under the influence of alcohol.", "ru": "Нельзя управлять автомобилем в состоянии алкогольного опьянения.", "da": "Du må ikke køre bil, hvis du er påvirket af alkohol."},
-    {"en": "Turn on your hazard lights in case of a breakdown.", "ru": "Включите аварийную сигнализацию при поломке.", "da": "Tænd havariblinket ved motorstop."},
-    {"en": "Place the warning triangle behind your car.", "ru": "Установите знак аварийной остановки позади автомобиля.", "da": "Placér advarselstrekanten bag din bil."},
-    {"en": "Who has the right of way at this intersection?", "ru": "У кого преимущество на этом перекрёстке?", "da": "Hvem har forkørselsret i dette kryds?"},
-    {"en": "What does this road sign mean?", "ru": "Что означает этот дорожный знак?", "da": "Hvad betyder denne færdselstavle?"},
-    {"en": "You are not allowed to overtake on the right.", "ru": "Обгон справа запрещён.", "da": "Du må ikke overhale højre om."},
-    {"en": "Reverse carefully and look behind you.", "ru": "Двигайтесь задним ходом осторожно и смотрите назад.", "da": "Bak forsigtigt og se dig tilbage."},
-    {"en": "Adjust your speed to the road conditions.", "ru": "Скорость должна соответствовать дорожным условиям.", "da": "Tilpas din hastighed efter forholdene."},
-    {"en": "The traffic light is about to turn red.", "ru": "Светофор скоро переключится на красный.", "da": "Lyset skifter snart til rødt."},
-    {"en": "Children may suddenly run into the road.", "ru": "Дети могут внезапно выбежать на дорогу.", "da": "Børn kan pludselig løbe ud på vejen."},
-    {"en": "You must yield when leaving a parking space.", "ru": "Вы должны уступить дорогу при выезде с парковки.", "da": "Du har vigepligt, når du kører ud fra en parkeringsplads."},
-    {"en": "Check the tyre pressure regularly.", "ru": "Регулярно проверяйте давление в шинах.", "da": "Tjek dæktrykket regelmæssigt."},
-    {"en": "Do not block the intersection.", "ru": "Не блокируйте перекрёсток.", "da": "Blokér ikke krydset."},
-    {"en": "Traffic already in the roundabout has priority.", "ru": "Преимущество у транспорта, уже находящегося на круге.", "da": "Trafikken i rundkørslen har forkørselsret."},
-    {"en": "Dip your headlights when meeting oncoming traffic.", "ru": "Переключайтесь на ближний свет при встречном движении.", "da": "Blænd ned ved modkørende trafik."},
-    {"en": "When must you use fog lights?", "ru": "Когда нужно использовать противотуманные фары?", "da": "Hvornår skal du bruge tågelygter?"},
-    {"en": "It is dangerous to overtake near the top of a hill.", "ru": "Опасно обгонять вблизи вершины холма.", "da": "Det er farligt at overhale nær en bakketop."},
-    {"en": "You must stop for a school patrol.", "ru": "Вы должны остановиться по сигналу школьного патруля.", "da": "Du skal standse for en skolepatrulje."},
-    {"en": "Wet leaves can make the road slippery.", "ru": "Мокрые листья могут сделать дорогу скользкой.", "da": "Våde blade kan gøre vejen glat."},
-    {"en": "Always look over your shoulder before turning.", "ru": "Всегда смотрите через плечо перед поворотом.", "da": "Se altid over skulderen, før du drejer."}
+    {
+      "en": "You must give way to traffic from the right.",
+      "ru": "Вы должны уступить дорогу транспорту справа.",
+      "da": "Du skal holde tilbage for trafik fra højre."
+    },
+    {
+      "en": "What is the speed limit in built-up areas?",
+      "ru": "Какое ограничение скорости в населённых пунктах?",
+      "da": "Hvad er hastighedsgrænsen i tættere bebygget område?"
+    },
+    {
+      "en": "Overtaking is prohibited near a pedestrian crossing.",
+      "ru": "Обгон запрещён вблизи пешеходного перехода.",
+      "da": "Overhaling er forbudt nær et fodgængerfelt."
+    },
+    {
+      "en": "You must stop at the stop line.",
+      "ru": "Вы должны остановиться у стоп-линии.",
+      "da": "Du skal standse ved stoplinjen."
+    },
+    {
+      "en": "Check your mirrors before changing lanes.",
+      "ru": "Проверьте зеркала перед сменой полосы.",
+      "da": "Tjek dine spejle, før du skifter vognbane."
+    },
+    {
+      "en": "Reduce your speed in fog.",
+      "ru": "Снизьте скорость в тумане.",
+      "da": "Sæt farten ned i tåge."
+    },
+    {
+      "en": "The braking distance increases on wet roads.",
+      "ru": "Тормозной путь увеличивается на мокрой дороге.",
+      "da": "Bremselængden øges på våd vej."
+    },
+    {
+      "en": "All passengers must wear a seat belt.",
+      "ru": "Все пассажиры должны пристёгиваться ремнём безопасности.",
+      "da": "Alle passagerer skal bruge sikkerhedssele."
+    },
+    {
+      "en": "You must use dipped headlights during the day.",
+      "ru": "Днём необходимо использовать ближний свет.",
+      "da": "Du skal bruge nærlys om dagen."
+    },
+    {
+      "en": "Give way to pedestrians at the crossing.",
+      "ru": "Уступите дорогу пешеходам на переходе.",
+      "da": "Hold tilbage for fodgængere ved fodgængerfeltet."
+    },
+    {
+      "en": "It is illegal to use a hand-held phone while driving.",
+      "ru": "Запрещено пользоваться телефоном в руке во время вождения.",
+      "da": "Det er ulovligt at bruge håndholdt telefon under kørsel."
+    },
+    {
+      "en": "Signal before you turn.",
+      "ru": "Подавайте сигнал перед поворотом.",
+      "da": "Giv tegn, før du drejer."
+    },
+    {
+      "en": "Keep a safe distance to the vehicle in front.",
+      "ru": "Держите безопасную дистанцию до автомобиля впереди.",
+      "da": "Hold sikker afstand til køretøjet foran."
+    },
+    {
+      "en": "You may not park within 10 metres of an intersection.",
+      "ru": "Нельзя парковаться ближе 10 метров от перекрёстка.",
+      "da": "Du må ikke parkere inden for 10 meter fra et kryds."
+    },
+    {
+      "en": "Emergency vehicles have the right of way.",
+      "ru": "Машины экстренных служб имеют преимущество.",
+      "da": "Udrykningskøretøjer har forkørselsret."
+    },
+    {
+      "en": "Watch out for cyclists when turning right.",
+      "ru": "Следите за велосипедистами при повороте направо.",
+      "da": "Vær opmærksom på cyklister, når du drejer til højre."
+    },
+    {
+      "en": "Slow down when approaching a school.",
+      "ru": "Снизьте скорость при приближении к школе.",
+      "da": "Sæt farten ned, når du nærmer dig en skole."
+    },
+    {
+      "en": "The road may be slippery in winter.",
+      "ru": "Зимой дорога может быть скользкой.",
+      "da": "Vejen kan være glat om vinteren."
+    },
+    {
+      "en": "You must not drive under the influence of alcohol.",
+      "ru": "Нельзя управлять автомобилем в состоянии алкогольного опьянения.",
+      "da": "Du må ikke køre bil, hvis du er påvirket af alkohol."
+    },
+    {
+      "en": "Turn on your hazard lights in case of a breakdown.",
+      "ru": "Включите аварийную сигнализацию при поломке.",
+      "da": "Tænd havariblinket ved motorstop."
+    },
+    {
+      "en": "Place the warning triangle behind your car.",
+      "ru": "Установите знак аварийной остановки позади автомобиля.",
+      "da": "Placér advarselstrekanten bag din bil."
+    },
+    {
+      "en": "Who has the right of way at this intersection?",
+      "ru": "У кого преимущество на этом перекрёстке?",
+      "da": "Hvem har forkørselsret i dette kryds?"
+    },
+    {
+      "en": "What does this road sign mean?",
+      "ru": "Что означает этот дорожный знак?",
+      "da": "Hvad betyder denne færdselstavle?"
+    },
+    {
+      "en": "You are not allowed to overtake on the right.",
+      "ru": "Обгон справа запрещён.",
+      "da": "Du må ikke overhale højre om."
+    },
+    {
+      "en": "Reverse carefully and look behind you.",
+      "ru": "Двигайтесь задним ходом осторожно и смотрите назад.",
+      "da": "Bak forsigtigt og se dig tilbage."
+    },
+    {
+      "en": "Adjust your speed to the road conditions.",
+      "ru": "Скорость должна соответствовать дорожным условиям.",
+      "da": "Tilpas din hastighed efter forholdene."
+    },
+    {
+      "en": "The traffic light is about to turn red.",
+      "ru": "Светофор скоро переключится на красный.",
+      "da": "Lyset skifter snart til rødt."
+    },
+    {
+      "en": "Children may suddenly run into the road.",
+      "ru": "Дети могут внезапно выбежать на дорогу.",
+      "da": "Børn kan pludselig løbe ud på vejen."
+    },
+    {
+      "en": "You must yield when leaving a parking space.",
+      "ru": "Вы должны уступить дорогу при выезде с парковки.",
+      "da": "Du har vigepligt, når du kører ud fra en parkeringsplads."
+    },
+    {
+      "en": "Check the tyre pressure regularly.",
+      "ru": "Регулярно проверяйте давление в шинах.",
+      "da": "Tjek dæktrykket regelmæssigt."
+    },
+    {
+      "en": "Do not block the intersection.",
+      "ru": "Не блокируйте перекрёсток.",
+      "da": "Blokér ikke krydset."
+    },
+    {
+      "en": "Traffic already in the roundabout has priority.",
+      "ru": "Преимущество у транспорта, уже находящегося на круге.",
+      "da": "Trafikken i rundkørslen har forkørselsret."
+    },
+    {
+      "en": "Dip your headlights when meeting oncoming traffic.",
+      "ru": "Переключайтесь на ближний свет при встречном движении.",
+      "da": "Blænd ned ved modkørende trafik."
+    },
+    {
+      "en": "When must you use fog lights?",
+      "ru": "Когда нужно использовать противотуманные фары?",
+      "da": "Hvornår skal du bruge tågelygter?"
+    },
+    {
+      "en": "It is dangerous to overtake near the top of a hill.",
+      "ru": "Опасно обгонять вблизи вершины холма.",
+      "da": "Det er farligt at overhale nær en bakketop."
+    },
+    {
+      "en": "You must stop for a school patrol.",
+      "ru": "Вы должны остановиться по сигналу школьного патруля.",
+      "da": "Du skal standse for en skolepatrulje."
+    },
+    {
+      "en": "Wet leaves can make the road slippery.",
+      "ru": "Мокрые листья могут сделать дорогу скользкой.",
+      "da": "Våde blade kan gøre vejen glat."
+    },
+    {
+      "en": "Always look over your shoulder before turning.",
+      "ru": "Всегда смотрите через плечо перед поворотом.",
+      "da": "Se altid over skulderen, før du drejer."
+    }
   ]
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Teori Trainer</title>
+<title>Traffic Words</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -94,13 +94,25 @@
     color: var(--green);
     font-weight: 600;
   }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.045); }
+    100% { transform: scale(1); }
+  }
+  .option.correct.chosen { animation: pop 0.35s ease; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  .option.wrong { animation: shake 0.3s ease; }
   .option.wrong {
     background: var(--red-bg);
     border-color: var(--red);
     color: var(--red);
   }
   .option.dim { opacity: 0.45; }
-  .option:disabled { cursor: default; }
+  .option.done { cursor: default; }
 
   #feedback {
     text-align: center;
@@ -114,6 +126,23 @@
   #feedback.show { opacity: 1; }
   #feedback.ok { color: var(--green); }
   #feedback.bad { color: var(--red); }
+
+  @keyframes hintPulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; }
+  }
+  #continueHint {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    min-height: 20px;
+    visibility: hidden;
+  }
+  #continueHint.show {
+    visibility: visible;
+    animation: hintPulse 1.6s ease-in-out infinite;
+  }
 
   #loadError {
     text-align: center;
@@ -180,7 +209,21 @@
     color: var(--muted);
     font-family: inherit;
     transition: background 0.12s, color 0.12s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
   }
+  .seg .flag {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 22px;
+    height: 16px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+  }
+  .seg .flag svg { width: 100%; height: 100%; display: block; }
   .seg button.active {
     background: #fff;
     color: var(--accent);
@@ -205,7 +248,7 @@
 <body>
 
 <header>
-  <div class="title" id="appTitle">Teori Trainer</div>
+  <div class="title" id="appTitle">Traffic Words</div>
   <button id="settingsBtn" aria-label="Settings">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="3"></circle>
@@ -220,6 +263,7 @@
   <div id="question"></div>
   <div id="options"></div>
   <div id="feedback"></div>
+  <div id="continueHint"></div>
 </main>
 
 <div id="overlay"></div>
@@ -267,12 +311,13 @@ let LANGS = [];
 const DEFAULTS = { uiLang: "ru", qLang: "en", aLang: "ru", mode: "words", topic: "all" };
 let settings = { ...DEFAULTS };
 try {
-  const saved = JSON.parse(localStorage.getItem("teoriTrainerSettings"));
+  // "teoriTrainerSettings" is the old storage key, read for migration
+  const saved = JSON.parse(localStorage.getItem("trafficWordsSettings") || localStorage.getItem("teoriTrainerSettings"));
   if (saved) settings = { ...DEFAULTS, ...saved };
 } catch (e) {}
 
 function saveSettings() {
-  try { localStorage.setItem("teoriTrainerSettings", JSON.stringify(settings)); } catch (e) {}
+  try { localStorage.setItem("trafficWordsSettings", JSON.stringify(settings)); } catch (e) {}
 }
 
 function validateSettings() {
@@ -350,6 +395,7 @@ function newQuestion() {
   const fb = document.getElementById("feedback");
   fb.className = "";
   fb.textContent = "";
+  document.getElementById("continueHint").className = "";
 
   const optEl = document.getElementById("options");
   optEl.innerHTML = "";
@@ -357,7 +403,11 @@ function newQuestion() {
     const btn = document.createElement("button");
     btn.className = "option";
     btn.textContent = text;
-    btn.onclick = () => answer(btn, text === aText, aText);
+    btn.onclick = e => {
+      if (answered) return; // let the click bubble to the tap-to-continue handler
+      e.stopPropagation(); // don't let the answering click instantly advance
+      answer(btn, text === aText, aText);
+    };
     optEl.appendChild(btn);
   });
 }
@@ -370,20 +420,26 @@ function answer(btn, isCorrect, correctText) {
   const buttons = document.querySelectorAll(".option");
 
   buttons.forEach(b => {
-    b.disabled = true;
-    if (b.textContent === correctText) b.classList.add("correct");
+    b.classList.add("done"); // kept enabled so taps on them can advance to the next question
+    if (b.textContent === correctText) {
+      b.classList.add("correct");
+      if (b === btn) b.classList.add("chosen");
+    }
     else if (b === btn) b.classList.add("wrong");
     else b.classList.add("dim");
   });
 
   if (isCorrect) {
+    // correct: quick pop animation, then advance automatically
     fb.textContent = T("correct");
     fb.className = "show ok";
-    advanceTimer = setTimeout(newQuestion, 1000);
+    advanceTimer = setTimeout(newQuestion, 700);
   } else {
+    // wrong: no auto-advance — the user taps anywhere when ready
     fb.textContent = T("wrong");
     fb.className = "show bad";
-    advanceTimer = setTimeout(newQuestion, 2800);
+    document.getElementById("continueHint").textContent = T("tapToContinue");
+    document.getElementById("continueHint").className = "show";
   }
 }
 
@@ -395,12 +451,29 @@ document.addEventListener("click", e => {
 });
 
 // ---------------- SETTINGS UI ----------------
-function buildSeg(containerId, values, labels, key) {
+// Inline SVG flags — Unicode emoji flags render as plain letter codes on
+// Windows, so we use SVGs that work on every platform (PC, Android, iOS).
+// To add a language, add its code here with a small SVG of its flag.
+const FLAGS = {
+  en: '<svg viewBox="0 0 60 30" preserveAspectRatio="none" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3.6"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></svg>',
+  ru: '<svg viewBox="0 0 60 30" preserveAspectRatio="none" aria-hidden="true"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg>',
+  da: '<svg viewBox="0 0 37 28" preserveAspectRatio="none" aria-hidden="true"><rect width="37" height="28" fill="#C8102E"/><rect x="12" width="4" height="28" fill="#fff"/><rect y="12" width="37" height="4" fill="#fff"/></svg>'
+};
+
+function buildSeg(containerId, values, labels, key, withFlags) {
   const el = document.getElementById(containerId);
   el.innerHTML = "";
   values.forEach((v, i) => {
     const b = document.createElement("button");
-    b.textContent = labels[i];
+    if (withFlags && FLAGS[v]) {
+      const f = document.createElement("span");
+      f.className = "flag";
+      f.innerHTML = FLAGS[v];
+      b.appendChild(f);
+    }
+    const t = document.createElement("span");
+    t.textContent = labels[i];
+    b.appendChild(t);
     if (settings[key] === v) b.classList.add("active");
     b.onclick = () => {
       settings[key] = v;
@@ -416,9 +489,9 @@ function buildSeg(containerId, values, labels, key) {
 function renderSettings() {
   const langLabels = LANGS.map(l => DATA.languages[l] || l);
   const uiLangs = LANGS.filter(l => DATA.ui[l]); // UI only in languages that have UI strings
-  buildSeg("segUi", uiLangs, uiLangs.map(l => DATA.languages[l] || l), "uiLang");
-  buildSeg("segQ", LANGS, langLabels, "qLang");
-  buildSeg("segA", LANGS, langLabels, "aLang");
+  buildSeg("segUi", uiLangs, uiLangs.map(l => DATA.languages[l] || l), "uiLang", true);
+  buildSeg("segQ", LANGS, langLabels, "qLang", true);
+  buildSeg("segA", LANGS, langLabels, "aLang", true);
   buildSeg("segMode", ["words", "sentences", "both"], [T("words"), T("sentences"), T("both")], "mode");
   const catIds = Object.keys(DATA.categories || {});
   const catLabel = c => (DATA.categories[c] || {})[settings.uiLang] ?? (DATA.categories[c] || {}).en ?? c;
