@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="da" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- notranslate: browser auto-translation would replace the text we are testing on -->
+<meta name="google" content="notranslate">
 <title>Traffic Words</title>
 <style>
   :root {
@@ -71,6 +73,7 @@
     justify-content: center;
   }
   #question.sentence { font-size: 20px; font-weight: 600; }
+  #question.empty { font-size: 16px; font-weight: 500; color: var(--muted); }
 
   #options { display: flex; flex-direction: column; gap: 12px; }
   .option {
@@ -270,6 +273,10 @@
 <div id="panel">
   <h2 id="sTitle"></h2>
   <div class="setting">
+    <label id="lDeck"></label>
+    <div class="seg" id="segDeck"></div>
+  </div>
+  <div class="setting">
     <label id="lUi"></label>
     <div class="seg" id="segUi"></div>
   </div>
@@ -294,45 +301,110 @@
 
 <script>
 // All language-specific content lives in languages.json:
-//   languages:  { code: "Native name", ... }
-//   categories: { id: { code: "Label", ... }, ... }  (word topics)
-//   ui:         { code: { UI strings }, ... }
-//   words:      [ { cat: "categoryId", code: "translation", ... }, ... ]
-//   sentences:  [ { code: "translation", ... }, ... ]
-// To add a language: add it to "languages" and "ui", and add its code
-// as a key on each word/sentence. To add a word topic: add it to
-// "categories" and tag words with its id. The app picks both up automatically.
+//   languages: { code: "Native name", ... }
+//   ui:        { code: { UI strings }, ... }
+//   decks:     { deckId: { name:       { code: "Deck name", ... },
+//                          categories: { catId: { code: "Label", ... }, ... },
+//                          words:      [ { cat: "catId", code: "translation", ... }, ... ],
+//                          sentences:  [ { code: "translation", ... }, ... ] }, ... }
+// To add a language: add it to "languages" and "ui", and add its code as a key
+// on each word/sentence. To add a subject: add a new deck. To add a word topic:
+// add it to that deck's "categories" and tag its words with the id. The app
+// picks all of it up automatically.
 const DATA_URL = "languages.json";
 
 let DATA = null;
 let LANGS = [];
+let DECKS = [];
 
 // ---------------- SETTINGS ----------------
-const DEFAULTS = { uiLang: "ru", qLang: "en", aLang: "ru", mode: "words", topic: "all" };
-let settings = { ...DEFAULTS };
-try {
-  // "teoriTrainerSettings" is the old storage key, read for migration
-  const saved = JSON.parse(localStorage.getItem("trafficWordsSettings") || localStorage.getItem("teoriTrainerSettings"));
-  if (saved) settings = { ...DEFAULTS, ...saved };
-} catch (e) {}
+// Settings live in three places, in increasing priority:
+//   1. DEFAULTS
+//   2. localStorage (STORE_KEY, with a one-time read of the legacy keys)
+//   3. the URL hash, e.g. #d=hospital&ui=ru&q=da&a=ru&m=words&t=all
+// The hash wins because it is explicit — it also means a home-screen shortcut
+// or a bookmark carries the settings even if the browser clears localStorage
+// (iOS evicts site data after ~7 days of not visiting, which used to make the
+// app come back with the default languages).
+const DEFAULTS = { deck: "traffic", uiLang: "ru", qLang: "en", aLang: "ru", mode: "words", topic: "all" };
+const STORE_KEY = "trafficWordsSettings";
+const LEGACY_STORE_KEYS = ["teoriTrainerSettings"];
+const HASH_KEYS = { d: "deck", ui: "uiLang", q: "qLang", a: "aLang", m: "mode", t: "topic" };
 
-function saveSettings() {
-  try { localStorage.setItem("trafficWordsSettings", JSON.stringify(settings)); } catch (e) {}
+let settings = { ...DEFAULTS };
+
+function readStored() {
+  try {
+    let raw = localStorage.getItem(STORE_KEY);
+    if (raw === null) {
+      // Migrate from an older build. Only read the legacy key when the current
+      // one is absent, and delete it on the next save so the two keys can never
+      // disagree again.
+      for (const key of LEGACY_STORE_KEYS) {
+        const legacy = localStorage.getItem(key);
+        if (legacy !== null) { raw = legacy; break; }
+      }
+    }
+    const parsed = raw ? JSON.parse(raw) : null;
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch (e) { return null; }
+}
+
+function readHash() {
+  try {
+    const raw = location.hash.replace(/^#/, "");
+    if (!raw) return null;
+    const params = new URLSearchParams(raw);
+    const out = {};
+    for (const [short, key] of Object.entries(HASH_KEYS)) {
+      if (params.has(short)) out[key] = params.get(short);
+    }
+    return Object.keys(out).length ? out : null;
+  } catch (e) { return null; }
+}
+
+settings = { ...DEFAULTS, ...(readStored() || {}), ...(readHash() || {}) };
+
+function writeHash() {
+  try {
+    const params = new URLSearchParams();
+    for (const [short, key] of Object.entries(HASH_KEYS)) params.set(short, settings[key]);
+    const hash = "#" + params.toString();
+    if (location.hash !== hash) history.replaceState(null, "", hash);
+  } catch (e) {}
+}
+
+function saveSettings(opts) {
+  const withHash = !opts || opts.hash !== false;
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify(settings));
+    LEGACY_STORE_KEYS.forEach(key => localStorage.removeItem(key));
+  } catch (e) {}
+  if (withHash) writeHash();
 }
 
 function validateSettings() {
-  // If a saved language was removed from the JSON, fall back gracefully.
+  // Fall back gracefully if a saved value no longer exists in the JSON.
+  if (!DECKS.includes(settings.deck)) settings.deck = DECKS.includes(DEFAULTS.deck) ? DEFAULTS.deck : DECKS[0];
   if (!LANGS.includes(settings.uiLang)) settings.uiLang = LANGS.includes(DEFAULTS.uiLang) ? DEFAULTS.uiLang : LANGS[0];
   if (!LANGS.includes(settings.qLang)) settings.qLang = LANGS.includes(DEFAULTS.qLang) ? DEFAULTS.qLang : LANGS[0];
   if (!LANGS.includes(settings.aLang)) settings.aLang = LANGS.includes(DEFAULTS.aLang) ? DEFAULTS.aLang : LANGS[0];
   if (!["words", "sentences", "both"].includes(settings.mode)) settings.mode = DEFAULTS.mode;
-  if (settings.topic !== "all" && !DATA.categories[settings.topic]) settings.topic = "all";
+  // Topics belong to a deck, so switching deck resets an unknown topic.
+  if (settings.topic !== "all" && !deck().categories[settings.topic]) settings.topic = "all";
 }
+
+function deck() { return DATA.decks[settings.deck] || DATA.decks[DECKS[0]]; }
 
 // UI strings with fallback to English for missing keys/languages
 function T(key) {
   const ui = DATA.ui[settings.uiLang] || DATA.ui.en || {};
   return ui[key] ?? (DATA.ui.en || {})[key] ?? key;
+}
+
+function localized(obj) {
+  if (!obj) return "";
+  return obj[settings.uiLang] ?? obj.en ?? Object.values(obj)[0] ?? "";
 }
 
 // ---------------- QUIZ LOGIC ----------------
@@ -341,14 +413,15 @@ let answered = false;
 let advanceTimer = null;
 
 function pool() {
+  const d = deck();
   // topic filter applies to words only; sentences are always included
   const words = settings.topic === "all"
-    ? DATA.words
-    : DATA.words.filter(w => w.cat === settings.topic);
+    ? d.words
+    : d.words.filter(w => w.cat === settings.topic);
   let items;
   if (settings.mode === "words") items = words;
-  else if (settings.mode === "sentences") items = DATA.sentences;
-  else items = words.concat(DATA.sentences);
+  else if (settings.mode === "sentences") items = d.sentences;
+  else items = words.concat(d.sentences);
   // only items translated in both selected languages
   return items.filter(it => it[settings.qLang] && it[settings.aLang]);
 }
@@ -367,8 +440,21 @@ function newQuestion() {
   clearTimeout(advanceTimer);
   answered = false;
 
+  const qEl = document.getElementById("question");
+  const optEl = document.getElementById("options");
+  const fb = document.getElementById("feedback");
+  fb.className = "";
+  fb.textContent = "";
+  document.getElementById("continueHint").className = "";
+
   const p = pool();
-  if (p.length < 4) return; // not enough data for this language pair
+  if (p.length < 4) {
+    // Say so instead of silently leaving the previous question on screen.
+    qEl.className = "empty";
+    qEl.textContent = T("notEnough");
+    optEl.innerHTML = "";
+    return;
+  }
 
   let item = pick(p);
   while (p.length > 1 && item === lastItem) item = pick(p);
@@ -388,16 +474,9 @@ function newQuestion() {
 
   const options = shuffle([aText, ...wrongs]);
 
-  const qEl = document.getElementById("question");
   qEl.textContent = qText;
-  qEl.className = DATA.sentences.includes(item) ? "sentence" : "";
+  qEl.className = deck().sentences.includes(item) ? "sentence" : "";
 
-  const fb = document.getElementById("feedback");
-  fb.className = "";
-  fb.textContent = "";
-  document.getElementById("continueHint").className = "";
-
-  const optEl = document.getElementById("options");
   optEl.innerHTML = "";
   options.forEach(text => {
     const btn = document.createElement("button");
@@ -477,6 +556,7 @@ function buildSeg(containerId, values, labels, key, withFlags) {
     if (settings[key] === v) b.classList.add("active");
     b.onclick = () => {
       settings[key] = v;
+      validateSettings(); // e.g. a topic from the previous deck
       saveSettings();
       renderSettings();
       renderTexts();
@@ -489,18 +569,21 @@ function buildSeg(containerId, values, labels, key, withFlags) {
 function renderSettings() {
   const langLabels = LANGS.map(l => DATA.languages[l] || l);
   const uiLangs = LANGS.filter(l => DATA.ui[l]); // UI only in languages that have UI strings
+  buildSeg("segDeck", DECKS, DECKS.map(d => localized(DATA.decks[d].name)), "deck");
   buildSeg("segUi", uiLangs, uiLangs.map(l => DATA.languages[l] || l), "uiLang", true);
   buildSeg("segQ", LANGS, langLabels, "qLang", true);
   buildSeg("segA", LANGS, langLabels, "aLang", true);
   buildSeg("segMode", ["words", "sentences", "both"], [T("words"), T("sentences"), T("both")], "mode");
-  const catIds = Object.keys(DATA.categories || {});
-  const catLabel = c => (DATA.categories[c] || {})[settings.uiLang] ?? (DATA.categories[c] || {}).en ?? c;
-  buildSeg("segTopic", ["all", ...catIds], [T("all"), ...catIds.map(catLabel)], "topic");
+  const catIds = Object.keys(deck().categories || {});
+  buildSeg("segTopic", ["all", ...catIds],
+    [T("all"), ...catIds.map(c => localized(deck().categories[c]) || c)], "topic");
 }
 
 function renderTexts() {
+  document.getElementById("appTitle").textContent = localized(deck().name);
   document.getElementById("promptLabel").textContent = T("prompt");
   document.getElementById("sTitle").textContent = T("settings");
+  document.getElementById("lDeck").textContent = T("deck");
   document.getElementById("lUi").textContent = T("uiLang");
   document.getElementById("lQ").textContent = T("qLang");
   document.getElementById("lA").textContent = T("aLang");
@@ -527,7 +610,13 @@ fetch(DATA_URL)
   .then(json => {
     DATA = json;
     LANGS = Object.keys(DATA.languages);
+    DECKS = Object.keys(DATA.decks);
     validateSettings();
+    // Write the validated settings back straight away: that puts them under the
+    // current key and clears the legacy one, so an older cached copy of the page
+    // can no longer resurrect stale languages. Leave the URL alone on a clean
+    // load; only keep an existing hash in sync.
+    saveSettings({ hash: location.hash.length > 1 });
     renderTexts();
     renderSettings();
     newQuestion();
