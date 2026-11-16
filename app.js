@@ -27,11 +27,11 @@ const CONFIG = {
   learnedLevel: 2,
 };
 
-const STORE = 'topwords.v1';
+const STORE = 'topwords.v2';
 
 const UI = {
   da: {
-    lang: { da: 'Dansk', en: 'Engelsk' },
+    lang: { da: 'Dansk', en: 'Engelsk', ru: 'Russisk' },
     title: 'Lær de mest brugte ord',
     lead: 'Ét ord ad gangen, i den rækkefølge de bruges mest. Din score er hvor mange af de mest brugte ord du kan.',
     learnQ: 'Hvilket sprog vil du lære?',
@@ -59,7 +59,7 @@ const UI = {
     qProd: 'Hvad hedder det på {T}?',
     qRecN: 'Hvilket billede passer til ordet?',
     qProdN: 'Hvilket ord passer til billedet?',
-    rank: 'Ord nr. {n} i sproget',
+    rank: 'Ord nr. {n} på listen',
     seen: '{n} ord mødt',
     due: '{n} klar til gentagelse',
     empty: 'Der er ingen ord, der passer til de valgte indstillinger.',
@@ -67,7 +67,7 @@ const UI = {
     back: 'Tilbage',
     reset: 'Nulstil fremskridt',
     resetQ: 'Nulstil al fremskridt for denne kombination af sprog og øvelse?',
-    cols: ['#', 'Ord', 'Betydning', 'Niveau', 'Interval', 'Status', 'Forfald'],
+    cols: ['#', 'Ord', 'Pr. mio.', 'Betydning', 'Niveau', 'Interval', 'Status', 'Forfald'],
     learnedS: 'lært', notYet: 'ikke endnu', wrongS: 'svaret forkert',
     tasks: 'opg.',
     noStats: 'Du har ikke mødt nogen ord endnu.',
@@ -77,7 +77,7 @@ const UI = {
       'Rigtigt svar: <code>L+1</code>. Forkert svar: <code>L−1</code>. Et ord tæller som lært fra niveau {ll}, hvis sidste svar var rigtigt.',
   },
   en: {
-    lang: { da: 'Danish', en: 'English' },
+    lang: { da: 'Danish', en: 'English', ru: 'Russian' },
     title: 'Learn the most used words',
     lead: 'One word at a time, in order of how often they are used. Your score is how many of the most used words you know.',
     learnQ: 'Which language do you want to learn?',
@@ -105,7 +105,7 @@ const UI = {
     qProd: 'What is it in {T}?',
     qRecN: 'Which picture matches the word?',
     qProdN: 'Which word matches the picture?',
-    rank: 'Word no. {n} in the language',
+    rank: 'Word no. {n} on the list',
     seen: '{n} words seen',
     due: '{n} ready for review',
     empty: 'No words match the chosen settings.',
@@ -113,7 +113,7 @@ const UI = {
     back: 'Back',
     reset: 'Reset progress',
     resetQ: 'Reset all progress for this language pair and exercise?',
-    cols: ['#', 'Word', 'Meaning', 'Level', 'Interval', 'Status', 'Due'],
+    cols: ['#', 'Word', 'Per mil.', 'Meaning', 'Level', 'Interval', 'Status', 'Due'],
     learnedS: 'learned', notYet: 'not yet', wrongS: 'answered wrong',
     tasks: 'tasks',
     noStats: 'You have not met any words yet.',
@@ -121,6 +121,52 @@ const UI = {
       'Each word has a level <code>L</code>. The next review comes after <code>{tu}·{b}<sup>L</sup></code> tasks ' +
       'and <code>{mu} min·{b}<sup>L</sup></code> – the two are added up as <b>due</b>, and the word is ready at 100 %. ' +
       'Correct: <code>L+1</code>. Wrong: <code>L−1</code>. A word counts as learned from level {ll} if the last answer was correct.',
+  },
+  ru: {
+    lang: { da: 'Датский', en: 'Английский', ru: 'Русский' },
+    title: 'Учите самые частые слова',
+    lead: 'По одному слову, в порядке частоты употребления. Ваш счёт — сколько самых частых слов вы знаете.',
+    learnQ: 'Какой язык вы хотите учить?',
+    baseQ: 'Какой язык вы понимаете лучше всего?',
+    nativeB: 'Это мой родной язык',
+    nativeS: 'Учимся читать – с картинками',
+    otherS: 'Показывать перевод',
+    modeQ: 'Что будем тренировать?',
+    recB: 'Понять слово', recS: 'Видите {T}, выбираете {B}',
+    prodB: 'Найти слово', prodS: 'Видите {B}, выбираете {T}',
+    recNB: 'Найти картинку', recNS: 'Видите слово, выбираете картинку',
+    prodNB: 'Прочитать слово', prodNS: 'Видите картинку, выбираете слово',
+    diffQ: 'Сложность',
+    diff: ['', 'Лёгкая', 'Средняя', 'Сложная'],
+    nWords: 'слов: {n}',
+    start: 'Начать',
+    sound: 'Читать слова вслух',
+    learned: 'слов выучено',
+    newWord: 'Новое слово',
+    repeat: 'Повторение',
+    next: 'Дальше',
+    correct: 'Правильно!',
+    wrong: 'Не совсем – правильный ответ зелёный',
+    qRec: 'Что означает это слово?',
+    qProd: 'Как это будет на языке: {T}?',
+    qRecN: 'Какая картинка подходит к слову?',
+    qProdN: 'Какое слово подходит к картинке?',
+    rank: 'Слово № {n} в списке',
+    seen: 'встречено слов: {n}',
+    due: 'к повторению: {n}',
+    empty: 'Нет слов для выбранных настроек.',
+    stats: 'Статистика',
+    back: 'Назад',
+    reset: 'Сбросить прогресс',
+    resetQ: 'Сбросить весь прогресс для этой пары языков и упражнения?',
+    cols: ['№', 'Слово', 'На млн', 'Значение', 'Уровень', 'Интервал', 'Статус', 'Срок'],
+    learnedS: 'выучено', notYet: 'ещё нет', wrongS: 'ошибка',
+    tasks: 'зад.',
+    noStats: 'Вы ещё не встретили ни одного слова.',
+    explain:
+      'У каждого слова есть уровень <code>L</code>. Следующее повторение — через <code>{tu}·{b}<sup>L</sup></code> заданий ' +
+      'и <code>{mu} мин·{b}<sup>L</sup></code>; оба значения складываются в <b>срок</b>, и слово готово к повторению при 100 %. ' +
+      'Верно: <code>L+1</code>. Неверно: <code>L−1</code>. Слово считается выученным с уровня {ll}, если последний ответ был верным.',
   },
 };
 
@@ -147,7 +193,10 @@ function saveState() {
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 const fill = (str, vars) => str.replace(/\{(\w+)\}/g, (_, k) => (k in vars ? vars[k] : `{${k}}`));
-function browserLang() { return (navigator.language || 'da').toLowerCase().startsWith('da') ? 'da' : 'en'; }
+function browserLang() {
+  const l = (navigator.language || 'da').toLowerCase().slice(0, 2);
+  return UI[l] ? l : 'en';
+}
 function uiLang() {
   const s = view === 'setup' && draft ? draft : state.settings;
   return (s && (s.base || s.target)) || browserLang();
@@ -167,7 +216,8 @@ function shuffle(arr) {
 // ---------- Model ----------
 function buildPool(s) {
   const native = s.base === s.target;
-  return ORDER[s.target].map((id) => BY_ID[id]).filter((c) => c.diff <= s.diff && (!native || c.emoji));
+  return ORDER[s.target].map((id) => BY_ID[id])
+    .filter((c) => c.diff <= s.diff && c.words[s.target] && (native ? c.emoji : c.words[s.base]));
 }
 function ctx() {
   const s = state.settings;
@@ -477,7 +527,7 @@ function fmtDuration(min) {
 function renderStats() {
   const c = ctx();
   const now = Date.now();
-  const ids = Object.keys(c.prog.cards).sort((a, b) => rankOf(c.s.target, a) - rankOf(c.s.target, b));
+  const ids = Object.keys(c.prog.cards).filter((id) => BY_ID[id]).sort((a, b) => rankOf(c.s.target, a) - rankOf(c.s.target, b));
   const cols = t('cols');
   let html = `<section class="stats"><div class="row" style="justify-content:space-between">
       <h1>${esc(t('stats'))}</h1><button class="secondary" id="backBtn">← ${esc(t('back'))}</button></div>
@@ -499,6 +549,7 @@ function renderStats() {
       html += `<tr>
         <td class="num">${rankOf(c.s.target, id)}</td>
         <td><b>${esc(x.words[c.s.target])}</b></td>
+        <td class="num">${(IPM[c.s.target][id] || 0).toLocaleString(uiLang())}</td>
         <td>${meaning}</td>
         <td class="num">${card.lvl}</td>
         <td class="num">${CONFIG.taskUnit * f} ${esc(t('tasks'))} · ${fmtDuration(CONFIG.timeUnitMin * f)}</td>
