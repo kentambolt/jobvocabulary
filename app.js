@@ -197,9 +197,11 @@ function browserLang() {
   const l = (navigator.language || 'da').toLowerCase().slice(0, 2);
   return UI[l] ? l : 'en';
 }
+// Appens sprog er altid det sprog, brugeren forstår bedst – aldrig det sprog, der skal læres.
+// Indtil det er valgt, bruges det tidligere valg eller browserens sprog.
 function uiLang() {
-  const s = view === 'setup' && draft ? draft : state.settings;
-  return (s && (s.base || s.target)) || browserLang();
+  if (view === 'setup' && draft && draft.base) return draft.base;
+  return (state.settings && state.settings.base) || browserLang();
 }
 function t(key, vars) {
   const v = UI[uiLang()][key];
