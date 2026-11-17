@@ -44,6 +44,13 @@ for (const pack of Object.values(context.allPacks)) for (const cat of pack.categ
   add(`${pack.id}:${da}`, { da, en, ru, uk }, cat.type === 'phrase');
 }
 // Preserve redirects for previously merged records, without redirecting a live ID.
+const migrationsPath = path.join(__dirname, 'lexicon-migrations.json');
+const migrations = fs.existsSync(migrationsPath) ? JSON.parse(fs.readFileSync(migrationsPath, 'utf8')) : {};
+for (const [oldSource, newSource] of Object.entries(migrations)) {
+  if (!aliases[newSource]) throw new Error(`Unknown migration destination: ${newSource}`);
+  aliases[oldSource] = aliases[newSource];
+  if (previousAliases[oldSource]) aliases[previousAliases[oldSource]] = aliases[newSource];
+}
 for (const [oldId, target] of Object.entries(previousAliases)) if (oldId.startsWith('lex:') && !usedIds.has(oldId) && !aliases[oldId]) aliases[oldId] = target;
 for (const id of usedIds) delete aliases[id];
 for (const key of Object.keys(aliases)) {
