@@ -395,6 +395,13 @@ button, .category-nav a, .course-open { touch-action: manipulation; }
 .library input, .library select, dialog input, dialog select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; max-width: 100%; min-width: 0; }
 .library label, dialog label { display: block; font-size: 13px; font-weight: 800; margin: 12px 0 6px; }
 .library input[type="search"] { width: 100%; }
+.library-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.library-pair select { width: 100%; }
+.library-audio { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.library-audio svg { width: 20px; height: 20px; }
+.list-management { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin: 12px 0; }
+.library-transfer { margin: 28px 0; border-top: 1px solid var(--line); padding-top: 18px; }
+.library-transfer summary { cursor: pointer; font-weight: 800; min-height: 44px; }
 .library .secondary, .library .chip, dialog button { min-height: 44px; }
 .library .secondary { padding: 9px 12px; font-size: 13px; }
 .list-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }

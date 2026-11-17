@@ -48,6 +48,10 @@ the dictionary search, save dialog and list screens. Shared words are saved by I
 Only manually entered words store their own translations. A word can appear in
 multiple lists without copying its dictionary data. Backups merge with existing
 lists; a colliding custom-word ID never overwrites a locally edited word.
+Lists can be renamed without changing their IDs. Personal vocabulary has its own
+persisted language pair (`libraryPair`), list filtering and on-demand pronunciation.
+Changing this pair does not change an active course until list practice is started.
+Explicit pronunciation works even when automatic exercise audio is switched off.
 
 Settings, progress and personal vocabulary use browser localStorage under the
 existing `topwords.v2` key. They are local to one browser and origin, with no

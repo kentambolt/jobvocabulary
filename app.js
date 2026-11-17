@@ -778,8 +778,8 @@ function nextSlot(spec, pos) {
 }
 
 // ---------- Speech ----------
-function speak(text, lang) {
-  if (!state.sound || !('speechSynthesis' in window)) return;
+function speak(text, lang, explicit = false) {
+  if ((!state.sound && !explicit) || !('speechSynthesis' in window)) return;
   try {
     const u = new SpeechSynthesisUtterance(text);
     u.lang = LANGS[lang].tts;

@@ -32,6 +32,25 @@ test('custom entries require translations and are reused across lists', () => {
   assert.equal(library.data.custom[id].words.da, 'arbejdsdag');
 });
 
+test('renaming a list keeps saved references and rejects ambiguous names atomically', () => {
+  const library = new WordLibrary();
+  const work = library.createList('Work');
+  const travel = library.createList('Travel');
+  library.add('lex:word', work.id);
+  library.renameList(work.id, ' My job ');
+  assert.equal(library.list(work.id).name, 'My job');
+  assert.deepEqual(library.list(work.id).items, ['lex:word']);
+  assert.throws(() => library.renameList(work.id, ' travel '), /duplicate/);
+  assert.throws(() => library.renameList(work.id, '  '), /name/);
+  assert.throws(() => library.renameList('favorites', 'Other'), /name/);
+  assert.equal(library.list(work.id).name, 'My job');
+  assert.equal(library.list(travel.id).name, 'Travel');
+  library.renameList(work.id, 'MY JOB');
+  const restored = new WordLibrary(JSON.parse(JSON.stringify(library.data)));
+  assert.equal(restored.list(work.id).name, 'MY JOB');
+  assert.deepEqual(restored.list(work.id).items, ['lex:word']);
+});
+
 test('backup import merges lists and preserves locally edited custom words', () => {
   const library = new WordLibrary();
   const original = library.addCustom({ da: 'ord', en: 'word' });

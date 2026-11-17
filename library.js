@@ -23,6 +23,13 @@ var WordLibrary = class WordLibrary {
     if (!list || !id) throw new Error('list');
     if (!list.items.includes(id)) list.items.push(id);
   }
+  renameList(id, name) {
+    const list = this.data.lists.find((entry) => entry.id === id);
+    const clean = name.trim().slice(0, 60);
+    if (!list || !clean) throw new Error('name');
+    if (this.data.lists.some((entry) => entry.id !== id && entry.name.toLocaleLowerCase() === clean.toLocaleLowerCase())) throw new Error('duplicate');
+    list.name = clean;
+  }
   remove(id, listId = 'favorites') {
     const list = this.list(listId);
     if (list) list.items.splice(0, list.items.length, ...list.items.filter((item) => item !== id));
