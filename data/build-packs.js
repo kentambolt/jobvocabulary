@@ -11,7 +11,7 @@ const LANGS = ['da', 'en', 'ru', 'uk'];
 // Bevidste synonymer: samme oversættelse er tilladt for disse danske par.
 const SYNONYMS = new Set(['mug|skimmel', 'stoppet|tilstoppet']);
 // Rækkefølge i appen (resten alfabetisk efter).
-const FIRST = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'driving'];
+const FIRST = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'essentials', 'driving'];
 
 const files = fs.readdirSync(DIR).filter((f) => f.endsWith('.js') && f !== 'index.js');
 const index = [];

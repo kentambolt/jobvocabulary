@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-17",
+  "pullRequest": "https://github.com/kentambolt/trafficwords/pull/9",
+  "reviewedCommit": "815b9610ca0fe7438adcfa1c92bb4cd22e25707f",
+  "productionImport": false,
+  "validation": {
+    "rows": 279,
+    "distinctDanishLemmas": 183,
+    "aiReviewed": 233,
+    "needsNativeReview": 46,
+    "missingRussian": 10,
+    "missingUkrainian": 42,
+    "uniqueIds": true,
+    "exactTenFieldSchema": true,
+    "aiReviewedRowsHaveAllFourLanguages": true
+  },
+  "decisions": {
+    "license": {
+      "direction": "Use Wiktionary-derived data as a separately attributed and licensed CC BY-SA 4.0 data package; do not change the repository-wide software or illustration licence.",
+      "beforePublication": [
+        "Add a dedicated licence and attribution notice with source, licence URL, contributors and modification notices.",
+        "Keep the Wiktionary-derived export separate from the existing lexicon and original course data. Do not assume that separate files alone settle whether a particular combined database is an adaptation.",
+        "Retain source and snapshot provenance through extraction, review and export."
+      ],
+      "references": [
+        "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+        "https://creativecommons.org/licenses/by-sa/4.0/legalcode.en#s4",
+        "https://creativecommons.org/faq/#if-i-create-a-collection-that-includes-a-work-offered-under-a-cc-license-which-licenses-may-i-choose-for-the-collection"
+      ]
+    },
+    "coverage": {
+      "direction": "Combine compatible, documented supplementary sources with native-speaker review; prioritise the first 500-1000 useful lemmas rather than a nominal total of 10000.",
+      "rules": [
+        "Missing translations remain missing; do not substitute Russian for Ukrainian or infer equivalence from the lemma alone.",
+        "Track review and availability per language pair and sense.",
+        "ai-reviewed is not approved or native-reviewed.",
+        "Report lemma counts separately from sense counts."
+      ]
+    },
+    "danishNouns": {
+      "direction": "Store canonical lemma, grammatical gender and countability separately. Display en/et for singular count nouns in vocabulary training.",
+      "rules": [
+        "Do not rewrite existing IDs or Danish source strings in bulk to add articles.",
+        "Do not add indefinite articles indiscriminately to mass nouns, plurals, numerals, weekdays or fixed expressions.",
+        "Permit lookup by bare lemma as well as article-plus-lemma."
+      ]
+    },
+    "remainingReview": {
+      "direction": "Review the phrase rows and driving.js against current origin/main, prioritising driving, safety, health and workplace instructions.",
+      "rules": [
+        "Review meaning, register and natural spoken phrasing across the complete sentence, including gender and politeness.",
+        "Driving-rule facts need jurisdiction, an official current source and a review date.",
+        "Keep the existing correction for new category B drivers: 0.2 per mille during the first three years.",
+        "Any changed Danish source phrase requires an explicit lexicon migration."
+      ]
+    }
+  },
+  "proposalDecisions": [
+    {
+      "id": "tr-044",
+      "decision": "accepted-source-verified",
+      "reason": "The Russian equipment name uses the feminine form; confirmed in a manufacturer's manual.",
+      "source": "https://atesy.ru/upload/iblock/6b8/4s4i0gw0vw1ksopdilfgx5g7ifr3qxvp/6b02b730_f73f_11e6_80c3_001a6423323c_1b5d9a7f_6c21_11eb_8e07_002590c0bb7c.pdf"
+    },
+    {
+      "id": "tr-045",
+      "decision": "accepted-terminology-clarification",
+      "reason": "Use the established Ukrainian equipment label саламандра. Commercial documentation varies, so this is not a blanket statement that every alternative industry form is ungrammatical.",
+      "source": "https://www.bartscher.com/medias/Bartscher-Katalog-2025-UA.pdf?attachment=true&context=bWFzdGVyfHJvb3R8NTI5MzY5NTB8YXBwbGljYXRpb24vcGRmfGFHSTVMMmhrWmk4NU1UWXpNemswTmpjNE9ERTBMMEpoY25SelkyaGxjbDlMWVhSaGJHOW5Yekl3TWpWZlZVRXVjR1JtfGNiMThkZWExOTJiY2ViNzQ2MTQzMmNkMmVkNDhmNjFiNjRlNzg0MjFmYWZlNDExMWNkNmE0YmZhNDI1YWJiNTc"
+    },
+    {
+      "id": "tr-066",
+      "decision": "accepted-countable-sense-clarification",
+      "reason": "Цеглина explicitly identifies one brick, matching the Danish count noun. Treat this as a teaching clarification rather than claiming цегла is never used for a brick.",
+      "source": "https://wiki.kubg.edu.ua/Цеглина"
+    },
+    {
+      "id": "tr-101",
+      "decision": "rejected",
+      "reason": "For a phone holder the phone is a physical apparatus. Ukrainian orthography distinguishes телефона for the apparatus from телефону for the communication medium. Keep тримач для телефона.",
+      "source": "https://newpravopys.mova.info/pravopys.aspx?SectionID=3617"
+    },
+    {
+      "id": "tr-046",
+      "decision": "defer-native-review",
+      "reason": "Вінчик is a documented cooking term, but appliance manuals also use віночок. The proposed preferred term may be useful; the claim that the current form is categorically wrong needs stronger review."
+    }
+  ],
+  "remainingProposalDisposition": "The other 98 proposals remain proposals. Article changes need the metadata convention above; ambiguous or stylistic proposals are not automatically applied.",
+  "pipelineFindings": [
+    {
+      "file": "content/incoming/common-words-report.md",
+      "priority": "medium",
+      "issue": "The report says Kent approved the source, but the original assignment authorised source research and the delivery explicitly asks for a licence decision.",
+      "requestedChange": "Remove the unsupported prior-approval claim and record the licence decision and publication conditions from this review."
+    },
+    {
+      "file": "data/fetch-wiktionary.sh",
+      "priority": "medium",
+      "issue": "The shell uses set -e but no reliable propagation of failures through the curl/gzip/filter/node pipeline. A failed upstream download can leave a truncated output while the final command succeeds.",
+      "requestedChange": "Propagate failures across every stage, write temporary output and replace the cache file only after successful parsing and non-empty validation."
+    },
+    {
+      "file": "data/fetch-wiktionary.sh",
+      "priority": "medium",
+      "issue": "The URLs fetch the latest dumps, whereas the report names a specific snapshot. Re-running the command later does not recreate the same reviewed batch.",
+      "requestedChange": "Record or pin extraction snapshot, source URLs, input checksums and generator revision in a provenance manifest. Confirm supported raw-data endpoints before scaling."
+    }
+  ]
+}

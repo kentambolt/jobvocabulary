@@ -442,7 +442,8 @@ function loadPack(id) {
 // for dem, der lærer et fremmedsprog helt fra bunden.
 const PICS = 'pics';
 const isPics = (s) => s.base === s.target || s.pack === PICS;
-const isPack = (s) => !!s.pack && s.pack !== TOP && s.pack !== PICS;
+const isList = (s) => typeof s.pack === 'string' && s.pack.startsWith('list:');
+const isPack = (s) => !!s.pack && s.pack !== TOP && s.pack !== PICS && !isList(s);
 // Billeder, der let kan forveksles, må ikke stå som svarmuligheder sammen.
 const CONFUSE = [
   ['person', 'man', 'father', 'grandfather', 'friend', 'teacher'], ['person', 'woman', 'mother', 'grandmother'],
@@ -465,40 +466,53 @@ function countPool(s) {
 
 // ---------- State ----------
 const state = loadState();
+const wordLibrary = new WordLibrary(state.library);
 let view = viewFromHash();
 let draft = null;
 let current = null;
 let timer = null;
 let placement = null;
+let selectedCourseLink = false;
+let lastFeedback = null;
 
 // Direkte link fra en jobside: #start=<pakke>&base=<sprog>. Har man allerede valgt sprog,
 // skiftes der bare emne; ellers åbnes opsætningen med emnet valgt på forhånd.
-(function deepLink() {
+function applyCourseLink() {
   const m = location.hash.match(/^#start=([a-z]+)(?:&base=([a-z]{2}))?/);
   if (!m) return;
   history.replaceState(null, '', location.pathname + location.search);
   const [, pack, base] = m;
-  if (!PACK_LIST.some((p) => p.id === pack)) return;
+  if (![TOP, PICS].includes(pack) && !PACK_LIST.some((p) => p.id === pack)) return;
+  selectedCourseLink = true;
+  current = null;
+  placement = null;
+  lastFeedback = null;
   const s = state.settings;
   if (s && s.target === 'da' && s.base !== 'da') {
-    state.settings = { ...s, pack, cats: null };
+    state.settings = { ...s, base: base && LANGS[base] && base !== 'da' ? base : s.base, pack, cats: null, dir: pack === PICS ? 'path' : 'rec' };
     saveState();
     view = 'play';
   } else {
     draft = { target: 'da', base: base && LANGS[base] && base !== 'da' ? base : null, pack, dir: 'rec', diff: 1, cats: null };
     view = 'setup';
   }
-})();
+}
+applyCourseLink();
+window.addEventListener('hashchange', () => {
+  if (/^#start=/.test(location.hash)) { applyCourseLink(); render(); }
+});
 
 function viewFromHash() {
   const h = location.hash;
+  if (h === '#mine-ord') return 'library';
   if (h === '#indstillinger' || !state.settings) return 'setup';
   if (h === '#statistik') return 'stats';
   return 'play';
 }
 // Navigation med rigtige URL'er, så browserens tilbage-knap virker.
 function go(v) {
-  const hash = v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : '';
+  if (v !== 'play') lastFeedback = null;
+  const hash = v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : v === 'library' ? '#mine-ord' : '';
   if (location.hash !== hash) history.pushState(null, '', location.pathname + location.search + hash);
   view = v;
   if (v === 'setup') draft = null;
@@ -507,6 +521,7 @@ function go(v) {
 }
 window.addEventListener('popstate', () => {
   placement = null;
+  if (/^#start=/.test(location.hash)) { applyCourseLink(); render(); return; }
   view = viewFromHash();
   if (view === 'setup') draft = null;
   render();
@@ -518,6 +533,7 @@ function loadState() {
   if (!s || typeof s !== 'object') s = {};
   s.progress = s.progress || {};
   s.sound = s.sound !== false;
+  s.library = s.library && typeof s.library === 'object' && !Array.isArray(s.library) ? s.library : {};
   return s;
 }
 function saveState() {
@@ -552,6 +568,7 @@ const norm = (s) => s.toLowerCase().replace(/[.,!?;:«»"“”]/g, '').replace(
 
 // ---------- Model ----------
 function buildPool(s) {
+  if (isList(s)) return listPool(s.pack.slice(5), s);
   if (isPack(s)) {
     return (PACK_ITEMS[s.pack] || []).filter((x) => x.diff <= s.diff && x.words[s.target] && x.words[s.base]
       && (!s.cats || s.cats.includes(x.cat)));
@@ -561,6 +578,7 @@ function buildPool(s) {
     .filter((c) => c.diff <= s.diff && c.words[s.target] && (pics ? IMG[c.id] : c.words[s.base]));
 }
 function progKey(s) {
+  if (isList(s)) return `${s.pack}|${s.target}|${s.base}|${s.dir}`;
   if (isPack(s)) return `${s.pack}|${s.target}|${s.base}|${s.dir}`;
   if (s.pack === PICS && s.base !== s.target) return `${PICS}|${s.target}|${s.base}|${s.dir}`;
   return `${s.target}|${s.base}|${s.dir}`;
@@ -580,7 +598,7 @@ function dueness(card, prog, now) {
 function isLearned(card) { return card.ok && card.lvl >= CONFIG.learnedLevel; }
 function scoreOf(prog) { return Object.keys(prog.cards).filter((id) => ITEM[id] && isLearned(prog.cards[id])).length; }
 function rankOf(s, id) {
-  const list = isPack(s) ? PACK_ITEMS[s.pack].map((x) => x.id) : ORDER[s.target];
+  const list = isList(s) ? buildPool(s).map((x) => x.id) : isPack(s) ? PACK_ITEMS[s.pack].map((x) => x.id) : ORDER[s.target];
   return list.indexOf(id) + 1;
 }
 
@@ -641,7 +659,8 @@ function pickDistractors(c, concept, qdir, n = 3) {
   const picked = [];
   // Synonymer (fx "mug" og "skimmel") må ikke optræde som forkerte svar for hinanden.
   const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]] && x.words[c.s[k]].toLowerCase() === concept.words[c.s[k]].toLowerCase());
-  const cand = c.pool.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x)
+  const candidates = isList(c.s) ? Object.values(ITEM).filter((x) => x.id.startsWith('lex:') && x.words[c.s.target] && x.words[c.s.base]) : c.pool;
+  const cand = candidates.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x)
     && !(c.pics && confusable(x.id, concept.id)));
   const seen = (x) => !!c.prog.cards[x.id];
   const samePos = (x) => x.pos === concept.pos;
@@ -778,7 +797,7 @@ function render() {
   clearTimeout(timer);
   const ul = uiLang();
   document.documentElement.lang = ul;
-  const inGame = !!state.settings && view !== 'setup';
+  const inGame = !!state.settings && !['setup', 'library'].includes(view);
   $('score').hidden = !inGame;
   $('statsBtn').hidden = !inGame;
   $('setupBtn').hidden = !state.settings;
@@ -789,7 +808,20 @@ function render() {
     $(id).setAttribute('aria-label', t(key));
   }
   $('soundBtn').setAttribute('aria-pressed', String(state.sound));
+  $('libraryBtn').title = lt('title');
+  $('libraryBtn').setAttribute('aria-label', lt('title'));
+  const catalogLink = $('catalogLink');
+  if (catalogLink) {
+    catalogLink.href = `/${ul}/`;
+    catalogLink.textContent = COURSE_CATALOG.labels[ul].catalog;
+  }
   renderIntro(ul);
+  if (view === 'library') { renderLibrary(); return; }
+  if (inGame && (isList(state.settings || {}) || wordLibrary.data.favorites.length) && !dictionaryData) {
+    $('app').innerHTML = `<p role="status">${esc(t('loading'))}</p>`;
+    loadDictionary().then(render, () => { $('app').innerHTML = `<p>${esc(t('loadFail'))}</p>`; });
+    return;
+  }
   // Branchepakken hentes først, når den skal bruges.
   if (inGame && isPack(state.settings) && !PACK_ITEMS[state.settings.pack]) {
     $('app').innerHTML = `<p class="task-q">${esc(t('loading'))}</p>`;
@@ -810,27 +842,31 @@ function render() {
 function updateScore(delta) {
   const c = ctx();
   $('scoreNum').textContent = scoreOf(c.prog);
-  $('scoreLabel').textContent = isPack(c.s) ? t('learnedPack') : t('learned');
+  $('scoreLabel').textContent = isPack(c.s) || isList(c.s) ? t('learnedPack') : t('learned');
   const d = $('scoreDelta');
   d.className = 'score-delta';
   if (delta) {
-    void d.offsetWidth; // genstart animation
     d.textContent = delta > 0 ? `+${delta}` : `${delta}`;
     d.className = `score-delta ${delta > 0 ? 'up' : 'down'}`;
-  }
+  } else d.textContent = '';
 }
 
 // ----- Introduktion (statisk i index.html for søgemaskiner, oversat her) -----
 function renderIntro(ul) {
   const intro = $('intro');
   if (!intro) return;
-  intro.hidden = !(view === 'setup' && !state.settings);
+  intro.hidden = !(view === 'setup' && !state.settings && !selectedCourseLink);
   if (intro.hidden || intro.dataset.lang === ul) return;
   intro.dataset.lang = ul;
   intro.querySelector('h1').textContent = t('title');
   intro.querySelector('.lead').textContent = t('lead');
   intro.querySelectorAll('.how li').forEach((li, i) => (li.textContent = t('how')[i]));
   intro.querySelector('.tagline').textContent = t('tagline');
+  const labels = COURSE_CATALOG.labels[ul];
+  intro.querySelector('h1').textContent = labels.lead;
+  intro.querySelector('.lead').textContent = labels.intro;
+  intro.querySelector('.jobs').innerHTML = COURSE_CATALOG.groups.map((group) =>
+    `<a class="category-entry" href="/${ul}/#${group.id}"><b>${esc(group.name[ul])}</b><small>${esc(group.desc[ul])}</small><span aria-hidden="true">→</span></a>`).join('');
 }
 
 // ----- Øvelsestyper -----
@@ -849,14 +885,14 @@ function ctxBarHTML(c) {
   const ul = uiLang();
   const L = UI[ul].lang;
   const langTxt = c.native ? `${LANGS[c.s.target].name} · ${t('nativeShort')}` : `${LANGS[c.s.target].name} ← ${L[c.s.base]}`;
-  const what = isPack(c.s) ? packOf(c.s).name[ul] : c.pics ? t('picsB') : t('topB');
+  const what = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[ul] : c.pics ? t('picsB') : t('topB');
   const dirTxt = dirName(c.s.dir, c.pics);
   const diffTxt = (isPack(c.s) ? t('packDiff') : t('diff'))[c.s.diff];
   return `<div class="ctxbar" role="toolbar">
     <button class="pill" data-ctx="setup" title="${esc(t('settings'))}">${esc(langTxt)}</button>
     <button class="pill" data-ctx="setup" title="${esc(t('settings'))}">${esc(what)}</button>
     <button class="pill toggle" data-ctx="dir" title="${esc(t('switchDir'))}">${esc(dirTxt)} <span aria-hidden="true">⇄</span></button>
-    <button class="pill toggle" data-ctx="diff" title="${esc(t('diffQ'))}">${esc(diffTxt)}</button>
+    ${isList(c.s) ? '' : `<button class="pill toggle" data-ctx="diff" title="${esc(t('diffQ'))}">${esc(diffTxt)}</button>`}
   </div>`;
 }
 function bindCtxBar() {
@@ -910,11 +946,23 @@ function renderSetup() {
     // "Hele forløbet" findes kun med billeder.
     if (!dirsFor(pics).includes(d.dir)) d.dir = pics ? 'path' : 'rec';
     if (!native) {
-      html += `<div class="step"><h2>${esc(t('whatQ'))}</h2><div class="choices">`;
-      html += choice(`data-pack="${TOP}"`, d.pack === TOP, esc(t('topB')), t('topS'));
-      if (nPicWords >= 8) html += choice(`data-pack="${PICS}"`, d.pack === PICS, esc(t('picsB')), t('picsS', { n: nPicWords }));
-      for (const p of PACK_LIST) html += choice(`data-pack="${p.id}"`, d.pack === p.id, esc(p.name[ul]), `${p.desc[ul]} · ${p.total}`);
-      html += `</div></div>`;
+      const selectedPack = PACK_LIST.find((p) => p.id === d.pack);
+      const selectedName = isList(d) ? libraryTitle(d.pack.slice(5)) : selectedPack ? selectedPack.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
+      html += `<div class="step course-picker"><h2>${esc(t('whatQ'))}</h2><details${!state.settings && !selectedCourseLink ? ' open' : ''}><summary>${esc(selectedName)} · ${esc(COURSE_CATALOG.labels[ul].catalog)}</summary>`;
+      for (const group of COURSE_CATALOG.groups) {
+        html += `<fieldset class="course-group"><legend>${esc(group.name[ul])}</legend><div class="choices">`;
+        for (const id of group.packs) {
+          if (id === TOP) html += choice(`data-pack="${TOP}"`, d.pack === TOP, esc(t('topB')), t('topS'));
+          else if (id === PICS) {
+            if (nPicWords >= 8) html += choice(`data-pack="${PICS}"`, d.pack === PICS, esc(t('picsB')), t('picsS', { n: nPicWords }));
+          } else {
+            const p = PACK_LIST.find((pack) => pack.id === id);
+            if (p) html += choice(`data-pack="${p.id}"`, d.pack === p.id, esc(p.name[ul]), `${p.desc[ul]} · ${p.total}`);
+          }
+        }
+        html += '</div></fieldset>';
+      }
+      html += '</details></div>';
     }
     const pack = isPack(d) ? packOf(d) : null;
     if (pack) {
@@ -1144,15 +1192,18 @@ function finishWrite() {
   }
   current.answered = correct ? 'ok' : 'almost';
   finishTask(c, x, before);
-  if (correct) timer = setTimeout(advance, 1300);
+  if (correct) advance();
 }
 
+function feedbackReceiptHTML() {
+  return `<div class="answer-receipt" role="status" aria-live="polite" aria-atomic="true">${lastFeedback ? `<span aria-hidden="true">✓</span> ${esc(t('correct'))} · <span lang="${lastFeedback.lang}">${esc(lastFeedback.word)}</span>${lastFeedback.meaning ? ` — ${esc(lastFeedback.meaning)}` : ''}` : ''}</div>`;
+}
 function renderPlayView() {
   const c = ctx();
   const x = current.concept;
   const rec = current.qdir === 'rec';
   const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(t('sound'))}">${SPEAK_SVG}</button>`;
-  let html = metaHTML(c, x);
+  let html = metaHTML(c, x) + feedbackReceiptHTML();
 
   if (current.kind === 'intro') {
     html += `<div class="prompt${c.pics ? ' pics' : ''}"><span class="badge">${esc(t('newWord'))}</span>${speakBtn}
@@ -1204,8 +1255,9 @@ function renderPlayView() {
     }
     html += `</div>`;
   }
-  $('app').innerHTML = html;
+  $('app').innerHTML = html + wordSaveHTML(x);
   bindCtxBar();
+  bindWordSave(x);
 
   const sb = $('speakBtn');
   if (sb) sb.onclick = () => speakTarget(x);
@@ -1241,9 +1293,11 @@ function finishTask(c, x, before) {
   c.prog.task += 1;
   c.prog.lastId = x.id;
   saveState();
+  const correct = current.answered === x.id || current.answered === 'ok';
+  lastFeedback = correct ? { word: x.words[c.s.target], meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
   renderPlayView();
   updateScore(scoreOf(c.prog) - before);
-  speakTarget(x);
+  if (!correct) speakTarget(x);
 }
 
 function choose(i) {
@@ -1264,7 +1318,7 @@ function choose(i) {
   }
   current.answered = current.options[i].id;
   finishTask(c, x, before);
-  if (correct) timer = setTimeout(advance, 1100);
+  if (correct) advance();
 }
 
 function dontKnow() {
@@ -1296,7 +1350,7 @@ function checkBuild() {
   grade(c, x, correct);
   current.answered = correct ? 'ok' : 'bad';
   finishTask(c, x, before);
-  if (correct) timer = setTimeout(advance, 1300);
+  if (correct) advance();
 }
 
 function advance() {
@@ -1375,12 +1429,15 @@ function renderPlace() {
       ${rec ? targetHTML(c, x) : meaningHTML(c, x)}</div>
     <p class="task-q">${esc(questionText(c, x, 'quiz'))}</p>
     ${optionsHTML(c, x, current.answered)}
-    <div class="feedback" aria-live="polite">${current.answered ? '' : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
+    ${feedbackReceiptHTML()}
+    <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))} →</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
   $('app').innerHTML = html;
   bindCtxBar();
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
   const dk = $('dkBtn');
   if (dk) dk.onclick = () => { if (!current.answered) { current.answered = '-'; placementAnswer(false); } };
+  const next = $('nextBtn');
+  if (next) next.onclick = advancePlace;
 }
 function choosePlace(i) {
   const correct = current.options[i].id === current.concept.id;
@@ -1392,7 +1449,9 @@ function placementAnswer(correct) {
   const P = placement;
   (correct ? P.right : P.wrong).push(current.concept.id);
   if (correct) P.blockRight++;
-  timer = setTimeout(advancePlace, correct ? 450 : 900);
+  const c = ctx();
+  lastFeedback = correct ? { word: current.concept.words[c.s.target], meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
+  if (correct) advancePlace(); else renderPlace();
 }
 function advancePlace() {
   clearTimeout(timer);
@@ -1510,6 +1569,7 @@ function renderStats() {
 // ---------- Global events ----------
 $('homeBtn').onclick = (e) => { e.preventDefault(); go(state.settings ? 'play' : 'setup'); };
 $('statsBtn').onclick = () => go(view === 'stats' ? 'play' : 'stats');
+$('libraryBtn').onclick = () => go('library');
 $('setupBtn').onclick = () => go('setup');
 $('soundBtn').onclick = () => {
   state.sound = !state.sound;
@@ -1519,7 +1579,10 @@ $('soundBtn').onclick = () => {
   $('soundBtn').setAttribute('aria-pressed', String(state.sound));
 };
 document.addEventListener('keydown', (e) => {
+  if (e.target.closest('input, textarea, select, dialog, [contenteditable="true"]')) return;
   if ((view !== 'play' && view !== 'place') || !current || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.repeat) { e.preventDefault(); return; }
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('button, a')) return;
   if (current.options && !current.answered && /^[1-4]$/.test(e.key)) { choose(Number(e.key) - 1); e.preventDefault(); return; }
   // Skriv ordet: bogstaverne på det rigtige tastatur virker også.
   if (current.kind === 'write' && !current.answered && e.key.length === 1) {

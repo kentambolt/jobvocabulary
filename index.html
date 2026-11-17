@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Topwords – lær dansk ord for ord til job, køreprøve og hverdag</title>
-  <meta name="description" content="Gratis app til at lære dansk ét ord ad gangen: de mest brugte ord, ord og sætninger til jobs som rengøring, restaurant, lager, byggeri og ældrepleje – og til køreprøven. Med oversættelse til engelsk, russisk og ukrainsk.">
-  <link rel="canonical" href="https://trafficwords.com/">
-  <meta name="theme-color" content="#ff7a45">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Job Vocabulary – lær dansk til job og hverdag</title>
+  <meta name="description" content="Lær danske ord og sætninger til rengøring, restaurant, lager, byggeri og andre job. Gratis sprogtræning med engelsk, russisk og ukrainsk oversættelse.">
+  <link rel="canonical" href="https://jobvocabulary.com/">
+  <meta name="theme-color" content="#15786d">
+  <link rel="icon" href="favicon.svg?v=80684372d26e" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://trafficwords.com/">
-  <meta property="og:title" content="Topwords – lær dansk ord for ord">
+  <meta property="og:url" content="https://jobvocabulary.com/">
+  <meta property="og:title" content="Job Vocabulary – lær dansk ord for ord">
   <meta property="og:description" content="Lær de ord, du har brug for til hverdagen, dit nye job eller køreprøven – ét ord ad gangen. Gratis og uden login.">
   <meta property="og:locale" content="da_DK">
   <meta name="twitter:card" content="summary">
@@ -18,8 +18,8 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Topwords",
-    "url": "https://trafficwords.com/",
+    "name": "Job Vocabulary",
+    "url": "https://jobvocabulary.com/",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Web",
     "inLanguage": ["da", "en", "ru", "uk"],
@@ -31,17 +31,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=e6f06f41f2f7">
 </head>
 <body>
   <header class="top">
-    <a class="brand" id="homeBtn" href="./" aria-label="Topwords">Top<span>words</span></a>
+    <a class="brand" id="homeBtn" href="./" aria-label="Job Vocabulary">Job<span>Vocabulary</span></a>
+    <a class="catalog-link" id="catalogLink" href="/da/">Find dit kursus</a>
     <div class="score" id="score" hidden>
       <span class="score-num" id="scoreNum">0</span>
       <span class="score-label" id="scoreLabel"></span>
       <span class="score-delta" id="scoreDelta"></span>
     </div>
     <nav class="nav">
+      <button class="icon-btn" id="libraryBtn" title="Mine ord" aria-label="Mine ord">♡</button>
       <button class="icon-btn" id="soundBtn" title="Læs højt" aria-label="Læs højt" aria-pressed="true" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4 6 8H3v8h3l5 4Z"/><path class="waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="mute" d="m16 9 5 6m0-6-5 6"/></svg></button>
       <button class="icon-btn" id="statsBtn" title="Statistik" aria-label="Statistik" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16M8 15v-3m5 3V8m5 7V5"/></svg></button>
       <button class="icon-btn" id="setupBtn" title="Indstillinger" aria-label="Indstillinger" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 3-.5 2.1-1.8 1-2.1-.6-2 3.4 1.6 1.5v2.2l-1.6 1.5 2 3.4 2.1-.6 1.8 1 .5 2.1h4l.5-2.1 1.8-1 2.1.6 2-3.4-1.6-1.5v-2.2l1.6-1.5-2-3.4-2.1.6-1.8-1L14 3Z"/><circle cx="12" cy="11.5" r="3"/></svg></button>
@@ -50,8 +52,8 @@
 
   <!-- Statisk introduktion: synlig for søgemaskiner og for nye brugere. Oversættes af app.js. -->
   <section class="intro" id="intro">
-    <h1>Lær de ord, du har brug for – ét ord ad gangen</h1>
-    <p class="lead">Til hverdagen, til dit nye job eller til køreprøven. Det vigtigste først, og det du kan, kommer sjældnere igen.</p>
+    <h1>Lær sproget til din næste arbejdsdag</h1>
+    <p class="lead">Praktiske ord og sætninger til dit fag – og til hverdagen i et nyt land. Begynd gratis, uden en konto.</p>
     <ol class="how">
       <li>Vælg sprog, og hvad du vil lære: de mest brugte ord, ord til et bestemt job eller køreprøven.</li>
       <li>Du får ét ord eller én sætning ad gangen – det vigtigste først.</li>
@@ -59,18 +61,23 @@
     </ol>
     <p class="tagline">Gratis · uden login · virker på mobilen</p>
     <!-- JOBS -->
-    <nav class="jobs" aria-label="Emner"><a href="/da/rengoering/">Rengøring</a> <a href="/da/restaurant-og-koekken/">Restaurant og køkken</a> <a href="/da/lager-og-produktion/">Lager og produktion</a> <a href="/da/byggeri-og-haandvaerk/">Byggeri og håndværk</a> <a href="/da/aeldrepleje/">Ældrepleje</a> <a href="/da/landbrug-og-foedevarer/">Landbrug og fødevarer</a> <a href="/da/butik-og-supermarked/">Butik og supermarked</a> <a href="/da/chauffoer-og-bud/">Chauffør og bud</a> <a href="/da/koereproeve/">Køreprøve</a></nav>
+    <nav class="jobs" aria-label="Emner"><a class="category-entry" href="/da/#work"><b>Job og arbejde</b><small>Ord og sætninger fra din arbejdsdag. Vælg dit fag, og øv det vigtigste først.</small><span aria-hidden="true">→</span></a><a class="category-entry" href="/da/#everyday"><b>Hverdag og transport</b><small>Kom rundt, forstå tiden, og få styr på de små ting i et nyt land.</small><span aria-hidden="true">→</span></a><a class="category-entry" href="/da/#start"><b>Kom godt i gang med sproget</b><small>Byg dit ordforråd op med de mest brugte ord eller enkle ord med billeder.</small><span aria-hidden="true">→</span></a></nav>
     <!-- /JOBS -->
     <noscript>
-      <p>Topwords kræver JavaScript. Indhold: de mest brugte ord på dansk, engelsk og russisk; ord og sætninger til rengøring, restaurant og køkken, lager og produktion, byggeri og håndværk, ældrepleje, landbrug og fødevarer, butik og supermarked, chauffør og bud – og til køreprøven. Oversættelser til dansk, engelsk, russisk og ukrainsk.</p>
+      <p>Job Vocabulary kræver JavaScript. Indhold: de mest brugte ord på dansk, engelsk og russisk; ord og sætninger til rengøring, restaurant og køkken, lager og produktion, byggeri og håndværk, ældrepleje, landbrug og fødevarer, butik og supermarked, chauffør og bud – og til køreprøven. Oversættelser til dansk, engelsk, russisk og ukrainsk.</p>
     </noscript>
   </section>
 
   <main id="app"></main>
+  <dialog id="saveWordDialog" aria-label="Gem ord på en liste"></dialog>
 
-  <script src="words.js"></script>
-  <script src="packs/index.js"></script>
-  <script src="images/words/manifest.js"></script>
-  <script src="app.js"></script>
+  <script src="words.js?v=aff0c07fb336"></script>
+  <script src="packs/index.js?v=53f25a133e19"></script>
+  <script src="catalog.js?v=8021c76781eb"></script>
+  <script src="lexicon-index.js?v=9867ee6e76a8"></script>
+  <script src="library.js?v=22cf0c3cf447"></script>
+  <script src="library-ui.js?v=457d0865b595"></script>
+  <script src="images/words/manifest.js?v=65f76eac29c3"></script>
+  <script src="app.js?v=69bbe4c53185"></script>
 </body>
 </html>
