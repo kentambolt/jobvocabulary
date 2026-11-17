@@ -1196,7 +1196,8 @@ function finishWrite() {
 }
 
 function feedbackReceiptHTML() {
-  return `<div class="answer-receipt" role="status" aria-live="polite" aria-atomic="true">${lastFeedback ? `<span aria-hidden="true">✓</span> ${esc(t('correct'))} · <span lang="${lastFeedback.lang}">${esc(lastFeedback.word)}</span>${lastFeedback.meaning ? ` — ${esc(lastFeedback.meaning)}` : ''}` : ''}</div>`;
+  const saved = lastFeedback && wordLibrary.data.favorites.includes(canonicalWord(lastFeedback.id));
+  return `<div class="answer-receipt"><div role="status" aria-live="polite" aria-atomic="true">${lastFeedback ? `<span aria-hidden="true">✓</span> ${esc(t('correct'))} · <span lang="${lastFeedback.lang}">${esc(lastFeedback.word)}</span>${lastFeedback.meaning ? ` — ${esc(lastFeedback.meaning)}` : ''}` : ''}</div>${lastFeedback ? `<button class="secondary" id="previousFavoriteBtn" data-favorite-source="${esc(lastFeedback.id)}" data-previous="true" data-word-label="${esc(lastFeedback.word)}" aria-pressed="${saved}" aria-label="${esc((saved ? lt('unfavorite') : lt('savePrevious')) + ': ' + lastFeedback.word)}">${saved ? '♥' : '♡'}</button><span id="receiptSaveStatus" role="status"></span>` : ''}</div>`;
 }
 function renderPlayView() {
   const c = ctx();
@@ -1294,7 +1295,7 @@ function finishTask(c, x, before) {
   c.prog.lastId = x.id;
   saveState();
   const correct = current.answered === x.id || current.answered === 'ok';
-  lastFeedback = correct ? { word: x.words[c.s.target], meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
+  lastFeedback = correct ? { id: x.id, word: x.words[c.s.target], meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
   renderPlayView();
   updateScore(scoreOf(c.prog) - before);
   if (!correct) speakTarget(x);

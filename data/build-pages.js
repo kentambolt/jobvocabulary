@@ -188,6 +188,13 @@ fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, 
 // Public, indexable course catalogue in each interface language.
 for (const lang of LANGS) {
   const l = catalog.labels[lang];
+  const personal = {
+    da: { resume: 'Fortsæt, hvor du slap', action: 'Fortsæt øvelsen', words: 'Mine ord', favorites: 'Gemte ord' },
+    en: { resume: 'Pick up where you left off', action: 'Continue practising', words: 'My words', favorites: 'Saved words' },
+    ru: { resume: 'Продолжите с того места, где остановились', action: 'Продолжить занятия', words: 'Мои слова', favorites: 'Сохранённые слова' },
+    uk: { resume: 'Продовжте з того місця, де зупинилися', action: 'Продовжити навчання', words: 'Мої слова', favorites: 'Збережені слова' },
+  }[lang];
+  const resumeNames = { ...Object.fromEntries(packs.map((p) => [p.id, p.name[lang]])), top: l.general, pics: l.pictures, favorites: personal.favorites };
   const card = (id) => {
     const p = packs.find((p) => p.id === id);
     const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
@@ -212,12 +219,15 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <meta property="og:description" content="${esc(l.intro)}">
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/practice-resume.js" defer></script>
   <script src="/catalog-search.js" defer></script>
 </head>
 <body class="page catalogue">
   <header class="top"><a class="brand" href="/">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></header>
   <main>
     <section class="catalogue-hero"><p class="eyebrow">Job Vocabulary</p><h1>${esc(l.lead)}</h1><p class="lead">${esc(l.intro)}</p><p class="tagline">${esc(T[lang].free)}</p></section>
+    <section class="resume-panel" id="resumePanel" data-names="${esc(JSON.stringify(resumeNames))}" data-nosnippet hidden><div><p class="eyebrow">${esc(personal.resume)}</p><h2 id="resumeCourse"></h2><p id="resumePair"></p></div><a class="primary cta" href="/">${esc(personal.action)} <span aria-hidden="true">→</span></a></section>
+    <p class="catalogue-personal"><a href="/#mine-ord">♡ ${esc(personal.words)}</a></p>
     <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g) => `<a href="#${g.id}">${esc(g.name[lang])}</a>`).join('')}</nav>
     <div class="catalogue-search"><label for="courseSearch">${esc(l.search)}</label><input id="courseSearch" type="search" autocomplete="off" placeholder="${esc(l.search)}" aria-controls="courseSections"></div>
     <p class="course-note">${esc(l.note)}</p>
@@ -240,7 +250,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
-const assets = ['style.css', 'favicon.svg', 'app.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
+const assets = ['style.css', 'favicon.svg', 'app.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
 const pages = [indexPath, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {
