@@ -47,6 +47,16 @@ for (const line of zlib.gunzipSync(fs.readFileSync(path.join(K, 'kaikki-Danish.j
   if (!lemmas.has(w)) lemmas.set(w, { pos: new Set(), forms: new Set([norm(w)]), glosses: [] });
   const L = lemmas.get(w);
   L.pos.add(POS[o.pos]);
+  if (o.pos === 'noun') {
+    // Køn og tællelighed pr. opslag (homografer som "vand" et/en har hver sit opslag).
+    const g = ((o.head_templates || []).find((h) => h.args && h.args.g) || { args: {} }).args.g;
+    const hasPlural = (o.forms || []).some((f) => (f.tags || []).includes('plural'));
+    (L.nouns = L.nouns || []).push({
+      gender: g === 'c' ? 'common' : g === 'n' ? 'neuter' : null,
+      hasPlural,
+      senses: senses.map((s) => ({ gloss: (s.glosses || []).join(' ; ').toLowerCase(), uncountable: (s.tags || []).includes('uncountable') })),
+    });
+  }
   for (const s of senses) for (const g of s.glosses || []) L.glosses.push(g);
   for (const f of o.forms || []) {
     // Bydeform springes over: sjælden i tekst og ofte lig et andet ord (digte -> "digt", lodde -> "lod").
@@ -129,12 +139,26 @@ ranked.slice(SKIP, SKIP + LIMIT).forEach(([da, ipm], i) => {
   for (const { g } of groups) {
     const ru = pick(g.ru, g.pos);
     const uk = pick(g.uk, g.pos);
+    // Navneord: køn og tællelighed fra det danske opslag, hvis betydning matcher det engelske ord.
+    let gender = null;
+    let countability = null;
+    if (g.pos === 'noun') {
+      const re = new RegExp(`(^|[^a-z])${esc(g.en.toLowerCase())}([^a-z]|$)`);
+      const hits = (L.nouns || []).flatMap((n) => n.senses.filter((s) => re.test(s.gloss)).map((s) => ({ n, s })));
+      const genders = [...new Set(hits.map((h) => h.n.gender).filter(Boolean))];
+      if (genders.length === 1) gender = genders[0];
+      if (hits.length) {
+        const unc = hits.every((h) => h.s.uncountable);
+        const cnt = hits.every((h) => !h.s.uncountable && h.n.hasPlural);
+        countability = unc ? 'uncountable' : cnt ? 'countable' : null;
+      }
+    }
     const h = crypto.createHash('md5').update(`${g.en}|${g.pos}|${g.sense}`).digest('hex').slice(0, 6);
     let id = `cw-${slug(da)}-${g.pos}-${h}`;
     if (existingIds.has(id) || ids.has(id)) throw new Error('id-kollision ' + id);
     ids.add(id);
     out.push({
-      id, da, en: g.en, ru: ru.word, uk: uk.word, partOfSpeech: g.pos, sense: g.sense,
+      id, da, en: g.en, ru: ru.word, uk: uk.word, partOfSpeech: g.pos, gender, countability, sense: g.sense,
       sourceUrl: `https://en.wiktionary.org/wiki/${encodeURIComponent(g.en.replace(/ /g, '_'))}#Translations`,
       license: 'CC BY-SA 4.0; Wiktionary contributors (via kaikki.org/wiktextract)',
       reviewStatus: 'unreviewed',

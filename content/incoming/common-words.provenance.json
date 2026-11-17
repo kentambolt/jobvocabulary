@@ -1,0 +1,76 @@
+{
+  "batch": "common-words batch 1",
+  "date": "2026-11-17",
+  "license": {
+    "name": "CC BY-SA 4.0 (Wiktionary-tekst er også under GFDL)",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "Wiktionary contributors, https://en.wiktionary.org/ ; udtræk: kaikki.org / wiktextract (Ylonen 2022)"
+  },
+  "licenseNotice": "content/incoming/WIKTIONARY-LICENSE.md",
+  "inputs": [
+    {
+      "name": "kaikki Danish",
+      "url": "https://kaikki.org/dictionary/Danish/kaikki.org-dictionary-Danish.jsonl.gz",
+      "lastModified": "Fri, 30 Oct 2026 23:15:10 GMT",
+      "contentLength": 11685254,
+      "sha256": "0fed75cbc101a9a1fb7879c4f737d0d993fb7a26073a2ccc10cc951a1e604f1d",
+      "snapshot": {
+        "extractedOn": "2026-10-30",
+        "wiktionaryEdition": "enwiktionary",
+        "dumpDate": "2026-10-01",
+        "wiktextractRevision": "19f9a30 and 6f96ddf"
+      },
+      "storedAs": "kaikki-Danish.jsonl.gz"
+    },
+    {
+      "name": "kaikki English",
+      "url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "lastModified": "Fri, 30 Oct 2026 23:09:26 GMT",
+      "contentLength": 534186395,
+      "sha256": "4d03b6cba283744756c57ff661c2c6cbfe34fcf8ff513a966576cf7d97e91a99",
+      "snapshot": {
+        "extractedOn": "2026-10-30",
+        "wiktionaryEdition": "enwiktionary",
+        "dumpDate": "2026-10-01",
+        "wiktextractRevision": "19f9a30 and 6f96ddf"
+      },
+      "storedAs": null,
+      "note": "Streames og filtreres; kun output gemmes"
+    }
+  ],
+  "intermediate": [
+    {
+      "file": "en-senses-da-ru-uk.jsonl",
+      "sha256": "c21fa95cdac14386d7c097d4f83ec1ca6a7097fab398ea5ee94474b86db5123f",
+      "lines": 34128
+    }
+  ],
+  "frequencySources": "data/sources.js (OpenSubtitles 2018, wordfreq, Leipzig nyheder 2022, Leipzig Wikipedia 2021; licenser i data/fetch.sh)",
+  "generator": {
+    "fetchedWith": {
+      "script": "data/fetch-wiktionary.sh",
+      "gitBlobAtRun": "f1d20edd566a5928f214aac0ebcfda126ebe9d3f",
+      "filterGitBlob": "115fc9b88055a2db35044dba1d4403533c0ddcb9",
+      "ranAt": "2026-11-17T21:47:02.612Z",
+      "note": "Scriptet er efter kørslen kun ændret, så kilde-URL’erne kan overstyres med miljøvariabler (bruges til at teste fejlhåndtering).",
+      "currentGitBlob": "fa2850e75a696f023aa53ca32c496b568fd11937"
+    },
+    "builtWith": {
+      "script": "data/build-common-words.js",
+      "gitBlob": "8daa9c0c299e316cf081c18cf5f21ef57f443873",
+      "command": "node data/build-common-words.js 200 0"
+    },
+    "baseCommit": "00033501a997811a2c3e280f9608238bf46bedb1"
+  },
+  "output": {
+    "file": "content/incoming/common-words.jsonl",
+    "sha256": "91e4bc1f38384a252e155732f88184909058be0d5d155e6971bf48fb84acbf86",
+    "rows": 278
+  },
+  "reproduce": [
+    "sh data/fetch.sh   # frekvenskilder",
+    "bash data/fetch-wiktionary.sh --verify   # stopper, hvis kilderne afviger fra inputs[].sha256",
+    "node data/build-common-words.js 200 0   # kandidater; gennemgangens afgørelser ligger i common-words.review.json"
+  ],
+  "reviewData": "content/incoming/common-words.review.json"
+}

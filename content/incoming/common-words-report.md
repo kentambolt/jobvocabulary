@@ -1,140 +1,118 @@
-# Almindelige ord: datakilde, dækning og udestående kvalitetstjek
+# Rapport: indholdsreview, parti 2
 
-Dato: 2026-11-17. Gren: `content-review`, lavet ud fra `origin/main@7f2b714`. Leveret af Claude (AI), og ingen modersmålstaler har kigget det igennem endnu.
+Dato: 2026-11-17. Gren: `content-review`, bygget på `origin/main@64f6a60`. Opfølgning på `content/reviews/pr-9-review.json`. Udført af Claude (AI). Ingen pakke, `app.js`, brugerflade eller DNS er ændret. Alle rettelser er forslag.
 
-Denne leverance består af tre filer:
+## Metode
 
-- `common-words.jsonl` er første parti på 279 betydninger fordelt på 183 danske opslagsord.
-- `translation-review.json` indeholder forslag til rettelser i essentials og jobpakkerne. Pakkerne er ikke ændret; se det sidste afsnit.
-- `data/build-common-words.js` og `data/fetch-wiktionary.sh` gør det muligt at genskabe udtrækket og lave de næste partier.
+- **Flere uafhængige AI-gennemgange.**
+  - Sætningsrækker og `driving.js` er gennemgået i to retninger: gennemgang A læser fra dansk mod målsproget, gennemgang B fra ukrainsk/russisk mod dansk.
+  - De 46 åbne betydninger, de 33 tvivlspunkter og de nye ord fik hver to uafhængige gennemgange.
+  - Uenigheder er afgjort med ordbøger og fagkilder: DDO, СУМ/goroh, gramota, ПДР/ПДД, producent- og branchekilder samt retsinformation.dk og Færdselsstyrelsen.
+- **Tomme felter.** Et felt står kun tomt, hvis betydningen ikke kan gengives forsvarligt.
+- **Intet menneskeligt godkendelseskrav.** Status og usikkerhed registreres internt pr. sprog og betydning.
 
-## 1. Datakilde og licens
+## Leverancer i `content/incoming/`
 
-**Valgt kilde: Wiktionary.** Jeg bruger den engelske udgave, sådan som kaikki.org har udtrukket den med wiktextract. Udtrækket er fra 2026-10-30 og bygger på et dump fra 2026-10-01.
-
-- **Licens:** Wiktionary-tekst er CC BY-SA 4.0 og dobbeltlicenseret under GFDL. Hver række har `license` og en `sourceUrl`, der peger på den engelske side med oversættelsestabellen.
-- **Share-alike:** En ordliste bygget på disse data skal selv udgives under CC BY-SA 4.0 med kildeangivelse ("Wiktionary contributors"). Det gælder også, hvis rækkerne senere flyttes ind i appen. Kent har godkendt valget af kilden, men den licensmæssige konsekvens for projektet bør chefen bekræfte.
-- **Akademisk kreditering:** kaikki beder om en henvisning til Ylonen (2022), "Wiktextract", LREC.
-- **Hvorfor Wiktionary:** Oversættelsestabellerne er delt op efter betydning. Hver tabel hører til én engelsk betydning og indeholder ofte dansk, russisk og ukrainsk på én gang. Derfor deler de fire sprog betydning, uden at vi selv skal parre dem.
-- **Frekvens:** Rangeringen bruger de danske kilder, projektet allerede har (`data/sources.js`): OpenSubtitles, wordfreq og Leipzig. Licenserne for dem står i `data/fetch.sh`.
-
-**Andre kilder, jeg overvejede:**
-
-| Kilde | Licens | Hvorfor den ikke er valgt nu |
-|---|---|---|
-| DanNet (dansk wordnet) | CC BY-SA 4.0 | Har danske betydninger, men ingen russisk eller ukrainsk. Kan bruges senere til at tjekke danske betydninger. |
-| Open English WordNet | CC BY 4.0 | Indeholder kun engelsk. |
-| Open Multilingual Wordnet (ru/uk) | Varierer fra sprog til sprog | Russisk og ukrainsk er tyndt dækket, og licenserne er blandede. Ikke undersøgt i dybden. |
-| Proprietære oversættelsestjenester og ordbøger | Proprietær | Udelukket af opgaven. Der er ikke hentet noget fra dem. |
-
-## 2. Metode
-
-1. **Danske opslagsord** tages fra den danske del af Wiktionary: 58.686 opslag, hvoraf ca. 15.000 har en målt frekvens. Bøjningsformer tælles med i lemmaets frekvens.
-   - Former, der allerede er kerneord, tælles ikke med. Det fjerner støj som "er", "har" og "et" i Wiktionarys bøjningsfelter.
-   - Bydeformer tælles ikke med, fordi de ofte er lig med et andet ord (fx digte → "digt").
-   - Andre former, der deles af flere lemmaer, deles ligeligt mellem dem.
-2. **Ord, appen allerede har, springes over.** Det gælder kernelistens 386 begreber og deres bøjningsformer. Eksisterende id'er er ikke ændret. Nye id'er har formen `cw-<dansk>-<ordklasse>-<hash af engelsk ord, ordklasse og betydning>`, er stabile mellem kørsler og kan ikke kollidere med kerne-id'er.
-3. **Krydstjek af betydningen.** En oversættelsestabel bruges kun, hvis to ting holder:
-   - Det engelske opslagsord står også i det danske opslags glosser, så Wiktionary er enig med sig selv i begge retninger.
-   - Ordklassen passer.
-
-   Tabeller uden betydningsangivelse springes over, og der tages højst 4 betydninger pr. lemma pr. parti.
-4. **Valg af ru/uk.**
-   - Ord markeret som arkaiske, sjældne, slang og lignende vælges fra.
-   - For verber foretrækkes uperfektivt aspekt, som i kernelisten.
-   - Trykaccenter fjernes, men ё bevares.
-   - Ukrainsk apostrof normaliseres til `’`, som pakkerne bruger.
-5. **Gennemgang.** Jeg gennemgik alle 450 kandidater fra første parti én for én. Det kom der ud af:
-   - **Behold:** 233 rækker (`ai-reviewed`).
-   - **Behold, men tom ru/uk:** 46 rækker (`needs-native-review`).
-     - Det gælder, hvor kilden manglede en oversættelse, eller hvor kildens ord var forkert i den danske betydning.
-     - Usikre oversættelser er ikke udfyldt med gæt.
-   - **Andet ord fra kilden:** 37 rækker.
-     - Når kildens første forslag var dårligere, valgte jeg et af kildens egne alternativer, fx uk "частка" i stedet for "доля" for del/share.
-     - Der er ikke indsat ord udefra, så `sourceUrl` dækker stadig hver værdi.
-   - **Frasorteret:** 171 rækker.
-     - 100 var næsten-dubletter: samme ord på alle fire sprog og kun en nuance til forskel. Forskellige betydninger med forskellige oversættelser er bevaret som separate rækker.
-     - 31 var betydninger, der ikke passer til dansk brug, fx *mene* = "of a word: to signify".
-     - 40 var fagbetydninger fra matematik, curling og kortspil og lignende.
-
-## 3. Dækning
-
-**Første parti:**
-
-| | Antal |
+| Fil | Indhold |
 |---|---|
-| Lemmaer i partiet (rang 1–200 efter kernelisten) | 188 |
-| Lemmaer med mindst én række efter gennemgang | 183 |
-| Rækker (betydninger) | 279 |
-| `ai-reviewed` (alle fire sprog udfyldt og tjekket) | 233 |
-| `needs-native-review` | 46 (10 uden ru, 42 uden uk) |
+| `common-words.jsonl` | 278 betydninger (183 lemmaer). Nye felter `gender` og `countability` for navneord. |
+| `common-words.review.json` | Internt: pr. betydning og sprog status, sikkerhed, værdiens kilde (Wiktionary eller AI-review), afgørelse, usikkerhed og evidens. |
+| `common-words.provenance.json` | Kildeversioner, checksums, scriptrevisioner og hvordan partiet genskabes. |
+| `WIKTIONARY-LICENSE.md` | Licens, kildeangivelse og liste over ændringer for de Wiktionary-afledte data. |
+| `translation-review.json` | De 103 forslag fra parti 1. Opdateret med reviewets afgørelser, tr-046 og de 33 tvivlspunkter. |
+| `phrase-and-driving-review.json` | 155 punkter (151 forslag, 4 afviste) til sætninger og `driving.js`, inklusive 8 ID-migreringer. |
+| `driving-facts.json` | Faktatjek af `driving.js`: 68 rækker med kilde, paragraf, lovversion og reviewdato. |
 
-**Hele kilden frem mod 10.000 ord** (`node data/build-common-words.js 20000`):
+## Resultater
 
-| Danske lemmaer, sorteret efter frekvens | Lemmaer med krydstjekket betydning | Betydninger (før gennemgang) | med ru | med uk | med begge |
-|---|---|---|---|---|---|
-| top 1.000 | 931 | 1.963 | 95 % | 76 % | 76 % |
-| top 5.000 | 4.518 | 7.397 | 94 % | 73 % | 72 % |
-| alle (ca. 10.200) | 9.154 | 12.935 | 91 % | 67 % | 67 % |
+### Almindelige ord (`common-words.jsonl`)
 
-**Hvad tallene betyder:**
+**De 46 tidligere åbne betydninger** er genbehandlet med to uafhængige gennemgange. Kun *man* (ubestemt pronomen) står tomt på russisk og ukrainsk, fordi sprogene ikke har noget tilsvarende pronomen. Rettelser blandt andet:
 
-- Wiktionary kan alene give ca. 9.150 nye opslagsord. Med kernelistens 386 bliver det ca. 9.500. Det er tæt på målet på 10.000, men ikke helt.
-- I første parti holdt 62 % af kandidaterne gennem gennemgangen. Overføres det til hele kilden, giver det ca. 8.000 betydningsrækker.
-- Ukrainsk er flaskehalsen. Kun ca. 2 ud af 3 betydninger har ukrainsk i kilden, og blandt de mindre almindelige ord falder andelen yderligere.
-- Rang 1–200 er nu brugt. Næste parti hentes med `node data/build-common-words.js 200 200`.
+| Ord | Før | Efter |
+|---|---|---|
+| *mene* | думать | считать / вважати |
+| *måtte* (tilladelse) | мочь | можно / можна |
+| *holde* (holde i en tilstand) | сохранять | держать / тримати |
+| *tabe* (vægt) | худеть | сбрасывать / скидати |
+| *heller* | также не | тоже не / теж не |
+| *færdig* | законченный | готовый / готовий |
+| *hente* | приносить | забирать / забирати |
 
-## 4. Udestående kvalitetstjek
+**Alle 279 rækker fik en ekstra uafhængig gennemgang.** Den førte til 26 rettelser, bl.a.:
 
-1. **Ingen modersmålstaler har set rækkerne endnu.** `ai-reviewed` betyder, at Claude har tjekket rækken mod kilden og mod almindelig dansk brug. Før rækkerne går i appen, bør en dansk og en russisk/ukrainsk modersmålstaler gennemgå dem. Status-værdierne er:
-   - `ai-reviewed`: alle fire felter er udfyldt og tjekket.
-   - `needs-native-review`: et eller flere felter er bevidst tomme eller tvivlsomme.
-2. **De 46 rækker med `needs-native-review`.** Disse har en særlig bemærkning:
-   - *man* (pron.): russisk og ukrainsk har ikke et tilsvarende pronomen.
-   - *lige* (blødgørende "kan du lige …").
-   - *helt*: "вполне" betyder "temmelig".
-   - *siden* (konj.): uk mangler "відтоді як".
-   - *heller (ikke)*.
-   - *flytte* (uk).
-   - *skat* (kæleord, ru).
-   - *hente*: "приносить" betyder "bringe", ikke "hente".
-   - *grundet*: ingen ru/uk i kilden.
-3. **Manglende hovedbetydninger.** Wiktionarys krydstjek ramte ikke den almindeligste betydning for nogle ord, og de skal tilføjes fra en anden kilde eller i hånden:
-   - **Ingen række overhovedet:** *selv* (sig selv; "selv om"), *flere* (flere = more/several), *vel* (formodning: "du kommer vel?"), *bag* (= behind), *slet* ("slet ikke").
-   - **Mangler en betydning:**
-     - *lide* (kan lide = like), *ret* (en ret = dish; adv. "ret godt"), *rejse* (rejse sig = rise)
-     - *tæt* (= close), *nummer* (= number), *forhold* (forholdene = conditions), *lov* (få lov = permission)
-     - *mål* (= measure), *stemme* (verbum = vote), *grund* (= plot of land), *masse* (en masse = a lot)
-     - *tur* (= walk, trip), *fald* (i hvert fald), *række* (række hånden), *søge* (søge job = apply)
-     - *skade* (= injury), *vis* (= certain), *jord* (Jorden = Earth)
-4. **Rangeringen er omtrentlig.** Frekvensen er målt på ordformer, og homografer deles ligeligt. Derfor ligger nogle sjældne betydninger højt, fx *man* = "mane" og *bede* = "beet". Frekvensen bør kun bruges til at vælge partier, ikke som endelig sværhedsgrad.
-5. **Danske navneord er uden artikel.** Wiktionary giver køn (common/neuter), men rækkerne har ingen "en/et". Pakkerne viser artiklen, og jeg foreslår også at tilføje den i essentials. Det skal besluttes, før rækkerne flettes ind.
-6. **Overlap med pakkerne.** 40 af partiets opslagsord findes også i essentials eller en jobpakke (fx *minut*, *måned*, *aftale*, *køre*, *fejl*). Ofte er det en anden betydning eller form. Overlappet bør afklares, når listen flettes ind i appen.
-7. **`sense` er en engelsk glose fra Wiktionary,** ikke en dansk forklaring. Hvis appen skal vise betydningen for brugeren, skal den oversættes eller omskrives.
-8. **Aspekt i ru/uk.** Verber står i uperfektivt aspekt, hvor kilden markerer det. Hvor kilden ikke markerer aspekt, er det kildens første ord, og det bør tjekkes.
+- *ret vinkel*: прямой / прямий
+- *dele* (dele en mening): uk поділяти
+- *forhold* (romantisk forhold): uk стосунки
+- *endelig*: наконец / нарешті
+- 7 rettelser af tællelighed
 
-## 5. Oversættelsestjek af pakkerne (translation-review.json)
+Én række er fjernet: *sidst* som tillægsord, fordi tillægsordet hedder *sidste*.
 
-Omfanget var:
+**Navneord:** Køn er sat ud fra Wiktionarys opslag for hver betydning og kontrolleret i den anden gennemgang. Tvivlstilfælde er slået op i DDO. Tællelighed er sat ud fra betydningen, og alle 95 navneord har nu begge felter.
 
-- Alle 84 rækker i `packs/essentials.js` fra `origin/codex/jobvocabulary@7dcae3a`.
-- Alle 1.887 ord-rækker (fagtermer) i de otte jobpakker på `origin/main@7f2b714`.
-- Sætningsrækkerne og køreprøve-pakken (`driving.js`) er **ikke** gennemgået.
+**Værdiernes kilde:** 76 værdier kommer fra AI-review og ikke fra Wiktionary-tabellen. De er markeret som `valueSource: ai-review` i review-filen.
 
-Resultatet er 103 forslag: 5 fejl (error), 65 forbedringer (improvement) og 33 tvivlspunkter til en modersmålstaler (check). Ingen pakker er ændret.
+### Pakkerne
 
-**Hovedpunkter:**
+**`translation-review.json`** følger reviewets afgørelser:
 
-- **Essentials** skriver danske navneord uden artikel, mens de otte jobpakker bruger artikel (20 forslag).
-- **"venstre/højre"** bør være "til venstre/til højre", så det passer med ru "налево" og uk "ліворуч".
-- **"aftale"** er oversat med "встреча/зустріч", der betyder møde. Det bør afklares, hvilken betydning der menes.
-- **Fejl:**
-  - ru/uk "саламандр" → "саламандра"
-  - uk "віночок" → "вінчик"
-  - uk "цегла" → "цеглина"
-  - uk "тримач для телефона" → "телефону"
-- **Amerikansk engelsk i britiske pakker:** extension cord, litter box, do the dishes, pallet jack, hand truck og washcloth.
-- **"Sygemelding"** har tre forskellige engelske termer på tværs af pakkerne.
-- **"stige"** betyder trappestige i nogle sprog og almindelig stige i andre.
+- tr-044, tr-045 og tr-066 er anvendt på main.
+- tr-101 er afvist: "телефона" beholdes, fordi det er apparatet, der menes.
 
-Forslag med `proposed: null` er reelle problemer, men rettelsen skal komme fra en modersmålstaler.
+**tr-046 (piskeris) er genundersøgt.** Anbefalingen er uk **"вінчик"**:
+
+- Ordbøgerne kender "віночок" som en lille krans eller en blomsterkrone, ikke som piskeris.
+- Den akademiske ordbog СУМ-11 fører piskeriset under "віничок".
+- "вінчик" er den udbredte nutidige form og svarer til ru "венчик".
+
+**De 33 tvivlspunkter** er afgjort ved to uafhængige gennemgange og med kilder: 11 beholdes og 22 ændres, fx koben = лом-гвоздодёр / лом-цвяходер, at stemple ind = отмечать приход / відмічати прихід, sautere = быстро обжаривать og kimplante = сеянец / сіянець. Intet punkt står uafgjort.
+
+**Sætninger og `driving.js`** gav 151 forslag. 11 af dem er egentlige fejl, bl.a.:
+
+- uk "виставь" skal være "вистав".
+- Sikkerhedsinstrukser mister deres "skal". Det gælder fx forflytning (det skal ske med to personer), at varm mad skal holdes over 65 °C, og høreværn.
+- "задел" skal være "въехал" i en skadesanmeldelse.
+
+**Faktatjekket af køreprøven** viste 2 forkerte og 8 misvisende rækker ud af 68 rækker med kontrollerbare fakta:
+
+- **Motorvej:** Den generelle grænse er 130 km/t, jf. færdselsloven § 42, stk. 2. Pakken siger "normalt 110".
+- **17-årige:** Siden 1. juli 2025 må de køre alene kl. 5–20.
+- **Tolk:** Siden 1. januar 2025 kan teori- og køreprøven ikke tages med tolk.
+- **Varslingslinje:** Det officielle ord er "varslingslinje", ikke "varsellinje".
+- **For absolutte regler:** Højre vigepligt, overhaling ved fodgængerfelt og sikkerhedssele er formuleret strengere end loven.
+
+0,2 promille for nye bilister er bekræftet (lov nr. 567 af 27. maj 2025). Pakkens kommentar henviser til lovforslaget L 165.
+
+**Migreringer.** Otte forslag ændrer en dansk tekst og har derfor en migrering af ID'et (`from` → `to`), der kan lægges i `data/lexicon-migrations.json`.
+
+## Licens og kildeangivelse
+
+Reviewets licensafgørelse er fulgt:
+
+- **Separat datapakke:** De Wiktionary-afledte data udgives som en separat datapakke under CC BY-SA 4.0 med egen licens- og kildeangivelse (`WIKTIONARY-LICENSE.md`). Licensen for resten af repoet er ikke ændret.
+- **Sporbarhed:** Kilde og snapshot bevares gennem udtræk, review og eksport (`common-words.provenance.json`).
+- **Kombineret ordbog:** Det er ikke afgjort, om en senere samlet ordbog bliver en bearbejdelse. Det skal vurderes før offentliggørelse.
+
+## Download
+
+`data/fetch-wiktionary.sh` er nu atomisk:
+
+- **Fejl stopper kørslen:** `pipefail` bruges gennem hele kæden.
+- **Cachen udskiftes først til sidst:** Alt skrives til en midlertidig mappe, gzip-filerne kontrolleres, hver linje skal kunne parses, og der kræves et minimumsantal betydninger. Først derefter udskiftes cachen.
+- **Sporbar kørsel:** Kørslen skriver `provenance.json` med kilde-URL, Last-Modified, sha256 for input og output, snapshotdatoer, wiktextract-revision og scriptrevisioner.
+- **Uændrede kilder kan kræves:** `--verify` stopper, hvis kilderne afviger fra det gennemgåede parti.
+
+Afprøvet:
+
+- **Ny kørsel:** gav identiske checksums med det gennemgåede parti.
+- **Fejlet download:** efterlod cachen uændret og ingen midlertidige filer.
+
+## Udestående
+
+- **Næste parti** (rang 201–400): `node data/build-common-words.js 200 200`. Først køres `bash data/fetch-wiktionary.sh --verify`.
+- **Manglende hovedbetydninger** skal tilføjes fra en anden kilde, bl.a.:
+  - *selv*, *flere*, *vel*, *bag*, *slet ikke* og *sidste*
+  - *kan lide*, *nummer* = number, *ret* = dish, *tæt* = close og *lov* = permission
+- **Lovgrundlaget:** Faktatjekket bygger på LBK nr. 118 af 12. januar 2026. Senere ændringslove er ikke kontrolleret. Fakta bør tjekkes igen ved hver lovændring.
+- **Offentlig synlighed:** Repoet er offentligt, og GitHub Pages udgiver hele `main`. Review- og kildeoplysningerne i `content/` er derfor offentligt tilgængelige. Skal de være interne, skal de flyttes ud af repoet eller udelukkes fra udgivelsen. Det skal besluttes.

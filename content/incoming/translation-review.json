@@ -1,8 +1,8 @@
 {
   "title": "Forslag til oversættelsesrettelser – essentials og fagtermer i de otte jobpakker",
   "status": "proposal",
-  "note": "Kun forslag. Pakkerne er ikke ændret. Gennemgået af Claude (AI), ikke af modersmålstalere: alle forslag bør godkendes, og punkter med severity \"check\" eller proposed=null kræver en modersmålstaler.",
-  "date": "2026-11-17",
+  "note": "Kun forslag; pakkerne er ikke ændret. Gennemgået af Claude (AI). De 33 tidligere tvivlspunkter (severity \"check\") er afgjort 2026-11-17 med to uafhængige AI-gennemgange og kilder, se aiRereview pr. punkt. Reviewets afgørelser (content/reviews/pr-9-review.json) står i decision/decisionSource.",
+  "date": "2026-11-17 (opdateret)",
   "scope": {
     "essentials": "packs/essentials.js fra origin/codex/jobvocabulary@7dcae3a: alle 84 rækker (70 ord, 14 sætninger)",
     "jobPacks": "Alle ord-rækker (type \"word\") i cleaning, restaurant, warehouse, construction, care, agriculture, retail, transport på origin/main@7f2b714: 1887 rækker. Sætninger og driving.js er ikke gennemgået."
@@ -11,11 +11,13 @@
     "source": "Hvor teksten står: fil, linje (linjen med det pågældende sprogfelt), git-ref, pakke, kategori, rækkeindeks i kategorien og den danske tekst som nøgle",
     "field": "Sprogfeltet forslaget gælder: da | en | ru | uk",
     "current": "Nuværende tekst",
-    "proposed": "Foreslået tekst; null = problemet er reelt, men rettelsen skal komme fra en modersmålstaler",
+    "proposed": "Foreslået tekst; null = behold nuværende tekst (se decision/aiRereview)",
     "reason": "Begrundelse",
-    "severity": "error = forkert; improvement = korrekt men bør forbedres (fx amerikansk i britisk pakke, inkonsekvens); check = tvivl som en modersmålstaler skal afgøre",
+    "severity": "error = forkert; improvement = korrekt men bør forbedres (fx amerikansk i britisk pakke, inkonsekvens); check = tvivlspunkt, afgjort ved AI-genundersøgelse (se aiRereview)",
     "confidence": "high | medium | low",
-    "reference": "Ordbog/norm, hvor relevant"
+    "reference": "Ordbog/norm, hvor relevant",
+    "decision": "applied = anvendt på main; rejected = afvist i reviewet; recommended = anbefalet efter AI-genundersøgelse; keep-current = behold nuværende tekst; mangler = forslag, ikke afgjort",
+    "aiRereview": "To uafhængige AI-gennemgange med kilder; afgørelse, sikkerhed og evidens"
   },
   "summary": {
     "total": 103,
@@ -474,9 +476,38 @@
       "field": "ru",
       "current": "встреча",
       "proposed": null,
-      "reason": "\"встреча\"/\"зустріч\" betyder møde (= \"et møde\"). \"Aftale\" i betydningen \"appointment\" (fx hos lægen) hedder typisk \"запись\"/\"приём\" (ru) og \"запис\"/\"прийом\" (uk). I betydningen \"arrangement\" hedder det \"договорённость\"/\"домовленість\". Vælg den betydning, pakken skal lære, og få en modersmålstaler til at bekræfte. Jeg har ikke gættet.",
+      "reason": "\"встреча\"/\"зустріч\" betyder møde (= \"et møde\"). \"Aftale\" i betydningen \"appointment\" (fx hos lægen) hedder typisk \"запись\"/\"приём\" (ru) og \"запис\"/\"прийом\" (uk). I betydningen \"arrangement\" hedder det \"договорённость\"/\"домовленість\". Vælg den betydning, pakken skal lære. Jeg har ikke gættet.",
       "severity": "check",
-      "confidence": "medium"
+      "confidence": "medium",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "встреча",
+        "decision": "keep",
+        "value": "встреча",
+        "confidence": "medium",
+        "reason": "'Aftale' her = en aftalt tid/et aftalt møde generelt. 'встреча' er den almene, naturlige gengivelse af 'appointment' i den betydning; 'приём'/'запись' dækker kun læge o.l., og 'договорённость' er selve overenskomsten. Behold.",
+        "passValues": {
+          "pass1": "встреча",
+          "pass2": "встреча"
+        },
+        "evidence": [
+          {
+            "source": "essentials.js kategori 'Time and appointments' (generel aftale, ikke kun lægetid)",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/essentials.js"
+          },
+          {
+            "source": "Gramota.ru, Большой универсальный словарь: встреча = 'Заранее условленное схождение двух или нескольких лиц в одном месте'",
+            "url": "https://gramota.ru/poisk?query=встреча&mode=slovari"
+          },
+          {
+            "source": "packs/essentials.js: kategorinavn 'Tid og aftaler' = 'Время и встречи'; ingen 'et møde'-række i pakken, så ingen kollision",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/essentials.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-024",
@@ -494,7 +525,32 @@
       "proposed": null,
       "reason": "Se ru-rækken: \"зустріч\" = møde. Afhængigt af den valgte betydning: \"запис\"/\"прийом\" (hos lægen) eller \"домовленість\".",
       "severity": "check",
-      "confidence": "medium"
+      "confidence": "medium",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "зустріч",
+        "decision": "keep",
+        "value": "зустріч",
+        "confidence": "medium",
+        "reason": "Som ru: 'зустріч' dækker den generelle aftalte tid; 'прийом'/'запис' er snævrere (læge), 'домовленість' er overenskomsten. Behold.",
+        "passValues": {
+          "pass1": "зустріч",
+          "pass2": "зустріч"
+        },
+        "evidence": [
+          {
+            "source": "essentials.js kategori 'Time and appointments'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/essentials.js"
+          },
+          {
+            "source": "packs/essentials.js: kategorinavn 'Час і зустрічі' følger samme valg",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/essentials.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-025",
@@ -569,7 +625,36 @@
       "reason": "Uoverensstemmelse: en/ru siger trappestige (stepladder/стремянка), men uk 'драбина' er en almindelig stige. Vælg samme betydning i alle sprog; alternativt ret en til 'ladder' og ru til 'лестница', da dansk 'stige' er den generelle stige (trappestige = stepladder). Apostrof skal være samme tegn (’) som resten af filen.",
       "severity": "check",
       "confidence": "medium",
-      "reference": "СУМ-20"
+      "reference": "СУМ-20",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "драбина",
+        "decision": "change",
+        "value": "стрем’янка",
+        "confidence": "medium",
+        "reason": "I rengøring er det en trappestige; en og ru siger allerede stepladder/стремянка. uk bør følge: 'стрем’янка' (SUM-ord, ’ som resten af filen). Rækken bliver ensartet uden at røre dansk.",
+        "passValues": {
+          "pass1": "стрем’янка",
+          "pass2": "стрем’янка"
+        },
+        "evidence": [
+          {
+            "source": "cleaning.js linje 46: en 'stepladder', ru 'стремянка'; filen bruger ’ (U+2019) som apostrof (м’яке, під’їзд)",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/cleaning.js"
+          },
+          {
+            "source": "Øvrige pakker: 'en stige' = ladder/драбина når en/ru siger ladder (construction.js 38, agriculture.js 175)",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/construction.js"
+          },
+          {
+            "source": "Goroh (СУМ-11): стрем'янка = 'Переносна драбина (перев. розсувна), яка встановлюється без опори на що-небудь'",
+            "url": "https://goroh.pp.ua/Тлумачення/стрем'янка"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-029",
@@ -679,10 +764,39 @@
       },
       "field": "en",
       "current": "mould",
-      "proposed": "mould (on walls)",
+      "proposed": null,
       "reason": "'mug' (linje 281) og 'skimmel' har identisk oversættelse i alle tre sprog (mould/плесень/цвіль), så eleven kan ikke skelne dem. Skimmel bruges især om skimmel i bygninger/på vægge; tilføj en forklaring i parentes. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "mould",
+        "decision": "keep",
+        "value": "mould",
+        "confidence": "high",
+        "reason": "Mug/skimmel er reelle synonymer og bevidst whitelistet. Appen bruger netop den ens oversættelse til at forhindre, at de to bliver forkerte svarmuligheder for hinanden; en tilføjelse som '(on walls)' ville bryde det og skabe tvetydige opgaver. Behold.",
+        "passValues": {
+          "pass1": "mould",
+          "pass2": "mould"
+        },
+        "evidence": [
+          {
+            "source": "app.js pickDistractors/sameMeaning: identiske oversættelser forhindrer at synonymer bliver forkerte svarmuligheder for hinanden",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/app.js"
+          },
+          {
+            "source": "data/build-packs.js SYNONYMS ('mug|skimmel', 'stoppet|tilstoppet')",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/data/build-packs.js"
+          },
+          {
+            "source": "data/build-packs.js: SYNONYMS indeholder 'mug|skimmel' bevidst",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords/data/build-packs.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-035",
@@ -697,10 +811,39 @@
       },
       "field": "ru",
       "current": "плесень",
-      "proposed": "плесень (на стенах)",
+      "proposed": null,
       "reason": "Samme dublet som 'mug' (плесень); tilføj præcisering så rækkerne kan skelnes. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "плесень",
+        "decision": "keep",
+        "value": "плесень",
+        "confidence": "high",
+        "reason": "Mug/skimmel er reelle synonymer og bevidst whitelistet. Appen bruger netop den ens oversættelse til at forhindre, at de to bliver forkerte svarmuligheder for hinanden; en tilføjelse som '(on walls)' ville bryde det og skabe tvetydige opgaver. Behold.",
+        "passValues": {
+          "pass1": "плесень",
+          "pass2": "плесень"
+        },
+        "evidence": [
+          {
+            "source": "app.js pickDistractors/sameMeaning: identiske oversættelser forhindrer at synonymer bliver forkerte svarmuligheder for hinanden",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/app.js"
+          },
+          {
+            "source": "data/build-packs.js SYNONYMS ('mug|skimmel', 'stoppet|tilstoppet')",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/data/build-packs.js"
+          },
+          {
+            "source": "data/build-packs.js: SYNONYMS 'mug|skimmel'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords/data/build-packs.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-036",
@@ -715,10 +858,39 @@
       },
       "field": "uk",
       "current": "цвіль",
-      "proposed": "цвіль (на стінах)",
+      "proposed": null,
       "reason": "Samme dublet som 'mug' (цвіль); tilføj præcisering så rækkerne kan skelnes. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "цвіль",
+        "decision": "keep",
+        "value": "цвіль",
+        "confidence": "high",
+        "reason": "Mug/skimmel er reelle synonymer og bevidst whitelistet. Appen bruger netop den ens oversættelse til at forhindre, at de to bliver forkerte svarmuligheder for hinanden; en tilføjelse som '(on walls)' ville bryde det og skabe tvetydige opgaver. Behold.",
+        "passValues": {
+          "pass1": "цвіль",
+          "pass2": "цвіль"
+        },
+        "evidence": [
+          {
+            "source": "app.js pickDistractors/sameMeaning: identiske oversættelser forhindrer at synonymer bliver forkerte svarmuligheder for hinanden",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/app.js"
+          },
+          {
+            "source": "data/build-packs.js SYNONYMS ('mug|skimmel', 'stoppet|tilstoppet')",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/data/build-packs.js"
+          },
+          {
+            "source": "data/build-packs.js: SYNONYMS 'mug|skimmel'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords/data/build-packs.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-037",
@@ -736,7 +908,36 @@
       "proposed": null,
       "reason": "'tilstoppet' (linje 301) og 'stoppet' har identisk oversættelse i alle sprog (blocked/засорено/засмічено). Ordene er synonymer, men eleven kan ikke vide hvilket der forventes. Overvej at fjerne den ene række eller markere den anden som 'hverdagsord'. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "blocked",
+        "decision": "keep",
+        "value": "blocked",
+        "confidence": "high",
+        "reason": "Stoppet/tilstoppet er synonymer (fx 'afløbet er stoppet') og bevidst whitelistet; den ens oversættelse holder dem ude af hinandens svarmuligheder. Behold.",
+        "passValues": {
+          "pass1": "blocked",
+          "pass2": "blocked"
+        },
+        "evidence": [
+          {
+            "source": "app.js pickDistractors/sameMeaning: identiske oversættelser forhindrer at synonymer bliver forkerte svarmuligheder for hinanden",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/app.js"
+          },
+          {
+            "source": "data/build-packs.js SYNONYMS ('mug|skimmel', 'stoppet|tilstoppet')",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/data/build-packs.js"
+          },
+          {
+            "source": "data/build-packs.js: SYNONYMS 'stoppet|tilstoppet'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords/data/build-packs.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-038",
@@ -771,9 +972,38 @@
       "field": "da",
       "current": "museklatter",
       "proposed": null,
-      "reason": "'Klatter' bruges typisk om fugle ('fugleklatter'); musenes efterladenskaber kaldes oftere 'muselort'/'museekskrementer'. En dansk modersmålstaler bør bekræfte, hvad rengøringsfolk faktisk siger.",
+      "reason": "'Klatter' bruges typisk om fugle ('fugleklatter'); musenes efterladenskaber kaldes oftere 'muselort'/'museekskrementer'.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "museklatter",
+        "decision": "keep",
+        "value": "museklatter",
+        "confidence": "medium",
+        "reason": "DDO 'klat' bet. 2 = lille mængde ekskrementer (fugleklat, flueklat, koklat), så 'museklatter' er en regelret og forståelig dannelse. 'Muselort' er mere dagligdags, men den nuværende form er ikke forkert eller vildledende; ingen migrering.",
+        "passValues": {
+          "pass1": "museklatter",
+          "pass2": "museklatter"
+        },
+        "evidence": [
+          {
+            "source": "Den Danske Ordbog: klat",
+            "url": "https://ordnet.dk/ddo/ordbog?query=klat"
+          },
+          {
+            "source": "Rentokil DK 'Tegn på mus' (bruger 'muselort'/ekskrementer)",
+            "url": "https://www.rentokil.com/dk/services/skadedyr/mus/tegn-paa-mus"
+          },
+          {
+            "source": "Bolius bruger 'ekskrementer' i fagtekst om mus",
+            "url": "https://www.bolius.dk/undgaa-mus-i-dit-hus-16358"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-040",
@@ -789,9 +1019,42 @@
       "field": "uk",
       "current": "змішані відходи",
       "proposed": null,
-      "reason": "ru 'прочие отходы' (andet affald) og uk 'змішані відходи' (blandet affald) betyder ikke helt det samme. Restaffald = det der bliver tilbage efter sortering. En modersmålstaler bør vælge én betydning til begge sprog (fx ru 'несортируемые отходы' / uk 'несортовані відходи').",
+      "reason": "ru 'прочие отходы' (andet affald) og uk 'змішані відходи' (blandet affald) betyder ikke helt det samme. Restaffald = det der bliver tilbage efter sortering.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "змішані відходи",
+        "decision": "keep",
+        "value": "змішані відходи",
+        "confidence": "high",
+        "reason": "P2: det er betegnelsen på ukrainske affaldsbeholdere for restaffald; P1 foreslog \"залишкові відходи\".",
+        "passValues": {
+          "pass1": "залишкові відходи",
+          "pass2": "змішані відходи"
+        },
+        "evidence": [
+          {
+            "source": "Stuttgart.de (ukrainsk): Restabfall = 'залишкові відходи'",
+            "url": "https://www.stuttgart.de/uk/service/entsorgung/abfall-arten/restabfall"
+          },
+          {
+            "source": "Dresden infoblad på ukrainsk: 'контейнер для залишкових відходів'",
+            "url": "https://www.dresden.de/media/pdf/abfallwirtschaft/Infoblatt_Abfaelle_trennen_und_entsorgen_2024_ukrainisch.pdf"
+          },
+          {
+            "source": "zaxid.net: Lviv-containeren 'Змішані відходи' er restfraktionen efter at organisk affald, glas og genbrug er sorteret fra",
+            "url": "https://zaxid.net/lviv_sortuvatime_smittya_ponovomu_n1429106"
+          },
+          {
+            "source": "Kyiv by (kyivcity.gov.ua): kan typen ikke bestemmes, brug containeren til 'змішані побутові відходи'",
+            "url": "https://kyivcity.gov.ua/news/kiv_rozvivaye_sistemu_rozdilnogo_zboru_vidkhodiv_pridbano_400_novikh_konteyneriv_dlya_skla_ta_plastiku/"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-041",
@@ -866,7 +1129,10 @@
       "reason": "Køkkenapparatet hedder \"саламандра\" (hunkøn) på russisk, også i HoReCa-sprog; \"саламандр\" er en forkert form.",
       "severity": "error",
       "confidence": "high",
-      "reference": "Ожегов (саламандра)"
+      "reference": "Ожегов (саламандра)",
+      "decision": "applied",
+      "decisionSource": "content/reviews/pr-9-review.json",
+      "note": "Anvendt på main i #10 (саламандра)."
     },
     {
       "id": "tr-045",
@@ -885,7 +1151,10 @@
       "reason": "På ukrainsk hedder både dyret og grillen \"саламандра\"; \"саламандр\" er en forkert form.",
       "severity": "error",
       "confidence": "high",
-      "reference": "СУМ-20 (саламандра)"
+      "reference": "СУМ-20 (саламандра)",
+      "decision": "applied",
+      "decisionSource": "content/reviews/pr-9-review.json",
+      "note": "Anvendt på main i #10 (саламандра)."
     },
     {
       "id": "tr-046",
@@ -903,7 +1172,31 @@
       "proposed": "вінчик",
       "reason": "\"віночок\" betyder en lille krans. Køkkenredskabet hedder normalt \"вінчик (для збивання)\".",
       "severity": "error",
-      "confidence": "medium"
+      "confidence": "medium",
+      "decision": "recommended",
+      "note": "Genundersøgt med AI og ordbøger 2026-11-17: \"віночок\" er i ordbøgerne en diminutiv af вінок (krans) og bruges også om blomsterkrone; ingen af de kontrollerede ordbøger giver piskeris-betydningen. Det akademiske СУМ-11 fører køkkenredskabet under \"віничок\" (bet. 3, kul.), mens \"вінчик\" er den dominerende betegnelse i nutidigt ukrainsk handels- og køkkensprog (Epicentr, Rozetka, Comfy, Smeg UA) og står i goroh.pp.ua med betydningen piskeris (mærket dagligdags). Anbefaling: \"вінчик\" (svarer til ru \"венчик\"); alternativt \"вінчик (віничок)\", hvis man vil vise den akademiske form. At \"віночок\" også optræder i enkelte apparatmanualer gør det ikke til den bedst underbyggede form.",
+      "evidence": [
+        {
+          "source": "Великий тлумачний словник: віночок",
+          "url": "https://slovnyk.me/dict/vts/%D0%B2%D1%96%D0%BD%D0%BE%D1%87%D0%BE%D0%BA"
+        },
+        {
+          "source": "СУМ-11: вінчик",
+          "url": "https://slovnyk.me/dict/sum/%D0%B2%D1%96%D0%BD%D1%87%D0%B8%D0%BA"
+        },
+        {
+          "source": "СУМ-11: віничок (bet. 3, kul.)",
+          "url": "https://sum.in.ua/s/vinychok"
+        },
+        {
+          "source": "goroh.pp.ua: вінчик",
+          "url": "https://goroh.pp.ua/%D0%A2%D0%BB%D1%83%D0%BC%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D1%8F/%D0%B2%D1%96%D0%BD%D1%87%D0%B8%D0%BA"
+        },
+        {
+          "source": "Epicentr, kategori Вінчики",
+          "url": "https://epicentrk.ua/ua/shop/kropivnitskiy/venchiki/"
+        }
+      ]
     },
     {
       "id": "tr-047",
@@ -1009,10 +1302,43 @@
       },
       "field": "ru",
       "current": "пассеровать",
-      "proposed": null,
+      "proposed": "быстро обжаривать",
       "reason": "\"sautere\" betyder at stege hurtigt ved høj varme. \"пассеровать\" betyder at stege langsomt ved lav varme, til grøntsagerne bliver bløde (som \"svitse\"). En russisk kok bør tjekke, om f.eks. \"обжаривать (соте)\" passer bedre.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "пассеровать",
+        "decision": "change",
+        "value": "быстро обжаривать",
+        "confidence": "medium",
+        "reason": "P2; begge gennemgange: \"пассеровать\" er langsom stegning ved lav varme. P2 forklarer betydningen uden fagordet \"соте\" (P1).",
+        "passValues": {
+          "pass1": "обжаривать (соте)",
+          "pass2": "быстро обжаривать"
+        },
+        "evidence": [
+          {
+            "source": "Den Danske Ordbog: sautere",
+            "url": "https://ordnet.dk/ddo/ordbog?query=sautere"
+          },
+          {
+            "source": "Викисловарь: пассеровать = обжаривать в небольшом количестве жира на умеренном огне до мягкого состояния",
+            "url": "https://ru.wiktionary.org/wiki/пассеровать"
+          },
+          {
+            "source": "T-Ж kulinarisk ordbog: пассеровать = 'Обжаривать на медленном огне для придания мягкости и удаления излишней влаги', uden skorpe",
+            "url": "https://t-j.ru/short/cooking-dictionary/"
+          },
+          {
+            "source": "Gramota.ru: 'соте' er kun et retnavn (substantiv), ikke et verbum",
+            "url": "https://gramota.ru/poisk?query=соте&mode=slovari"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-053",
@@ -1027,10 +1353,35 @@
       },
       "field": "uk",
       "current": "пасерувати",
-      "proposed": null,
+      "proposed": "швидко обсмажувати",
       "reason": "Samme problem som i russisk: \"пасерувати\" betyder at stege langsomt og blødt, ikke \"sautere\". En ukrainsk kok bør tjekke det.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "пасерувати",
+        "decision": "change",
+        "value": "швидко обсмажувати",
+        "confidence": "medium",
+        "reason": "Som ru.",
+        "passValues": {
+          "pass1": "обсмажувати (соте)",
+          "pass2": "швидко обсмажувати"
+        },
+        "evidence": [
+          {
+            "source": "Den Danske Ordbog: sautere",
+            "url": "https://ordnet.dk/ddo/ordbog?query=sautere"
+          },
+          {
+            "source": "Горох (СУМ-11): пасерувати",
+            "url": "https://goroh.pp.ua/Тлумачення/пасерувати"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-054",
@@ -1121,7 +1472,36 @@
       "proposed": null,
       "reason": "I kategorien \"places\" menes afdelingen eller området. \"en forsendelse\" betyder normalt selve sendingen (som i transport-pakken: \"shipment\"). Tjek om \"afsendelse\" eller \"en forsendelsesafdeling\" passer bedre.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "en forsendelse",
+        "decision": "keep",
+        "value": "en forsendelse",
+        "confidence": "medium",
+        "reason": "DDO har ingen områdebetydning, men på danske lagre hedder afdelingen 'forsendelse' (jf. 'lager og forsendelse'), og rækken følger samme mønster som 'en varemodtagelse'. en 'dispatch (shipping)' og ru/uk præciserer. Ikke forkert nok til at begrunde migrering.",
+        "passValues": {
+          "pass1": "en forsendelse",
+          "pass2": "en forsendelse"
+        },
+        "evidence": [
+          {
+            "source": "Den Danske Ordbog: forsendelse",
+            "url": "https://ordnet.dk/ddo/ordbog?query=forsendelse"
+          },
+          {
+            "source": "warehouse.js: parallel række 'en varemodtagelse' = goods receipt (area)",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/warehouse.js"
+          },
+          {
+            "source": "packs/warehouse.js: søsterrækken 'en varemodtagelse' = 'goods receipt (area)' bruger samme mønster",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/warehouse.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-059",
@@ -1136,10 +1516,43 @@
       },
       "field": "ru",
       "current": "недопоставка",
-      "proposed": null,
+      "proposed": "недопоставленная часть заказа",
       "reason": "\"недопоставка\" betyder en mangelfuld levering, ikke en restordre (en ordrelinje der leveres senere). En russisktalende fagperson bør tjekke det, f.eks. \"заказ на допоставку\" eller \"отложенный заказ\".",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "недопоставка",
+        "decision": "change",
+        "value": "недопоставленная часть заказа",
+        "confidence": "medium",
+        "reason": "P2; der findes ingen fast term. P2 beskriver en restordre præcist (den del af ordren, der leveres senere); P1 \"отложенный заказ\" (lav sikkerhed) kan forstås som en udskudt hel ordre.",
+        "passValues": {
+          "pass1": "отложенный заказ",
+          "pass2": "недопоставленная часть заказа"
+        },
+        "evidence": [
+          {
+            "source": "Tripletex (no): restordre = ordrelinjer der ikke kan leveres nu og leveres senere i egen ordre",
+            "url": "https://hjelp.tripletex.no/hc/no/articles/38456055745681-Slik-oppretter-du-en-restordre-i-Rackbeat-Logistikk-komplett"
+          },
+          {
+            "source": "NetSuite: backorder definition",
+            "url": "https://us-approval.netsuite.com/portal/resource/articles/inventory-management/backorder.shtml"
+          },
+          {
+            "source": "DDO 'restordre': del af en ordre som endnu ikke er leveret",
+            "url": "https://ordnet.dk/ddo/ordbog?query=restordre"
+          },
+          {
+            "source": "КонсультантПлюс: недопоставка = situationen, hvor leverandøren ikke har leveret den aftalte mængde inden fristen (kontraktbrud)",
+            "url": "https://www.consultant.ru/law/podborki/tovar_postavlen_chastichno/"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-060",
@@ -1154,10 +1567,35 @@
       },
       "field": "uk",
       "current": "недопоставка",
-      "proposed": null,
+      "proposed": "недопоставлена частина замовлення",
       "reason": "Samme problem som i russisk: \"недопоставка\" betyder en mangelfuld levering og passer ikke til \"back order\". En ukrainsktalende fagperson bør tjekke det.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "недопоставка",
+        "decision": "change",
+        "value": "недопоставлена частина замовлення",
+        "confidence": "medium",
+        "reason": "Som ru.",
+        "passValues": {
+          "pass1": "відкладене замовлення",
+          "pass2": "недопоставлена частина замовлення"
+        },
+        "evidence": [
+          {
+            "source": "Tripletex (no): restordre-definition",
+            "url": "https://hjelp.tripletex.no/hc/no/articles/38456055745681-Slik-oppretter-du-en-restordre-i-Rackbeat-Logistikk-komplett"
+          },
+          {
+            "source": "DDO 'restordre'",
+            "url": "https://ordnet.dk/ddo/ordbog?query=restordre"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-061",
@@ -1172,10 +1610,39 @@
       },
       "field": "uk",
       "current": "відмічатися на вході",
-      "proposed": null,
+      "proposed": "відмічати прихід",
       "reason": "\"відмічатися\" regnes ofte som en russisme (за \"отмечаться\"), og \"на вході\" (ved indgangen) er ikke det samme som tidspunktet for mødetid. En ukrainsktalende bør vælge en naturlig term for at stemple ind.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "відмічатися на вході",
+        "decision": "change",
+        "value": "відмічати прихід",
+        "confidence": "medium",
+        "reason": "P2; samme formulering som retail.js (\"Я відмітив(ла) прихід\"), så pakkerne er ens.",
+        "passValues": {
+          "pass1": "відмічатися на вході",
+          "pass2": "відмічати прихід"
+        },
+        "evidence": [
+          {
+            "source": "СУМ via slovnyk.ua: відмічатися 1. 'перевіряти своє прізвище в списку; реєструватися'",
+            "url": "https://slovnyk.ua/index.php?swrd=відмічатися"
+          },
+          {
+            "source": "Goroh (СУМ-11): відмічати bet. 3 = registrere nogen eller noget, fx fremmøde (timeregistrator registrerer arbejdere); ikke mærket som russisme",
+            "url": "https://goroh.pp.ua/Тлумачення/відмічати"
+          },
+          {
+            "source": "packs/retail.js linje 495: 'Я відмітив(ла) прихід.' for 'Jeg har stemplet ind.'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-062",
@@ -1190,10 +1657,39 @@
       },
       "field": "uk",
       "current": "відмічатися на виході",
-      "proposed": null,
+      "proposed": "відмічати вихід",
       "reason": "Samme som \"at stemple ind\": \"відмічатися на виході\" kan være en russisme og forstås rumligt (ved udgangen). En ukrainsktalende bør tjekke det.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "відмічатися на виході",
+        "decision": "change",
+        "value": "відмічати вихід",
+        "confidence": "medium",
+        "reason": "Som tr-061.",
+        "passValues": {
+          "pass1": "відмічатися на виході",
+          "pass2": "відмічати вихід"
+        },
+        "evidence": [
+          {
+            "source": "СУМ via slovnyk.ua: відмічатися = реєструватися",
+            "url": "https://slovnyk.ua/index.php?swrd=відмічатися"
+          },
+          {
+            "source": "Goroh (СУМ-11): відмічати bet. 3",
+            "url": "https://goroh.pp.ua/Тлумачення/відмічати"
+          },
+          {
+            "source": "packs/retail.js linje 496: 'Я відмітив(ла) вихід.' for 'Jeg har stemplet ud.'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-063",
@@ -1208,10 +1704,43 @@
       },
       "field": "ru",
       "current": "отмечаться на приходе",
-      "proposed": null,
+      "proposed": "отмечать приход",
       "reason": "\"на приходе\" er en kluntet formulering. En russisktalende bør tjekke, om f.eks. \"отмечать приход\" er mere naturligt.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "отмечаться на приходе",
+        "decision": "change",
+        "value": "отмечать приход",
+        "confidence": "high",
+        "reason": "Begge gennemgange: \"на приходе\" er uidiomatisk og også slang for at være påvirket. P2 matcher retail.js.",
+        "passValues": {
+          "pass1": "отмечаться на входе",
+          "pass2": "отмечать приход"
+        },
+        "evidence": [
+          {
+            "source": "warehouse.js 232/414: uk 'відмічатися на вході' (parallel form)",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/warehouse.js"
+          },
+          {
+            "source": "Викисловарь, Приложение: Сленг наркоманов ('приход' = rus)",
+            "url": "https://ru.wiktionary.org/wiki/Приложение:Сленг_наркоманов"
+          },
+          {
+            "source": "Saby (СБИС), terminal til tidsregistrering: registrerer 'время прихода и ухода'; knapperne hedder 'пришел'/'ушел'",
+            "url": "https://saby.ru/catalog/X6275941"
+          },
+          {
+            "source": "packs/retail.js linje 495: 'Я отметил(а) приход.'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-064",
@@ -1226,10 +1755,39 @@
       },
       "field": "ru",
       "current": "отмечаться на уходе",
-      "proposed": null,
+      "proposed": "отмечать уход",
       "reason": "\"на уходе\" er en kluntet formulering. En russisktalende bør tjekke, om f.eks. \"отмечать уход\" er mere naturligt.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "отмечаться на уходе",
+        "decision": "change",
+        "value": "отмечать уход",
+        "confidence": "high",
+        "reason": "Som tr-063.",
+        "passValues": {
+          "pass1": "отмечаться на выходе",
+          "pass2": "отмечать уход"
+        },
+        "evidence": [
+          {
+            "source": "warehouse.js 233/428: uk 'відмічатися на виході'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/warehouse.js"
+          },
+          {
+            "source": "Saby (СБИС): 'время прихода и ухода'",
+            "url": "https://saby.ru/catalog/X6275941"
+          },
+          {
+            "source": "packs/retail.js linje 496: 'Я отметил(а) уход.'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-065",
@@ -1267,7 +1825,10 @@
       "reason": "\"цегла\" er et kollektivt navneord (mursten som materiale/mængde); én mursten hedder \"цеглина\". Dansk \"en mursten\" og ru \"кирпич\" er ental, så ukrainsk bør også være ental.",
       "severity": "error",
       "confidence": "high",
-      "reference": "СУМ-11 (цегла, цеглина)"
+      "reference": "СУМ-11 (цегла, цеглина)",
+      "decision": "applied",
+      "decisionSource": "content/reviews/pr-9-review.json",
+      "note": "Anvendt på main i #10 (цеглина) som undervisningspræcisering for tælleligt ental."
     },
     {
       "id": "tr-067",
@@ -1282,10 +1843,39 @@
       },
       "field": "ru",
       "current": "лом",
-      "proposed": "монтировка (гвоздодёр)",
-      "reason": "Et koben er et kortere brækjern med flad, kløvet ende (wrecking bar/crowbar). \"лом\" er især det lange, tunge jernspyd (dansk: spidshakke/jernspett). En modersmålstalende bør bekræfte, hvad der bruges på russiske byggepladser.",
+      "proposed": "лом-гвоздодёр",
+      "reason": "Et koben er et kortere brækjern med flad, kløvet ende (wrecking bar/crowbar). \"лом\" er især det lange, tunge jernspyd (dansk: spidshakke/jernspett).",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "лом",
+        "decision": "change",
+        "value": "лом-гвоздодёр",
+        "confidence": "high",
+        "reason": "Et koben er et kort brækjern med kløvet (sømtrækker)ende. Russiske forhandlere kalder netop dette værktøj 'лом-гвоздодёр'; 'лом' alene er det lange, tunge jernspyd. 'Монтировка' er dækjern.",
+        "passValues": {
+          "pass1": "лом-гвоздодёр",
+          "pass2": "лом-гвоздодёр"
+        },
+        "evidence": [
+          {
+            "source": "ВсеИнструменты: 'Лом-гвоздодер Top Tools 400 мм'",
+            "url": "https://www.vseinstrumenti.ru/product/lom-gvozdoder-top-tools-400-mm-shestigrannyj-04a234-875022/"
+          },
+          {
+            "source": "Яндекс.Маркет: 'Лом-гвоздодер Сибртех 450 мм'",
+            "url": "https://market.yandex.ru/cc/9Co2Ws"
+          },
+          {
+            "source": "Yandex Market: 'Лом-гвоздодер, 900 мм Workpro'",
+            "url": "https://market.yandex.ru/offers/lom-gvozdoder-900-mm-workpro-wp245004/37391865/reviews"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-068",
@@ -1300,10 +1890,43 @@
       },
       "field": "uk",
       "current": "лом",
-      "proposed": null,
-      "reason": "Samme problem som russisk: \"лом\" er især det lange, tunge jernspyd, mens et koben er et brækjern med kløvet ende. Ukrainsk modersmålstalende bør angive den gængse betegnelse (fx \"цвяходер\" eller en monteringsjern-betegnelse).",
+      "proposed": "лом-цвяходер",
+      "reason": "Samme problem som russisk: \"лом\" er især det lange, tunge jernspyd, mens et koben er et brækjern med kløvet ende. Afgjort ved AI-genundersøgelse (se aiRereview).",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "лом",
+        "decision": "change",
+        "value": "лом-цвяходер",
+        "confidence": "high",
+        "reason": "Ukrainske forhandlere bruger 'лом-цвяходер' om koben/wrecking bar; 'лом' alene er det tunge jernspyd.",
+        "passValues": {
+          "pass1": "лом-цвяходер",
+          "pass2": "лом-цвяходер"
+        },
+        "evidence": [
+          {
+            "source": "Allo.ua kategori 'Ломи і цвяходери' (Stanley Wrecking Bar m.fl.)",
+            "url": "https://allo.ua/ua/lomy-i-gvozdodery/"
+          },
+          {
+            "source": "Bigl.ua: 'Лом-цвяходер VIROK'",
+            "url": "https://bigl.ua/p1789937146-lom-tsvyahoder-virok"
+          },
+          {
+            "source": "Goroh (СУМ-11): лом = 'Товстий загострений з одного кінця металевий стрижень, яким ламають, розбивають що-небудь тверде'",
+            "url": "https://goroh.pp.ua/Тлумачення/лом"
+          },
+          {
+            "source": "Epicentr: kategorien 'Ломи й цвяходери', varen 'Лом-цвяходер Topex 90° 1000×18 мм'",
+            "url": "https://epicentrk.ua/shop/dnepr/lomy-i-gvozdodery/"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-069",
@@ -1374,10 +1997,31 @@
       },
       "field": "ru",
       "current": "стропа подъёмника",
-      "proposed": null,
-      "reason": "Et liftsejl er et stofsejl/en hængekøje man løfter personen i, ikke en strop. \"стропа\" betyder rem/strop og kan vildlede. En modersmålstalende med plejeerfaring bør tjekke den gængse betegnelse (fx \"подвес\"/\"слинг для подъёмника\").",
+      "proposed": "подвес для подъёмника",
+      "reason": "Et liftsejl er et stofsejl/en hængekøje man løfter personen i, ikke en strop. \"стропа\" betyder rem/strop og kan vildlede.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "стропа подъёмника",
+        "decision": "change",
+        "value": "подвес для подъёмника",
+        "confidence": "medium",
+        "reason": "Liftsejlet er det stofsejl personen hænger i. Russiske producentvejledninger kalder det 'подвес' (også 'слинг'); 'стропы' er de enkelte remme på sejlet, så 'стропа' vildleder.",
+        "passValues": {
+          "pass1": "подвес для подъёмника",
+          "pass2": "подвес для подъёмника"
+        },
+        "evidence": [
+          {
+            "source": "Producentvejledning 'Инструкция Подвесы' (oxy2.ru): подвес til patientløfter, efter EN ISO 10535",
+            "url": "https://www.oxy2.ru/files/downloads/Инструкция Подвесы.pdf"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-073",
@@ -1392,10 +2036,39 @@
       },
       "field": "uk",
       "current": "стропа підйомника",
-      "proposed": null,
-      "reason": "Samme problem som russisk: \"стропа\" er en rem/strop, mens et liftsejl er et stofsejl man sidder/ligger i. Ukrainsk modersmålstalende med plejeerfaring bør tjekke den gængse betegnelse.",
+      "proposed": "підвіс для підйомника",
+      "reason": "Samme problem som russisk: \"стропа\" er en rem/strop, mens et liftsejl er et stofsejl man sidder/ligger i. Afgjort ved AI-genundersøgelse (se aiRereview).",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "стропа підйомника",
+        "decision": "change",
+        "value": "підвіс для підйомника",
+        "confidence": "low",
+        "reason": "P1; parallelt med ru \"подвес для подъёмника\", som begge gennemgange valgte. Ukrainske kilder veksler mellem \"підвіс\" og \"стропи/слінг\"; \"стропа\" (P2) betegner især remmen.",
+        "passValues": {
+          "pass1": "підвіс для підйомника",
+          "pass2": "стропа підйомника"
+        },
+        "evidence": [
+          {
+            "source": "Producentvejledning ru 'Подвесы' (parallelterm)",
+            "url": "https://www.oxy2.ru/files/downloads/Инструкция Подвесы.pdf"
+          },
+          {
+            "source": "Inclusive Inc (uk): bruger 'слінг' om sejl til patientløfter",
+            "url": "https://inclusiveinc.org/uk/products/patient-ceiling-lift-track-bundles"
+          },
+          {
+            "source": "stls.store (ukrainsk forhandler, Invacare Birdie EVO): 'у комплектацію входять стропи для сидіння'",
+            "url": "https://stls.store/uk/podemnik-invacare-birdie-evo-compact-s-mehanicheskoy-regulirovkoy-kolesnoy-bazy-p1061221c15710.html"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-074",
@@ -1465,9 +2138,34 @@
       "field": "ru",
       "current": "хлев",
       "proposed": null,
-      "reason": "\"хлев\" er gammeldags/landligt. Pakken dækker både svine- og kvægstald, så et dyre-specifikt ord (свинарник/коровник) passer ikke alle steder. En modersmålstaler bør vælge den gængse fællesbetegnelse.",
+      "reason": "\"хлев\" er gammeldags/landligt. Pakken dækker både svine- og kvægstald, så et dyre-specifikt ord (свинарник/коровник) passer ikke alle steder.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "хлев",
+        "decision": "keep",
+        "value": "хлев",
+        "confidence": "medium",
+        "reason": "'Хлев' er den neutrale fællesbetegnelse for bygning til husdyr; artsspecifikke ord (свинарник/коровник) passer ikke alle steder i pakken. Lidt landligt, men korrekt. Behold.",
+        "passValues": {
+          "pass1": "хлев",
+          "pass2": "хлев"
+        },
+        "evidence": [
+          {
+            "source": "agriculture.js: 'stald' bruges generelt (I stalden / В хлеву) på tværs af svin og kvæg",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/agriculture.js"
+          },
+          {
+            "source": "packs/agriculture.js: 'stald' bruges om både svine- og kvægstald og i sætninger ('В хлеву пахнет аммиаком'); dyrespecifikke ord findes i egne rækker (farestald, malkestald)",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/agriculture.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-078",
@@ -1483,9 +2181,34 @@
       "field": "uk",
       "current": "хлів",
       "proposed": null,
-      "reason": "Som ru: \"хлів\" er gammeldags/landligt. Pakken dækker både svin og kvæg, så et dyre-specifikt ord passer ikke alle steder. En modersmålstaler bør vælge.",
+      "reason": "Som ru: \"хлів\" er gammeldags/landligt. Pakken dækker både svin og kvæg, så et dyre-specifikt ord passer ikke alle steder.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "хлів",
+        "decision": "keep",
+        "value": "хлів",
+        "confidence": "medium",
+        "reason": "СУМ: хлів = 'будівля для свійської худоби та птиці', uden mærke som forældet/regionalt. Dækker både svin og kvæg. Behold.",
+        "passValues": {
+          "pass1": "хлів",
+          "pass2": "хлів"
+        },
+        "evidence": [
+          {
+            "source": "Горох (СУМ-11): хлів",
+            "url": "https://goroh.pp.ua/Тлумачення/хлів"
+          },
+          {
+            "source": "packs/agriculture.js: konsekvent 'хлів' i sætningerne",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/agriculture.js"
+          }
+        ]
+      },
+      "decision": "keep-current"
     },
     {
       "id": "tr-079",
@@ -1609,10 +2332,35 @@
       },
       "field": "ru",
       "current": "рассада",
-      "proposed": "проросток (рассада)",
-      "reason": "'Рассада' er en kollektiv betegnelse for udplantningsplanter; en kimplante (nyspiret plante, ental) er 'проросток'/'сеянец'. Bør tjekkes af en gartner med russisk som modersmål.",
+      "proposed": "сеянец",
+      "reason": "'Рассада' er en kollektiv betegnelse for udplantningsplanter; en kimplante (nyspiret plante, ental) er 'проросток'/'сеянец'.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "рассада",
+        "decision": "change",
+        "value": "сеянец",
+        "confidence": "medium",
+        "reason": "P2; en kimplante er en ung plante fra frø (сеянец). \"проросток\" (P1) er en nyspiret kim; begge afviser kollektivet \"рассада\".",
+        "passValues": {
+          "pass1": "проросток",
+          "pass2": "сеянец"
+        },
+        "evidence": [
+          {
+            "source": "Den Danske Ordbog: kimplante",
+            "url": "https://ordnet.dk/ddo/ordbog?query=kimplante"
+          },
+          {
+            "source": "Gramota.ru (БТС): сеянец = 'Растение, выращенное или выросшее из семян (в отличие от саженца)'",
+            "url": "https://gramota.ru/poisk?query=сеянец&mode=slovari"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-086",
@@ -1627,10 +2375,43 @@
       },
       "field": "uk",
       "current": "розсада",
-      "proposed": "проросток (розсада)",
-      "reason": "'Розсада' er kollektiv; en enkelt nyspiret plante er 'проросток'/'сіянець'. Bør tjekkes af en gartner med ukrainsk som modersmål.",
+      "proposed": "сіянець",
+      "reason": "'Розсада' er kollektiv; en enkelt nyspiret plante er 'проросток'/'сіянець'.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "розсада",
+        "decision": "change",
+        "value": "сіянець",
+        "confidence": "medium",
+        "reason": "Som ru.",
+        "passValues": {
+          "pass1": "проросток",
+          "pass2": "сіянець"
+        },
+        "evidence": [
+          {
+            "source": "Den Danske Ordbog: kimplante",
+            "url": "https://ordnet.dk/ddo/ordbog?query=kimplante"
+          },
+          {
+            "source": "Горох (СУМ-11): проросток",
+            "url": "https://goroh.pp.ua/Тлумачення/проросток"
+          },
+          {
+            "source": "Горох (СУМ-11): розсада",
+            "url": "https://goroh.pp.ua/Тлумачення/розсада"
+          },
+          {
+            "source": "Goroh (СУМ-11): сіянець = 'Молода рослина, вирощена з насіння'",
+            "url": "https://goroh.pp.ua/Тлумачення/сіянець"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-087",
@@ -1645,10 +2426,35 @@
       },
       "field": "ru",
       "current": "вишня",
-      "proposed": "черешня, вишня",
+      "proposed": "вишня (черешня)",
       "reason": "Dansk 'kirsebær' dækker både søde kirsebær (черешня) og surkirsebær (вишня). Plukkes der søde bær, er 'вишня' misvisende. Tjek, hvilken slags der plukkes.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "вишня",
+        "decision": "change",
+        "value": "вишня (черешня)",
+        "confidence": "medium",
+        "reason": "Begge: dansk kirsebær dækker både vishnja og tjeresjnja. Parentes som pakkens konvention (P2 brugte komma, som kan forstyrre indtastede svar).",
+        "passValues": {
+          "pass1": "вишня (черешня)",
+          "pass2": "черешня, вишня"
+        },
+        "evidence": [
+          {
+            "source": "retail.js m.fl.: parentes bruges for alternative/forklarende ord, fx 'печь (духовка)'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          },
+          {
+            "source": "DDO 'kirsebær': glat, mørkerød eller rødgul stenfrugt fra kirsebærtræet; sødkirsebær og surkirsebær er underbegreber",
+            "url": "https://ordnet.dk/ddo/ordbog?query=kirsebær"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-088",
@@ -1663,10 +2469,35 @@
       },
       "field": "uk",
       "current": "вишня",
-      "proposed": "черешня, вишня",
+      "proposed": "вишня (черешня)",
       "reason": "Dansk 'kirsebær' dækker både søde kirsebær (черешня) og surkirsebær (вишня). Tjek, hvilken slags der plukkes.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "вишня",
+        "decision": "change",
+        "value": "вишня (черешня)",
+        "confidence": "medium",
+        "reason": "Som ru.",
+        "passValues": {
+          "pass1": "вишня (черешня)",
+          "pass2": "черешня, вишня"
+        },
+        "evidence": [
+          {
+            "source": "retail.js: parentes-konvention, fx 'піч (духовка)'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          },
+          {
+            "source": "DDO 'kirsebær'",
+            "url": "https://ordnet.dk/ddo/ordbog?query=kirsebær"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-089",
@@ -1791,9 +2622,38 @@
       "field": "uk",
       "current": "візок-клітка (ролконтейнер)",
       "proposed": "візок-клітка (рол-контейнер)",
-      "reason": "Stavemåden afviger fra transportpakken ('рол-контейнер'). Vælg én skrivemåde; en modersmålstaler bør bekræfte, hvilken der er mest gængs.",
+      "reason": "Stavemåden afviger fra transportpakken ('рол-контейнер'). Vælg én skrivemåde.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "візок-клітка (ролконтейнер)",
+        "decision": "change",
+        "value": "візок-клітка (рол-контейнер)",
+        "confidence": "medium",
+        "reason": "Samme ord staves 'рол-контейнер' i transport- og lagerpakken (også i sætninger). Ensret til bindestregsformen; intet peger på sammenskrevet 'ролконтейнер' som mere gængs.",
+        "passValues": {
+          "pass1": "візок-клітка (рол-контейнер)",
+          "pass2": "візок-клітка (рол-контейнер)"
+        },
+        "evidence": [
+          {
+            "source": "transport.js 158/347 og warehouse.js 78: 'рол-контейнер'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/transport.js"
+          },
+          {
+            "source": "packs/transport.js linje 158 og 347 samt warehouse.js linje 78: 'рол-контейнер'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/transport.js"
+          },
+          {
+            "source": "Український правопис (2019): sammensatte navneord uden bindevokal, især tekniske termer (дизель-мотор, прес-конференція), skrives med bindestreg (ses fx i Kucherenko, Правопис-посібник 2024)",
+            "url": "https://lib.iitta.gov.ua/743828/2/%D0%9A%D1%83%D1%87%D0%B5%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D0%BF%D0%B8%D1%81%20%D0%BF%D0%BE%D1%81%D1%96%D0%B1%D0%BD%D0%B8%D0%BA%202024.pdf"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-096",
@@ -1808,10 +2668,35 @@
       },
       "field": "ru",
       "current": "торт",
-      "proposed": "пирожное, торт",
+      "proposed": "торт (пирожное)",
       "reason": "'Торт' er kun en stor (lag)kage. Dansk 'en kage' i en bager er bredere og dækker også småkager/kageskiver ('пирожное'). Forslaget med komma bør ikke indsættes direkte, hvis appen bruger feltet som facit ved indtastning; brug evt. parentes som i de andre pakker.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "торт",
+        "decision": "change",
+        "value": "торт (пирожное)",
+        "confidence": "medium",
+        "reason": "Begge: \"en kage\" dækker også småkager. Parentes i stedet for komma (P2).",
+        "passValues": {
+          "pass1": "торт (пирожное)",
+          "pass2": "торт, пирожное"
+        },
+        "evidence": [
+          {
+            "source": "retail.js counter: parentes-konvention ('печь (духовка)'); ingen separat 'lagkage'-række",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          },
+          {
+            "source": "DDO 'kage' bet. 1: sødt bagværk i mange størrelser og typer, fx wienerbrød, småkager, tørkager, flødeskumskager, skærekager",
+            "url": "https://ordnet.dk/ddo/ordbog?query=kage"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-097",
@@ -1826,10 +2711,35 @@
       },
       "field": "uk",
       "current": "торт",
-      "proposed": "тістечко, торт",
+      "proposed": "торт (тістечко)",
       "reason": "'Торт' er kun en stor (lag)kage. Dansk 'en kage' dækker også småkager ('тістечко'). Forslaget med komma bør ikke indsættes direkte, hvis appen bruger feltet som facit ved indtastning; brug evt. parentes som i de andre pakker.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "adjudicated",
+        "currentOnMain": "торт",
+        "decision": "change",
+        "value": "торт (тістечко)",
+        "confidence": "medium",
+        "reason": "Som ru.",
+        "passValues": {
+          "pass1": "торт (тістечко)",
+          "pass2": "торт, тістечко"
+        },
+        "evidence": [
+          {
+            "source": "retail.js counter: parentes-konvention",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          },
+          {
+            "source": "DDO 'kage' bet. 1",
+            "url": "https://ordnet.dk/ddo/ordbog?query=kage"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-098",
@@ -1844,10 +2754,35 @@
       },
       "field": "ru",
       "current": "фрикаделька",
-      "proposed": null,
-      "reason": "På russisk er 'фрикаделька' en lille kogt kødbolle (i suppe), mens en dansk frikadelle er stegt og flad, nærmere 'котлета'. Kan vildlede; en modersmålstaler bør vurdere en forklarende tilføjelse.",
+      "proposed": "датская фрикаделька",
+      "reason": "På russisk er 'фрикаделька' en lille kogt kødbolle (i suppe), mens en dansk frikadelle er stegt og flad, nærmere 'котлета'. Kan vildlede.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "фрикаделька",
+        "decision": "change",
+        "value": "датская фрикаделька",
+        "confidence": "medium",
+        "reason": "Russisk 'фрикаделька' er typisk en lille kogt suppebolle; den danske er stegt og større. 'Датская фрикаделька' spejler en 'Danish meatball' og pakkens 'датская слойка' og signalerer, at det er den danske ret. 'Котлета' ville være en anden ret.",
+        "passValues": {
+          "pass1": "датская фрикаделька",
+          "pass2": "датская фрикаделька"
+        },
+        "evidence": [
+          {
+            "source": "retail.js counter: samme mønster 'датская слойка', 'датский бутерброд'; en 'Danish meatball'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          },
+          {
+            "source": "packs/retail.js: samme mønster i kategorien: 'датская слойка' (wienerbrød), 'датский бутерброд' (smørrebrød); en 'Danish meatball'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-099",
@@ -1862,10 +2797,39 @@
       },
       "field": "uk",
       "current": "фрикаделька",
-      "proposed": null,
-      "reason": "På ukrainsk er 'фрикаделька' en lille kogt kødbolle (i suppe); en dansk frikadelle er stegt, nærmere 'котлета'. En modersmålstaler bør vurdere en forklarende tilføjelse.",
+      "proposed": "данська фрикаделька",
+      "reason": "På ukrainsk er 'фрикаделька' en lille kogt kødbolle (i suppe); en dansk frikadelle er stegt, nærmere 'котлета'.",
       "severity": "check",
-      "confidence": "low"
+      "confidence": "low",
+      "aiRereview": {
+        "date": "2026-11-17",
+        "passes": 2,
+        "agreement": "agreed",
+        "currentOnMain": "фрикаделька",
+        "decision": "change",
+        "value": "данська фрикаделька",
+        "confidence": "medium",
+        "reason": "Som ru: tilføj 'данська', i tråd med pakkens øvrige danske retter.",
+        "passValues": {
+          "pass1": "данська фрикаделька",
+          "pass2": "данська фрикаделька"
+        },
+        "evidence": [
+          {
+            "source": "retail.js counter: 'данська слойка', 'данський бутерброд'; en 'Danish meatball'",
+            "url": "C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          },
+          {
+            "source": "Goroh (СУМ-11): фрикаделька = 'Кулька з меленого м'яса або риби, зварена в бульйоні'",
+            "url": "https://goroh.pp.ua/Тлумачення/фрикаделька"
+          },
+          {
+            "source": "packs/retail.js: 'данська слойка', 'данський бутерброд'",
+            "url": "file:///C:/projekter/munthe-systems/trafficwords-content/packs/retail.js"
+          }
+        ]
+      },
+      "decision": "recommended"
     },
     {
       "id": "tr-100",
@@ -1903,7 +2867,10 @@
       "reason": "Forkert genitiv: 'телефон' bøjes 'телефону' i genitiv ental.",
       "severity": "error",
       "confidence": "high",
-      "reference": "СУМ-11 / Правопис 2019"
+      "reference": "СУМ-11 / Правопис 2019",
+      "decision": "rejected",
+      "decisionSource": "content/reviews/pr-9-review.json",
+      "note": "Afvist i reviewet: ukrainsk retskrivning skelner mellem телефона (apparatet) og телефону (kommunikationsmidlet). Behold тримач для телефона."
     },
     {
       "id": "tr-102",

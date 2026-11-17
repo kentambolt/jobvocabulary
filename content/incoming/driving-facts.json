@@ -1,0 +1,1363 @@
+{
+  "title": "Faktatjek af driving.js mod officielle danske kilder",
+  "jurisdiction": "DK",
+  "reviewDate": "2026-11-17",
+  "ref": "origin/main@64f6a60",
+  "lawVersion": "Bekendtgørelse af færdselsloven, LBK nr. 118 af 12. januar 2026 (seneste konsolidering fundet 2026-11-17; senere ændringslove er ikke kontrolleret)",
+  "note": "Alle rækker med kontrollerbare fakta. Rettelser til de forkerte/misvisende rækker står i phrase-and-driving-review.json. Motorvejsgrænsen (§ 42, stk. 2), 17-årige uden ledsager kl. 5-20 og afskaffelsen af tolk ved prøverne er efterprøvet direkte i kilderne.",
+  "summary": {
+    "correct": 58,
+    "incomplete-or-misleading": 8,
+    "incorrect": 2
+  },
+  "rows": [
+    {
+      "line": 33,
+      "rowKeyDa": "tættere bebygget område",
+      "claim": "'Tættere bebygget område' = built-up area, hvor byreglerne (bl.a. 50 km/t) gælder.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 42, stk. 1, nr. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 27, E 55 Tættere bebygget område",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Lovens og tavlens officielle betegnelse; området afgrænses af tavle E 55 (byzonetavle)."
+    },
+    {
+      "line": 72,
+      "rowKeyDa": "hajtænder",
+      "claim": "Hajtænder = vigelinje (give way lines).",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 59, S 11 Vigelinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "S 11 Vigelinje (trekanter) angiver ubetinget vigepligt for kørende fra den side, trekanternes spids vender mod."
+    },
+    {
+      "line": 74,
+      "rowKeyDa": "ubetinget vigepligt",
+      "claim": "Ubetinget vigepligt = absolute duty to give way.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 2-3",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Ubetinget vigepligt = vigepligt for den kørende færdsel fra begge sider; gælder også ved udkørsel fra P-plads, ejendom, sti m.m."
+    },
+    {
+      "line": 75,
+      "rowKeyDa": "højre vigepligt",
+      "claim": "Højre vigepligt = give way to the right.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Gælder kun, hvor intet andet er bestemt ved afmærkning/regler (\"i andre tilfælde\")."
+    },
+    {
+      "line": 77,
+      "rowKeyDa": "en spærrelinje",
+      "claim": "Spærrelinje = solid line, må ikke krydses.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 55, Q 44 Spærrelinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Smal ubrudt linje; må ikke overskrides eller krydses. Undtagelse: fx vejarbejde eller holdende køretøj med særlig agtpågivenhed."
+    },
+    {
+      "line": 83,
+      "rowKeyDa": "en varsellinje",
+      "claim": "'Varsellinje' = warning line (long dashes).",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 55, Q 42 Varslingslinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Betydningen (lang streg, kort mellemrum) er rigtig, men den officielle betegnelse i bekendtgørelsen er 'varslingslinje'. Eleven bør lære det ord, der bruges i teoriundervisningen/prøven."
+    },
+    {
+      "line": 84,
+      "rowKeyDa": "en vognbanelinje",
+      "claim": "Vognbanelinje = lane line (dashed).",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 55, Q 41 Vognbanelinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Smal punkteret linje med kort streg og langt mellemrum; må overskrides, hvis det sker uden fare eller unødig ulempe."
+    },
+    {
+      "line": 85,
+      "rowKeyDa": "en stoplinje",
+      "claim": "Stoplinje = stop line.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 59, S 13 Stoplinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Bred ubrudt tværlinje; angiver hvor der skal stoppes ved B 13 Stop, rødt/gult signal eller rødt blinksignal."
+    },
+    {
+      "line": 87,
+      "rowKeyDa": "en spærreflade",
+      "claim": "Spærreflade = hatched area.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 55, Q 45 Spærreflade",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Skraveret eller helt hvidt areal, hvor der ikke må køres, standses eller parkeres."
+    },
+    {
+      "line": 91,
+      "rowKeyDa": "en vigepligtstavle",
+      "claim": "Vigepligtstavle = give way sign.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 16, B 11 Ubetinget vigepligt; § 4, stk. 3",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "B 11 angiver ubetinget vigepligt; 'vigepligtstavler' er hovedgruppen B."
+    },
+    {
+      "line": 93,
+      "rowKeyDa": "en byzonetavle",
+      "claim": "Byzonetavle = town sign (start of built-up area).",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 27, E 55 Tættere bebygget område",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Officielt navn er E 55 'Tættere bebygget område'; 'byzonetavle' er den almindelige betegnelse."
+    },
+    {
+      "line": 94,
+      "rowKeyDa": "et blinkende gult lys",
+      "claim": "Blinkende gult lys = flashing amber.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 69, Z 93 Gult blinksignal",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Z 93 angiver, at trafikanterne skal udvise særlig forsigtighed."
+    },
+    {
+      "line": 120,
+      "rowKeyDa": "kørelys",
+      "claim": "Kørelys = daytime running lights.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 33 a, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Uden for lygtetændingstiden skal nærlys bruges; særligt kørelys (eller tågeforlygter) må bruges i stedet."
+    },
+    {
+      "line": 225,
+      "rowKeyDa": "et kørselsforbud",
+      "claim": "Kørselsforbud gælder nye bilister (driving ban, new drivers).",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 127",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 125, stk. 3",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Kørselsforbud træder i stedet for betinget frakendelse ved forseelser inden for de første 3 år efter førstegangserhvervelse; ophæves først efter særlig køreundervisning/ANT-kursus og kontrollerende køreprøve."
+    },
+    {
+      "line": 226,
+      "rowKeyDa": "en frakendelse",
+      "claim": "Frakendelse = disqualification (licence revoked).",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§§ 125-126, § 128",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Kan være betinget (prøvetid 3 år) eller ubetinget (6 mdr. til 10 år)."
+    },
+    {
+      "line": 246,
+      "rowKeyDa": "et førstehjælpskursus",
+      "claim": "Førstehjælpskursus kræves til kørekort.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Kræver 8 timers færdselsrelateret førstehjælp hos instruktør registreret hos Dansk Førstehjælpsråd; beviset højst 1 år gammelt ved aflevering i borgerservice."
+    },
+    {
+      "line": 247,
+      "rowKeyDa": "en lægeerklæring",
+      "claim": "Lægeerklæring (medical certificate) kræves.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Kræves som digital lægeattest; højst 6 måneder gammel ved aflevering af ansøgningen. Officielt ord er 'lægeattest', men 'lægeerklæring' forstås."
+    },
+    {
+      "line": 250,
+      "rowKeyDa": "en glatbane",
+      "claim": "Glatbane er en del af uddannelsen.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Kørsel på køreteknisk anlæg (glatbane) er obligatorisk før kørekort; kørelæreren booker."
+    },
+    {
+      "line": 252,
+      "rowKeyDa": "Borgerservice",
+      "claim": "Ansøgning håndteres af Borgerservice (kommunen).",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Ansøgningen (P23) afleveres i borgerservice af eleven eller kørelæreren."
+    },
+    {
+      "line": 258,
+      "rowKeyDa": "ledsaget kørsel",
+      "claim": "Ledsaget kørsel fra 17 år.",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 56, stk. 3-4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Lov nr. 567 af 27. maj 2025 om ændring af færdselsloven (bl.a. promillegrænse for førstegangserhververe af kat. B, ledsagerordning for 17-årige, egnede dæk)",
+          "url": "https://www.retsinformation.dk/eli/lta/2025/567",
+          "section": "§ 1 (§ 53, stk. 2; § 56, stk. 3); § 2, stk. 1 (ikrafttræden)",
+          "versionOrDate": "ikrafttræden 1. juli 2025"
+        },
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Fra 1. juli 2025 må 17-årige køre alene kl. 05-20; ledsager kræves kun kl. 20-05 indtil 18 år. Ledsager skal være mindst 24 år og have haft kørekort i mindst 5 år. Glosen kan få eleven til at tro, at 17-årige altid skal have ledsager."
+    },
+    {
+      "line": 379,
+      "rowKeyDa": "Du har vigepligt for trafikken fra højre.",
+      "claim": "Du har vigepligt for trafikken fra højre (generelt).",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 2-4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Højrevigepligt gælder kun, når intet andet er bestemt (fx hajtænder/B 11, stop, signaler, udkørsel fra P-plads/ejendom = ubetinget vigepligt). Som generel regel er sætningen misvisende."
+    },
+    {
+      "line": 380,
+      "rowKeyDa": "Du må ikke overhale i et fodgængerfelt.",
+      "claim": "Det er forbudt at overhale i et fodgængerfelt.",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 25",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 23, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 27, stk. 7",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Loven forbyder overhaling/forbikørsel ved fodgængerfelt, når det andet køretøj hindrer fuldt udsyn over feltet (§ 25). Fodgængerfelt er ikke på listen over generelle overhalingsforbud i § 23 (fx må en cyklist overhales)."
+    },
+    {
+      "line": 381,
+      "rowKeyDa": "I byen er fartgrænsen 50 km/t.",
+      "claim": "I byen (tættere bebygget område) er fartgrænsen 50 km/t.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 42, stk. 1, nr. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "borger.dk: Færdselsloven og fartgrænser (skrevet af Færdselsstyrelsen)",
+          "url": "https://www.borger.dk/politi-retsvaesen-forsvar/Politi/Faerdselsloven-og-fartgraenser",
+          "section": "generelle hastighedsgrænser; klip for nye bilister",
+          "versionOrDate": "hentet 2026-11-17"
+        }
+      ],
+      "note": "Generel grænse; lokale lavere grænser kan skiltes (§ 42, stk. 5)."
+    },
+    {
+      "line": 382,
+      "rowKeyDa": "Uden for byen er fartgrænsen 80 km/t.",
+      "claim": "Uden for byen er fartgrænsen 80 km/t.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 42, stk. 1, nr. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "borger.dk: Færdselsloven og fartgrænser (skrevet af Færdselsstyrelsen)",
+          "url": "https://www.borger.dk/politi-retsvaesen-forsvar/Politi/Faerdselsloven-og-fartgraenser",
+          "section": "generelle hastighedsgrænser; klip for nye bilister",
+          "versionOrDate": "hentet 2026-11-17"
+        }
+      ],
+      "note": "Generel grænse; højere (fx 90) eller lavere kan skiltes (§ 42, stk. 4-5)."
+    },
+    {
+      "line": 383,
+      "rowKeyDa": "På motorvejen er fartgrænsen normalt 110 km/t.",
+      "claim": "På motorvej er fartgrænsen normalt 110 km/t.",
+      "verdict": "incorrect",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 42, stk. 2 og 5",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "borger.dk: Færdselsloven og fartgrænser (skrevet af Færdselsstyrelsen)",
+          "url": "https://www.borger.dk/politi-retsvaesen-forsvar/Politi/Faerdselsloven-og-fartgraenser",
+          "section": "generelle hastighedsgrænser; klip for nye bilister",
+          "versionOrDate": "hentet 2026-11-17"
+        }
+      ],
+      "note": "Den generelle grænse på motorvej er 130 km/t. 110 km/t (eller lavere) gælder kun, hvor det er skiltet."
+    },
+    {
+      "line": 386,
+      "rowKeyDa": "Ved dit første kategori B-kørekort er promillegrænsen 0,2 de første tre år.",
+      "claim": "Ved første kategori B-kørekort er promillegrænsen 0,2 de første tre år.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 53, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Lov nr. 567 af 27. maj 2025 om ændring af færdselsloven (bl.a. promillegrænse for førstegangserhververe af kat. B, ledsagerordning for 17-årige, egnede dæk)",
+          "url": "https://www.retsinformation.dk/eli/lta/2025/567",
+          "section": "§ 1 (§ 53, stk. 2; § 56, stk. 3); § 2, stk. 1 (ikrafttræden)",
+          "versionOrDate": "ikrafttræden 1. juli 2025"
+        },
+        {
+          "title": "Folketinget: L 165 (2024-25), lovforslag der blev til lov nr. 567/2025",
+          "url": "https://www.ft.dk/samling/20241/lovforslag/l165/index.htm",
+          "section": "lovforslagets sagsside (ikke hentbar: HTTP 403)",
+          "versionOrDate": "folketingsår 2024-25"
+        },
+        {
+          "title": "Rådet for Sikker Trafik (sekundær): Snart træder lavere promillegrænse for nye bilister i kraft",
+          "url": "https://www.sikkertrafik.dk/presse/pressemeddelelser/snart-traeder-lavere-promillegraense-for-nye-bilister-i-kraft/",
+          "section": "pressemeddelelse",
+          "versionOrDate": "17.06.2025"
+        },
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Retsgrundlag: § 53, stk. 2 (indsat ved lov nr. 567/2025, i kraft 1. juli 2025): 0,20 promille i blodet eller 0,10 mg/l i udåndingsluften, for kørsel med kat. B inden for de første 3 år efter førstegangserhvervelse af kat. B. Gælder også dem, der fik kørekort før 1. juli 2025 (for kørsel fra 1. juli 2025). 0,20 gælder også ved kørsel uden kørekort. Overtrædelse giver kørselsforbud og bøde. Ellers 0,50. Bemærk: kildekommentaren i pakken henviser til lovforslaget L 165; den vedtagne lov er nr. 567."
+    },
+    {
+      "line": 387,
+      "rowKeyDa": "Du skal altid bruge sikkerhedssele.",
+      "claim": "Du skal altid bruge sikkerhedssele.",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 80, stk. 1-4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Pligten gælder under kørsel, men ikke ved bakning eller kørsel på parkeringsplads, servicestation, værksted o.l. (§ 80, stk. 2). 'Altid' er strengere end loven; føreren skal også sikre, at passagerer under 15 år bruger sele."
+    },
+    {
+      "line": 388,
+      "rowKeyDa": "Du skal holde for rødt lys.",
+      "claim": "Du skal holde for rødt lys.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 65, stk. 2",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 4, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Rødt lys betyder stop før stoplinjen."
+    },
+    {
+      "line": 389,
+      "rowKeyDa": "Ved hajtænder har du ubetinget vigepligt.",
+      "claim": "Ved hajtænder har du ubetinget vigepligt (en/ru/uk: 'give way to everyone').",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 59, S 11 Vigelinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Dansk tekst er korrekt. Oversættelserne 'to everyone/всем/всім' er for brede: ubetinget vigepligt gælder den kørende færdsel fra begge sider på den vej, man kører ind på eller over."
+    },
+    {
+      "line": 390,
+      "rowKeyDa": "Ved et stopskilt skal du altid standse helt.",
+      "claim": "Ved stopskilt skal du altid standse helt.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 16, B 13 Stop; § 59, S 13 Stoplinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "B 13: ubetinget vigepligt og pligt til at stoppe (ved stoplinjen). Undtagelse kun for cyklister/lille knallert, der svinger til højre ad cykelsti."
+    },
+    {
+      "line": 391,
+      "rowKeyDa": "Du må ikke bruge en håndholdt mobiltelefon, mens du kører.",
+      "claim": "Du må ikke bruge håndholdt mobiltelefon under kørsel.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 55 a, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Forbuddet gælder håndholdt teleudstyr og andre håndholdte kommunikationsapparater under kørsel; undtagelser kun for bl.a. erhvervschauffører med fastmonteret udstyr og udrykning."
+    },
+    {
+      "line": 392,
+      "rowKeyDa": "Du skal holde tilbage for fodgængere i fodgængerfeltet.",
+      "claim": "Du skal holde tilbage for fodgængere i fodgængerfeltet.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 27, stk. 6-7",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Ved ureguleret felt også for gående, der er på vej ud i feltet; ved signalreguleret felt skal man holde tilbage for gående i feltet, selv om man har grønt."
+    },
+    {
+      "line": 393,
+      "rowKeyDa": "Du må ikke krydse en spærrelinje.",
+      "claim": "Du må ikke krydse en spærrelinje.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 55, Q 44 Spærrelinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Hovedreglen; må dog overskrides med særlig agtpågivenhed ved fx vejarbejde eller holdende køretøj."
+    },
+    {
+      "line": 394,
+      "rowKeyDa": "Når du svinger til højre, skal du holde tilbage for cyklister, der kører ligeud.",
+      "claim": "Ved højresving skal du holde tilbage for cyklister, der kører ligeud.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 6",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Gælder også knallertkørere; ved dobbeltrettet cykelsti også modkørende cyklister."
+    },
+    {
+      "line": 395,
+      "rowKeyDa": "Du skal altid køre med lys.",
+      "claim": "Du skal altid køre med lys.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 33, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 33 a, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Motordrevne køretøjer skal altid køre med nærlys (uden for lygtetændingstiden må særligt kørelys bruges i stedet)."
+    },
+    {
+      "line": 396,
+      "rowKeyDa": "På motorvejen må du køre 130 km/t, hvor det er skiltet.",
+      "claim": "På motorvejen må du køre 130 km/t, hvor det er skiltet.",
+      "verdict": "incorrect",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 42, stk. 2, 4 og 5",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "borger.dk: Færdselsloven og fartgrænser (skrevet af Færdselsstyrelsen)",
+          "url": "https://www.borger.dk/politi-retsvaesen-forsvar/Politi/Faerdselsloven-og-fartgraenser",
+          "section": "generelle hastighedsgrænser; klip for nye bilister",
+          "versionOrDate": "hentet 2026-11-17"
+        }
+      ],
+      "note": "130 km/t er den generelle motorvejsgrænse og kræver ikke skilt; det er de lavere grænser (fx 110) der skiltes."
+    },
+    {
+      "line": 397,
+      "rowKeyDa": "Du skal give tegn, når du kører ud af en rundkørsel.",
+      "claim": "Du skal give tegn ved udkørsel fra rundkørsel.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 32, stk. 2 og 5",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Rådet for Sikker Trafik (sekundær): Kryds og rundkørsler",
+          "url": "https://www.sikkertrafik.dk/knallert/e-kryds-og-rundkorsler/",
+          "section": "rundkørsel: tegn ved udkørsel, vigepligt ved indkørsel",
+          "versionOrDate": "hentet 2026-11-17"
+        }
+      ],
+      "note": "Udkørsel er svingning, hvor der skal gives tegn (blink til højre) i god tid."
+    },
+    {
+      "line": 398,
+      "rowKeyDa": "Du skal give tegn i god tid.",
+      "claim": "Tegn skal gives i god tid.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 32, stk. 5",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Tegn skal gives i god tid før manøvren og ophøre, når den er afsluttet."
+    },
+    {
+      "line": 399,
+      "rowKeyDa": "Du skal normalt overhale til venstre.",
+      "claim": "Normalt overhales til venstre.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 21, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Undtagelse: højre om et køretøj, der svinger til venstre; forbikørsel i tæt kø er ikke overhaling (§ 24)."
+    },
+    {
+      "line": 400,
+      "rowKeyDa": "Du må ikke bakke eller vende på motorvejen.",
+      "claim": "Du må ikke bakke eller vende på motorvejen.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 46, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 48",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Gælder også til-/frakørsel og motortrafikvej."
+    },
+    {
+      "line": 401,
+      "rowKeyDa": "Du må kun holde i nødsporet i en nødsituation.",
+      "claim": "Du må kun holde i nødsporet i en nødsituation.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 46, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 47, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Standsning/parkering kun på anviste P- og rastepladser; tvungen standsning (uheld, motorfejl) og brug af nødtelefon er tilladt."
+    },
+    {
+      "line": 402,
+      "rowKeyDa": "Stopafstanden er reaktionslængden plus bremselængden.",
+      "claim": "Stopafstand = reaktionslængde + bremselængde.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Rådet for Sikker Trafik (sekundær): C Køreteknik (stopafstand, reaktions- og bremselængde)",
+          "url": "https://www.sikkertrafik.dk/knallert/c-koreteknik/",
+          "section": "stoplængde / bremselængde",
+          "versionOrDate": "hentet 2026-11-17"
+        },
+        {
+          "title": "Færdselsstyrelsen: Teoribog på dansk for køreundervisning i Grønland, 2026 (fysik-eksempel, ikke dansk lovgrundlag)",
+          "url": "https://cdn.fstyr.dk/faerdselsstyrelsen/Media/639040783843417797/Teoribog%20p%C3%A5%20dansk%20for%20k%C3%B8reundervisning%20i%20Gr%C3%B8nland,%202026.pdf",
+          "section": "afsnit om bremselængde (30 km/t: 6 m; 60 km/t: 24 m)",
+          "versionOrDate": "2026"
+        }
+      ],
+      "note": "Fysisk definition, som i teoriundervisningen."
+    },
+    {
+      "line": 403,
+      "rowKeyDa": "Når farten fordobles, bliver bremselængden fire gange så lang.",
+      "claim": "Dobbelt fart giver fire gange så lang bremselængde.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Rådet for Sikker Trafik (sekundær): C Køreteknik (stopafstand, reaktions- og bremselængde)",
+          "url": "https://www.sikkertrafik.dk/knallert/c-koreteknik/",
+          "section": "stoplængde / bremselængde",
+          "versionOrDate": "hentet 2026-11-17"
+        },
+        {
+          "title": "Færdselsstyrelsen: Teoribog på dansk for køreundervisning i Grønland, 2026 (fysik-eksempel, ikke dansk lovgrundlag)",
+          "url": "https://cdn.fstyr.dk/faerdselsstyrelsen/Media/639040783843417797/Teoribog%20p%C3%A5%20dansk%20for%20k%C3%B8reundervisning%20i%20Gr%C3%B8nland,%202026.pdf",
+          "section": "afsnit om bremselængde (30 km/t: 6 m; 60 km/t: 24 m)",
+          "versionOrDate": "2026"
+        }
+      ],
+      "note": "Bremselængden vokser med kvadratet på hastigheden (fx 30 km/t: 6 m; 60 km/t: 24 m). Reaktionslængden fordobles kun."
+    },
+    {
+      "line": 404,
+      "rowKeyDa": "Du skal skifte til nærlys, når der kommer modkørende.",
+      "claim": "Skift til nærlys ved modkørende.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 33, stk. 3, nr. 2, og stk. 4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Fjernlys må heller ikke bruges bag et andet køretøj, der kan blændes, eller på tilstrækkeligt oplyst vej."
+    },
+    {
+      "line": 405,
+      "rowKeyDa": "Du skal give plads til udrykningskøretøjer.",
+      "claim": "Du skal give plads til udrykningskøretøjer.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 7, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Ved udrykningssignaler skal andre trafikanter i god tid holde vejen åben og om nødvendigt standse."
+    },
+    {
+      "line": 406,
+      "rowKeyDa": "Børn under 135 cm skal sidde i en godkendt autostol eller på en selepude.",
+      "claim": "Børn under 135 cm skal bruge godkendt autostol eller selepude.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 80 a, stk. 1-5",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Loven kræver 'godkendt sikkerhedsudstyr tilpasset barnets højde og vægt' i biler (ikke busser); særregler for biler uden seler (stk. 2), forbud mod bagudvendt stol foran aktiv airbag (stk. 3); ministeren kan fastsætte undtagelser (stk. 5)."
+    },
+    {
+      "line": 407,
+      "rowKeyDa": "Du må ikke parkere på fortovet.",
+      "claim": "Du må ikke parkere på fortovet.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 28, stk. 3",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Forbuddet gælder også standsning. Undtagelse: uden for tættere bebygget område må køretøjer ≤ 3.500 kg holde med en del af køretøjet på fortov."
+    },
+    {
+      "line": 408,
+      "rowKeyDa": "Du skal normalt parkere i højre side af vejen.",
+      "claim": "Du skal normalt parkere i højre side.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 28, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Venstre side tilladt på mindre befærdet vej og ensrettet vej."
+    },
+    {
+      "line": 409,
+      "rowKeyDa": "Ved gult lys skal du standse, hvis det kan ske uden fare.",
+      "claim": "Ved gult lys skal du standse, hvis det kan ske uden fare.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 65, stk. 5",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Gult betyder stop, medmindre standsning ville medføre fare."
+    },
+    {
+      "line": 410,
+      "rowKeyDa": "Du skal tilpasse farten efter forholdene.",
+      "claim": "Du skal tilpasse farten efter forholdene.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 41, stk. 1-2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": ""
+    },
+    {
+      "line": 411,
+      "rowKeyDa": "Hold god afstand til bilen foran.",
+      "claim": "Hold god afstand til bilen foran.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 15, stk. 3",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Afstanden skal være så stor, at der ikke er fare for påkørsel, hvis bilen foran bremser."
+    },
+    {
+      "line": 412,
+      "rowKeyDa": "I de fleste rundkørsler har du vigepligt for trafikken i rundkørslen.",
+      "claim": "I de fleste rundkørsler har du vigepligt for trafikken i rundkørslen.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 16, B 11 Ubetinget vigepligt (evt. med D 12 Påbudt kørselsretning i rundkørsel)",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 26, stk. 2 og 4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Korrekt fordi rundkørsler normalt er afmærket med ubetinget vigepligt (B 11/hajtænder). Uden afmærkning gælder højrevigepligt; 'de fleste' dækker dette."
+    },
+    {
+      "line": 413,
+      "rowKeyDa": "I byen skal du lade bussen køre ud fra stoppestedet, når den blinker ud.",
+      "claim": "I byen skal du lade bussen køre ud fra stoppestedet, når den blinker ud.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 19, stk. 1",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Gælder i tættere bebygget område; bussen skal stadig udvise særlig forsigtighed."
+    },
+    {
+      "line": 414,
+      "rowKeyDa": "Et blinkende gult lys betyder, at du skal være ekstra forsigtig.",
+      "claim": "Blinkende gult lys betyder ekstra forsigtighed.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 69, Z 93 Gult blinksignal",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": ""
+    },
+    {
+      "line": 415,
+      "rowKeyDa": "Tågebaglygten må kun bruges ved stærkt nedsat sigtbarhed.",
+      "claim": "Tågebaglygten må kun bruges ved stærkt nedsat sigtbarhed.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 33, stk. 5-6",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Loven siger: tågelygter må kun anvendes i tåge og under kraftig nedbør; lygter må ikke blænde andre. Formuleringen er en rimelig forenkling."
+    },
+    {
+      "line": 416,
+      "rowKeyDa": "Du må ikke standse eller parkere i et kryds.",
+      "claim": "Du må ikke standse eller parkere i et kryds.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 29, stk. 1, nr. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Forbuddet gælder også inden for 10 m fra den tværgående kørebanes nærmeste kant."
+    },
+    {
+      "line": 417,
+      "rowKeyDa": "En varsellinje advarer om en spærrelinje længere fremme.",
+      "claim": "En varsellinje advarer om en spærrelinje længere fremme.",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse om vejafmærkning",
+          "url": "https://www.retsinformation.dk/eli/lta/2023/425",
+          "section": "§ 55, Q 42 Varslingslinje",
+          "versionOrDate": "BEK nr. 425 af 13.04.2023"
+        }
+      ],
+      "note": "Officielt ord er 'varslingslinje'. Den bruges som forvarsling for spærrelinje, men også som midterlinje på smalle veje med dårlig oversigt; den må overskrides med særlig agtpågivenhed."
+    },
+    {
+      "line": 418,
+      "rowKeyDa": "På en motortrafikvej er fartgrænsen 80 km/t, hvis intet andet er skiltet.",
+      "claim": "På motortrafikvej er fartgrænsen 80 km/t, hvis intet andet er skiltet.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 42, stk. 3-4",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Kan skiltes op til højst 100 km/t."
+    },
+    {
+      "line": 419,
+      "rowKeyDa": "Som ny bilist får du kørselsforbud ved to klip inden for de første tre år.",
+      "claim": "Ny bilist: kørselsforbud ved to klip inden for de første tre år.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 125, stk. 2-3",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 127",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "borger.dk: Færdselsloven og fartgrænser (skrevet af Færdselsstyrelsen)",
+          "url": "https://www.borger.dk/politi-retsvaesen-forsvar/Politi/Faerdselsloven-og-fartgraenser",
+          "section": "generelle hastighedsgrænser; klip for nye bilister",
+          "versionOrDate": "hentet 2026-11-17"
+        },
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Korrekt. Bemærk: også en enkelt grov forseelse (fx > 60 % for hurtigt, spirituskørsel, herunder over 0,2 promille) giver kørselsforbud i de første 3 år."
+    },
+    {
+      "line": 420,
+      "rowKeyDa": "Du må ikke køre, hvis du er påvirket af alkohol eller narko.",
+      "claim": "Du må ikke køre påvirket af alkohol eller narko.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 53",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 54, stk. 1-2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Promillegrænser: 0,50 (0,20 for nye kat. B-bilister); narko: nultolerance for bevidsthedspåvirkende stoffer."
+    },
+    {
+      "line": 421,
+      "rowKeyDa": "Lastbiler må højst køre 80 km/t på motorvejen.",
+      "claim": "Lastbiler må højst køre 80 km/t på motorvejen.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 43, stk. 2",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Gælder biler > 3.500 kg tilladt totalvægt (lastbiler) på alle veje."
+    },
+    {
+      "line": 439,
+      "rowKeyDa": "Mønsterdybden skal være mindst 1,6 mm.",
+      "claim": "Mønsterdybden skal være mindst 1,6 mm.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Vejledning om dæk",
+          "url": "https://www.fstyr.dk/privat/krav-til-koeretoejer/vejledning-om-daek",
+          "section": "Lovkrav til dæk / Mønsterdybde",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 67, stk. 3",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        },
+        {
+          "title": "Rådet for Sikker Trafik (sekundær): Regler om vinterdæk",
+          "url": "https://www.sikkertrafik.dk/rad-og-viden/bil/bilens-udstyr/regler-om-vinterdaek/",
+          "section": "egnede dæk fra 1. juli 2025",
+          "versionOrDate": "hentet 2026-11-17"
+        }
+      ],
+      "note": "Lovkrav for personbil. Fra 1. juli 2025 skal føreren også undgå åbenbart uegnede dæk (fx sommerdæk på sne/is); RFST anbefaler mindst 3 mm på vinterdæk."
+    },
+    {
+      "line": 491,
+      "rowKeyDa": "Jeg skal til lægen for at få en lægeerklæring.",
+      "claim": "Man skal til lægen for at få en lægeerklæring.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Lægeattesten startes digitalt og færdiggøres hos lægen; højst 6 måneder gammel."
+    },
+    {
+      "line": 492,
+      "rowKeyDa": "Jeg har taget førstehjælpskurset.",
+      "claim": "Førstehjælpskursus er en del af forløbet.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "8 timers færdselsrelateret førstehjælp; skal være gennemført før booking af teoriprøven."
+    },
+    {
+      "line": 493,
+      "rowKeyDa": "Jeg skal på glatbane på lørdag.",
+      "claim": "Glatbane er en del af forløbet.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Obligatorisk køreteknisk anlæg."
+    },
+    {
+      "line": 494,
+      "rowKeyDa": "Jeg skal aflevere ansøgningen i Borgerservice.",
+      "claim": "Ansøgningen afleveres i Borgerservice.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Eleven eller kørelæreren afleverer ansøgningen i borgerservice."
+    },
+    {
+      "line": 499,
+      "rowKeyDa": "Husk at tage billedlegitimation med.",
+      "claim": "Husk billedlegitimation.",
+      "verdict": "correct",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        }
+      ],
+      "note": "Gyldigt billed-ID kræves ved ansøgning og ved køreprøven."
+    },
+    {
+      "line": 503,
+      "rowKeyDa": "Kan jeg få en tolk til teoriprøven?",
+      "claim": "Spørgsmål om tolk til teoriprøven (forudsætter at det er muligt).",
+      "verdict": "incomplete-or-misleading",
+      "jurisdiction": "DK",
+      "reviewDate": "2026-11-17",
+      "sources": [
+        {
+          "title": "Færdselsstyrelsen: Nye regler for sprog ved køreprøver fra den 1. januar 2025",
+          "url": "https://www.fstyr.dk/nyheder/2024/nov/-nye-regler-for-sprog-ved-koereproever-fra-den-1-januar-2025",
+          "section": "nyhed",
+          "versionOrDate": "12.11.2024 (regler gældende fra 01.01.2025)"
+        },
+        {
+          "title": "Færdselsstyrelsen: Tag kørekort. Sådan gør du",
+          "url": "https://www.fstyr.dk/privat/koerekort/dit-foerste-koerekort/tag-koerekort-saadan-goer-du",
+          "section": "lægeattest, ansøgning, førstehjælp, glatbane, teoriprøve, køreprøve, efter prøven",
+          "versionOrDate": "© Færdselsstyrelsen 2026, hentet 2026-11-17"
+        },
+        {
+          "title": "Bekendtgørelse af færdselsloven",
+          "url": "https://www.retsinformation.dk/eli/lta/2026/118",
+          "section": "§ 56, stk. 7",
+          "versionOrDate": "LBK nr. 118 af 12.01.2026 (Lovtidende udg. 24.01.2026; seneste konsolidering fundet pr. 2026-11-17)"
+        }
+      ],
+      "note": "Fra 1. januar 2025 kan teori- og køreprøve ikke tages med tolk. Prøven kan tages på dansk eller engelsk (tysk visse steder; færøsk/grønlandsk med tolk bestilt af Færdselsstyrelsen); tegnsprogstolk for hørehæmmede. For russisk-/ukrainsktalende er det relevante spørgsmål engelsk."
+    }
+  ]
+}
