@@ -39,7 +39,15 @@ const LIBRARY_TEXT = {
     "importError": "Filen er ikke en gyldig sikkerhedskopi.",
     "chooseAnother": "Vælg en anden liste for at gemme ordet dér.",
     "unfavorite": "Fjern fra gemte ord",
-    "custom": "Egne ord"
+    "custom": "Egne ord",
+    "filter": "Søg i denne liste",
+    "noMatches": "Ingen ord matcher din søgning.",
+    "rename": "Omdøb liste",
+    "duplicateName": "Du har allerede en liste med det navn.",
+    "targetLanguage": "Jeg lærer",
+    "baseLanguage": "Oversæt til",
+    "listen": "Hør ordet",
+    "backup": "Sikkerhedskopi og flytning"
   },
   "en": {
     "title": "My words",
@@ -80,7 +88,15 @@ const LIBRARY_TEXT = {
     "importError": "This file is not a valid backup.",
     "chooseAnother": "Choose another list to save the word there.",
     "unfavorite": "Remove from saved words",
-    "custom": "Your own words"
+    "custom": "Your own words",
+    "filter": "Search this list",
+    "noMatches": "No words match your search.",
+    "rename": "Rename list",
+    "duplicateName": "You already have a list with that name.",
+    "targetLanguage": "I am learning",
+    "baseLanguage": "Translate into",
+    "listen": "Listen to the word",
+    "backup": "Backup and transfer"
   },
   "ru": {
     "title": "Мои слова",
@@ -121,7 +137,15 @@ const LIBRARY_TEXT = {
     "importError": "Это не файл резервной копии.",
     "chooseAnother": "Выберите другой список, чтобы сохранить слово в нём.",
     "unfavorite": "Убрать из сохранённых слов",
-    "custom": "Свои слова"
+    "custom": "Свои слова",
+    "filter": "Поиск в этом списке",
+    "noMatches": "Нет слов по вашему запросу.",
+    "rename": "Переименовать список",
+    "duplicateName": "Список с таким названием уже существует.",
+    "targetLanguage": "Я изучаю",
+    "baseLanguage": "Переводить на",
+    "listen": "Послушать слово",
+    "backup": "Резервная копия и перенос"
   },
   "uk": {
     "title": "Мої слова",
@@ -162,7 +186,15 @@ const LIBRARY_TEXT = {
     "importError": "Це не файл резервної копії.",
     "chooseAnother": "Виберіть інший список, щоб зберегти слово в ньому.",
     "unfavorite": "Прибрати зі збережених слів",
-    "custom": "Власні слова"
+    "custom": "Власні слова",
+    "filter": "Пошук у цьому списку",
+    "noMatches": "Немає слів за вашим запитом.",
+    "rename": "Перейменувати список",
+    "duplicateName": "Список із такою назвою вже існує.",
+    "targetLanguage": "Я вивчаю",
+    "baseLanguage": "Перекладати на",
+    "listen": "Послухати слово",
+    "backup": "Резервна копія та перенесення"
   }
 };
 const lt = (key) => LIBRARY_TEXT[uiLang()][key];
@@ -170,11 +202,35 @@ let dictionaryData = null;
 let dictionaryPromise = null;
 let libraryActive = 'favorites';
 let libraryVisible = 50;
+let libraryFilter = '';
+let librarySearch = '';
 const dictionaryNorm = (s) => s.trim().toLocaleLowerCase().normalize('NFC');
 function libraryPair() {
-  const target = state.settings?.target || 'da';
-  const preferred = state.settings?.base || uiLang();
+  const target = state.libraryPair?.target || state.settings?.target || 'da';
+  const preferred = state.libraryPair?.base || state.settings?.base || uiLang();
   return { target, base: preferred === target ? (target === 'en' ? 'da' : 'en') : preferred };
+}
+function libraryFilteredItems() {
+  const q = dictionaryNorm(libraryFilter);
+  return (wordLibrary.list(libraryActive)?.items || []).filter((id) => !q || Object.values(ITEM[canonicalWord(id)]?.words || {}).some((word) => dictionaryNorm(word).includes(q)));
+}
+function libraryAudio(x, lang) {
+  return x.words[lang] && 'speechSynthesis' in window ? `<button class="secondary library-audio" data-listen-word="${esc(x.id)}" data-listen-lang="${lang}" aria-label="${esc(lt('listen') + ': ' + x.words[lang])}">${SPEAK_SVG}</button>` : '';
+}
+function bindLibraryAudio(container) {
+  container.querySelectorAll('[data-listen-word]').forEach((button) => button.onclick = () => speak(ITEM[button.dataset.listenWord].words[button.dataset.listenLang], button.dataset.listenLang, true));
+}
+function renameLibraryList() {
+  const dialog = $('saveWordDialog');
+  dialog.setAttribute('aria-label', lt('rename'));
+  dialog.innerHTML = `<form id="renameListForm"><h2>${esc(lt('rename'))}</h2><label for="renameListName">${esc(lt('listName'))}</label><input id="renameListName" maxlength="60" required value="${esc(libraryTitle(libraryActive))}"><p id="renameListError" role="status"></p><div class="row actions"><button type="button" class="secondary" id="cancelRename">${esc(t('cancel'))}</button><button class="primary">${esc(lt('save'))}</button></div></form>`;
+  $('cancelRename').onclick = () => dialog.close();
+  $('renameListForm').onsubmit = (event) => {
+    event.preventDefault();
+    try { wordLibrary.renameList(libraryActive, $('renameListName').value); saveState(); dialog.close(); renderLibrary(); }
+    catch (error) { $('renameListError').textContent = lt(error.message === 'duplicate' ? 'duplicateName' : 'nameError'); }
+  };
+  dialog.showModal(); $('renameListName').select();
 }
 function libraryTitle(id) { return id === 'favorites' ? lt('favorites') : wordLibrary.list(id)?.name || lt('title'); }
 function canonicalWord(id) { return dictionaryData?.aliases[id] || id; }
@@ -249,6 +305,29 @@ function bindWordSave(x) {
   };
   $('wordListBtn').onclick = () => saveToListDialog(x.id);
 }
+function renderSavedLibraryRows(pair) {
+  const list = wordLibrary.list(libraryActive);
+  const filtered = libraryFilteredItems();
+  const row = (id) => {
+    const x = ITEM[canonicalWord(id)];
+    if (!x) return `<li class="library-word"><span>${esc(id)}</span><button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></li>`;
+    return `<li class="library-word"><div><b lang="${pair.target}">${esc(x.words[pair.target] || '—')}</b><span lang="${pair.base}">${esc(x.words[pair.base] || '—')}</span></div><div class="library-row-actions">${libraryAudio(x, pair.target)}<button class="secondary" data-add-word="${esc(id)}">${esc(lt('addTo'))}</button>${id.startsWith('user:') ? `<button class="secondary" data-edit-word="${esc(id)}">${esc(lt('edit'))}</button>` : ''}<button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></div></li>`;
+  };
+  $('savedListResults').innerHTML = list.items.length ? filtered.length ? `<ul class="library-words">${filtered.slice(0, libraryVisible).map(row).join('')}</ul>${filtered.length > libraryVisible ? `<button class="secondary" id="moreLibraryWords">${esc(lt('more'))}</button>` : ''}` : `<p role="status">${esc(lt('noMatches'))}</p>` : `<p class="empty-list">${esc(lt('empty'))}</p>`;
+  $('listFilterControl').hidden = !list.items.length;
+  $('libraryListTitle').innerHTML = `${esc(libraryTitle(libraryActive))} <small>${list.items.length}</small>`;
+  $('practiceList').disabled = !listPool(libraryActive, pair).length;
+  $('app').querySelectorAll('[data-list-id]').forEach((button) => button.querySelector('small').textContent = wordLibrary.list(button.dataset.listId).items.length);
+  bindLibraryAudio($('savedListResults'));
+  $('app').querySelectorAll('[data-remove-word]').forEach((button) => button.onclick = () => { wordLibrary.remove(button.dataset.removeWord, libraryActive); saveState(); renderSavedLibraryRows(pair); renderDictionaryResults(pair); });
+  $('app').querySelectorAll('[data-add-word]').forEach((button) => button.onclick = () => saveToListDialog(button.dataset.addWord));
+  $('app').querySelectorAll('[data-edit-word]').forEach((button) => button.onclick = () => {
+    const id = button.dataset.editWord; const entry = wordLibrary.data.custom[id];
+    $('customWordDetails').open = true; $('customWordForm').dataset.editId = id;
+    $('ownWord').value = entry.words[pair.target] || ''; $('ownTranslation').value = entry.words[pair.base] || ''; $('saveOwnWord').textContent = lt('update'); $('ownWord').focus();
+  });
+  if ($('moreLibraryWords')) $('moreLibraryWords').onclick = () => { libraryVisible += 50; renderSavedLibraryRows(pair); };
+}
 function renderLibrary() {
   if (!dictionaryData) {
     $('app').innerHTML = `<p role="status">${esc(t('loading'))}</p>`;
@@ -261,38 +340,40 @@ function renderLibrary() {
   const pair = libraryPair();
   const list = wordLibrary.list(libraryActive);
   const options = (selected) => Object.keys(LANGS).map((lang) => `<option value="${lang}"${lang === selected ? ' selected' : ''}>${esc(LANGS[lang].name)}</option>`).join('');
-  const row = (id) => {
-    const x = ITEM[canonicalWord(id)];
-    if (!x) return `<li class="library-word"><span>${esc(id)}</span><button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></li>`;
-    return `<li class="library-word"><div><b lang="${pair.target}">${esc(x.words[pair.target] || '—')}</b><span lang="${pair.base}">${esc(x.words[pair.base] || '—')}</span></div><div class="library-row-actions"><button class="secondary" data-add-word="${esc(id)}">${esc(lt('addTo'))}</button>${id.startsWith('user:') ? `<button class="secondary" data-edit-word="${esc(id)}">${esc(lt('edit'))}</button>` : ''}<button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></div></li>`;
-  };
-  $('app').innerHTML = `<section class="library"><h1>${esc(lt('title'))}</h1><p class="course-note">${esc(lt('local'))}</p><div class="library-backup"><button class="secondary" id="exportLibrary">${esc(lt('export'))}</button><label class="secondary import-label">${esc(lt('import'))}<input type="file" id="importLibrary" accept="application/json,.json"></label></div><p id="libraryMessage" role="status"></p>
+  $('app').innerHTML = `<section class="library"><h1>${esc(lt('title'))}</h1><div class="library-pair"><div><label for="libraryTarget">${esc(lt('targetLanguage'))}</label><select id="libraryTarget">${options(pair.target)}</select></div><div><label for="libraryBase">${esc(lt('baseLanguage'))}</label><select id="libraryBase">${options(pair.base)}</select></div></div><p id="libraryMessage" role="status"></p>
     <nav class="list-tabs" aria-label="${esc(lt('lists'))}">${[{ id: 'favorites', name: lt('favorites'), items: wordLibrary.data.favorites }, ...wordLibrary.data.lists].map((entry) => `<button class="chip" data-list-id="${esc(entry.id)}" aria-pressed="${entry.id === libraryActive}">${esc(entry.name)} <small>${entry.items.length}</small></button>`).join('')}</nav>
     <form class="new-list-form" id="newListForm"><label for="newListName">${esc(lt('newList'))}</label><div class="row"><input id="newListName" maxlength="60" placeholder="${esc(lt('listName'))}" required><button class="secondary">${esc(lt('create'))}</button></div></form>
-    <div class="library-title"><h2>${esc(libraryTitle(libraryActive))} <small>${list.items.length}</small></h2><button class="primary" id="practiceList"${listPool(libraryActive, pair).length ? '' : ' disabled'}>${esc(lt('practice'))}</button></div><p class="course-note">${esc(LANGS[pair.target].name)} ← ${esc(LANGS[pair.base].name)}. ${esc(lt('pairNote'))}</p>
-    ${list.items.length ? `<ul class="library-words">${list.items.slice(0, libraryVisible).map(row).join('')}</ul>${list.items.length > libraryVisible ? `<button class="secondary" id="moreLibraryWords">${esc(lt('more'))}</button>` : ''}` : `<p class="empty-list">${esc(lt('empty'))}</p>`}
-    ${libraryActive !== 'favorites' ? `<button class="text-button" id="deleteLibraryList">${esc(lt('delete'))}</button>` : ''}
+    <div class="library-title"><h2 id="libraryListTitle">${esc(libraryTitle(libraryActive))} <small>${list.items.length}</small></h2><button class="primary" id="practiceList"${listPool(libraryActive, pair).length ? '' : ' disabled'}>${esc(lt('practice'))}</button></div><p class="course-note">${esc(lt('pairNote'))}</p>
+    <div id="listFilterControl"${list.items.length ? '' : ' hidden'}><label for="listFilter">${esc(lt('filter'))}</label><input id="listFilter" type="search" value="${esc(libraryFilter)}" autocomplete="off" aria-controls="savedListResults"></div>
+    <div id="savedListResults"></div>
+    ${libraryActive !== 'favorites' ? `<div class="list-management"><button class="secondary" id="renameLibraryList">${esc(lt('rename'))}</button><button class="text-button" id="deleteLibraryList">${esc(lt('delete'))}</button></div>` : ''}
     <section class="dictionary-search"><h2>${esc(lt('search'))}</h2><p class="course-note">${LEXICON_INDEX.entries.toLocaleString(uiLang())} ${esc(lt('dictionaryCount'))}</p><label for="librarySearch">${esc(lt('search'))}</label><input id="librarySearch" type="search" autocomplete="off" aria-controls="dictionaryResults"><div id="dictionaryResults" aria-live="polite"></div></section>
     <details class="custom-word" id="customWordDetails"><summary>${esc(lt('addOwn'))}</summary><form id="customWordForm"><label for="ownTarget">${esc(lt('word'))}</label><select id="ownTarget">${options(pair.target)}</select><input aria-label="${esc(lt('word'))}" id="ownWord" maxlength="300" required autocomplete="off"><label for="ownBase">${esc(lt('translation'))}</label><select id="ownBase">${options(pair.base)}</select><input aria-label="${esc(lt('translation'))}" id="ownTranslation" maxlength="300" required autocomplete="off"><p id="translationHint" role="status"></p><button class="primary" id="saveOwnWord">${esc(lt('save'))}</button></form></details>
+    <details class="library-transfer"><summary>${esc(lt('backup'))}</summary><p class="course-note">${esc(lt('local'))}</p><div class="library-backup"><button class="secondary" id="exportLibrary">${esc(lt('export'))}</button><label class="secondary import-label">${esc(lt('import'))}<input type="file" id="importLibrary" accept="application/json,.json"></label></div></details>
     ${state.settings ? `<p><button class="secondary" id="libraryBack">${esc(lt('back'))}</button></p>` : ''}</section>`;
-  $('app').querySelectorAll('[data-list-id]').forEach((button) => button.onclick = () => { libraryActive = button.dataset.listId; libraryVisible = 50; renderLibrary(); });
+  $('app').querySelectorAll('[data-list-id]').forEach((button) => button.onclick = () => { libraryActive = button.dataset.listId; libraryVisible = 50; libraryFilter = ''; renderLibrary(); });
+  for (const [id, field, other] of [['libraryTarget', 'target', 'base'], ['libraryBase', 'base', 'target']]) $(id).onchange = () => {
+    const updated = { ...pair, [field]: $(id).value };
+    if (updated[field] === updated[other]) updated[other] = pair[field];
+    state.libraryPair = updated; saveState(); renderLibrary();
+  };
+  renderSavedLibraryRows(pair);
+  if ($('renameLibraryList')) $('renameLibraryList').onclick = renameLibraryList;
+  if ($('listFilter')) $('listFilter').oninput = (event) => {
+    libraryFilter = event.target.value; libraryVisible = 50;
+    renderSavedLibraryRows(pair);
+  };
   $('newListForm').onsubmit = (event) => { event.preventDefault(); try { libraryActive = wordLibrary.createList($('newListName').value).id; saveState(); renderLibrary(); } catch { $('libraryMessage').textContent = lt('nameError'); } };
   $('practiceList').onclick = () => {
     const previous = state.settings || {};
     state.settings = { ...previous, ...pair, pack: 'list:' + libraryActive, dir: 'rec', diff: 3, cats: null };
     saveState(); current = null; placement = null; go('play');
   };
-  $('app').querySelectorAll('[data-remove-word]').forEach((button) => button.onclick = () => { wordLibrary.remove(button.dataset.removeWord, libraryActive); saveState(); renderLibrary(); });
-  $('app').querySelectorAll('[data-add-word]').forEach((button) => button.onclick = () => saveToListDialog(button.dataset.addWord));
-  $('app').querySelectorAll('[data-edit-word]').forEach((button) => button.onclick = () => {
-    const id = button.dataset.editWord; const entry = wordLibrary.data.custom[id];
-    $('customWordDetails').open = true; $('customWordForm').dataset.editId = id;
-    $('ownWord').value = entry.words[pair.target] || ''; $('ownTranslation').value = entry.words[pair.base] || ''; $('saveOwnWord').textContent = lt('update'); $('ownWord').focus();
-  });
-  if ($('moreLibraryWords')) $('moreLibraryWords').onclick = () => { libraryVisible += 50; renderLibrary(); };
   if ($('deleteLibraryList')) $('deleteLibraryList').onclick = () => { if (confirm(lt('deleteQ'))) { wordLibrary.data.lists = wordLibrary.data.lists.filter((entry) => entry.id !== libraryActive); libraryActive = 'favorites'; saveState(); renderLibrary(); } };
   if ($('libraryBack')) $('libraryBack').onclick = () => go('play');
-  $('librarySearch').oninput = () => renderDictionaryResults(pair);
+  $('librarySearch').value = librarySearch;
+  renderDictionaryResults(pair);
+  $('librarySearch').oninput = () => { librarySearch = $('librarySearch').value; renderDictionaryResults(pair); };
   $('ownWord').oninput = () => {
     const matches = dictionaryMatches($('ownWord').value, { target: $('ownTarget').value, base: $('ownBase').value }).filter((x) => dictionaryNorm(x.words[$('ownTarget').value]) === dictionaryNorm($('ownWord').value));
     if (matches.length === 1 && !$('customWordForm').dataset.editId) { $('ownTranslation').value = matches[0].words[$('ownBase').value]; $('translationHint').textContent = lt('found'); }
@@ -319,7 +400,8 @@ function renderDictionaryResults(pair) {
   $('dictionaryResults').innerHTML = results.length ? `<ul class="library-words">${results.map((x) => `<li class="library-word"><div><b lang="${pair.target}">${esc(x.words[pair.target])}</b><span lang="${pair.base}">${esc(x.words[pair.base])}</span></div><button class="secondary" data-dictionary-id="${esc(x.id)}"${wordLibrary.list(libraryActive).items.includes(x.id) ? ' disabled' : ''}>${esc(wordLibrary.list(libraryActive).items.includes(x.id) ? lt('saved') : lt('save'))}</button></li>`).join('')}</ul>` : query.trim() ? `<p>${esc(lt('notFound'))}</p>` : '';
   $('dictionaryResults').querySelectorAll('[data-dictionary-id]').forEach((button) => button.onclick = () => {
     wordLibrary.add(button.dataset.dictionaryId, libraryActive); saveState();
-    const q = $('librarySearch').value; renderLibrary(); $('librarySearch').value = q; renderDictionaryResults(pair); $('librarySearch').focus();
+    button.disabled = true; button.textContent = lt('saved');
+    renderSavedLibraryRows(pair);
   });
 }
 function exportLibrary() {
