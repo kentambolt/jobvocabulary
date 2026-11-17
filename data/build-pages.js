@@ -3,16 +3,18 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const crypto = require('crypto');
+const catalog = require('../catalog');
 
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://trafficwords.com';
+const SITE = 'https://jobvocabulary.com';
 const LANGS = ['da', 'en', 'ru', 'uk'];
 const LANG_NAME = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська' };
-const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'driving'];
+const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'essentials', 'driving'];
 
 const T = {
   da: {
-    title: (n) => `${n} – lær de danske ord og sætninger | Topwords`,
+    title: (n) => `${n} – lær de danske ord og sætninger | Job Vocabulary`,
     sub: 'Lær de danske ord og sætninger – ét ad gangen',
     intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk og ukrainsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
     cta: 'Start med at øve – gratis',
@@ -27,7 +29,7 @@ const T = {
     n: (k) => `${k}`,
   },
   en: {
-    title: (n) => `${n} – learn the Danish words and phrases | Topwords`,
+    title: (n) => `${n} – learn the Danish words and phrases | Job Vocabulary`,
     sub: 'Learn the Danish words and phrases – one at a time',
     intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian and Ukrainian. The most important come first, and what you know comes back less often.`,
     cta: 'Start practising – free',
@@ -41,7 +43,7 @@ const T = {
     others: 'Other topics', langs: 'Read this page in', home: 'Home', free: 'Free · no login · works on your phone',
   },
   ru: {
-    title: (n) => `${n}: датские слова и фразы | Topwords`,
+    title: (n) => `${n}: датские слова и фразы | Job Vocabulary`,
     sub: 'Учите датские слова и фразы – по одной за раз',
     intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводом на русский, украинский и английский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
     cta: 'Начать учить – бесплатно',
@@ -55,7 +57,7 @@ const T = {
     others: 'Другие темы', langs: 'Эта страница на других языках', home: 'Главная', free: 'Бесплатно · без регистрации · работает на телефоне',
   },
   uk: {
-    title: (n) => `${n}: данські слова і фрази | Topwords`,
+    title: (n) => `${n}: данські слова і фрази | Job Vocabulary`,
     sub: 'Вивчайте данські слова і фрази – по одній за раз',
     intro: (total, cats) => `${total} слів і фраз у ${cats} темах з перекладом українською, російською та англійською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
     cta: 'Почати вчити – безкоштовно',
@@ -124,18 +126,19 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">${JSON.stringify({
-    '@context': 'https://schema.org', '@type': 'Course', name: t.title(name).replace(' | Topwords', ''), description: desc, inLanguage: lang,
-    isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Topwords', url: SITE + '/' },
+    '@context': 'https://schema.org', '@type': 'Course', name: t.title(name).replace(' | Job Vocabulary', ''), description: desc, inLanguage: lang,
+    isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Job Vocabulary', url: SITE + '/' },
   })}</script>
 </head>
 <body class="page">
-  <header class="top"><a class="brand" href="/">Top<span>words</span></a></header>
+  <header class="top"><a class="brand" href="/">Job<span>Vocabulary</span></a><a class="catalog-link" href="/${lang}/">${esc(catalog.labels[lang].back)}</a></header>
   <main>
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
     <p>${esc(p.desc[lang])}. ${esc(t.intro(total, p.categories.length))}</p>
     <p><a class="primary cta" href="/#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
     <p class="tagline">${esc(t.free)}</p>
+    ${p.id === 'driving' ? `<p class="course-note">${esc(catalog.labels[lang].safety)}</p>` : ''}
 
     <h2>${esc(t.howTitle)}</h2>
     <ol class="how">${t.how.map((h) => `<li>${esc(h)}</li>`).join('')}</ol>
@@ -155,7 +158,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     <ul class="links">${packs.filter((o) => o.id !== p.id).map((o) => `<li><a href="${urlOf(o, lang)}">${esc(o.name[lang])}</a></li>`).join('')}</ul>
 
     <p class="langs">${esc(t.langs)}: ${LANGS.filter((l) => l !== lang).map((l) => `<a href="${urlOf(p, l)}" hreflang="${l}" lang="${l}">${esc(LANG_NAME[l])}</a>`).join(' · ')}</p>
-    <p><a href="/">${esc(t.home)}</a></p>
+    <p><a href="/${lang}/">${esc(catalog.labels[lang].back)}</a></p>
   </main>
 </body>
 </html>
@@ -164,10 +167,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
 
 // --- skriv sider ---
 const urls = [`${SITE}/`];
-for (const lang of LANGS) {
-  const dir = path.join(ROOT, lang);
-  if (fs.existsSync(dir)) fs.rmSync(dir, { recursive: true });
-}
+// Preserve published URLs and any hand-authored files; overwrite only generated pages.
 for (const p of packs) {
   for (const lang of LANGS) {
     const rel = urlOf(p, lang);
@@ -181,9 +181,57 @@ for (const p of packs) {
 // --- links på forsiden (mellem markørerne i index.html) ---
 const indexPath = path.join(ROOT, 'index.html');
 const html = fs.readFileSync(indexPath, 'utf8');
-const links = `<!-- JOBS -->\n    <nav class="jobs" aria-label="Emner">${packs.map((p) => `<a href="${urlOf(p, 'da')}">${esc(p.name.da)}</a>`).join(' ')}</nav>\n    <!-- /JOBS -->`;
+const links = `<!-- JOBS -->\n    <nav class="jobs" aria-label="Emner">${catalog.groups.map((g) => `<a class="category-entry" href="/da/#${g.id}"><b>${esc(g.name.da)}</b><small>${esc(g.desc.da)}</small><span aria-hidden="true">→</span></a>`).join('')}</nav>\n    <!-- /JOBS -->`;
 if (!/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/.test(html)) throw new Error('index.html mangler <!-- JOBS --> markører');
 fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, links));
+
+// Public, indexable course catalogue in each interface language.
+for (const lang of LANGS) {
+  const l = catalog.labels[lang];
+  const card = (id) => {
+    const p = packs.find((p) => p.id === id);
+    const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
+    const description = p ? p.desc[lang] : id === 'top' ? l.basic : l.pictureDesc;
+    const href = p ? urlOf(p, lang) : `/#start=${id}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
+    return `<article class="course-card" data-course><h3><a href="${href}">${esc(title)}</a></h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<a class="course-open" href="${href}">${esc(p ? l.open : l.practice)} <span aria-hidden="true">→</span></a></article>`;
+  };
+  const canonical = `${SITE}/${lang}/`;
+  const output = `<!doctype html>
+<html lang="${lang}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${esc(l.catalog)} – ${esc(l.lead)} | Job Vocabulary</title>
+  <meta name="description" content="${esc(l.intro)}">
+  <link rel="canonical" href="${canonical}">
+${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE}/${other}/">`).join('\n')}
+  <link rel="alternate" hreflang="x-default" href="${SITE}/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:title" content="${esc(l.catalog)} | Job Vocabulary">
+  <meta property="og:description" content="${esc(l.intro)}">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/catalog-search.js" defer></script>
+</head>
+<body class="page catalogue">
+  <header class="top"><a class="brand" href="/">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></header>
+  <main>
+    <section class="catalogue-hero"><p class="eyebrow">Job Vocabulary</p><h1>${esc(l.lead)}</h1><p class="lead">${esc(l.intro)}</p><p class="tagline">${esc(T[lang].free)}</p></section>
+    <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g) => `<a href="#${g.id}">${esc(g.name[lang])}</a>`).join('')}</nav>
+    <div class="catalogue-search"><label for="courseSearch">${esc(l.search)}</label><input id="courseSearch" type="search" autocomplete="off" placeholder="${esc(l.search)}" aria-controls="courseSections"></div>
+    <p class="course-note">${esc(l.note)}</p>
+    <p id="courseEmpty" role="status" hidden>${esc(l.empty)}</p>
+    <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p><div class="course-grid">${g.packs.map(card).join('')}</div></section>`).join('')}</div>
+    <footer class="catalogue-footer">Job Vocabulary · <a href="/">${esc(T[lang].home)}</a></footer>
+  </main>
+</body>
+</html>
+`;
+  fs.mkdirSync(path.join(ROOT, lang), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, lang, 'index.html'), output);
+  urls.push(canonical);
+}
 
 // --- sitemap ---
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
@@ -191,4 +239,15 @@ fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="
 ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>
 `);
-console.log(`${packs.length * LANGS.length} sider skrevet, sitemap med ${urls.length} adresser`);
+// Refresh only changed shared assets after a deployment, retaining browser caching.
+const assets = ['style.css', 'favicon.svg', 'app.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
+const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
+const pages = [indexPath, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
+for (const file of pages) {
+  const html = fs.readFileSync(file, 'utf8').replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
+    const version = versions[asset.replace(/^\//, '')];
+    return version ? `${attr}="${asset}?v=${version}"` : match;
+  });
+  fs.writeFileSync(file, html);
+}
+console.log(`${pages.length} sider skrevet, sitemap med ${urls.length} adresser`);
