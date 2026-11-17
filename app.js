@@ -451,7 +451,9 @@ function pickDistractors(c, concept, n = 3) {
   const answer = optionLabel(c, concept);
   const used = new Set([answer]);
   const picked = [];
-  const cand = c.pool.filter((x) => x.id !== concept.id && x.phrase === concept.phrase);
+  // Synonymer (fx "mug" og "skimmel") må ikke optræde som forkerte svar for hinanden.
+  const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]].toLowerCase() === concept.words[c.s[k]].toLowerCase());
+  const cand = c.pool.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x));
   const seen = (x) => !!c.prog.cards[x.id];
   const samePos = (x) => x.pos === concept.pos;
   const near = new Set(c.pool.slice(0, Math.max(40, c.pool.indexOf(concept) + 20)).map((x) => x.id));
