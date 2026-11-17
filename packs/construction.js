@@ -80,7 +80,7 @@ PACKS.construction = {
       rows: [
         [1, "beton", "concrete", "бетон", "бетон"],
         [1, "mørtel", "mortar", "строительный раствор", "будівельний розчин"],
-        [1, "en mursten", "brick", "кирпич", "цегла"],
+        [1, "en mursten", "brick", "кирпич", "цеглина"],
         [1, "træ", "wood (material)", "дерево (материал)", "деревина"],
         [1, "en gipsplade", "plasterboard", "гипсокартон", "гіпсокартон"],
         [1, "maling", "paint", "краска", "фарба"],
