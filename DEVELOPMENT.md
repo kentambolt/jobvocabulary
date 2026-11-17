@@ -35,7 +35,12 @@ If a Danish source phrase changes, map its retired source ID to the replacement
 in `data/lexicon-migrations.json`; saved words will follow the corrected entry.
 External additions towards a larger common-word dictionary require reviewed
 translations, distinct meanings, source attribution and a compatible licence.
-`content/incoming/` is for review proposals, not automatically published data.
+Candidates, translation reviews, provenance and common-word extraction tools
+live in the private repository `kentambolt/jobvocabulary`. Content proposals
+are reviewed there using AI; human approval is not a prerequisite. Only selected
+app data and necessary public licence notices are copied into this repository.
+The ignored `.private/jobvocabulary/` checkout is a local convenience, not an app
+dependency. Keep reference inputs in the private repository tied to a public commit.
 
 `build-pages.js` writes the four language catalogues and course pages, updates the
 sitemap and adds content hashes to shared asset URLs. Existing published course
@@ -69,6 +74,9 @@ dialogs do not pass their keystrokes to the exercise underneath.
 ## Hosting and search
 
 GitHub Pages publishes `main` at `https://jobvocabulary.com/`.
+The Jekyll `_config.yml` excludes development data, design briefs, tests and
+internal content from the published site. Do not add `.nojekyll` without replacing
+these exclusions with an equally restrictive deployment build.
 `www.jobvocabulary.com` uses GitHub's canonical-host redirect.
 Simply.com provides permanent redirects for workvocabulary.com and trafficwords.com,
 including their www variants; preserve the path and query string.
