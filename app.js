@@ -500,25 +500,29 @@ function applyInterfaceLink() {
 applyInterfaceLink();
 
 // Direkte link fra en jobside: #start=<pakke>&base=<sprog>. Har man allerede valgt sprog,
-// skiftes der bare emne; ellers åbnes opsætningen med emnet valgt på forhånd.
+// gendannes det valgte kursus' egne indstillinger; nye kurser starter let.
+// Første gang åbnes opsætningen med emnet valgt på forhånd.
 function applyCourseLink() {
-  const m = location.hash.match(/^#start=([a-z]+)(?:&base=([a-z]{2}))?/);
+  const m = location.hash.match(/^#start=([a-z][a-z0-9-]*)(?:&base=([a-z]{2}))?/);
   if (!m) return;
   const [, pack, base] = m;
   if (![TOP, PICS].includes(pack) && !PACK_LIST.some((p) => p.id === pack)) return;
   selectedCourseLink = true;
-  if (base && Object.hasOwn(UI, base)) { state.uiLang = base; saveState(); }
+  CoursePreferences.remember(state);
+  if (base && Object.hasOwn(UI, base)) state.uiLang = base;
   current = null;
   placement = null;
   lastFeedback = null;
   const s = state.settings;
-  if (s && s.target === 'da' && s.base !== 'da') {
+  const preferred = base && LANGS[base] && base !== 'da' ? base : s?.base && LANGS[s.base] && s.base !== 'da' ? s.base : null;
+  if (s && preferred) {
     history.replaceState(null, '', location.pathname + location.search);
-    state.settings = { ...s, base: base && LANGS[base] && base !== 'da' ? base : s.base, pack, cats: null, dir: pack === PICS ? 'path' : 'rec' };
+    state.settings = CoursePreferences.resolve(state, { pack, target: 'da', base: preferred });
     saveState();
     view = 'play';
   } else {
     draft = { target: 'da', base: base && LANGS[base] && base !== 'da' ? base : null, pack, dir: 'rec', diff: 1, cats: null };
+    saveState();
     view = 'setup';
   }
 }
@@ -564,7 +568,20 @@ function loadState() {
   return s;
 }
 function saveState() {
+  CoursePreferences.remember(state);
   try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) { /* ignorer */ }
+}
+
+function lastCourseSettings() {
+  const saved = CoursePreferences.last(state);
+  return saved && ([TOP, PICS].includes(saved.pack) || PACK_LIST.some((pack) => pack.id === saved.pack)) ? saved : null;
+}
+function returnToCourse() {
+  const saved = lastCourseSettings();
+  if (!saved) return;
+  state.settings = saved;
+  current = null; placement = null; lastFeedback = null; levelNotice = null; draft = null;
+  saveState(); go('play');
 }
 
 // ---------- Helpers ----------
@@ -915,12 +932,14 @@ function ctxBarHTML(c) {
     <button class="pill" data-ctx="setup" title="${esc(t('settings'))}">${esc(what)}</button>
     <button class="pill toggle" data-ctx="dir" title="${esc(t('switchDir'))}">${esc(dirTxt)} <span aria-hidden="true">⇄</span></button>
     ${isList(c.s) ? '' : `<button class="pill toggle" data-ctx="diff" title="${esc(t('diffQ'))}">${esc(diffTxt)}</button>`}
+    ${isList(c.s) && lastCourseSettings() ? `<button class="pill" data-ctx="course">← ${esc(lt('backToCourse'))}</button>` : ''}
   </div>`;
 }
 function bindCtxBar() {
   $('app').querySelectorAll('[data-ctx]').forEach((b) => (b.onclick = () => {
     const s = state.settings;
     if (b.dataset.ctx === 'setup') { go('setup'); return; }
+    if (b.dataset.ctx === 'course') { returnToCourse(); return; }
     if (b.dataset.ctx === 'dir') {
       const dirs = dirsFor(isPics(s));
       s.dir = dirs[(dirs.indexOf(s.dir) + 1) % dirs.length];
@@ -1027,10 +1046,19 @@ function renderSetup() {
 
   const on = (sel, fn) => $('app').querySelectorAll(sel).forEach((b) => (b.onclick = () => { fn(b); render(); }));
   on('[data-target]', (b) => { if (d.target !== b.dataset.target) { d.target = b.dataset.target; d.base = null; } });
-  // Skifter man til eller fra billeder, vælges den naturlige øvelse (forløbet / forstå).
-  const repick = (before) => { if (isPics(d) !== before) d.dir = isPics(d) ? 'path' : 'rec'; };
-  on('[data-base]', (b) => { const before = !!d.base && isPics(d); d.base = b.dataset.base; repick(before); });
-  on('[data-pack]', (b) => { const before = isPics(d); d.pack = b.dataset.pack; d.cats = null; repick(before); });
+  // Each course/language pair restores its own choices; a new scope starts gently.
+  on('[data-base]', (b) => {
+    if (d.base === b.dataset.base) return;
+    d.base = b.dataset.base;
+    if (d.base === d.target) d.pack = TOP;
+    const saved = CoursePreferences.resolve(state, d);
+    if (saved) Object.assign(d, saved);
+  });
+  on('[data-pack]', (b) => {
+    if (d.pack === b.dataset.pack) return;
+    const saved = CoursePreferences.resolve(state, { ...d, pack: b.dataset.pack });
+    if (saved) Object.assign(d, saved);
+  });
   on('[data-dir]', (b) => { d.dir = b.dataset.dir; });
   on('[data-diff]', (b) => { d.diff = Number(b.dataset.diff); });
   on('[data-cat]', (b) => {
@@ -1079,7 +1107,7 @@ function renderPlay() {
   }
   if (!current) {
     const next = pickNext(c);
-    if (!next) { $('app').innerHTML = `<p class="task-q">${esc(t('empty'))}</p>`; return; }
+    if (!next) { $('app').innerHTML = `${ctxBarHTML(c)}<p class="task-q" role="status">${esc(t('empty'))}</p>`; bindCtxBar(); return; }
     current = { ...next, answered: null };
     if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {

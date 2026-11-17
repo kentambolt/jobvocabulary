@@ -12,7 +12,7 @@ Run these commands from the repository root after content or shared asset change
 node data/build-packs.js
 node data/build-lexicon.js
 node data/build-pages.js
-node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs tests/learning-flow.test.cjs tests/interface-language.test.cjs
+node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs tests/learning-flow.test.cjs tests/interface-language.test.cjs tests/course-preferences.test.cjs
 ```
 
 `build-packs.js` validates the four-language course files and updates the small
@@ -89,6 +89,11 @@ setup updates the interface preference. A new user's course-start fragment stays
 until practice begins, so refreshing setup retains the selected course. A ready
 panel offers immediate start for preselected courses; full settings remain below.
 Manual pronunciation in exercises works with automatic read-aloud switched off.
+`course-preferences.js` remembers course choices by course/target/base. A temporary
+personal-list session never overwrites those choices. Course links and the setup
+course picker restore the selected course's own difficulty, direction and category
+filter; unseen courses start at priority 1. List practice offers a direct return
+to the last real course. Existing card IDs and learning histories are unchanged.
 
 ## Hosting and search
 

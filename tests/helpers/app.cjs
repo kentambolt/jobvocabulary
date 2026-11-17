@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const words = require('../../words');
 const WordLibrary = require('../../library');
 const LearningFlow = require('../../learning-flow');
+const CoursePreferences = require('../../course-preferences');
 
 // Run the real app model and answer handlers with inert rendering/storage surfaces.
 // This exercises persisted progress, not a second implementation of the scheduler.
@@ -15,7 +16,7 @@ function app(settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', dif
   const navigate = (url) => { const next = new URL(url, 'http://app.test'); Object.assign(location, { hash: next.hash, pathname: next.pathname, search: next.search }); };
   const events = new Map();
   const context = vm.createContext({
-    ...words, WordLibrary, LearningFlow,
+    ...words, WordLibrary, LearningFlow, CoursePreferences,
     COURSE_CATALOG: require('../../catalog'),
     localStorage: { getItem: (key) => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     navigator: { language: 'en' }, location, URLSearchParams,
