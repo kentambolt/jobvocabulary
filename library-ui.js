@@ -47,7 +47,8 @@ const LIBRARY_TEXT = {
     "targetLanguage": "Jeg lærer",
     "baseLanguage": "Oversæt til",
     "listen": "Hør ordet",
-    "backup": "Sikkerhedskopi og flytning"
+    "backup": "Sikkerhedskopi og flytning",
+    "savePrevious": "Gem forrige ord"
   },
   "en": {
     "title": "My words",
@@ -96,7 +97,8 @@ const LIBRARY_TEXT = {
     "targetLanguage": "I am learning",
     "baseLanguage": "Translate into",
     "listen": "Listen to the word",
-    "backup": "Backup and transfer"
+    "backup": "Backup and transfer",
+    "savePrevious": "Save previous word"
   },
   "ru": {
     "title": "Мои слова",
@@ -145,7 +147,8 @@ const LIBRARY_TEXT = {
     "targetLanguage": "Я изучаю",
     "baseLanguage": "Переводить на",
     "listen": "Послушать слово",
-    "backup": "Резервная копия и перенос"
+    "backup": "Резервная копия и перенос",
+    "savePrevious": "Сохранить предыдущее слово"
   },
   "uk": {
     "title": "Мої слова",
@@ -194,7 +197,8 @@ const LIBRARY_TEXT = {
     "targetLanguage": "Я вивчаю",
     "baseLanguage": "Перекладати на",
     "listen": "Послухати слово",
-    "backup": "Резервна копія та перенесення"
+    "backup": "Резервна копія та перенесення",
+    "savePrevious": "Зберегти попереднє слово"
   }
 };
 const lt = (key) => LIBRARY_TEXT[uiLang()][key];
@@ -278,8 +282,7 @@ function saveToListDialog(sourceId) {
       const name = $('wordNewList').value.trim();
       const listId = name ? wordLibrary.createList(name).id : $('wordListSelect').value;
       wordLibrary.add(id, listId); saveState(); dialog.close();
-      const button = $('favoriteWordBtn');
-      if (button) updateFavoriteButton(button, sourceId);
+      refreshFavoriteButtons(sourceId);
       if (view === 'library') renderLibrary();
     };
     dialog.showModal();
@@ -288,21 +291,36 @@ function saveToListDialog(sourceId) {
 function updateFavoriteButton(button, sourceId) {
   const saved = wordLibrary.data.favorites.includes(canonicalWord(sourceId));
   button.setAttribute('aria-pressed', String(saved));
-  button.textContent = saved ? `♥ ${lt('saved')}` : `♡ ${lt('saveWord')}`;
-  button.title = saved ? lt('unfavorite') : lt('saveWord');
+  button.textContent = button.dataset.previous ? (saved ? '♥' : '♡') : saved ? `♥ ${lt('saved')}` : `♡ ${lt('saveWord')}`;
+  button.title = saved ? lt('unfavorite') : lt(button.dataset.previous ? 'savePrevious' : 'saveWord');
+  if (button.dataset.wordLabel) button.setAttribute('aria-label', `${saved ? lt('unfavorite') : lt(button.dataset.previous ? 'savePrevious' : 'saveWord')}: ${button.dataset.wordLabel}`);
+}
+function refreshFavoriteButtons(sourceId) {
+  document.querySelectorAll('[data-favorite-source]').forEach((candidate) => {
+    if (canonicalWord(candidate.dataset.favoriteSource) === canonicalWord(sourceId)) updateFavoriteButton(candidate, sourceId);
+  });
 }
 function wordSaveHTML(x) {
   const saved = wordLibrary.data.favorites.includes(canonicalWord(x.id));
-  return `<div class="word-save"><button class="secondary" id="favoriteWordBtn" aria-pressed="${saved}">${saved ? `♥ ${esc(lt('saved'))}` : `♡ ${esc(lt('saveWord'))}`}</button><button class="secondary" id="wordListBtn">${esc(lt('addTo'))}</button><span id="wordSaveStatus" role="status"></span></div>`;
+  return `<div class="word-save"><button class="secondary" id="favoriteWordBtn" data-favorite-source="${esc(x.id)}" aria-pressed="${saved}">${saved ? `♥ ${esc(lt('saved'))}` : `♡ ${esc(lt('saveWord'))}`}</button><button class="secondary" id="wordListBtn">${esc(lt('addTo'))}</button><span id="wordSaveStatus" role="status"></span></div>`;
 }
-function bindWordSave(x) {
-  $('favoriteWordBtn').onclick = async (event) => {
+function bindFavoriteButton(button, sourceId, status) {
+  button.onclick = async (event) => {
     const button = event.currentTarget;
     button.disabled = true;
-    try { await loadDictionary(); wordLibrary.toggle(canonicalWord(x.id)); saveState(); updateFavoriteButton(button, x.id); }
-    catch { $('wordSaveStatus').textContent = t('loadFail'); }
+    if (status?.isConnected) status.textContent = '';
+    try {
+      await loadDictionary(); wordLibrary.toggle(canonicalWord(sourceId)); saveState();
+      refreshFavoriteButtons(sourceId);
+    }
+    catch { if (status?.isConnected) status.textContent = t('loadFail'); }
     finally { button.disabled = false; }
   };
+}
+function bindWordSave(x) {
+  bindFavoriteButton($('favoriteWordBtn'), x.id, $('wordSaveStatus'));
+  const previous = $('previousFavoriteBtn');
+  if (previous) bindFavoriteButton(previous, previous.dataset.favoriteSource, $('receiptSaveStatus'));
   $('wordListBtn').onclick = () => saveToListDialog(x.id);
 }
 function renderSavedLibraryRows(pair) {

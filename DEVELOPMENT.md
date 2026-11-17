@@ -12,7 +12,7 @@ Run these commands from the repository root after content or shared asset change
 node data/build-packs.js
 node data/build-lexicon.js
 node data/build-pages.js
-node --test tests/library.test.cjs
+node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs
 ```
 
 `build-packs.js` validates the four-language course files and updates the small
@@ -70,6 +70,12 @@ Incorrect answers require an explicit next action. Held keyboard keys cannot
 answer several tasks; normal repeat behaviour remains available in text inputs.
 Use 1–4 for multiple-choice answers and the keyboard for spelling tasks. Forms and
 dialogs do not pass their keystrokes to the exercise underneath.
+The previous correct answer retains its source ID and a heart button, so it can
+be saved after the next task appears. Async saves keep the clicked source ID even
+if another task is answered before the dictionary finishes loading.
+Catalogue pages read the existing local settings through `practice-resume.js` to
+offer direct resume and My words links without loading course or dictionary data.
+Resume opens the app without a course-start fragment, preserving mode and filters.
 
 ## Hosting and search
 
