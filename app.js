@@ -47,6 +47,7 @@ const UI = {
     baseQ: 'Hvilket sprog forstår du bedst?',
     nativeB: 'Det er mit modersmål',
     nativeS: 'Lær at læse – med billeder',
+    nativeSoon: 'Billeder er på vej',
     otherS: 'Vis oversættelser',
     whatQ: 'Hvad vil du lære?',
     topB: 'De mest brugte ord', topS: 'I rækkefølge efter hvor meget de bruges',
@@ -116,6 +117,7 @@ const UI = {
     baseQ: 'Which language do you understand best?',
     nativeB: 'It is my first language',
     nativeS: 'Learn to read – with pictures',
+    nativeSoon: 'Pictures coming soon',
     otherS: 'Show translations',
     whatQ: 'What do you want to learn?',
     topB: 'The most used words', topS: 'In order of how often they are used',
@@ -185,6 +187,7 @@ const UI = {
     baseQ: 'Какой язык вы понимаете лучше всего?',
     nativeB: 'Это мой родной язык',
     nativeS: 'Учимся читать – с картинками',
+    nativeSoon: 'Картинки скоро появятся',
     otherS: 'Показывать перевод',
     whatQ: 'Что вы хотите выучить?',
     topB: 'Самые частые слова', topS: 'В порядке частоты употребления',
@@ -254,6 +257,7 @@ const UI = {
     baseQ: 'Яку мову ви розумієте найкраще?',
     nativeB: 'Це моя рідна мова',
     nativeS: 'Вчимося читати – з картинками',
+    nativeSoon: 'Картинки скоро з’являться',
     otherS: 'Показувати переклад',
     whatQ: 'Що ви хочете вивчити?',
     topB: 'Найуживаніші слова', topS: 'У порядку частоти вживання',
@@ -324,8 +328,8 @@ const PACK_ITEMS = {};
 const PACK_LIST = typeof PACKS !== 'undefined' ? Object.values(PACKS) : [];
 for (const c of CONCEPTS) ITEM[c.id] = { ...c, phrase: false };
 for (const p of PACK_LIST) {
-  const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk, emoji]) => ({
-    id: `${p.id}:${da}`, words: { da, en, ru, uk }, emoji, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
+  const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk]) => ({
+    id: `${p.id}:${da}`, words: { da, en, ru, uk }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
   })));
   // Prioritet 1 først, på skift mellem kategorierne, derefter prioritet 2 osv.
   const ordered = [];
@@ -393,7 +397,7 @@ function buildPool(s) {
       && (!s.cats || s.cats.includes(x.cat)));
   }
   return ORDER[s.target].map((id) => ITEM[id])
-    .filter((c) => c.diff <= s.diff && c.words[s.target] && (native ? c.emoji : c.words[s.base]));
+    .filter((c) => c.diff <= s.diff && c.words[s.target] && (native ? IMAGES[c.id] : c.words[s.base]));
 }
 function progKey(s) {
   return isPack(s) ? `${s.pack}|${s.target}|${s.base}|${s.dir}` : `${s.target}|${s.base}|${s.dir}`;
@@ -444,7 +448,7 @@ function newCard(c, lvl, ok, extra) {
 
 // Svarmuligheder vises i "betydnings"-sproget ved rec, i målsproget ved prod.
 function optionLabel(c, x) {
-  if (c.s.dir === 'rec') return c.native ? x.emoji : x.words[c.s.base].toLowerCase();
+  if (c.s.dir === 'rec') return c.native ? x.id : x.words[c.s.base].toLowerCase();
   return x.words[c.s.target].toLowerCase();
 }
 function pickDistractors(c, concept, n = 3) {
@@ -587,7 +591,9 @@ function renderSetup() {
 
   if (d.target) {
     html += `<div class="step"><h2>${esc(t('baseQ'))}</h2><div class="choices">`;
-    html += choice(`data-base="${d.target}"`, d.base === d.target, esc(L[d.target]), t('nativeB') + ' · ' + t('nativeS'));
+    const nPics = buildPool({ ...d, base: d.target, diff: 3 }).length;
+    if (nPics >= 8) html += choice(`data-base="${d.target}"`, d.base === d.target, esc(L[d.target]), t('nativeB') + ' · ' + t('nativeS'));
+    else html += `<button class="choice" disabled aria-pressed="false"><b>${esc(L[d.target])}</b><small>${esc(t('nativeB'))} · ${esc(t('nativeSoon'))}</small></button>`;
     for (const l of Object.keys(LANGS).filter((l) => l !== d.target)) html += choice(`data-base="${l}"`, d.base === l, esc(L[l]), t('otherS'));
     html += `</div></div>`;
   }
@@ -597,8 +603,8 @@ function renderSetup() {
     if (native) d.pack = TOP;
     if (!native && PACK_LIST.length) {
       html += `<div class="step"><h2>${esc(t('whatQ'))}</h2><div class="choices">`;
-      html += choice(`data-pack="${TOP}"`, d.pack === TOP, `📈 ${esc(t('topB'))}`, t('topS'));
-      for (const p of PACK_LIST) html += choice(`data-pack="${p.id}"`, d.pack === p.id, `${p.emoji} ${esc(p.name[ul])}`, p.desc[ul]);
+      html += choice(`data-pack="${TOP}"`, d.pack === TOP, esc(t('topB')), t('topS'));
+      for (const p of PACK_LIST) html += choice(`data-pack="${p.id}"`, d.pack === p.id, esc(p.name[ul]), p.desc[ul]);
       html += `</div></div>`;
     }
     const pack = isPack(d) ? packOf(d) : null;
@@ -607,7 +613,7 @@ function renderSetup() {
       for (const cat of pack.categories) {
         const on = !d.cats || d.cats.includes(cat.key);
         const n = cat.rows.filter((r) => r[0] <= d.diff).length;
-        html += `<button class="chip" data-cat="${cat.key}" aria-pressed="${on}">${cat.emoji} ${esc(cat.name[ul])} <small>${n}</small></button>`;
+        html += `<button class="chip" data-cat="${cat.key}" aria-pressed="${on}">${esc(cat.name[ul])} <small>${n}</small></button>`;
       }
       html += `</div></div>`;
     }
@@ -689,10 +695,10 @@ function renderPlay() {
 }
 
 function meaningHTML(c, x) {
-  if (c.native) return `<span class="emoji">${x.emoji}</span>`;
-  const icon = x.emoji ? `<span class="emoji-sm">${x.emoji}</span>` : '';
-  return `${icon}<span class="w${x.phrase ? ' long' : ''}">${esc(x.words[c.s.base])}</span>`;
+  if (c.native) return picHTML(x);
+  return `<span class="w${x.phrase ? ' long' : ''}">${esc(x.words[c.s.base])}</span>`;
 }
+const picHTML = (x, cls = 'pic') => `<img class="${cls}" src="images/words/${encodeURI(IMAGES[x.id] || '')}" alt="" draggable="false">`;
 const targetHTML = (c, x) => `<span class="w${x.phrase ? ' long' : ''}">${esc(x.words[c.s.target])}</span>`;
 
 function questionText(c, x, kind) {
@@ -736,12 +742,12 @@ function renderPlayView() {
   const c = ctx();
   const x = current.concept;
   const rec = c.s.dir === 'rec';
-  const speakBtn = `<button class="speak" id="speakBtn" title="🔊">🔊</button>`;
+  const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(t('sound'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   let html = metaHTML(c, x);
 
   if (current.kind === 'intro') {
     html += `<div class="prompt"><span class="badge">${esc(t('newWord'))}</span>${speakBtn}
-      ${x.emoji ? `<span class="emoji">${x.emoji}</span>` : ''}
+      ${c.native ? picHTML(x) : ''}
       ${targetHTML(c, x)}
       ${c.native ? '' : `<span class="sub">${esc(x.words[c.s.base])}</span>`}
     </div>
@@ -750,7 +756,7 @@ function renderPlayView() {
     const sp = current.spec;
     const built = current.picked.map((i) => current.tiles[i].tk);
     html +=`<div class="prompt"><span class="badge">${esc(t('repeat'))}</span>
-      ${x.emoji ? `<span class="emoji-sm">${x.emoji}</span>` : ''}<span class="w${x.phrase ? ' long' : ''}">${esc(c.native ? '' : x.words[c.s.base])}</span>
+      ${meaningHTML(c, x)}
     </div>
     <p class="task-q">${esc(questionText(c, x, 'build'))}</p>
     <div class="build ${current.answered ? (current.answered === 'ok' ? 'good' : 'bad') : ''}">
@@ -897,7 +903,7 @@ function renderOffer() {
   c.prog.offered = true;
   saveState();
   $('app').innerHTML = `<section class="offer">
-    <div class="prompt"><span class="emoji">🚀</span><span class="w long">${esc(t('placeTitle'))}</span>
+    <div class="prompt"><span class="w long">${esc(t('placeTitle'))}</span>
       <span class="sub">${esc(t('placeLead'))}</span></div>
     <div class="row center">
       <button class="secondary" id="skipBtn">${esc(t('placeSkip'))}</button>
@@ -1007,7 +1013,7 @@ function finishPlacement() {
 }
 function renderPlaceDone() {
   const n = placement ? placement.done : 0;
-  $('app').innerHTML = `<section class="offer"><div class="prompt"><span class="emoji">${n ? '🎉' : '🌱'}</span>
+  $('app').innerHTML = `<section class="offer"><div class="prompt">
     <span class="w long">${esc(n ? t('placeDone', { n }) : t('placeNone'))}</span>
     ${n ? `<span class="sub">${esc(t('placeDone2'))}</span>` : ''}</div>
     <div class="row center"><button class="primary" id="goBtn">${esc(t('next'))} →</button></div></section>`;
@@ -1048,7 +1054,7 @@ function renderStats() {
         : isLearned(card) ? `<span class="dot ok"></span>${esc(t('learnedS'))}`
         : card.wrong && !card.ok ? `<span class="dot no"></span>${esc(t('wrongS'))}`
         : `<span class="dot"></span>${esc(t('notYet'))}`;
-      const meaning = c.native ? x.emoji : `${x.emoji ? x.emoji + ' ' : ''}${esc(x.words[c.s.base])}`;
+      const meaning = c.native ? picHTML(x, 'pic-sm') : esc(x.words[c.s.base]);
       const ipm = !isPack(c.s) && IPM[c.s.target] ? (IPM[c.s.target][id] || 0).toLocaleString(uiLang()) : '–';
       html += `<tr>
         <td class="num">${rankOf(c.s, id)}</td>
@@ -1064,7 +1070,7 @@ function renderStats() {
     html += `</tbody></table></div>`;
   }
   html += `<p class="row" style="margin-top:20px">
-    ${c.native ? '' : `<button class="secondary" id="placeAgainBtn">🚀 ${esc(t('placeAgain'))}</button>`}
+    ${c.native ? '' : `<button class="secondary" id="placeAgainBtn">${esc(t('placeAgain'))}</button>`}
     <button class="secondary" id="resetBtn">${esc(t('reset'))}</button></p></section>`;
   $('app').innerHTML = html;
 
