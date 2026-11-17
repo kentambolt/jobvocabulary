@@ -212,3 +212,15 @@ td.num { font-variant-numeric: tabular-nums; }
   .prompt .emoji { font-size: 72px; }
   .score-label { display: none; }
 }
+
+/* Ikoner og billeder */
+.icon-btn { display: inline-flex; align-items: center; justify-content: center; color: var(--ink); }
+.icon-btn svg { width: 20px; height: 20px; }
+.speak { color: var(--muted); display: inline-flex; align-items: center; justify-content: center; }
+.speak svg { width: 24px; height: 24px; }
+.speak:hover { color: var(--accent); }
+.pic { width: 150px; height: 150px; object-fit: contain; border-radius: 16px; user-select: none; }
+.opt .pic { width: 104px; height: 104px; }
+.pic-sm { width: 40px; height: 40px; object-fit: contain; vertical-align: middle; border-radius: 8px; }
+.choice:disabled { opacity: 0.55; cursor: default; box-shadow: none; }
+@media (max-width: 420px) { .pic { width: 120px; height: 120px; } .opt .pic { width: 84px; height: 84px; } }

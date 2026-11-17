@@ -18,7 +18,7 @@ const { loadAll } = require('./sources');
 
 const LANGS = ['da', 'en', 'ru'];
 const COL = { da: 1, en: 2, ru: 3 };
-const FORMS = { da: 7, en: 8, ru: 9 };
+const FORMS = { da: 6, en: 7, ru: 8 };
 const norm = (w) => w.toLowerCase().replace(/ё/g, 'е');
 
 // --- sanity checks ---
@@ -45,8 +45,17 @@ for (const r of ROWS) {
   if (ukSeen.has(w)) throw new Error(`dup uk word "${w}" in ${ukSeen.get(w)} and ${r[0]}`);
   ukSeen.set(w, r[0]);
 }
-const emojis = ROWS.map((r) => r[4]).filter(Boolean);
-if (new Set(emojis).size !== emojis.length) throw new Error('dup emoji');
+// Billeder: motiver i pictures.js, færdige filer i images/words/<id>.<ext>
+const PICTURES = require('./pictures');
+for (const id of Object.keys(PICTURES)) if (!ids.has(id)) throw new Error('pictures.js: unknown id ' + id);
+const IMG_DIR = path.join(__dirname, '..', 'images', 'words');
+const IMAGES = {};
+if (fs.existsSync(IMG_DIR)) {
+  for (const f of fs.readdirSync(IMG_DIR)) {
+    const m = f.match(/^(.+)\.(webp|png|jpe?g|svg)$/i);
+    if (m && ids.has(m[1])) IMAGES[m[1]] = f;
+  }
+}
 
 function formsOf(row, lang) {
   const word = row[COL[lang]];
@@ -101,7 +110,7 @@ for (const lang of LANGS) {
 }
 
 // --- write words.js ---
-const rowsOut = ROWS.map((r) => [r[0], r[1], r[2], r[3], UK[r[0]] || '', r[4], r[5], r[6]]);
+const rowsOut = ROWS.map((r) => [r[0], r[1], r[2], r[3], UK[r[0]] || '', r[4], r[5]]);
 const ipm = {};
 for (const lang of LANGS) {
   ipm[lang] = Object.fromEntries(ORDER[lang].map((id) => [id, Number(Math.pow(10, result[lang][id].log).toPrecision(3))]));
@@ -109,7 +118,7 @@ for (const lang of LANGS) {
 const js = `// GENERERET af data/build.js – ret ikke her. Ret i data/concepts.js og kør: node data/build.js
 // Kilder og metode: se data/REPORT.md
 //
-// [id, dansk, engelsk, russisk, ukrainsk, emoji, ordklasse, sværhedsgrad (1=let, 2=mellem, 3=svær)]
+// [id, dansk, engelsk, russisk, ukrainsk, ordklasse, sværhedsgrad (1=let, 2=mellem, 3=svær)]
 const WORD_ROWS = ${JSON.stringify(rowsOut).replace(/\],\[/g, '],\n  [').replace(/^\[\[/, '[\n  [').replace(/\]\]$/, '],\n]')};
 
 // Hyppighedsrækkefølge pr. sprog (mest brugte først), beregnet ud fra flere kilder.
@@ -118,6 +127,9 @@ const ORDER = ${JSON.stringify(ORDER)};
 // Estimeret frekvens (forekomster pr. million ord, inkl. bøjningsformer).
 const IPM = ${JSON.stringify(ipm)};
 
+// Færdige billeder til modersmåls-mode (id -> fil i images/words/).
+const IMAGES = ${JSON.stringify(IMAGES)};
+
 const LANGS = {
   da: { name: 'Dansk', tts: 'da-DK' },
   en: { name: 'English', tts: 'en-GB' },
@@ -125,10 +137,10 @@ const LANGS = {
   uk: { name: 'Українська', tts: 'uk-UA' },
 };
 
-const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, uk, emoji, pos, diff]) => ({ id, words: { da, en, ru, uk }, emoji, pos, diff }));
+const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, uk, pos, diff]) => ({ id, words: { da, en, ru, uk }, pos, diff }));
 const BY_ID = Object.fromEntries(CONCEPTS.map((c) => [c.id, c]));
 
-if (typeof module !== 'undefined') module.exports = { WORD_ROWS, CONCEPTS, BY_ID, ORDER, IPM, LANGS };
+if (typeof module !== 'undefined') module.exports = { WORD_ROWS, CONCEPTS, BY_ID, ORDER, IPM, IMAGES, LANGS };
 `;
 fs.writeFileSync(path.join(__dirname, '..', 'words.js'), js);
 
@@ -191,3 +203,21 @@ for (const lang of LANGS) {
 }
 fs.writeFileSync(path.join(__dirname, 'REPORT.md'), md);
 for (const lang of LANGS) console.log(lang, ORDER[lang].length, ORDER[lang].slice(0, 40).map((id) => ROWS.find((x) => x[0] === id)[COL[lang]]).join(' '));
+
+// --- billedliste til designeren ---
+const csvRows = [['fil', 'id', 'dansk', 'engelsk', 'russisk', 'ukrainsk', 'motiv', 'prioritet', 'status']];
+const rankDa = Object.fromEntries(ORDER.da.map((id, i) => [id, i]));
+const picIds = Object.keys(PICTURES).sort((a, b) => {
+  const ra = ROWS.find((x) => x[0] === a);
+  const rb = ROWS.find((x) => x[0] === b);
+  return ra[5] - rb[5] || rankDa[a] - rankDa[b];
+});
+for (const id of picIds) {
+  const r = ROWS.find((x) => x[0] === id);
+  csvRows.push([`${id}.webp`, id, r[1], r[2], r[3], UK[id] || '', PICTURES[id], r[5] === 1 ? 'høj' : 'mellem', IMAGES[id] ? 'findes' : 'mangler']);
+}
+const csv = csvRows.map((row) => row.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(';')).join('\r\n');
+fs.mkdirSync(path.join(__dirname, '..', 'design'), { recursive: true });
+// BOM + semikolon, så filen åbner korrekt i dansk Excel.
+fs.writeFileSync(path.join(__dirname, '..', 'design', 'billeder.csv'), '﻿' + csv + '\r\n');
+console.log('billeder:', Object.keys(IMAGES).length, 'af', picIds.length);
