@@ -69,7 +69,15 @@ const UI = {
     recB: 'Forstå', recS: 'Se {T}, vælg {B}',
     prodB: 'Sig det selv', prodS: 'Se {B}, find og byg det på {T}',
     recNB: 'Find billedet', recNS: 'Se ordet, vælg billedet',
-    prodNB: 'Læs ordet', prodNS: 'Se billedet, vælg og stav ordet',
+    prodNB: 'Læs ordet', prodNS: 'Se billedet, vælg det rigtige ord',
+    writeB: 'Skriv det', writeS: 'Se {B}, skriv det på {T} – bogstav for bogstav',
+    writeNB: 'Skriv ordet', writeNS: 'Se billedet, hør ordet og skriv det – bogstav for bogstav',
+    pathB: 'Hele forløbet', pathS: 'Find billedet, læs ordet og skriv det – lidt sværere for hvert ord, du kan',
+    picsB: 'Ord med billeder', picsS: 'Billeder i stedet for oversættelse · {n} ord',
+    qWrite: 'Skriv det på {T}',
+    qWriteN: 'Skriv ordet',
+    hint: 'Hjælp mig',
+    almost: 'Godt klaret! Ordet kommer snart igen, så du kan øve det.',
     diffQ: 'Sværhedsgrad',
     diff: ['', 'Let', 'Mellem', 'Svær'],
     packDiff: ['', 'Det vigtigste', 'Vigtigt', 'Alt'],
@@ -94,7 +102,6 @@ const UI = {
     qRecN: 'Hvilket billede passer til ordet?',
     qProdN: 'Hvilket ord passer til billedet?',
     qBuild: 'Byg det på {T}',
-    qSpell: 'Stav det på {T}',
     checkBtn: 'Tjek',
     rank: 'Nr. {n} på listen',
     seen: '{n} mødt',
@@ -152,7 +159,15 @@ const UI = {
     recB: 'Understand', recS: 'See {T}, pick {B}',
     prodB: 'Say it yourself', prodS: 'See {B}, find and build it in {T}',
     recNB: 'Find the picture', recNS: 'See the word, pick the picture',
-    prodNB: 'Read the word', prodNS: 'See the picture, pick and spell the word',
+    prodNB: 'Read the word', prodNS: 'See the picture, pick the right word',
+    writeB: 'Write it', writeS: 'See {B}, write it in {T} – letter by letter',
+    writeNB: 'Write the word', writeNS: 'See the picture, hear the word and write it – letter by letter',
+    pathB: 'The whole course', pathS: 'Find the picture, read the word and write it – a bit harder for each word you know',
+    picsB: 'Words with pictures', picsS: 'Pictures instead of translations · {n} words',
+    qWrite: 'Write it in {T}',
+    qWriteN: 'Write the word',
+    hint: 'Help me',
+    almost: 'Well done! The word will come back soon so you can practise it.',
     diffQ: 'Difficulty',
     diff: ['', 'Easy', 'Medium', 'Hard'],
     packDiff: ['', 'Essentials', 'Important', 'Everything'],
@@ -177,7 +192,6 @@ const UI = {
     qRecN: 'Which picture matches the word?',
     qProdN: 'Which word matches the picture?',
     qBuild: 'Build it in {T}',
-    qSpell: 'Spell it in {T}',
     checkBtn: 'Check',
     rank: 'No. {n} on the list',
     seen: '{n} seen',
@@ -235,7 +249,15 @@ const UI = {
     recB: 'Понимать', recS: 'Видите {T}, выбираете {B}',
     prodB: 'Сказать самому', prodS: 'Видите {B}, находите и собираете на языке: {T}',
     recNB: 'Найти картинку', recNS: 'Видите слово, выбираете картинку',
-    prodNB: 'Прочитать слово', prodNS: 'Видите картинку, выбираете и пишете слово',
+    prodNB: 'Прочитать слово', prodNS: 'Видите картинку, выбираете нужное слово',
+    writeB: 'Написать', writeS: 'Видите {B}, пишете на языке: {T} – по буквам',
+    writeNB: 'Написать слово', writeNS: 'Видите картинку, слышите слово и пишете его по буквам',
+    pathB: 'Весь курс', pathS: 'Найти картинку, прочитать слово и написать его – с каждым выученным словом чуть сложнее',
+    picsB: 'Слова с картинками', picsS: 'Картинки вместо перевода · {n} слов',
+    qWrite: 'Напишите на языке: {T}',
+    qWriteN: 'Напишите слово',
+    hint: 'Подсказка',
+    almost: 'Молодец! Слово скоро вернётся, чтобы вы могли его потренировать.',
     diffQ: 'Сложность',
     diff: ['', 'Лёгкая', 'Средняя', 'Сложная'],
     packDiff: ['', 'Самое важное', 'Важное', 'Всё'],
@@ -260,7 +282,6 @@ const UI = {
     qRecN: 'Какая картинка подходит к слову?',
     qProdN: 'Какое слово подходит к картинке?',
     qBuild: 'Соберите на языке: {T}',
-    qSpell: 'Напишите на языке: {T}',
     checkBtn: 'Проверить',
     rank: '№ {n} в списке',
     seen: 'встречено: {n}',
@@ -318,7 +339,15 @@ const UI = {
     recB: 'Розуміти', recS: 'Бачите {T}, обираєте {B}',
     prodB: 'Сказати самому', prodS: 'Бачите {B}, знаходите і складаєте мовою: {T}',
     recNB: 'Знайти картинку', recNS: 'Бачите слово, обираєте картинку',
-    prodNB: 'Прочитати слово', prodNS: 'Бачите картинку, обираєте і пишете слово',
+    prodNB: 'Прочитати слово', prodNS: 'Бачите картинку, обираєте потрібне слово',
+    writeB: 'Написати', writeS: 'Бачите {B}, пишете мовою: {T} – по літерах',
+    writeNB: 'Написати слово', writeNS: 'Бачите картинку, чуєте слово і пишете його по літерах',
+    pathB: 'Увесь курс', pathS: 'Знайти картинку, прочитати слово і написати його – з кожним вивченим словом трохи складніше',
+    picsB: 'Слова з картинками', picsS: 'Картинки замість перекладу · {n} слів',
+    qWrite: 'Напишіть мовою: {T}',
+    qWriteN: 'Напишіть слово',
+    hint: 'Підказка',
+    almost: 'Молодець! Слово скоро повернеться, щоб ви могли його потренувати.',
     diffQ: 'Складність',
     diff: ['', 'Легка', 'Середня', 'Складна'],
     packDiff: ['', 'Найважливіше', 'Важливе', 'Усе'],
@@ -343,7 +372,6 @@ const UI = {
     qRecN: 'Яка картинка підходить до слова?',
     qProdN: 'Яке слово підходить до картинки?',
     qBuild: 'Складіть мовою: {T}',
-    qSpell: 'Напишіть мовою: {T}',
     checkBtn: 'Перевірити',
     rank: '№ {n} у списку',
     seen: 'зустрінуто: {n}',
@@ -410,7 +438,21 @@ function loadPack(id) {
   }
   return packLoads[id];
 }
-const isPack = (s) => !!s.pack && s.pack !== TOP;
+// Billed-mode: billeder i stedet for oversættelse. Altid ved modersmål, og som valg ("Ord med billeder")
+// for dem, der lærer et fremmedsprog helt fra bunden.
+const PICS = 'pics';
+const isPics = (s) => s.base === s.target || s.pack === PICS;
+const isPack = (s) => !!s.pack && s.pack !== TOP && s.pack !== PICS;
+// Billeder, der let kan forveksles, må ikke stå som svarmuligheder sammen.
+const CONFUSE = [
+  ['person', 'man', 'father', 'grandfather', 'friend', 'teacher'], ['person', 'woman', 'mother', 'grandmother'],
+  ['child', 'baby', 'boy', 'girl'], ['people', 'family', 'friend'], ['house', 'home'], ['happy', 'laugh', 'love'],
+  ['sad', 'cry'], ['road', 'street', 'city'], ['one', 'apple'], ['night', 'moon', 'star'], ['sea', 'beach', 'swim', 'whale'],
+  ['rain', 'cloud', 'umbrella'], ['snow', 'cold'], ['fire', 'hot', 'light'], ['see', 'eye'], ['speak', 'mouth', 'sing', 'hello'],
+  ['foot', 'leg', 'shoe'], ['face', 'head'], ['sit', 'chair'], ['sleep', 'bed', 'tired'], ['read', 'book'],
+  ['write', 'pencil', 'letter'], ['play', 'toy', 'game', 'ball'], ['music', 'sing', 'dance'], ['shop', 'buy', 'money'],
+];
+const confusable = (a, b) => CONFUSE.some((g) => g.includes(a) && g.includes(b));
 const packOf = (s) => PACK_LIST.find((p) => p.id === s.pack);
 // Antal ord/sætninger for et valg – fra oversigten, så pakken ikke skal hentes for at vise tallet.
 function countPool(s) {
@@ -510,23 +552,25 @@ const norm = (s) => s.toLowerCase().replace(/[.,!?;:«»"“”]/g, '').replace(
 
 // ---------- Model ----------
 function buildPool(s) {
-  const native = s.base === s.target;
   if (isPack(s)) {
     return (PACK_ITEMS[s.pack] || []).filter((x) => x.diff <= s.diff && x.words[s.target] && x.words[s.base]
       && (!s.cats || s.cats.includes(x.cat)));
   }
+  const pics = isPics(s);
   return ORDER[s.target].map((id) => ITEM[id])
-    .filter((c) => c.diff <= s.diff && c.words[s.target] && (native ? IMG[c.id] : c.words[s.base]));
+    .filter((c) => c.diff <= s.diff && c.words[s.target] && (pics ? IMG[c.id] : c.words[s.base]));
 }
 function progKey(s) {
-  return isPack(s) ? `${s.pack}|${s.target}|${s.base}|${s.dir}` : `${s.target}|${s.base}|${s.dir}`;
+  if (isPack(s)) return `${s.pack}|${s.target}|${s.base}|${s.dir}`;
+  if (s.pack === PICS && s.base !== s.target) return `${PICS}|${s.target}|${s.base}|${s.dir}`;
+  return `${s.target}|${s.base}|${s.dir}`;
 }
 function ctx() {
   const s = state.settings;
   const native = s.base === s.target;
   const key = progKey(s);
   const prog = (state.progress[key] = state.progress[key] || { task: 0, cards: {}, lastId: null });
-  return { s, native, key, prog, pool: buildPool(s) };
+  return { s, native, pics: isPics(s), key, prog, pool: buildPool(s) };
 }
 const intervalFactor = (lvl) => Math.pow(CONFIG.base, lvl);
 function dueness(card, prog, now) {
@@ -540,6 +584,27 @@ function rankOf(s, id) {
   return list.indexOf(id) + 1;
 }
 
+// Opgavetype for et ord, der skal gentages.
+//  rec:   se målsproget, vælg betydningen (billede eller oversættelse)
+//  prod:  se betydningen, vælg ordet – fra niveau buildFromLevel skrives ordet selv
+//  write: skriv ordet bogstav for bogstav (sætninger bygges af ordbrikker)
+//  path:  billed-forløbet – find billedet (L0), læs ordet (L1), skriv ordet (L2+)
+function reviewTask(c, x) {
+  const card = c.prog.cards[x.id];
+  const d = c.s.dir;
+  const quiz = (qdir) => ({ kind: 'quiz', concept: x, qdir });
+  const spell = () => (writeSpec(c, x) ? { kind: 'write', concept: x, qdir: 'prod' }
+    : buildSpec(c, x) ? { kind: 'build', concept: x, qdir: 'prod' } : null);
+  if (d === 'rec') return quiz('rec');
+  if (d === 'path') {
+    if (card.verify || card.lvl === 0) return quiz('rec');
+    if (card.lvl === 1) return quiz('prod');
+    return spell() || quiz('prod');
+  }
+  if (d === 'write') return spell() || quiz('prod');
+  if (!card.verify && card.lvl >= CONFIG.buildFromLevel) return spell() || quiz('prod');
+  return quiz('prod');
+}
 function pickNext(c) {
   const now = Date.now();
   const introduced = c.pool.filter((x) => c.prog.cards[x.id]);
@@ -550,33 +615,34 @@ function pickNext(c) {
     const p = dueness(c.prog.cards[x.id], c.prog, now);
     if (p > bestP) { best = x; bestP = p; }
   }
-  const review = (x) => {
-    const card = c.prog.cards[x.id];
-    const useBuild = c.s.dir === 'prod' && !card.verify && card.lvl >= CONFIG.buildFromLevel && buildSpec(c, x);
-    return { kind: useBuild ? 'build' : 'quiz', concept: x };
-  };
-  if (best && bestP >= 1) return review(best);
+  if (best && bestP >= 1) return reviewTask(c, best);
   const fresh = c.pool.find((x) => !c.prog.cards[x.id]);
-  if (fresh) return { kind: c.native ? 'intro' : 'new', concept: fresh };
-  return best ? review(best) : null;
+  if (fresh) {
+    // Børn (modersmål) ser altid ordet først. Andre prøver først, om de kender det.
+    if (c.native) return { kind: 'intro', concept: fresh };
+    if (c.s.dir === 'write' && writeSpec(c, fresh)) return { kind: 'write', concept: fresh, qdir: 'prod', isNew: true };
+    return { kind: 'new', concept: fresh, qdir: c.s.dir === 'rec' || c.s.dir === 'path' ? 'rec' : 'prod' };
+  }
+  return best ? reviewTask(c, best) : null;
 }
 
 function newCard(c, lvl, ok, extra) {
   return { lvl, ok, right: ok ? 1 : 0, wrong: ok ? 0 : 1, task: c.prog.task, time: Date.now(), ...extra };
 }
 
-// Svarmuligheder vises i "betydnings"-sproget ved rec, i målsproget ved prod.
-function optionLabel(c, x) {
-  if (c.s.dir === 'rec') return c.native ? x.id : x.words[c.s.base].toLowerCase();
+// Svarmuligheder vises i "betydnings"-sproget (eller som billede) ved rec, i målsproget ved prod.
+function optionLabel(c, x, qdir) {
+  if (qdir === 'rec') return c.pics ? x.id : x.words[c.s.base].toLowerCase();
   return x.words[c.s.target].toLowerCase();
 }
-function pickDistractors(c, concept, n = 3) {
-  const answer = optionLabel(c, concept);
+function pickDistractors(c, concept, qdir, n = 3) {
+  const answer = optionLabel(c, concept, qdir);
   const used = new Set([answer]);
   const picked = [];
   // Synonymer (fx "mug" og "skimmel") må ikke optræde som forkerte svar for hinanden.
-  const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]].toLowerCase() === concept.words[c.s[k]].toLowerCase());
-  const cand = c.pool.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x));
+  const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]] && x.words[c.s[k]].toLowerCase() === concept.words[c.s[k]].toLowerCase());
+  const cand = c.pool.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x)
+    && !(c.pics && confusable(x.id, concept.id)));
   const seen = (x) => !!c.prog.cards[x.id];
   const samePos = (x) => x.pos === concept.pos;
   const near = new Set(c.pool.slice(0, Math.max(40, c.pool.indexOf(concept) + 20)).map((x) => x.id));
@@ -590,8 +656,10 @@ function pickDistractors(c, concept, n = 3) {
   for (const tier of tiers) {
     for (const x of shuffle([...tier])) {
       if (picked.length >= n) break;
-      const label = optionLabel(c, x);
+      const label = optionLabel(c, x, qdir);
       if (used.has(label)) continue;
+      // Billederne må heller ikke kunne forveksles med hinanden.
+      if (c.pics && picked.some((p) => confusable(p.id, x.id))) continue;
       used.add(label);
       picked.push(x);
     }
@@ -599,51 +667,95 @@ function pickDistractors(c, concept, n = 3) {
   }
   return picked;
 }
-function makeOptions(c, x) { return shuffle([x, ...pickDistractors(c, x)]); }
+function makeOptions(c, x, qdir) { return shuffle([x, ...pickDistractors(c, x, qdir)]); }
 
-// ----- Byg / stav -----
-// Sætninger bygges af ordbrikker, enkeltord staves med bogstavbrikker.
-// Danske ord med "en/et/at" foran: kun selve ordet skal staves.
-function buildSpec(c, x) {
+// ----- Byg sætninger -----
+// Sætninger (og flerordsudtryk) bygges af ordbrikker. Enkeltord skrives på bogstav-tastaturet.
+function splitPrefix(c, x) {
   const full = x.words[c.s.target];
-  let prefix = '';
-  let rest = full;
   if (!x.phrase && c.s.target === 'da') {
     const m = full.match(/^(en|et|at)\s+(.+)$/);
-    if (m) { prefix = m[1]; rest = m[2]; }
+    if (m) return { prefix: m[1], rest: m[2] };
   }
+  return { prefix: '', rest: full };
+}
+function buildSpec(c, x) {
+  const { prefix, rest } = splitPrefix(c, x);
   const words = rest.split(/\s+/).filter(Boolean);
-  if (x.phrase || words.length > 1) {
-    const tokens = words.map((w) => w.replace(/[.,!?;:]+$/, '')).filter(Boolean);
-    if (tokens.length < 2) return null;
-    // Stort begyndelsesbogstav ville afsløre det første ord.
-    if (x.phrase) tokens[0] = tokens[0].charAt(0).toLowerCase() + tokens[0].slice(1);
-    return { mode: 'words', prefix, answer: tokens, sep: ' ' };
-  }
-  const letters = Array.from(rest);
-  if (letters.length < 3 || letters.length > 14) return null;
-  return { mode: 'letters', prefix, answer: letters, sep: '' };
+  if (!x.phrase && words.length < 2) return null;
+  const tokens = words.map((w) => w.replace(/[.,!?;:]+$/, '')).filter(Boolean);
+  if (tokens.length < 2) return null;
+  // Stort begyndelsesbogstav ville afsløre det første ord.
+  if (x.phrase) tokens[0] = tokens[0].charAt(0).toLowerCase() + tokens[0].slice(1);
+  return { mode: 'words', prefix, answer: tokens, sep: ' ' };
 }
 function makeTiles(c, x, spec) {
   const extra = [];
   const inAnswer = new Set(spec.answer.map((a) => a.toLowerCase()));
-  if (spec.mode === 'words') {
-    const others = shuffle(c.pool.filter((o) => o.id !== x.id && o.phrase === x.phrase).slice(0, 80));
-    for (const o of others) {
-      for (const w of shuffle(o.words[c.s.target].split(/\s+/).slice(1))) {
-        const tok = w.replace(/[.,!?;:]+$/, '');
-        if (tok && !inAnswer.has(tok.toLowerCase()) && !extra.includes(tok)) { extra.push(tok); break; }
-      }
-      if (extra.length >= 2) break;
+  const others = shuffle(c.pool.filter((o) => o.id !== x.id && o.phrase === x.phrase).slice(0, 80));
+  for (const o of others) {
+    for (const w of shuffle(o.words[c.s.target].split(/\s+/).slice(1))) {
+      const tok = w.replace(/[.,!?;:]+$/, '');
+      if (tok && !inAnswer.has(tok.toLowerCase()) && !extra.includes(tok)) { extra.push(tok); break; }
     }
-  } else {
-    const alphabet = Array.from(new Set(c.pool.slice(0, 60).flatMap((o) => Array.from(o.words[c.s.target].toLowerCase().replace(/[^\p{L}]/gu, '')))));
-    for (const ch of shuffle(alphabet)) {
-      if (!inAnswer.has(ch)) extra.push(ch);
-      if (extra.length >= 2) break;
-    }
+    if (extra.length >= 2) break;
   }
   return shuffle([...spec.answer, ...extra].map((tk, i) => ({ tk, i })));
+}
+
+// ----- Skriv ordet: bogstav-tastatur -----
+// Tastaturet har ordets bogstaver plus nogle ekstra. Antallet af ekstra bogstaver følger sværhedsgraden,
+// og tastaturet er altid et helt gitter: 2×2, 3×2, 3×3, 4×3, 4×4 eller 5×4.
+// Let: fx "mor" eller "hund" på 2×2. Bogstaverne kan bruges flere gange (som et rigtigt tastatur).
+const isLetter = (ch) => /\p{L}/u.test(ch);
+const KEY_EXTRA = { 1: 0, 2: 3, 3: 7 };
+const KEY_GRIDS = [[4, 2], [6, 3], [9, 3], [12, 4], [16, 4], [20, 5]];
+// Bogstaver, der ligner hinanden – de bedste "forkerte" bogstaver.
+const LOOKALIKE = {
+  b: 'dp', d: 'bp', p: 'bdq', q: 'pg', m: 'nw', n: 'mu', u: 'nv', v: 'uw', w: 'vm', i: 'lj', l: 'it', j: 'i',
+  e: 'aø', a: 'eo', o: 'øå', ø: 'oæ', å: 'ao', æ: 'ae', g: 'kq', k: 'g', t: 'df', f: 't', s: 'z', h: 'n', r: 'n',
+  и: 'йн', й: 'и', ш: 'щ', щ: 'ш', е: 'ёэ', ё: 'е', э: 'е', п: 'н', н: 'пи', б: 'в', в: 'б', г: 'т', т: 'г',
+  ь: 'ъ', ъ: 'ь', з: 'э', с: 'о', ч: 'у', і: 'ї', ї: 'і', є: 'е',
+};
+const alphabets = {};
+function alphabetOf(lang) {
+  if (!alphabets[lang]) {
+    // Kun almindelige bogstaver (fx ikke "é" fra "idé") – et bogstav skal optræde i mindst 5 ord.
+    const count = {};
+    for (const id of ORDER[lang] || []) {
+      const w = (ITEM[id] && ITEM[id].words[lang]) || '';
+      for (const ch of new Set(Array.from(w.toLowerCase()).filter(isLetter))) count[ch] = (count[ch] || 0) + 1;
+    }
+    alphabets[lang] = Object.keys(count).filter((ch) => count[ch] >= 5);
+  }
+  return alphabets[lang];
+}
+function writeSpec(c, x) {
+  if (x.phrase) return null;
+  const { prefix, rest } = splitPrefix(c, x);
+  if (/\s/.test(rest.trim())) return null;
+  const chars = Array.from(rest.trim());
+  const n = chars.filter(isLetter).length;
+  if (n < 2 || n > 14) return null;
+  return { prefix, chars };
+}
+function makeKeys(c, spec) {
+  const letters = Array.from(new Set(spec.chars.filter(isLetter).map((ch) => ch.toLowerCase())));
+  const want = letters.length + (KEY_EXTRA[c.s.diff] || 0);
+  const [size, cols] = KEY_GRIDS.find(([n]) => n >= want) || [letters.length, Math.ceil(Math.sqrt(letters.length))];
+  const need = size - letters.length;
+  const alphabet = alphabetOf(c.s.target);
+  const extra = [];
+  const add = (ch) => { if (extra.length < need && !letters.includes(ch) && !extra.includes(ch) && alphabet.includes(ch)) extra.push(ch); };
+  // Op til halvdelen af de ekstra bogstaver ligner ordets egne, resten er tilfældige fra sprogets alfabet.
+  for (const ch of shuffle(letters.flatMap((l) => Array.from(LOOKALIKE[l] || '')))) if (extra.length < Math.ceil(need / 2)) add(ch);
+  for (const ch of shuffle([...alphabet])) add(ch);
+  return { keys: shuffle([...letters, ...extra]), cols };
+}
+// Første plads fra pos, der skal udfyldes (tegn som bindestreg er udfyldt på forhånd).
+function nextSlot(spec, pos) {
+  while (pos < spec.chars.length && !isLetter(spec.chars[pos])) pos++;
+  return pos;
 }
 
 // ---------- Speech ----------
@@ -721,13 +833,24 @@ function renderIntro(ul) {
   intro.querySelector('.tagline').textContent = t('tagline');
 }
 
+// ----- Øvelsestyper -----
+// Billed-mode har også "Hele forløbet", der skifter opgavetype efterhånden som man kan ordet.
+const dirsFor = (pics) => (pics ? ['path', 'rec', 'prod', 'write'] : ['rec', 'prod', 'write']);
+const DIR_KEY = { path: 'path', rec: 'rec', prod: 'prod', write: 'write' };
+function dirName(dir, pics) {
+  return t(`${DIR_KEY[dir] || 'rec'}${pics && dir !== 'path' ? 'N' : ''}B`);
+}
+function dirSub(dir, pics, vars) {
+  return t(`${DIR_KEY[dir] || 'rec'}${pics && dir !== 'path' ? 'N' : ''}S`, vars);
+}
+
 // ----- Kontekstlinje: hvad øver jeg lige nu – og skift hurtigt -----
 function ctxBarHTML(c) {
   const ul = uiLang();
   const L = UI[ul].lang;
   const langTxt = c.native ? `${LANGS[c.s.target].name} · ${t('nativeShort')}` : `${LANGS[c.s.target].name} ← ${L[c.s.base]}`;
-  const what = isPack(c.s) ? packOf(c.s).name[ul] : t('topB');
-  const dirTxt = c.native ? (c.s.dir === 'rec' ? t('recNB') : t('prodNB')) : (c.s.dir === 'rec' ? t('recB') : t('prodB'));
+  const what = isPack(c.s) ? packOf(c.s).name[ul] : c.pics ? t('picsB') : t('topB');
+  const dirTxt = dirName(c.s.dir, c.pics);
   const diffTxt = (isPack(c.s) ? t('packDiff') : t('diff'))[c.s.diff];
   return `<div class="ctxbar" role="toolbar">
     <button class="pill" data-ctx="setup" title="${esc(t('settings'))}">${esc(langTxt)}</button>
@@ -740,7 +863,10 @@ function bindCtxBar() {
   $('app').querySelectorAll('[data-ctx]').forEach((b) => (b.onclick = () => {
     const s = state.settings;
     if (b.dataset.ctx === 'setup') { go('setup'); return; }
-    if (b.dataset.ctx === 'dir') s.dir = s.dir === 'rec' ? 'prod' : 'rec';
+    if (b.dataset.ctx === 'dir') {
+      const dirs = dirsFor(isPics(s));
+      s.dir = dirs[(dirs.indexOf(s.dir) + 1) % dirs.length];
+    }
     if (b.dataset.ctx === 'diff') s.diff = s.diff % 3 + 1;
     saveState();
     current = null;
@@ -768,7 +894,7 @@ function renderSetup() {
 
   if (d.target) {
     html += `<div class="step"><h2>${esc(t('baseQ'))}</h2><div class="choices">`;
-    const nPics = buildPool({ ...d, base: d.target, diff: 3 }).length;
+    const nPics = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
     if (nPics >= 8) html += choice(`data-base="${d.target}"`, d.base === d.target, esc(L[d.target]), t('nativeB') + ' · ' + t('nativeS'));
     else html += `<button class="choice" disabled aria-pressed="false"><b>${esc(L[d.target])}</b><small>${esc(t('nativeB'))} · ${esc(t('nativeSoon'))}</small></button>`;
     for (const l of Object.keys(LANGS).filter((l) => l !== d.target)) html += choice(`data-base="${l}"`, d.base === l, esc(L[l]), t('otherS'));
@@ -778,9 +904,15 @@ function renderSetup() {
   if (d.target && d.base) {
     const native = d.base === d.target;
     if (native) d.pack = TOP;
-    if (!native && PACK_LIST.length) {
+    const nPicWords = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
+    if (d.pack === PICS && nPicWords < 8) d.pack = TOP;
+    const pics = isPics(d);
+    // "Hele forløbet" findes kun med billeder.
+    if (!dirsFor(pics).includes(d.dir)) d.dir = pics ? 'path' : 'rec';
+    if (!native) {
       html += `<div class="step"><h2>${esc(t('whatQ'))}</h2><div class="choices">`;
       html += choice(`data-pack="${TOP}"`, d.pack === TOP, esc(t('topB')), t('topS'));
+      if (nPicWords >= 8) html += choice(`data-pack="${PICS}"`, d.pack === PICS, esc(t('picsB')), t('picsS', { n: nPicWords }));
       for (const p of PACK_LIST) html += choice(`data-pack="${p.id}"`, d.pack === p.id, esc(p.name[ul]), `${p.desc[ul]} · ${p.total}`);
       html += `</div></div>`;
     }
@@ -797,13 +929,7 @@ function renderSetup() {
 
     const vars = { T: L[d.target].toLowerCase(), B: L[d.base].toLowerCase() };
     html += `<div class="step"><h2>${esc(t('modeQ'))}</h2><div class="choices">`;
-    if (native) {
-      html += choice(`data-dir="prod"`, d.dir === 'prod', esc(t('prodNB')), t('prodNS'));
-      html += choice(`data-dir="rec"`, d.dir === 'rec', esc(t('recNB')), t('recNS'));
-    } else {
-      html += choice(`data-dir="rec"`, d.dir === 'rec', esc(t('recB')), t('recS', vars));
-      html += choice(`data-dir="prod"`, d.dir === 'prod', esc(t('prodB')), t('prodS', vars));
-    }
+    for (const dir of dirsFor(pics)) html += choice(`data-dir="${dir}"`, d.dir === dir, esc(dirName(dir, pics)), dirSub(dir, pics, vars));
     html += `</div></div>`;
 
     html += `<div class="step"><h2>${esc(t('diffQ'))}</h2><div class="choices">`;
@@ -826,8 +952,10 @@ function renderSetup() {
 
   const on = (sel, fn) => $('app').querySelectorAll(sel).forEach((b) => (b.onclick = () => { fn(b); render(); }));
   on('[data-target]', (b) => { if (d.target !== b.dataset.target) { d.target = b.dataset.target; d.base = null; } });
-  on('[data-base]', (b) => { d.base = b.dataset.base; });
-  on('[data-pack]', (b) => { d.pack = b.dataset.pack; d.cats = null; });
+  // Skifter man til eller fra billeder, vælges den naturlige øvelse (forløbet / forstå).
+  const repick = (before) => { if (isPics(d) !== before) d.dir = isPics(d) ? 'path' : 'rec'; };
+  on('[data-base]', (b) => { const before = !!d.base && isPics(d); d.base = b.dataset.base; repick(before); });
+  on('[data-pack]', (b) => { const before = isPics(d); d.pack = b.dataset.pack; d.cats = null; repick(before); });
   on('[data-dir]', (b) => { d.dir = b.dataset.dir; });
   on('[data-diff]', (b) => { d.diff = Number(b.dataset.diff); });
   on('[data-cat]', (b) => {
@@ -863,34 +991,46 @@ function renderPlay() {
     const next = pickNext(c);
     if (!next) { $('app').innerHTML = `<p class="task-q">${esc(t('empty'))}</p>`; return; }
     current = { ...next, answered: null };
-    if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept);
+    if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {
       current.spec = buildSpec(c, next.concept);
       current.tiles = makeTiles(c, next.concept, current.spec);
       current.picked = [];
     }
+    if (next.kind === 'write') startWrite(c, next.concept);
     renderPlayView();
-    if (next.kind === 'intro' || (c.s.dir === 'rec' && !c.native)) speakTarget(next.concept);
+    // Højt: nye ord, ord man skal forstå (ikke for børn, der skal læse selv), og ord der skal skrives ud fra et billede.
+    if (next.kind === 'intro' || (next.qdir === 'rec' && next.kind !== 'write' && !c.native) || (next.kind === 'write' && c.pics)) speakTarget(next.concept);
     return;
   }
   renderPlayView();
 }
 
 function meaningHTML(c, x) {
-  if (c.native) return picHTML(x);
+  if (c.pics) return picHTML(x);
   return `<span class="w${x.phrase ? ' long' : ''}" lang="${c.s.base}">${esc(x.words[c.s.base])}</span>`;
 }
-const picHTML = (x, cls = 'pic') => `<img class="${cls}" src="images/words/${encodeURI(IMG[x.id] || '')}" alt="" draggable="false">`;
+const picHTML = (x, cls = 'pic') => `<img class="${cls}" src="images/words/${encodeURI(IMG[x.id] || '')}" alt="" draggable="false" decoding="async">`;
 const targetHTML = (c, x) => `<span class="w${x.phrase ? ' long' : ''}" lang="${c.s.target}">${esc(x.words[c.s.target])}</span>`;
 
 function questionText(c, x, kind) {
   const L = UI[uiLang()].lang;
   const T = L[c.s.target].toLowerCase();
-  if (kind === 'build') return current.spec.mode === 'letters' ? t('qSpell', { T }) : t('qBuild', { T });
-  const rec = c.s.dir === 'rec';
-  if (c.native) return rec ? t('qRecN') : t('qProdN');
+  if (kind === 'build') return t('qBuild', { T });
+  if (kind === 'write') return c.pics ? t('qWriteN') : t('qWrite', { T });
+  const rec = current.qdir === 'rec';
+  if (c.pics) return rec ? t('qRecN') : t('qProdN');
   if (x.phrase) return rec ? t('qRecP') : t('qProdP', { T });
   return rec ? t('qRec') : t('qProd', { T });
+}
+
+// Mærkat øverst i opgaven. I forløbet viser den, hvilket trin man er på.
+function badgeText(c, x) {
+  const card = c.prog.cards[x.id];
+  if (current.kind === 'new' || current.isNew) return t('newQ');
+  if (card && card.verify) return t('check');
+  if (c.s.dir === 'path') return current.kind === 'write' || current.kind === 'build' ? t('writeNB') : dirName(current.qdir, true);
+  return t('repeat');
 }
 
 function metaHTML(c, x) {
@@ -905,8 +1045,8 @@ function metaHTML(c, x) {
 }
 
 function optionsHTML(c, x, answered) {
-  const rec = c.s.dir === 'rec';
-  let html = `<div class="options${x.phrase ? ' wide' : ''}">`;
+  const rec = current.qdir === 'rec';
+  let html = `<div class="options${x.phrase ? ' wide' : ''}${rec && c.pics ? ' pics' : ''}">`;
   current.options.forEach((o, i) => {
     let cls = 'opt';
     if (answered) {
@@ -921,24 +1061,115 @@ function optionsHTML(c, x, answered) {
   return html + `</div>`;
 }
 
+const SPEAK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4 6 8H3v8h3l5 4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
+
+// ----- Skriv ordet -----
+function startWrite(c, x) {
+  const spec = writeSpec(c, x);
+  const { keys, cols } = makeKeys(c, spec);
+  Object.assign(current, { spec, keys, cols, pos: nextSlot(spec, 0), mistakes: 0, misses: 0, wrongKeys: [], shake: null, hintKey: null });
+}
+function writeHTML(c, x) {
+  const w = current;
+  const sp = w.spec;
+  const done = !!w.answered;
+  const n = sp.chars.length + (sp.prefix ? sp.prefix.length + 1 : 0);
+  const slots = sp.chars.map((ch, i) => {
+    if (!isLetter(ch)) return `<span class="slot fixed">${esc(ch)}</span>`;
+    if (i < w.pos || done) return `<span class="slot filled${i === w.just && !done ? ' just' : ''}">${esc(ch)}</span>`;
+    return `<span class="slot${i === w.pos ? ' cur' : ''}"></span>`;
+  }).join('');
+  const state2 = done ? (w.answered === 'ok' ? ' good' : ' almost') : '';
+  const keys = w.keys.map((k) => {
+    let cls = 'kb';
+    if (!done && w.wrongKeys.includes(k)) cls += ' bad';
+    if (!done && w.shake === k) cls += ' shake';
+    if (!done && w.hintKey === k) cls += ' hint';
+    return `<button class="${cls}" data-key="${esc(k)}" ${done ? 'disabled' : ''} lang="${c.s.target}">${esc(k)}</button>`;
+  }).join('');
+  let html = `<p class="task-q">${esc(questionText(c, x, 'write'))}</p>
+    <div class="slots${state2}" style="--n:${n}" lang="${c.s.target}" aria-label="${esc(done ? x.words[c.s.target] : '')}">
+      ${sp.prefix ? `<span class="prefix">${esc(sp.prefix)}</span>` : ''}${slots}</div>
+    ${done ? '' : `<div class="keys" style="--cols:${w.cols}">${keys}</div>`}
+    <div class="feedback" aria-live="polite">`;
+  if (done) {
+    html += w.answered === 'ok' ? `<div class="msg good">${esc(t('correct'))}</div>`
+      : `<div class="msg almost">${esc(t('almost'))}</div><button class="primary" id="nextBtn">${esc(t('next'))} →</button>`;
+  } else if (w.isNew) {
+    html += `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`;
+  } else {
+    html += `<button class="secondary" id="hintBtn" ${w.hintKey ? 'disabled' : ''}>${esc(t('hint'))}</button>`;
+  }
+  return html + `</div>`;
+}
+function pressKey(k) {
+  const w = current;
+  if (!w || w.kind !== 'write' || w.answered) return;
+  const expected = w.spec.chars[w.pos].toLowerCase();
+  if (k === expected) {
+    w.just = w.pos;
+    w.pos = nextSlot(w.spec, w.pos + 1);
+    Object.assign(w, { misses: 0, wrongKeys: [], shake: null, hintKey: null });
+    if (w.pos >= w.spec.chars.length) { finishWrite(); return; }
+  } else {
+    if (w.wrongKeys.includes(k)) return;
+    w.wrongKeys.push(k);
+    w.shake = k;
+    w.just = -1;
+    w.mistakes++;
+    w.misses++;
+    // Efter to forkerte på samme plads viser vi det rigtige bogstav.
+    if (w.misses >= 2) w.hintKey = expected;
+  }
+  renderPlayView();
+}
+function writeHint() {
+  const w = current;
+  if (!w || w.kind !== 'write' || w.answered || w.hintKey) return;
+  w.hintKey = w.spec.chars[w.pos].toLowerCase();
+  w.mistakes++;
+  w.shake = null;
+  w.just = -1;
+  renderPlayView();
+}
+function finishWrite() {
+  const c = ctx();
+  const x = current.concept;
+  const correct = current.mistakes === 0;
+  const before = scoreOf(c.prog);
+  if (current.isNew) {
+    c.prog.cards[x.id] = correct ? newCard(c, CONFIG.knownStartLevel, true, { verify: true }) : newCard(c, 0, false);
+  } else {
+    grade(c, x, correct);
+  }
+  current.answered = correct ? 'ok' : 'almost';
+  finishTask(c, x, before);
+  if (correct) timer = setTimeout(advance, 1300);
+}
+
 function renderPlayView() {
   const c = ctx();
   const x = current.concept;
-  const rec = c.s.dir === 'rec';
-  const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(t('sound'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
+  const rec = current.qdir === 'rec';
+  const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(t('sound'))}">${SPEAK_SVG}</button>`;
   let html = metaHTML(c, x);
 
   if (current.kind === 'intro') {
-    html += `<div class="prompt"><span class="badge">${esc(t('newWord'))}</span>${speakBtn}
-      ${c.native ? picHTML(x) : ''}
+    html += `<div class="prompt${c.pics ? ' pics' : ''}"><span class="badge">${esc(t('newWord'))}</span>${speakBtn}
+      ${c.pics ? picHTML(x) : ''}
       ${targetHTML(c, x)}
-      ${c.native ? '' : `<span class="sub">${esc(x.words[c.s.base])}</span>`}
+      ${c.pics ? '' : `<span class="sub">${esc(x.words[c.s.base])}</span>`}
     </div>
     <div class="feedback" aria-live="polite"><button class="primary" id="nextBtn">${esc(t('next'))} →</button></div>`;
+  } else if (current.kind === 'write') {
+    // Børn hører ordet (højttaler); ved oversættelse vises betydningen.
+    html += `<div class="prompt write${c.pics ? ' pics' : ''}"><span class="badge">${esc(badgeText(c, x))}</span>${c.pics || current.answered ? speakBtn : ''}
+      ${meaningHTML(c, x)}
+    </div>${writeHTML(c, x)}`;
   } else if (current.kind === 'build') {
     const sp = current.spec;
     const built = current.picked.map((i) => current.tiles[i].tk);
-    html +=`<div class="prompt"><span class="badge">${esc(t('repeat'))}</span>
+    html += `<div class="prompt${c.pics ? ' pics' : ''}"><span class="badge">${esc(badgeText(c, x))}</span>
       ${meaningHTML(c, x)}
     </div>
     <p class="task-q">${esc(questionText(c, x, 'build'))}</p>
@@ -958,9 +1189,7 @@ function renderPlayView() {
     }
     html += `</div>`;
   } else {
-    const card = c.prog.cards[x.id];
-    const badge = current.kind === 'new' ? t('newQ') : card && card.verify ? t('check') : t('repeat');
-    html += `<div class="prompt"><span class="badge">${esc(badge)}</span>${speakBtn}
+    html += `<div class="prompt${c.pics && !rec ? ' pics' : ''}"><span class="badge">${esc(badgeText(c, x))}</span>${speakBtn}
       ${rec ? targetHTML(c, x) : meaningHTML(c, x)}
     </div>
     <p class="task-q">${esc(questionText(c, x, current.kind))}</p>
@@ -986,7 +1215,10 @@ function renderPlayView() {
   if (dk) dk.onclick = dontKnow;
   const cb = $('checkBtn');
   if (cb) cb.onclick = checkBuild;
+  const hb = $('hintBtn');
+  if (hb) hb.onclick = writeHint;
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
+  $('app').querySelectorAll('.kb').forEach((b) => (b.onclick = () => pressKey(b.dataset.key)));
   $('app').querySelectorAll('.tiles .tile').forEach((b) => (b.onclick = () => { current.picked.push(Number(b.dataset.i)); renderPlayView(); }));
   $('app').querySelectorAll('.built .tile').forEach((b) => (b.onclick = () => { current.picked.splice(Number(b.dataset.k), 1); renderPlayView(); }));
 }
@@ -1039,7 +1271,7 @@ function dontKnow() {
   if (!current || current.answered) return;
   const c = ctx();
   const x = current.concept;
-  if (current.kind === 'new') {
+  if (current.kind === 'new' || current.isNew) {
     current = { kind: 'intro', concept: x, answered: null };
     renderPlayView();
     speakTarget(x);
@@ -1130,11 +1362,13 @@ function renderPlace() {
   if (!P || P.key !== c.key) { view = 'play'; render(); return; }
   if (!current) {
     const x = P.queue.shift();
-    current = { kind: 'place', concept: x, options: makeOptions(c, x), answered: null };
+    // Niveautesten er altid valgmuligheder: "forstå"-retningen, undtagen når man øver at sige/skrive selv.
+    const qdir = c.s.dir === 'prod' || c.s.dir === 'write' ? 'prod' : 'rec';
+    current = { kind: 'place', concept: x, qdir, options: makeOptions(c, x, qdir), answered: null };
     P.total++;
   }
   const x = current.concept;
-  const rec = c.s.dir === 'rec';
+  const rec = current.qdir === 'rec';
   let html = `${ctxBarHTML(c)}<div class="meta"><span>${esc(t('placeBadge'))}</span><span>${esc(t('rank', { n: rankOf(c.s, x.id) }))}</span></div>
     <div class="progress"><div style="width:${Math.min(100, ((P.block + 1) / P.bounds.length) * 100)}%"></div></div>
     <div class="prompt"><span class="badge">${esc(t('placeBadge'))}</span>
@@ -1241,7 +1475,7 @@ function renderStats() {
         : isLearned(card) ? `<span class="dot ok"></span>${esc(t('learnedS'))}`
         : card.wrong && !card.ok ? `<span class="dot no"></span>${esc(t('wrongS'))}`
         : `<span class="dot"></span>${esc(t('notYet'))}`;
-      const meaning = c.native ? picHTML(x, 'pic-sm') : esc(x.words[c.s.base]);
+      const meaning = c.pics ? picHTML(x, 'pic-sm') : esc(x.words[c.s.base]);
       const ipm = !isPack(c.s) && IPM[c.s.target] ? (IPM[c.s.target][id] || 0).toLocaleString(uiLang()) : '–';
       html += `<tr>
         <td class="num">${rankOf(c.s, id)}</td>
@@ -1287,6 +1521,12 @@ $('soundBtn').onclick = () => {
 document.addEventListener('keydown', (e) => {
   if ((view !== 'play' && view !== 'place') || !current || e.ctrlKey || e.metaKey || e.altKey) return;
   if (current.options && !current.answered && /^[1-4]$/.test(e.key)) { choose(Number(e.key) - 1); e.preventDefault(); return; }
+  // Skriv ordet: bogstaverne på det rigtige tastatur virker også.
+  if (current.kind === 'write' && !current.answered && e.key.length === 1) {
+    const k = e.key.toLowerCase();
+    if (current.keys.includes(k)) { pressKey(k); e.preventDefault(); }
+    return;
+  }
   if (e.key === 'Enter' || e.key === ' ') {
     if ($('nextBtn')) { advance(); e.preventDefault(); } else if ($('checkBtn') && !$('checkBtn').disabled) { checkBuild(); e.preventDefault(); }
   }
