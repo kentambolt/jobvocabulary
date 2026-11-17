@@ -47,6 +47,7 @@ const UI = {
     how: ['Vælg sprog, og hvad du vil lære: de mest brugte ord, ord til et bestemt job eller køreprøven.', 'Du får ét ord eller én sætning ad gangen – det vigtigste først.', 'Svarer du rigtigt, går der længere tid, før det kommer igen. Svarer du forkert, kommer det hurtigt igen. Din score viser, hvor meget du kan.'],
     tagline: 'Gratis · uden login · virker på mobilen',
     settings: 'Indstillinger',
+    setupTitle: 'Kom i gang',
     save: 'Gem og fortsæt',
     cancel: 'Annuller',
     loading: 'Henter …',
@@ -138,6 +139,7 @@ const UI = {
     how: ['Choose your languages and what to learn: the most used words, words for a specific job, or the driving test.', 'You get one word or one sentence at a time – the most important first.', 'Answer correctly and it takes longer before it comes back. Answer wrong and it comes back soon. Your score shows how much you know.'],
     tagline: 'Free · no login · works on your phone',
     settings: 'Settings',
+    setupTitle: 'Get started',
     save: 'Save and continue',
     cancel: 'Cancel',
     loading: 'Loading …',
@@ -229,6 +231,7 @@ const UI = {
     how: ['Выберите языки и что учить: самые частые слова, слова для конкретной работы или экзамен по вождению.', 'Вы получаете одно слово или одну фразу за раз – сначала самое важное.', 'Ответите правильно – слово вернётся нескоро. Ошибётесь – оно скоро вернётся. Счёт показывает, сколько вы знаете.'],
     tagline: 'Бесплатно · без регистрации · работает на телефоне',
     settings: 'Настройки',
+    setupTitle: 'Начать обучение',
     save: 'Сохранить и продолжить',
     cancel: 'Отмена',
     loading: 'Загрузка …',
@@ -320,6 +323,7 @@ const UI = {
     how: ['Оберіть мови і що вчити: найуживаніші слова, слова для певної роботи або іспит з водіння.', 'Ви отримуєте одне слово або одну фразу за раз – спочатку найважливіше.', 'Відповісте правильно – слово повернеться нескоро. Помилитеся – воно скоро повернеться. Рахунок показує, скільки ви знаєте.'],
     tagline: 'Безкоштовно · без реєстрації · працює на телефоні',
     settings: 'Налаштування',
+    setupTitle: 'Почати навчання',
     save: 'Зберегти і продовжити',
     cancel: 'Скасувати',
     loading: 'Завантаження …',
@@ -481,20 +485,35 @@ let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
 
+// Public language pages can hand their explicit interface choice to the app
+// before a course/language pair exists. Consume this UI hint without changing progress.
+function applyInterfaceLink() {
+  const query = new URLSearchParams(location.search);
+  const requested = query.get('ui');
+  if (!requested || !Object.hasOwn(UI, requested)) return;
+  state.uiLang = requested;
+  saveState();
+  query.delete('ui');
+  const remaining = query.toString();
+  history.replaceState(null, '', location.pathname + (remaining ? '?' + remaining : '') + location.hash);
+}
+applyInterfaceLink();
+
 // Direkte link fra en jobside: #start=<pakke>&base=<sprog>. Har man allerede valgt sprog,
 // skiftes der bare emne; ellers åbnes opsætningen med emnet valgt på forhånd.
 function applyCourseLink() {
   const m = location.hash.match(/^#start=([a-z]+)(?:&base=([a-z]{2}))?/);
   if (!m) return;
-  history.replaceState(null, '', location.pathname + location.search);
   const [, pack, base] = m;
   if (![TOP, PICS].includes(pack) && !PACK_LIST.some((p) => p.id === pack)) return;
   selectedCourseLink = true;
+  if (base && Object.hasOwn(UI, base)) { state.uiLang = base; saveState(); }
   current = null;
   placement = null;
   lastFeedback = null;
   const s = state.settings;
   if (s && s.target === 'da' && s.base !== 'da') {
+    history.replaceState(null, '', location.pathname + location.search);
     state.settings = { ...s, base: base && LANGS[base] && base !== 'da' ? base : s.base, pack, cats: null, dir: pack === PICS ? 'path' : 'rec' };
     saveState();
     view = 'play';
@@ -537,10 +556,11 @@ window.addEventListener('popstate', () => {
 function loadState() {
   let s = null;
   try { s = JSON.parse(localStorage.getItem(STORE)); } catch (e) { /* ingen lagring */ }
-  if (!s || typeof s !== 'object') s = {};
+  if (!s || typeof s !== 'object' || Array.isArray(s)) s = {};
   s.progress = s.progress || {};
   s.sound = s.sound !== false;
   s.library = s.library && typeof s.library === 'object' && !Array.isArray(s.library) ? s.library : {};
+  if (!Object.hasOwn(UI, s.uiLang)) delete s.uiLang;
   return s;
 }
 function saveState() {
@@ -558,7 +578,7 @@ function browserLang() {
 // Appens sprog er altid det sprog, brugeren forstår bedst – aldrig det sprog, der skal læres.
 function uiLang() {
   if (view === 'setup' && draft && draft.base) return draft.base;
-  return (state.settings && state.settings.base) || browserLang();
+  return state.uiLang || (state.settings && state.settings.base) || browserLang();
 }
 function t(key, vars) {
   const v = UI[uiLang()][key];
@@ -792,7 +812,7 @@ function speak(text, lang, explicit = false) {
     speechSynthesis.speak(u);
   } catch (e) { /* ingen tale */ }
 }
-function speakTarget(x) { speak(x.words[state.settings.target], state.settings.target); }
+function speakTarget(x, explicit = false) { speak(x.words[state.settings.target], state.settings.target, explicit); }
 
 // ---------- Rendering ----------
 function render() {
@@ -857,7 +877,7 @@ function updateScore(delta) {
 function renderIntro(ul) {
   const intro = $('intro');
   if (!intro) return;
-  intro.hidden = !(view === 'setup' && !state.settings && !selectedCourseLink);
+  intro.hidden = !(view === 'setup' && !state.settings && !selectedCourseLink && !draft?.target);
   if (intro.hidden || intro.dataset.lang === ul) return;
   intro.dataset.lang = ul;
   intro.querySelector('h1').textContent = t('title');
@@ -924,7 +944,12 @@ function renderSetup() {
   const choice = (attrs, pressed, title, sub) =>
     `<button class="choice" ${attrs} aria-pressed="${pressed}"><b>${title}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</button>`;
 
-  let html = `<section class="setup">${state.settings ? `<h1>${esc(t('settings'))}</h1>` : ''}`;
+  let html = `<section class="setup"><h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>`;
+  if (selectedCourseLink && !state.settings && d.target && d.base && countPool(d)) {
+    const selected = PACK_LIST.find((p) => p.id === d.pack);
+    const name = selected ? selected.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
+    html += `<div class="setup-ready"><div><b>${esc(name)}</b><span>${esc(LANGS[d.target].name)} ← ${esc(L[d.base])}</span></div><button class="primary" id="quickStartBtn">${esc(t('start'))} →</button></div>`;
+  }
 
   html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">`;
   for (const l of targets) html += choice(`data-target="${l}"`, d.target === l, esc(LANGS[l].name));
@@ -1016,16 +1041,18 @@ function renderSetup() {
   });
   const cancel = $('cancelBtn');
   if (cancel) cancel.onclick = () => { draft = null; go('play'); };
-  const start = $('startBtn');
-  if (start) start.onclick = () => {
+  const startPractice = () => {
     state.sound = $('soundChk').checked;
     state.settings = { ...d };
+    state.uiLang = d.base;
     saveState();
     draft = null;
     current = null;
     placement = null;
+    if (/^#start=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
     go('play');
   };
+  for (const id of ['startBtn', 'quickStartBtn']) if ($(id)) $(id).onclick = startPractice;
 }
 
 // ----- Play -----
@@ -1218,7 +1245,7 @@ function renderPlayView() {
   const c = ctx();
   const x = current.concept;
   const rec = current.qdir === 'rec';
-  const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(t('sound'))}">${SPEAK_SVG}</button>`;
+  const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(lt('listen'))}">${SPEAK_SVG}</button>`;
   let html = metaHTML(c, x) + feedbackReceiptHTML();
 
   if (current.kind === 'intro') {
@@ -1276,7 +1303,7 @@ function renderPlayView() {
   bindWordSave(x);
 
   const sb = $('speakBtn');
-  if (sb) sb.onclick = () => speakTarget(x);
+  if (sb) sb.onclick = () => speakTarget(x, true);
   const nextBtn = $('nextBtn');
   if (nextBtn) nextBtn.onclick = advance;
   const dk = $('dkBtn');

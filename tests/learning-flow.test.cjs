@@ -1,35 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
-const words = require('../words');
-const WordLibrary = require('../library');
+const app = require('./helpers/app.cjs');
 const LearningFlow = require('../learning-flow');
 
-// Run the real app model and answer handlers with inert rendering/storage surfaces.
-// This exercises persisted progress, not a second implementation of the scheduler.
-function app(settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', diff: 1 }) {
-  const elements = new Map();
-  const storage = new Map([['topwords.v2', JSON.stringify({ settings, sound: false })]]);
-  const events = new Map();
-  const context = vm.createContext({
-    ...words, WordLibrary, LearningFlow,
-    COURSE_CATALOG: require('../catalog'),
-    localStorage: { getItem: (key) => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
-    navigator: { language: 'en' }, location: { hash: '', pathname: '/', search: '' },
-    history: { pushState() {}, replaceState() {} },
-    window: { addEventListener(name, callback) { events.set(name, callback); }, scrollTo() {} },
-    document: { addEventListener() {}, getElementById(id) { if (!elements.has(id)) elements.set(id, {}); return elements.get(id); } },
-    clearTimeout, console,
-  });
-  vm.runInContext(fs.readFileSync(path.join(__dirname, '../library-ui.js'), 'utf8'), context);
-  const source = fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8');
-  assert.match(source, /\nrender\(\);\s*$/);
-  vm.runInContext(source.replace(/\nrender\(\);\s*$/, ''), context);
-  vm.runInContext('renderPlayView = () => {}; updateScore = () => {}; speakTarget = () => {};', context);
-  return { context, storage, events, run: (code) => vm.runInContext(code, context) };
-}
 const card = () => ({ lvl: 3, ok: true, right: 3, wrong: 0, task: 0, time: Date.now() - 86400000 });
 
 test('the real app automatically advances easy to medium to hard and retains course settings', () => {
