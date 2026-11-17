@@ -37,7 +37,7 @@ PACKS.restaurant = {
         [2, "en konvektomat", "combi oven", "пароконвектомат", "пароконвектомат"],
         [2, "en wok", "wok", "вок", "вок"],
         [2, "en køkkenmaskine", "food processor", "кухонный комбайн", "кухонний комбайн"],
-        [2, "en salamander", "salamander (grill)", "саламандр (гриль)", "саламандр (гриль)"],
+        [2, "en salamander", "salamander (grill)", "саламандра (гриль)", "саламандра (гриль)"],
         [2, "en blæstkøler", "blast chiller", "шкаф шокового охлаждения", "шафа шокового охолодження"],
         [2, "en vakuumpakker", "vacuum sealer", "вакуумный упаковщик", "вакуумний пакувальник"],
         [2, "en gastrobakke", "gastronorm tray", "гастроёмкость", "гастроємність"],
