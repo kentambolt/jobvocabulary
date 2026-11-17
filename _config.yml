@@ -1,0 +1,10 @@
+# GitHub Pages serves the application, not development inputs or internal data.
+# Internal content work lives in the separate private jobvocabulary repository.
+exclude:
+  - content
+  - data
+  - design
+  - tests
+  - DEVELOPMENT.md
+  - README.md
+  - pr-description.tmp
