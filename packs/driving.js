@@ -381,7 +381,9 @@ PACKS.driving = {
         [1, "I byen er fartgrænsen 50 km/t.", "In town the speed limit is 50 km/h.", "В городе ограничение скорости 50 км/ч.", "У місті обмеження швидкості 50 км/год."],
         [1, "Uden for byen er fartgrænsen 80 km/t.", "Outside town the speed limit is 80 km/h.", "За городом ограничение скорости 80 км/ч.", "За містом обмеження швидкості 80 км/год."],
         [1, "På motorvejen er fartgrænsen normalt 110 km/t.", "On the motorway the limit is usually 110 km/h.", "На автомагистрали обычно ограничение 110 км/ч.", "На автомагістралі зазвичай обмеження 110 км/год."],
-        [1, "Promillegrænsen er 0,5.", "The alcohol limit is 0.5 per mille.", "Допустимый уровень алкоголя – 0,5 промилле.", "Допустимий рівень алкоголю – 0,5 проміле."],
+        // Category B, first acquisition; rule effective 1 July 2025. Checked 17 November 2026:
+        // https://www.ft.dk/samling/20241/lovforslag/l165/index.htm
+        [1, "Ved dit første kategori B-kørekort er promillegrænsen 0,2 de første tre år.", "For your first category B licence, the alcohol limit is 0.2 per mille for the first three years.", "После первого получения прав категории B лимит алкоголя – 0,2 промилле в течение первых трёх лет.", "Після першого отримання посвідчення категорії B межа алкоголю – 0,2 проміле протягом перших трьох років."],
         [1, "Du skal altid bruge sikkerhedssele.", "You must always wear a seat belt.", "Вы всегда должны быть пристёгнуты.", "Ви завжди маєте бути пристебнуті."],
         [1, "Du skal holde for rødt lys.", "You must stop at a red light.", "На красный свет нужно остановиться.", "На червоне світло треба зупинитися."],
         [1, "Ved hajtænder har du ubetinget vigepligt.", "At shark teeth you must give way to everyone.", "У «акульих зубов» вы обязаны уступить дорогу всем.", "Біля «зубів акули» ви маєте дати дорогу всім."],

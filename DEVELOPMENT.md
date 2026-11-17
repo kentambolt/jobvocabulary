@@ -31,6 +31,8 @@ Keep the generated dictionary checked in: its previous aliases retain IDs when
 translations are corrected. Identical records can share an entry; different
 meanings must remain separate. Do not overwrite the dictionary with an unrelated
 regenerated dataset, or change existing course IDs without an explicit migration.
+If a Danish source phrase changes, map its retired source ID to the replacement
+in `data/lexicon-migrations.json`; saved words will follow the corrected entry.
 External additions towards a larger common-word dictionary require reviewed
 translations, distinct meanings, source attribution and a compatible licence.
 `content/incoming/` is for review proposals, not automatically published data.

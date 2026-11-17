@@ -56,7 +56,7 @@ test('dictionary IDs survive translation corrections and keep homonyms separate'
     fs.mkdirSync(path.join(directory, 'data'));
     fs.mkdirSync(path.join(directory, 'packs'));
     fs.copyFileSync(path.join(__dirname, '../data/build-lexicon.js'), path.join(directory, 'data/build-lexicon.js'));
-    const write = (translation) => fs.writeFileSync(path.join(directory, 'words.js'), 'module.exports = ' + JSON.stringify({ CONCEPTS: [{ id: 'bank-seat', words: { da: 'bænk', en: 'bench', ru: translation, uk: 'лава' } }, { id: 'bank-finance', words: { da: 'bank', en: 'bank', ru: 'банк', uk: 'банк' } }, { id: 'bank-river', words: { da: 'bred', en: 'bank', ru: 'берег', uk: 'берег' } }] }));
+    const write = (translation, id = 'bank-seat', da = 'bænk') => fs.writeFileSync(path.join(directory, 'words.js'), 'module.exports = ' + JSON.stringify({ CONCEPTS: [{ id, words: { da, en: 'bench', ru: translation, uk: 'лава' } }, { id: 'bank-finance', words: { da: 'bank', en: 'bank', ru: 'банк', uk: 'банк' } }, { id: 'bank-river', words: { da: 'bred', en: 'bank', ru: 'берег', uk: 'берег' } }] }));
     const build = () => { execFileSync(process.execPath, [path.join(directory, 'data/build-lexicon.js')]); return JSON.parse(fs.readFileSync(path.join(directory, 'lexicon.json'), 'utf8')); };
     write('скамья'); const first = build();
     write('скамейка'); const second = build();
@@ -64,6 +64,12 @@ test('dictionary IDs survive translation corrections and keep homonyms separate'
     assert.notEqual(second.aliases['bank-finance'], second.aliases['bank-river']);
     const bytes = fs.readFileSync(path.join(directory, 'lexicon.json'), 'utf8');
     build(); assert.equal(fs.readFileSync(path.join(directory, 'lexicon.json'), 'utf8'), bytes);
+    const retiredId = second.entries[second.aliases['bank-seat']][0];
+    write('скамейка', 'bench-seat', 'en bænk');
+    fs.writeFileSync(path.join(directory, 'data/lexicon-migrations.json'), JSON.stringify({ 'bank-seat': 'bench-seat' }));
+    const renamed = build();
+    assert.equal(renamed.aliases['bank-seat'], renamed.aliases['bench-seat']);
+    assert.equal(renamed.aliases[retiredId], renamed.aliases['bench-seat']);
   } finally {
     const resolved = path.resolve(directory);
     assert.equal(path.dirname(resolved), path.resolve(temporaryRoot));
