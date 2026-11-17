@@ -429,6 +429,25 @@ let current = null;
 let timer = null;
 let placement = null;
 
+// Direkte link fra en jobside: #start=<pakke>&base=<sprog>. Har man allerede valgt sprog,
+// skiftes der bare emne; ellers åbnes opsætningen med emnet valgt på forhånd.
+(function deepLink() {
+  const m = location.hash.match(/^#start=([a-z]+)(?:&base=([a-z]{2}))?/);
+  if (!m) return;
+  history.replaceState(null, '', location.pathname + location.search);
+  const [, pack, base] = m;
+  if (!PACK_LIST.some((p) => p.id === pack)) return;
+  const s = state.settings;
+  if (s && s.target === 'da' && s.base !== 'da') {
+    state.settings = { ...s, pack, cats: null };
+    saveState();
+    view = 'play';
+  } else {
+    draft = { target: 'da', base: base && LANGS[base] && base !== 'da' ? base : null, pack, dir: 'rec', diff: 1, cats: null };
+    view = 'setup';
+  }
+})();
+
 function viewFromHash() {
   const h = location.hash;
   if (h === '#indstillinger' || !state.settings) return 'setup';
