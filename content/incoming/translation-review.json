@@ -1,0 +1,1945 @@
+{
+  "title": "Forslag til oversættelsesrettelser – essentials og fagtermer i de otte jobpakker",
+  "status": "proposal",
+  "note": "Kun forslag. Pakkerne er ikke ændret. Gennemgået af Claude (AI), ikke af modersmålstalere: alle forslag bør godkendes, og punkter med severity \"check\" eller proposed=null kræver en modersmålstaler.",
+  "date": "2026-11-17",
+  "scope": {
+    "essentials": "packs/essentials.js fra origin/codex/jobvocabulary@7dcae3a: alle 84 rækker (70 ord, 14 sætninger)",
+    "jobPacks": "Alle ord-rækker (type \"word\") i cleaning, restaurant, warehouse, construction, care, agriculture, retail, transport på origin/main@7f2b714: 1887 rækker. Sætninger og driving.js er ikke gennemgået."
+  },
+  "fields": {
+    "source": "Hvor teksten står: fil, linje (linjen med det pågældende sprogfelt), git-ref, pakke, kategori, rækkeindeks i kategorien og den danske tekst som nøgle",
+    "field": "Sprogfeltet forslaget gælder: da | en | ru | uk",
+    "current": "Nuværende tekst",
+    "proposed": "Foreslået tekst; null = problemet er reelt, men rettelsen skal komme fra en modersmålstaler",
+    "reason": "Begrundelse",
+    "severity": "error = forkert; improvement = korrekt men bør forbedres (fx amerikansk i britisk pakke, inkonsekvens); check = tvivl som en modersmålstaler skal afgøre",
+    "confidence": "high | medium | low",
+    "reference": "Ordbog/norm, hvor relevant"
+  },
+  "summary": {
+    "total": 103,
+    "bySeverity": {
+      "improvement": 65,
+      "check": 33,
+      "error": 5
+    },
+    "byConfidence": {
+      "high": 30,
+      "medium": 28,
+      "low": 45
+    },
+    "byPack": {
+      "essentials": 26,
+      "cleaning": 17,
+      "restaurant": 10,
+      "warehouse": 11,
+      "construction": 5,
+      "care": 6,
+      "agriculture": 16,
+      "retail": 9,
+      "transport": 3
+    }
+  },
+  "items": [
+    {
+      "id": "tr-001",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 540,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 9,
+        "rowKeyDa": "venstre"
+      },
+      "field": "da",
+      "current": "venstre",
+      "proposed": "til venstre",
+      "reason": "\"venstre\" alene er adjektivet (den venstre hånd). Ru \"налево\"/uk \"ліворуч\" og engelsk \"left\" i vejvisning betyder retningen \"til venstre\". Med \"til\" passer rækken til kategorien vejvisning og til sætninger som \"Drej til venstre\".",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog: venstre, til venstre"
+    },
+    {
+      "id": "tr-002",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 547,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 10,
+        "rowKeyDa": "højre"
+      },
+      "field": "da",
+      "current": "højre",
+      "proposed": "til højre",
+      "reason": "Samme som \"venstre\": ru \"направо\"/uk \"праворуч\" er retningsadverbier = \"til højre\".",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog: højre, til højre"
+    },
+    {
+      "id": "tr-003",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 348,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 8,
+        "rowKeyDa": "minut"
+      },
+      "field": "da",
+      "current": "minut",
+      "proposed": "et minut",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-004",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 355,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 9,
+        "rowKeyDa": "time"
+      },
+      "field": "da",
+      "current": "time",
+      "proposed": "en time",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente. Her er det ekstra vigtigt: \"time\" = hour er en falsk ven for engelsktalende, og \"en time\" gør det tydeligt, at det er et navneord.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-005",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 362,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 10,
+        "rowKeyDa": "uge"
+      },
+      "field": "da",
+      "current": "uge",
+      "proposed": "en uge",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-006",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 369,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 11,
+        "rowKeyDa": "måned"
+      },
+      "field": "da",
+      "current": "måned",
+      "proposed": "en måned",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-007",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 376,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 12,
+        "rowKeyDa": "år"
+      },
+      "field": "da",
+      "current": "år",
+      "proposed": "et år",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-008",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 383,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 13,
+        "rowKeyDa": "aftale"
+      },
+      "field": "da",
+      "current": "aftale",
+      "proposed": "en aftale",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-009",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 390,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 14,
+        "rowKeyDa": "pause"
+      },
+      "field": "da",
+      "current": "pause",
+      "proposed": "en pause",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-010",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 477,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 0,
+        "rowKeyDa": "bus"
+      },
+      "field": "da",
+      "current": "bus",
+      "proposed": "en bus",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-011",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 484,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 1,
+        "rowKeyDa": "tog"
+      },
+      "field": "da",
+      "current": "tog",
+      "proposed": "et tog",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente. \"tog\" er også datid af \"tage\"; artiklen gør betydningen \"train\" entydig.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-012",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 491,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 2,
+        "rowKeyDa": "billet"
+      },
+      "field": "da",
+      "current": "billet",
+      "proposed": "en billet",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-013",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 498,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 3,
+        "rowKeyDa": "station"
+      },
+      "field": "da",
+      "current": "station",
+      "proposed": "en station",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-014",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 505,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 4,
+        "rowKeyDa": "busstoppested"
+      },
+      "field": "da",
+      "current": "busstoppested",
+      "proposed": "et busstoppested",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-015",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 512,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 5,
+        "rowKeyDa": "afgang"
+      },
+      "field": "da",
+      "current": "afgang",
+      "proposed": "en afgang",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-016",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 519,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 6,
+        "rowKeyDa": "ankomst"
+      },
+      "field": "da",
+      "current": "ankomst",
+      "proposed": "en ankomst",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-017",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 526,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 7,
+        "rowKeyDa": "forsinkelse"
+      },
+      "field": "da",
+      "current": "forsinkelse",
+      "proposed": "en forsinkelse",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-018",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 533,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 8,
+        "rowKeyDa": "adresse"
+      },
+      "field": "da",
+      "current": "adresse",
+      "proposed": "en adresse",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-019",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 561,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "gettingaround",
+        "rowIndex": 12,
+        "rowKeyDa": "cykel"
+      },
+      "field": "da",
+      "current": "cykel",
+      "proposed": "en cykel",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-020",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 327,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 5,
+        "rowKeyDa": "morgen"
+      },
+      "field": "da",
+      "current": "morgen",
+      "proposed": "en morgen",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente. Artiklen adskiller også \"en morgen\" (morning) fra \"i morgen\" (tomorrow) i samme kategori.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-021",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 334,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 6,
+        "rowKeyDa": "aften"
+      },
+      "field": "da",
+      "current": "aften",
+      "proposed": "en aften",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-022",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 341,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 7,
+        "rowKeyDa": "nat"
+      },
+      "field": "da",
+      "current": "nat",
+      "proposed": "en nat",
+      "reason": "De otte jobpakker skriver danske navneord med artikel (en/et), så eleven lærer kønnet. Essentials gør det ikke, så pakkerne er inkonsekvente.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Den Danske Ordbog (køn)"
+    },
+    {
+      "id": "tr-023",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 385,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 13,
+        "rowKeyDa": "aftale"
+      },
+      "field": "ru",
+      "current": "встреча",
+      "proposed": null,
+      "reason": "\"встреча\"/\"зустріч\" betyder møde (= \"et møde\"). \"Aftale\" i betydningen \"appointment\" (fx hos lægen) hedder typisk \"запись\"/\"приём\" (ru) og \"запис\"/\"прийом\" (uk). I betydningen \"arrangement\" hedder det \"договорённость\"/\"домовленість\". Vælg den betydning, pakken skal lære, og få en modersmålstaler til at bekræfte. Jeg har ikke gættet.",
+      "severity": "check",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-024",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 386,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "time",
+        "rowIndex": 13,
+        "rowKeyDa": "aftale"
+      },
+      "field": "uk",
+      "current": "зустріч",
+      "proposed": null,
+      "reason": "Se ru-rækken: \"зустріч\" = møde. Afhængigt af den valgte betydning: \"запис\"/\"прийом\" (hos lægen) eller \"домовленість\".",
+      "severity": "check",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-025",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 650,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "firstphrases",
+        "rowIndex": 10,
+        "rowKeyDa": "Hvornår skal jeg møde?"
+      },
+      "field": "da",
+      "current": "Hvornår skal jeg møde?",
+      "proposed": "Hvornår skal jeg møde ind?",
+      "reason": "\"møde ind\" er det almindelige udtryk for at starte på arbejde/vagt. \"møde\" alene forveksles let med \"at møde nogen\" (meet).",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Den Danske Ordbog: møde ind"
+    },
+    {
+      "id": "tr-026",
+      "source": {
+        "file": "packs/essentials.js",
+        "line": 651,
+        "ref": "origin/codex/jobvocabulary@7dcae3a",
+        "pack": "essentials",
+        "category": "firstphrases",
+        "rowIndex": 10,
+        "rowKeyDa": "Hvornår skal jeg møde?"
+      },
+      "field": "en",
+      "current": "When should I arrive?",
+      "proposed": "When do I start?",
+      "reason": "\"skal\" udtrykker en aftale/et krav, ikke et råd. \"When do I start?\" eller \"When do I need to be there?\" passer bedre end \"should\" til en vagt.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-027",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 49,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "equipment",
+        "rowIndex": 21,
+        "rowKeyDa": "en forlængerledning"
+      },
+      "field": "en",
+      "current": "extension cord",
+      "proposed": "extension lead",
+      "reason": "\"Extension cord\" er amerikansk; britisk engelsk siger \"extension lead\" (pakken bruger britisk).",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Oxford Learner's Dictionaries (BrE)"
+    },
+    {
+      "id": "tr-028",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 46,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "equipment",
+        "rowIndex": 18,
+        "rowKeyDa": "en stige"
+      },
+      "field": "uk",
+      "current": "драбина",
+      "proposed": "стрем’янка",
+      "reason": "Uoverensstemmelse: en/ru siger trappestige (stepladder/стремянка), men uk 'драбина' er en almindelig stige. Vælg samme betydning i alle sprog; alternativt ret en til 'ladder' og ru til 'лестница', da dansk 'stige' er den generelle stige (trappestige = stepladder). Apostrof skal være samme tegn (’) som resten af filen.",
+      "severity": "check",
+      "confidence": "medium",
+      "reference": "СУМ-20"
+    },
+    {
+      "id": "tr-029",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 75,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "products",
+        "rowIndex": 11,
+        "rowKeyDa": "sprit"
+      },
+      "field": "en",
+      "current": "spirit (alcohol)",
+      "proposed": "methylated spirits",
+      "reason": "\"Spirit (alcohol)\" er unaturligt engelsk. Rengøringssprit (husholdningssprit) hedder på britisk engelsk \"methylated spirits\".",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Oxford Learner's Dictionaries (BrE)"
+    },
+    {
+      "id": "tr-030",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 153,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "fixtures",
+        "rowIndex": 19,
+        "rowKeyDa": "en skraldespand"
+      },
+      "field": "uk",
+      "current": "смітник",
+      "proposed": "відро для сміття",
+      "reason": "'Смітник' betyder især affaldsplads/skraldested (udendørs); den indendørs skraldespand er 'відро для сміття', svarende til ru 'мусорное ведро'.",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "СУМ-20"
+    },
+    {
+      "id": "tr-031",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 168,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "fixtures",
+        "rowIndex": 34,
+        "rowKeyDa": "en gardinstang"
+      },
+      "field": "en",
+      "current": "curtain rail",
+      "proposed": "curtain pole",
+      "reason": "En gardinstang er en stang (curtain pole/rod); 'curtain rail' er en gardinskinne. ru/uk 'карниз' dækker begge.",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Den Danske Ordbog"
+    },
+    {
+      "id": "tr-032",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 184,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "fixtures",
+        "rowIndex": 50,
+        "rowKeyDa": "et badekar"
+      },
+      "field": "en",
+      "current": "bathtub",
+      "proposed": "bath",
+      "reason": "Britisk engelsk siger normalt 'bath' om badekarret; 'bathtub' er mest amerikansk. Mindre vigtigt, da ordet forstås.",
+      "severity": "improvement",
+      "confidence": "low",
+      "reference": "Oxford Learner's Dictionaries (BrE)"
+    },
+    {
+      "id": "tr-033",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 259,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "actions",
+        "rowIndex": 36,
+        "rowKeyDa": "at tage opvasken"
+      },
+      "field": "en",
+      "current": "to do the dishes",
+      "proposed": "to do the washing-up",
+      "reason": "'Do the dishes' er amerikansk; britisk engelsk siger 'do the washing-up' (pakken bruger allerede 'washing-up liquid').",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Oxford Learner's Dictionaries (BrE)"
+    },
+    {
+      "id": "tr-034",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 302,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "dirt",
+        "rowIndex": 25,
+        "rowKeyDa": "skimmel"
+      },
+      "field": "en",
+      "current": "mould",
+      "proposed": "mould (on walls)",
+      "reason": "'mug' (linje 281) og 'skimmel' har identisk oversættelse i alle tre sprog (mould/плесень/цвіль), så eleven kan ikke skelne dem. Skimmel bruges især om skimmel i bygninger/på vægge; tilføj en forklaring i parentes. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-035",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 302,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "dirt",
+        "rowIndex": 25,
+        "rowKeyDa": "skimmel"
+      },
+      "field": "ru",
+      "current": "плесень",
+      "proposed": "плесень (на стенах)",
+      "reason": "Samme dublet som 'mug' (плесень); tilføj præcisering så rækkerne kan skelnes. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-036",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 302,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "dirt",
+        "rowIndex": 25,
+        "rowKeyDa": "skimmel"
+      },
+      "field": "uk",
+      "current": "цвіль",
+      "proposed": "цвіль (на стінах)",
+      "reason": "Samme dublet som 'mug' (цвіль); tilføj præcisering så rækkerne kan skelnes. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-037",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 343,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "describe",
+        "rowIndex": 26,
+        "rowKeyDa": "stoppet"
+      },
+      "field": "en",
+      "current": "blocked",
+      "proposed": null,
+      "reason": "'tilstoppet' (linje 301) og 'stoppet' har identisk oversættelse i alle sprog (blocked/засорено/засмічено). Ordene er synonymer, men eleven kan ikke vide hvilket der forventes. Overvej at fjerne den ene række eller markere den anden som 'hverdagsord'. NB: parret er bevidst tilladt som synonym i data/build-packs.js (SYNONYMS), så det er en redaktionel beslutning, ikke en fejl.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-038",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 296,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "dirt",
+        "rowIndex": 19,
+        "rowKeyDa": "en kattebakke"
+      },
+      "field": "en",
+      "current": "litter box",
+      "proposed": "litter tray",
+      "reason": "'Litter box' er amerikansk; britisk engelsk siger 'litter tray'.",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Oxford Learner's Dictionaries (BrE)"
+    },
+    {
+      "id": "tr-039",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 439,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "pests",
+        "rowIndex": 8,
+        "rowKeyDa": "museklatter"
+      },
+      "field": "da",
+      "current": "museklatter",
+      "proposed": null,
+      "reason": "'Klatter' bruges typisk om fugle ('fugleklatter'); musenes efterladenskaber kaldes oftere 'muselort'/'museekskrementer'. En dansk modersmålstaler bør bekræfte, hvad rengøringsfolk faktisk siger.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-040",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 458,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "waste",
+        "rowIndex": 5,
+        "rowKeyDa": "restaffald"
+      },
+      "field": "uk",
+      "current": "змішані відходи",
+      "proposed": null,
+      "reason": "ru 'прочие отходы' (andet affald) og uk 'змішані відходи' (blandet affald) betyder ikke helt det samme. Restaffald = det der bliver tilbage efter sortering. En modersmålstaler bør vælge én betydning til begge sprog (fx ru 'несортируемые отходы' / uk 'несортовані відходи').",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-041",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 493,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "places",
+        "rowIndex": 17,
+        "rowKeyDa": "øverst"
+      },
+      "field": "uk",
+      "current": "на самій горі",
+      "proposed": "на самому верху",
+      "reason": "\"на самій горі\" er dagligdags; \"на самому верху\" er den neutrale form og passer til naborækken \"в самому низу\".",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-042",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 519,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "outdoor",
+        "rowIndex": 15,
+        "rowKeyDa": "belægning"
+      },
+      "field": "ru",
+      "current": "мощение",
+      "proposed": "мощёное покрытие",
+      "reason": "'Мощение' er handlingen at belægge; belægning som overflade er 'мощёное покрытие' (eller 'тротуарная плитка'). uk 'бруківка' betyder egentlig brosten, men bruges i daglig tale om fliser.",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Ожегов"
+    },
+    {
+      "id": "tr-043",
+      "source": {
+        "file": "packs/cleaning.js",
+        "line": 539,
+        "ref": "origin/main@7f2b714",
+        "pack": "cleaning",
+        "category": "outdoor",
+        "rowIndex": 35,
+        "rowKeyDa": "en havesaks"
+      },
+      "field": "en",
+      "current": "pruning shears",
+      "proposed": "secateurs",
+      "reason": "'Pruning shears' er amerikansk; britisk engelsk siger 'secateurs' (svarer til ru/uk 'секатор').",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Oxford Learner's Dictionaries (BrE)"
+    },
+    {
+      "id": "tr-044",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 40,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "equipment",
+        "rowIndex": 11,
+        "rowKeyDa": "en salamander"
+      },
+      "field": "ru",
+      "current": "саламандр (гриль)",
+      "proposed": "саламандра (гриль)",
+      "reason": "Køkkenapparatet hedder \"саламандра\" (hunkøn) på russisk, også i HoReCa-sprog; \"саламандр\" er en forkert form.",
+      "severity": "error",
+      "confidence": "high",
+      "reference": "Ожегов (саламандра)"
+    },
+    {
+      "id": "tr-045",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 40,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "equipment",
+        "rowIndex": 11,
+        "rowKeyDa": "en salamander"
+      },
+      "field": "uk",
+      "current": "саламандр (гриль)",
+      "proposed": "саламандра (гриль)",
+      "reason": "På ukrainsk hedder både dyret og grillen \"саламандра\"; \"саламандр\" er en forkert form.",
+      "severity": "error",
+      "confidence": "high",
+      "reference": "СУМ-20 (саламандра)"
+    },
+    {
+      "id": "tr-046",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 63,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "utensils",
+        "rowIndex": 6,
+        "rowKeyDa": "et piskeris"
+      },
+      "field": "uk",
+      "current": "віночок",
+      "proposed": "вінчик",
+      "reason": "\"віночок\" betyder en lille krans. Køkkenredskabet hedder normalt \"вінчик (для збивання)\".",
+      "severity": "error",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-047",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 137,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "cooking",
+        "rowIndex": 14,
+        "rowKeyDa": "at røre"
+      },
+      "field": "ru",
+      "current": "мешать",
+      "proposed": "помешивать",
+      "reason": "\"мешать\" er tvetydigt (betyder også \"forstyrre\"). Når man rører i en gryde, siger man normalt \"помешивать\" eller \"перемешивать\".",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-048",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 137,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "cooking",
+        "rowIndex": 14,
+        "rowKeyDa": "at røre"
+      },
+      "field": "uk",
+      "current": "мішати",
+      "proposed": "помішувати",
+      "reason": "\"мішати\" er korrekt, men tvetydigt (blande/røre). \"помішувати\" er det præcise madlavningsord og matcher ru-forslaget.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-049",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 173,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "dishwashing",
+        "rowIndex": 18,
+        "rowKeyDa": "en fedtudskiller"
+      },
+      "field": "uk",
+      "current": "жироуловлювач",
+      "proposed": "жировловлювач",
+      "reason": "Ifølge reglen om у/в-vekslen skrives \"в\" efter vokalen i sammensætningen; den gængse form er \"жировловлювач\".",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Правопис 2019 (чергування у – в)"
+    },
+    {
+      "id": "tr-050",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 260,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "drinks",
+        "rowIndex": 17,
+        "rowKeyDa": "en kaffemaskine"
+      },
+      "field": "uk",
+      "current": "кавоварка",
+      "proposed": "кавомашина",
+      "reason": "Russisk har \"кофемашина\" (kaffeautomat), mens ukrainsk har \"кавоварка\" (kaffebrygger). Et professionelt apparat kaldes normalt \"кавомашина\", og så matcher kolonnerne.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-051",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 323,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "work",
+        "rowIndex": 13,
+        "rowKeyDa": "en sygemelding"
+      },
+      "field": "en",
+      "current": "sick call",
+      "proposed": "sickness notification",
+      "reason": "\"sick call\" er ikke gængs britisk engelsk for en sygemelding. Pakkerne bruger nu tre forskellige termer (restaurant: \"sick call\", lager: \"sick notice\", pleje: \"sick leave notice\"). Vælg én; \"sickness notification\" er et forslag, ikke en fast term.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-052",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 144,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "cooking",
+        "rowIndex": 21,
+        "rowKeyDa": "at sautere"
+      },
+      "field": "ru",
+      "current": "пассеровать",
+      "proposed": null,
+      "reason": "\"sautere\" betyder at stege hurtigt ved høj varme. \"пассеровать\" betyder at stege langsomt ved lav varme, til grøntsagerne bliver bløde (som \"svitse\"). En russisk kok bør tjekke, om f.eks. \"обжаривать (соте)\" passer bedre.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-053",
+      "source": {
+        "file": "packs/restaurant.js",
+        "line": 144,
+        "ref": "origin/main@7f2b714",
+        "pack": "restaurant",
+        "category": "cooking",
+        "rowIndex": 21,
+        "rowKeyDa": "at sautere"
+      },
+      "field": "uk",
+      "current": "пасерувати",
+      "proposed": null,
+      "reason": "Samme problem som i russisk: \"пасерувати\" betyder at stege langsomt og blødt, ikke \"sautere\". En ukrainsk kok bør tjekke det.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-054",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 94,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "equipment",
+        "rowIndex": 31,
+        "rowKeyDa": "en stige"
+      },
+      "field": "ru",
+      "current": "стремянка",
+      "proposed": "лестница (приставная)",
+      "reason": "\"en stige\" er en almindelig stige (en: ladder, uk: драбина), men \"стремянка\" er en trappestige. \"лестница\" alene kan også betyde trappe, derfor præciseringen.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-055",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 222,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "shifts",
+        "rowIndex": 11,
+        "rowKeyDa": "en sygemelding"
+      },
+      "field": "en",
+      "current": "sick notice",
+      "proposed": "sickness notification",
+      "reason": "\"sick notice\" er ikke idiomatisk. Se restaurant-forslaget: vælg én term til alle tre pakker.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-056",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 271,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "quantities",
+        "rowIndex": 16,
+        "rowKeyDa": "pr. time"
+      },
+      "field": "uk",
+      "current": "на годину",
+      "proposed": "за годину",
+      "reason": "Om en hastighed eller norm (\"100 kolli pr. time\") siger man normalt \"за годину\" på ukrainsk. \"на годину\" kan læses som \"for en time / i en time\".",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-057",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 204,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "safety",
+        "rowIndex": 27,
+        "rowKeyDa": "en nærved-ulykke"
+      },
+      "field": "da",
+      "current": "en nærved-ulykke",
+      "proposed": "en nærvedulykke",
+      "reason": "Retskrivningsordbogen og Arbejdstilsynet skriver normalt ordet i ét: \"nærvedulykke\". En dansker bør bekræfte, om bindestregsformen skal bevares.",
+      "severity": "improvement",
+      "confidence": "low",
+      "reference": "Retskrivningsordbogen"
+    },
+    {
+      "id": "tr-058",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 43,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "places",
+        "rowIndex": 14,
+        "rowKeyDa": "en forsendelse"
+      },
+      "field": "da",
+      "current": "en forsendelse",
+      "proposed": null,
+      "reason": "I kategorien \"places\" menes afdelingen eller området. \"en forsendelse\" betyder normalt selve sendingen (som i transport-pakken: \"shipment\"). Tjek om \"afsendelse\" eller \"en forsendelsesafdeling\" passer bedre.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-059",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 273,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "quantities",
+        "rowIndex": 18,
+        "rowKeyDa": "en restordre"
+      },
+      "field": "ru",
+      "current": "недопоставка",
+      "proposed": null,
+      "reason": "\"недопоставка\" betyder en mangelfuld levering, ikke en restordre (en ordrelinje der leveres senere). En russisktalende fagperson bør tjekke det, f.eks. \"заказ на допоставку\" eller \"отложенный заказ\".",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-060",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 273,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "quantities",
+        "rowIndex": 18,
+        "rowKeyDa": "en restordre"
+      },
+      "field": "uk",
+      "current": "недопоставка",
+      "proposed": null,
+      "reason": "Samme problem som i russisk: \"недопоставка\" betyder en mangelfuld levering og passer ikke til \"back order\". En ukrainsktalende fagperson bør tjekke det.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-061",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 232,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "shifts",
+        "rowIndex": 21,
+        "rowKeyDa": "at stemple ind"
+      },
+      "field": "uk",
+      "current": "відмічатися на вході",
+      "proposed": null,
+      "reason": "\"відмічатися\" regnes ofte som en russisme (за \"отмечаться\"), og \"на вході\" (ved indgangen) er ikke det samme som tidspunktet for mødetid. En ukrainsktalende bør vælge en naturlig term for at stemple ind.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-062",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 233,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "shifts",
+        "rowIndex": 22,
+        "rowKeyDa": "at stemple ud"
+      },
+      "field": "uk",
+      "current": "відмічатися на виході",
+      "proposed": null,
+      "reason": "Samme som \"at stemple ind\": \"відмічатися на виході\" kan være en russisme og forstås rumligt (ved udgangen). En ukrainsktalende bør tjekke det.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-063",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 232,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "shifts",
+        "rowIndex": 21,
+        "rowKeyDa": "at stemple ind"
+      },
+      "field": "ru",
+      "current": "отмечаться на приходе",
+      "proposed": null,
+      "reason": "\"на приходе\" er en kluntet formulering. En russisktalende bør tjekke, om f.eks. \"отмечать приход\" er mere naturligt.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-064",
+      "source": {
+        "file": "packs/warehouse.js",
+        "line": 233,
+        "ref": "origin/main@7f2b714",
+        "pack": "warehouse",
+        "category": "shifts",
+        "rowIndex": 22,
+        "rowKeyDa": "at stemple ud"
+      },
+      "field": "ru",
+      "current": "отмечаться на уходе",
+      "proposed": null,
+      "reason": "\"на уходе\" er en kluntet formulering. En russisktalende bør tjekke, om f.eks. \"отмечать уход\" er mere naturligt.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-065",
+      "source": {
+        "file": "packs/construction.js",
+        "line": 64,
+        "ref": "origin/main@7f2b714",
+        "pack": "construction",
+        "category": "powerTools",
+        "rowIndex": 6,
+        "rowKeyDa": "en forlængerledning"
+      },
+      "field": "en",
+      "current": "extension cord",
+      "proposed": "extension lead",
+      "reason": "\"Extension cord\" er amerikansk; på britisk engelsk hedder det \"extension lead\".",
+      "severity": "improvement",
+      "confidence": "high",
+      "reference": "Oxford/Cambridge (British English)"
+    },
+    {
+      "id": "tr-066",
+      "source": {
+        "file": "packs/construction.js",
+        "line": 83,
+        "ref": "origin/main@7f2b714",
+        "pack": "construction",
+        "category": "materials",
+        "rowIndex": 2,
+        "rowKeyDa": "en mursten"
+      },
+      "field": "uk",
+      "current": "цегла",
+      "proposed": "цеглина",
+      "reason": "\"цегла\" er et kollektivt navneord (mursten som materiale/mængde); én mursten hedder \"цеглина\". Dansk \"en mursten\" og ru \"кирпич\" er ental, så ukrainsk bør også være ental.",
+      "severity": "error",
+      "confidence": "high",
+      "reference": "СУМ-11 (цегла, цеглина)"
+    },
+    {
+      "id": "tr-067",
+      "source": {
+        "file": "packs/construction.js",
+        "line": 49,
+        "ref": "origin/main@7f2b714",
+        "pack": "construction",
+        "category": "handTools",
+        "rowIndex": 19,
+        "rowKeyDa": "et koben"
+      },
+      "field": "ru",
+      "current": "лом",
+      "proposed": "монтировка (гвоздодёр)",
+      "reason": "Et koben er et kortere brækjern med flad, kløvet ende (wrecking bar/crowbar). \"лом\" er især det lange, tunge jernspyd (dansk: spidshakke/jernspett). En modersmålstalende bør bekræfte, hvad der bruges på russiske byggepladser.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-068",
+      "source": {
+        "file": "packs/construction.js",
+        "line": 49,
+        "ref": "origin/main@7f2b714",
+        "pack": "construction",
+        "category": "handTools",
+        "rowIndex": 19,
+        "rowKeyDa": "et koben"
+      },
+      "field": "uk",
+      "current": "лом",
+      "proposed": null,
+      "reason": "Samme problem som russisk: \"лом\" er især det lange, tunge jernspyd, mens et koben er et brækjern med kløvet ende. Ukrainsk modersmålstalende bør angive den gængse betegnelse (fx \"цвяходер\" eller en monteringsjern-betegnelse).",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-069",
+      "source": {
+        "file": "packs/construction.js",
+        "line": 124,
+        "ref": "origin/main@7f2b714",
+        "pack": "construction",
+        "category": "building",
+        "rowIndex": 12,
+        "rowKeyDa": "en tagrende"
+      },
+      "field": "uk",
+      "current": "ринва",
+      "proposed": "водостічний жолоб",
+      "reason": "\"ринва\" er regional/vestukrainsk; standardformen er \"водостічний жолоб\", som også passer med nabo-rækken \"водостічна труба\" (nedløbsrør) og russisk \"водосточный жёлоб\".",
+      "severity": "improvement",
+      "confidence": "low",
+      "reference": "СУМ-11"
+    },
+    {
+      "id": "tr-070",
+      "source": {
+        "file": "packs/care.js",
+        "line": 42,
+        "ref": "origin/main@7f2b714",
+        "pack": "care",
+        "category": "people",
+        "rowIndex": 12,
+        "rowKeyDa": "en hjemmesygeplejerske"
+      },
+      "field": "en",
+      "current": "home nurse",
+      "proposed": "district nurse (home nurse)",
+      "reason": "På britisk engelsk hedder den kommunale hjemmesygeplejerske \"district nurse\"; \"home nurse\" forstås, men er ikke den gængse britiske betegnelse.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-071",
+      "source": {
+        "file": "packs/care.js",
+        "line": 119,
+        "ref": "origin/main@7f2b714",
+        "pack": "care",
+        "category": "personalCare",
+        "rowIndex": 20,
+        "rowKeyDa": "en vaskeklud"
+      },
+      "field": "en",
+      "current": "washcloth",
+      "proposed": "flannel (washcloth)",
+      "reason": "\"Washcloth\" er amerikansk; britisk engelsk siger \"flannel\" eller \"face cloth\".",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Cambridge Dictionary (UK: flannel)"
+    },
+    {
+      "id": "tr-072",
+      "source": {
+        "file": "packs/care.js",
+        "line": 138,
+        "ref": "origin/main@7f2b714",
+        "pack": "care",
+        "category": "aids",
+        "rowIndex": 8,
+        "rowKeyDa": "et liftsejl"
+      },
+      "field": "ru",
+      "current": "стропа подъёмника",
+      "proposed": null,
+      "reason": "Et liftsejl er et stofsejl/en hængekøje man løfter personen i, ikke en strop. \"стропа\" betyder rem/strop og kan vildlede. En modersmålstalende med plejeerfaring bør tjekke den gængse betegnelse (fx \"подвес\"/\"слинг для подъёмника\").",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-073",
+      "source": {
+        "file": "packs/care.js",
+        "line": 138,
+        "ref": "origin/main@7f2b714",
+        "pack": "care",
+        "category": "aids",
+        "rowIndex": 8,
+        "rowKeyDa": "et liftsejl"
+      },
+      "field": "uk",
+      "current": "стропа підйомника",
+      "proposed": null,
+      "reason": "Samme problem som russisk: \"стропа\" er en rem/strop, mens et liftsejl er et stofsejl man sidder/ligger i. Ukrainsk modersmålstalende med plejeerfaring bør tjekke den gængse betegnelse.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-074",
+      "source": {
+        "file": "packs/care.js",
+        "line": 277,
+        "ref": "origin/main@7f2b714",
+        "pack": "care",
+        "category": "work",
+        "rowIndex": 11,
+        "rowKeyDa": "et møde"
+      },
+      "field": "uk",
+      "current": "збори",
+      "proposed": "нарада",
+      "reason": "\"збори\" er især en forsamling/generalforsamling; et arbejdsmøde på en arbejdsplads hedder normalt \"нарада\" (sådan er \"byggemøde\" også oversat i byggepakken: \"нарада на об’єкті\").",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-075",
+      "source": {
+        "file": "packs/care.js",
+        "line": 104,
+        "ref": "origin/main@7f2b714",
+        "pack": "care",
+        "category": "personalCare",
+        "rowIndex": 5,
+        "rowKeyDa": "et toiletbesøg"
+      },
+      "field": "en",
+      "current": "toilet visit",
+      "proposed": "toileting (going to the toilet)",
+      "reason": "\"Toilet visit\" er forståeligt men ikke gængs; i britisk ældrepleje er fagordet \"toileting\".",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-076",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 33,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "pigs",
+        "rowIndex": 4,
+        "rowKeyDa": "en stald"
+      },
+      "field": "en",
+      "current": "barn (animal house)",
+      "proposed": "livestock shed",
+      "reason": "På britisk engelsk er 'barn' primært en lade til opbevaring; et moderne staldanlæg hedder typisk 'shed'/'livestock shed'. Rækken skal også adskilles fra 'en lade | barn (for storage)'.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-077",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 33,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "pigs",
+        "rowIndex": 4,
+        "rowKeyDa": "en stald"
+      },
+      "field": "ru",
+      "current": "хлев",
+      "proposed": null,
+      "reason": "\"хлев\" er gammeldags/landligt. Pakken dækker både svine- og kvægstald, så et dyre-specifikt ord (свинарник/коровник) passer ikke alle steder. En modersmålstaler bør vælge den gængse fællesbetegnelse.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-078",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 33,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "pigs",
+        "rowIndex": 4,
+        "rowKeyDa": "en stald"
+      },
+      "field": "uk",
+      "current": "хлів",
+      "proposed": null,
+      "reason": "Som ru: \"хлів\" er gammeldags/landligt. Pakken dækker både svin og kvæg, så et dyre-specifikt ord passer ikke alle steder. En modersmålstaler bør vælge.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-079",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 40,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "pigs",
+        "rowIndex": 11,
+        "rowKeyDa": "gylle"
+      },
+      "field": "ru",
+      "current": "навозная жижа",
+      "proposed": "жидкий навоз",
+      "reason": "Gylle = blanding af gødning og urin (slurry) = 'жидкий навоз'. 'Навозная жижа' er kun den væske, der siver fra fast møg.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-080",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 40,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "pigs",
+        "rowIndex": 11,
+        "rowKeyDa": "gylle"
+      },
+      "field": "uk",
+      "current": "гноївка",
+      "proposed": "рідкий гній",
+      "reason": "Gylle = slurry = 'рідкий гній'. 'Гноївка' er væsken, der siver fra fast møg.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-081",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 119,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "machines",
+        "rowIndex": 11,
+        "rowKeyDa": "en gyllevogn"
+      },
+      "field": "ru",
+      "current": "бочка для навозной жижи",
+      "proposed": "бочка для жидкого навоза",
+      "reason": "Følger rettelsen af 'gylle' (slurry = жидкий навоз).",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-082",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 119,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "machines",
+        "rowIndex": 11,
+        "rowKeyDa": "en gyllevogn"
+      },
+      "field": "uk",
+      "current": "бочка для гноївки",
+      "proposed": "бочка для рідкого гною",
+      "reason": "Følger rettelsen af 'gylle' (slurry = рідкий гній).",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-083",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 92,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "field",
+        "rowIndex": 9,
+        "rowKeyDa": "roer"
+      },
+      "field": "en",
+      "current": "beets (sugar or fodder)",
+      "proposed": "beet (sugar or fodder)",
+      "reason": "På britisk engelsk er 'beet' (sugar beet, fodder beet) normalt uden flertals-s i landbrugsbetydningen; 'beets' er amerikansk.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-084",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 168,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "picking",
+        "rowIndex": 10,
+        "rowKeyDa": "akkord"
+      },
+      "field": "en",
+      "current": "piece work",
+      "proposed": "piecework",
+      "reason": "Ordbogsformen er ét ord: 'piecework'.",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "Oxford English Dictionary"
+    },
+    {
+      "id": "tr-085",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 145,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "greenhouse",
+        "rowIndex": 14,
+        "rowKeyDa": "en kimplante"
+      },
+      "field": "ru",
+      "current": "рассада",
+      "proposed": "проросток (рассада)",
+      "reason": "'Рассада' er en kollektiv betegnelse for udplantningsplanter; en kimplante (nyspiret plante, ental) er 'проросток'/'сеянец'. Bør tjekkes af en gartner med russisk som modersmål.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-086",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 145,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "greenhouse",
+        "rowIndex": 14,
+        "rowKeyDa": "en kimplante"
+      },
+      "field": "uk",
+      "current": "розсада",
+      "proposed": "проросток (розсада)",
+      "reason": "'Розсада' er kollektiv; en enkelt nyspiret plante er 'проросток'/'сіянець'. Bør tjekkes af en gartner med ukrainsk som modersmål.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-087",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 160,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "picking",
+        "rowIndex": 2,
+        "rowKeyDa": "kirsebær"
+      },
+      "field": "ru",
+      "current": "вишня",
+      "proposed": "черешня, вишня",
+      "reason": "Dansk 'kirsebær' dækker både søde kirsebær (черешня) og surkirsebær (вишня). Plukkes der søde bær, er 'вишня' misvisende. Tjek, hvilken slags der plukkes.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-088",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 160,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "picking",
+        "rowIndex": 2,
+        "rowKeyDa": "kirsebær"
+      },
+      "field": "uk",
+      "current": "вишня",
+      "proposed": "черешня, вишня",
+      "reason": "Dansk 'kirsebær' dækker både søde kirsebær (черешня) og surkirsebær (вишня). Tjek, hvilken slags der plukkes.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-089",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 253,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "jobpay",
+        "rowIndex": 12,
+        "rowKeyDa": "en campingvogn"
+      },
+      "field": "ru",
+      "current": "дом на колёсах",
+      "proposed": "жилой прицеп (караван)",
+      "reason": "En campingvogn trækkes af en bil. 'Дом на колёсах' bruges mest om en autocamper (autocamper = motorhome).",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-090",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 253,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "jobpay",
+        "rowIndex": 12,
+        "rowKeyDa": "en campingvogn"
+      },
+      "field": "uk",
+      "current": "будинок на колесах",
+      "proposed": "житловий причіп (караван)",
+      "reason": "En campingvogn trækkes af en bil. 'Будинок на колесах' bruges mest om en autocamper.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-091",
+      "source": {
+        "file": "packs/agriculture.js",
+        "line": 258,
+        "ref": "origin/main@7f2b714",
+        "pack": "agriculture",
+        "category": "jobpay",
+        "rowIndex": 17,
+        "rowKeyDa": "en driftsleder"
+      },
+      "field": "uk",
+      "current": "керуючий фермою",
+      "proposed": "управитель ферми",
+      "reason": "Aktive participier på -уч- som substantiv ('керуючий') regnes for russisk påvirkning; normativt ukrainsk foretrækker 'управитель' eller 'керівник'.",
+      "severity": "improvement",
+      "confidence": "low",
+      "reference": "Правопис 2019 / стилістичні рекомендації"
+    },
+    {
+      "id": "tr-092",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 205,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "counter",
+        "rowIndex": 6,
+        "rowKeyDa": "en vægt"
+      },
+      "field": "en",
+      "current": "scale",
+      "proposed": "scales",
+      "reason": "På britisk engelsk hedder en vægt normalt 'scales' (flertal); landbrugspakken bruger også 'scales'.",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-093",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 177,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "warehouse",
+        "rowIndex": 3,
+        "rowKeyDa": "en palleløfter"
+      },
+      "field": "en",
+      "current": "pallet jack",
+      "proposed": "pallet truck",
+      "reason": "'Pallet jack' er amerikansk; britisk engelsk siger 'pallet truck' (som i transportpakken).",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-094",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 188,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "warehouse",
+        "rowIndex": 14,
+        "rowKeyDa": "en sækkevogn"
+      },
+      "field": "en",
+      "current": "hand truck",
+      "proposed": "sack truck",
+      "reason": "'Hand truck' er amerikansk; britisk engelsk siger 'sack truck' (transportpakken har 'hand truck (sack truck)').",
+      "severity": "improvement",
+      "confidence": "medium"
+    },
+    {
+      "id": "tr-095",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 178,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "warehouse",
+        "rowIndex": 4,
+        "rowKeyDa": "et rullebur"
+      },
+      "field": "uk",
+      "current": "візок-клітка (ролконтейнер)",
+      "proposed": "візок-клітка (рол-контейнер)",
+      "reason": "Stavemåden afviger fra transportpakken ('рол-контейнер'). Vælg én skrivemåde; en modersmålstaler bør bekræfte, hvilken der er mest gængs.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-096",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 203,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "counter",
+        "rowIndex": 4,
+        "rowKeyDa": "en kage"
+      },
+      "field": "ru",
+      "current": "торт",
+      "proposed": "пирожное, торт",
+      "reason": "'Торт' er kun en stor (lag)kage. Dansk 'en kage' i en bager er bredere og dækker også småkager/kageskiver ('пирожное'). Forslaget med komma bør ikke indsættes direkte, hvis appen bruger feltet som facit ved indtastning; brug evt. parentes som i de andre pakker.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-097",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 203,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "counter",
+        "rowIndex": 4,
+        "rowKeyDa": "en kage"
+      },
+      "field": "uk",
+      "current": "торт",
+      "proposed": "тістечко, торт",
+      "reason": "'Торт' er kun en stor (lag)kage. Dansk 'en kage' dækker også småkager ('тістечко'). Forslaget med komma bør ikke indsættes direkte, hvis appen bruger feltet som facit ved indtastning; brug evt. parentes som i de andre pakker.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-098",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 220,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "counter",
+        "rowIndex": 21,
+        "rowKeyDa": "en frikadelle"
+      },
+      "field": "ru",
+      "current": "фрикаделька",
+      "proposed": null,
+      "reason": "På russisk er 'фрикаделька' en lille kogt kødbolle (i suppe), mens en dansk frikadelle er stegt og flad, nærmere 'котлета'. Kan vildlede; en modersmålstaler bør vurdere en forklarende tilføjelse.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-099",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 220,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "counter",
+        "rowIndex": 21,
+        "rowKeyDa": "en frikadelle"
+      },
+      "field": "uk",
+      "current": "фрикаделька",
+      "proposed": null,
+      "reason": "På ukrainsk er 'фрикаделька' en lille kogt kødbolle (i suppe); en dansk frikadelle er stegt, nærmere 'котлета'. En modersmålstaler bør vurdere en forklarende tilføjelse.",
+      "severity": "check",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-100",
+      "source": {
+        "file": "packs/retail.js",
+        "line": 230,
+        "ref": "origin/main@7f2b714",
+        "pack": "retail",
+        "category": "clothing",
+        "rowIndex": 3,
+        "rowKeyDa": "en bøjle"
+      },
+      "field": "uk",
+      "current": "вішак (плечики)",
+      "proposed": "вішалка (плічка)",
+      "reason": "'Плечики' er den russiske form; på ukrainsk hedder en bøjle 'плічка'. 'Вішак' er dagligdags; 'вішалка' er normalformen.",
+      "severity": "improvement",
+      "confidence": "medium",
+      "reference": "СУМ-11"
+    },
+    {
+      "id": "tr-101",
+      "source": {
+        "file": "packs/transport.js",
+        "line": 139,
+        "ref": "origin/main@7f2b714",
+        "pack": "transport",
+        "category": "vehicle",
+        "rowIndex": 25,
+        "rowKeyDa": "en mobilholder"
+      },
+      "field": "uk",
+      "current": "тримач для телефона",
+      "proposed": "тримач для телефону",
+      "reason": "Forkert genitiv: 'телефон' bøjes 'телефону' i genitiv ental.",
+      "severity": "error",
+      "confidence": "high",
+      "reference": "СУМ-11 / Правопис 2019"
+    },
+    {
+      "id": "tr-102",
+      "source": {
+        "file": "packs/transport.js",
+        "line": 182,
+        "ref": "origin/main@7f2b714",
+        "pack": "transport",
+        "category": "food",
+        "rowIndex": 12,
+        "rowKeyDa": "regntøj"
+      },
+      "field": "en",
+      "current": "rain gear",
+      "proposed": "waterproofs",
+      "reason": "'Rain gear' er mest amerikansk; på britisk engelsk siger man typisk 'waterproofs'.",
+      "severity": "improvement",
+      "confidence": "low"
+    },
+    {
+      "id": "tr-103",
+      "source": {
+        "file": "packs/transport.js",
+        "line": 225,
+        "ref": "origin/main@7f2b714",
+        "pack": "transport",
+        "category": "work",
+        "rowIndex": 13,
+        "rowKeyDa": "ansat"
+      },
+      "field": "ru",
+      "current": "сотрудник (по найму)",
+      "proposed": "наёмный работник",
+      "reason": "'Сотрудник (по найму)' er uidiomatisk. 'Наёмный работник' er den normale modsætning til 'самозанятый' og svarer til den ukrainske kolonne.",
+      "severity": "improvement",
+      "confidence": "low"
+    }
+  ]
+}
