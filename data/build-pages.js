@@ -136,7 +136,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
     <p>${esc(p.desc[lang])}. ${esc(t.intro(total, p.categories.length))}</p>
-    <p><a class="primary cta" href="/#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
+    <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
     <p class="tagline">${esc(t.free)}</p>
     ${p.id === 'driving' ? `<p class="course-note">${esc(catalog.labels[lang].safety)}</p>` : ''}
 
@@ -152,7 +152,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     <h2>${esc(t.phrases)}</h2>
     ${table(sample(p, 'phrase', 12))}
 
-    <p><a class="primary cta" href="/#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
+    <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
 
     <h2>${esc(t.others)}</h2>
     <ul class="links">${packs.filter((o) => o.id !== p.id).map((o) => `<li><a href="${urlOf(o, lang)}">${esc(o.name[lang])}</a></li>`).join('')}</ul>
@@ -199,7 +199,7 @@ for (const lang of LANGS) {
     const p = packs.find((p) => p.id === id);
     const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
     const description = p ? p.desc[lang] : id === 'top' ? l.basic : l.pictureDesc;
-    const href = p ? urlOf(p, lang) : `/#start=${id}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
+    const href = p ? urlOf(p, lang) : `/?ui=${lang}#start=${id}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
     return `<article class="course-card" data-course><h3><a href="${href}">${esc(title)}</a></h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<a class="course-open" href="${href}">${esc(p ? l.open : l.practice)} <span aria-hidden="true">→</span></a></article>`;
   };
   const canonical = `${SITE}/${lang}/`;
@@ -250,7 +250,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
-const assets = ['style.css', 'favicon.svg', 'app.js', 'learning-flow.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
+const assets = ['style.css', 'favicon.svg', 'app.js', 'learning-flow.js', 'course-preferences.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
 const pages = [indexPath, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {

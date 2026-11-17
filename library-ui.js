@@ -48,7 +48,8 @@ const LIBRARY_TEXT = {
     "baseLanguage": "Oversæt til",
     "listen": "Hør ordet",
     "backup": "Sikkerhedskopi og flytning",
-    "savePrevious": "Gem forrige ord"
+    "savePrevious": "Gem forrige ord",
+    "backToCourse": "Tilbage til kurset"
   },
   "en": {
     "title": "My words",
@@ -98,7 +99,8 @@ const LIBRARY_TEXT = {
     "baseLanguage": "Translate into",
     "listen": "Listen to the word",
     "backup": "Backup and transfer",
-    "savePrevious": "Save previous word"
+    "savePrevious": "Save previous word",
+    "backToCourse": "Back to the course"
   },
   "ru": {
     "title": "Мои слова",
@@ -148,7 +150,8 @@ const LIBRARY_TEXT = {
     "baseLanguage": "Переводить на",
     "listen": "Послушать слово",
     "backup": "Резервная копия и перенос",
-    "savePrevious": "Сохранить предыдущее слово"
+    "savePrevious": "Сохранить предыдущее слово",
+    "backToCourse": "Вернуться к курсу"
   },
   "uk": {
     "title": "Мої слова",
@@ -198,7 +201,8 @@ const LIBRARY_TEXT = {
     "baseLanguage": "Перекладати на",
     "listen": "Послухати слово",
     "backup": "Резервна копія та перенесення",
-    "savePrevious": "Зберегти попереднє слово"
+    "savePrevious": "Зберегти попереднє слово",
+    "backToCourse": "Повернутися до курсу"
   }
 };
 const lt = (key) => LIBRARY_TEXT[uiLang()][key];
@@ -262,6 +266,12 @@ function loadDictionary() {
 }
 function listPool(id, pair) {
   return (wordLibrary.list(id)?.items || []).map((ref) => ITEM[canonicalWord(ref)]).filter((entry) => entry && entry.words[pair.target] && entry.words[pair.base]);
+}
+function startLibraryPractice(id, pair) {
+  if (!listPool(id, pair).length) return;
+  saveState(); // Remember the actual course before entering temporary list practice.
+  state.settings = { ...pair, pack: 'list:' + id, dir: 'rec', diff: 3, cats: null };
+  saveState(); current = null; placement = null; lastFeedback = null; levelNotice = null; go('play');
 }
 function dictionaryMatches(query, pair, limit = 20) {
   const q = dictionaryNorm(query);
@@ -371,7 +381,7 @@ function renderLibrary() {
     <section class="dictionary-search"><h2>${esc(lt('search'))}</h2><p class="course-note">${LEXICON_INDEX.entries.toLocaleString(uiLang())} ${esc(lt('dictionaryCount'))}</p><label for="librarySearch">${esc(lt('search'))}</label><input id="librarySearch" type="search" autocomplete="off" aria-controls="dictionaryResults"><div id="dictionaryResults" aria-live="polite"></div></section>
     <details class="custom-word" id="customWordDetails"><summary>${esc(lt('addOwn'))}</summary><form id="customWordForm"><label for="ownTarget">${esc(lt('word'))}</label><select id="ownTarget">${options(pair.target)}</select><input aria-label="${esc(lt('word'))}" id="ownWord" maxlength="300" required autocomplete="off"><label for="ownBase">${esc(lt('translation'))}</label><select id="ownBase">${options(pair.base)}</select><input aria-label="${esc(lt('translation'))}" id="ownTranslation" maxlength="300" required autocomplete="off"><p id="translationHint" role="status"></p><button class="primary" id="saveOwnWord">${esc(lt('save'))}</button></form></details>
     <details class="library-transfer"><summary>${esc(lt('backup'))}</summary><p class="course-note">${esc(lt('local'))}</p><div class="library-backup"><button class="secondary" id="exportLibrary">${esc(lt('export'))}</button><label class="secondary import-label">${esc(lt('import'))}<input type="file" id="importLibrary" accept="application/json,.json"></label></div></details>
-    ${state.settings ? `<p><button class="secondary" id="libraryBack">${esc(lt('back'))}</button></p>` : ''}</section>`;
+    ${state.settings ? `<p class="library-return"><button class="secondary" id="libraryBack">${esc(lt('back'))}</button>${isList(state.settings) && lastCourseSettings() ? `<button class="secondary" id="libraryCourseBack">${esc(lt('backToCourse'))}</button>` : ''}</p>` : ''}</section>`;
   $('app').querySelectorAll('[data-list-id]').forEach((button) => button.onclick = () => { libraryActive = button.dataset.listId; libraryVisible = 50; libraryFilter = ''; renderLibrary(); });
   for (const [id, field, other] of [['libraryTarget', 'target', 'base'], ['libraryBase', 'base', 'target']]) $(id).onchange = () => {
     const updated = { ...pair, [field]: $(id).value };
@@ -385,13 +395,10 @@ function renderLibrary() {
     renderSavedLibraryRows(pair);
   };
   $('newListForm').onsubmit = (event) => { event.preventDefault(); try { libraryActive = wordLibrary.createList($('newListName').value).id; saveState(); renderLibrary(); } catch { $('libraryMessage').textContent = lt('nameError'); } };
-  $('practiceList').onclick = () => {
-    const previous = state.settings || {};
-    state.settings = { ...previous, ...pair, pack: 'list:' + libraryActive, dir: 'rec', diff: 3, cats: null };
-    saveState(); current = null; placement = null; go('play');
-  };
+  $('practiceList').onclick = () => startLibraryPractice(libraryActive, pair);
   if ($('deleteLibraryList')) $('deleteLibraryList').onclick = () => { if (confirm(lt('deleteQ'))) { wordLibrary.data.lists = wordLibrary.data.lists.filter((entry) => entry.id !== libraryActive); libraryActive = 'favorites'; saveState(); renderLibrary(); } };
   if ($('libraryBack')) $('libraryBack').onclick = () => go('play');
+  if ($('libraryCourseBack')) $('libraryCourseBack').onclick = returnToCourse;
   $('librarySearch').value = librarySearch;
   renderDictionaryResults(pair);
   $('librarySearch').oninput = () => { librarySearch = $('librarySearch').value; renderDictionaryResults(pair); };

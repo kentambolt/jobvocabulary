@@ -444,6 +444,7 @@ button, .category-nav a, .course-open { touch-action: manipulation; }
 .custom-word input, .custom-word select { width: 100%; margin-bottom: 8px; }
 .custom-word button { margin-top: 12px; }
 .library-backup { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.library-return { display: flex; flex-wrap: wrap; gap: 10px; }
 .library .import-label { display: inline-flex; align-items: center; margin: 0; font-size: 13px; cursor: pointer; border: 1px solid var(--line); border-radius: 10px; position: relative; }
 .import-label input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
 .import-label:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
