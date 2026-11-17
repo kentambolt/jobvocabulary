@@ -127,9 +127,6 @@ const ORDER = ${JSON.stringify(ORDER)};
 // Estimeret frekvens (forekomster pr. million ord, inkl. bøjningsformer).
 const IPM = ${JSON.stringify(ipm)};
 
-// Færdige billeder til modersmåls-mode (id -> fil i images/words/).
-const IMAGES = ${JSON.stringify(IMAGES)};
-
 const LANGS = {
   da: { name: 'Dansk', tts: 'da-DK' },
   en: { name: 'English', tts: 'en-GB' },
@@ -140,9 +137,16 @@ const LANGS = {
 const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, uk, pos, diff]) => ({ id, words: { da, en, ru, uk }, pos, diff }));
 const BY_ID = Object.fromEntries(CONCEPTS.map((c) => [c.id, c]));
 
-if (typeof module !== 'undefined') module.exports = { WORD_ROWS, CONCEPTS, BY_ID, ORDER, IPM, IMAGES, LANGS };
+if (typeof module !== 'undefined') module.exports = { WORD_ROWS, CONCEPTS, BY_ID, ORDER, IPM, LANGS };
 `;
 fs.writeFileSync(path.join(__dirname, '..', 'words.js'), js);
+// Billedlisten ligger sammen med billederne, så den kun findes, når billederne gør.
+if (fs.existsSync(IMG_DIR)) {
+  fs.writeFileSync(path.join(IMG_DIR, 'manifest.js'),
+    `// GENERERET af data/build.js – billeder til modersmåls-mode (id -> fil)
+var IMAGES = ${JSON.stringify(IMAGES, null, 1)};
+`);
+}
 
 // --- report ---
 function spearman(a, b) {
