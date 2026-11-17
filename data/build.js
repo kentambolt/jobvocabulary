@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const ROWS = require('./concepts');
+const UK = require('./uk');
 const { loadAll } = require('./sources');
 
 const LANGS = ['da', 'en', 'ru'];
@@ -34,6 +35,15 @@ for (const l of LANGS) {
     if (seen.has(w)) throw new Error(`dup ${l} word "${w}" in ${seen.get(w)} and ${r[0]}`);
     seen.set(w, r[0]);
   }
+}
+const missingUk = ROWS.filter((r) => !(r[0] in UK)).map((r) => r[0]);
+if (missingUk.length) throw new Error('missing uk: ' + missingUk.join(', '));
+const ukSeen = new Map();
+for (const r of ROWS) {
+  const w = UK[r[0]];
+  if (!w) continue;
+  if (ukSeen.has(w)) throw new Error(`dup uk word "${w}" in ${ukSeen.get(w)} and ${r[0]}`);
+  ukSeen.set(w, r[0]);
 }
 const emojis = ROWS.map((r) => r[4]).filter(Boolean);
 if (new Set(emojis).size !== emojis.length) throw new Error('dup emoji');
@@ -91,7 +101,7 @@ for (const lang of LANGS) {
 }
 
 // --- write words.js ---
-const rowsOut = ROWS.map((r) => [r[0], r[1], r[2], r[3], r[4], r[5], r[6]]);
+const rowsOut = ROWS.map((r) => [r[0], r[1], r[2], r[3], UK[r[0]] || '', r[4], r[5], r[6]]);
 const ipm = {};
 for (const lang of LANGS) {
   ipm[lang] = Object.fromEntries(ORDER[lang].map((id) => [id, Number(Math.pow(10, result[lang][id].log).toPrecision(3))]));
@@ -99,7 +109,7 @@ for (const lang of LANGS) {
 const js = `// GENERERET af data/build.js – ret ikke her. Ret i data/concepts.js og kør: node data/build.js
 // Kilder og metode: se data/REPORT.md
 //
-// [id, dansk, engelsk, russisk, emoji, ordklasse, sværhedsgrad (1=let, 2=mellem, 3=svær)]
+// [id, dansk, engelsk, russisk, ukrainsk, emoji, ordklasse, sværhedsgrad (1=let, 2=mellem, 3=svær)]
 const WORD_ROWS = ${JSON.stringify(rowsOut).replace(/\],\[/g, '],\n  [').replace(/^\[\[/, '[\n  [').replace(/\]\]$/, '],\n]')};
 
 // Hyppighedsrækkefølge pr. sprog (mest brugte først), beregnet ud fra flere kilder.
@@ -112,9 +122,10 @@ const LANGS = {
   da: { name: 'Dansk', tts: 'da-DK' },
   en: { name: 'English', tts: 'en-GB' },
   ru: { name: 'Русский', tts: 'ru-RU' },
+  uk: { name: 'Українська', tts: 'uk-UA' },
 };
 
-const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, emoji, pos, diff]) => ({ id, words: { da, en, ru }, emoji, pos, diff }));
+const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, uk, emoji, pos, diff]) => ({ id, words: { da, en, ru, uk }, emoji, pos, diff }));
 const BY_ID = Object.fromEntries(CONCEPTS.map((c) => [c.id, c]));
 
 if (typeof module !== 'undefined') module.exports = { WORD_ROWS, CONCEPTS, BY_ID, ORDER, IPM, LANGS };
