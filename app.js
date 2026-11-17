@@ -11,8 +11,9 @@
 //
 //   forfald = opgaver siden sidst / opgave-interval + tid siden sidst / tids-interval
 //
-// Ordet er klar til gentagelse, når forfald >= 1. Det mest forfaldne vises først.
-// Er intet forfaldent, kommer næste nye ord på listen.
+// Ordet er klar til gentagelse, når forfald >= 1. Svære ord prioriteres først.
+// Kendte ord kontrolleres højst én gang pr. seks opgaver, mens der stadig er nyt
+// eller ikke-lært stof. Færdige sværhedsgrader udvides automatisk til næste trin.
 //
 // Rigtigt svar: L + 1. Forkert svar: L - 1 (dog mindst 0).
 // Scoren er antal ord, hvor sidste svar var rigtigt og L >= learnedLevel.
@@ -53,8 +54,9 @@ const UI = {
     nativeShort: 'modersmål',
     switchDir: 'Skift retning',
     progress: '{n} af {m} lært',
+    levelAdvanced: '{from} er gennemført. Du fortsætter nu på {to}.',
     howTitle: 'Sådan virker det',
-    explainSimple: 'Hver gang du svarer rigtigt, går der dobbelt så lang tid, før ordet kommer igen – både målt i opgaver og i tid. Svarer du forkert, kommer det hurtigere igen. Et ord tæller som lært, når du har svaret rigtigt på det mindst to gange i træk.',
+    explainSimple: 'Nye ord og ord, du kæmper med, kommer først. Kendte ord dukker op som spredte kontroller, mens du lærer nyt. En fejl påvirker kun det ord, du svarede på. Når du kan alle ordene på et niveau, fortsætter du automatisk til det næste.',
     formula: 'Den præcise formel',
     learnQ: 'Hvilket sprog vil du lære?',
     baseQ: 'Hvilket sprog forstår du bedst?',
@@ -143,8 +145,9 @@ const UI = {
     nativeShort: 'first language',
     switchDir: 'Switch direction',
     progress: '{n} of {m} learned',
+    levelAdvanced: '{from} is complete. You are now practising {to}.',
     howTitle: 'How it works',
-    explainSimple: 'Every time you answer correctly, it takes twice as long before the word comes back – counted both in tasks and in time. Answer wrong and it comes back sooner. A word counts as learned when you have answered it correctly at least twice in a row.',
+    explainSimple: 'New words and words you find difficult come first. Familiar words appear as occasional checks while you learn new ones. A mistake affects only the word you answered. Once you know every word at a level, you automatically move on to the next.',
     formula: 'The exact formula',
     learnQ: 'Which language do you want to learn?',
     baseQ: 'Which language do you understand best?',
@@ -233,8 +236,9 @@ const UI = {
     nativeShort: 'родной язык',
     switchDir: 'Сменить направление',
     progress: 'Выучено {n} из {m}',
+    levelAdvanced: 'Уровень «{from}» завершён. Вы перешли на уровень «{to}».',
     howTitle: 'Как это работает',
-    explainSimple: 'После каждого правильного ответа слово возвращается вдвое позже – и по числу заданий, и по времени. После ошибки оно возвращается быстрее. Слово считается выученным, если вы правильно ответили на него как минимум два раза подряд.',
+    explainSimple: 'Сначала идут новые слова и слова, которые вызывают трудности. Знакомые слова появляются время от времени для проверки. Ошибка влияет только на слово, на которое вы отвечали. Когда вы знаете все слова уровня, вы автоматически переходите к следующему.',
     formula: 'Точная формула',
     learnQ: 'Какой язык вы хотите учить?',
     baseQ: 'Какой язык вы понимаете лучше всего?',
@@ -323,8 +327,9 @@ const UI = {
     nativeShort: 'рідна мова',
     switchDir: 'Змінити напрямок',
     progress: 'Вивчено {n} з {m}',
+    levelAdvanced: 'Рівень «{from}» завершено. Ви перейшли на рівень «{to}».',
     howTitle: 'Як це працює',
-    explainSimple: 'Після кожної правильної відповіді слово повертається вдвічі пізніше – і за кількістю завдань, і за часом. Після помилки воно повертається швидше. Слово вважається вивченим, якщо ви правильно відповіли на нього щонайменше двічі поспіль.',
+    explainSimple: 'Спочатку йдуть нові слова та слова, які викликають труднощі. Знайомі слова час від часу з’являються для перевірки. Помилка впливає лише на слово, на яке ви відповідали. Коли ви знаєте всі слова рівня, ви автоматично переходите до наступного.',
     formula: 'Точна формула',
     learnQ: 'Яку мову ви хочете вивчати?',
     baseQ: 'Яку мову ви розумієте найкраще?',
@@ -474,6 +479,7 @@ let timer = null;
 let placement = null;
 let selectedCourseLink = false;
 let lastFeedback = null;
+let levelNotice = null;
 
 // Direkte link fra en jobside: #start=<pakke>&base=<sprog>. Har man allerede valgt sprog,
 // skiftes der bare emne; ellers åbnes opsætningen med emnet valgt på forhånd.
@@ -511,7 +517,8 @@ function viewFromHash() {
 }
 // Navigation med rigtige URL'er, så browserens tilbage-knap virker.
 function go(v) {
-  if (v !== 'play') lastFeedback = null;
+  if (v === 'play' && placement && current?.kind === 'place') v = 'place';
+  if (v !== 'play') { lastFeedback = null; levelNotice = null; }
   const hash = v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : v === 'library' ? '#mine-ord' : '';
   if (location.hash !== hash) history.pushState(null, '', location.pathname + location.search + hash);
   view = v;
@@ -520,9 +527,9 @@ function go(v) {
   render();
 }
 window.addEventListener('popstate', () => {
-  placement = null;
   if (/^#start=/.test(location.hash)) { applyCourseLink(); render(); return; }
   view = viewFromHash();
+  if (view === 'play' && placement && current?.kind === 'place') view = 'place';
   if (view === 'setup') draft = null;
   render();
 });
@@ -588,6 +595,11 @@ function ctx() {
   const native = s.base === s.target;
   const key = progKey(s);
   const prog = (state.progress[key] = state.progress[key] || { task: 0, cards: {}, lastId: null });
+  const scope = JSON.stringify([s.diff, s.cats || null]);
+  if (prog.reviewScope !== scope) {
+    prog.reviewScope = scope;
+    prog.lastLearnedReviewTask = prog.task;
+  }
   return { s, native, pics: isPics(s), key, prog, pool: buildPool(s) };
 }
 const intervalFactor = (lvl) => Math.pow(CONFIG.base, lvl);
@@ -624,24 +636,14 @@ function reviewTask(c, x) {
   return quiz('prod');
 }
 function pickNext(c) {
-  const now = Date.now();
-  const introduced = c.pool.filter((x) => c.prog.cards[x.id]);
-  let best = null;
-  let bestP = -Infinity;
-  for (const x of introduced) {
-    if (x.id === c.prog.lastId && introduced.length > 1) continue;
-    const p = dueness(c.prog.cards[x.id], c.prog, now);
-    if (p > bestP) { best = x; bestP = p; }
-  }
-  if (best && bestP >= 1) return reviewTask(c, best);
-  const fresh = c.pool.find((x) => !c.prog.cards[x.id]);
-  if (fresh) {
-    // Børn (modersmål) ser altid ordet først. Andre prøver først, om de kender det.
-    if (c.native) return { kind: 'intro', concept: fresh };
-    if (c.s.dir === 'write' && writeSpec(c, fresh)) return { kind: 'write', concept: fresh, qdir: 'prod', isNew: true };
-    return { kind: 'new', concept: fresh, qdir: c.s.dir === 'rec' || c.s.dir === 'path' ? 'rec' : 'prod' };
-  }
-  return best ? reviewTask(c, best) : null;
+  const selected = LearningFlow.select(c.pool, c.prog, isLearned, dueness, Date.now());
+  if (!selected) return null;
+  if (selected.review) return { ...reviewTask(c, selected.word), maintenance: selected.maintenance };
+  const fresh = selected.word;
+  // Børn (modersmål) ser altid ordet først. Andre prøver først, om de kender det.
+  if (c.native) return { kind: 'intro', concept: fresh };
+  if (c.s.dir === 'write' && writeSpec(c, fresh)) return { kind: 'write', concept: fresh, qdir: 'prod', isNew: true };
+  return { kind: 'new', concept: fresh, qdir: c.s.dir === 'rec' || c.s.dir === 'path' ? 'rec' : 'prod' };
 }
 
 function newCard(c, lvl, ok, extra) {
@@ -1028,7 +1030,20 @@ function renderSetup() {
 
 // ----- Play -----
 function renderPlay() {
-  const c = ctx();
+  let c = ctx();
+  if (!current && !isList(c.s)) {
+    const from = c.s.diff;
+    let next;
+    while ((next = LearningFlow.nextDifficulty(c.s.diff, c.pool, c.prog.cards, (diff) => buildPool({ ...c.s, diff }), isLearned))) {
+      c.s.diff = next.diff;
+      c = ctx();
+    }
+    if (c.s.diff !== from) {
+      const labels = t(isPack(c.s) ? 'packDiff' : 'diff');
+      levelNotice = { key: c.key, diff: c.s.diff, task: c.prog.task, text: t('levelAdvanced', { from: labels[from], to: labels[c.s.diff] }) };
+      saveState(); updateScore();
+    }
+  }
   // Første gang: tilbyd niveautest, så man ikke skal terpe det, man allerede kan.
   if (!current && !c.native && !c.prog.offered && !Object.keys(c.prog.cards).length && c.pool.length >= 30) {
     view = 'offer';
@@ -1085,9 +1100,9 @@ function metaHTML(c, x) {
   const now = Date.now();
   const introduced = c.pool.filter((p) => c.prog.cards[p.id]);
   const dueCount = introduced.filter((p) => dueness(c.prog.cards[p.id], c.prog, now) >= 1).length;
-  const score = scoreOf(c.prog);
+  const score = c.pool.filter((p) => c.prog.cards[p.id] && isLearned(c.prog.cards[p.id])).length;
   void x;
-  return `${ctxBarHTML(c)}<div class="meta"><span>${esc(t('progress', { n: score, m: c.pool.length }))}</span>
+  return `${ctxBarHTML(c)}${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta"><span>${esc(t('progress', { n: score, m: c.pool.length }))}</span>
     <span>${esc(t('due', { n: dueCount }))}</span></div>
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }
@@ -1292,6 +1307,7 @@ function grade(c, x, correct) {
 }
 function finishTask(c, x, before) {
   c.prog.task += 1;
+  if (current.maintenance) c.prog.lastLearnedReviewTask = c.prog.task;
   c.prog.lastId = x.id;
   saveState();
   const correct = current.answered === x.id || current.answered === 'ok';
@@ -1434,6 +1450,7 @@ function renderPlace() {
     <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))} →</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
   $('app').innerHTML = html;
   bindCtxBar();
+  bindPreviousFavorite();
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
   const dk = $('dkBtn');
   if (dk) dk.onclick = () => { if (!current.answered) { current.answered = '-'; placementAnswer(false); } };
@@ -1451,7 +1468,7 @@ function placementAnswer(correct) {
   (correct ? P.right : P.wrong).push(current.concept.id);
   if (correct) P.blockRight++;
   const c = ctx();
-  lastFeedback = correct ? { word: current.concept.words[c.s.target], meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
+  lastFeedback = correct ? { id: current.concept.id, word: current.concept.words[c.s.target], meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
   if (correct) advancePlace(); else renderPlace();
 }
 function advancePlace() {

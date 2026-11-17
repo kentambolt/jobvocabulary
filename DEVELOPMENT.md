@@ -12,7 +12,7 @@ Run these commands from the repository root after content or shared asset change
 node data/build-packs.js
 node data/build-lexicon.js
 node data/build-pages.js
-node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs
+node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs tests/learning-flow.test.cjs
 ```
 
 `build-packs.js` validates the four-language course files and updates the small
@@ -66,6 +66,13 @@ old localStorage. The personal vocabulary screen offers JSON export and import.
 ## Interaction
 
 Correct answers advance immediately, with a persistent previous-answer receipt.
+`learning-flow.js` selects new and struggling words ahead of a backlog of learned
+words. While unfinished material exists, learned-word checks are capped at one
+per six completed tasks. The review budget persists with progress and restarts
+when difficulty/category scope changes. A wrong answer changes only its own card.
+Completing the eligible pool automatically unlocks the next difficulty that adds
+words, preserving the language pair, categories, course and exercise mode. Lists
+have no automatic difficulty change. Existing word levels and IDs are preserved.
 Incorrect answers require an explicit next action. Held keyboard keys cannot
 answer several tasks; normal repeat behaviour remains available in text inputs.
 Use 1–4 for multiple-choice answers and the keyboard for spelling tasks. Forms and

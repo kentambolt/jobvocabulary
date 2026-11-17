@@ -319,9 +319,12 @@ function bindFavoriteButton(button, sourceId, status) {
 }
 function bindWordSave(x) {
   bindFavoriteButton($('favoriteWordBtn'), x.id, $('wordSaveStatus'));
+  bindPreviousFavorite();
+  $('wordListBtn').onclick = () => saveToListDialog(x.id);
+}
+function bindPreviousFavorite() {
   const previous = $('previousFavoriteBtn');
   if (previous) bindFavoriteButton(previous, previous.dataset.favoriteSource, $('receiptSaveStatus'));
-  $('wordListBtn').onclick = () => saveToListDialog(x.id);
 }
 function renderSavedLibraryRows(pair) {
   const list = wordLibrary.list(libraryActive);

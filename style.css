@@ -396,6 +396,7 @@ a.brand { text-decoration: none; color: var(--ink); }
 @media (max-width: 600px) { .resume-panel { align-items: flex-start; flex-direction: column; padding: 18px; } }
 .score-delta.up, .score-delta.down, .slot.cur, .slot.just, .kb.shake, .kb.hint { animation: none; }
 .progress > div { transition: none; }
+.level-notice { border: 1px solid var(--accent); background: var(--accent-soft); color: var(--ink); border-radius: 12px; padding: 12px 14px; margin: 12px 0; font-size: 14px; line-height: 1.5; }
 button, .category-nav a, .course-open { touch-action: manipulation; }
 
 /* Personal vocabulary: compact on desktop, comfortable touch targets on small screens. */
