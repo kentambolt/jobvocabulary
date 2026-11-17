@@ -12,7 +12,7 @@ Run these commands from the repository root after content or shared asset change
 node data/build-packs.js
 node data/build-lexicon.js
 node data/build-pages.js
-node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs tests/learning-flow.test.cjs
+node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs tests/learning-flow.test.cjs tests/interface-language.test.cjs
 ```
 
 `build-packs.js` validates the four-language course files and updates the small
@@ -83,6 +83,12 @@ if another task is answered before the dictionary finishes loading.
 Catalogue pages read the existing local settings through `practice-resume.js` to
 offer direct resume and My words links without loading course or dictionary data.
 Resume opens the app without a course-start fragment, preserving mode and filters.
+Explicit language links hand `?ui=da|en|ru|uk` to the app; the hint is consumed and
+stored separately from the course language pair. Selecting a known language in
+setup updates the interface preference. A new user's course-start fragment stays
+until practice begins, so refreshing setup retains the selected course. A ready
+panel offers immediate start for preselected courses; full settings remain below.
+Manual pronunciation in exercises works with automatic read-aloud switched off.
 
 ## Hosting and search
 
