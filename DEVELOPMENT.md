@@ -70,11 +70,18 @@ old localStorage. The personal vocabulary screen offers JSON export and import.
 
 ## Interaction
 
+Public interface and presentation copy avoids Unicode arrow glyphs and en/em
+dashes. Learning sentences retain punctuation appropriate to their language.
+Use natural interface sentences rather than decorative punctuation. Course cards are single
+full-area links. The logo opens `#forside` without changing the current settings,
+pending task or stored progress; the home menu offers a return to practice.
+The root reserves a stable scrollbar gutter so opening dialogs preserves layout.
+
 The shared visual identity uses a warm, light default palette, Lora headings and
 DM Sans interface text. `catalog.js` shares translated home content and native SVG
 icons with the static page builder. The desktop home hero uses the local 165 KB
-`images/site/study-corner.jpg`; mobile omits the photo and expands the three-step
-explanation only on request. See `design/EDITORIAL.md` for the image prompt.
+`images/site/study-corner.jpg`; mobile omits the photo and shows the three-step
+explanation directly. See `design/EDITORIAL.md` for the image prompt.
 Course topic filters use a native details disclosure with labelled checkboxes,
 select-all/clear actions and an internally scrolling panel. Multiple choices keep
 the panel open and retain focus/scroll; Escape, Done or an outside click closes it.

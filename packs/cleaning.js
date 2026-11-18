@@ -579,7 +579,7 @@ PACKS.cleaning = {
     },
     {
       key: 'sorting', type: 'phrase',
-      name: { da: 'Affald – hvor skal det hen?', en: 'Rubbish – where does it go?', ru: 'Мусор – куда его?', uk: 'Сміття – куди його?' },
+      name: { da: 'Hvor skal affaldet hen?', en: 'Where does the rubbish go?', ru: 'Куда выбрасывать мусор?', uk: 'Куди викидати сміття?' },
       rows: [
         [1, "Madaffald skal i den grønne sæk.", "Food waste goes in the green sack.", "Пищевые отходы – в зелёный мешок.", "Харчові відходи – у зелений мішок."],
         [1, "Restaffald skal i den sorte sæk.", "Residual waste goes in the black sack.", "Прочие отходы – в чёрный мешок.", "Змішані відходи – у чорний мішок."],

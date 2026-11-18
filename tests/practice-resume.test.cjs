@@ -7,9 +7,9 @@ const settings = { target: 'da', base: 'en', pack: 'cleaning', dir: 'write', dif
 test('resume describes the existing course without changing saved settings or progress', () => {
   const state = { settings: structuredClone(settings), progress: { course: { task: 17 } } };
   const before = JSON.stringify(state);
-  assert.deepEqual(Resume.describe(state, names), { title: 'Cleaning', pair: 'Dansk ← English' });
+  assert.deepEqual(Resume.describe(state, names), { title: 'Cleaning', pair: 'Dansk / English' });
   assert.equal(JSON.stringify(state), before);
-  assert.deepEqual(Resume.describe({ settings: { ...settings, pack: undefined } }, names), { title: 'Common words', pair: 'Dansk ← English' });
+  assert.deepEqual(Resume.describe({ settings: { ...settings, pack: undefined } }, names), { title: 'Common words', pair: 'Dansk / English' });
 });
 
 test('personal list resume follows its stable ID after rename and hides deleted or empty lists', () => {

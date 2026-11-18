@@ -14,13 +14,13 @@ const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'a
 
 const T = {
   da: {
-    title: (n) => `${n} – lær de danske ord og sætninger | Job Vocabulary`,
-    sub: 'Lær de danske ord og sætninger – ét ad gangen',
+    title: (n) => `${n}: Lær de danske ord og sætninger | Job Vocabulary`,
+    sub: 'Lær de danske ord og sætninger ét ad gangen',
     intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk og ukrainsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
-    cta: 'Start med at øve – gratis',
+    cta: 'Start med at øve gratis',
     howTitle: 'Sådan virker det',
     how: [
-      'Du får ét ord eller én sætning ad gangen – det vigtigste først.',
+      'Du får ét ord eller én sætning ad gangen. Det vigtigste kommer først.',
       'Svarer du rigtigt, går der længere tid, før det kommer igen. Svarer du forkert, kommer det hurtigt igen.',
       'Kan du allerede noget, tager du en kort niveautest og springer det over, du kan.',
     ],
@@ -29,13 +29,13 @@ const T = {
     n: (k) => `${k}`,
   },
   en: {
-    title: (n) => `${n} – learn the Danish words and phrases | Job Vocabulary`,
-    sub: 'Learn the Danish words and phrases – one at a time',
+    title: (n) => `${n}: Learn the Danish words and phrases | Job Vocabulary`,
+    sub: 'Learn the Danish words and phrases one at a time',
     intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian and Ukrainian. The most important come first, and what you know comes back less often.`,
-    cta: 'Start practising – free',
+    cta: 'Start practising for free',
     howTitle: 'How it works',
     how: [
-      'You get one word or one sentence at a time – the most important first.',
+      'You get one word or one sentence at a time. The most important come first.',
       'Answer correctly and it takes longer before it comes back. Answer wrong and it comes back soon.',
       'Already know some Danish? Take a short level test and skip what you know.',
     ],
@@ -44,13 +44,13 @@ const T = {
   },
   ru: {
     title: (n) => `${n}: датские слова и фразы | Job Vocabulary`,
-    sub: 'Учите датские слова и фразы – по одной за раз',
+    sub: 'Учите датские слова и фразы по одной за раз',
     intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводом на русский, украинский и английский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
-    cta: 'Начать учить – бесплатно',
+    cta: 'Начать учить бесплатно',
     howTitle: 'Как это работает',
     how: [
-      'Вы получаете одно слово или одну фразу за раз – сначала самое важное.',
-      'Ответите правильно – слово вернётся нескоро. Ошибётесь – оно скоро вернётся.',
+      'Вы получаете одно слово или одну фразу за раз. Сначала самое важное.',
+      'Если ответите правильно, слово вернётся нескоро. Если ошибётесь, оно скоро вернётся.',
       'Уже знаете немного датский? Пройдите короткий тест уровня и пропустите то, что знаете.',
     ],
     topics: 'Темы', words: 'Самые важные слова', phrases: 'Самые важные фразы',
@@ -58,13 +58,13 @@ const T = {
   },
   uk: {
     title: (n) => `${n}: данські слова і фрази | Job Vocabulary`,
-    sub: 'Вивчайте данські слова і фрази – по одній за раз',
+    sub: 'Вивчайте данські слова і фрази по одній за раз',
     intro: (total, cats) => `${total} слів і фраз у ${cats} темах з перекладом українською, російською та англійською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
-    cta: 'Почати вчити – безкоштовно',
+    cta: 'Почати вчити безкоштовно',
     howTitle: 'Як це працює',
     how: [
-      'Ви отримуєте одне слово або одну фразу за раз – спочатку найважливіше.',
-      'Відповісте правильно – слово повернеться нескоро. Помилитеся – воно скоро повернеться.',
+      'Ви отримуєте одне слово або одну фразу за раз. Спочатку найважливіше.',
+      'Якщо відповісте правильно, слово повернеться нескоро. Якщо помилитеся, воно скоро повернеться.',
       'Вже трохи знаєте данську? Пройдіть короткий тест рівня і пропустіть те, що знаєте.',
     ],
     topics: 'Теми', words: 'Найважливіші слова', phrases: 'Найважливіші фрази',
@@ -132,7 +132,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   })}</script>
 </head>
 <body class="page">
-  <header class="top"><a class="brand" href="/?ui=${lang}">Job<span>Vocabulary</span></a><a class="catalog-link" href="/${lang}/">${esc(catalog.labels[lang].back)}</a></header>
+  <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><a class="catalog-link" href="/${lang}/">${esc(catalog.labels[lang].back)}</a></header>
   <main>
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
@@ -201,7 +201,7 @@ for (const lang of LANGS) {
     const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
     const description = p ? p.desc[lang] : id === 'top' ? l.basic : l.pictureDesc;
     const href = p ? urlOf(p, lang) : `/?ui=${lang}#start=${id}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
-    return `<article class="course-card" data-course><h3><a href="${href}">${esc(title)}</a></h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<a class="course-open" href="${href}">${esc(p ? l.open : l.practice)} <span aria-hidden="true">→</span></a></article>`;
+    return `<article class="course-card" data-course><a class="course-card-link" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
   };
   const canonical = `${SITE}/${lang}/`;
   const output = `<!doctype html>
@@ -210,7 +210,7 @@ for (const lang of LANGS) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f4ee">
-  <title>${esc(l.catalog)} – ${esc(l.lead)} | Job Vocabulary</title>
+  <title>${esc(l.catalog)}: ${esc(l.lead)} | Job Vocabulary</title>
   <meta name="description" content="${esc(l.intro)}">
   <link rel="canonical" href="${canonical}">
 ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE}/${other}/">`).join('\n')}
@@ -228,17 +228,17 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <script src="/catalog-search.js" defer></script>
 </head>
 <body class="page catalogue">
-  <header class="top"><a class="brand" href="/?ui=${lang}">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></header>
+  <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></header>
   <main>
     <section class="catalogue-hero"><p class="eyebrow">Job Vocabulary</p><h1>${esc(l.lead)}</h1><p class="lead">${esc(l.intro)}</p><p class="tagline">${esc(T[lang].free)}</p></section>
-    <section class="resume-panel" id="resumePanel" data-names="${esc(JSON.stringify(resumeNames))}" data-nosnippet hidden><div><p class="eyebrow">${esc(personal.resume)}</p><h2 id="resumeCourse"></h2><p id="resumePair"></p></div><a class="primary cta" href="/?ui=${lang}">${esc(personal.action)} <span aria-hidden="true">→</span></a></section>
+    <section class="resume-panel" id="resumePanel" data-names="${esc(JSON.stringify(resumeNames))}" data-nosnippet hidden><div><p class="eyebrow">${esc(personal.resume)}</p><h2 id="resumeCourse"></h2><p id="resumePair"></p></div><a class="primary cta" href="/?ui=${lang}">${esc(personal.action)}</a></section>
     <p class="catalogue-personal"><a href="/?ui=${lang}#mine-ord">♡ ${esc(personal.words)}</a></p>
     <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g) => `<a href="#${g.id}">${esc(g.name[lang])}</a>`).join('')}</nav>
     <div class="catalogue-search"><label for="courseSearch">${esc(l.search)}</label><input id="courseSearch" type="search" autocomplete="off" placeholder="${esc(l.search)}" aria-controls="courseSections"></div>
     <p class="course-note">${esc(l.note)}</p>
     <p id="courseEmpty" role="status" hidden>${esc(l.empty)}</p>
     <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p><div class="course-grid">${g.packs.map(card).join('')}</div></section>`).join('')}</div>
-    <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}">${esc(T[lang].home)}</a></footer>
+    <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a></footer>
   </main>
 </body>
 </html>
