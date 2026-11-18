@@ -443,6 +443,12 @@ button, .category-nav a, .course-open { touch-action: manipulation; }
 .custom-word summary { cursor: pointer; font-weight: 800; }
 .custom-word input, .custom-word select { width: 100%; margin-bottom: 8px; }
 .custom-word button { margin-top: 12px; }
+.word-choices { display: grid; gap: 8px; }
+.word-choices:empty { display: none; }
+.word-choices button { text-align: left; margin: 0; overflow-wrap: anywhere; }
+.word-choices b, .word-choices span { display: block; }
+.word-choices span { color: var(--muted); margin-top: 4px; }
+.own-word-actions { flex-wrap: wrap; gap: 10px; }
 .library-backup { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .library-return { display: flex; flex-wrap: wrap; gap: 10px; }
 .library .import-label { display: inline-flex; align-items: center; margin: 0; font-size: 13px; cursor: pointer; border: 1px solid var(--line); border-radius: 10px; position: relative; }

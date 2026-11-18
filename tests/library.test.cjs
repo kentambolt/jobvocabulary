@@ -96,3 +96,26 @@ test('dictionary IDs survive translation corrections and keep homonyms separate'
     fs.rmSync(resolved, { recursive: true });
   }
 });
+
+test('reimporting a colliding backup is idempotent and language key order does not create duplicates', () => {
+  const library = new WordLibrary();
+  const original = library.addCustom({ da: 'ord', en: 'word' });
+  library.add(original);
+  const incoming = { format: 'jobvocabulary-library', version: 1, library: { favorites: [original], lists: [{ id: 'imported', name: 'Work', items: [original] }], custom: { [original]: { words: { en: 'new word', da: 'nyt ord' }, phrase: true } } } };
+  library.mergeBackup(incoming);
+  const once = JSON.stringify(library.data);
+  library.mergeBackup(incoming);
+  assert.equal(JSON.stringify(library.data), once);
+  assert.equal(Object.keys(library.data.custom).length, 2);
+  const same = { ...incoming, library: { favorites: [original], lists: [], custom: { [original]: { words: { en: 'word', da: 'ord', uk: 'слово' }, phrase: false } } } };
+  library.mergeBackup(same);
+  assert.equal(Object.keys(library.data.custom).length, 2);
+  assert.equal(library.data.custom[original].words.uk, 'слово');
+  assert.equal(library.data.custom[original].words.en, 'word');
+});
+
+test('Danish articles and infinitive markers do not turn a custom word into a sentence', () => {
+  const library = new WordLibrary();
+  for (const words of [{ da: 'en blyant', en: 'pencil' }, { da: 'et bord', en: 'table' }, { da: 'at løbe', en: 'run' }, { da: 'en aftenvagt', en: 'evening shift' }]) assert.equal(library.data.custom[library.addCustom(words)].phrase, false);
+  assert.equal(library.data.custom[library.addCustom({ da: 'Jeg kommer i morgen', en: 'I will come tomorrow' })].phrase, true);
+});

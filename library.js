@@ -8,6 +8,13 @@ var WordLibrary = class WordLibrary {
     data.custom = data.custom && typeof data.custom === 'object' && !Array.isArray(data.custom) ? data.custom : {};
   }
   static id() { return 'user:' + (globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2)); }
+  static signature(words) {
+    return JSON.stringify(['da', 'en', 'ru', 'uk'].filter((lang) => typeof words?.[lang] === 'string').map((lang) => [lang, words[lang].trim().normalize('NFC')]));
+  }
+  static isPhrase(words) {
+    if (typeof words.da === 'string') return /\s/.test(words.da.trim().replace(/^(en|et|at)\s+/i, ''));
+    return Object.values(words).some((value) => /\s/.test(value.trim()));
+  }
   list(id) { return id === 'favorites' ? { id, name: '', items: this.data.favorites } : this.data.lists.find((list) => list.id === id); }
   createList(name) {
     const clean = name.trim().slice(0, 60);
@@ -47,10 +54,10 @@ var WordLibrary = class WordLibrary {
     const allowed = ['da', 'en', 'ru', 'uk'];
     const clean = Object.fromEntries(allowed.filter((lang) => typeof words[lang] === 'string' && words[lang].trim()).map((lang) => [lang, words[lang].trim().slice(0, 300)]));
     if (Object.keys(clean).length < 2) throw new Error('translations');
-    const existing = Object.entries(this.data.custom).find(([, item]) => JSON.stringify(item.words) === JSON.stringify(clean));
+    const existing = Object.entries(this.data.custom).find(([, item]) => WordLibrary.signature(item.words) === WordLibrary.signature(clean));
     if (existing) return existing[0];
     const id = WordLibrary.id();
-    this.data.custom[id] = { words: clean, phrase: Object.values(clean).some((v) => /\s/.test(v)) };
+    this.data.custom[id] = { words: clean, phrase: WordLibrary.isPhrase(clean) };
     return id;
   }
   mergeBackup(backup) {
@@ -65,8 +72,17 @@ var WordLibrary = class WordLibrary {
     for (const [id, entry] of Object.entries(incoming.data.custom)) {
       // A backup with a colliding ID must never overwrite a locally edited word.
       const existing = this.data.custom[id];
-      const target = existing && JSON.stringify(existing.words) !== JSON.stringify(entry.words) ? WordLibrary.id() : id;
-      this.data.custom[target] = entry; idMap.set(id, target);
+      const conflict = existing && Object.entries(entry.words).some(([lang, value]) => existing.words?.[lang] !== undefined && WordLibrary.signature({ [lang]: existing.words[lang] }) !== WordLibrary.signature({ [lang]: value }));
+      let target;
+      if (existing && !conflict) {
+        existing.words = { ...entry.words, ...existing.words };
+        target = id;
+      } else {
+        const same = Object.entries(this.data.custom).find(([, local]) => WordLibrary.signature(local.words) === WordLibrary.signature(entry.words));
+        target = same?.[0] || (existing ? WordLibrary.id() : id);
+        if (!this.data.custom[target]) this.data.custom[target] = entry;
+      }
+      idMap.set(id, target);
     }
     for (const id of incoming.data.favorites) this.add(idMap.get(id) || id);
     for (const entry of incoming.data.lists) {

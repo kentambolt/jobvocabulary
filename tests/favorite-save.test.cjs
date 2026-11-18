@@ -4,6 +4,7 @@ const vm = require('node:vm');
 const fs = require('node:fs');
 const path = require('node:path');
 const WordLibrary = require('../library');
+const WordEntry = require('../word-entry');
 
 function button(id) {
   return { dataset: { favoriteSource: id, previous: 'true', wordLabel: id }, attributes: {}, disabled: false, setAttribute(key, value) { this.attributes[key] = value; } };
@@ -11,7 +12,7 @@ function button(id) {
 function fixture() {
   const library = new WordLibrary();
   const elements = [];
-  const context = vm.createContext({ wordLibrary: library, uiLang: () => 'en', t: (key) => key, saveState() {}, document: { querySelectorAll: () => elements } });
+  const context = vm.createContext({ WordEntry, wordLibrary: library, uiLang: () => 'en', t: (key) => key, saveState() {}, document: { querySelectorAll: () => elements } });
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../library-ui.js'), 'utf8'), context);
   return { context, library, elements };
 }

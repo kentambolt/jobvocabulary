@@ -6,6 +6,7 @@ const words = require('../../words');
 const WordLibrary = require('../../library');
 const LearningFlow = require('../../learning-flow');
 const CoursePreferences = require('../../course-preferences');
+const WordEntry = require('../../word-entry');
 
 // Run the real app model and answer handlers with inert rendering/storage surfaces.
 // This exercises persisted progress, not a second implementation of the scheduler.
@@ -16,13 +17,13 @@ function app(settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', dif
   const navigate = (url) => { const next = new URL(url, 'http://app.test'); Object.assign(location, { hash: next.hash, pathname: next.pathname, search: next.search }); };
   const events = new Map();
   const context = vm.createContext({
-    ...words, WordLibrary, LearningFlow, CoursePreferences,
+    ...words, WordLibrary, LearningFlow, CoursePreferences, WordEntry,
     COURSE_CATALOG: require('../../catalog'),
     localStorage: { getItem: (key) => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     navigator: { language: 'en' }, location, URLSearchParams,
     history: { pushState(_state, _title, url) { navigate(url); }, replaceState(_state, _title, url) { navigate(url); } },
     window: { addEventListener(name, callback) { events.set(name, callback); }, scrollTo() {} },
-    document: { addEventListener() {}, getElementById(id) { if (!elements.has(id)) elements.set(id, { querySelectorAll: () => [] }); return elements.get(id); } },
+    document: { addEventListener() {}, getElementById(id) { if (!elements.has(id)) elements.set(id, { querySelectorAll: () => [], focus() {} }); return elements.get(id); } },
     clearTimeout, console,
   });
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../../packs/index.js'), 'utf8'), context);
