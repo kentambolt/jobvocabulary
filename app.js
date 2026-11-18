@@ -410,6 +410,14 @@ const UI = {
   },
 };
 
+const PRACTICE_TEXT = {
+  da: { menu: 'Menu', closeMenu: 'Luk menu', taskOptions: 'Opgavetyper og repetition', modesHint: 'Vælg én opgavetype eller flere, som skifter mellem hinanden.', repeatLearned: 'Gentag lærte ord', repeatHint: 'Kendte ord kommer indimellem. Ord, du har svært ved, øves altid igen.', completeTitle: 'Du kan alle ordene i dette udvalg', completeHint: 'Vælg et nyt kursus, en anden opgavetype eller slå repetition til.', enableReview: 'Slå repetition til', libraryMenu: 'Mine ord og lister' },
+  en: { menu: 'Menu', closeMenu: 'Close menu', taskOptions: 'Task types and review', modesHint: 'Choose one task type or several to alternate between.', repeatLearned: 'Review learned words', repeatHint: 'Familiar words appear occasionally. Words you find difficult are always practised again.', completeTitle: 'You know every word in this selection', completeHint: 'Choose a new course, another task type or enable review.', enableReview: 'Enable review', libraryMenu: 'My words and lists' },
+  ru: { menu: 'Меню', closeMenu: 'Закрыть меню', taskOptions: 'Типы заданий и повторение', modesHint: 'Выберите один тип заданий или несколько для чередования.', repeatLearned: 'Повторять выученные слова', repeatHint: 'Знакомые слова будут появляться иногда. Сложные слова всегда повторяются.', completeTitle: 'Вы знаете все слова в этой подборке', completeHint: 'Выберите новый курс, другой тип заданий или включите повторение.', enableReview: 'Включить повторение', libraryMenu: 'Мои слова и списки' },
+  uk: { menu: 'Меню', closeMenu: 'Закрити меню', taskOptions: 'Типи завдань і повторення', modesHint: 'Виберіть один тип завдань або кілька для чергування.', repeatLearned: 'Повторювати вивчені слова', repeatHint: 'Знайомі слова з’являтимуться іноді. Складні слова завжди повторюються.', completeTitle: 'Ви знаєте всі слова в цій добірці', completeHint: 'Виберіть новий курс, інший тип завдань або ввімкніть повторення.', enableReview: 'Увімкнути повторення', libraryMenu: 'Мої слова та списки' }
+};
+for (const [lang, text] of Object.entries(PRACTICE_TEXT)) Object.assign(UI[lang], text);
+
 // ---------- Data ----------
 // Alle læringsenheder (ord fra hyppighedslisten + ord/sætninger fra branchepakker) slås op i ITEM.
 const ITEM = {};
@@ -540,6 +548,7 @@ function viewFromHash() {
 }
 // Navigation med rigtige URL'er, så browserens tilbage-knap virker.
 function go(v) {
+  if ($('appMenu')?.open) $('appMenu').close();
   if (v === 'play' && placement && current?.kind === 'place') v = 'place';
   if (v !== 'play') { lastFeedback = null; levelNotice = null; }
   const hash = v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : v === 'library' ? '#mine-ord' : '';
@@ -627,8 +636,8 @@ function progKey(s) {
   if (s.pack === PICS && s.base !== s.target) return `${PICS}|${s.target}|${s.base}|${s.dir}`;
   return `${s.target}|${s.base}|${s.dir}`;
 }
-function ctx() {
-  const s = state.settings;
+function ctx(settings = state.settings) {
+  const s = settings;
   const native = s.base === s.target;
   const key = progKey(s);
   const prog = (state.progress[key] = state.progress[key] || { task: 0, cards: {}, lastId: null });
@@ -673,7 +682,7 @@ function reviewTask(c, x) {
   return quiz('prod');
 }
 function pickNext(c) {
-  const selected = LearningFlow.select(c.pool, c.prog, isLearned, dueness, Date.now());
+  const selected = LearningFlow.select(c.pool, c.prog, isLearned, dueness, Date.now(), c.s.repeatLearned !== false);
   if (!selected) return null;
   if (selected.review) return { ...reviewTask(c, selected.word), maintenance: selected.maintenance };
   const fresh = selected.word;
@@ -838,17 +847,27 @@ function render() {
   document.documentElement.lang = ul;
   const inGame = !!state.settings && !['setup', 'library'].includes(view);
   $('score').hidden = !inGame;
-  $('statsBtn').hidden = !inGame;
+  $('statsBtn').hidden = !state.settings;
   $('setupBtn').hidden = !state.settings;
-  $('soundBtn').hidden = !state.settings;
+  $('soundBtn').hidden = false;
+  $('modeBtn').hidden = !state.settings;
+  $('returnCourseBtn').hidden = !(state.settings && isList(state.settings) && lastCourseSettings());
+  $('menuTitle').textContent = t('menu');
+  $('menuBtn').setAttribute('aria-label', t('menu'));
+  $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
+  $('modeBtn').textContent = t('taskOptions');
+  $('returnCourseBtn').textContent = lt('backToCourse');
   $('soundBtn').classList.toggle('off', !state.sound);
   for (const [id, key] of [['statsBtn', 'stats'], ['setupBtn', 'settings'], ['soundBtn', 'sound']]) {
     $(id).title = t(key);
     $(id).setAttribute('aria-label', t(key));
   }
   $('soundBtn').setAttribute('aria-pressed', String(state.sound));
-  $('libraryBtn').title = lt('title');
-  $('libraryBtn').setAttribute('aria-label', lt('title'));
+  $('libraryBtn').textContent = t('libraryMenu');
+  $('statsBtn').textContent = t('stats');
+  $('setupBtn').textContent = t('settings');
+  $('libraryBtn').title = t('libraryMenu');
+  $('libraryBtn').setAttribute('aria-label', t('libraryMenu'));
   const catalogLink = $('catalogLink');
   if (catalogLink) {
     catalogLink.href = `/${ul}/`;
@@ -910,7 +929,6 @@ function renderIntro(ul) {
 
 // ----- Øvelsestyper -----
 // Billed-mode har også "Hele forløbet", der skifter opgavetype efterhånden som man kan ordet.
-const dirsFor = (pics) => (pics ? ['path', 'rec', 'prod', 'write'] : ['rec', 'prod', 'write']);
 const DIR_KEY = { path: 'path', rec: 'rec', prod: 'prod', write: 'write' };
 function dirName(dir, pics) {
   return t(`${DIR_KEY[dir] || 'rec'}${pics && dir !== 'path' ? 'N' : ''}B`);
@@ -919,43 +937,52 @@ function dirSub(dir, pics, vars) {
   return t(`${DIR_KEY[dir] || 'rec'}${pics && dir !== 'path' ? 'N' : ''}S`, vars);
 }
 
-// ----- Kontekstlinje: hvad øver jeg lige nu – og skift hurtigt -----
-function ctxBarHTML(c) {
-  const ul = uiLang();
-  const L = UI[ul].lang;
-  const langTxt = c.native ? `${LANGS[c.s.target].name} · ${t('nativeShort')}` : `${LANGS[c.s.target].name} ← ${L[c.s.base]}`;
-  const what = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[ul] : c.pics ? t('picsB') : t('topB');
-  const dirTxt = dirName(c.s.dir, c.pics);
-  const diffTxt = (isPack(c.s) ? t('packDiff') : t('diff'))[c.s.diff];
-  return `<div class="ctxbar" role="toolbar">
-    <button class="pill" data-ctx="setup" title="${esc(t('settings'))}">${esc(langTxt)}</button>
-    <button class="pill" data-ctx="setup" title="${esc(t('settings'))}">${esc(what)}</button>
-    <button class="pill toggle" data-ctx="dir" title="${esc(t('switchDir'))}">${esc(dirTxt)} <span aria-hidden="true">⇄</span></button>
-    ${isList(c.s) ? '' : `<button class="pill toggle" data-ctx="diff" title="${esc(t('diffQ'))}">${esc(diffTxt)}</button>`}
-    ${isList(c.s) && lastCourseSettings() ? `<button class="pill" data-ctx="course">← ${esc(lt('backToCourse'))}</button>` : ''}
-  </div>`;
+// ----- Setup -----
+function practiceChoicesHTML(settings, prefix) {
+  const selected = PracticeOptions.modes(settings);
+  const pics = isPics(settings);
+  const L = UI[uiLang()].lang;
+  const vars = { T: (L[settings.target] || '').toLowerCase(), B: (L[settings.base] || '').toLowerCase() };
+  return `<fieldset class="mode-fieldset"><legend>${esc(t('modeQ'))}</legend><p class="course-note">${esc(t('modesHint'))}</p><div class="choices">${PracticeOptions.allowed(settings).map((mode) => `<button type="button" class="choice" data-mode="${mode}" aria-pressed="${selected.includes(mode)}"><b>${esc(dirName(mode, pics))}</b><small>${esc(dirSub(mode, pics, vars))}</small></button>`).join('')}</div></fieldset><label class="repeat-option" for="${prefix}repeatLearned"><input type="checkbox" id="${prefix}repeatLearned"${settings.repeatLearned !== false ? ' checked' : ''}><span><b>${esc(t('repeatLearned'))}</b><small>${esc(t('repeatHint'))}</small></span></label>`;
 }
-function bindCtxBar() {
-  $('app').querySelectorAll('[data-ctx]').forEach((b) => (b.onclick = () => {
-    const s = state.settings;
-    if (b.dataset.ctx === 'setup') { go('setup'); return; }
-    if (b.dataset.ctx === 'course') { returnToCourse(); return; }
-    if (b.dataset.ctx === 'dir') {
-      const dirs = dirsFor(isPics(s));
-      s.dir = dirs[(dirs.indexOf(s.dir) + 1) % dirs.length];
-    }
-    if (b.dataset.ctx === 'diff') s.diff = s.diff % 3 + 1;
-    saveState();
-    current = null;
-    placement = null;
-    view = 'play';
-    render();
+function openTrainingOptions(settings, apply, options = {}) {
+  let choices = PracticeOptions.apply(settings);
+  const dialog = $('trainingDialog');
+  dialog.innerHTML = `<form id="trainingForm"><h2 id="trainingTitle">${esc(t('taskOptions'))}</h2>${practiceChoicesHTML(choices, 'dialog-')}<div class="row actions"><button type="button" class="secondary" id="cancelTraining">${esc(t('cancel'))}</button><button class="primary">${esc(t(options.start ? 'start' : 'save'))}</button></div></form>`;
+  dialog.querySelectorAll('[data-mode]').forEach((button) => button.onclick = () => {
+    choices = PracticeOptions.toggle(choices, button.dataset.mode);
+    dialog.querySelectorAll('[data-mode]').forEach((item) => item.setAttribute('aria-pressed', String(choices.modes.includes(item.dataset.mode))));
+  });
+  $('cancelTraining').onclick = () => dialog.close();
+  $('trainingForm').onsubmit = (event) => { event.preventDefault(); choices.repeatLearned = $('dialog-repeatLearned').checked; dialog.close(); apply(PracticeOptions.apply(choices)); };
+  dialog.showModal();
+}
+function modeTurn(settings) {
+  const count = state.modeTurns?.[PracticeOptions.key(settings)];
+  return Number.isSafeInteger(count) && count >= 0 ? count : 0;
+}
+function setModeTurn(settings, count) {
+  if (!state.modeTurns || typeof state.modeTurns !== 'object' || Array.isArray(state.modeTurns)) state.modeTurns = {};
+  state.modeTurns[PracticeOptions.key(settings)] = count;
+}
+function completeModeTurn(settings) {
+  if (PracticeOptions.modes(settings).length > 1) setModeTurn(settings, modeTurn(settings) + 1);
+}
+function combinedCards(settings, pool) {
+  const modes = PracticeOptions.modes(settings);
+  return Object.fromEntries(pool.map((word) => {
+    const known = modes.every((dir) => { const card = state.progress[progKey({ ...settings, dir })]?.cards[word.id]; return card && isLearned(card); });
+    return [word.id, { ok: known, lvl: known ? CONFIG.learnedLevel : 0 }];
   }));
 }
-
-// ----- Setup -----
+function renderPracticeComplete(c) {
+  $('app').innerHTML = `<section class="practice-complete"><h1>${esc(t('completeTitle'))}</h1><p>${esc(t('completeHint'))}</p><div class="row actions"><a class="primary cta" href="/${uiLang()}/">${esc(COURSE_CATALOG.labels[uiLang()].catalog)}</a><button class="secondary" id="enableReview">${esc(t('enableReview'))}</button>${isList(c.s) && lastCourseSettings() ? `<button class="secondary" id="completeReturn">${esc(lt('backToCourse'))}</button>` : ''}</div></section>`;
+  $('enableReview').onclick = () => { state.settings.repeatLearned = true; saveState(); current = null; renderPlay(); };
+  if ($('completeReturn')) $('completeReturn').onclick = returnToCourse;
+}
 function renderSetup() {
   if (!draft) draft = state.settings ? { pack: TOP, ...state.settings } : { target: null, base: null, pack: TOP, dir: 'rec', diff: 1 };
+  Object.assign(draft, PracticeOptions.apply(draft));
   const d = draft;
   const ul = uiLang();
   const L = UI[ul].lang;
@@ -967,7 +994,7 @@ function renderSetup() {
   if (selectedCourseLink && !state.settings && d.target && d.base && countPool(d)) {
     const selected = PACK_LIST.find((p) => p.id === d.pack);
     const name = selected ? selected.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
-    html += `<div class="setup-ready"><div><b>${esc(name)}</b><span>${esc(LANGS[d.target].name)} ← ${esc(L[d.base])}</span></div><button class="primary" id="quickStartBtn">${esc(t('start'))} →</button></div>`;
+    html += `<div class="setup-ready"><div><b>${esc(name)}</b><span>${esc(LANGS[d.target].name)} ← ${esc(L[d.base])}</span></div><button class="primary" id="quickStartBtn">${esc(t('start'))} →</button><button class="secondary" id="quickOptionsBtn">${esc(t('taskOptions'))}</button></div>`;
   }
 
   html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">`;
@@ -989,8 +1016,6 @@ function renderSetup() {
     const nPicWords = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
     if (d.pack === PICS && nPicWords < 8) d.pack = TOP;
     const pics = isPics(d);
-    // "Hele forløbet" findes kun med billeder.
-    if (!dirsFor(pics).includes(d.dir)) d.dir = pics ? 'path' : 'rec';
     if (!native) {
       const selectedPack = PACK_LIST.find((p) => p.id === d.pack);
       const selectedName = isList(d) ? libraryTitle(d.pack.slice(5)) : selectedPack ? selectedPack.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
@@ -1021,10 +1046,7 @@ function renderSetup() {
       html += `</div></div>`;
     }
 
-    const vars = { T: L[d.target].toLowerCase(), B: L[d.base].toLowerCase() };
-    html += `<div class="step"><h2>${esc(t('modeQ'))}</h2><div class="choices">`;
-    for (const dir of dirsFor(pics)) html += choice(`data-dir="${dir}"`, d.dir === dir, esc(dirName(dir, pics)), dirSub(dir, pics, vars));
-    html += `</div></div>`;
+    html += `<section class="step" id="practiceOptions">${practiceChoicesHTML(d, 'setup-')}</section>`;
 
     html += `<div class="step"><h2>${esc(t('diffQ'))}</h2><div class="choices">`;
     for (const lvl of [1, 2, 3]) {
@@ -1052,14 +1074,15 @@ function renderSetup() {
     d.base = b.dataset.base;
     if (d.base === d.target) d.pack = TOP;
     const saved = CoursePreferences.resolve(state, d);
-    if (saved) Object.assign(d, saved);
+    if (saved) Object.assign(d, saved, { modes: PracticeOptions.modes(saved), repeatLearned: saved.repeatLearned !== false });
   });
   on('[data-pack]', (b) => {
     if (d.pack === b.dataset.pack) return;
     const saved = CoursePreferences.resolve(state, { ...d, pack: b.dataset.pack });
-    if (saved) Object.assign(d, saved);
+    if (saved) Object.assign(d, saved, { modes: PracticeOptions.modes(saved), repeatLearned: saved.repeatLearned !== false });
   });
-  on('[data-dir]', (b) => { d.dir = b.dataset.dir; });
+  on('[data-mode]', (b) => Object.assign(d, PracticeOptions.toggle(d, b.dataset.mode)));
+  if ($('setup-repeatLearned')) $('setup-repeatLearned').onchange = () => { d.repeatLearned = $('setup-repeatLearned').checked; };
   on('[data-diff]', (b) => { d.diff = Number(b.dataset.diff); });
   on('[data-cat]', (b) => {
     const all = packOf(d).categories.map((c) => c.key);
@@ -1071,7 +1094,7 @@ function renderSetup() {
   if (cancel) cancel.onclick = () => { draft = null; go('play'); };
   const startPractice = () => {
     state.sound = $('soundChk').checked;
-    state.settings = { ...d };
+    state.settings = PracticeOptions.apply(d);
     state.uiLang = d.base;
     saveState();
     draft = null;
@@ -1080,18 +1103,23 @@ function renderSetup() {
     if (/^#start=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
     go('play');
   };
+  if ($('quickOptionsBtn')) $('quickOptionsBtn').onclick = () => openTrainingOptions(d, (chosen) => { Object.assign(d, chosen); startPractice(); }, { start: true });
+  if ($('soundChk')) $('soundChk').onchange = () => setSound($('soundChk').checked);
   for (const id of ['startBtn', 'quickStartBtn']) if ($(id)) $(id).onclick = startPractice;
 }
 
 // ----- Play -----
 function renderPlay() {
+  if (current) { renderPlayView(); return; }
+  const modes = PracticeOptions.modes(state.settings);
+  const start = modeTurn(state.settings);
+  state.settings.dir = modes[start % modes.length];
   let c = ctx();
-  if (!current && !isList(c.s)) {
+  if (!isList(c.s)) {
     const from = c.s.diff;
     let next;
-    while ((next = LearningFlow.nextDifficulty(c.s.diff, c.pool, c.prog.cards, (diff) => buildPool({ ...c.s, diff }), isLearned))) {
-      c.s.diff = next.diff;
-      c = ctx();
+    while ((next = LearningFlow.nextDifficulty(c.s.diff, c.pool, combinedCards(c.s, c.pool), (diff) => buildPool({ ...c.s, diff }), isLearned))) {
+      c.s.diff = next.diff; c = ctx();
     }
     if (c.s.diff !== from) {
       const labels = t(isPack(c.s) ? 'packDiff' : 'diff');
@@ -1099,15 +1127,20 @@ function renderPlay() {
       saveState(); updateScore();
     }
   }
-  // Første gang: tilbyd niveautest, så man ikke skal terpe det, man allerede kan.
-  if (!current && !c.native && !c.prog.offered && !Object.keys(c.prog.cards).length && c.pool.length >= 30) {
-    view = 'offer';
-    renderOffer();
+  if (modes.length === 1 && !c.native && !c.prog.offered && !Object.keys(c.prog.cards).length && c.pool.length >= 30) {
+    view = 'offer'; renderOffer(); return;
+  }
+  let next = null;
+  for (let offset = 0; offset < modes.length; offset++) {
+    state.settings.dir = modes[(start + offset) % modes.length]; c = ctx();
+    next = pickNext(c);
+    if (next) { if (offset) setModeTurn(c.s, start + offset); break; }
+  }
+  if (!next) {
+    if (c.pool.length) renderPracticeComplete(c);
+    else { $('app').innerHTML = `<p class="task-q" role="status">${esc(t('empty'))}</p><button class="secondary" id="emptySetup">${esc(t('settings'))}</button>`; $('emptySetup').onclick = () => go('setup'); }
     return;
   }
-  if (!current) {
-    const next = pickNext(c);
-    if (!next) { $('app').innerHTML = `${ctxBarHTML(c)}<p class="task-q" role="status">${esc(t('empty'))}</p>`; bindCtxBar(); return; }
     current = { ...next, answered: null };
     if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {
@@ -1119,9 +1152,7 @@ function renderPlay() {
     renderPlayView();
     // Højt: nye ord, ord man skal forstå (ikke for børn, der skal læse selv), og ord der skal skrives ud fra et billede.
     if (next.kind === 'intro' || (next.qdir === 'rec' && next.kind !== 'write' && !c.native) || (next.kind === 'write' && c.pics)) speakTarget(next.concept);
-    return;
-  }
-  renderPlayView();
+
 }
 
 function meaningHTML(c, x) {
@@ -1142,23 +1173,12 @@ function questionText(c, x, kind) {
   return rec ? t('qRec') : t('qProd', { T });
 }
 
-// Mærkat øverst i opgaven. I forløbet viser den, hvilket trin man er på.
-function badgeText(c, x) {
-  const card = c.prog.cards[x.id];
-  if (current.kind === 'new' || current.isNew) return t('newQ');
-  if (card && card.verify) return t('check');
-  if (c.s.dir === 'path') return current.kind === 'write' || current.kind === 'build' ? t('writeNB') : dirName(current.qdir, true);
-  return t('repeat');
-}
-
 function metaHTML(c, x) {
-  const now = Date.now();
-  const introduced = c.pool.filter((p) => c.prog.cards[p.id]);
-  const dueCount = introduced.filter((p) => dueness(c.prog.cards[p.id], c.prog, now) >= 1).length;
-  const score = c.pool.filter((p) => c.prog.cards[p.id] && isLearned(c.prog.cards[p.id])).length;
+  const cards = combinedCards(c.s, c.pool);
+  const score = c.pool.filter((p) => isLearned(cards[p.id])).length;
   void x;
-  return `${ctxBarHTML(c)}${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta"><span>${esc(t('progress', { n: score, m: c.pool.length }))}</span>
-    <span>${esc(t('due', { n: dueCount }))}</span></div>
+  return `${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta"><span>${esc(t('progress', { n: score, m: c.pool.length }))}</span>
+    </div>
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }
 
@@ -1266,9 +1286,9 @@ function finishWrite() {
 }
 
 function feedbackReceiptHTML() {
-  const saved = lastFeedback && wordLibrary.data.favorites.includes(canonicalWord(lastFeedback.id));
-  return `<div class="answer-receipt"><div role="status" aria-live="polite" aria-atomic="true">${lastFeedback ? `<span aria-hidden="true">✓</span> ${esc(t('correct'))} · <span lang="${lastFeedback.lang}">${esc(lastFeedback.word)}</span>${lastFeedback.meaning ? ` — ${esc(lastFeedback.meaning)}` : ''}` : ''}</div>${lastFeedback ? `<button class="secondary" id="previousFavoriteBtn" data-favorite-source="${esc(lastFeedback.id)}" data-previous="true" data-word-label="${esc(lastFeedback.word)}" aria-pressed="${saved}" aria-label="${esc((saved ? lt('unfavorite') : lt('savePrevious')) + ': ' + lastFeedback.word)}">${saved ? '♥' : '♡'}</button><span id="receiptSaveStatus" role="status"></span>` : ''}</div>`;
+  return lastFeedback ? `<div class="answer-receipt" role="status" aria-live="polite">✓ ${esc(t('correct'))} · <span lang="${lastFeedback.lang}">${esc(lastFeedback.word)}</span></div>` : '<div class="answer-receipt" aria-hidden="true"></div>';
 }
+
 function renderPlayView() {
   const c = ctx();
   const x = current.concept;
@@ -1277,7 +1297,7 @@ function renderPlayView() {
   let html = metaHTML(c, x) + feedbackReceiptHTML();
 
   if (current.kind === 'intro') {
-    html += `<div class="prompt${c.pics ? ' pics' : ''}"><span class="badge">${esc(t('newWord'))}</span>${speakBtn}
+    html += `<div class="prompt${c.pics ? ' pics' : ''}">${promptActionsHTML(x, speakBtn)}
       ${c.pics ? picHTML(x) : ''}
       ${targetHTML(c, x)}
       ${c.pics ? '' : `<span class="sub">${esc(x.words[c.s.base])}</span>`}
@@ -1285,13 +1305,13 @@ function renderPlayView() {
     <div class="feedback" aria-live="polite"><button class="primary" id="nextBtn">${esc(t('next'))} →</button></div>`;
   } else if (current.kind === 'write') {
     // Børn hører ordet (højttaler); ved oversættelse vises betydningen.
-    html += `<div class="prompt write${c.pics ? ' pics' : ''}"><span class="badge">${esc(badgeText(c, x))}</span>${c.pics || current.answered ? speakBtn : ''}
+    html += `<div class="prompt write${c.pics ? ' pics' : ''}">${promptActionsHTML(x, c.pics || current.answered ? speakBtn : '')}
       ${meaningHTML(c, x)}
     </div>${writeHTML(c, x)}`;
   } else if (current.kind === 'build') {
     const sp = current.spec;
     const built = current.picked.map((i) => current.tiles[i].tk);
-    html += `<div class="prompt${c.pics ? ' pics' : ''}"><span class="badge">${esc(badgeText(c, x))}</span>
+    html += `<div class="prompt${c.pics ? ' pics' : ''}">${promptActionsHTML(x)}
       ${meaningHTML(c, x)}
     </div>
     <p class="task-q">${esc(questionText(c, x, 'build'))}</p>
@@ -1311,7 +1331,7 @@ function renderPlayView() {
     }
     html += `</div>`;
   } else {
-    html += `<div class="prompt${c.pics && !rec ? ' pics' : ''}"><span class="badge">${esc(badgeText(c, x))}</span>${speakBtn}
+    html += `<div class="prompt${c.pics && !rec ? ' pics' : ''}">${promptActionsHTML(x, speakBtn)}
       ${rec ? targetHTML(c, x) : meaningHTML(c, x)}
     </div>
     <p class="task-q">${esc(questionText(c, x, current.kind))}</p>
@@ -1326,8 +1346,7 @@ function renderPlayView() {
     }
     html += `</div>`;
   }
-  $('app').innerHTML = html + wordSaveHTML(x);
-  bindCtxBar();
+  $('app').innerHTML = html;
   bindWordSave(x);
 
   const sb = $('speakBtn');
@@ -1362,6 +1381,7 @@ function grade(c, x, correct) {
 }
 function finishTask(c, x, before) {
   c.prog.task += 1;
+  completeModeTurn(c.s);
   if (current.maintenance) c.prog.lastLearnedReviewTask = c.prog.task;
   c.prog.lastId = x.id;
   saveState();
@@ -1432,6 +1452,7 @@ function advance() {
     const c = ctx();
     c.prog.cards[current.concept.id] = newCard(c, 0, false, { wrong: 0 });
     c.prog.task += 1;
+    completeModeTurn(c.s);
     c.prog.lastId = current.concept.id;
     saveState();
   }
@@ -1444,14 +1465,13 @@ function renderOffer() {
   const c = ctx();
   c.prog.offered = true;
   saveState();
-  $('app').innerHTML = `${ctxBarHTML(c)}<section class="offer">
+  $('app').innerHTML = `<section class="offer">
     <div class="prompt"><span class="w long">${esc(t('placeTitle'))}</span>
       <span class="sub">${esc(t('placeLead'))}</span></div>
     <div class="row center">
       <button class="secondary" id="skipBtn">${esc(t('placeSkip'))}</button>
       <button class="primary" id="placeBtn">${esc(t('placeStart'))}</button>
     </div></section>`;
-  bindCtxBar();
   $('skipBtn').onclick = () => { view = 'play'; current = null; render(); };
   $('placeBtn').onclick = startPlacement;
 }
@@ -1495,17 +1515,16 @@ function renderPlace() {
   }
   const x = current.concept;
   const rec = current.qdir === 'rec';
-  let html = `${ctxBarHTML(c)}<div class="meta"><span>${esc(t('placeBadge'))}</span><span>${esc(t('rank', { n: rankOf(c.s, x.id) }))}</span></div>
+  let html = `<div class="meta"><span>${esc(t('placeBadge'))}</span><span>${esc(t('rank', { n: rankOf(c.s, x.id) }))}</span></div>
     <div class="progress"><div style="width:${Math.min(100, ((P.block + 1) / P.bounds.length) * 100)}%"></div></div>
-    <div class="prompt"><span class="badge">${esc(t('placeBadge'))}</span>
+    <div class="prompt">${promptActionsHTML(x)}
       ${rec ? targetHTML(c, x) : meaningHTML(c, x)}</div>
     <p class="task-q">${esc(questionText(c, x, 'quiz'))}</p>
     ${optionsHTML(c, x, current.answered)}
     ${feedbackReceiptHTML()}
     <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))} →</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
   $('app').innerHTML = html;
-  bindCtxBar();
-  bindPreviousFavorite();
+  bindWordSave(x);
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
   const dk = $('dkBtn');
   if (dk) dk.onclick = () => { if (!current.answered) { current.answered = '-'; placementAnswer(false); } };
@@ -1591,7 +1610,7 @@ function renderStats() {
   const cols = t('cols');
   let html = `<section class="stats"><div class="row" style="justify-content:space-between">
       <h1>${esc(t('stats'))}</h1><button class="secondary" id="backBtn">← ${esc(t('back'))}</button></div>
-    <div class="explain"><b>${esc(t('howTitle'))}</b><p>${esc(t('explainSimple'))}</p>
+    <p class="course-note">${esc(dirName(c.s.dir, c.pics))}</p><div class="explain"><b>${esc(t('howTitle'))}</b><p>${esc(t('explainSimple'))}</p>
       <details><summary>${esc(t('formula'))}</summary><p>${fill(t('explain'), { tu: CONFIG.taskUnit, b: CONFIG.base, mu: CONFIG.timeUnitMin, ll: CONFIG.learnedLevel })}</p></details></div>`;
 
   if (!ids.length) {
@@ -1640,18 +1659,26 @@ function renderStats() {
 }
 
 // ---------- Global events ----------
+$('menuBtn').onclick = () => { $('appMenu').showModal(); };
+$('closeMenuBtn').onclick = () => $('appMenu').close();
+$('returnCourseBtn').onclick = returnToCourse;
+$('modeBtn').onclick = () => { $('appMenu').close(); openTrainingOptions(state.settings, (chosen) => { state.settings = chosen; current = null; placement = null; lastFeedback = null; levelNotice = null; saveState(); go('play'); }); };
 $('homeBtn').onclick = (e) => { e.preventDefault(); go(state.settings ? 'play' : 'setup'); };
 $('statsBtn').onclick = () => go(view === 'stats' ? 'play' : 'stats');
 $('libraryBtn').onclick = () => go('library');
 $('setupBtn').onclick = () => go('setup');
-$('soundBtn').onclick = () => {
-  state.sound = !state.sound;
+function setSound(enabled) {
+  state.sound = enabled;
   saveState();
   if (!state.sound && 'speechSynthesis' in window) speechSynthesis.cancel();
   $('soundBtn').classList.toggle('off', !state.sound);
   $('soundBtn').setAttribute('aria-pressed', String(state.sound));
-};
+  if ($('soundChk')) $('soundChk').checked = state.sound;
+}
+$('soundBtn').onclick = () => setSound(!state.sound);
+
 document.addEventListener('keydown', (e) => {
+  if (document.querySelector('dialog[open]')) return;
   if (e.target.closest('input, textarea, select, dialog, [contenteditable="true"]')) return;
   if ((view !== 'play' && view !== 'place') || !current || e.ctrlKey || e.metaKey || e.altKey) return;
   if (e.repeat) { e.preventDefault(); return; }

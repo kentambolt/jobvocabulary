@@ -379,7 +379,7 @@ a.brand { text-decoration: none; color: var(--ink); }
 .page.catalogue main, .page.catalogue .top { max-width: 1100px; }
 .intro nav.jobs { display: grid; }
 .course-picker summary { cursor: pointer; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-weight: 800; }
-.setup-ready { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px; margin: 20px 0 28px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 14px; }
+.setup-ready { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px; margin: 20px 0 28px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 14px; }
 .setup-ready > div { min-width: 0; overflow-wrap: anywhere; }
 .setup-ready b, .setup-ready span { display: block; }
 .setup-ready span { margin-top: 6px; font-size: 13px; color: var(--muted); }
@@ -387,7 +387,7 @@ a.brand { text-decoration: none; color: var(--ink); }
 @media (max-width: 380px) { .setup-ready { flex-wrap: wrap; } }
 
 /* Feedback stays readable while the next task is already interactive. */
-.answer-receipt { min-height: 52px; padding: 4px 0; color: var(--good); font-size: 13px; line-height: 1.5; font-weight: 800; overflow-wrap: anywhere; display: flex; gap: 8px 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.answer-receipt { min-height: 26px; padding: 2px 0; color: var(--good); font-size: 13px; line-height: 1.5; font-weight: 800; overflow-wrap: anywhere; }
 .answer-receipt > div { flex: 1; min-width: min(160px, 100%); }
 .answer-receipt .secondary { min-height: 44px; padding: 8px 12px; font-size: 13px; }
 .answer-receipt #previousFavoriteBtn { width: 44px; flex-shrink: 0; font-size: 22px; }
@@ -474,3 +474,42 @@ dialog h2 { font-size: 24px; margin: 0 0 18px; }
 .opt:active { transform: none; }
 @media (max-width: 960px) { .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .course-grid { grid-template-columns: 1fr; } }
+
+/* The exercise header keeps its two essential controls on one row. */
+body:not(.catalogue) > .top { flex-wrap: nowrap; gap: 8px; padding: 10px 16px; }
+body:not(.catalogue) > .top .nav { margin-left: auto; flex-shrink: 0; }
+body:has(dialog[open]) { overflow: hidden; }
+dialog { max-height: calc(100dvh - 28px); overflow-y: auto; }
+.menu-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.menu-heading h2 { margin: 0; }
+.menu-items { display: grid; gap: 6px; }
+.menu-items a, .menu-items button { display: flex; align-items: center; text-align: left; text-decoration: none; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font: inherit; font-weight: 800; min-height: 48px; }
+.menu-items a:hover, .menu-items button:hover { border-color: var(--accent); }
+#appMenu .score { margin: 6px 0 0; }
+#appMenu .score-label { display: inline; }
+.mode-fieldset { border: 0; padding: 0; margin: 0 0 18px; min-width: 0; }
+.mode-fieldset legend { font-weight: 900; }
+.mode-fieldset .course-note { margin: 8px 0 12px; }
+label.repeat-option { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; margin: 0 0 16px; font-size: 15px; cursor: pointer; }
+.repeat-option input[type="checkbox"] { width: 22px; height: 22px; flex: 0 0 22px; margin: 0; padding: 0; accent-color: var(--accent); }
+.repeat-option small { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.5; font-weight: 600; }
+.prompt-actions { position: absolute; top: 6px; right: 6px; display: flex; gap: 2px; }
+.prompt-actions .speak { position: static; }
+.word-heart { width: 44px; height: 44px; font-size: 28px; line-height: 1; background: none; border: 0; border-radius: 12px; }
+.word-heart:hover, .word-heart[data-saved="true"] { color: var(--accent); background: var(--accent-soft); }
+.favorite-choice { width: 100%; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; text-align: left; font-weight: 800; }
+.prompt, .prompt.write { padding-top: 52px; }
+.meta { margin-bottom: 6px; }
+.progress { margin-bottom: 6px; }
+@media (max-width: 480px) {
+  body:not(.catalogue) > .top .brand { font-size: 20px; }
+  main { padding-top: 4px; padding-bottom: 20px; }
+  .prompt { min-height: 140px; margin-bottom: 12px; padding-bottom: 18px; }
+  .prompt .w { font-size: clamp(28px, 8vw, 38px); }
+  .opt { min-height: 84px; }
+  .opt .w { font-size: clamp(18px, 5vw, 20px); }
+  .keys { max-width: calc(var(--cols, 3) * 66px); gap: 8px; }
+  .feedback { min-height: 44px; }
+  .setup-ready > div { flex-basis: 100%; }
+  dialog { padding: 20px; }
+}
