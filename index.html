@@ -31,22 +31,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=78ae357bfe1f">
+  <link rel="stylesheet" href="style.css?v=b747d8524a39">
 </head>
 <body>
   <header class="top">
     <a class="brand" id="homeBtn" href="./" aria-label="Job Vocabulary">Job<span>Vocabulary</span></a>
-    <a class="catalog-link" id="catalogLink" href="/da/">Find dit kursus</a>
-    <div class="score" id="score" hidden>
-      <span class="score-num" id="scoreNum">0</span>
-      <span class="score-label" id="scoreLabel"></span>
-      <span class="score-delta" id="scoreDelta"></span>
-    </div>
-    <nav class="nav">
-      <button class="icon-btn" id="libraryBtn" title="Mine ord" aria-label="Mine ord">♡</button>
+    <nav class="nav" aria-label="Træning">
       <button class="icon-btn" id="soundBtn" title="Læs højt" aria-label="Læs højt" aria-pressed="true" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4 6 8H3v8h3l5 4Z"/><path class="waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="mute" d="m16 9 5 6m0-6-5 6"/></svg></button>
-      <button class="icon-btn" id="statsBtn" title="Statistik" aria-label="Statistik" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16M8 15v-3m5 3V8m5 7V5"/></svg></button>
-      <button class="icon-btn" id="setupBtn" title="Indstillinger" aria-label="Indstillinger" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 3-.5 2.1-1.8 1-2.1-.6-2 3.4 1.6 1.5v2.2l-1.6 1.5 2 3.4 2.1-.6 1.8 1 .5 2.1h4l.5-2.1 1.8-1 2.1.6 2-3.4-1.6-1.5v-2.2l1.6-1.5-2-3.4-2.1.6-1.8-1L14 3Z"/><circle cx="12" cy="11.5" r="3"/></svg></button>
+      <button class="icon-btn" id="menuBtn" aria-label="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </nav>
   </header>
 
@@ -69,6 +61,19 @@
   </section>
 
   <main id="app"></main>
+  <dialog id="appMenu" aria-labelledby="menuTitle">
+    <div class="menu-heading"><h2 id="menuTitle">Menu</h2><button class="icon-btn" id="closeMenuBtn" aria-label="Luk menu">×</button></div>
+    <nav class="menu-items">
+      <a id="catalogLink" href="/da/">Find dit kursus</a>
+      <button id="libraryBtn">Mine ord og lister</button>
+      <button id="modeBtn" hidden>Opgavetyper og repetition</button>
+      <button id="statsBtn" hidden>Statistik</button>
+      <button id="setupBtn" hidden>Indstillinger</button>
+      <button id="returnCourseBtn" hidden>Tilbage til kurset</button>
+    </nav>
+    <div class="score" id="score" hidden><span class="score-num" id="scoreNum">0</span><span class="score-label" id="scoreLabel"></span><span class="score-delta" id="scoreDelta"></span></div>
+  </dialog>
+  <dialog id="trainingDialog" aria-labelledby="trainingTitle"></dialog>
   <dialog id="saveWordDialog" aria-label="Gem ord på en liste"></dialog>
 
   <script src="words.js?v=aff0c07fb336"></script>
@@ -77,10 +82,11 @@
   <script src="lexicon-index.js?v=9867ee6e76a8"></script>
   <script src="word-entry.js?v=024342f2f1b7"></script>
   <script src="library.js?v=8fa39218d017"></script>
-  <script src="library-ui.js?v=8217149ae59b"></script>
+  <script src="library-ui.js?v=3b90b0784829"></script>
   <script src="images/words/manifest.js?v=65f76eac29c3"></script>
-  <script src="course-preferences.js?v=fa88ad02202c"></script>
-  <script src="learning-flow.js?v=49c4d4aba3b4"></script>
-  <script src="app.js?v=22bbda82ba2d"></script>
+  <script src="practice-options.js?v=b98787426259"></script>
+  <script src="course-preferences.js?v=c46e8e8e6f80"></script>
+  <script src="learning-flow.js?v=6b81fe50af35"></script>
+  <script src="app.js?v=d23ba52e586c"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 const LIBRARY_TEXT = {
   "da": {
     "title": "Mine ord",
-    "favorites": "Gemte ord",
+    "favorites": "Favoritord",
     "lists": "Mine lister",
     "newList": "Ny liste",
     "listName": "Listenavn",
@@ -21,6 +21,7 @@ const LIBRARY_TEXT = {
     "found": "Fundet i ordbogen",
     "notFound": "Ingen oversættelse fundet. Du kan tilføje din egen nedenfor.",
     "saveWord": "Gem ord",
+    "saveFavorite": "Gem som favorit",
     "saved": "Gemt",
     "choose": "Vælg liste",
     "delete": "Slet liste",
@@ -38,7 +39,7 @@ const LIBRARY_TEXT = {
     "imported": "Sikkerhedskopien er indlæst.",
     "importError": "Filen er ikke en gyldig sikkerhedskopi.",
     "chooseAnother": "Vælg en anden liste for at gemme ordet dér.",
-    "unfavorite": "Fjern fra gemte ord",
+    "unfavorite": "Fjern fra favoritter",
     "custom": "Egne ord",
     "filter": "Søg i denne liste",
     "noMatches": "Ingen ord matcher din søgning.",
@@ -75,6 +76,7 @@ const LIBRARY_TEXT = {
     "found": "Found in the dictionary",
     "notFound": "No translation found. You can add your own below.",
     "saveWord": "Save word",
+    "saveFavorite": "Save as a favourite",
     "saved": "Saved",
     "choose": "Choose a list",
     "delete": "Delete list",
@@ -92,7 +94,7 @@ const LIBRARY_TEXT = {
     "imported": "Your backup has been imported.",
     "importError": "This file is not a valid backup.",
     "chooseAnother": "Choose another list to save the word there.",
-    "unfavorite": "Remove from saved words",
+    "unfavorite": "Remove from favourites",
     "custom": "Your own words",
     "filter": "Search this list",
     "noMatches": "No words match your search.",
@@ -129,6 +131,7 @@ const LIBRARY_TEXT = {
     "found": "Найдено в словаре",
     "notFound": "Перевод не найден. Добавьте свой ниже.",
     "saveWord": "Сохранить слово",
+    "saveFavorite": "Добавить в избранное",
     "saved": "Сохранено",
     "choose": "Выберите список",
     "delete": "Удалить список",
@@ -146,7 +149,7 @@ const LIBRARY_TEXT = {
     "imported": "Резервная копия загружена.",
     "importError": "Это не файл резервной копии.",
     "chooseAnother": "Выберите другой список, чтобы сохранить слово в нём.",
-    "unfavorite": "Убрать из сохранённых слов",
+    "unfavorite": "Убрать из избранного",
     "custom": "Свои слова",
     "filter": "Поиск в этом списке",
     "noMatches": "Нет слов по вашему запросу.",
@@ -183,6 +186,7 @@ const LIBRARY_TEXT = {
     "found": "Знайдено у словнику",
     "notFound": "Переклад не знайдено. Додайте свій нижче.",
     "saveWord": "Зберегти слово",
+    "saveFavorite": "Додати до обраного",
     "saved": "Збережено",
     "choose": "Виберіть список",
     "delete": "Видалити список",
@@ -200,7 +204,7 @@ const LIBRARY_TEXT = {
     "imported": "Резервну копію імпортовано.",
     "importError": "Це не файл резервної копії.",
     "chooseAnother": "Виберіть інший список, щоб зберегти слово в ньому.",
-    "unfavorite": "Прибрати зі збережених слів",
+    "unfavorite": "Прибрати з обраного",
     "custom": "Власні слова",
     "filter": "Пошук у цьому списку",
     "noMatches": "Немає слів за вашим запитом.",
@@ -280,10 +284,10 @@ function loadDictionary() {
 function listPool(id, pair) {
   return (wordLibrary.list(id)?.items || []).map((ref) => ITEM[canonicalWord(ref)]).filter((entry) => entry && entry.words[pair.target] && entry.words[pair.base]);
 }
-function startLibraryPractice(id, pair) {
+function startLibraryPractice(id, pair, options = {}) {
   if (!listPool(id, pair).length) return;
   saveState(); // Remember the actual course before entering temporary list practice.
-  state.settings = { ...pair, pack: 'list:' + id, dir: 'rec', diff: 3, cats: null };
+  state.settings = { ...pair, ...options, pack: 'list:' + id, dir: options.dir || 'rec', diff: 3, cats: null };
   saveState(); current = null; placement = null; lastFeedback = null; levelNotice = null; go('play');
 }
 function dictionaryMatches(query, pair, limit = 20) {
@@ -291,23 +295,36 @@ function dictionaryMatches(query, pair, limit = 20) {
 }
 function saveToListDialog(sourceId) {
   clearTimeout(timer);
+  const dialog = $('saveWordDialog');
+  dialog.dataset.sourceId = sourceId;
+  dialog.setAttribute('aria-label', lt('saveWord'));
+  dialog.innerHTML = `<p role="status">${esc(t('loading'))}</p><button class="secondary" id="cancelWordLoad">${esc(t('cancel'))}</button>`;
+  $('cancelWordLoad').onclick = () => dialog.close();
+  dialog.showModal();
   loadDictionary().then(() => {
+    if (!dialog.open || dialog.dataset.sourceId !== sourceId) return;
     const id = canonicalWord(sourceId);
-    const dialog = $('saveWordDialog');
-    dialog.setAttribute('aria-label', lt('addTo'));
-    dialog.innerHTML = `<form method="dialog" id="saveWordForm"><h2>${esc(lt('addTo'))}</h2><label for="wordListSelect">${esc(lt('choose'))}</label><select id="wordListSelect"><option value="favorites">${esc(lt('favorites'))}</option>${wordLibrary.data.lists.map((list) => `<option value="${esc(list.id)}">${esc(list.name)}</option>`).join('')}</select><label for="wordNewList">${esc(lt('newList'))}</label><input id="wordNewList" maxlength="60" autocomplete="off"><div class="row actions"><button class="secondary" value="cancel">${esc(t('cancel'))}</button><button class="primary" id="saveToList" value="save">${esc(lt('save'))}</button></div><p id="saveWordMessage" role="status"></p></form>`;
-    $('saveToList').onclick = (event) => {
+    const favorite = wordLibrary.data.favorites.includes(id);
+    dialog.innerHTML = `<form id="saveWordForm"><h2>${esc(lt('saveWord'))}</h2><button type="button" class="favorite-choice" id="dialogFavoriteBtn" aria-pressed="${favorite}">${favorite ? '♥ ' + esc(lt('unfavorite')) : '♡ ' + esc(lt('saveFavorite'))}</button><label for="wordListSelect">${esc(lt('choose'))}</label><select id="wordListSelect"><option value="">${esc(lt('choose'))}</option>${wordLibrary.data.lists.map((list) => `<option value="${esc(list.id)}">${esc(list.name)}</option>`).join('')}</select><label for="wordNewList">${esc(lt('newList'))}</label><input id="wordNewList" maxlength="60" autocomplete="off"><p id="saveWordMessage" role="status"></p><div class="row actions"><button type="button" class="secondary" id="cancelSaveWord">${esc(t('cancel'))}</button><button class="primary">${esc(lt('addTo'))}</button></div></form>`;
+    $('cancelSaveWord').onclick = () => dialog.close();
+    bindFavoriteButton($('dialogFavoriteBtn'), sourceId, $('saveWordMessage'), () => { dialog.close(); if (view === 'library') renderLibrary(); });
+    $('saveWordForm').onsubmit = (event) => {
       event.preventDefault();
       const name = $('wordNewList').value.trim();
       const listId = name ? wordLibrary.createList(name).id : $('wordListSelect').value;
-      wordLibrary.add(id, listId); saveState(); dialog.close();
-      refreshFavoriteButtons(sourceId);
+      if (!listId) { $('saveWordMessage').textContent = lt('choose'); $('wordListSelect').focus(); return; }
+      wordLibrary.add(id, listId); saveState(); dialog.close(); refreshFavoriteButtons(sourceId);
       if (view === 'library') renderLibrary();
     };
-    dialog.showModal();
-  }).catch(() => { const status = $('wordSaveStatus'); if (status) status.textContent = t('loadFail'); });
+    $('dialogFavoriteBtn').focus();
+  }).catch(() => { if (dialog.open) { dialog.innerHTML = `<p role="status">${esc(t('loadFail'))}</p><button class="secondary" id="cancelWordLoad">${esc(t('cancel'))}</button>`; $('cancelWordLoad').onclick = () => dialog.close(); } });
 }
+
 function updateFavoriteButton(button, sourceId) {
+  if (button.dataset.wordHub) {
+    const saved = wordIsSaved(sourceId);
+    button.textContent = saved ? '♥' : '♡'; button.setAttribute('data-saved', String(saved)); button.title = lt('saveWord'); button.setAttribute('aria-label', lt('saveWord')); return;
+  }
   const saved = wordLibrary.data.favorites.includes(canonicalWord(sourceId));
   button.setAttribute('aria-pressed', String(saved));
   button.textContent = button.dataset.previous ? (saved ? '♥' : '♡') : saved ? `♥ ${lt('saved')}` : `♡ ${lt('saveWord')}`;
@@ -319,11 +336,17 @@ function refreshFavoriteButtons(sourceId) {
     if (canonicalWord(candidate.dataset.favoriteSource) === canonicalWord(sourceId)) updateFavoriteButton(candidate, sourceId);
   });
 }
-function wordSaveHTML(x) {
-  const saved = wordLibrary.data.favorites.includes(canonicalWord(x.id));
-  return `<div class="word-save"><button class="secondary" id="favoriteWordBtn" data-favorite-source="${esc(x.id)}" aria-pressed="${saved}">${saved ? `♥ ${esc(lt('saved'))}` : `♡ ${esc(lt('saveWord'))}`}</button><button class="secondary" id="wordListBtn">${esc(lt('addTo'))}</button><span id="wordSaveStatus" role="status"></span></div>`;
+function wordIsSaved(sourceId) {
+  const id = canonicalWord(sourceId);
+  return wordLibrary.data.favorites.includes(id) || wordLibrary.data.lists.some((list) => list.items.includes(id));
 }
-function bindFavoriteButton(button, sourceId, status) {
+function wordSaveHTML(x) {
+  const saved = wordIsSaved(x.id);
+  return `<button class="word-heart" id="favoriteWordBtn" data-favorite-source="${esc(x.id)}" data-word-hub="true" data-saved="${saved}" aria-haspopup="dialog" aria-label="${esc(lt('saveWord'))}" title="${esc(lt('saveWord'))}">${saved ? '♥' : '♡'}</button>`;
+}
+function promptActionsHTML(x, extra = '') { return `<div class="prompt-actions">${extra}${wordSaveHTML(x)}</div>`; }
+
+function bindFavoriteButton(button, sourceId, status, onSaved) {
   button.onclick = async (event) => {
     const button = event.currentTarget;
     button.disabled = true;
@@ -331,16 +354,16 @@ function bindFavoriteButton(button, sourceId, status) {
     try {
       await loadDictionary(); wordLibrary.toggle(canonicalWord(sourceId)); saveState();
       refreshFavoriteButtons(sourceId);
+      if (onSaved) onSaved();
     }
     catch { if (status?.isConnected) status.textContent = t('loadFail'); }
     finally { button.disabled = false; }
   };
 }
 function bindWordSave(x) {
-  bindFavoriteButton($('favoriteWordBtn'), x.id, $('wordSaveStatus'));
-  bindPreviousFavorite();
-  $('wordListBtn').onclick = () => saveToListDialog(x.id);
+  if ($('favoriteWordBtn')) $('favoriteWordBtn').onclick = () => saveToListDialog(x.id);
 }
+
 function bindPreviousFavorite() {
   const previous = $('previousFavoriteBtn');
   if (previous) bindFavoriteButton(previous, previous.dataset.favoriteSource, $('receiptSaveStatus'));
@@ -441,7 +464,7 @@ function renderLibrary() {
     renderSavedLibraryRows(pair);
   };
   $('newListForm').onsubmit = (event) => { event.preventDefault(); try { libraryActive = wordLibrary.createList($('newListName').value).id; saveState(); renderLibrary(); } catch { $('libraryMessage').textContent = lt('nameError'); } };
-  $('practiceList').onclick = () => startLibraryPractice(libraryActive, pair);
+  $('practiceList').onclick = () => { const settings = state.settings?.pack === 'list:' + libraryActive ? { ...state.settings, ...pair } : { ...pair, pack: 'list:' + libraryActive, dir: 'rec', diff: 3, repeatLearned: state.settings?.repeatLearned !== false }; openTrainingOptions(settings, (chosen) => startLibraryPractice(libraryActive, pair, chosen), { start: true }); };
   if ($('deleteLibraryList')) $('deleteLibraryList').onclick = () => { if (confirm(lt('deleteQ'))) { wordLibrary.data.lists = wordLibrary.data.lists.filter((entry) => entry.id !== libraryActive); libraryActive = 'favorites'; saveState(); renderLibrary(); } };
   if ($('libraryBack')) $('libraryBack').onclick = () => go('play');
   if ($('libraryCourseBack')) $('libraryCourseBack').onclick = returnToCourse;

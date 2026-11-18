@@ -82,9 +82,18 @@ Incorrect answers require an explicit next action. Held keyboard keys cannot
 answer several tasks; normal repeat behaviour remains available in text inputs.
 Use 1–4 for multiple-choice answers and the keyboard for spelling tasks. Forms and
 dialogs do not pass their keystrokes to the exercise underneath.
-The previous correct answer retains its source ID and a heart button, so it can
-be saved after the next task appears. Async saves keep the clicked source ID even
-if another task is answered before the dictionary finishes loading.
+The header exposes audio and a labelled navigation menu. Exercise context pills,
+review counts and new/review badges are omitted. One heart in the prompt opens
+favourites, existing lists and new-list creation. The modal captures the source ID
+before loading the dictionary and blocks exercise shortcuts while open.
+`practice-options.js` normalises one or more selected task types (`settings.modes`)
+and the optional `repeatLearned` setting (default true). Multi-mode practice rotates
+after each completed task, storing its cursor in `state.modeTurns`; legacy settings
+without `modes` retain their single `dir`. Each mode uses its existing progress key.
+Combined progress and promotion require mastery in every selected mode. Disabling
+learned repetitions still permits retries of incorrect or unfinished words. A fully
+completed selection stops with an explicit option to enable repetitions. Options
+are available before course/list practice and from the navigation menu.
 Catalogue pages read the existing local settings through `practice-resume.js` to
 offer direct resume and My words links without loading course or dictionary data.
 Resume opens the app without a course-start fragment, preserving mode and filters.

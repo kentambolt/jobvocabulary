@@ -10,7 +10,7 @@ var LearningFlow = {
     }
     return null;
   },
-  select(pool, progress, learned, due, now) {
+  select(pool, progress, learned, due, now, repeatLearned = true) {
     if (!pool.length) return null;
     const introduced = pool.filter((word) => progress.cards[word.id]);
     const active = introduced.filter((word) => !learned(progress.cards[word.id]));
@@ -22,14 +22,14 @@ var LearningFlow = {
     }, null);
     const struggling = mostDue(candidates.filter((word) => !learned(progress.cards[word.id])));
     if (struggling && struggling.urgency >= 1) return { word: struggling.word, review: true, maintenance: false };
-    const known = mostDue(candidates.filter((word) => learned(progress.cards[word.id])));
+    const known = repeatLearned ? mostDue(candidates.filter((word) => learned(progress.cards[word.id]))) : null;
     const workRemaining = !!fresh || active.length > 0;
     // A backlog of familiar words must not block new vocabulary or cause a reset-like run.
     const sinceCheck = progress.task - (progress.lastLearnedReviewTask ?? progress.task);
     if (known && known.urgency >= 1 && (!workRemaining || sinceCheck >= 6)) return { word: known.word, review: true, maintenance: true };
     if (fresh) return { word: fresh, review: false, maintenance: false };
     if (active.length) return { word: struggling?.word || active[0], review: true, maintenance: false };
-    const remaining = known?.word || introduced[0];
+    const remaining = repeatLearned ? known?.word || introduced[0] : null;
     return remaining ? { word: remaining, review: true, maintenance: true } : null;
   }
 };

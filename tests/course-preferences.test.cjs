@@ -57,6 +57,6 @@ test('empty lists and invalid stored preferences do not displace a valid active 
   for (const value of [null, {}, { ...warehouse, base: 'invalid' }, { ...warehouse, diff: 99 }, { ...warehouse, dir: 'unknown' }, { ...warehouse, pack: 'list:favorites' }]) assert.equal(Preferences.normalize(value), null);
   assert.equal(Preferences.resolve(state, { pack: 'pics', target: 'da', base: 'en' }).dir, 'path');
   a.run("saveState(); state.settings = { pack: 'list:removed', target: 'da', base: 'uk', dir: 'rec', diff: 3 }; current = null; renderPlay();");
-  assert.match(a.context.document.getElementById('app').innerHTML, /data-ctx="course"/);
+  assert.match(a.context.document.getElementById('app').innerHTML, /id="emptySetup"/);
   assert.match(a.context.document.getElementById('app').innerHTML, /role="status"/);
 });

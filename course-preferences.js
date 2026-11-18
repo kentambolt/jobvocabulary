@@ -9,7 +9,10 @@ var CoursePreferences = {
     const directions = pack === 'pics' || settings.base === settings.target ? ['path', 'rec', 'prod', 'write'] : ['rec', 'prod', 'write'];
     if (!directions.includes(settings.dir) || ![1, 2, 3].includes(settings.diff)) return null;
     const cats = Array.isArray(settings.cats) ? [...new Set(settings.cats.filter((cat) => typeof cat === 'string'))] : null;
-    return { pack, target: settings.target, base: settings.base, dir: settings.dir, diff: settings.diff, cats };
+    const options = typeof PracticeOptions !== 'undefined' ? PracticeOptions : require('./practice-options');
+    return { pack, target: settings.target, base: settings.base, dir: settings.dir, diff: settings.diff, cats,
+      ...(Array.isArray(settings.modes) ? { modes: options.modes(settings) } : {}),
+      ...(typeof settings.repeatLearned === 'boolean' ? { repeatLearned: settings.repeatLearned } : {}) };
   },
   key(settings) { return `${settings.pack}|${settings.target}|${settings.base}`; },
   remember(state, settings = state.settings) {
@@ -21,7 +24,7 @@ var CoursePreferences = {
     state.lastCourseKey = key;
   },
   resolve(state, desired) {
-    const defaults = this.normalize({ ...desired, dir: desired.pack === 'pics' || desired.target === desired.base ? 'path' : 'rec', diff: 1, cats: null });
+    const defaults = this.normalize({ pack: desired.pack, target: desired.target, base: desired.base, dir: desired.pack === 'pics' || desired.target === desired.base ? 'path' : 'rec', diff: 1, cats: null });
     if (!defaults) return null;
     const key = this.key(defaults);
     const active = this.normalize(state.settings);
