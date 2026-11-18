@@ -69,7 +69,7 @@ var COURSE_CATALOG = {
     "da": {
       "catalog": "Find dit kursus",
       "lead": "Lær sproget til din næste arbejdsdag",
-      "intro": "Praktiske ord og sætninger til dit fag – og til hverdagen i et nyt land. Begynd gratis, uden en konto.",
+      "intro": "Praktiske ord og sætninger til dit fag og hverdagen i et nyt land. Begynd gratis, uden en konto.",
       "search": "Søg efter job eller emne",
       "empty": "Ingen kurser matcher din søgning.",
       "topics": "emner",
@@ -87,7 +87,7 @@ var COURSE_CATALOG = {
     "en": {
       "catalog": "Find your course",
       "lead": "Learn the language for your next working day",
-      "intro": "Practical words and phrases for your job – and everyday life in a new country. Start free, without an account.",
+      "intro": "Practical words and phrases for your job and everyday life in a new country. Start free, without an account.",
       "search": "Search for a job or topic",
       "empty": "No courses match your search.",
       "topics": "topics",
@@ -155,7 +155,7 @@ COURSE_CATALOG.home = {
 COURSE_CATALOG.groupLink = function(group, lang) {
   const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const i = this.groups.indexOf(group);
-  return `<a class="category-entry" href="/${lang}/#${group.id}"><svg class="category-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${this.icons[group.id]}</svg><div><b>${esc(this.home[lang].groupNames[i])}</b><small>${esc(group.desc[lang])}</small></div><span class="category-arrow" aria-hidden="true">›</span></a>`;
+  return `<a class="category-entry" href="/${lang}/#${group.id}"><svg class="category-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${this.icons[group.id]}</svg><div><b>${esc(this.home[lang].groupNames[i])}</b><small>${esc(group.desc[lang])}</small></div></a>`;
 };
 COURSE_CATALOG.benefitsHTML = function(lang) {
   const paths = ['<circle cx="12" cy="12" r="9"/><path d="m6 12 4 4 8-9"/>', '<circle cx="11" cy="7" r="3"/><path d="M3 21c0-5 3-8 8-8 3 0 5 1 6 3M4 20 21 3"/>', '<path d="m6 3 4 5-3 3c2 4 3 5 7 7l3-3 5 4c-2 6-7 4-12 0C5 15 1 7 6 3Z"/>'];

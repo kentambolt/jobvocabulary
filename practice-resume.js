@@ -22,7 +22,7 @@ var PracticeResume = {
         title = list.name;
       }
     } else title = Object.hasOwn(names, pack) ? names[pack] : null;
-    return typeof title === 'string' && title ? { title, pair: `${languages[s.target]} ← ${languages[s.base]}` } : null;
+    return typeof title === 'string' && title ? { title, pair: `${languages[s.target]} / ${languages[s.base]}` } : null;
   }
 };
 if (typeof module !== 'undefined') module.exports = PracticeResume;

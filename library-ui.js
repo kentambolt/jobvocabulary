@@ -48,6 +48,7 @@ const LIBRARY_TEXT = {
     "targetLanguage": "Jeg lærer",
     "baseLanguage": "Oversæt til",
     "listen": "Hør ordet",
+    "missingTranslation": "Ingen oversættelse",
     "backup": "Sikkerhedskopi og flytning",
     "savePrevious": "Gem forrige ord",
     "backToCourse": "Tilbage til kurset",
@@ -103,6 +104,7 @@ const LIBRARY_TEXT = {
     "targetLanguage": "I am learning",
     "baseLanguage": "Translate into",
     "listen": "Listen to the word",
+    "missingTranslation": "No translation",
     "backup": "Backup and transfer",
     "savePrevious": "Save previous word",
     "backToCourse": "Back to the course",
@@ -158,6 +160,7 @@ const LIBRARY_TEXT = {
     "targetLanguage": "Я изучаю",
     "baseLanguage": "Переводить на",
     "listen": "Послушать слово",
+    "missingTranslation": "Нет перевода",
     "backup": "Резервная копия и перенос",
     "savePrevious": "Сохранить предыдущее слово",
     "backToCourse": "Вернуться к курсу",
@@ -213,6 +216,7 @@ const LIBRARY_TEXT = {
     "targetLanguage": "Я вивчаю",
     "baseLanguage": "Перекладати на",
     "listen": "Послухати слово",
+    "missingTranslation": "Немає перекладу",
     "backup": "Резервна копія та перенесення",
     "savePrevious": "Зберегти попереднє слово",
     "backToCourse": "Повернутися до курсу",
@@ -415,7 +419,7 @@ function renderSavedLibraryRows(pair) {
   const row = (id) => {
     const x = ITEM[canonicalWord(id)];
     if (!x) return `<li class="library-word"><span>${esc(lt('unavailable'))}</span><button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></li>`;
-    return `<li class="library-word"><div><b lang="${pair.target}">${esc(x.words[pair.target] || '—')}</b><span lang="${pair.base}">${esc(x.words[pair.base] || '—')}</span></div><div class="library-row-actions">${libraryAudio(x, pair.target)}<button class="secondary" data-add-word="${esc(id)}">${esc(lt('addTo'))}</button>${id.startsWith('user:') ? `<button class="secondary" data-edit-word="${esc(id)}">${esc(lt('edit'))}</button>` : ''}<button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></div></li>`;
+    return `<li class="library-word"><div><b lang="${pair.target}">${esc(x.words[pair.target] || lt('missingTranslation'))}</b><span lang="${pair.base}">${esc(x.words[pair.base] || lt('missingTranslation'))}</span></div><div class="library-row-actions">${libraryAudio(x, pair.target)}<button class="secondary" data-add-word="${esc(id)}">${esc(lt('addTo'))}</button>${id.startsWith('user:') ? `<button class="secondary" data-edit-word="${esc(id)}">${esc(lt('edit'))}</button>` : ''}<button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></div></li>`;
   };
   $('savedListResults').innerHTML = list.items.length ? filtered.length ? `<ul class="library-words">${filtered.slice(0, libraryVisible).map(row).join('')}</ul>${filtered.length > libraryVisible ? `<button class="secondary" id="moreLibraryWords">${esc(lt('more'))}</button>` : ''}` : `<p role="status">${esc(lt('noMatches'))}</p>` : `<p class="empty-list">${esc(lt('empty'))}</p>`;
   $('listFilterControl').hidden = !list.items.length;

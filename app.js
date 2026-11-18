@@ -42,9 +42,9 @@ const TOP = 'top';
 const UI = {
   da: {
     lang: { da: 'Dansk', en: 'Engelsk', ru: 'Russisk', uk: 'Ukrainsk' },
-    title: 'Lær de ord, du har brug for – ét ord ad gangen',
+    title: 'Lær de ord, du har brug for. Ét ord ad gangen.',
     lead: 'Til hverdagen, til dit nye job eller til køreprøven. Det vigtigste først, og det du kan, kommer sjældnere igen.',
-    how: ['Vælg sprog, og hvad du vil lære: de mest brugte ord, ord til et bestemt job eller køreprøven.', 'Du får ét ord eller én sætning ad gangen – det vigtigste først.', 'Svarer du rigtigt, går der længere tid, før det kommer igen. Svarer du forkert, kommer det hurtigt igen. Din score viser, hvor meget du kan.'],
+    how: ['Vælg sprog, og hvad du vil lære: de mest brugte ord, ord til et bestemt job eller køreprøven.', 'Du får ét ord eller én sætning ad gangen. Det vigtigste kommer først.', 'Svarer du rigtigt, går der længere tid, før det kommer igen. Svarer du forkert, kommer det hurtigt igen. Din score viser, hvor meget du kan.'],
     tagline: 'Gratis · uden login · virker på mobilen',
     settings: 'Indstillinger',
     setupTitle: 'Kom i gang',
@@ -62,7 +62,7 @@ const UI = {
     learnQ: 'Hvilket sprog vil du lære?',
     baseQ: 'Hvilket sprog forstår du bedst?',
     nativeB: 'Det er mit modersmål',
-    nativeS: 'Lær at læse – med billeder',
+    nativeS: 'Lær at læse med billeder',
     nativeSoon: 'Billeder er på vej',
     otherS: 'Vis oversættelser',
     whatQ: 'Hvad vil du lære?',
@@ -73,9 +73,9 @@ const UI = {
     prodB: 'Sig det selv', prodS: 'Se {B}, find og byg det på {T}',
     recNB: 'Find billedet', recNS: 'Se ordet, vælg billedet',
     prodNB: 'Læs ordet', prodNS: 'Se billedet, vælg det rigtige ord',
-    writeB: 'Skriv det', writeS: 'Se {B}, skriv det på {T} – bogstav for bogstav',
-    writeNB: 'Skriv ordet', writeNS: 'Se billedet, hør ordet og skriv det – bogstav for bogstav',
-    pathB: 'Hele forløbet', pathS: 'Find billedet, læs ordet og skriv det – lidt sværere for hvert ord, du kan',
+    writeB: 'Skriv det', writeS: 'Se {B}, og skriv det på {T} bogstav for bogstav',
+    writeNB: 'Skriv ordet', writeNS: 'Se billedet, hør ordet og skriv det bogstav for bogstav',
+    pathB: 'Hele forløbet', pathS: 'Find billedet, læs ordet og skriv det. Opgaverne bliver sværere, efterhånden som du lærer ordene.',
     picsB: 'Ord med billeder', picsS: 'Billeder i stedet for oversættelse · {n} ord',
     qWrite: 'Skriv det på {T}',
     qWriteN: 'Skriv ordet',
@@ -90,14 +90,14 @@ const UI = {
     learned: 'ord lært',
     learnedPack: 'lært',
     newWord: 'Nyt ord',
-    newQ: 'Nyt – kender du det?',
+    newQ: 'Nyt ord. Kender du det?',
     repeat: 'Gentagelse',
     check: 'Kontrol',
     next: 'Videre',
     correct: 'Rigtigt!',
-    wrong: 'Ikke helt – det rigtige svar er grønt',
+    wrong: 'Ikke helt. Det rigtige svar er grønt.',
     wrongBuild: 'Ikke helt. Rigtigt svar:',
-    dontKnow: 'Ved ikke – vis mig',
+    dontKnow: 'Vis mig svaret',
     qRec: 'Hvad betyder ordet?',
     qProd: 'Hvad hedder det på {T}?',
     qRecP: 'Hvad betyder det?',
@@ -120,7 +120,7 @@ const UI = {
     noStats: 'Du har ikke mødt noget endnu.',
     explain:
       'Hvert ord har et niveau <code>L</code>. Næste gentagelse kommer efter <code>{tu}·{b}<sup>L</sup></code> opgaver ' +
-      'og <code>{mu} min·{b}<sup>L</sup></code> – de to lægges sammen som <b>forfald</b>, og ordet er klar ved 100 %. ' +
+      'og <code>{mu} min·{b}<sup>L</sup></code>. De to lægges sammen som <b>forfald</b>, og ordet er klar ved 100 %. ' +
       'Rigtigt svar: <code>L+1</code>. Forkert svar: <code>L−1</code>. Et ord tæller som lært fra niveau {ll}, hvis sidste svar var rigtigt.',
     placeTitle: 'Kan du allerede noget?',
     placeLead: 'Tag en kort test, så springer du over det, du allerede kan. Den tager et par minutter og bliver sværere og sværere.',
@@ -129,14 +129,14 @@ const UI = {
     placeBadge: 'Niveautest',
     placeDone: 'Du kan cirka de første {n} på listen.',
     placeDone2: 'Vi fortsætter derfra. Det du sprang over, dukker op en gang imellem som en hurtig kontrol.',
-    placeNone: 'Vi starter fra begyndelsen – så lærer du det hele i den rigtige rækkefølge.',
+    placeNone: 'Vi starter fra begyndelsen, så du lærer det hele i den rigtige rækkefølge.',
     placeAgain: 'Test mit niveau',
   },
   en: {
     lang: { da: 'Danish', en: 'English', ru: 'Russian', uk: 'Ukrainian' },
-    title: 'Learn the words you need – one word at a time',
+    title: 'Learn the words you need, one word at a time',
     lead: 'For everyday life, your new job or the driving test. The most important first, and what you know comes back less often.',
-    how: ['Choose your languages and what to learn: the most used words, words for a specific job, or the driving test.', 'You get one word or one sentence at a time – the most important first.', 'Answer correctly and it takes longer before it comes back. Answer wrong and it comes back soon. Your score shows how much you know.'],
+    how: ['Choose your languages and what to learn: the most used words, words for a specific job, or the driving test.', 'You get one word or one sentence at a time. The most important come first.', 'Answer correctly and it takes longer before it comes back. Answer wrong and it comes back soon. Your score shows how much you know.'],
     tagline: 'Free · no login · works on your phone',
     settings: 'Settings',
     setupTitle: 'Get started',
@@ -154,7 +154,7 @@ const UI = {
     learnQ: 'Which language do you want to learn?',
     baseQ: 'Which language do you understand best?',
     nativeB: 'It is my first language',
-    nativeS: 'Learn to read – with pictures',
+    nativeS: 'Learn to read with pictures',
     nativeSoon: 'Pictures coming soon',
     otherS: 'Show translations',
     whatQ: 'What do you want to learn?',
@@ -165,9 +165,9 @@ const UI = {
     prodB: 'Say it yourself', prodS: 'See {B}, find and build it in {T}',
     recNB: 'Find the picture', recNS: 'See the word, pick the picture',
     prodNB: 'Read the word', prodNS: 'See the picture, pick the right word',
-    writeB: 'Write it', writeS: 'See {B}, write it in {T} – letter by letter',
-    writeNB: 'Write the word', writeNS: 'See the picture, hear the word and write it – letter by letter',
-    pathB: 'The whole course', pathS: 'Find the picture, read the word and write it – a bit harder for each word you know',
+    writeB: 'Write it', writeS: 'See {B} and write it in {T}, letter by letter',
+    writeNB: 'Write the word', writeNS: 'See the picture, hear the word and write it letter by letter',
+    pathB: 'The whole course', pathS: 'Find the picture, read the word and write it. Tasks get harder as you learn the words.',
     picsB: 'Words with pictures', picsS: 'Pictures instead of translations · {n} words',
     qWrite: 'Write it in {T}',
     qWriteN: 'Write the word',
@@ -182,14 +182,14 @@ const UI = {
     learned: 'words learned',
     learnedPack: 'learned',
     newWord: 'New word',
-    newQ: 'New – do you know it?',
+    newQ: 'New word. Do you know it?',
     repeat: 'Review',
     check: 'Check',
     next: 'Continue',
     correct: 'Correct!',
-    wrong: 'Not quite – the right answer is green',
+    wrong: 'Not quite. The right answer is green.',
     wrongBuild: 'Not quite. Correct answer:',
-    dontKnow: "Don't know – show me",
+    dontKnow: "Show me the answer",
     qRec: 'What does the word mean?',
     qProd: 'What is it in {T}?',
     qRecP: 'What does it mean?',
@@ -212,7 +212,7 @@ const UI = {
     noStats: 'You have not met anything yet.',
     explain:
       'Each word has a level <code>L</code>. The next review comes after <code>{tu}·{b}<sup>L</sup></code> tasks ' +
-      'and <code>{mu} min·{b}<sup>L</sup></code> – the two are added up as <b>due</b>, and the word is ready at 100 %. ' +
+      'and <code>{mu} min·{b}<sup>L</sup></code>. The two are added up as <b>due</b>, and the word is ready at 100 %. ' +
       'Correct: <code>L+1</code>. Wrong: <code>L−1</code>. A word counts as learned from level {ll} if the last answer was correct.',
     placeTitle: 'Do you already know some?',
     placeLead: 'Take a short test and skip what you already know. It takes a few minutes and gets harder as you go.',
@@ -221,14 +221,14 @@ const UI = {
     placeBadge: 'Level test',
     placeDone: 'You know roughly the first {n} on the list.',
     placeDone2: 'We continue from there. What you skipped will come up now and then as a quick check.',
-    placeNone: 'We start from the beginning – so you learn everything in the right order.',
+    placeNone: 'We start from the beginning so you learn everything in the right order.',
     placeAgain: 'Test my level',
   },
   ru: {
     lang: { da: 'Датский', en: 'Английский', ru: 'Русский', uk: 'Украинский' },
-    title: 'Учите нужные слова – по одному за раз',
+    title: 'Учите нужные слова по одному за раз',
     lead: 'Для повседневной жизни, новой работы или экзамена по вождению. Сначала самое важное, а то, что вы знаете, повторяется реже.',
-    how: ['Выберите языки и что учить: самые частые слова, слова для конкретной работы или экзамен по вождению.', 'Вы получаете одно слово или одну фразу за раз – сначала самое важное.', 'Ответите правильно – слово вернётся нескоро. Ошибётесь – оно скоро вернётся. Счёт показывает, сколько вы знаете.'],
+    how: ['Выберите языки и что учить: самые частые слова, слова для конкретной работы или экзамен по вождению.', 'Вы получаете одно слово или одну фразу за раз. Сначала самое важное.', 'Если ответите правильно, слово вернётся нескоро. Если ошибётесь, оно скоро вернётся. Счёт показывает, сколько вы знаете.'],
     tagline: 'Бесплатно · без регистрации · работает на телефоне',
     settings: 'Настройки',
     setupTitle: 'Начать обучение',
@@ -246,7 +246,7 @@ const UI = {
     learnQ: 'Какой язык вы хотите учить?',
     baseQ: 'Какой язык вы понимаете лучше всего?',
     nativeB: 'Это мой родной язык',
-    nativeS: 'Учимся читать – с картинками',
+    nativeS: 'Учимся читать с картинками',
     nativeSoon: 'Картинки скоро появятся',
     otherS: 'Показывать перевод',
     whatQ: 'Что вы хотите выучить?',
@@ -257,9 +257,9 @@ const UI = {
     prodB: 'Сказать самому', prodS: 'Видите {B}, находите и собираете на языке: {T}',
     recNB: 'Найти картинку', recNS: 'Видите слово, выбираете картинку',
     prodNB: 'Прочитать слово', prodNS: 'Видите картинку, выбираете нужное слово',
-    writeB: 'Написать', writeS: 'Видите {B}, пишете на языке: {T} – по буквам',
+    writeB: 'Написать', writeS: 'Видите {B} и пишете на языке: {T} по буквам',
     writeNB: 'Написать слово', writeNS: 'Видите картинку, слышите слово и пишете его по буквам',
-    pathB: 'Весь курс', pathS: 'Найти картинку, прочитать слово и написать его – с каждым выученным словом чуть сложнее',
+    pathB: 'Весь курс', pathS: 'Найти картинку, прочитать слово и написать его. Задания усложняются по мере изучения слов.',
     picsB: 'Слова с картинками', picsS: 'Картинки вместо перевода · {n} слов',
     qWrite: 'Напишите на языке: {T}',
     qWriteN: 'Напишите слово',
@@ -274,14 +274,14 @@ const UI = {
     learned: 'слов выучено',
     learnedPack: 'выучено',
     newWord: 'Новое слово',
-    newQ: 'Новое – вы это знаете?',
+    newQ: 'Новое слово. Вы его знаете?',
     repeat: 'Повторение',
     check: 'Проверка',
     next: 'Дальше',
     correct: 'Правильно!',
-    wrong: 'Не совсем – правильный ответ зелёный',
+    wrong: 'Не совсем. Правильный ответ выделен зелёным.',
     wrongBuild: 'Не совсем. Правильный ответ:',
-    dontKnow: 'Не знаю – покажите',
+    dontKnow: 'Покажите ответ',
     qRec: 'Что означает это слово?',
     qProd: 'Как это будет на языке: {T}?',
     qRecP: 'Что это значит?',
@@ -303,7 +303,7 @@ const UI = {
     tasks: 'зад.',
     noStats: 'Вы ещё ничего не встретили.',
     explain:
-      'У каждого слова есть уровень <code>L</code>. Следующее повторение — через <code>{tu}·{b}<sup>L</sup></code> заданий ' +
+      'У каждого слова есть уровень <code>L</code>. Следующее повторение будет через <code>{tu}·{b}<sup>L</sup></code> заданий ' +
       'и <code>{mu} мин·{b}<sup>L</sup></code>; оба значения складываются в <b>срок</b>, и слово готово к повторению при 100 %. ' +
       'Верно: <code>L+1</code>. Неверно: <code>L−1</code>. Слово считается выученным с уровня {ll}, если последний ответ был верным.',
     placeTitle: 'Вы уже что-то знаете?',
@@ -313,14 +313,14 @@ const UI = {
     placeBadge: 'Тест уровня',
     placeDone: 'Вы знаете примерно первые {n} в списке.',
     placeDone2: 'Продолжим оттуда. Пропущенное будет иногда появляться для быстрой проверки.',
-    placeNone: 'Начнём с начала – так вы выучите всё в правильном порядке.',
+    placeNone: 'Начнём с начала, чтобы вы выучили всё в правильном порядке.',
     placeAgain: 'Проверить мой уровень',
   },
   uk: {
     lang: { da: 'Данська', en: 'Англійська', ru: 'Російська', uk: 'Українська' },
-    title: 'Вивчайте потрібні слова – по одному за раз',
+    title: 'Вивчайте потрібні слова по одному за раз',
     lead: 'Для щоденного життя, нової роботи чи іспиту з водіння. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.',
-    how: ['Оберіть мови і що вчити: найуживаніші слова, слова для певної роботи або іспит з водіння.', 'Ви отримуєте одне слово або одну фразу за раз – спочатку найважливіше.', 'Відповісте правильно – слово повернеться нескоро. Помилитеся – воно скоро повернеться. Рахунок показує, скільки ви знаєте.'],
+    how: ['Оберіть мови і що вчити: найуживаніші слова, слова для певної роботи або іспит з водіння.', 'Ви отримуєте одне слово або одну фразу за раз. Спочатку найважливіше.', 'Якщо відповісте правильно, слово повернеться нескоро. Якщо помилитеся, воно скоро повернеться. Рахунок показує, скільки ви знаєте.'],
     tagline: 'Безкоштовно · без реєстрації · працює на телефоні',
     settings: 'Налаштування',
     setupTitle: 'Почати навчання',
@@ -338,7 +338,7 @@ const UI = {
     learnQ: 'Яку мову ви хочете вивчати?',
     baseQ: 'Яку мову ви розумієте найкраще?',
     nativeB: 'Це моя рідна мова',
-    nativeS: 'Вчимося читати – з картинками',
+    nativeS: 'Вчимося читати з картинками',
     nativeSoon: 'Картинки скоро з’являться',
     otherS: 'Показувати переклад',
     whatQ: 'Що ви хочете вивчити?',
@@ -349,9 +349,9 @@ const UI = {
     prodB: 'Сказати самому', prodS: 'Бачите {B}, знаходите і складаєте мовою: {T}',
     recNB: 'Знайти картинку', recNS: 'Бачите слово, обираєте картинку',
     prodNB: 'Прочитати слово', prodNS: 'Бачите картинку, обираєте потрібне слово',
-    writeB: 'Написати', writeS: 'Бачите {B}, пишете мовою: {T} – по літерах',
+    writeB: 'Написати', writeS: 'Бачите {B} і пишете мовою: {T} по літерах',
     writeNB: 'Написати слово', writeNS: 'Бачите картинку, чуєте слово і пишете його по літерах',
-    pathB: 'Увесь курс', pathS: 'Знайти картинку, прочитати слово і написати його – з кожним вивченим словом трохи складніше',
+    pathB: 'Увесь курс', pathS: 'Знайти картинку, прочитати слово і написати його. Завдання ускладнюються в міру вивчення слів.',
     picsB: 'Слова з картинками', picsS: 'Картинки замість перекладу · {n} слів',
     qWrite: 'Напишіть мовою: {T}',
     qWriteN: 'Напишіть слово',
@@ -366,14 +366,14 @@ const UI = {
     learned: 'слів вивчено',
     learnedPack: 'вивчено',
     newWord: 'Нове слово',
-    newQ: 'Нове – ви це знаєте?',
+    newQ: 'Нове слово. Ви його знаєте?',
     repeat: 'Повторення',
     check: 'Перевірка',
     next: 'Далі',
     correct: 'Правильно!',
-    wrong: 'Не зовсім – правильна відповідь зелена',
+    wrong: 'Не зовсім. Правильну відповідь виділено зеленим.',
     wrongBuild: 'Не зовсім. Правильна відповідь:',
-    dontKnow: 'Не знаю – покажіть',
+    dontKnow: 'Покажіть відповідь',
     qRec: 'Що означає це слово?',
     qProd: 'Як це буде мовою: {T}?',
     qRecP: 'Що це означає?',
@@ -395,7 +395,7 @@ const UI = {
     tasks: 'завд.',
     noStats: 'Ви ще нічого не зустріли.',
     explain:
-      'Кожне слово має рівень <code>L</code>. Наступне повторення — через <code>{tu}·{b}<sup>L</sup></code> завдань ' +
+      'Кожне слово має рівень <code>L</code>. Наступне повторення буде через <code>{tu}·{b}<sup>L</sup></code> завдань ' +
       'і <code>{mu} хв·{b}<sup>L</sup></code>; обидва значення додаються в <b>строк</b>, і слово готове до повторення при 100 %. ' +
       'Правильно: <code>L+1</code>. Неправильно: <code>L−1</code>. Слово вважається вивченим з рівня {ll}, якщо остання відповідь була правильною.',
     placeTitle: 'Ви вже щось знаєте?',
@@ -405,7 +405,7 @@ const UI = {
     placeBadge: 'Тест рівня',
     placeDone: 'Ви знаєте приблизно перші {n} у списку.',
     placeDone2: 'Продовжимо звідти. Пропущене іноді з’являтиметься для швидкої перевірки.',
-    placeNone: 'Почнемо з початку – так ви вивчите все в правильному порядку.',
+    placeNone: 'Почнемо з початку, щоб ви вивчили все в правильному порядку.',
     placeAgain: 'Перевірити мій рівень',
   },
 };
@@ -541,20 +541,21 @@ window.addEventListener('hashchange', () => {
 
 function viewFromHash() {
   const h = location.hash;
+  if (h === '#forside') return 'home';
   if (h === '#mine-ord') return 'library';
   if (h === '#indstillinger' || !state.settings) return 'setup';
   if (h === '#statistik') return 'stats';
   return 'play';
 }
 // Navigation med rigtige URL'er, så browserens tilbage-knap virker.
-function go(v) {
+function go(v, { keepDraft = false } = {}) {
   if ($('appMenu')?.open) $('appMenu').close();
   if (v === 'play' && placement && current?.kind === 'place') v = 'place';
   if (v !== 'play') { lastFeedback = null; levelNotice = null; }
-  const hash = v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : v === 'library' ? '#mine-ord' : '';
+  const hash = v === 'home' ? '#forside' : v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : v === 'library' ? '#mine-ord' : '';
   if (location.hash !== hash) history.pushState(null, '', location.pathname + location.search + hash);
   view = v;
-  if (v === 'setup') draft = null;
+  if (v === 'setup' && !keepDraft) draft = null;
   window.scrollTo(0, 0);
   render();
 }
@@ -845,12 +846,14 @@ function render() {
   clearTimeout(timer);
   const ul = uiLang();
   document.documentElement.lang = ul;
-  const inGame = !!state.settings && !['setup', 'library'].includes(view);
+  const inGame = !!state.settings && !['home', 'setup', 'library'].includes(view);
   $('score').hidden = !inGame;
   $('statsBtn').hidden = !state.settings;
   $('setupBtn').hidden = !state.settings;
   $('soundBtn').hidden = false;
   $('modeBtn').hidden = !state.settings;
+  $('resumeBtn').hidden = !(view === 'home' && state.settings);
+  $('resumeBtn').textContent = lt('back');
   $('returnCourseBtn').hidden = !(state.settings && isList(state.settings) && lastCourseSettings());
   $('menuTitle').textContent = t('menu');
   $('menuBtn').setAttribute('aria-label', t('menu'));
@@ -874,6 +877,7 @@ function render() {
     catalogLink.textContent = COURSE_CATALOG.labels[ul].catalog;
   }
   renderIntro(ul);
+  if (view === 'home') { renderHomeStart(); return; }
   if (view === 'library') { renderLibrary(); return; }
   if (inGame && (isList(state.settings || {}) || wordLibrary.data.favorites.length) && !dictionaryData) {
     $('app').innerHTML = `<p role="status">${esc(t('loading'))}</p>`;
@@ -913,7 +917,7 @@ function updateScore(delta) {
 function renderIntro(ul) {
   const intro = $('intro');
   if (!intro) return;
-  intro.hidden = !(view === 'setup' && !state.settings && !selectedCourseLink && !draft?.target);
+  intro.hidden = !(view === 'home' || (view === 'setup' && !state.settings && !selectedCourseLink && !draft?.target));
   document.body?.classList?.toggle('landing', !intro.hidden);
   if (intro.hidden || intro.dataset.lang === ul) return;
   intro.dataset.lang = ul;
@@ -921,12 +925,9 @@ function renderIntro(ul) {
   intro.querySelectorAll('.how li').forEach((li, i) => (li.textContent = home.steps[i]));
   $('homeEyebrow').textContent = home.eyebrow;
   $('howTitle').textContent = home.howTitle;
-  $('welcomeStart').innerHTML = `${esc(home.start)} <span aria-hidden="true">→</span>`;
-  $('welcomeHow').innerHTML = `<span aria-hidden="true">▷</span> ${esc(home.watch)}`;
   $('homeBenefits').innerHTML = COURSE_CATALOG.benefitsHTML(ul);
   $('landingNav').innerHTML = `<a href="/${ul}/#work">${esc(home.groupNames[0])}</a><a href="/${ul}/#everyday">${esc(home.groupNames[1])}</a><a href="#app" data-get-started>${esc(t('setupTitle'))}</a>`;
   document.querySelectorAll('[data-get-started]').forEach((link) => link.onclick = (event) => { event.preventDefault(); $('app').scrollIntoView({ block: 'start' }); $('app').querySelector('[data-target]')?.focus({ preventScroll: true }); });
-  $('welcomeHow').onclick = (event) => { event.preventDefault(); $('how-it-works').classList.add('is-open'); $('how-it-works').scrollIntoView({ block: 'center' }); };
   const labels = COURSE_CATALOG.labels[ul];
   intro.querySelector('h1').textContent = labels.lead;
   intro.querySelector('.lead').textContent = labels.intro;
@@ -986,6 +987,15 @@ function renderPracticeComplete(c) {
   $('enableReview').onclick = () => { state.settings.repeatLearned = true; saveState(); current = null; renderPlay(); };
   if ($('completeReturn')) $('completeReturn').onclick = returnToCourse;
 }
+function renderHomeStart() {
+  const L = UI[uiLang()].lang;
+  $('app').innerHTML = `<section class="setup"><p class="setup-kicker">${esc(t('setupTitle'))}</p><div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">${Object.keys(ORDER).map((lang) => `<button class="choice" data-target="${lang}"><b>${esc(LANGS[lang].name || L[lang])}</b></button>`).join('')}</div></div></section>`;
+  $('app').querySelectorAll('[data-target]').forEach((button) => button.onclick = () => {
+    selectedCourseLink = false;
+    draft = { target: button.dataset.target, base: null, pack: TOP, dir: 'rec', diff: 1, cats: null };
+    go('setup', { keepDraft: true });
+  });
+}
 function renderSetup() {
   if (!draft) draft = state.settings ? { pack: TOP, ...state.settings } : { target: null, base: null, pack: TOP, dir: 'rec', diff: 1 };
   Object.assign(draft, PracticeOptions.apply(draft));
@@ -1001,7 +1011,7 @@ function renderSetup() {
   if (selectedCourseLink && !state.settings && d.target && d.base && countPool(d)) {
     const selected = PACK_LIST.find((p) => p.id === d.pack);
     const name = selected ? selected.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
-    html += `<div class="setup-ready"><div><b>${esc(name)}</b><span>${esc(LANGS[d.target].name)} ← ${esc(L[d.base])}</span></div><button class="primary" id="quickStartBtn">${esc(t('start'))} →</button><button class="secondary" id="quickOptionsBtn">${esc(t('taskOptions'))}</button></div>`;
+    html += `<div class="setup-ready"><div><b>${esc(name)}</b><span>${esc(LANGS[d.target].name)} / ${esc(L[d.base])}</span></div><button class="primary" id="quickStartBtn">${esc(t('start'))}</button><button class="secondary" id="quickOptionsBtn">${esc(t('taskOptions'))}</button></div>`;
   }
 
   html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">`;
@@ -1047,7 +1057,7 @@ function renderSetup() {
       const home = COURSE_CATALOG.home[ul];
       const selected = pack.categories.filter((cat) => !d.cats || d.cats.includes(cat.key)).length;
       const summary = selected === pack.categories.length ? `${home.allTopics} · ${selected}` : selected ? fill(home.selectedTopics, { n: selected, total: pack.categories.length }) : home.pickTopics;
-      html += `<div class="step"><h2>${esc(t('catsQ'))}</h2><details class="topic-picker" id="topicPicker"><summary>${esc(summary)}<span aria-hidden="true">⌄</span></summary><div class="topic-panel" id="topicPanel"><p class="course-note">${esc(home.topicsHint)}</p><div class="topic-tools"><button type="button" class="secondary" id="selectAllTopics">${esc(home.selectAll)}</button><button type="button" class="secondary" id="clearTopics">${esc(home.selectNone)}</button></div><fieldset class="topic-checks"><legend class="sr-only">${esc(t('catsQ'))}</legend>`;
+      html += `<div class="step"><h2>${esc(t('catsQ'))}</h2><details class="topic-picker" id="topicPicker"><summary>${esc(summary)}</summary><div class="topic-panel" id="topicPanel"><p class="course-note">${esc(home.topicsHint)}</p><div class="topic-tools"><button type="button" class="secondary" id="selectAllTopics">${esc(home.selectAll)}</button><button type="button" class="secondary" id="clearTopics">${esc(home.selectNone)}</button></div><fieldset class="topic-checks"><legend class="sr-only">${esc(t('catsQ'))}</legend>`;
       for (const cat of pack.categories) {
         const on = !d.cats || d.cats.includes(cat.key);
         const n = cat.n.slice(1, d.diff + 1).reduce((a, b) => a + b, 0);
@@ -1251,7 +1261,7 @@ function writeHTML(c, x) {
     <div class="feedback" aria-live="polite">`;
   if (done) {
     html += w.answered === 'ok' ? `<div class="msg good">${esc(t('correct'))}</div>`
-      : `<div class="msg almost">${esc(t('almost'))}</div><button class="primary" id="nextBtn">${esc(t('next'))} →</button>`;
+      : `<div class="msg almost">${esc(t('almost'))}</div><button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
   } else if (w.isNew) {
     html += `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`;
   } else {
@@ -1321,7 +1331,7 @@ function renderPlayView() {
       ${targetHTML(c, x)}
       ${c.pics ? '' : `<span class="sub">${esc(x.words[c.s.base])}</span>`}
     </div>
-    <div class="feedback" aria-live="polite"><button class="primary" id="nextBtn">${esc(t('next'))} →</button></div>`;
+    <div class="feedback" aria-live="polite"><button class="primary" id="nextBtn">${esc(t('next'))}</button></div>`;
   } else if (current.kind === 'write') {
     // Børn hører ordet (højttaler); ved oversættelse vises betydningen.
     html += `<div class="prompt write${c.pics ? ' pics' : ''}">${promptActionsHTML(x, c.pics || current.answered ? speakBtn : '')}
@@ -1343,7 +1353,7 @@ function renderPlayView() {
     if (current.answered) {
       const ok = current.answered === 'ok';
       html += ok ? `<div class="msg good">${esc(t('correct'))}</div>`
-        : `<div class="msg bad">${esc(t('wrongBuild'))} <b>${esc(x.words[c.s.target])}</b></div><button class="primary" id="nextBtn">${esc(t('next'))} →</button>`;
+        : `<div class="msg bad">${esc(t('wrongBuild'))} <b>${esc(x.words[c.s.target])}</b></div><button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
     } else {
       html += `<div class="row center"><button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>
         <button class="primary" id="checkBtn" ${current.picked.length ? '' : 'disabled'}>${esc(t('checkBtn'))}</button></div>`;
@@ -1359,7 +1369,7 @@ function renderPlayView() {
     if (current.answered) {
       const ok = current.answered === x.id;
       html += `<div class="msg ${ok ? 'good' : 'bad'}">${esc(ok ? t('correct') : t('wrong'))}</div>`;
-      if (!ok) html += `<button class="primary" id="nextBtn">${esc(t('next'))} →</button>`;
+      if (!ok) html += `<button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
     } else if (current.kind === 'new') {
       html += `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`;
     }
@@ -1541,7 +1551,7 @@ function renderPlace() {
     <p class="task-q">${esc(questionText(c, x, 'quiz'))}</p>
     ${optionsHTML(c, x, current.answered)}
     ${feedbackReceiptHTML()}
-    <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))} →</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
+    <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))}</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
   $('app').innerHTML = html;
   bindWordSave(x);
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
@@ -1606,7 +1616,7 @@ function renderPlaceDone() {
   $('app').innerHTML = `<section class="offer"><div class="prompt">
     <span class="w long">${esc(n ? t('placeDone', { n }) : t('placeNone'))}</span>
     ${n ? `<span class="sub">${esc(t('placeDone2'))}</span>` : ''}</div>
-    <div class="row center"><button class="primary" id="goBtn">${esc(t('next'))} →</button></div></section>`;
+    <div class="row center"><button class="primary" id="goBtn">${esc(t('next'))}</button></div></section>`;
   $('goBtn').onclick = () => { placement = null; view = 'play'; current = null; render(); };
 }
 
@@ -1628,7 +1638,7 @@ function renderStats() {
     .sort((a, b) => rankOf(c.s, a) - rankOf(c.s, b));
   const cols = t('cols');
   let html = `<section class="stats"><div class="row" style="justify-content:space-between">
-      <h1>${esc(t('stats'))}</h1><button class="secondary" id="backBtn">← ${esc(t('back'))}</button></div>
+      <h1>${esc(t('stats'))}</h1><button class="secondary" id="backBtn">${esc(t('back'))}</button></div>
     <p class="course-note">${esc(dirName(c.s.dir, c.pics))}</p><div class="explain"><b>${esc(t('howTitle'))}</b><p>${esc(t('explainSimple'))}</p>
       <details><summary>${esc(t('formula'))}</summary><p>${fill(t('explain'), { tu: CONFIG.taskUnit, b: CONFIG.base, mu: CONFIG.timeUnitMin, ll: CONFIG.learnedLevel })}</p></details></div>`;
 
@@ -1646,7 +1656,7 @@ function renderStats() {
         : card.wrong && !card.ok ? `<span class="dot no"></span>${esc(t('wrongS'))}`
         : `<span class="dot"></span>${esc(t('notYet'))}`;
       const meaning = c.pics ? picHTML(x, 'pic-sm') : esc(x.words[c.s.base]);
-      const ipm = !isPack(c.s) && IPM[c.s.target] ? (IPM[c.s.target][id] || 0).toLocaleString(uiLang()) : '–';
+      const ipm = !isPack(c.s) && IPM[c.s.target] ? (IPM[c.s.target][id] || 0).toLocaleString(uiLang()) : '';
       html += `<tr>
         <td class="num">${rankOf(c.s, id)}</td>
         <td class="wrap"><b>${esc(x.words[c.s.target])}</b></td>
@@ -1682,7 +1692,8 @@ $('menuBtn').onclick = () => { $('appMenu').showModal(); };
 $('closeMenuBtn').onclick = () => $('appMenu').close();
 $('returnCourseBtn').onclick = returnToCourse;
 $('modeBtn').onclick = () => { $('appMenu').close(); openTrainingOptions(state.settings, (chosen) => { state.settings = chosen; current = null; placement = null; lastFeedback = null; levelNotice = null; saveState(); go('play'); }); };
-$('homeBtn').onclick = (e) => { e.preventDefault(); go(state.settings ? 'play' : 'setup'); };
+$('homeBtn').onclick = (e) => { e.preventDefault(); go('home'); };
+$('resumeBtn').onclick = () => go('play');
 $('statsBtn').onclick = () => go(view === 'stats' ? 'play' : 'stats');
 $('libraryBtn').onclick = () => go('library');
 $('setupBtn').onclick = () => go('setup');
