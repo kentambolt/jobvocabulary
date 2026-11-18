@@ -111,6 +111,7 @@ ${rows.map((r) => `<tr>${cols.map((l) => `<td lang="${l}"${l === 'da' ? ' class=
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
   <title>${esc(t.title(name))}</title>
   <meta name="description" content="${esc(desc)}">
   <link rel="canonical" href="${url}">
@@ -208,6 +209,7 @@ for (const lang of LANGS) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
   <title>${esc(l.catalog)} – ${esc(l.lead)} | Job Vocabulary</title>
   <meta name="description" content="${esc(l.intro)}">
   <link rel="canonical" href="${canonical}">
