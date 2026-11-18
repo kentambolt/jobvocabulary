@@ -914,17 +914,23 @@ function renderIntro(ul) {
   const intro = $('intro');
   if (!intro) return;
   intro.hidden = !(view === 'setup' && !state.settings && !selectedCourseLink && !draft?.target);
+  document.body?.classList?.toggle('landing', !intro.hidden);
   if (intro.hidden || intro.dataset.lang === ul) return;
   intro.dataset.lang = ul;
-  intro.querySelector('h1').textContent = t('title');
-  intro.querySelector('.lead').textContent = t('lead');
-  intro.querySelectorAll('.how li').forEach((li, i) => (li.textContent = t('how')[i]));
-  intro.querySelector('.tagline').textContent = t('tagline');
+  const home = COURSE_CATALOG.home[ul];
+  intro.querySelectorAll('.how li').forEach((li, i) => (li.textContent = home.steps[i]));
+  $('homeEyebrow').textContent = home.eyebrow;
+  $('howTitle').textContent = home.howTitle;
+  $('welcomeStart').innerHTML = `${esc(home.start)} <span aria-hidden="true">→</span>`;
+  $('welcomeHow').innerHTML = `<span aria-hidden="true">▷</span> ${esc(home.watch)}`;
+  $('homeBenefits').innerHTML = COURSE_CATALOG.benefitsHTML(ul);
+  $('landingNav').innerHTML = `<a href="/${ul}/#work">${esc(home.groupNames[0])}</a><a href="/${ul}/#everyday">${esc(home.groupNames[1])}</a><a href="#app" data-get-started>${esc(t('setupTitle'))}</a>`;
+  document.querySelectorAll('[data-get-started]').forEach((link) => link.onclick = (event) => { event.preventDefault(); $('app').scrollIntoView({ block: 'start' }); $('app').querySelector('[data-target]')?.focus({ preventScroll: true }); });
+  $('welcomeHow').onclick = (event) => { event.preventDefault(); $('how-it-works').classList.add('is-open'); $('how-it-works').scrollIntoView({ block: 'center' }); };
   const labels = COURSE_CATALOG.labels[ul];
   intro.querySelector('h1').textContent = labels.lead;
   intro.querySelector('.lead').textContent = labels.intro;
-  intro.querySelector('.jobs').innerHTML = COURSE_CATALOG.groups.map((group) =>
-    `<a class="category-entry" href="/${ul}/#${group.id}"><b>${esc(group.name[ul])}</b><small>${esc(group.desc[ul])}</small><span aria-hidden="true">→</span></a>`).join('');
+  intro.querySelector('.jobs').innerHTML = COURSE_CATALOG.groups.map((group) => COURSE_CATALOG.groupLink(group, ul)).join('');
 }
 
 // ----- Øvelsestyper -----
@@ -990,7 +996,8 @@ function renderSetup() {
   const choice = (attrs, pressed, title, sub) =>
     `<button class="choice" ${attrs} aria-pressed="${pressed}"><b>${title}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</button>`;
 
-  let html = `<section class="setup"><h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>`;
+  const welcome = !state.settings && !selectedCourseLink && !d.target;
+  let html = `<section class="setup">${welcome ? `<p class="setup-kicker">${esc(t('setupTitle'))}</p>` : `<h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>`}`;
   if (selectedCourseLink && !state.settings && d.target && d.base && countPool(d)) {
     const selected = PACK_LIST.find((p) => p.id === d.pack);
     const name = selected ? selected.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
@@ -1037,13 +1044,16 @@ function renderSetup() {
     }
     const pack = isPack(d) ? packOf(d) : null;
     if (pack) {
-      html += `<div class="step"><h2>${esc(t('catsQ'))}</h2><div class="chips">`;
+      const home = COURSE_CATALOG.home[ul];
+      const selected = pack.categories.filter((cat) => !d.cats || d.cats.includes(cat.key)).length;
+      const summary = selected === pack.categories.length ? `${home.allTopics} · ${selected}` : selected ? fill(home.selectedTopics, { n: selected, total: pack.categories.length }) : home.pickTopics;
+      html += `<div class="step"><h2>${esc(t('catsQ'))}</h2><details class="topic-picker" id="topicPicker"><summary>${esc(summary)}<span aria-hidden="true">⌄</span></summary><div class="topic-panel" id="topicPanel"><p class="course-note">${esc(home.topicsHint)}</p><div class="topic-tools"><button type="button" class="secondary" id="selectAllTopics">${esc(home.selectAll)}</button><button type="button" class="secondary" id="clearTopics">${esc(home.selectNone)}</button></div><fieldset class="topic-checks"><legend class="sr-only">${esc(t('catsQ'))}</legend>`;
       for (const cat of pack.categories) {
         const on = !d.cats || d.cats.includes(cat.key);
         const n = cat.n.slice(1, d.diff + 1).reduce((a, b) => a + b, 0);
-        html += `<button class="chip" data-cat="${cat.key}" aria-pressed="${on}">${esc(cat.name[ul])} <small>${n}</small></button>`;
+        html += `<label for="topic-${esc(cat.key)}"><input type="checkbox" data-cat="${esc(cat.key)}" id="topic-${esc(cat.key)}"${on ? ' checked' : ''}><span>${esc(cat.name[ul])}</span><small>${n}</small></label>`;
       }
-      html += `</div></div>`;
+      html += `</fieldset><button class="primary" type="button" id="closeTopics">${esc(home.done)}</button></div></details></div>`;
     }
 
     html += `<section class="step" id="practiceOptions">${practiceChoicesHTML(d, 'setup-')}</section>`;
@@ -1084,12 +1094,21 @@ function renderSetup() {
   on('[data-mode]', (b) => Object.assign(d, PracticeOptions.toggle(d, b.dataset.mode)));
   if ($('setup-repeatLearned')) $('setup-repeatLearned').onchange = () => { d.repeatLearned = $('setup-repeatLearned').checked; };
   on('[data-diff]', (b) => { d.diff = Number(b.dataset.diff); });
-  on('[data-cat]', (b) => {
+  const refreshTopics = (change, focusId) => {
+    const scroll = $('topicPanel').scrollTop;
+    change(); render();
+    $('topicPicker').open = true; $('topicPanel').scrollTop = scroll;
+    if (focusId) $(focusId).focus({ preventScroll: true });
+  };
+  $('app').querySelectorAll('[data-cat]').forEach((b) => b.onchange = () => refreshTopics(() => {
     const all = packOf(d).categories.map((c) => c.key);
     const cur = new Set(d.cats || all);
     if (cur.has(b.dataset.cat)) cur.delete(b.dataset.cat); else cur.add(b.dataset.cat);
     d.cats = cur.size === all.length ? null : all.filter((k) => cur.has(k));
-  });
+  }, b.id));
+  if ($('selectAllTopics')) $('selectAllTopics').onclick = () => refreshTopics(() => { d.cats = null; }, 'selectAllTopics');
+  if ($('clearTopics')) $('clearTopics').onclick = () => refreshTopics(() => { d.cats = []; }, 'clearTopics');
+  if ($('closeTopics')) $('closeTopics').onclick = () => { $('topicPicker').open = false; $('topicPicker').querySelector('summary').focus(); };
   const cancel = $('cancelBtn');
   if (cancel) cancel.onclick = () => { draft = null; go('play'); };
   const startPractice = () => {
@@ -1677,8 +1696,14 @@ function setSound(enabled) {
 }
 $('soundBtn').onclick = () => setSound(!state.sound);
 
+document.addEventListener('pointerdown', (event) => {
+  const picker = $('topicPicker');
+  if (picker?.open && !picker.contains(event.target)) picker.open = false;
+});
 document.addEventListener('keydown', (e) => {
   if (document.querySelector('dialog[open]')) return;
+  const picker = $('topicPicker');
+  if (e.key === 'Escape' && picker?.open) { picker.open = false; picker.querySelector('summary').focus(); e.preventDefault(); return; }
   if (e.target.closest('input, textarea, select, dialog, [contenteditable="true"]')) return;
   if ((view !== 'play' && view !== 'place') || !current || e.ctrlKey || e.metaKey || e.altKey) return;
   if (e.repeat) { e.preventDefault(); return; }

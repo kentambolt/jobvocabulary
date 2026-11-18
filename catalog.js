@@ -140,4 +140,25 @@ var COURSE_CATALOG = {
     }
   }
 };
+// Shared by the static home page builder and the translated application shell.
+COURSE_CATALOG.icons = {
+  work: '<rect x="3" y="7" width="26" height="21" rx="2"/><path d="M11 7V4h10v3M3 14c8 4 18 4 26 0M14 15v5h4v-5"/>',
+  everyday: '<rect x="7" y="3" width="18" height="23" rx="4"/><path d="M10 7h12v9H10zM10 30l3-4m9 4-3-4"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>',
+  start: '<path d="M16 7C12 3 5 4 2 5v22c5-2 10-1 14 2 4-3 9-4 14-2V5c-3-1-10-2-14 2Zm0 0v22"/>'
+};
+COURSE_CATALOG.home = {
+  da: { eyebrow: 'Sprog til arbejde og hverdag', start: 'Kom i gang gratis', watch: 'Se, hvordan det virker', free: 'Gratis', account: 'Ingen konto', mobile: 'Virker på mobil', howTitle: 'Sådan fungerer det', steps: ['Vælg dit sprog og emne', 'Lær ét ord eller én sætning ad gangen', 'Svar og se din fremgang med det samme'], groupNames: ['Job og arbejdsliv', 'Hverdag og transport', 'Byg dit sprog'], allTopics: 'Alle emner', selectedTopics: '{n} af {total} emner', pickTopics: 'Vælg emner', topicsHint: 'Vælg alle emner eller kun dem, du vil øve.', selectAll: 'Vælg alle', selectNone: 'Fravælg alle', done: 'Færdig' },
+  en: { eyebrow: 'Language for work and everyday life', start: 'Get started free', watch: 'See how it works', free: 'Free', account: 'No account', mobile: 'Works on mobile', howTitle: 'How it works', steps: ['Choose your language and topic', 'Learn one word or phrase at a time', 'Answer and see your progress straight away'], groupNames: ['Jobs and working life', 'Everyday life and transport', 'Build your language'], allTopics: 'All topics', selectedTopics: '{n} of {total} topics', pickTopics: 'Choose topics', topicsHint: 'Choose all topics or just the ones you want to practise.', selectAll: 'Select all', selectNone: 'Clear selection', done: 'Done' },
+  ru: { eyebrow: 'Язык для работы и повседневной жизни', start: 'Начать бесплатно', watch: 'Как это работает', free: 'Бесплатно', account: 'Без регистрации', mobile: 'На телефоне', howTitle: 'Как это работает', steps: ['Выберите язык и тему', 'Учите по одному слову или фразе', 'Отвечайте и сразу видите свой прогресс'], groupNames: ['Работа и профессии', 'Повседневная жизнь и транспорт', 'Расширяйте словарный запас'], allTopics: 'Все темы', selectedTopics: 'Выбрано тем: {n} из {total}', pickTopics: 'Выберите темы', topicsHint: 'Выберите все темы или только те, которые хотите изучать.', selectAll: 'Выбрать все', selectNone: 'Снять выбор', done: 'Готово' },
+  uk: { eyebrow: 'Мова для роботи й повсякденного життя', start: 'Почати безкоштовно', watch: 'Як це працює', free: 'Безкоштовно', account: 'Без реєстрації', mobile: 'На телефоні', howTitle: 'Як це працює', steps: ['Виберіть мову й тему', 'Вчіть по одному слову чи фразі', 'Відповідайте й одразу бачте свій прогрес'], groupNames: ['Робота і професії', 'Повсякденне життя і транспорт', 'Розширюйте словниковий запас'], allTopics: 'Усі теми', selectedTopics: 'Вибрано тем: {n} із {total}', pickTopics: 'Виберіть теми', topicsHint: 'Виберіть усі теми або лише ті, які хочете вивчати.', selectAll: 'Вибрати всі', selectNone: 'Зняти вибір', done: 'Готово' }
+};
+COURSE_CATALOG.groupLink = function(group, lang) {
+  const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+  const i = this.groups.indexOf(group);
+  return `<a class="category-entry" href="/${lang}/#${group.id}"><svg class="category-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${this.icons[group.id]}</svg><div><b>${esc(this.home[lang].groupNames[i])}</b><small>${esc(group.desc[lang])}</small></div><span class="category-arrow" aria-hidden="true">›</span></a>`;
+};
+COURSE_CATALOG.benefitsHTML = function(lang) {
+  const paths = ['<circle cx="12" cy="12" r="9"/><path d="m6 12 4 4 8-9"/>', '<circle cx="11" cy="7" r="3"/><path d="M3 21c0-5 3-8 8-8 3 0 5 1 6 3M4 20 21 3"/>', '<path d="m6 3 4 5-3 3c2 4 3 5 7 7l3-3 5 4c-2 6-7 4-12 0C5 15 1 7 6 3Z"/>'];
+  return ['free', 'account', 'mobile'].map((key, i) => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[i]}</svg>${this.home[lang][key]}</li>`).join('');
+};
 if (typeof module !== 'undefined') module.exports = COURSE_CATALOG;
