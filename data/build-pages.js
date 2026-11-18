@@ -123,7 +123,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Course', name: t.title(name).replace(' | Job Vocabulary', ''), description: desc, inLanguage: lang,
@@ -181,9 +181,9 @@ for (const p of packs) {
 // --- links på forsiden (mellem markørerne i index.html) ---
 const indexPath = path.join(ROOT, 'index.html');
 const html = fs.readFileSync(indexPath, 'utf8');
-const links = `<!-- JOBS -->\n    <nav class="jobs" aria-label="Emner">${catalog.groups.map((g) => `<a class="category-entry" href="/da/#${g.id}"><b>${esc(g.name.da)}</b><small>${esc(g.desc.da)}</small><span aria-hidden="true">→</span></a>`).join('')}</nav>\n    <!-- /JOBS -->`;
+const links = `<!-- JOBS -->\n    <nav class="jobs" aria-label="Emner">${catalog.groups.map((g) => catalog.groupLink(g, 'da')).join('')}</nav>\n    <!-- /JOBS -->`;
 if (!/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/.test(html)) throw new Error('index.html mangler <!-- JOBS --> markører');
-fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, links));
+fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, links).replace(/(<ul class="hero-benefits" id="homeBenefits">)[\s\S]*?(<\/ul>)/, `$1${catalog.benefitsHTML('da')}$2`));
 
 // Public, indexable course catalogue in each interface language.
 for (const lang of LANGS) {
@@ -218,6 +218,9 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <meta property="og:title" content="${esc(l.catalog)} | Job Vocabulary">
   <meta property="og:description" content="${esc(l.intro)}">
   <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script src="/practice-resume.js" defer></script>
   <script src="/catalog-search.js" defer></script>

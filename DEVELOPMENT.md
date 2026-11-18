@@ -70,6 +70,16 @@ old localStorage. The personal vocabulary screen offers JSON export and import.
 
 ## Interaction
 
+The shared visual identity uses a warm, light default palette, Lora headings and
+DM Sans interface text. `catalog.js` shares translated home content and native SVG
+icons with the static page builder. The desktop home hero uses the local 165 KB
+`images/site/study-corner.jpg`; mobile omits the photo and expands the three-step
+explanation only on request. See `design/EDITORIAL.md` for the image prompt.
+Course topic filters use a native details disclosure with labelled checkboxes,
+select-all/clear actions and an internally scrolling panel. Multiple choices keep
+the panel open and retain focus/scroll; Escape, Done or an outside click closes it.
+Topic filtering preserves the existing `cats` schema and card histories.
+
 Correct answers advance immediately, with a persistent previous-answer receipt.
 `learning-flow.js` selects new and struggling words ahead of a backlog of learned
 words. While unfinished material exists, learned-word checks are capped at one
