@@ -49,7 +49,10 @@ const LIBRARY_TEXT = {
     "listen": "Hør ordet",
     "backup": "Sikkerhedskopi og flytning",
     "savePrevious": "Gem forrige ord",
-    "backToCourse": "Tilbage til kurset"
+    "backToCourse": "Tilbage til kurset",
+    "chooseMeaning": "Ordet har flere betydninger. Vælg den rigtige.",
+    "cancelEdit": "Annuller redigering",
+    "unavailable": "Ordet er ikke tilgængeligt"
   },
   "en": {
     "title": "My words",
@@ -100,7 +103,10 @@ const LIBRARY_TEXT = {
     "listen": "Listen to the word",
     "backup": "Backup and transfer",
     "savePrevious": "Save previous word",
-    "backToCourse": "Back to the course"
+    "backToCourse": "Back to the course",
+    "chooseMeaning": "This word has several meanings. Choose one.",
+    "cancelEdit": "Cancel editing",
+    "unavailable": "This word is unavailable"
   },
   "ru": {
     "title": "Мои слова",
@@ -151,7 +157,10 @@ const LIBRARY_TEXT = {
     "listen": "Послушать слово",
     "backup": "Резервная копия и перенос",
     "savePrevious": "Сохранить предыдущее слово",
-    "backToCourse": "Вернуться к курсу"
+    "backToCourse": "Вернуться к курсу",
+    "chooseMeaning": "У слова несколько значений. Выберите нужное.",
+    "cancelEdit": "Отменить редактирование",
+    "unavailable": "Слово недоступно"
   },
   "uk": {
     "title": "Мої слова",
@@ -202,7 +211,10 @@ const LIBRARY_TEXT = {
     "listen": "Послухати слово",
     "backup": "Резервна копія та перенесення",
     "savePrevious": "Зберегти попереднє слово",
-    "backToCourse": "Повернутися до курсу"
+    "backToCourse": "Повернутися до курсу",
+    "chooseMeaning": "Слово має кілька значень. Виберіть потрібне.",
+    "cancelEdit": "Скасувати редагування",
+    "unavailable": "Слово недоступне"
   }
 };
 const lt = (key) => LIBRARY_TEXT[uiLang()][key];
@@ -212,7 +224,8 @@ let libraryActive = 'favorites';
 let libraryVisible = 50;
 let libraryFilter = '';
 let librarySearch = '';
-const dictionaryNorm = (s) => s.trim().toLocaleLowerCase().normalize('NFC');
+const dictionaryNorm = WordEntry.norm;
+let ownWordDraft = null;
 function libraryPair() {
   const target = state.libraryPair?.target || state.settings?.target || 'da';
   const preferred = state.libraryPair?.base || state.settings?.base || uiLang();
@@ -274,11 +287,7 @@ function startLibraryPractice(id, pair) {
   saveState(); current = null; placement = null; lastFeedback = null; levelNotice = null; go('play');
 }
 function dictionaryMatches(query, pair, limit = 20) {
-  const q = dictionaryNorm(query);
-  if (!q) return [];
-  return Object.values(ITEM).filter((x) => (x.id.startsWith('lex:') || x.id.startsWith('user:')) && x.words[pair.target] && x.words[pair.base] && [x.words[pair.target], x.words[pair.base]].some((w) => dictionaryNorm(w).includes(q)))
-    .sort((a, b) => Number(dictionaryNorm(b.words[pair.target]) === q || dictionaryNorm(b.words[pair.base]) === q) - Number(dictionaryNorm(a.words[pair.target]) === q || dictionaryNorm(a.words[pair.base]) === q))
-    .slice(0, limit);
+  return WordEntry.search(Object.values(ITEM), query, pair, limit);
 }
 function saveToListDialog(sourceId) {
   clearTimeout(timer);
@@ -336,12 +345,53 @@ function bindPreviousFavorite() {
   const previous = $('previousFavoriteBtn');
   if (previous) bindFavoriteButton(previous, previous.dataset.favoriteSource, $('receiptSaveStatus'));
 }
+function syncOwnWordForm() {
+  const draft = ownWordDraft;
+  for (const [id, value] of [['ownTarget', draft.target], ['ownBase', draft.base], ['ownWord', draft.word], ['ownTranslation', draft.translation]]) if ($(id).value !== value) $(id).value = value;
+  $('translationHint').textContent = draft.hint ? lt(draft.hint) : '';
+  $('saveOwnWord').textContent = lt(draft.editing ? 'update' : 'save');
+  $('cancelOwnEdit').hidden = !draft.editing;
+  $('ownWordMatches').innerHTML = draft.matches.length > 1 ? draft.matches.slice(0, 12).map((entry) => `<button class="secondary" type="button" data-own-match="${esc(entry.id)}"><b lang="${draft.target}">${esc(entry.words[draft.target])}</b><span lang="${draft.base}">${esc(entry.words[draft.base])}</span></button>`).join('') : '';
+  $('ownWordMatches').querySelectorAll('[data-own-match]').forEach((button) => button.onclick = () => { ownWordDraft.select(button.dataset.ownMatch); syncOwnWordForm(); $('ownTranslation').focus(); });
+}
+function beginOwnWordEdit(id, pair) {
+  const entry = wordLibrary.data.custom[id];
+  if (!entry) return;
+  ownWordDraft = new WordEntry(Object.values(ITEM), pair, { id, words: entry.words });
+  $('customWordDetails').open = true;
+  syncOwnWordForm(); $('ownWord').focus();
+}
+function bindOwnWordForm(pair) {
+  ownWordDraft = new WordEntry(Object.values(ITEM), pair);
+  $('ownWord').oninput = () => { ownWordDraft.setWord($('ownWord').value); syncOwnWordForm(); };
+  $('ownTranslation').oninput = () => { ownWordDraft.setTranslation($('ownTranslation').value); syncOwnWordForm(); };
+  for (const [id, field] of [['ownTarget', 'target'], ['ownBase', 'base']]) $(id).onchange = () => { ownWordDraft.setLanguage(field, $(id).value); syncOwnWordForm(); };
+  $('cancelOwnEdit').onclick = () => { ownWordDraft = new WordEntry(Object.values(ITEM), ownWordDraft); syncOwnWordForm(); $('ownWord').focus(); };
+  $('customWordForm').onsubmit = (event) => {
+    event.preventDefault();
+    const draft = ownWordDraft;
+    draft.word = $('ownWord').value.trim(); draft.translation = $('ownTranslation').value.trim();
+    const words = { [draft.target]: draft.word, [draft.base]: draft.translation };
+    if (draft.target === draft.base || !draft.word || !draft.translation) { $('translationHint').textContent = lt('wordError'); return; }
+    let id;
+    if (draft.editing) {
+      id = draft.editing.id;
+      const entry = wordLibrary.data.custom[id];
+      entry.words = { ...entry.words, ...words };
+      entry.phrase = WordLibrary.isPhrase(entry.words);
+    } else id = draft.knownId() || wordLibrary.addCustom(words);
+    state.libraryPair = { target: draft.target, base: draft.base };
+    registerOwnWords(); wordLibrary.add(id, libraryActive); saveState(); renderLibrary();
+    $('customWordDetails').open = true; $('translationHint').textContent = lt('saved'); $('ownWord').focus();
+  };
+  syncOwnWordForm();
+}
 function renderSavedLibraryRows(pair) {
   const list = wordLibrary.list(libraryActive);
   const filtered = libraryFilteredItems();
   const row = (id) => {
     const x = ITEM[canonicalWord(id)];
-    if (!x) return `<li class="library-word"><span>${esc(id)}</span><button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></li>`;
+    if (!x) return `<li class="library-word"><span>${esc(lt('unavailable'))}</span><button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></li>`;
     return `<li class="library-word"><div><b lang="${pair.target}">${esc(x.words[pair.target] || '—')}</b><span lang="${pair.base}">${esc(x.words[pair.base] || '—')}</span></div><div class="library-row-actions">${libraryAudio(x, pair.target)}<button class="secondary" data-add-word="${esc(id)}">${esc(lt('addTo'))}</button>${id.startsWith('user:') ? `<button class="secondary" data-edit-word="${esc(id)}">${esc(lt('edit'))}</button>` : ''}<button class="secondary" data-remove-word="${esc(id)}">${esc(lt('remove'))}</button></div></li>`;
   };
   $('savedListResults').innerHTML = list.items.length ? filtered.length ? `<ul class="library-words">${filtered.slice(0, libraryVisible).map(row).join('')}</ul>${filtered.length > libraryVisible ? `<button class="secondary" id="moreLibraryWords">${esc(lt('more'))}</button>` : ''}` : `<p role="status">${esc(lt('noMatches'))}</p>` : `<p class="empty-list">${esc(lt('empty'))}</p>`;
@@ -352,11 +402,7 @@ function renderSavedLibraryRows(pair) {
   bindLibraryAudio($('savedListResults'));
   $('app').querySelectorAll('[data-remove-word]').forEach((button) => button.onclick = () => { wordLibrary.remove(button.dataset.removeWord, libraryActive); saveState(); renderSavedLibraryRows(pair); renderDictionaryResults(pair); });
   $('app').querySelectorAll('[data-add-word]').forEach((button) => button.onclick = () => saveToListDialog(button.dataset.addWord));
-  $('app').querySelectorAll('[data-edit-word]').forEach((button) => button.onclick = () => {
-    const id = button.dataset.editWord; const entry = wordLibrary.data.custom[id];
-    $('customWordDetails').open = true; $('customWordForm').dataset.editId = id;
-    $('ownWord').value = entry.words[pair.target] || ''; $('ownTranslation').value = entry.words[pair.base] || ''; $('saveOwnWord').textContent = lt('update'); $('ownWord').focus();
-  });
+  $('app').querySelectorAll('[data-edit-word]').forEach((button) => button.onclick = () => beginOwnWordEdit(button.dataset.editWord, pair));
   if ($('moreLibraryWords')) $('moreLibraryWords').onclick = () => { libraryVisible += 50; renderSavedLibraryRows(pair); };
 }
 function renderLibrary() {
@@ -379,7 +425,7 @@ function renderLibrary() {
     <div id="savedListResults"></div>
     ${libraryActive !== 'favorites' ? `<div class="list-management"><button class="secondary" id="renameLibraryList">${esc(lt('rename'))}</button><button class="text-button" id="deleteLibraryList">${esc(lt('delete'))}</button></div>` : ''}
     <section class="dictionary-search"><h2>${esc(lt('search'))}</h2><p class="course-note">${LEXICON_INDEX.entries.toLocaleString(uiLang())} ${esc(lt('dictionaryCount'))}</p><label for="librarySearch">${esc(lt('search'))}</label><input id="librarySearch" type="search" autocomplete="off" aria-controls="dictionaryResults"><div id="dictionaryResults" aria-live="polite"></div></section>
-    <details class="custom-word" id="customWordDetails"><summary>${esc(lt('addOwn'))}</summary><form id="customWordForm"><label for="ownTarget">${esc(lt('word'))}</label><select id="ownTarget">${options(pair.target)}</select><input aria-label="${esc(lt('word'))}" id="ownWord" maxlength="300" required autocomplete="off"><label for="ownBase">${esc(lt('translation'))}</label><select id="ownBase">${options(pair.base)}</select><input aria-label="${esc(lt('translation'))}" id="ownTranslation" maxlength="300" required autocomplete="off"><p id="translationHint" role="status"></p><button class="primary" id="saveOwnWord">${esc(lt('save'))}</button></form></details>
+    <details class="custom-word" id="customWordDetails"><summary>${esc(lt('addOwn'))}</summary><form id="customWordForm"><label for="ownTarget">${esc(lt('word'))}</label><select id="ownTarget">${options(pair.target)}</select><input aria-label="${esc(lt('word'))}" id="ownWord" maxlength="300" required autocomplete="off"><label for="ownBase">${esc(lt('translation'))}</label><select id="ownBase">${options(pair.base)}</select><input aria-label="${esc(lt('translation'))}" id="ownTranslation" maxlength="300" required autocomplete="off"><p id="translationHint" role="status"></p><div id="ownWordMatches" class="word-choices"></div><div class="row own-word-actions"><button class="primary" id="saveOwnWord">${esc(lt('save'))}</button><button class="secondary" type="button" id="cancelOwnEdit" hidden>${esc(lt('cancelEdit'))}</button></div></form></details>
     <details class="library-transfer"><summary>${esc(lt('backup'))}</summary><p class="course-note">${esc(lt('local'))}</p><div class="library-backup"><button class="secondary" id="exportLibrary">${esc(lt('export'))}</button><label class="secondary import-label">${esc(lt('import'))}<input type="file" id="importLibrary" accept="application/json,.json"></label></div></details>
     ${state.settings ? `<p class="library-return"><button class="secondary" id="libraryBack">${esc(lt('back'))}</button>${isList(state.settings) && lastCourseSettings() ? `<button class="secondary" id="libraryCourseBack">${esc(lt('backToCourse'))}</button>` : ''}</p>` : ''}</section>`;
   $('app').querySelectorAll('[data-list-id]').forEach((button) => button.onclick = () => { libraryActive = button.dataset.listId; libraryVisible = 50; libraryFilter = ''; renderLibrary(); });
@@ -402,23 +448,7 @@ function renderLibrary() {
   $('librarySearch').value = librarySearch;
   renderDictionaryResults(pair);
   $('librarySearch').oninput = () => { librarySearch = $('librarySearch').value; renderDictionaryResults(pair); };
-  $('ownWord').oninput = () => {
-    const matches = dictionaryMatches($('ownWord').value, { target: $('ownTarget').value, base: $('ownBase').value }).filter((x) => dictionaryNorm(x.words[$('ownTarget').value]) === dictionaryNorm($('ownWord').value));
-    if (matches.length === 1 && !$('customWordForm').dataset.editId) { $('ownTranslation').value = matches[0].words[$('ownBase').value]; $('translationHint').textContent = lt('found'); }
-    else { if (!$('customWordForm').dataset.editId) $('ownTranslation').value = ''; $('translationHint').textContent = lt('notFound'); }
-  };
-  $('customWordForm').onsubmit = (event) => {
-    event.preventDefault();
-    const target = $('ownTarget').value, base = $('ownBase').value;
-    const words = { [target]: $('ownWord').value.trim(), [base]: $('ownTranslation').value.trim() };
-    if (target === base || !words[target] || !words[base]) { $('translationHint').textContent = lt('wordError'); return; }
-    const existing = dictionaryMatches(words[target], { target, base }).find((entry) => dictionaryNorm(entry.words[target]) === dictionaryNorm(words[target]) && dictionaryNorm(entry.words[base]) === dictionaryNorm(words[base]));
-    const editId = $('customWordForm').dataset.editId;
-    let id;
-    if (editId) { wordLibrary.data.custom[editId].words = { ...wordLibrary.data.custom[editId].words, ...words }; wordLibrary.data.custom[editId].phrase = Object.values(words).some((v) => /\s/.test(v)); id = editId; }
-    else id = existing?.id || wordLibrary.addCustom(words);
-    registerOwnWords(); wordLibrary.add(id, libraryActive); saveState(); renderLibrary();
-  };
+  bindOwnWordForm(pair);
   $('exportLibrary').onclick = exportLibrary;
   $('importLibrary').onchange = importLibrary;
 }

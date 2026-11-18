@@ -12,7 +12,7 @@ Run these commands from the repository root after content or shared asset change
 node data/build-packs.js
 node data/build-lexicon.js
 node data/build-pages.js
-node --test tests/library.test.cjs tests/practice-resume.test.cjs tests/favorite-save.test.cjs tests/learning-flow.test.cjs tests/interface-language.test.cjs tests/course-preferences.test.cjs
+node --test tests/*.test.cjs
 ```
 
 `build-packs.js` validates the four-language course files and updates the small
@@ -57,6 +57,11 @@ Lists can be renamed without changing their IDs. Personal vocabulary has its own
 persisted language pair (`libraryPair`), list filtering and on-demand pronunciation.
 Changing this pair does not change an active course until list practice is started.
 Explicit pronunciation works even when automatic exercise audio is switched off.
+`word-entry.js` handles exact meanings, optional Danish en/et/at prefixes, language
+changes and custom edit drafts. Ambiguous meanings require an explicit choice;
+known entries reuse their dictionary ID. Cancelling editing discards only the
+draft. Backup imports compare language values independently of property order,
+merge nonconflicting translations and reuse prior collision copies on reimport.
 
 Settings, progress and personal vocabulary use browser localStorage under the
 existing `topwords.v2` key. They are local to one browser and origin, with no
