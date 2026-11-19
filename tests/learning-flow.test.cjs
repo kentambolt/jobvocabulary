@@ -30,7 +30,7 @@ test('one hard-word error never changes easy-word histories or creates a run of 
   const hard = a.run('buildPool(state.settings).find((word) => word.diff === 3)');
   a.context.known = Object.fromEntries([...easy, hard].map((word) => [word.id, card()]));
   a.context.hard = hard;
-  a.run('Object.assign(ctx().prog.cards, known); ctx().prog.task = 400; ctx().prog.offered = true;');
+  a.run('Object.assign(ctx().prog.cards, known); Object.values(ctx().prog.cards).forEach(card => MemoryScheduler.ensure(card, Date.now())); ctx().prog.task = 400; ctx().prog.offered = true;');
   const easyBefore = a.run('JSON.stringify(buildPool({ ...state.settings, diff: 1 }).map((word) => ctx().prog.cards[word.id]))');
   a.run("current = { kind: 'quiz', concept: hard, options: [hard, { id: 'incorrect' }], answered: null }; choose(1);");
   assert.equal(a.run('ctx().prog.cards[hard.id].wrong'), 1);
@@ -40,6 +40,7 @@ test('one hard-word error never changes easy-word histories or creates a run of 
   let easyChecks = 0;
   const seen = [];
   for (let index = 0; index < 48; index++) {
+    a.clock.now += 20000;
     const task = a.run('current');
     seen.push(task.concept.id);
     if (task.concept.diff === 1) { easyChecks++; consecutiveEasy++; } else consecutiveEasy = 0;

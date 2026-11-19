@@ -8,6 +8,7 @@ const LearningFlow = require('../../learning-flow');
 const CoursePreferences = require('../../course-preferences');
 const WordEntry = require('../../word-entry');
 const PracticeOptions = require('../../practice-options');
+const MemoryScheduler = require('../../memory-scheduler');
 
 // Run the real app model and answer handlers with inert rendering/storage surfaces.
 // This exercises persisted progress, not a second implementation of the scheduler.
@@ -17,15 +18,17 @@ function app(settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', dif
   const location = { hash: options.hash || '', pathname: '/', search: options.search || '' };
   const navigate = (url) => { const next = new URL(url, 'http://app.test'); Object.assign(location, { hash: next.hash, pathname: next.pathname, search: next.search }); };
   const events = new Map();
+  const clock = { now: options.now ?? Date.now() };
+  const ClockDate = class extends Date { constructor(...args) { super(...(args.length ? args : [clock.now])); } static now() { return clock.now; } };
   const context = vm.createContext({
-    ...words, WordLibrary, LearningFlow, CoursePreferences, WordEntry, PracticeOptions,
+    ...words, WordLibrary, LearningFlow, CoursePreferences, WordEntry, PracticeOptions, MemoryScheduler, Date: ClockDate,
     COURSE_CATALOG: require('../../catalog'),
     localStorage: { getItem: (key) => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     navigator: { language: 'en' }, location, URLSearchParams,
     history: { pushState(_state, _title, url) { navigate(url); }, replaceState(_state, _title, url) { navigate(url); } },
     window: { addEventListener(name, callback) { events.set(name, callback); }, scrollTo() {} },
     document: { addEventListener(name, callback) { events.set('document:' + name, callback); }, querySelector() { return null; }, getElementById(id) { if (!elements.has(id)) elements.set(id, { querySelectorAll: () => [], focus() {}, showModal() { this.open = true; }, close() { this.open = false; } }); return elements.get(id); } },
-    clearTimeout, console,
+    clearTimeout() {}, setTimeout() { return 0; }, console,
   });
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../../packs/index.js'), 'utf8'), context);
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../../library-ui.js'), 'utf8'), context);
@@ -34,6 +37,6 @@ function app(settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', dif
   vm.runInContext(source.replace(/\nrender\(\);\s*$/, ''), context);
   vm.runInContext('renderPlayView = () => {}; updateScore = () => {};', context);
   if (options.stubSpeech !== false) vm.runInContext('speakTarget = () => {};', context);
-  return { context, storage, events, run: (code) => vm.runInContext(code, context) };
+  return { context, storage, events, clock, run: (code) => vm.runInContext(code, context) };
 }
 module.exports = app;

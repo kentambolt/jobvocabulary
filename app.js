@@ -3,17 +3,11 @@
 // ---------------------------------------------------------------------------
 // Læringsmodel
 //
-// Hvert ord/sætning (pr. sprogpar, emne og retning) har et niveau L. Intervallet til
-// næste gentagelse er base^L – både i antal opgaver og i tid:
-//
-//   opgave-interval = taskUnit    * base^L      (fx 1, 2, 4, 8 ... opgaver)
-//   tids-interval   = timeUnitMin * base^L      (fx 10 min, 20 min, 40 min ...)
-//
-//   forfald = opgaver siden sidst / opgave-interval + tid siden sidst / tids-interval
-//
-// Ordet er klar til gentagelse, når forfald >= 1. Svære ord prioriteres først.
-// Kendte ord kontrolleres højst én gang pr. seks opgaver, mens der stadig er nyt
-// eller ikke-lært stof. Færdige sværhedsgrader udvides automatisk til næste trin.
+// memory-scheduler.js updates an individual FSRS-6 memory state after each answer.
+// learning-flow.js mixes new, struggling and due learned words with a 70/20/10
+// budget when all groups are available. Calendar time, cooldowns and session caps
+// prevent fast answers from immediately triggering another review.
+// Legacy levels remain the course-mastery score; IDs/counters are preserved.
 //
 // Rigtigt svar: L + 1. Forkert svar: L - 1 (dog mindst 0).
 // Scoren er antal ord, hvor sidste svar var rigtigt og L >= learnedLevel.
@@ -27,9 +21,6 @@
 //    kommer igen, starter de forfra (L = 0) i stedet for blot L - 1.
 // ---------------------------------------------------------------------------
 const CONFIG = {
-  base: 2,
-  taskUnit: 1,
-  timeUnitMin: 10,
   learnedLevel: 2,
   knownStartLevel: 3,
   placedLevel: 4,
@@ -417,6 +408,13 @@ const PRACTICE_TEXT = {
   uk: { menu: 'Меню', closeMenu: 'Закрити меню', taskOptions: 'Типи завдань і повторення', modesHint: 'Виберіть один тип завдань або кілька для чергування.', repeatLearned: 'Повторювати вивчені слова', repeatHint: 'Знайомі слова з’являтимуться іноді. Складні слова завжди повторюються.', completeTitle: 'Ви знаєте всі слова в цій добірці', completeHint: 'Виберіть новий курс, інший тип завдань або ввімкніть повторення.', enableReview: 'Увімкнути повторення', libraryMenu: 'Мої слова та списки' }
 };
 for (const [lang, text] of Object.entries(PRACTICE_TEXT)) Object.assign(UI[lang], text);
+const MEMORY_TEXT = {
+  da: { readyTitle: 'Godt arbejde. Tag gerne en pause.', readyHint: 'Der er ingen ord, der skal øves lige nu. Gentagelser bliver klar, når det er tid. Du kan også vælge et andet kursus eller ændre sværhedsgrad eller opgavetype.', nextReview: 'Næste mulighed for gentagelse', checkAgain: 'Tjek igen', formula: 'Sådan vælges ordene', explainSimple: 'Du får fortrinsvis nye ord. Svære ord kommer igen efter en pause. Når repetition er slået til, kontrolleres lærte ord med længere mellemrum. En fejl påvirker kun det ord, du svarede på.', explain: 'Dine svar og tiden mellem dem bestemmer pausen for hvert ord. Sikre ord får længere pauser, og hyppige ord kontrolleres lidt oftere. Når alle grupper er tilgængelige, er fordelingen cirka 70 % nye ord, 20 % svære ord og 10 % lærte ord. Rækkefølgen varierer, og der er et loft over gentagelser af samme ord i én session.' },
+  en: { readyTitle: 'Good work. This is a good time for a break.', readyHint: 'No words need practice right now. Reviews become available when they are due. You can also choose another course, difficulty or task type.', nextReview: 'Next review opportunity', checkAgain: 'Check again', formula: 'How words are selected', explainSimple: 'Most tasks introduce new words. Difficult words return after a pause. When review is enabled, learned words are checked at longer intervals. A mistake affects only the word you answered.', explain: 'Your answers and the time between them determine each word’s interval. Confident answers earn longer gaps, and common words are checked a little more often. When all groups are available, the mix is about 70% new words, 20% difficult words and 10% learned words. The order varies, with a limit on repetitions of one word per session.' },
+  ru: { readyTitle: 'Хорошая работа. Можно сделать перерыв.', readyHint: 'Сейчас нет слов для повторения. Они появятся, когда придёт время. Можно выбрать другой курс, уровень сложности или тип заданий.', nextReview: 'Следующая возможность повторения', checkAgain: 'Проверить снова', formula: 'Как выбираются слова', explainSimple: 'Большинство заданий знакомит с новыми словами. Сложные слова возвращаются после паузы. Если повторение включено, выученные слова проверяются с большими интервалами. Ошибка влияет только на текущее слово.', explain: 'Ответы и время между ними определяют интервал для каждого слова. Уверенные ответы увеличивают паузу, а частые слова проверяются немного чаще. Когда доступны все группы, около 70% заданий посвящено новым словам, 20% сложным и 10% выученным. Порядок меняется, а число повторений одного слова за занятие ограничено.' },
+  uk: { readyTitle: 'Гарна робота. Можна зробити перерву.', readyHint: 'Зараз немає слів для повторення. Вони з’являться, коли настане час. Можна вибрати інший курс, рівень складності або тип завдань.', nextReview: 'Наступна можливість повторення', checkAgain: 'Перевірити знову', formula: 'Як вибираються слова', explainSimple: 'Більшість завдань знайомить із новими словами. Складні слова повертаються після паузи. Якщо повторення ввімкнено, вивчені слова перевіряються з більшими інтервалами. Помилка впливає лише на поточне слово.', explain: 'Відповіді й час між ними визначають інтервал для кожного слова. Упевнені відповіді збільшують паузу, а часті слова перевіряються трохи частіше. Коли доступні всі групи, близько 70% завдань присвячено новим словам, 20% складним і 10% вивченим. Порядок змінюється, а кількість повторень одного слова за заняття обмежена.' }
+};
+for (const [lang, text] of Object.entries(MEMORY_TEXT)) Object.assign(UI[lang], text);
 
 // ---------- Data ----------
 // Alle læringsenheder (ord fra hyppighedslisten + ord/sætninger fra branchepakker) slås op i ITEM.
@@ -579,7 +577,13 @@ function loadState() {
 }
 function saveState() {
   CoursePreferences.remember(state);
-  try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) { /* ignorer */ }
+  try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (error) {
+    if (['QuotaExceededError', 'NS_ERROR_DOM_QUOTA_REACHED'].includes(error?.name) || [22, 1014].includes(error?.code)) {
+      // Keep counters and FSRS state; only trim optional diagnostic history.
+      for (const progress of Object.values(state.progress)) for (const card of Object.values(progress.cards || {})) if (Array.isArray(card.memory?.log)) card.memory.log = card.memory.log.slice(-2);
+      try { localStorage.setItem(STORE, JSON.stringify(state)); } catch { /* storage unavailable */ }
+    }
+  }
 }
 
 function lastCourseSettings() {
@@ -649,10 +653,9 @@ function ctx(settings = state.settings) {
   }
   return { s, native, pics: isPics(s), key, prog, pool: buildPool(s) };
 }
-const intervalFactor = (lvl) => Math.pow(CONFIG.base, lvl);
 function dueness(card, prog, now) {
-  const f = intervalFactor(card.lvl);
-  return (prog.task - card.task) / (CONFIG.taskUnit * f) + (now - card.time) / (CONFIG.timeUnitMin * 60000 * f);
+  const at = MemoryScheduler.dueAt(card, isLearned(card), now);
+  return Math.max(0, (now - (card.memory.last ?? card.time)) / Math.max(60000, at - (card.memory.last ?? card.time)));
 }
 function isLearned(card) { return card.ok && card.lvl >= CONFIG.learnedLevel; }
 function scoreOf(prog) { return Object.keys(prog.cards).filter((id) => ITEM[id] && isLearned(prog.cards[id])).length; }
@@ -683,7 +686,8 @@ function reviewTask(c, x) {
   return quiz('prod');
 }
 function pickNext(c) {
-  const selected = LearningFlow.select(c.pool, c.prog, isLearned, dueness, Date.now(), c.s.repeatLearned !== false);
+  const now = Date.now();
+  const selected = LearningFlow.select(c.pool, c.prog, isLearned, now, { repeatLearned: c.s.repeatLearned !== false, session: MemoryScheduler.session(state, c.s, now), rng: Math.random });
   if (!selected) return null;
   if (selected.review) return { ...reviewTask(c, selected.word), maintenance: selected.maintenance };
   const fresh = selected.word;
@@ -987,6 +991,16 @@ function renderPracticeComplete(c) {
   $('enableReview').onclick = () => { state.settings.repeatLearned = true; saveState(); current = null; renderPlay(); };
   if ($('completeReturn')) $('completeReturn').onclick = returnToCourse;
 }
+function renderPracticeWait(c, at) {
+  const date = new Date(at).toLocaleString(uiLang(), { dateStyle: 'medium', timeStyle: 'short' });
+  $('app').innerHTML = `<section class="practice-complete"><h1>${esc(t('readyTitle'))}</h1><p>${esc(t('readyHint'))}</p><p role="status">${esc(t('nextReview'))}: ${esc(date)}</p><div class="row actions"><a class="primary cta" href="/${uiLang()}/">${esc(COURSE_CATALOG.labels[uiLang()].catalog)}</a><button class="secondary" id="checkPractice">${esc(t('checkAgain'))}</button>${isList(c.s) && lastCourseSettings() ? `<button class="secondary" id="waitReturn">${esc(lt('backToCourse'))}</button>` : ''}</div></section>`;
+  $('checkPractice').onclick = () => { current = null; renderPlay(); };
+  if ($('waitReturn')) $('waitReturn').onclick = returnToCourse;
+  saveState();
+  clearTimeout(timer);
+  // One asynchronous wake-up, capped below the browser's 32-bit timer limit.
+  timer = setTimeout(() => { if (view === 'play' && !current) renderPlay(); }, Math.min(2147483000, Math.max(1000, at - Date.now())));
+}
 function renderHomeStart() {
   const L = UI[uiLang()].lang;
   $('app').innerHTML = `<section class="setup"><p class="setup-kicker">${esc(t('setupTitle'))}</p><div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">${Object.keys(ORDER).map((lang) => `<button class="choice" data-target="${lang}"><b>${esc(LANGS[lang].name || L[lang])}</b></button>`).join('')}</div></div></section>`;
@@ -1166,7 +1180,11 @@ function renderPlay() {
     if (next) { if (offset) setModeTurn(c.s, start + offset); break; }
   }
   if (!next) {
-    if (c.pool.length) renderPracticeComplete(c);
+    if (c.pool.length) {
+      const now = Date.now(), session = MemoryScheduler.session(state, c.s, now);
+      const at = Math.min(...modes.map(dir => { const candidate = ctx({ ...c.s, dir }); return LearningFlow.nextAt(candidate.pool, candidate.prog, isLearned, now, { repeatLearned: c.s.repeatLearned !== false, session }); }));
+      if (Number.isFinite(at)) renderPracticeWait(c, at); else renderPracticeComplete(c);
+    }
     else { $('app').innerHTML = `<p class="task-q" role="status">${esc(t('empty'))}</p><button class="secondary" id="emptySetup">${esc(t('settings'))}</button>`; $('emptySetup').onclick = () => go('setup'); }
     return;
   }
@@ -1397,6 +1415,7 @@ function renderPlayView() {
 // Registrér et svar på en kendt kortet og opdatér niveau.
 function grade(c, x, correct) {
   const card = c.prog.cards[x.id];
+  MemoryScheduler.ensure(card, Date.now());
   if (card.verify) {
     card.lvl = correct ? card.lvl + 1 : 0;
     card.verify = false;
@@ -1411,10 +1430,13 @@ function grade(c, x, correct) {
 function finishTask(c, x, before) {
   c.prog.task += 1;
   completeModeTurn(c.s);
+  const correct = current.answered === x.id || current.answered === 'ok';
+  const now = Date.now();
+  MemoryScheduler.review(c.prog.cards[x.id], correct, now, { word: x, learned: isLearned(c.prog.cards[x.id]), evidence: current.kind === 'write' ? 2 : current.kind === 'build' ? 3 : 1, rng: Math.random });
+  MemoryScheduler.record(MemoryScheduler.session(state, c.s, now), x.id, now);
   if (current.maintenance) c.prog.lastLearnedReviewTask = c.prog.task;
   c.prog.lastId = x.id;
   saveState();
-  const correct = current.answered === x.id || current.answered === 'ok';
   lastFeedback = correct ? { id: x.id, word: x.words[c.s.target], meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
   renderPlayView();
   updateScore(scoreOf(c.prog) - before);
@@ -1447,7 +1469,13 @@ function dontKnow() {
   const c = ctx();
   const x = current.concept;
   if (current.kind === 'new' || current.isNew) {
-    current = { kind: 'intro', concept: x, answered: null };
+    c.prog.cards[x.id] = newCard(c, 0, false, { wrong: 0 });
+    MemoryScheduler.expose(c.prog.cards[x.id], Date.now());
+    MemoryScheduler.record(MemoryScheduler.session(state, c.s, Date.now()), x.id, Date.now());
+    c.prog.task += 1;
+    c.prog.lastId = x.id;
+    current = { kind: 'intro', concept: x, answered: null, exposureRecorded: true };
+    saveState();
     renderPlayView();
     speakTarget(x);
     return;
@@ -1479,8 +1507,12 @@ function advance() {
   if (view === 'place') { advancePlace(); return; }
   if (current && current.kind === 'intro') {
     const c = ctx();
-    c.prog.cards[current.concept.id] = newCard(c, 0, false, { wrong: 0 });
-    c.prog.task += 1;
+    if (!current.exposureRecorded) {
+      c.prog.cards[current.concept.id] = newCard(c, 0, false, { wrong: 0 });
+      MemoryScheduler.expose(c.prog.cards[current.concept.id], Date.now());
+      MemoryScheduler.record(MemoryScheduler.session(state, c.s, Date.now()), current.concept.id, Date.now());
+      c.prog.task += 1;
+    }
     completeModeTurn(c.s);
     c.prog.lastId = current.concept.id;
     saveState();
@@ -1571,6 +1603,12 @@ function placementAnswer(correct) {
   (correct ? P.right : P.wrong).push(current.concept.id);
   if (correct) P.blockRight++;
   const c = ctx();
+  const x = current.concept, now = Date.now();
+  if (c.prog.cards[x.id]) grade(c, x, correct);
+  else c.prog.cards[x.id] = newCard(c, correct ? CONFIG.knownStartLevel : 0, correct, { verify: correct });
+  MemoryScheduler.review(c.prog.cards[x.id], correct, now, { word: x, learned: isLearned(c.prog.cards[x.id]), evidence: 4, rng: Math.random });
+  MemoryScheduler.record(MemoryScheduler.session(state, c.s, now), x.id, now);
+  saveState();
   lastFeedback = correct ? { id: current.concept.id, word: current.concept.words[c.s.target], meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
   if (correct) advancePlace(); else renderPlace();
 }
@@ -1596,14 +1634,13 @@ function finishPlacement() {
     if (!c.prog.cards[id]) c.prog.cards[id] = newCard(c, CONFIG.knownStartLevel, true, { verify: true });
   }
   // Alt før den sidst beståede blok regnes som kendt og spredes ud til kontrol.
-  let j = 0;
   for (const x of c.pool.slice(0, P.passedEnd)) {
     if (c.prog.cards[x.id] || P.wrong.includes(x.id)) continue;
     c.prog.cards[x.id] = {
       lvl: CONFIG.placedLevel, ok: true, verify: true, right: 0, wrong: 0,
-      task: c.prog.task + j * 3, time: now + j * 8 * 60000,
+      task: c.prog.task, time: now,
     };
-    j++;
+    MemoryScheduler.ensure(c.prog.cards[x.id], now).due = now + (1 + Math.random() * 6) * MemoryScheduler.DAY;
   }
   saveState();
   P.done = P.passedEnd;
@@ -1640,7 +1677,7 @@ function renderStats() {
   let html = `<section class="stats"><div class="row" style="justify-content:space-between">
       <h1>${esc(t('stats'))}</h1><button class="secondary" id="backBtn">${esc(t('back'))}</button></div>
     <p class="course-note">${esc(dirName(c.s.dir, c.pics))}</p><div class="explain"><b>${esc(t('howTitle'))}</b><p>${esc(t('explainSimple'))}</p>
-      <details><summary>${esc(t('formula'))}</summary><p>${fill(t('explain'), { tu: CONFIG.taskUnit, b: CONFIG.base, mu: CONFIG.timeUnitMin, ll: CONFIG.learnedLevel })}</p></details></div>`;
+      <details><summary>${esc(t('formula'))}</summary><p>${esc(t('explain'))}</p></details></div>`;
 
   if (!ids.length) {
     html += `<p class="task-q">${esc(t('noStats'))}</p>`;
@@ -1649,7 +1686,7 @@ function renderStats() {
     for (const id of ids) {
       const x = ITEM[id];
       const card = c.prog.cards[id];
-      const f = intervalFactor(card.lvl);
+      const m = MemoryScheduler.ensure(card, now);
       const p = dueness(card, c.prog, now);
       const status = card.verify ? `<span class="dot"></span>${esc(t('checkS'))}`
         : isLearned(card) ? `<span class="dot ok"></span>${esc(t('learnedS'))}`
@@ -1663,7 +1700,7 @@ function renderStats() {
         <td class="num">${ipm}</td>
         <td class="wrap">${meaning}</td>
         <td class="num">${card.lvl}</td>
-        <td class="num">${CONFIG.taskUnit * f} ${esc(t('tasks'))} · ${fmtDuration(CONFIG.timeUnitMin * f)}</td>
+        <td class="num">${fmtDuration(Math.max(0, MemoryScheduler.dueAt(card, isLearned(card), now) - (m.last ?? card.time)) / 60000)}</td>
         <td>${status}</td>
         <td class="num"><span class="bar ${p >= 1 ? 'due' : ''}"><div style="width:${Math.max(0, Math.min(100, p * 100))}%"></div></span> ${Math.max(0, Math.round(p * 100))} %</td>
       </tr>`;
