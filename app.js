@@ -1022,6 +1022,18 @@ function renderPracticeWait(c, at) {
   // One asynchronous wake-up, capped below the browser's 32-bit timer limit.
   timer = setTimeout(() => { if (view === 'play' && !current) renderPlay(); }, Math.min(2147483000, Math.max(1000, at - Date.now())));
 }
+function languageName(lang, name) {
+  const flags = {
+    da: '<path fill="#c8102e" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="3" d="M10 0v20M0 10h30"/>',
+    en: '<path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="5" d="m0 0 30 20m0-20L0 20"/><path stroke="#c8102e" stroke-width="2" d="m0 0 30 20m0-20L0 20"/><path stroke="#fff" stroke-width="7" d="M15 0v20M0 10h30"/><path stroke="#c8102e" stroke-width="4" d="M15 0v20M0 10h30"/>',
+    ru: '<path fill="#fff" d="M0 0h30v20H0z"/><path fill="#0039a6" d="M0 6.67h30v6.67H0z"/><path fill="#d52b1e" d="M0 13.33h30V20H0z"/>',
+    uk: '<path fill="#0057b7" d="M0 0h30v10H0z"/><path fill="#ffd700" d="M0 10h30v10H0z"/>',
+    pl: '<path fill="#fff" d="M0 0h30v10H0z"/><path fill="#dc143c" d="M0 10h30v10H0z"/>',
+    ro: '<path fill="#002b7f" d="M0 0h10v20H0z"/><path fill="#fcd116" d="M10 0h10v20H10z"/><path fill="#ce1126" d="M20 0h10v20H20z"/>',
+  };
+  return `<svg class="language-flag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">${flags[lang] || ''}</svg><span>${esc(name)}</span>`;
+}
+
 function renderHomeStart() {
   const L = UI[uiLang()].lang;
   const shortQuestion = { da:'Vælg sprog',en:'Choose a language',ru:'Выберите язык',uk:'Виберіть мову',pl:'Wybierz język',ro:'Alege o limbă' }[uiLang()];
@@ -1045,18 +1057,18 @@ function renderSetup() {
   const welcome = !state.settings && !selectedCourseLink && !d.target;
   let html = `<section class="setup">${welcome ? `<p class="setup-kicker">${esc(t('setupTitle'))}</p>` : `<div class="setup-heading"><h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>${state.settings ? `<button class="setup-cancel" id="cancelBtn">${esc(t('cancel'))}</button>` : ''}</div>`}`;
   if (d.target) html += `<details class="setup-selection"><summary><span>${esc(t('learnQ'))}</span><b>${esc(LANGS[d.target].name)}</b></summary>`;
-  html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">`;
-  for (const l of targets) html += choice(`data-target="${l}"`, d.target === l, esc(LANGS[l].name));
+  html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices language-choices">`;
+  for (const l of targets) html += choice(`data-target="${l}"`, d.target === l, languageName(l, LANGS[l].name));
   html += `</div></div>`;
   if (d.target) html += '</details>';
 
   if (d.target) {
     if (d.base) html += `<details class="setup-selection"><summary><span>${esc(t('baseQ'))}</span><b>${esc(L[d.base])}</b></summary>`;
-    html += `<div class="step"><h2>${esc(t('baseQ'))}</h2><div class="choices">`;
+    html += `<div class="step"><h2>${esc(t('baseQ'))}</h2><div class="choices language-choices">`;
     const nPics = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
-    if (nPics >= 8) html += choice(`data-base="${d.target}"`, d.base === d.target, esc(L[d.target]), t('nativeB') + ' · ' + t('nativeS'));
-    else html += `<button class="choice" disabled aria-pressed="false"><b>${esc(L[d.target])}</b><small>${esc(t('nativeB'))} · ${esc(t('nativeSoon'))}</small></button>`;
-    for (const l of Object.keys(LANGS).filter((l) => l !== d.target)) html += choice(`data-base="${l}"`, d.base === l, esc(L[l]), t('otherS'));
+    if (nPics >= 8) html += choice(`data-base="${d.target}"`, d.base === d.target, languageName(d.target, L[d.target]));
+    else html += `<button class="choice" disabled aria-pressed="false"><b>${languageName(d.target, L[d.target])}</b></button>`;
+    for (const l of Object.keys(LANGS).filter((l) => l !== d.target)) html += choice(`data-base="${l}"`, d.base === l, languageName(l, L[l]));
     html += `</div></div>`;
     if (d.base) html += '</details>';
   }
@@ -1270,6 +1282,41 @@ function metaHTML(c, x) {
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }
 
+// Fit whole words to the available button width, keeping ordinary answers at
+// their normal size. Very long compounds use compact full-width rows instead
+// of becoming tiny text or forcing a split in the middle of a word.
+function fitAnswerText() {
+  const groups = $('app').querySelectorAll('.options:not(.pics)');
+  if (!groups.length) return;
+  const measure = document.createElement('canvas').getContext('2d');
+  for (const group of groups) {
+    group.classList.remove('fit-wide');
+    const labels = [...group.querySelectorAll('.opt .w')];
+    labels.forEach(label => label.style.removeProperty('font-size'));
+    const fit = () => labels.map(label => {
+      const style = getComputedStyle(label), button = label.closest('.opt');
+      const buttonStyle = getComputedStyle(button);
+      const key = button.querySelector('.key');
+      const horizontal = getComputedStyle(button).flexDirection === 'row';
+      const available = button.clientWidth - parseFloat(buttonStyle.paddingLeft) - parseFloat(buttonStyle.paddingRight)
+        - (horizontal && key ? key.getBoundingClientRect().width + parseFloat(buttonStyle.gap) : 0) - 1;
+      const size = parseFloat(style.fontSize);
+      measure.font = `${style.fontWeight} ${size}px ${style.fontFamily}`;
+      const longest = Math.max(1, ...label.textContent.trim().split(/\s+/u).map(word => measure.measureText(word).width));
+      return Math.min(size, Math.floor(size * available / longest));
+    });
+    let sizes = fit();
+    if (sizes.some(size => size < 16) && !group.classList.contains('wide')) {
+      group.classList.add('fit-wide');
+      sizes = fit();
+    }
+    const shared = Math.min(22, ...sizes);
+    labels.forEach(label => { label.style.fontSize = `${shared}px`; });
+  }
+}
+window.addEventListener('resize', fitAnswerText);
+if (document.fonts) document.fonts.ready.then(fitAnswerText);
+
 function optionsHTML(c, x, answered) {
   const rec = current.qdir === 'rec';
   let html = `<div class="options${x.phrase ? ' wide' : ''}${rec && c.pics ? ' pics' : ''}">`;
@@ -1436,6 +1483,7 @@ function renderPlayView() {
   }
   $('app').innerHTML = html;
   bindWordSave(x);
+  fitAnswerText();
 
   const sb = $('speakBtn');
   if (sb) sb.onclick = () => speakTarget(x, true);
@@ -1627,6 +1675,7 @@ function renderPlace() {
     <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))}</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
   $('app').innerHTML = html;
   bindWordSave(x);
+  fitAnswerText();
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
   const dk = $('dkBtn');
   if (dk) dk.onclick = () => { if (!current.answered) { current.answered = '-'; placementAnswer(false); } };
