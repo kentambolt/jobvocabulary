@@ -225,6 +225,7 @@ const LIBRARY_TEXT = {
     "unavailable": "Слово недоступне"
   }
 };
+for (const [lang, locale] of Object.entries(typeof EXTRA_LOCALES === 'undefined' ? {} : EXTRA_LOCALES)) LIBRARY_TEXT[lang] = locale.library;
 const lt = (key) => LIBRARY_TEXT[uiLang()][key];
 let dictionaryData = null;
 let dictionaryPromise = null;
@@ -247,7 +248,7 @@ function libraryAudio(x, lang) {
   return x.words[lang] && 'speechSynthesis' in window ? `<button class="secondary library-audio" data-listen-word="${esc(x.id)}" data-listen-lang="${lang}" aria-label="${esc(lt('listen') + ': ' + x.words[lang])}">${SPEAK_SVG}</button>` : '';
 }
 function bindLibraryAudio(container) {
-  container.querySelectorAll('[data-listen-word]').forEach((button) => button.onclick = () => speak(ITEM[button.dataset.listenWord].words[button.dataset.listenLang], button.dataset.listenLang, true));
+  container.querySelectorAll('[data-listen-word]').forEach((button) => button.onclick = () => speak(lexicalForm(ITEM[button.dataset.listenWord],button.dataset.listenLang), button.dataset.listenLang, true));
 }
 function renameLibraryList() {
   const dialog = $('saveWordDialog');
@@ -270,16 +271,27 @@ function registerOwnWords() {
 }
 function loadDictionary() {
   if (dictionaryData) return Promise.resolve(dictionaryData);
-  if (!dictionaryPromise) dictionaryPromise = fetch(`lexicon.json?v=${LEXICON_INDEX.version}`).then((r) => {
+  if (!dictionaryPromise) dictionaryPromise = fetch(`${LEXICON_INDEX.file || 'lexicon.json'}?v=${LEXICON_INDEX.version}`).then((r) => {
     if (!r.ok) throw new Error('dictionary');
     return r.json();
-  }).then((data) => {
-    if (data.version === 2) data.aliases = Object.fromEntries(Object.entries(data.aliases).map(([key, index]) => [key, data.entries[index][0]]));
+  }).then(async (data) => {
+    const languages = data.languages || ['da', 'en', 'ru', 'uk'];
+    const supplements = await Promise.all((data.supplements || []).map(async source => {
+      const response = await fetch(source.url);
+      if (!response.ok) throw new Error('dictionary');
+      return response.json();
+    }));
+    for (const supplement of supplements) {
+      const offset = data.entries.length;
+      for (const row of supplement.entries) data.entries.push([row[0],...languages.map(lang=>{const index=supplement.languages.indexOf(lang);return index<0?'':row[index+1];}),row[supplement.languages.length+1],row[supplement.languages.length+2]]);
+      for (const [id,index] of Object.entries(supplement.aliases)) if (!(id in data.aliases)) data.aliases[id]=offset+index;
+    }
+    if (data.version >= 2) data.aliases = Object.fromEntries(Object.entries(data.aliases).map(([key, index]) => [key, data.entries[index][0]]));
     dictionaryData = data;
     const previousRefs = JSON.stringify([wordLibrary.data.favorites, wordLibrary.data.lists]);
     wordLibrary.remapReferences(canonicalWord);
     if (previousRefs !== JSON.stringify([wordLibrary.data.favorites, wordLibrary.data.lists])) saveState();
-    for (const [id, da, en, ru, uk, phrase, image] of data.entries) ITEM[id] = { id, words: { da, en, ru, uk }, phrase: !!phrase, pos: 'dictionary', diff: 1, image };
+    for (const row of data.entries) ITEM[row[0]] = { id: row[0], words: Object.fromEntries(languages.map((lang, index) => [lang, row[index + 1]])), phrase: !!row[languages.length + 1], pos: 'dictionary', diff: 1, image: row[languages.length + 2] };
     registerOwnWords();
     return data;
   }).catch((error) => { dictionaryPromise = null; throw error; });

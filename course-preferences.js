@@ -2,7 +2,7 @@
 // Course choices are independent of the temporary settings used for personal lists.
 var CoursePreferences = {
   normalize(settings) {
-    const langs = ['da', 'en', 'ru', 'uk'];
+    const langs = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
     if (!settings || !langs.includes(settings.target) || !langs.includes(settings.base)) return null;
     const pack = settings.pack || 'top';
     if (typeof pack !== 'string' || !/^[a-z][a-z0-9-]*$/.test(pack)) return null;

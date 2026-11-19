@@ -6,7 +6,7 @@ var PracticeResume = {
   },
   describe(state, names) {
     const s = state?.settings;
-    const languages = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська' };
+    const languages = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська', pl: 'Polski', ro: 'Română' };
     if (!s || !Object.hasOwn(languages, s.target) || !Object.hasOwn(languages, s.base) || !['rec', 'prod', 'write', 'path'].includes(s.dir)) return null;
     const pack = s.pack || 'top';
     let title;

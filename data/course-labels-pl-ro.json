@@ -1,0 +1,68 @@
+{
+  "cleaning": {
+    "name": ["Sprzątanie", "Curățenie"],
+    "desc": ["Słowa i zwroty przydatne w pracy w firmie sprzątającej", "Cuvinte și expresii pentru munca într-o firmă de curățenie"],
+    "categories": {
+      "equipment": ["Sprzęt", "Echipamente"], "products": ["Środki czystości", "Produse de curățenie"], "rooms": ["Pomieszczenia i miejsca", "Încăperi și locuri"], "fixtures": ["Meble i wyposażenie", "Mobilier și dotări"], "actions": ["Czynności", "Acțiuni"], "dirt": ["Brud i wypadki", "Murdărie și accidente"], "describe": ["Opisy", "Descrieri"], "work": ["Praca i czas", "Muncă și timp"], "kitchen": ["Przedmioty kuchenne i żywność", "Obiecte de bucătărie și alimente"], "pests": ["Owady i zwierzęta", "Insecte și animale"], "waste": ["Odpady i segregacja", "Deșeuri și sortare"], "places": ["Gdzie? Pod, nad, za", "Unde? Sub, deasupra, în spate"], "outdoor": ["Na zewnątrz", "În exterior"], "where": ["Gdzie i jak", "Unde și cum"], "sorting": ["Gdzie wyrzucić śmieci?", "Unde se aruncă deșeurile?"], "outdoorTasks": ["Prace na zewnątrz", "Sarcini în exterior"], "greet": ["Powitania i rozumienie", "Saluturi și înțelegere"], "tasks": ["Zadania od klienta", "Sarcini de la client"], "ask": ["Pytania do klienta", "Întrebări pentru client"], "home": ["Gdy klient jest w domu", "Când clientul este acasă"], "problems": ["Problemy i wypadki", "Probleme și accidente"], "smalltalk": ["Luźna rozmowa", "Conversații de zi cu zi"], "colleagues": ["Szef i współpracownicy", "Șeful și colegii"], "finish": ["Po zakończeniu pracy", "La terminarea lucrului"]
+    }
+  },
+  "restaurant": {
+    "name": ["Restauracja i kuchnia", "Restaurant și bucătărie"],
+    "desc": ["Słowa i zwroty do pracy w restauracji, kawiarni lub stołówce", "Cuvinte și expresii pentru munca într-un restaurant, o cafenea sau o cantină"],
+    "categories": {
+      "equipment": ["Wyposażenie kuchni", "Echipamente de bucătărie"], "utensils": ["Przybory kuchenne", "Ustensile de bucătărie"], "ingredients": ["Składniki", "Ingrediente"], "cooking": ["Gotowanie", "Gătit"], "dishwashing": ["Zmywanie naczyń", "Spălarea vaselor"], "hygiene": ["Higiena i bezpieczeństwo żywności", "Igienă și siguranță alimentară"], "dining": ["Sala restauracyjna", "Sala de mese"], "drinks": ["Napoje", "Băuturi"], "allergies": ["Alergie i diety", "Alergii și diete"], "staff": ["Personel", "Personal"], "work": ["Zmiany i wynagrodzenie", "Ture și salariu"], "guests": ["Obsługa gości", "Servirea oaspeților"], "payment": ["Obsługa płatności", "Încasarea plăților"], "cafe": ["Kawiarnia i stołówka", "Cafenea și cantină"], "kitchenCalls": ["Zamówienia i komunikaty w kuchni", "Comenzi și comunicare în bucătărie"], "dishTasks": ["Zadania na zmywaku", "Sarcini la spălătorie"], "hygieneRules": ["Zasady higieny", "Reguli de igienă"], "openClose": ["Otwieranie i zamykanie", "Deschiderea și închiderea"], "problems": ["Problemy i wypadki", "Probleme și accidente"], "shifts": ["Rozmowy z szefem o zmianach i płacy", "Discuții cu șeful despre ture și salariu"], "questions": ["Pytania do kucharza i współpracowników", "Întrebări pentru bucătar și colegi"]
+    }
+  },
+  "warehouse": {
+    "name": ["Magazyn i produkcja", "Depozit și producție"],
+    "desc": ["Słowa i zwroty do pracy w magazynie, przy pakowaniu lub produkcji", "Cuvinte și expresii pentru munca în depozit, la ambalare sau în producție"],
+    "categories": {
+      "places": ["Miejsca w pracy", "Locuri la serviciu"], "equipment": ["Sprzęt", "Echipamente"], "tasks": ["Zadania", "Sarcini"], "production": ["Linia produkcyjna", "Linia de producție"], "safety": ["Bezpieczeństwo", "Siguranță"], "shifts": ["Zmiany i zatrudnienie", "Ture și angajare"], "quantities": ["Ilości i dokumenty", "Cantități și documente"], "instructions": ["Polecenia brygadzisty", "Instrucțiuni de la șeful de echipă"], "ask": ["Pytania w pracy", "Întrebări la serviciu"], "safetyPhrases": ["Bezpieczeństwo w praktyce", "Siguranța în practică"], "problems": ["Problemy", "Probleme"], "shiftTalk": ["Zmiany i przerwy", "Ture și pauze"], "payAgency": ["Płaca, choroba i agencja", "Salariu, concediu medical și agenție"], "colleagues": ["Pierwszy dzień i współpracownicy", "Prima zi și colegii"]
+    }
+  },
+  "construction": {
+    "name": ["Budownictwo i rzemiosło", "Construcții și meserii"],
+    "desc": ["Słowa i zwroty przydatne w pracy na budowie", "Cuvinte și expresii pentru munca pe șantier"],
+    "categories": {
+      "handTools": ["Narzędzia ręczne", "Unelte de mână"], "powerTools": ["Elektronarzędzia i maszyny", "Unelte electrice și utilaje"], "materials": ["Materiały", "Materiale"], "building": ["Części budynku", "Părțile unei clădiri"], "groundwork": ["Roboty ziemne i rozbiórka", "Terasamente și demolare"], "actions": ["Czynności", "Acțiuni"], "safety": ["Bezpieczeństwo", "Siguranță"], "site": ["Plac budowy", "Șantierul"], "people": ["Ludzie na budowie", "Oamenii de pe șantier"], "work": ["Godziny pracy, płaca i pogoda", "Program, salariu și vreme"], "measure": ["Pomiary i opisy", "Măsurători și descrieri"], "orders": ["Polecenia kierownika", "Instrucțiuni de la maistru"], "questions": ["Pytania o zadanie", "Întrebări despre sarcină"], "safetyRules": ["Bezpieczeństwo na budowie", "Siguranța pe șantier"], "problems": ["Problemy", "Probleme"], "handling": ["Narzędzia i materiały", "Unelte și materiale"], "teamwork": ["Współpraca", "Munca în echipă"], "cleanup": ["Sprzątanie i rozbiórka", "Curățenie și demolare"], "timePay": ["Czas i płaca", "Timp și salariu"], "smalltalk": ["Codzienne rozmowy", "Conversații de zi cu zi"]
+    }
+  },
+  "care": {
+    "name": ["Opieka nad osobami starszymi", "Îngrijirea persoanelor vârstnice"],
+    "desc": ["Słowa i zwroty do pracy w opiece domowej i domach opieki", "Cuvinte și expresii pentru munca în îngrijirea la domiciliu și în cămine"],
+    "categories": {
+      "people": ["Osoby", "Persoane"], "places": ["Miejsca", "Locuri"], "body": ["Ciało", "Corpul"], "personalCare": ["Pielęgnacja osobista", "Îngrijire personală"], "aids": ["Sprzęt pomocniczy i przemieszczanie osób", "Dispozitive de sprijin și transferul persoanelor"], "food": ["Jedzenie i picie", "Mâncare și băuturi"], "health": ["Zdrowie i obserwacje", "Sănătate și observații"], "hygiene": ["Higiena i zakażenia", "Igienă și infecții"], "feelings": ["Uczucia i samopoczucie", "Emoții și stare de bine"], "work": ["Praca", "Serviciul"], "greeting": ["Powitania i rozmowy", "Saluturi și conversații"], "duringCare": ["Podczas opieki", "În timpul îngrijirii"], "transfers": ["Przemieszczanie i bezpieczeństwo", "Transferuri și siguranță"], "meals": ["Podczas posiłków", "În timpul meselor"], "comfort": ["Ból i samopoczucie", "Durere și stare de bine"], "reporting": ["Przekazywanie informacji współpracownikom", "Raportarea către colegi"], "emergency": ["Nagłe sytuacje", "Urgențe"], "instructions": ["Co mówią współpracownicy", "Ce spun colegii"], "workTalk": ["Rozmowy o sprawach zawodowych", "Discuții practice la serviciu"]
+    }
+  },
+  "agriculture": {
+    "name": ["Rolnictwo i produkcja żywności", "Agricultură și producție alimentară"],
+    "desc": ["Słowa i zwroty do pracy w gospodarstwie, szklarni, przy zbiorach i w rzeźni", "Cuvinte și expresii pentru munca în ferme, sere, la recoltare și în abatoare"],
+    "categories": {
+      "pigs": ["Świnie", "Porci"], "cattle": ["Bydło i dojenie", "Bovine și muls"], "field": ["Pola i uprawy", "Câmpuri și culturi"], "machines": ["Maszyny i narzędzia", "Utilaje și unelte"], "greenhouse": ["Szklarnia i ogrodnictwo", "Seră și grădină de legume"], "picking": ["Zbiory owoców i jagód", "Culesul fructelor și al fructelor de pădure"], "factory": ["Rzeźnia i zakład spożywczy", "Abator și fabrică de alimente"], "safety": ["Bezpieczeństwo i higiena", "Siguranță și igienă"], "jobpay": ["Praca, płaca i mieszkanie", "Serviciu, salariu și locuință"], "actions": ["Czynności", "Acțiuni"], "firstday": ["Pierwszy dzień", "Prima zi"], "stable": ["W budynku inwentarskim", "În grajd"], "problems": ["Chore zwierzęta i problemy", "Animale bolnave și probleme"], "fieldwork": ["Na polu", "Pe câmp"], "greenhousework": ["W szklarni", "În seră"], "pickingwork": ["Zbiory", "Recoltare"], "factorywork": ["W rzeźni i zakładzie", "La abator și în fabrică"], "safetywork": ["Uważaj!", "Atenție!"], "questions": ["Pytania", "Întrebări"], "worktalk": ["Godziny pracy, płaca i mieszkanie", "Program, salariu și locuință"], "weathertalk": ["Pogoda", "Vremea"]
+    }
+  },
+  "retail": {
+    "name": ["Sklep i supermarket", "Magazin și supermarket"],
+    "desc": ["Słowa i zwroty do pracy w sklepie lub supermarkecie", "Cuvinte și expresii pentru munca într-un magazin sau supermarket"],
+    "categories": {
+      "store": ["W sklepie", "În magazin"], "payment": ["Płatność", "Plată"], "goods": ["Grupy produktów", "Categorii de produse"], "labels": ["Etykiety i daty", "Etichete și date"], "tasks": ["Zadania", "Sarcini"], "warehouse": ["Zaplecze magazynowe i dostawy", "Depozit și livrări"], "counter": ["Piekarnia i stoisko z żywnością", "Brutărie și raion de delicatese"], "clothing": ["Odzież i inne sklepy", "Îmbrăcăminte și alte magazine"], "job": ["Praca i płaca", "Serviciu și salariu"], "polite": ["Uprzejma obsługa", "Comunicare politicoasă"], "till": ["Przy kasie", "La casă"], "help": ["Pomoc klientom", "Ajutor pentru clienți"], "counterTalk": ["Przy ladzie", "La tejghea"], "returns": ["Zwroty i reklamacje", "Retururi și reclamații"], "manager": ["Zadania od kierownika", "Sarcini de la manager"], "problems": ["Problemy", "Probleme"], "shifts": ["Zmiany i płaca", "Ture și salariu"]
+    }
+  },
+  "transport": {
+    "name": ["Kierowca i kurier", "Șofer și curier"],
+    "desc": ["Słowa i zwroty do pracy jako kierowca, kurier paczek, dostawca jedzenia lub taksówkarz", "Cuvinte și expresii pentru șoferi, curieri, livratori de mâncare și taximetriști"],
+    "categories": {
+      "delivery": ["Paczki i dostawa", "Colete și livrare"], "address": ["Adresy i budynki", "Adrese și clădiri"], "directions": ["Kierunki", "Indicații de orientare"], "vehicle": ["Pojazd", "Vehiculul"], "depot": ["Baza i załadunek", "Depou și încărcare"], "food": ["Dostawa jedzenia", "Livrarea mâncării"], "taxi": ["Taksówka i pasażerowie", "Taxi și pasageri"], "work": ["Praca i płaca", "Serviciu și salariu"], "actions": ["Czynności", "Acțiuni"], "door": ["Przy drzwiach", "La ușă"], "phone": ["Telefon i aplikacja", "Telefon și aplicație"], "atDepot": ["W bazie", "La depou"], "onRoute": ["W trasie", "Pe traseu"], "foodOrders": ["Zamówienia jedzenia", "Comenzi de mâncare"], "inTaxi": ["W taksówce", "În taxi"], "problems": ["Problemy i wypadki", "Probleme și accidente"], "shifts": ["Zmiany i płaca", "Ture și salariu"], "freight": ["Dostawy towarów", "Transport de mărfuri"]
+    }
+  },
+  "essentials": {
+    "name": ["Podstawy na co dzień", "Noțiuni de bază pentru viața de zi cu zi"],
+    "desc": ["Liczby, czas, dni tygodnia, miesiące, kolory i transport w codziennym życiu w Danii", "Numere, timp, zilele săptămânii, luni, culori și transport pentru viața de zi cu zi în Danemarca"],
+    "categories": {"numbers": ["Liczby i ilości", "Numere și cantități"], "calendar": ["Dni tygodnia i miesiące", "Zilele săptămânii și lunile"], "time": ["Godziny i spotkania", "Ora și programările"], "colours": ["Kolory", "Culori"], "gettingaround": ["Autobus, pociąg i kierunki", "Autobuz, tren și orientare"], "firstphrases": ["Zwroty na początek", "Expresii pentru început"]}
+  },
+  "driving": {
+    "name": ["Prawo jazdy", "Examenul auto"],
+    "desc": ["Słowa i zwroty do egzaminu teoretycznego, praktycznego i lekcji jazdy", "Cuvinte și expresii pentru examenul teoretic, proba practică și lecțiile de conducere"],
+    "categories": {"roads": ["Drogi i miejsca", "Drumuri și locuri"], "signs": ["Znaki i oznakowanie", "Indicatoare și marcaje rutiere"], "car": ["Samochód", "Mașina"], "manoeuvres": ["Manewry i czynności", "Manevre și acțiuni"], "roadusers": ["Uczestnicy ruchu i pojazdy", "Participanți la trafic și vehicule"], "safety": ["Przepisy i bezpieczeństwo", "Reguli și siguranță"], "licence": ["Prawo jazdy i egzaminy", "Permis și examene"], "conditions": ["Pogoda i warunki", "Vreme și condiții"], "directions": ["Polecenia podczas jazdy", "Indicații în timpul conducerii"], "manoeuvreTasks": ["Manewry i parkowanie", "Manevre și parcare"], "ask": ["Pytania do instruktora", "Întrebări pentru instructor"], "rules": ["Przepisy drogowe", "Reguli de circulație"], "checks": ["Przed jazdą", "Înainte de plecare"], "feedback": ["Uwagi instruktora", "Observații de la instructor"], "booking": ["Rezerwacje i dokumenty", "Programări și documente"]}
+  }
+}

@@ -402,9 +402,15 @@ const LANGS = {
   en: { name: 'English', tts: 'en-GB' },
   ru: { name: 'Русский', tts: 'ru-RU' },
   uk: { name: 'Українська', tts: 'uk-UA' },
+  pl: { name: 'Polski', tts: 'pl-PL' },
+  ro: { name: 'Română', tts: 'ro-RO' },
 };
 
-const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, uk, pos, diff]) => ({ id, words: { da, en, ru, uk }, pos, diff }));
+const extraCoreWords = typeof CORE_TRANSLATIONS !== 'undefined' ? CORE_TRANSLATIONS : typeof module !== 'undefined' ? require('./core-translations') : {};
+const CONCEPTS = WORD_ROWS.map(([id, da, en, ru, uk, pos, diff]) => ({ id, words: { da, en, ru, uk, ...extraCoreWords[id] }, pos, diff }));
 const BY_ID = Object.fromEntries(CONCEPTS.map((c) => [c.id, c]));
+// New learning languages share the Danish concept sequence until separate
+// frequency corpora are available. Never fabricate per-million statistics.
+for (const lang of ['uk','pl','ro']) ORDER[lang] = ORDER.da.filter(id => BY_ID[id].words[lang]);
 
 if (typeof module !== 'undefined') module.exports = { WORD_ROWS, CONCEPTS, BY_ID, ORDER, IPM, LANGS };

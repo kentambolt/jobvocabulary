@@ -1,31 +1,42 @@
 # Job Vocabulary
 
 Static, browser-based vocabulary practice. The current content focuses on Danish
-for work and everyday life, with Danish, English, Russian and Ukrainian interfaces
-and translations. The existing general vocabulary also supports English and Russian.
+for work and everyday life, with Danish, English, Russian, Ukrainian, Polish and
+Romanian interfaces and course translations. All six can be learning or helper
+languages. Original corpus rankings remain for Danish, English and Russian;
+the additional languages use the shared Danish concept sequence and do not show
+invented frequency statistics.
 
 ## Build and check
 
 Run these commands from the repository root after content or shared asset changes:
 
 ```sh
+node data/build-locales.js
 node data/build-packs.js
 node data/build-lexicon.js
 node data/build-pages.js
 node --test tests/*.test.cjs
 ```
 
-`build-packs.js` validates the four-language course files and updates the small
+`build-packs.js` validates the six-language course files and updates the small
 `packs/index.js` manifest. Courses are loaded only when selected.
 
-`build-lexicon.js` creates `lexicon.json` and its small version/count manifest.
-The dictionary is loaded only for saved words or personal lists. Version 2 uses
-one record per distinct four-language meaning and numeric alias references:
+`build-lexicon.js` creates `lexicon-v3.json` and its small version/count manifest.
+The dictionary is loaded only for saved words or personal lists. Version 3 uses
+one record per distinct six-language meaning and numeric alias references.
+The loader also accepts earlier four-language versions:
 
 ```text
-entries: [id, da, en, ru, uk, isPhrase, pictureConceptId]
+languages: [da, en, ru, uk, pl, ro]
+entries: [id, da, en, ru, uk, pl, ro, isPhrase, pictureConceptId]
 aliases: source item ID -> index in entries
 ```
+
+`lexicon.json` remains a compatible four-language version-2 projection for older
+tabs that are already open. Never replace that URL with the version-3 row layout:
+old parsers would misread word/phrase fields and numeric aliases. The new manifest
+selects `lexicon-v3.json`; all record IDs and source aliases match between versions.
 
 Keep the generated dictionary checked in: its previous aliases retain IDs when
 translations are corrected. Identical records can share an entry; different
@@ -45,9 +56,39 @@ This repository is `kentambolt/jobvocabulary` (renamed from `trafficwords` on 20
 A local private checkout must use the remote `kentambolt/jobvocabulary-private`: the old
 private name `kentambolt/jobvocabulary` now points to this public repository.
 
-`build-pages.js` writes the four language catalogues and course pages, updates the
+`build-pages.js` writes the six language catalogues and course pages, updates the
 sitemap and adds content hashes to shared asset URLs. Existing published course
 paths are preserved. The shared category definitions live in `catalog.js`.
+
+### Selected private content imports
+
+The importers take an optional absolute private checkout/source path:
+
+```sh
+node data/import-course-content.js .private/jobvocabulary-private
+node data/import-dictionary-content.js .private/jobvocabulary-private
+node data/build-core-translations.js .private/jobvocabulary-private/content/translations/core-pl-ro.json
+```
+
+Only selected learning rows are exported. Source checks, confidence, factual
+reviews and generator input data remain private. Polish/Romanian course names and
+topic labels are authored in `data/course-labels-pl-ro.json`; UI text lives in
+`locales/pl.json` and `locales/ro.json` and is compiled to the small shared script.
+Rebuild packs, lexicon and pages after importing. Existing Danish source IDs and
+dictionary aliases must survive language expansion. Keep the language data overlay
+at the end of `words.js` if regenerating its original four-language base rows.
+
+The 540 Wiktionary-derived meanings remain in the separately distributed
+`dictionary/common-words.json`, with attribution and CC BY-SA 4.0 terms linked from
+the menu. They are joined to the project dictionary only in browser memory, not
+redistributed as a relicensed project dataset. The 29 original supplementary senses
+are imported separately; equal records may share an existing dictionary entry.
+Missing language equivalents remain empty and are filtered out for that pair.
+
+Country-example sentences such as “Jeg kommer fra Ukraine” remain literal examples
+in every translation. Interface language never changes or infers nationality.
+Before 2027 publication changes, recheck the 1813/region-specific wording against
+current regional information; private fact reviews retain the source details.
 
 ## Personal vocabulary
 

@@ -9,7 +9,7 @@ var WordLibrary = class WordLibrary {
   }
   static id() { return 'user:' + (globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2)); }
   static signature(words) {
-    return JSON.stringify(['da', 'en', 'ru', 'uk'].filter((lang) => typeof words?.[lang] === 'string').map((lang) => [lang, words[lang].trim().normalize('NFC')]));
+    return JSON.stringify(['da', 'en', 'ru', 'uk', 'pl', 'ro'].filter((lang) => typeof words?.[lang] === 'string').map((lang) => [lang, words[lang].trim().normalize('NFC')]));
   }
   static isPhrase(words) {
     if (typeof words.da === 'string') return /\s/.test(words.da.trim().replace(/^(en|et|at)\s+/i, ''));
@@ -51,7 +51,7 @@ var WordLibrary = class WordLibrary {
     for (const list of this.data.lists) list.items = remap(list.items);
   }
   addCustom(words) {
-    const allowed = ['da', 'en', 'ru', 'uk'];
+    const allowed = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
     const clean = Object.fromEntries(allowed.filter((lang) => typeof words[lang] === 'string' && words[lang].trim()).map((lang) => [lang, words[lang].trim().slice(0, 300)]));
     if (Object.keys(clean).length < 2) throw new Error('translations');
     const existing = Object.entries(this.data.custom).find(([, item]) => WordLibrary.signature(item.words) === WordLibrary.signature(clean));
@@ -66,7 +66,7 @@ var WordLibrary = class WordLibrary {
     // Validate the complete import before changing any existing personal data.
     if (incoming.data.lists.some((list) => !list.name.trim())) throw new Error('name');
     for (const [id, entry] of Object.entries(incoming.data.custom)) {
-      if (!id.startsWith('user:') || !entry?.words || Object.entries(entry.words).length < 2 || Object.entries(entry.words).some(([lang, value]) => !['da','en','ru','uk'].includes(lang) || typeof value !== 'string' || !value.trim() || value.length > 300)) throw new Error('entry');
+      if (!id.startsWith('user:') || !entry?.words || Object.entries(entry.words).length < 2 || Object.entries(entry.words).some(([lang, value]) => !['da','en','ru','uk','pl','ro'].includes(lang) || typeof value !== 'string' || !value.trim() || value.length > 300)) throw new Error('entry');
     }
     const idMap = new Map();
     for (const [id, entry] of Object.entries(incoming.data.custom)) {

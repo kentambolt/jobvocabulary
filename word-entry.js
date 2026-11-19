@@ -1,12 +1,19 @@
 'use strict';
 var WordEntry = class WordEntry {
   static norm(value) { return typeof value === 'string' ? value.trim().toLocaleLowerCase().normalize('NFC') : ''; }
+  static parts(entry,lang) {
+    const text=entry.words?.[lang] || '';
+    const match=!entry.phrase && text.match(/^(.*?)\s+\(([^()]+)\)$/u);
+    return match ? {text:match[1],detail:match[2]} : {text,detail:''};
+  }
   static exact(entry, lang, value) {
     const word = WordEntry.norm(entry.words?.[lang]);
     const query = WordEntry.norm(value);
     if (!word || !query) return false;
     if (word === query) return true;
-    return lang === 'da' && !entry.phrase && word.replace(/^(en|et|at)\s+(.+)$/, '$2') === query;
+    const form=WordEntry.norm(WordEntry.parts(entry,lang).text);
+    if (form===query) return true;
+    return lang === 'da' && !entry.phrase && form.replace(/^(en|et|at)\s+(.+)$/, '$2') === query;
   }
   static search(entries, query, pair, limit = 20) {
     const q = WordEntry.norm(query);
@@ -57,7 +64,7 @@ var WordEntry = class WordEntry {
     this.matches = []; this.hint = 'found';
   }
   setLanguage(field, lang) {
-    if (!['target', 'base'].includes(field) || !['da', 'en', 'ru', 'uk'].includes(lang)) return;
+    if (!['target', 'base'].includes(field) || !['da', 'en', 'ru', 'uk', 'pl', 'ro'].includes(lang)) return;
     const before = { target: this.target, base: this.base };
     const other = field === 'target' ? 'base' : 'target';
     this[field] = lang;
