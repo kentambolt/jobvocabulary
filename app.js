@@ -487,6 +487,7 @@ let draft = null;
 let current = null;
 let timer = null;
 let placement = null;
+let pendingPlacement = false;
 let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
@@ -548,6 +549,7 @@ function viewFromHash() {
 // Navigation med rigtige URL'er, så browserens tilbage-knap virker.
 function go(v, { keepDraft = false } = {}) {
   if ($('appMenu')?.open) $('appMenu').close();
+  if (v !== 'play' && v !== 'place') pendingPlacement = false;
   if (v === 'play' && placement && current?.kind === 'place') v = 'place';
   if (v !== 'play') { lastFeedback = null; levelNotice = null; }
   const hash = v === 'home' ? '#forside' : v === 'setup' ? '#indstillinger' : v === 'stats' ? '#statistik' : v === 'library' ? '#mine-ord' : '';
@@ -1028,23 +1030,21 @@ function renderSetup() {
 
   const welcome = !state.settings && !selectedCourseLink && !d.target;
   let html = `<section class="setup">${welcome ? `<p class="setup-kicker">${esc(t('setupTitle'))}</p>` : `<h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>`}`;
-  if (selectedCourseLink && !state.settings && d.target && d.base && countPool(d)) {
-    const selected = PACK_LIST.find((p) => p.id === d.pack);
-    const name = selected ? selected.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
-    html += `<div class="setup-ready"><div><b>${esc(name)}</b><span>${esc(LANGS[d.target].name)} / ${esc(L[d.base])}</span></div><button class="primary" id="quickStartBtn">${esc(t('start'))}</button><button class="secondary" id="quickOptionsBtn">${esc(t('taskOptions'))}</button></div>`;
-  }
-
+  if (d.target) html += `<details class="setup-selection"><summary><span>${esc(t('learnQ'))}</span><b>${esc(LANGS[d.target].name)}</b></summary>`;
   html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">`;
   for (const l of targets) html += choice(`data-target="${l}"`, d.target === l, esc(LANGS[l].name));
   html += `</div></div>`;
+  if (d.target) html += '</details>';
 
   if (d.target) {
+    if (d.base) html += `<details class="setup-selection"><summary><span>${esc(t('baseQ'))}</span><b>${esc(L[d.base])}</b></summary>`;
     html += `<div class="step"><h2>${esc(t('baseQ'))}</h2><div class="choices">`;
     const nPics = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
     if (nPics >= 8) html += choice(`data-base="${d.target}"`, d.base === d.target, esc(L[d.target]), t('nativeB') + ' · ' + t('nativeS'));
     else html += `<button class="choice" disabled aria-pressed="false"><b>${esc(L[d.target])}</b><small>${esc(t('nativeB'))} · ${esc(t('nativeSoon'))}</small></button>`;
     for (const l of Object.keys(LANGS).filter((l) => l !== d.target)) html += choice(`data-base="${l}"`, d.base === l, esc(L[l]), t('otherS'));
     html += `</div></div>`;
+    if (d.base) html += '</details>';
   }
 
   if (d.target && d.base) {
@@ -1056,21 +1056,23 @@ function renderSetup() {
     if (!native) {
       const selectedPack = PACK_LIST.find((p) => p.id === d.pack);
       const selectedName = isList(d) ? libraryTitle(d.pack.slice(5)) : selectedPack ? selectedPack.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
-      html += `<div class="step course-picker"><h2>${esc(t('whatQ'))}</h2><details${!state.settings && !selectedCourseLink ? ' open' : ''}><summary>${esc(selectedName)} · ${esc(COURSE_CATALOG.labels[ul].catalog)}</summary>`;
+      html += `<div class="step course-picker"><h2><label for="courseSelect">${esc(t('whatQ'))}</label></h2><div class="course-select-wrap"><select id="courseSelect">`;
+      if (isList(d)) html += `<option value="${esc(d.pack)}" selected>${esc(selectedName)}</option>`;
+      const courseOption = (id, name) => `<option value="${id}"${d.pack === id ? ' selected' : ''}>${esc(name)}</option>`;
       for (const group of COURSE_CATALOG.groups) {
-        html += `<fieldset class="course-group"><legend>${esc(group.name[ul])}</legend><div class="choices">`;
+        html += `<optgroup label="${esc(group.name[ul])}">`;
         for (const id of group.packs) {
-          if (id === TOP) html += choice(`data-pack="${TOP}"`, d.pack === TOP, esc(t('topB')), t('topS'));
+          if (id === TOP) html += courseOption(TOP, t('topB'));
           else if (id === PICS) {
-            if (nPicWords >= 8) html += choice(`data-pack="${PICS}"`, d.pack === PICS, esc(t('picsB')), t('picsS', { n: nPicWords }));
+            if (nPicWords >= 8) html += courseOption(PICS, t('picsB'));
           } else {
             const p = PACK_LIST.find((pack) => pack.id === id);
-            if (p) html += choice(`data-pack="${p.id}"`, d.pack === p.id, esc(p.name[ul]), `${p.desc[ul]} · ${p.total}`);
+            if (p) html += courseOption(p.id, p.name[ul]);
           }
         }
-        html += '</div></fieldset>';
+        html += '</optgroup>';
       }
-      html += '</details></div>';
+      html += '</select></div></div>';
     }
     const pack = isPack(d) ? packOf(d) : null;
     if (pack) {
@@ -1086,7 +1088,8 @@ function renderSetup() {
       html += `</fieldset><button class="primary" type="button" id="closeTopics">${esc(home.done)}</button></div></details></div>`;
     }
 
-    html += `<section class="step" id="practiceOptions">${practiceChoicesHTML(d, 'setup-')}</section>`;
+    const optionTitles = { da: 'Sværhedsgrad og opgaver', en: 'Difficulty and tasks', ru: 'Сложность и задания', uk: 'Складність і завдання' };
+    html += `<details class="setup-options" id="setupOptions"><summary><b>${esc(optionTitles[ul])}</b><small>${esc(t(pack ? 'packDiff' : 'diff')[d.diff])} · ${esc(PracticeOptions.modes(d).map(mode => dirName(mode, pics)).join(', '))}</small></summary><section class="step" id="practiceOptions">${practiceChoicesHTML(d, 'setup-')}</section>`;
 
     html += `<div class="step"><h2>${esc(t('diffQ'))}</h2><div class="choices">`;
     for (const lvl of [1, 2, 3]) {
@@ -1094,11 +1097,14 @@ function renderSetup() {
       html += choice(`data-diff="${lvl}"`, d.diff === lvl, esc((pack ? t('packDiff') : t('diff'))[lvl]), pack ? String(n) : t('nWords', { n }));
     }
     html += `</div></div>`;
+    html += '</details>';
 
-    html += `<div class="row actions">
+    const progress = state.progress[progKey(d)];
+    const canTest = !native && PracticeOptions.modes(d).length === 1 && countPool(d) >= 30 && !Object.keys(progress?.cards || {}).length;
+    html += `<div class="row actions setup-actions">
       ${state.settings ? `<button class="secondary" id="cancelBtn">${esc(t('cancel'))}</button>` : ''}
-      <button class="primary" id="startBtn" ${countPool(d) ? '' : 'disabled'}>${esc(state.settings ? t('save') : t('start'))}</button>
-      <label class="toggle"><input type="checkbox" id="soundChk" ${state.sound ? 'checked' : ''}> ${esc(t('sound'))}</label>
+      <button class="primary" id="startBtn" ${countPool(d) ? '' : 'disabled'}>${esc(t(state.settings ? 'save' : canTest ? 'placeSkip' : 'start'))}</button>
+      ${canTest ? `<button class="secondary" id="setupTestBtn">${esc(t('placeStart'))}</button>` : ''}
     </div>`;
   } else if (state.settings) {
     html += `<div class="row actions"><button class="secondary" id="cancelBtn">${esc(t('cancel'))}</button></div>`;
@@ -1106,7 +1112,11 @@ function renderSetup() {
   html += `</section>`;
   $('app').innerHTML = html;
 
-  const on = (sel, fn) => $('app').querySelectorAll(sel).forEach((b) => (b.onclick = () => { fn(b); render(); }));
+  const on = (sel, fn) => $('app').querySelectorAll(sel).forEach((b) => (b.onclick = () => {
+    fn(b); render();
+    if (sel === '[data-mode]' || sel === '[data-diff]') $('setupOptions').open = true;
+    if (sel === '[data-base]' || sel === '[data-pack]') window.scrollTo(0, 0);
+  }));
   on('[data-target]', (b) => { if (d.target !== b.dataset.target) { d.target = b.dataset.target; d.base = null; } });
   // Each course/language pair restores its own choices; a new scope starts gently.
   on('[data-base]', (b) => {
@@ -1116,11 +1126,13 @@ function renderSetup() {
     const saved = CoursePreferences.resolve(state, d);
     if (saved) Object.assign(d, saved, { modes: PracticeOptions.modes(saved), repeatLearned: saved.repeatLearned !== false });
   });
-  on('[data-pack]', (b) => {
-    if (d.pack === b.dataset.pack) return;
-    const saved = CoursePreferences.resolve(state, { ...d, pack: b.dataset.pack });
+  if ($('courseSelect')) $('courseSelect').onchange = () => {
+    const pack = $('courseSelect').value;
+    if (d.pack === pack) return;
+    const saved = CoursePreferences.resolve(state, { ...d, pack });
     if (saved) Object.assign(d, saved, { modes: PracticeOptions.modes(saved), repeatLearned: saved.repeatLearned !== false });
-  });
+    render(); window.scrollTo(0, 0); $('courseSelect').focus({ preventScroll: true });
+  };
   on('[data-mode]', (b) => Object.assign(d, PracticeOptions.toggle(d, b.dataset.mode)));
   if ($('setup-repeatLearned')) $('setup-repeatLearned').onchange = () => { d.repeatLearned = $('setup-repeatLearned').checked; };
   on('[data-diff]', (b) => { d.diff = Number(b.dataset.diff); });
@@ -1141,20 +1153,21 @@ function renderSetup() {
   if ($('closeTopics')) $('closeTopics').onclick = () => { $('topicPicker').open = false; $('topicPicker').querySelector('summary').focus(); };
   const cancel = $('cancelBtn');
   if (cancel) cancel.onclick = () => { draft = null; go('play'); };
-  const startPractice = () => {
-    state.sound = $('soundChk').checked;
+  const startPractice = ({ test = false } = {}) => {
     state.settings = PracticeOptions.apply(d);
     state.uiLang = d.base;
     saveState();
     draft = null;
     current = null;
     placement = null;
+    pendingPlacement = test;
+    for (const dir of PracticeOptions.modes(state.settings)) ctx({ ...state.settings, dir }).prog.offered = true;
+    saveState();
     if (/^#start=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
     go('play');
   };
-  if ($('quickOptionsBtn')) $('quickOptionsBtn').onclick = () => openTrainingOptions(d, (chosen) => { Object.assign(d, chosen); startPractice(); }, { start: true });
-  if ($('soundChk')) $('soundChk').onchange = () => setSound($('soundChk').checked);
-  for (const id of ['startBtn', 'quickStartBtn']) if ($(id)) $(id).onclick = startPractice;
+  if ($('startBtn')) $('startBtn').onclick = startPractice;
+  if ($('setupTestBtn')) $('setupTestBtn').onclick = () => startPractice({ test: true });
 }
 
 // ----- Play -----
@@ -1164,6 +1177,7 @@ function renderPlay() {
   const start = modeTurn(state.settings);
   state.settings.dir = modes[start % modes.length];
   let c = ctx();
+  if (pendingPlacement) { pendingPlacement = false; startPlacement(); return; }
   if (!isList(c.s)) {
     const from = c.s.diff;
     let next;
@@ -1230,7 +1244,8 @@ function metaHTML(c, x) {
   const cards = combinedCards(c.s, c.pool);
   const score = c.pool.filter((p) => isLearned(cards[p.id])).length;
   void x;
-  return `${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta"><span>${esc(t('progress', { n: score, m: c.pool.length }))}</span>
+  const course = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(c.s.pack === PICS ? 'picsB' : 'topB');
+  return `${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(t(isPack(c.s) ? 'packDiff' : 'diff')[c.s.diff])}</span><span class="course-progress">${esc(t('progress', { n: score, m: c.pool.length }))}</span>
     </div>
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }
