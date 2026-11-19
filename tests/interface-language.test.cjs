@@ -47,8 +47,8 @@ test('a preselected job course can start from the first setup panel without losi
   const a = app(undefined, { initialState: {}, hash: '#start=warehouse&base=uk' });
   assert.equal(a.context.location.hash, '#start=warehouse&base=uk', 'keep the selected course recoverable before starting');
   a.run('render = () => {}; renderSetup();');
-  assert.match(a.context.document.getElementById('app').innerHTML, /id="quickStartBtn"/);
-  a.context.document.getElementById('quickStartBtn').onclick();
+  assert.match(a.context.document.getElementById('app').innerHTML, /id="startBtn"/);
+  a.context.document.getElementById('startBtn').onclick();
   assert.equal(a.run('state.settings.pack'), 'warehouse');
   assert.equal(a.run('state.settings.target'), 'da');
   assert.equal(a.run('state.settings.base'), 'uk');

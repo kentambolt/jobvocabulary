@@ -293,7 +293,9 @@ a.brand { text-decoration: none; color: var(--ink); }
 .page .topics { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; list-style: none; }
 .page .topics li { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 4px 10px; font-size: 14px; font-weight: 700; }
 .page .topics small { color: var(--muted); }
-.page .links { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; list-style: none; }
+.page .links { display: flex; flex-wrap: wrap; gap: 10px 8px; padding: 0; list-style: none; }
+.page .links li { display: flex; }
+.page .links a { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; }
 .page td { white-space: normal; }
 .page td.da { font-weight: 800; }
 .page .langs a { color: var(--accent); font-weight: 800; }
@@ -484,6 +486,34 @@ label.repeat-option { display: flex; align-items: flex-start; gap: 12px; padding
 .favorite-choice { width: 100%; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); border-radius: 12px; padding: 12px; text-align: left; font-weight: 800; }
 .prompt, .prompt.write { padding-top: 52px; }
 .meta { margin-bottom: 6px; }
+.course-meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; }
+.course-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; color: var(--ink); }
+.course-progress { justify-self: end; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.course-difficulty { display: none; }
+@media (min-width: 600px) {
+  .course-meta { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+  .course-difficulty { display: block; }
+}
+@media (min-width: 761px) {
+  body:not(.landing):not(.page) > main { padding-bottom: 24px; }
+}
+.setup-selection { margin: 12px 0; border-bottom: 1px solid var(--line); }
+.setup-selection summary { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; padding: 8px 0; cursor: pointer; font-size: 14px; }
+.setup-selection summary span { color: var(--muted); }
+.setup-selection summary b { flex-shrink: 0; }
+.setup-selection summary::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid; border-bottom: 1.5px solid; transform: rotate(45deg); flex-shrink: 0; }
+.setup-selection summary span { flex: 1; }
+.setup-selection[open] summary::after { transform: rotate(225deg); }
+.setup-selection[open] > .step { margin-top: 12px; }
+.course-select-wrap { position: relative; }
+.course-select-wrap::after { content: ''; position: absolute; right: 18px; top: 19px; width: 8px; height: 8px; border-right: 1.5px solid; border-bottom: 1.5px solid; transform: rotate(45deg); pointer-events: none; }
+.course-select-wrap select { appearance: none; width: 100%; min-height: 50px; padding: 12px 42px 12px 16px; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.setup-options { margin: 0 0 16px; border: 1px solid var(--line); border-radius: 12px; }
+.setup-options summary { padding: 12px 16px; min-height: 62px; cursor: pointer; }
+.setup-options summary small { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
+.setup-options > .step { padding: 12px 16px 0; }
+.setup-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.setup-actions > button { min-height: 48px; height: 100%; }
 .progress { margin-bottom: 6px; }
 @media (max-width: 480px) {
   body:not(.catalogue) > .top .brand { font-size: 20px; }

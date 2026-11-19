@@ -36,7 +36,8 @@ in `data/lexicon-migrations.json`; saved words will follow the corrected entry.
 External additions towards a larger common-word dictionary require reviewed
 translations, distinct meanings, source attribution and a compatible licence.
 Candidates, translation reviews, provenance and common-word extraction tools
-live in the private repository `kentambolt/jobvocabulary`. Content proposals
+live in the private repository `kentambolt/jobvocabulary-private`. The public
+application repository is `kentambolt/jobvocabulary`. Content proposals
 are reviewed there using AI; human approval is not a prerequisite. Only selected
 app data and necessary public licence notices are copied into this repository.
 The ignored `.private/jobvocabulary/` checkout is a local convenience, not an app
