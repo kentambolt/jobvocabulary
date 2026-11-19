@@ -9,6 +9,8 @@
 // Russiske/ukrainske sætninger i 1. person datid bruger begge køn (fx "сдал(а)", "склав(ла)").
 // Instruktioner til eleven bruger høflig form (вы/ви). Oversættelserne bør tjekkes af en
 // modersmålsbruger. Færdselsreglerne er korte og forenklede – teoribogen er den egentlige kilde.
+// Faktaoplysninger er kontrolleret 2026-11-17 mod færdselsloven (LBK nr. 118 af 12.1.2026),
+// bekendtgørelse om vejafmærkning (BEK nr. 425 af 13.4.2023) og Færdselsstyrelsen.
 
 var PACKS = typeof PACKS !== 'undefined' ? PACKS : {};
 
@@ -80,7 +82,7 @@ PACKS.driving = {
         [1, "gult lys", "amber light", "жёлтый свет", "жовте світло"],
         [1, "grønt lys", "green light", "зелёный свет", "зелене світло"],
         [2, "et signalanlæg", "traffic signal system", "светофорное регулирование", "світлофорне регулювання"],
-        [2, "en varsellinje", "warning line (long dashes)", "предупреждающая линия", "попереджувальна лінія"],
+        [2, "en varslingslinje", "warning line (long dashes)", "линия приближения", "лінія наближення"],
         [2, "en vognbanelinje", "lane line (dashed)", "прерывистая линия", "переривчаста лінія"],
         [2, "en stoplinje", "stop line", "стоп-линия", "стоп-лінія"],
         [2, "en kantlinje", "edge line", "линия края проезжей части", "лінія краю проїзної частини"],
@@ -255,7 +257,7 @@ PACKS.driving = {
         [2, "en fejl", "mistake", "ошибка", "помилка"],
         [2, "en prøvedato", "test date", "дата экзамена", "дата іспиту"],
         [2, "et gebyr", "fee", "сбор", "збір"],
-        [2, "ledsaget kørsel", "accompanied driving (from 17)", "вождение с сопровождающим (с 17 лет)", "водіння із супровідною особою (з 17 років)"],
+        [2, "ledsaget kørsel", "accompanied driving (age 17, 20:00–05:00)", "вождение с сопровождающим (в 17 лет, с 20:00 до 05:00)", "водіння із супровідною особою (у 17 років, з 20:00 до 05:00)"],
         [3, "et digitalt kørekort", "digital driving licence", "цифровые права", "цифрове посвідчення водія"],
         [3, "ombytning af kørekort", "licence exchange", "обмен прав", "обмін посвідчення водія"],
         [3, "billedlegitimation", "photo ID", "удостоверение с фото", "документ із фото"],
@@ -376,24 +378,24 @@ PACKS.driving = {
       key: 'rules', type: 'phrase',
       name: { da: 'Færdselsregler', en: 'Traffic rules', ru: 'Правила дорожного движения', uk: 'Правила дорожнього руху' },
       rows: [
-        [1, "Du har vigepligt for trafikken fra højre.", "You must give way to traffic from the right.", "Вы должны уступить дорогу транспорту справа.", "Ви маєте дати дорогу транспорту справа."],
-        [1, "Du må ikke overhale i et fodgængerfelt.", "You must not overtake on a pedestrian crossing.", "Нельзя обгонять на пешеходном переходе.", "Не можна обганяти на пішохідному переході."],
+        [1, "Hvis intet andet er skiltet, har du vigepligt for trafikken fra højre.", "Unless signs or markings say otherwise, give way to traffic from the right.", "Если знаками или разметкой не установлено иное, уступайте дорогу транспорту справа.", "Якщо знаками чи розміткою не встановлено інше, дайте дорогу транспорту справа."],
+        [1, "Du må ikke overhale ved et fodgængerfelt, hvis bilen skjuler udsynet over feltet.", "Do not overtake at a pedestrian crossing if the vehicle blocks your view of it.", "Нельзя обгонять у пешеходного перехода, если транспортное средство закрывает обзор перехода.", "Не можна обганяти біля пішохідного переходу, якщо транспортний засіб закриває огляд переходу."],
         [1, "I byen er fartgrænsen 50 km/t.", "In town the speed limit is 50 km/h.", "В городе ограничение скорости 50 км/ч.", "У місті обмеження швидкості 50 км/год."],
         [1, "Uden for byen er fartgrænsen 80 km/t.", "Outside town the speed limit is 80 km/h.", "За городом ограничение скорости 80 км/ч.", "За містом обмеження швидкості 80 км/год."],
-        [1, "På motorvejen er fartgrænsen normalt 110 km/t.", "On the motorway the limit is usually 110 km/h.", "На автомагистрали обычно ограничение 110 км/ч.", "На автомагістралі зазвичай обмеження 110 км/год."],
+        [1, "På motorvejen er fartgrænsen 130 km/t, medmindre andet er skiltet.", "On the motorway the limit is 130 km/h unless signs show otherwise.", "На автомагистрали ограничение 130 км/ч, если знаками не указано иное.", "На автомагістралі обмеження 130 км/год, якщо знаками не встановлено інше."],
         // Category B, first acquisition; rule effective 1 July 2025. Checked 17 November 2026:
         // https://www.ft.dk/samling/20241/lovforslag/l165/index.htm
         [1, "Ved dit første kategori B-kørekort er promillegrænsen 0,2 de første tre år.", "For your first category B licence, the alcohol limit is 0.2 per mille for the first three years.", "После первого получения прав категории B лимит алкоголя – 0,2 промилле в течение первых трёх лет.", "Після першого отримання посвідчення категорії B межа алкоголю – 0,2 проміле протягом перших трьох років."],
-        [1, "Du skal altid bruge sikkerhedssele.", "You must always wear a seat belt.", "Вы всегда должны быть пристёгнуты.", "Ви завжди маєте бути пристебнуті."],
+        [1, "Du skal bruge sikkerhedssele, når du kører.", "You must wear a seat belt when driving.", "Во время движения нужно быть пристёгнутым.", "Під час руху треба бути пристебнутим."],
         [1, "Du skal holde for rødt lys.", "You must stop at a red light.", "На красный свет нужно остановиться.", "На червоне світло треба зупинитися."],
-        [1, "Ved hajtænder har du ubetinget vigepligt.", "At shark teeth you must give way to everyone.", "У «акульих зубов» вы обязаны уступить дорогу всем.", "Біля «зубів акули» ви маєте дати дорогу всім."],
+        [1, "Ved hajtænder har du ubetinget vigepligt.", "At shark teeth you must give way to all traffic from both directions.", "У «акульих зубов» вы обязаны уступить дорогу всему транспорту с обеих сторон.", "Біля «зубів акули» ви маєте дати дорогу всьому транспорту з обох боків."],
         [1, "Ved et stopskilt skal du altid standse helt.", "At a stop sign you must always stop completely.", "У знака «Стоп» нужно всегда полностью остановиться.", "Біля знака «Стоп» треба завжди повністю зупинитися."],
         [1, "Du må ikke bruge en håndholdt mobiltelefon, mens du kører.", "You must not use a hand-held phone while driving.", "Нельзя пользоваться телефоном в руке за рулём.", "Не можна користуватися телефоном у руці за кермом."],
         [1, "Du skal holde tilbage for fodgængere i fodgængerfeltet.", "You must give way to pedestrians on the crossing.", "Вы должны пропустить пешеходов на переходе.", "Ви маєте пропустити пішоходів на переході."],
         [1, "Du må ikke krydse en spærrelinje.", "You must not cross a solid line.", "Нельзя пересекать сплошную линию.", "Не можна перетинати суцільну лінію."],
         [1, "Når du svinger til højre, skal du holde tilbage for cyklister, der kører ligeud.", "When turning right, give way to cyclists going straight on.", "При повороте направо пропустите велосипедистов, едущих прямо.", "Повертаючи праворуч, пропустіть велосипедистів, які їдуть прямо."],
         [2, "Du skal altid køre med lys.", "You must always drive with your lights on.", "Всегда нужно ездить с включёнными фарами.", "Завжди треба їздити з увімкненими фарами."],
-        [2, "På motorvejen må du køre 130 km/t, hvor det er skiltet.", "On the motorway you may drive 130 km/h where signed.", "На автомагистрали можно ехать 130 км/ч, где это указано знаком.", "На автомагістралі можна їхати 130 км/год, де це позначено знаком."],
+        [2, "På nogle motorvejsstrækninger er fartgrænsen skiltet ned til 110 km/t.", "On some motorway stretches the limit is signed down to 110 km/h.", "На некоторых участках автомагистрали знаками установлено ограничение 110 км/ч.", "На деяких ділянках автомагістралі знаками встановлено обмеження 110 км/год."],
         [2, "Du skal give tegn, når du kører ud af en rundkørsel.", "You must signal when leaving a roundabout.", "При выезде с круга нужно включить поворотник.", "Виїжджаючи з кільця, треба ввімкнути покажчик повороту."],
         [2, "Du skal give tegn i god tid.", "You must signal in good time.", "Сигнал нужно подавать заранее.", "Сигнал треба подавати заздалегідь."],
         [2, "Du skal normalt overhale til venstre.", "You normally overtake on the left.", "Обгонять обычно нужно слева.", "Обганяти зазвичай треба зліва."],
@@ -414,7 +416,7 @@ PACKS.driving = {
         [3, "Et blinkende gult lys betyder, at du skal være ekstra forsigtig.", "A flashing amber light means take extra care.", "Мигающий жёлтый означает: будьте особенно осторожны.", "Миготливий жовтий означає: будьте особливо обережні."],
         [3, "Tågebaglygten må kun bruges ved stærkt nedsat sigtbarhed.", "Use the rear fog light only in very poor visibility.", "Задний противотуманный фонарь – только при очень плохой видимости.", "Задній протитуманний ліхтар – лише за дуже поганої видимості."],
         [3, "Du må ikke standse eller parkere i et kryds.", "You must not stop or park in a junction.", "Нельзя останавливаться и парковаться на перекрёстке.", "Не можна зупинятися й паркуватися на перехресті."],
-        [3, "En varsellinje advarer om en spærrelinje længere fremme.", "A warning line warns of a solid line ahead.", "Предупреждающая линия сообщает о сплошной впереди.", "Попереджувальна лінія попереджає про суцільну попереду."],
+        [3, "En varslingslinje varsler en spærrelinje eller dårlig oversigt.", "A warning line warns of a solid line ahead or of poor visibility.", "Линия приближения предупреждает о сплошной линии впереди или о плохом обзоре.", "Лінія наближення попереджає про суцільну лінію попереду або про поганий огляд."],
         [3, "På en motortrafikvej er fartgrænsen 80 km/t, hvis intet andet er skiltet.", "On a motor road the limit is 80 km/h unless signed otherwise.", "На скоростной дороге ограничение 80 км/ч, если знаками не указано иное.", "На швидкісній дорозі обмеження 80 км/год, якщо знаками не встановлено інше."],
         [3, "Som ny bilist får du kørselsforbud ved to klip inden for de første tre år.", "As a new driver, two penalty points in the first three years mean a driving ban.", "Новому водителю за два штрафных балла в первые три года запрещают водить.", "Новому водієві за два штрафні бали в перші три роки забороняють кермувати."],
         [3, "Du må ikke køre, hvis du er påvirket af alkohol eller narko.", "You must not drive under the influence of alcohol or drugs.", "Нельзя водить под воздействием алкоголя или наркотиков.", "Не можна кермувати під впливом алкоголю чи наркотиків."],
@@ -500,7 +502,7 @@ PACKS.driving = {
         [3, "Kan jeg betale i rater?", "Can I pay in instalments?", "Можно платить частями?", "Можна платити частинами?"],
         [3, "Jeg har et kørekort fra Ukraine.", "I have a driving licence from Ukraine.", "У меня есть права из Украины.", "У мене є посвідчення водія з України."],
         [3, "Kan jeg ombytte mit udenlandske kørekort?", "Can I exchange my foreign driving licence?", "Можно обменять мои иностранные права?", "Чи можна обміняти моє іноземне посвідчення водія?"],
-        [3, "Kan jeg få en tolk til teoriprøven?", "Can I have an interpreter for the theory test?", "Можно переводчика на теоретический экзамен?", "Чи можна мати перекладача на теоретичному іспиті?"],
+        [3, "Kan jeg tage teoriprøven på engelsk?", "Can I take the theory test in English?", "Можно сдать теоретический экзамен на английском?", "Чи можна скласти теоретичний іспит англійською?"],
         [3, "Jeg skal have et nyt pasfoto.", "I need a new passport photo.", "Мне нужно новое фото на документы.", "Мені потрібне нове фото на документи."],
       ],
     },
