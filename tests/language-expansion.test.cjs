@@ -117,7 +117,7 @@ test('core words work in every language pair and keep accented letters on the wr
   }
 });
 
-test('meaning annotations remain visible but are not spoken, typed or used as false alternatives', () => {
+test('meaning annotations stay out of exercises, speech, spelling and false alternatives', () => {
   const a=app({target:'pl',base:'en',pack:'top',dir:'write',diff:3},{stubSpeech:false});
   const spoken=[];
   const synthesis={getVoices:()=>[],cancel(){},speak:utterance=>spoken.push(utterance)};
@@ -126,8 +126,8 @@ test('meaning annotations remain visible but are not spoken, typed or used as fa
   const result=a.run("(()=>{const x={id:'sample',words:{pl:'tak (odpowiedź)',en:'yes'},phrase:false};speakTarget(x,true);return {html:wordHTML(x,'pl'),spec:writeSpec(ctx(),x)}})()");
   assert.equal(spoken[0].text,'tak');
   assert.equal(result.spec.chars.join(''),'tak');
-  assert.match(result.html,/word-sense/);
-  assert.match(result.html,/odpowiedź/);
+  assert.doesNotMatch(result.html,/word-sense|odpowiedź/);
+  assert.match(result.html,/>tak<\/span>/);
   assert.equal(a.run("lexicalForm({phrase:true,words:{pl:'Znalazłem(-am) telefon.'}},'pl')"),'Znalazłem(-am) telefon.');
   a.run("state.settings.target='ro';");
   assert.equal(a.run("writeSpec(ctx(),{phrase:false,words:{ro:'a face (a crea)'}}).chars.join('')"),'face');

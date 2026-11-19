@@ -951,7 +951,6 @@ function renderIntro(ul) {
   intro.querySelectorAll('.how li').forEach((li, i) => (li.textContent = home.steps[i]));
   $('homeEyebrow').textContent = home.eyebrow;
   $('howTitle').textContent = home.howTitle;
-  $('homeBenefits').innerHTML = COURSE_CATALOG.benefitsHTML(ul);
   $('landingNav').innerHTML = `<a href="/${ul}/#work">${esc(home.groupNames[0])}</a><a href="/${ul}/#everyday">${esc(home.groupNames[1])}</a><a href="#app" data-get-started>${esc(t('setupTitle'))}</a>`;
   document.querySelectorAll('[data-get-started]').forEach((link) => link.onclick = (event) => { event.preventDefault(); $('app').scrollIntoView({ block: 'start' }); $('app').querySelector('[data-target]')?.focus({ preventScroll: true }); });
   const labels = COURSE_CATALOG.labels[ul];
@@ -1252,7 +1251,7 @@ function wordParts(x,language) {
 function lexicalForm(x,language) { return wordParts(x,language).text; }
 function wordHTML(x,language) {
   const parts=wordParts(x,language);
-  return `<span class="w${x.phrase || parts.text.length>22 ? ' long' : ''}" lang="${language}">${esc(parts.text)}</span>${parts.detail ? `<small class="word-sense" lang="${language}">${esc(parts.detail)}</small>` : ''}`;
+  return `<span class="w${x.phrase || parts.text.length>22 ? ' long' : ''}" lang="${language}">${esc(parts.text)}</span>`;
 }
 function meaningHTML(c, x) {
   if (c.pics) return picHTML(x);
@@ -1282,36 +1281,43 @@ function metaHTML(c, x) {
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }
 
-// Fit whole words to the available button width, keeping ordinary answers at
-// their normal size. Very long compounds use compact full-width rows instead
-// of becoming tiny text or forcing a split in the middle of a word.
+// Fit text inside fixed exercise slots without moving the following controls.
 function fitAnswerText() {
+  for (const prompt of $('app').querySelectorAll('.prompt')) {
+    const labels = [...prompt.querySelectorAll(':scope > .w, :scope > .sub')];
+    labels.forEach(label => label.style.removeProperty('font-size'));
+    if (!labels.length) continue;
+    const style = getComputedStyle(prompt);
+    const room = prompt.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+    const picture = prompt.querySelector(':scope > .pic');
+    const fits = () => labels.every(label => label.scrollWidth <= label.clientWidth + 1)
+      && labels.reduce((height, label) => height + label.getBoundingClientRect().height, 0)
+        + (picture ? picture.getBoundingClientRect().height : 0)
+        + parseFloat(style.gap) * (labels.length - (picture ? 0 : 1)) <= room + 1;
+    const original = labels.map(label => parseFloat(getComputedStyle(label).fontSize));
+    for (let scale = 1; !fits() && scale > 0.15; scale -= 0.025) {
+      labels.forEach((label, i) => { label.style.fontSize = `${original[i] * scale}px`; });
+    }
+  }
   const groups = $('app').querySelectorAll('.options:not(.pics)');
-  if (!groups.length) return;
-  const measure = document.createElement('canvas').getContext('2d');
   for (const group of groups) {
-    group.classList.remove('fit-wide');
     const labels = [...group.querySelectorAll('.opt .w')];
     labels.forEach(label => label.style.removeProperty('font-size'));
-    const fit = () => labels.map(label => {
-      const style = getComputedStyle(label), button = label.closest('.opt');
+    const fits = () => labels.every(label => {
+      const button = label.closest('.opt');
       const buttonStyle = getComputedStyle(button);
       const key = button.querySelector('.key');
-      const horizontal = getComputedStyle(button).flexDirection === 'row';
-      const available = button.clientWidth - parseFloat(buttonStyle.paddingLeft) - parseFloat(buttonStyle.paddingRight)
-        - (horizontal && key ? key.getBoundingClientRect().width + parseFloat(buttonStyle.gap) : 0) - 1;
-      const size = parseFloat(style.fontSize);
-      measure.font = `${style.fontWeight} ${size}px ${style.fontFamily}`;
-      const longest = Math.max(1, ...label.textContent.trim().split(/\s+/u).map(word => measure.measureText(word).width));
-      return Math.min(size, Math.floor(size * available / longest));
+      const horizontal = buttonStyle.flexDirection === 'row';
+      const available = button.clientHeight - parseFloat(buttonStyle.paddingTop) - parseFloat(buttonStyle.paddingBottom)
+        - (!horizontal && key ? key.getBoundingClientRect().height + parseFloat(buttonStyle.gap) : 0);
+      return label.scrollWidth <= label.clientWidth + 1 && label.getBoundingClientRect().height <= available + 1;
     });
-    let sizes = fit();
-    if (sizes.some(size => size < 16) && !group.classList.contains('wide')) {
-      group.classList.add('fit-wide');
-      sizes = fit();
+    let size = Math.min(22, ...labels.map(label => parseFloat(getComputedStyle(label).fontSize)));
+    labels.forEach(label => { label.style.fontSize = `${size}px`; });
+    while (!fits() && size > 8) {
+      size -= 0.5;
+      labels.forEach(label => { label.style.fontSize = `${size}px`; });
     }
-    const shared = Math.min(22, ...sizes);
-    labels.forEach(label => { label.style.fontSize = `${shared}px`; });
   }
 }
 window.addEventListener('resize', fitAnswerText);
@@ -1319,7 +1325,7 @@ if (document.fonts) document.fonts.ready.then(fitAnswerText);
 
 function optionsHTML(c, x, answered) {
   const rec = current.qdir === 'rec';
-  let html = `<div class="options${x.phrase ? ' wide' : ''}${rec && c.pics ? ' pics' : ''}">`;
+  let html = `<div class="options${rec && c.pics ? ' pics' : ''}">`;
   current.options.forEach((o, i) => {
     let cls = 'opt';
     if (answered) {

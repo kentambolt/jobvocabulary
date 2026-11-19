@@ -69,7 +69,7 @@ var COURSE_CATALOG = {
     "da": {
       "catalog": "Find dit kursus",
       "lead": "Lær sproget til din næste arbejdsdag",
-      "intro": "Praktiske ord og sætninger til dit fag og hverdagen i et nyt land. Begynd gratis, uden en konto.",
+      "intro": "Praktiske ord og sætninger til dit fag og hverdagen i et nyt land.",
       "search": "Søg efter job eller emne",
       "empty": "Ingen kurser matcher din søgning.",
       "topics": "emner",
@@ -87,7 +87,7 @@ var COURSE_CATALOG = {
     "en": {
       "catalog": "Find your course",
       "lead": "Learn the language for your next working day",
-      "intro": "Practical words and phrases for your job and everyday life in a new country. Start free, without an account.",
+      "intro": "Practical words and phrases for your job and everyday life in a new country.",
       "search": "Search for a job or topic",
       "empty": "No courses match your search.",
       "topics": "topics",
@@ -105,7 +105,7 @@ var COURSE_CATALOG = {
     "ru": {
       "catalog": "Найдите свой курс",
       "lead": "Учите язык для будущей работы",
-      "intro": "Практические слова и фразы для работы и повседневной жизни в новой стране. Бесплатно и без регистрации.",
+      "intro": "Практические слова и фразы для работы и повседневной жизни в новой стране.",
       "search": "Поиск по профессии или теме",
       "empty": "По вашему запросу курсов не найдено.",
       "topics": "тем",
@@ -123,7 +123,7 @@ var COURSE_CATALOG = {
     "uk": {
       "catalog": "Знайдіть свій курс",
       "lead": "Вивчайте мову для майбутньої роботи",
-      "intro": "Практичні слова й фрази для роботи та щоденного життя в новій країні. Безкоштовно й без реєстрації.",
+      "intro": "Практичні слова й фрази для роботи та щоденного життя в новій країні.",
       "search": "Пошук за професією або темою",
       "empty": "За вашим запитом курсів не знайдено.",
       "topics": "тем",
