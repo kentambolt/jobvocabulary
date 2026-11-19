@@ -918,6 +918,12 @@ function updateScore(delta) {
 }
 
 // ----- Introduktion (statisk i index.html for søgemaskiner, oversat her) -----
+const compactLanding = window.matchMedia?.('(max-width: 760px)');
+if (compactLanding) {
+  const updateLandingHelp = () => { $('how-it-works').open = !compactLanding.matches; };
+  updateLandingHelp();
+  compactLanding.addEventListener('change', updateLandingHelp);
+}
 function renderIntro(ul) {
   const intro = $('intro');
   if (!intro) return;
