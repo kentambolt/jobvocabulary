@@ -190,7 +190,7 @@ const indexPath = path.join(ROOT, 'index.html');
 const html = fs.readFileSync(indexPath, 'utf8');
 const links = `<!-- JOBS -->\n    <nav class="jobs" aria-label="Emner">${catalog.groups.map((g) => catalog.groupLink(g, 'da')).join('')}</nav>\n    <!-- /JOBS -->`;
 if (!/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/.test(html)) throw new Error('index.html mangler <!-- JOBS --> markører');
-fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, links).replace(/(<ul class="hero-benefits" id="homeBenefits">)[\s\S]*?(<\/ul>)/, `$1${catalog.benefitsHTML('da')}$2`));
+fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, links));
 
 // Public, indexable course catalogue in each interface language.
 for (const lang of LANGS) {
