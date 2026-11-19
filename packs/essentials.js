@@ -1,679 +1,105 @@
-// Everyday vocabulary. Rows: priority, Danish, English, Russian, Ukrainian.
+// Learning data: six languages. Internal reviews are held in the private content repository.
 var PACKS = typeof PACKS !== 'undefined' ? PACKS : {};
 PACKS.essentials = {
-  "id": "essentials",
-  "name": {
-    "da": "Hverdagens grundord",
-    "en": "Everyday essentials",
-    "ru": "Основы повседневного языка",
-    "uk": "Основи повсякденної мови"
-  },
-  "desc": {
-    "da": "Tal, tid, ugedage, måneder, farver og transport til din hverdag i Danmark",
-    "en": "Numbers, time, weekdays, months, colours and transport for everyday life in Denmark",
-    "ru": "Числа, время, дни недели, месяцы, цвета и транспорт для жизни в Дании",
-    "uk": "Числа, час, дні тижня, місяці, кольори й транспорт для життя в Данії"
-  },
-  "categories": [
-    {
-      "key": "numbers",
-      "type": "word",
-      "name": {
-        "da": "Tal og mængder",
-        "en": "Numbers and amounts",
-        "ru": "Числа и количество",
-        "uk": "Числа й кількість"
-      },
-      "rows": [
-        [
-          1,
-          "nul",
-          "zero",
-          "ноль",
-          "нуль"
-        ],
-        [
-          1,
-          "en",
-          "one",
-          "один",
-          "один"
-        ],
-        [
-          1,
-          "to",
-          "two",
-          "два",
-          "два"
-        ],
-        [
-          1,
-          "tre",
-          "three",
-          "три",
-          "три"
-        ],
-        [
-          1,
-          "fire",
-          "four",
-          "четыре",
-          "чотири"
-        ],
-        [
-          1,
-          "fem",
-          "five",
-          "пять",
-          "п’ять"
-        ],
-        [
-          1,
-          "seks",
-          "six",
-          "шесть",
-          "шість"
-        ],
-        [
-          1,
-          "syv",
-          "seven",
-          "семь",
-          "сім"
-        ],
-        [
-          1,
-          "otte",
-          "eight",
-          "восемь",
-          "вісім"
-        ],
-        [
-          1,
-          "ni",
-          "nine",
-          "девять",
-          "дев’ять"
-        ],
-        [
-          1,
-          "ti",
-          "ten",
-          "десять",
-          "десять"
-        ],
-        [
-          1,
-          "tyve",
-          "twenty",
-          "двадцать",
-          "двадцять"
-        ],
-        [
-          1,
-          "halvtreds",
-          "fifty",
-          "пятьдесят",
-          "п’ятдесят"
-        ],
-        [
-          1,
-          "hundrede",
-          "one hundred",
-          "сто",
-          "сто"
-        ],
-        [
-          1,
-          "tusind",
-          "one thousand",
-          "тысяча",
-          "тисяча"
-        ]
-      ]
-    },
-    {
-      "key": "calendar",
-      "type": "word",
-      "name": {
-        "da": "Ugedage og måneder",
-        "en": "Weekdays and months",
-        "ru": "Дни недели и месяцы",
-        "uk": "Дні тижня й місяці"
-      },
-      "rows": [
-        [
-          1,
-          "mandag",
-          "Monday",
-          "понедельник",
-          "понеділок"
-        ],
-        [
-          1,
-          "tirsdag",
-          "Tuesday",
-          "вторник",
-          "вівторок"
-        ],
-        [
-          1,
-          "onsdag",
-          "Wednesday",
-          "среда",
-          "середа"
-        ],
-        [
-          1,
-          "torsdag",
-          "Thursday",
-          "четверг",
-          "четвер"
-        ],
-        [
-          1,
-          "fredag",
-          "Friday",
-          "пятница",
-          "п’ятниця"
-        ],
-        [
-          1,
-          "lørdag",
-          "Saturday",
-          "суббота",
-          "субота"
-        ],
-        [
-          1,
-          "søndag",
-          "Sunday",
-          "воскресенье",
-          "неділя"
-        ],
-        [
-          2,
-          "januar",
-          "January",
-          "январь",
-          "січень"
-        ],
-        [
-          2,
-          "februar",
-          "February",
-          "февраль",
-          "лютий"
-        ],
-        [
-          2,
-          "marts",
-          "March",
-          "март",
-          "березень"
-        ],
-        [
-          2,
-          "april",
-          "April",
-          "апрель",
-          "квітень"
-        ],
-        [
-          2,
-          "maj",
-          "May",
-          "май",
-          "травень"
-        ],
-        [
-          2,
-          "juni",
-          "June",
-          "июнь",
-          "червень"
-        ],
-        [
-          2,
-          "juli",
-          "July",
-          "июль",
-          "липень"
-        ],
-        [
-          2,
-          "august",
-          "August",
-          "август",
-          "серпень"
-        ],
-        [
-          2,
-          "september",
-          "September",
-          "сентябрь",
-          "вересень"
-        ],
-        [
-          2,
-          "oktober",
-          "October",
-          "октябрь",
-          "жовтень"
-        ],
-        [
-          2,
-          "november",
-          "November",
-          "ноябрь",
-          "листопад"
-        ],
-        [
-          2,
-          "december",
-          "December",
-          "декабрь",
-          "грудень"
-        ]
-      ]
-    },
-    {
-      "key": "time",
-      "type": "word",
-      "name": {
-        "da": "Tid og aftaler",
-        "en": "Time and appointments",
-        "ru": "Время и встречи",
-        "uk": "Час і зустрічі"
-      },
-      "rows": [
-        [
-          1,
-          "i dag",
-          "today",
-          "сегодня",
-          "сьогодні"
-        ],
-        [
-          1,
-          "i morgen",
-          "tomorrow",
-          "завтра",
-          "завтра"
-        ],
-        [
-          1,
-          "i går",
-          "yesterday",
-          "вчера",
-          "вчора"
-        ],
-        [
-          1,
-          "nu",
-          "now",
-          "сейчас",
-          "зараз"
-        ],
-        [
-          1,
-          "senere",
-          "later",
-          "позже",
-          "пізніше"
-        ],
-        [
-          1,
-          "morgen",
-          "morning",
-          "утро",
-          "ранок"
-        ],
-        [
-          1,
-          "aften",
-          "evening",
-          "вечер",
-          "вечір"
-        ],
-        [
-          1,
-          "nat",
-          "night",
-          "ночь",
-          "ніч"
-        ],
-        [
-          1,
-          "minut",
-          "minute",
-          "минута",
-          "хвилина"
-        ],
-        [
-          1,
-          "time",
-          "hour",
-          "час",
-          "година"
-        ],
-        [
-          1,
-          "uge",
-          "week",
-          "неделя",
-          "тиждень"
-        ],
-        [
-          1,
-          "måned",
-          "month",
-          "месяц",
-          "місяць"
-        ],
-        [
-          1,
-          "år",
-          "year",
-          "год",
-          "рік"
-        ],
-        [
-          1,
-          "aftale",
-          "appointment",
-          "встреча",
-          "зустріч"
-        ],
-        [
-          1,
-          "pause",
-          "break",
-          "перерыв",
-          "перерва"
-        ]
-      ]
-    },
-    {
-      "key": "colours",
-      "type": "word",
-      "name": {
-        "da": "Farver",
-        "en": "Colours",
-        "ru": "Цвета",
-        "uk": "Кольори"
-      },
-      "rows": [
-        [
-          1,
-          "rød",
-          "red",
-          "красный",
-          "червоний"
-        ],
-        [
-          1,
-          "blå",
-          "blue",
-          "синий",
-          "синій"
-        ],
-        [
-          1,
-          "grøn",
-          "green",
-          "зелёный",
-          "зелений"
-        ],
-        [
-          1,
-          "gul",
-          "yellow",
-          "жёлтый",
-          "жовтий"
-        ],
-        [
-          1,
-          "sort",
-          "black",
-          "чёрный",
-          "чорний"
-        ],
-        [
-          1,
-          "hvid",
-          "white",
-          "белый",
-          "білий"
-        ],
-        [
-          1,
-          "brun",
-          "brown",
-          "коричневый",
-          "коричневий"
-        ],
-        [
-          1,
-          "orange",
-          "orange",
-          "оранжевый",
-          "помаранчевий"
-        ]
-      ]
-    },
-    {
-      "key": "gettingaround",
-      "type": "word",
-      "name": {
-        "da": "Bus, tog og vej",
-        "en": "Bus, train and directions",
-        "ru": "Автобус, поезд и дорога",
-        "uk": "Автобус, поїзд і дорога"
-      },
-      "rows": [
-        [
-          1,
-          "bus",
-          "bus",
-          "автобус",
-          "автобус"
-        ],
-        [
-          1,
-          "tog",
-          "train",
-          "поезд",
-          "поїзд"
-        ],
-        [
-          1,
-          "billet",
-          "ticket",
-          "билет",
-          "квиток"
-        ],
-        [
-          1,
-          "station",
-          "station",
-          "станция",
-          "станція"
-        ],
-        [
-          1,
-          "busstoppested",
-          "bus stop",
-          "автобусная остановка",
-          "автобусна зупинка"
-        ],
-        [
-          1,
-          "afgang",
-          "departure",
-          "отправление",
-          "відправлення"
-        ],
-        [
-          1,
-          "ankomst",
-          "arrival",
-          "прибытие",
-          "прибуття"
-        ],
-        [
-          1,
-          "forsinkelse",
-          "delay",
-          "задержка",
-          "затримка"
-        ],
-        [
-          1,
-          "adresse",
-          "address",
-          "адрес",
-          "адреса"
-        ],
-        [
-          1,
-          "venstre",
-          "left",
-          "налево",
-          "ліворуч"
-        ],
-        [
-          1,
-          "højre",
-          "right",
-          "направо",
-          "праворуч"
-        ],
-        [
-          1,
-          "ligeud",
-          "straight ahead",
-          "прямо",
-          "прямо"
-        ],
-        [
-          1,
-          "cykel",
-          "bicycle",
-          "велосипед",
-          "велосипед"
-        ]
-      ]
-    },
-    {
-      "key": "firstphrases",
-      "type": "phrase",
-      "name": {
-        "da": "Sætninger til at komme i gang",
-        "en": "Phrases to get started",
-        "ru": "Фразы для начала",
-        "uk": "Фрази для початку"
-      },
-      "rows": [
-        [
-          1,
-          "Hej!",
-          "Hello!",
-          "Здравствуйте!",
-          "Вітаю!"
-        ],
-        [
-          1,
-          "Tak for hjælpen.",
-          "Thank you for your help.",
-          "Спасибо за помощь.",
-          "Дякую за допомогу."
-        ],
-        [
-          1,
-          "Jeg forstår ikke.",
-          "I do not understand.",
-          "Я не понимаю.",
-          "Я не розумію."
-        ],
-        [
-          1,
-          "Kan du gentage det?",
-          "Can you repeat that?",
-          "Вы можете повторить?",
-          "Ви можете повторити?"
-        ],
-        [
-          1,
-          "Kan du tale langsommere?",
-          "Can you speak more slowly?",
-          "Вы можете говорить медленнее?",
-          "Ви можете говорити повільніше?"
-        ],
-        [
-          1,
-          "Hvad betyder det?",
-          "What does that mean?",
-          "Что это значит?",
-          "Що це означає?"
-        ],
-        [
-          1,
-          "Jeg lærer dansk.",
-          "I am learning Danish.",
-          "Я учу датский язык.",
-          "Я вивчаю данську мову."
-        ],
-        [
-          1,
-          "Hvor er busstoppestedet?",
-          "Where is the bus stop?",
-          "Где автобусная остановка?",
-          "Де автобусна зупинка?"
-        ],
-        [
-          1,
-          "Hvad koster en billet?",
-          "How much is a ticket?",
-          "Сколько стоит билет?",
-          "Скільки коштує квиток?"
-        ],
-        [
-          1,
-          "Hvad er klokken?",
-          "What time is it?",
-          "Который час?",
-          "Котра година?"
-        ],
-        [
-          1,
-          "Hvornår skal jeg møde?",
-          "When should I arrive?",
-          "Когда мне нужно прийти?",
-          "Коли мені потрібно прийти?"
-        ],
-        [
-          1,
-          "Jeg kommer om ti minutter.",
-          "I will be there in ten minutes.",
-          "Я буду через десять минут.",
-          "Я буду за десять хвилин."
-        ],
-        [
-          1,
-          "Jeg er forsinket.",
-          "I am running late.",
-          "Я опаздываю.",
-          "Я запізнююся."
-        ],
-        [
-          1,
-          "Kan du hjælpe mig?",
-          "Can you help me?",
-          "Вы можете мне помочь?",
-          "Ви можете мені допомогти?"
-        ]
-      ]
-    }
+  id: "essentials",
+  name: {"da":"Hverdagens grundord","en":"Everyday essentials","ru":"Основы повседневного языка","uk":"Основи повсякденної мови","pl":"Podstawy na co dzień","ro":"Noțiuni de bază pentru viața de zi cu zi"},
+  desc: {"da":"Tal, tid, ugedage, måneder, farver og transport til din hverdag i Danmark","en":"Numbers, time, weekdays, months, colours and transport for everyday life in Denmark","ru":"Числа, время, дни недели, месяцы, цвета и транспорт для жизни в Дании","uk":"Числа, час, дні тижня, місяці, кольори й транспорт для життя в Данії","pl":"Liczby, czas, dni tygodnia, miesiące, kolory i transport w codziennym życiu w Danii","ro":"Numere, timp, zilele săptămânii, luni, culori și transport pentru viața de zi cu zi în Danemarca"},
+  categories: [
+    { key: "numbers", type: "word", name: {"da":"Tal og mængder","en":"Numbers and amounts","ru":"Числа и количество","uk":"Числа й кількість","pl":"Liczby i ilości","ro":"Numere și cantități"}, rows: [
+      [1,"nul","zero","ноль","нуль","zero","zero"],
+      [1,"en","one","один","один","jeden","unu"],
+      [1,"to","two","два","два","dwa","doi"],
+      [1,"tre","three","три","три","trzy","trei"],
+      [1,"fire","four","четыре","чотири","cztery","patru"],
+      [1,"fem","five","пять","п’ять","pięć","cinci"],
+      [1,"seks","six","шесть","шість","sześć","șase"],
+      [1,"syv","seven","семь","сім","siedem","șapte"],
+      [1,"otte","eight","восемь","вісім","osiem","opt"],
+      [1,"ni","nine","девять","дев’ять","dziewięć","nouă"],
+      [1,"ti","ten","десять","десять","dziesięć","zece"],
+      [1,"tyve","twenty","двадцать","двадцять","dwadzieścia","douăzeci"],
+      [1,"halvtreds","fifty","пятьдесят","п’ятдесят","pięćdziesiąt","cincizeci"],
+      [1,"hundrede","one hundred","сто","сто","sto","o sută"],
+      [1,"tusind","one thousand","тысяча","тисяча","tysiąc","o mie"]
+    ] },
+    { key: "calendar", type: "word", name: {"da":"Ugedage og måneder","en":"Weekdays and months","ru":"Дни недели и месяцы","uk":"Дні тижня й місяці","pl":"Dni tygodnia i miesiące","ro":"Zilele săptămânii și lunile"}, rows: [
+      [1,"mandag","Monday","понедельник","понеділок","poniedziałek","luni"],
+      [1,"tirsdag","Tuesday","вторник","вівторок","wtorek","marți"],
+      [1,"onsdag","Wednesday","среда","середа","środa","miercuri"],
+      [1,"torsdag","Thursday","четверг","четвер","czwartek","joi"],
+      [1,"fredag","Friday","пятница","п’ятниця","piątek","vineri"],
+      [1,"lørdag","Saturday","суббота","субота","sobota","sâmbătă"],
+      [1,"søndag","Sunday","воскресенье","неділя","niedziela","duminică"],
+      [2,"januar","January","январь","січень","styczeń","ianuarie"],
+      [2,"februar","February","февраль","лютий","luty","februarie"],
+      [2,"marts","March","март","березень","marzec","martie"],
+      [2,"april","April","апрель","квітень","kwiecień","aprilie"],
+      [2,"maj","May","май","травень","maj","mai"],
+      [2,"juni","June","июнь","червень","czerwiec","iunie"],
+      [2,"juli","July","июль","липень","lipiec","iulie"],
+      [2,"august","August","август","серпень","sierpień","august"],
+      [2,"september","September","сентябрь","вересень","wrzesień","septembrie"],
+      [2,"oktober","October","октябрь","жовтень","październik","octombrie"],
+      [2,"november","November","ноябрь","листопад","listopad","noiembrie"],
+      [2,"december","December","декабрь","грудень","grudzień","decembrie"]
+    ] },
+    { key: "time", type: "word", name: {"da":"Tid og aftaler","en":"Time and appointments","ru":"Время и встречи","uk":"Час і зустрічі","pl":"Godziny i spotkania","ro":"Ora și programările"}, rows: [
+      [1,"i dag","today","сегодня","сьогодні","dzisiaj","astăzi"],
+      [1,"i morgen","tomorrow","завтра","завтра","jutro","mâine"],
+      [1,"i går","yesterday","вчера","вчора","wczoraj","ieri"],
+      [1,"nu","now","сейчас","зараз","teraz","acum"],
+      [1,"senere","later","позже","пізніше","później","mai târziu"],
+      [1,"morgen","morning","утро","ранок","poranek","dimineață"],
+      [1,"aften","evening","вечер","вечір","wieczór","seară"],
+      [1,"nat","night","ночь","ніч","noc","noapte"],
+      [1,"minut","minute","минута","хвилина","minuta","minut"],
+      [1,"time","hour","час","година","godzina","oră"],
+      [1,"uge","week","неделя","тиждень","tydzień","săptămână"],
+      [1,"måned","month","месяц","місяць","miesiąc","lună"],
+      [1,"år","year","год","рік","rok","an"],
+      [1,"aftale","appointment","встреча","зустріч","umówione spotkanie","programare"],
+      [1,"pause","break","перерыв","перерва","przerwa","pauză"]
+    ] },
+    { key: "colours", type: "word", name: {"da":"Farver","en":"Colours","ru":"Цвета","uk":"Кольори","pl":"Kolory","ro":"Culori"}, rows: [
+      [1,"rød","red","красный","червоний","czerwony","roșu"],
+      [1,"blå","blue","синий","синій","niebieski","albastru"],
+      [1,"grøn","green","зелёный","зелений","zielony","verde"],
+      [1,"gul","yellow","жёлтый","жовтий","żółty","galben"],
+      [1,"sort","black","чёрный","чорний","czarny","negru"],
+      [1,"hvid","white","белый","білий","biały","alb"],
+      [1,"brun","brown","коричневый","коричневий","brązowy","maro"],
+      [1,"orange","orange","оранжевый","помаранчевий","pomarańczowy","portocaliu"]
+    ] },
+    { key: "gettingaround", type: "word", name: {"da":"Bus, tog og vej","en":"Bus, train and directions","ru":"Автобус, поезд и дорога","uk":"Автобус, поїзд і дорога","pl":"Autobus, pociąg i kierunki","ro":"Autobuz, tren și orientare"}, rows: [
+      [1,"bus","bus","автобус","автобус","autobus","autobuz"],
+      [1,"tog","train","поезд","поїзд","pociąg","tren"],
+      [1,"billet","ticket","билет","квиток","bilet","bilet"],
+      [1,"station","station","станция","станція","stacja","stație"],
+      [1,"busstoppested","bus stop","автобусная остановка","автобусна зупинка","przystanek autobusowy","stație de autobuz"],
+      [1,"afgang","departure","отправление","відправлення","odjazd","plecare"],
+      [1,"ankomst","arrival","прибытие","прибуття","przyjazd","sosire"],
+      [1,"forsinkelse","delay","задержка","затримка","opóźnienie","întârziere"],
+      [1,"adresse","address","адрес","адреса","adres","adresă"],
+      [1,"venstre","left","налево","ліворуч","w lewo","la stânga"],
+      [1,"højre","right","направо","праворуч","w prawo","la dreapta"],
+      [1,"ligeud","straight ahead","прямо","прямо","prosto","drept înainte"],
+      [1,"cykel","bicycle","велосипед","велосипед","rower","bicicletă"]
+    ] },
+    { key: "firstphrases", type: "phrase", name: {"da":"Sætninger til at komme i gang","en":"Phrases to get started","ru":"Фразы для начала","uk":"Фрази для початку","pl":"Zwroty na początek","ro":"Expresii pentru început"}, rows: [
+      [1,"Hej!","Hello!","Здравствуйте!","Вітаю!","Dzień dobry!","Bună ziua!"],
+      [1,"Tak for hjælpen.","Thank you for your help.","Спасибо за помощь.","Дякую за допомогу.","Dziękuję za pomoc.","Mulțumesc pentru ajutor."],
+      [1,"Jeg forstår ikke.","I do not understand.","Я не понимаю.","Я не розумію.","Nie rozumiem.","Nu înțeleg."],
+      [1,"Kan du gentage det?","Can you repeat that?","Вы можете повторить?","Ви можете повторити?","Proszę powtórzyć.","Puteți repeta, vă rog?"],
+      [1,"Kan du tale langsommere?","Can you speak more slowly?","Вы можете говорить медленнее?","Ви можете говорити повільніше?","Proszę mówić wolniej.","Puteți vorbi mai rar, vă rog?"],
+      [1,"Hvad betyder det?","What does that mean?","Что это значит?","Що це означає?","Co to znaczy?","Ce înseamnă asta?"],
+      [1,"Jeg lærer dansk.","I am learning Danish.","Я учу датский язык.","Я вивчаю данську мову.","Uczę się duńskiego.","Învăț limba daneză."],
+      [1,"Hvor er busstoppestedet?","Where is the bus stop?","Где автобусная остановка?","Де автобусна зупинка?","Gdzie jest przystanek autobusowy?","Unde este stația de autobuz?"],
+      [1,"Hvad koster en billet?","How much is a ticket?","Сколько стоит билет?","Скільки коштує квиток?","Ile kosztuje bilet?","Cât costă un bilet?"],
+      [1,"Hvad er klokken?","What time is it?","Который час?","Котра година?","Która jest godzina?","Cât este ceasul?"],
+      [1,"Hvornår skal jeg møde?","When should I arrive?","Когда мне нужно прийти?","Коли мені потрібно прийти?","Kiedy mam przyjść?","Când trebuie să vin?"],
+      [1,"Jeg kommer om ti minutter.","I will be there in ten minutes.","Я буду через десять минут.","Я буду за десять хвилин.","Będę za dziesięć minut.","Ajung în zece minute."],
+      [1,"Jeg er forsinket.","I am running late.","Я опаздываю.","Я запізнююся.","Spóźniam się.","Întârzii."],
+      [1,"Kan du hjælpe mig?","Can you help me?","Вы можете мне помочь?","Ви можете мені допомогти?","Czy mogę prosić o pomoc?","Mă puteți ajuta?"]
+    ] }
   ]
 };

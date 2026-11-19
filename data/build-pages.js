@@ -1,4 +1,4 @@
-// Laver en statisk side pr. pakke på 4 sprog (til søgemaskiner), opdaterer linklisten på
+// Laver en statisk side pr. pakke på 6 sprog (til søgemaskiner), opdaterer linklisten på
 // forsiden og sitemap.xml. Kør efter ændringer i pakkerne: node data/build-pages.js
 const fs = require('fs');
 const path = require('path');
@@ -8,15 +8,15 @@ const catalog = require('../catalog');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
-const LANGS = ['da', 'en', 'ru', 'uk'];
-const LANG_NAME = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська' };
+const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
+const LANG_NAME = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська', pl: 'Polski', ro: 'Română' };
 const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'essentials', 'driving'];
 
 const T = {
   da: {
     title: (n) => `${n}: Lær de danske ord og sætninger | Job Vocabulary`,
     sub: 'Lær de danske ord og sætninger ét ad gangen',
-    intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk og ukrainsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
+    intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk, ukrainsk, polsk og rumænsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
     cta: 'Start med at øve gratis',
     howTitle: 'Sådan virker det',
     how: [
@@ -31,7 +31,7 @@ const T = {
   en: {
     title: (n) => `${n}: Learn the Danish words and phrases | Job Vocabulary`,
     sub: 'Learn the Danish words and phrases one at a time',
-    intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian and Ukrainian. The most important come first, and what you know comes back less often.`,
+    intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian, Ukrainian, Polish and Romanian. The most important come first, and what you know comes back less often.`,
     cta: 'Start practising for free',
     howTitle: 'How it works',
     how: [
@@ -45,7 +45,7 @@ const T = {
   ru: {
     title: (n) => `${n}: датские слова и фразы | Job Vocabulary`,
     sub: 'Учите датские слова и фразы по одной за раз',
-    intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводом на русский, украинский и английский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
+    intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводами на русский, украинский, английский, польский и румынский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
     cta: 'Начать учить бесплатно',
     howTitle: 'Как это работает',
     how: [
@@ -59,7 +59,7 @@ const T = {
   uk: {
     title: (n) => `${n}: данські слова і фрази | Job Vocabulary`,
     sub: 'Вивчайте данські слова і фрази по одній за раз',
-    intro: (total, cats) => `${total} слів і фраз у ${cats} темах з перекладом українською, російською та англійською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
+    intro: (total, cats) => `${total} слів і фраз у ${cats} темах із перекладами українською, російською, англійською, польською та румунською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
     cta: 'Почати вчити безкоштовно',
     howTitle: 'Як це працює',
     how: [
@@ -72,8 +72,13 @@ const T = {
   },
 };
 
+const extraLocales = require('../locales');
+for (const [lang, locale] of Object.entries(extraLocales)) T[lang] = { ...locale.page,
+  title: name => lang === 'pl' ? `${name}: duńskie słowa i zwroty | Job Vocabulary` : `${name}: cuvinte și expresii în daneză | Job Vocabulary`,
+  intro: (total,topics) => lang === 'pl' ? `${total} słów i zwrotów w ${topics} tematach, z tłumaczeniem na polski. Najważniejsze są na początku, a znane słowa wracają rzadziej.` : `${total} cuvinte și expresii în ${topics} teme, cu traducere în română. Cele mai importante apar primele, iar cele cunoscute revin mai rar.`
+};
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const slugify = (s) => s.toLowerCase().replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa')
+const slugify = (s) => s.toLowerCase().replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa').replace(/ł/g, 'l')
   .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 // --- indlæs pakker ---
@@ -83,9 +88,10 @@ for (const f of fs.readdirSync(path.join(ROOT, 'packs')).filter((f) => f.endsWit
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'packs', f), 'utf8'), ctx);
 }
 vm.runInContext('this.P = PACKS;', ctx);
-const packs = Object.values(ctx.P).sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
+const courseOrder = catalog.groups.flatMap(group => group.packs);
+const packs = Object.values(ctx.P).sort((a, b) => courseOrder.indexOf(a.id) - courseOrder.indexOf(b.id));
 
-const urlOf = (p, lang) => `/${lang}/${lang === 'da' || lang === 'en' ? slugify(p.name[lang]) : p.id}/`;
+const urlOf = (p, lang) => `/${lang}/${['da','en','pl','ro'].includes(lang) ? slugify(p.name[lang]) : p.id}/`;
 
 // Prioritet 1 på skift mellem emnerne (samme rækkefølge som i appen).
 function sample(p, type, n) {
@@ -100,8 +106,8 @@ function page(p, lang) {
   const name = p.name[lang];
   const total = p.categories.reduce((s, c) => s + c.rows.length, 0);
   const url = SITE + urlOf(p, lang);
-  const cols = lang === 'da' ? ['da', 'en', 'ru', 'uk'] : ['da', lang];
-  const col = (l) => (l === 'da' ? 0 : l === 'en' ? 1 : l === 'ru' ? 2 : 3) + 1;
+  const cols = lang === 'da' ? LANGS : ['da', lang];
+  const col = (l) => LANGS.indexOf(l) + 1;
   const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th>${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
 ${rows.map((r) => `<tr>${cols.map((l) => `<td lang="${l}"${l === 'da' ? ' class="da"' : ''}>${esc(r[col(l)])}</td>`).join('')}</tr>`).join('\n')}
 </tbody></table></div>`;
@@ -174,7 +180,7 @@ for (const p of packs) {
     const rel = urlOf(p, lang);
     const dir = path.join(ROOT, rel);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), page(p, lang));
+    fs.writeFileSync(path.join(dir, 'index.html'), page(p, lang).replace(/[ \t]+$/gm, ''));
     urls.push(SITE + rel);
   }
 }
@@ -194,7 +200,7 @@ for (const lang of LANGS) {
     en: { resume: 'Pick up where you left off', action: 'Continue practising', words: 'My words', favorites: 'Saved words' },
     ru: { resume: 'Продолжите с того места, где остановились', action: 'Продолжить занятия', words: 'Мои слова', favorites: 'Сохранённые слова' },
     uk: { resume: 'Продовжте з того місця, де зупинилися', action: 'Продовжити навчання', words: 'Мої слова', favorites: 'Збережені слова' },
-  }[lang];
+  }[lang] || extraLocales[lang].personal;
   const resumeNames = { ...Object.fromEntries(packs.map((p) => [p.id, p.name[lang]])), top: l.general, pics: l.pictures, favorites: personal.favorites };
   const card = (id) => {
     const p = packs.find((p) => p.id === id);
@@ -255,9 +261,9 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
-const assets = ['style.css', 'favicon.svg', 'app.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
+const assets = ['style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
-const pages = [indexPath, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
+const pages = [indexPath, path.join(ROOT,'dictionary/attribution.html'), ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {
   const html = fs.readFileSync(file, 'utf8').replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
     const version = versions[asset.replace(/^\//, '')];

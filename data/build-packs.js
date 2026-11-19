@@ -7,11 +7,11 @@ const vm = require('vm');
 const crypto = require('crypto');
 
 const DIR = path.join(__dirname, '..', 'packs');
-const LANGS = ['da', 'en', 'ru', 'uk'];
+const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
 // Bevidste synonymer: samme oversættelse er tilladt for disse danske par.
 const SYNONYMS = new Set(['mug|skimmel', 'stoppet|tilstoppet']);
 // Rækkefølge i appen (resten alfabetisk efter).
-const FIRST = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'essentials', 'driving'];
+const FIRST = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'childcare', 'hotel', 'hospital', 'essentials', 'driving', 'worklife', 'authorities', 'health', 'children'];
 
 const files = fs.readdirSync(DIR).filter((f) => f.endsWith('.js') && f !== 'index.js');
 const index = [];
@@ -35,12 +35,13 @@ for (const f of files) {
     const cats = [];
     let total = 0;
     for (const cat of p.categories) {
+      for (const language of LANGS) if (!cat.name?.[language]) warn(`emnenavn mangler (${language}) i ${cat.key}`);
       if (keys.has(cat.key)) warn(`dobbelt emne-nøgle ${cat.key}`);
       keys.add(cat.key);
       if (!['word', 'phrase'].includes(cat.type)) warn(`ukendt type i ${cat.key}`);
       const n = [0, 0, 0, 0];
       for (const r of cat.rows) {
-        if (r.length !== 5 || ![1, 2, 3].includes(r[0]) || r.slice(1).some((v) => typeof v !== 'string' || !v.trim())) {
+        if (r.length !== LANGS.length + 1 || ![1, 2, 3].includes(r[0]) || r.slice(1).some((v) => typeof v !== 'string' || !v.trim())) {
           warn(`forkert række i ${cat.key}: ${JSON.stringify(r)}`);
           continue;
         }

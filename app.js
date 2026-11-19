@@ -415,6 +415,10 @@ const MEMORY_TEXT = {
   uk: { readyTitle: 'Гарна робота. Можна зробити перерву.', readyHint: 'Зараз немає слів для повторення. Вони з’являться, коли настане час. Можна вибрати інший курс, рівень складності або тип завдань.', nextReview: 'Наступна можливість повторення', checkAgain: 'Перевірити знову', formula: 'Як вибираються слова', explainSimple: 'Більшість завдань знайомить із новими словами. Складні слова повертаються після паузи. Якщо повторення ввімкнено, вивчені слова перевіряються з більшими інтервалами. Помилка впливає лише на поточне слово.', explain: 'Відповіді й час між ними визначають інтервал для кожного слова. Упевнені відповіді збільшують паузу, а часті слова перевіряються трохи частіше. Коли доступні всі групи, близько 70% завдань присвячено новим словам, 20% складним і 10% вивченим. Порядок змінюється, а кількість повторень одного слова за заняття обмежена.' }
 };
 for (const [lang, text] of Object.entries(MEMORY_TEXT)) Object.assign(UI[lang], text);
+for (const [lang, locale] of Object.entries(EXTRA_LOCALES)) UI[lang] = locale.ui;
+const languageNames = { da: ['Polsk','Rumænsk'], en: ['Polish','Romanian'], ru: ['Польский','Румынский'], uk: ['Польська','Румунська'] };
+for (const [lang, [pl,ro]] of Object.entries(languageNames)) Object.assign(UI[lang].lang,{pl,ro});
+for (const [lang,label] of Object.entries({da:'Licenser',en:'Licences',ru:'Лицензии',uk:'Ліцензії'})) UI[lang].licenses=label;
 
 // ---------- Data ----------
 // Alle læringsenheder (ord fra hyppighedslisten + ord/sætninger fra branchepakker) slås op i ITEM.
@@ -426,8 +430,8 @@ const PACK_LIST = typeof PACK_INDEX !== 'undefined' ? PACK_INDEX : [];
 const IMG = typeof IMAGES !== 'undefined' ? IMAGES : {};
 for (const c of CONCEPTS) ITEM[c.id] = { ...c, phrase: false };
 function registerPack(p) {
-  const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk]) => ({
-    id: `${p.id}:${da}`, words: { da, en, ru, uk }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
+  const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk, pl, ro]) => ({
+    id: `${p.id}:${da}`, words: { da, en, ru, uk, pl, ro }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
   })));
   // Prioritet 1 først, på skift mellem kategorierne, derefter prioritet 2 osv.
   const ordered = [];
@@ -617,6 +621,10 @@ function t(key, vars) {
   const v = UI[uiLang()][key];
   return vars && typeof v === 'string' ? fill(v, vars) : v;
 }
+function exerciseLanguage(language) {
+  const label=UI[uiLang()].lang[language] || '';
+  return uiLang()==='en' ? label : label.toLowerCase();
+}
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -705,15 +713,15 @@ function newCard(c, lvl, ok, extra) {
 
 // Svarmuligheder vises i "betydnings"-sproget (eller som billede) ved rec, i målsproget ved prod.
 function optionLabel(c, x, qdir) {
-  if (qdir === 'rec') return c.pics ? x.id : x.words[c.s.base].toLowerCase();
-  return x.words[c.s.target].toLowerCase();
+  if (qdir === 'rec') return c.pics ? x.id : lexicalForm(x,c.s.base).toLowerCase();
+  return lexicalForm(x,c.s.target).toLowerCase();
 }
 function pickDistractors(c, concept, qdir, n = 3) {
   const answer = optionLabel(c, concept, qdir);
   const used = new Set([answer]);
   const picked = [];
   // Synonymer (fx "mug" og "skimmel") må ikke optræde som forkerte svar for hinanden.
-  const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]] && x.words[c.s[k]].toLowerCase() === concept.words[c.s[k]].toLowerCase());
+  const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]] && lexicalForm(x,c.s[k]).toLowerCase() === lexicalForm(concept,c.s[k]).toLowerCase());
   const candidates = isList(c.s) ? Object.values(ITEM).filter((x) => x.id.startsWith('lex:') && x.words[c.s.target] && x.words[c.s.base]) : c.pool;
   const cand = candidates.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x)
     && !(c.pics && confusable(x.id, concept.id)));
@@ -746,10 +754,14 @@ function makeOptions(c, x, qdir) { return shuffle([x, ...pickDistractors(c, x, q
 // ----- Byg sætninger -----
 // Sætninger (og flerordsudtryk) bygges af ordbrikker. Enkeltord skrives på bogstav-tastaturet.
 function splitPrefix(c, x) {
-  const full = x.words[c.s.target];
+  const full = lexicalForm(x,c.s.target);
   if (!x.phrase && c.s.target === 'da') {
     const m = full.match(/^(en|et|at)\s+(.+)$/);
     if (m) return { prefix: m[1], rest: m[2] };
+  }
+  if (!x.phrase && c.s.target === 'ro') {
+    const match=full.match(/^(a|un|o)\s+(.+)$/);
+    if(match) return {prefix:match[1],rest:match[2]};
   }
   return { prefix: '', rest: full };
 }
@@ -801,6 +813,7 @@ function alphabetOf(lang) {
       for (const ch of new Set(Array.from(w.toLowerCase()).filter(isLetter))) count[ch] = (count[ch] || 0) + 1;
     }
     alphabets[lang] = Object.keys(count).filter((ch) => count[ch] >= 5);
+    if (!alphabets[lang].length && ['pl','ro'].includes(lang)) alphabets[lang] = Array.from(lang === 'pl' ? 'aąbcćdeęfghijklłmnńoóprsśtuwyzźż' : 'aăâbcdefghiîjklmnopqrsștțuvwxyz');
   }
   return alphabets[lang];
 }
@@ -845,7 +858,7 @@ function speak(text, lang, explicit = false) {
     speechSynthesis.speak(u);
   } catch (e) { /* ingen tale */ }
 }
-function speakTarget(x, explicit = false) { speak(x.words[state.settings.target], state.settings.target, explicit); }
+function speakTarget(x, explicit = false) { speak(lexicalForm(x,state.settings.target), state.settings.target, explicit); }
 
 // ---------- Rendering ----------
 function render() {
@@ -864,6 +877,7 @@ function render() {
   $('menuTitle').textContent = t('menu');
   $('menuBtn').setAttribute('aria-label', t('menu'));
   $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
+  $('licensesLink').textContent = t('licenses');
   $('modeBtn').textContent = t('taskOptions');
   $('returnCourseBtn').textContent = lt('backToCourse');
   $('soundBtn').classList.toggle('off', !state.sound);
@@ -960,8 +974,7 @@ function dirSub(dir, pics, vars) {
 function practiceChoicesHTML(settings, prefix) {
   const selected = PracticeOptions.modes(settings);
   const pics = isPics(settings);
-  const L = UI[uiLang()].lang;
-  const vars = { T: (L[settings.target] || '').toLowerCase(), B: (L[settings.base] || '').toLowerCase() };
+  const vars = { T: exerciseLanguage(settings.target), B: exerciseLanguage(settings.base) };
   return `<fieldset class="mode-fieldset"><legend>${esc(t('modeQ'))}</legend><p class="course-note">${esc(t('modesHint'))}</p><div class="choices">${PracticeOptions.allowed(settings).map((mode) => `<button type="button" class="choice" data-mode="${mode}" aria-pressed="${selected.includes(mode)}"><b>${esc(dirName(mode, pics))}</b><small>${esc(dirSub(mode, pics, vars))}</small></button>`).join('')}</div></fieldset><label class="repeat-option" for="${prefix}repeatLearned"><input type="checkbox" id="${prefix}repeatLearned"${settings.repeatLearned !== false ? ' checked' : ''}><span><b>${esc(t('repeatLearned'))}</b><small>${esc(t('repeatHint'))}</small></span></label>`;
 }
 function openTrainingOptions(settings, apply, options = {}) {
@@ -1011,7 +1024,8 @@ function renderPracticeWait(c, at) {
 }
 function renderHomeStart() {
   const L = UI[uiLang()].lang;
-  $('app').innerHTML = `<section class="setup"><p class="setup-kicker">${esc(t('setupTitle'))}</p><div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">${Object.keys(ORDER).map((lang) => `<button class="choice" data-target="${lang}"><b>${esc(LANGS[lang].name || L[lang])}</b></button>`).join('')}</div></div></section>`;
+  const shortQuestion = { da:'Vælg sprog',en:'Choose a language',ru:'Выберите язык',uk:'Виберіть мову',pl:'Wybierz język',ro:'Alege o limbă' }[uiLang()];
+  $('app').innerHTML = `<section class="setup"><p class="setup-kicker">${esc(t('setupTitle'))}</p><div class="step"><h2><span class="home-language-full">${esc(t('learnQ'))}</span><span class="home-language-short">${esc(shortQuestion)}</span></h2><div class="choices">${Object.keys(ORDER).map((lang) => `<button class="choice" data-target="${lang}"><b>${esc(LANGS[lang].name || L[lang])}</b></button>`).join('')}</div></div></section>`;
   $('app').querySelectorAll('[data-target]').forEach((button) => button.onclick = () => {
     selectedCourseLink = false;
     draft = { target: button.dataset.target, base: null, pack: TOP, dir: 'rec', diff: 1, cats: null };
@@ -1029,7 +1043,7 @@ function renderSetup() {
     `<button class="choice" ${attrs} aria-pressed="${pressed}"><b>${title}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</button>`;
 
   const welcome = !state.settings && !selectedCourseLink && !d.target;
-  let html = `<section class="setup">${welcome ? `<p class="setup-kicker">${esc(t('setupTitle'))}</p>` : `<h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>`}`;
+  let html = `<section class="setup">${welcome ? `<p class="setup-kicker">${esc(t('setupTitle'))}</p>` : `<div class="setup-heading"><h1>${esc(t(state.settings ? 'settings' : 'setupTitle'))}</h1>${state.settings ? `<button class="setup-cancel" id="cancelBtn">${esc(t('cancel'))}</button>` : ''}</div>`}`;
   if (d.target) html += `<details class="setup-selection"><summary><span>${esc(t('learnQ'))}</span><b>${esc(LANGS[d.target].name)}</b></summary>`;
   html += `<div class="step"><h2>${esc(t('learnQ'))}</h2><div class="choices">`;
   for (const l of targets) html += choice(`data-target="${l}"`, d.target === l, esc(LANGS[l].name));
@@ -1050,6 +1064,7 @@ function renderSetup() {
   if (d.target && d.base) {
     const native = d.base === d.target;
     if (native) d.pack = TOP;
+    if (d.pack === TOP && !countPool(d) && !native) d.pack = 'essentials';
     const nPicWords = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
     if (d.pack === PICS && nPicWords < 8) d.pack = TOP;
     const pics = isPics(d);
@@ -1062,7 +1077,7 @@ function renderSetup() {
       for (const group of COURSE_CATALOG.groups) {
         html += `<optgroup label="${esc(group.name[ul])}">`;
         for (const id of group.packs) {
-          if (id === TOP) html += courseOption(TOP, t('topB'));
+          if (id === TOP) { if (countPool({ ...d, pack: TOP })) html += courseOption(TOP, t('topB')); }
           else if (id === PICS) {
             if (nPicWords >= 8) html += courseOption(PICS, t('picsB'));
           } else {
@@ -1088,7 +1103,7 @@ function renderSetup() {
       html += `</fieldset><button class="primary" type="button" id="closeTopics">${esc(home.done)}</button></div></details></div>`;
     }
 
-    const optionTitles = { da: 'Sværhedsgrad og opgaver', en: 'Difficulty and tasks', ru: 'Сложность и задания', uk: 'Складність і завдання' };
+    const optionTitles = { da: 'Sværhedsgrad og opgaver', en: 'Difficulty and tasks', ru: 'Сложность и задания', uk: 'Складність і завдання', pl: EXTRA_LOCALES.pl.setupOptions, ro: EXTRA_LOCALES.ro.setupOptions };
     html += `<details class="setup-options" id="setupOptions"><summary><b>${esc(optionTitles[ul])}</b><small>${esc(t(pack ? 'packDiff' : 'diff')[d.diff])} · ${esc(PracticeOptions.modes(d).map(mode => dirName(mode, pics)).join(', '))}</small></summary><section class="step" id="practiceOptions">${practiceChoicesHTML(d, 'setup-')}</section>`;
 
     html += `<div class="step"><h2>${esc(t('diffQ'))}</h2><div class="choices">`;
@@ -1102,12 +1117,9 @@ function renderSetup() {
     const progress = state.progress[progKey(d)];
     const canTest = !native && PracticeOptions.modes(d).length === 1 && countPool(d) >= 30 && !Object.keys(progress?.cards || {}).length;
     html += `<div class="row actions setup-actions">
-      ${state.settings ? `<button class="secondary" id="cancelBtn">${esc(t('cancel'))}</button>` : ''}
       <button class="primary" id="startBtn" ${countPool(d) ? '' : 'disabled'}>${esc(t(state.settings ? 'save' : canTest ? 'placeSkip' : 'start'))}</button>
       ${canTest ? `<button class="secondary" id="setupTestBtn">${esc(t('placeStart'))}</button>` : ''}
     </div>`;
-  } else if (state.settings) {
-    html += `<div class="row actions"><button class="secondary" id="cancelBtn">${esc(t('cancel'))}</button></div>`;
   }
   html += `</section>`;
   $('app').innerHTML = html;
@@ -1222,16 +1234,23 @@ function renderPlay() {
 
 }
 
+function wordParts(x,language) {
+  return WordEntry.parts(x,language);
+}
+function lexicalForm(x,language) { return wordParts(x,language).text; }
+function wordHTML(x,language) {
+  const parts=wordParts(x,language);
+  return `<span class="w${x.phrase || parts.text.length>22 ? ' long' : ''}" lang="${language}">${esc(parts.text)}</span>${parts.detail ? `<small class="word-sense" lang="${language}">${esc(parts.detail)}</small>` : ''}`;
+}
 function meaningHTML(c, x) {
   if (c.pics) return picHTML(x);
-  return `<span class="w${x.phrase ? ' long' : ''}" lang="${c.s.base}">${esc(x.words[c.s.base])}</span>`;
+  return wordHTML(x,c.s.base);
 }
 const picHTML = (x, cls = 'pic') => `<img class="${cls}" src="images/words/${encodeURI(IMG[x.id] || '')}" alt="" draggable="false" decoding="async">`;
-const targetHTML = (c, x) => `<span class="w${x.phrase ? ' long' : ''}" lang="${c.s.target}">${esc(x.words[c.s.target])}</span>`;
+const targetHTML = (c, x) => wordHTML(x,c.s.target);
 
 function questionText(c, x, kind) {
-  const L = UI[uiLang()].lang;
-  const T = L[c.s.target].toLowerCase();
+  const T = exerciseLanguage(c.s.target);
   if (kind === 'build') return t('qBuild', { T });
   if (kind === 'write') return c.pics ? t('qWriteN') : t('qWrite', { T });
   const rec = current.qdir === 'rec';
@@ -1244,8 +1263,9 @@ function metaHTML(c, x) {
   const cards = combinedCards(c.s, c.pool);
   const score = c.pool.filter((p) => isLearned(cards[p.id])).length;
   void x;
-  const course = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(c.s.pack === PICS ? 'picsB' : 'topB');
-  return `${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(t(isPack(c.s) ? 'packDiff' : 'diff')[c.s.diff])}</span><span class="course-progress">${esc(t('progress', { n: score, m: c.pool.length }))}</span>
+  const course = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(isPics(c.s) ? 'picsB' : 'topB');
+  const difficulty = isList(c.s) ? '' : t(isPack(c.s) ? 'packDiff' : 'diff')[c.s.diff];
+  return `${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(difficulty)}</span><span class="course-progress">${esc(t('progress', { n: score, m: c.pool.length }))}</span>
     </div>
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }

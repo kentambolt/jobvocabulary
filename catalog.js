@@ -35,10 +35,10 @@ var COURSE_CATALOG = {
         "uk": "Повсякденне життя і транспорт"
       },
       "desc": {
-        "da": "Kom rundt, forstå tiden, og få styr på de små ting i et nyt land.",
-        "en": "Get around, understand time and manage the small things in a new country.",
-        "ru": "Транспорт, время и повседневные ситуации в новой стране.",
-        "uk": "Транспорт, час і повсякденні ситуації в новій країні."
+        "da": "Transport, sundhed, familie og hverdagen i et nyt land.",
+        "en": "Transport, healthcare, family and everyday life in a new country.",
+        "ru": "Транспорт, здоровье, семья и повседневная жизнь в новой стране.",
+        "uk": "Транспорт, здоров’я, сім’я та повсякденне життя в новій країні."
       },
       "packs": [
         "essentials",
@@ -162,3 +162,11 @@ COURSE_CATALOG.benefitsHTML = function(lang) {
   return ['free', 'account', 'mobile'].map((key, i) => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[i]}</svg>${this.home[lang][key]}</li>`).join('');
 };
 if (typeof module !== 'undefined') module.exports = COURSE_CATALOG;
+const extraCatalogLocales = typeof EXTRA_LOCALES !== 'undefined' ? EXTRA_LOCALES : require('./locales');
+for (const [lang, locale] of Object.entries(extraCatalogLocales)) {
+  COURSE_CATALOG.labels[lang] = locale.catalog;
+  COURSE_CATALOG.home[lang] = locale.home;
+  COURSE_CATALOG.groups.forEach((group,index)=>{group.name[lang]=locale.groups[index].name;group.desc[lang]=locale.groups[index].desc;});
+}
+COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital');
+COURSE_CATALOG.groups[1].packs.push('worklife','authorities','health','children');
