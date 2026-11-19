@@ -36,11 +36,14 @@ in `data/lexicon-migrations.json`; saved words will follow the corrected entry.
 External additions towards a larger common-word dictionary require reviewed
 translations, distinct meanings, source attribution and a compatible licence.
 Candidates, translation reviews, provenance and common-word extraction tools
-live in the private repository `kentambolt/jobvocabulary`. Content proposals
+live in the private repository `kentambolt/jobvocabulary-private`. Content proposals
 are reviewed there using AI; human approval is not a prerequisite. Only selected
 app data and necessary public licence notices are copied into this repository.
-The ignored `.private/jobvocabulary/` checkout is a local convenience, not an app
+The ignored `.private/jobvocabulary-private/` checkout is a local convenience, not an app
 dependency. Keep reference inputs in the private repository tied to a public commit.
+This repository is `kentambolt/jobvocabulary` (renamed from `trafficwords` on 2026-11-19).
+A local private checkout must use the remote `kentambolt/jobvocabulary-private`: the old
+private name `kentambolt/jobvocabulary` now points to this public repository.
 
 `build-pages.js` writes the four language catalogues and course pages, updates the
 sitemap and adds content hashes to shared asset URLs. Existing published course
