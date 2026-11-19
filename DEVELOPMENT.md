@@ -88,10 +88,37 @@ the panel open and retain focus/scroll; Escape, Done or an outside click closes 
 Topic filtering preserves the existing `cats` schema and card histories.
 
 Correct answers advance immediately, with a persistent previous-answer receipt.
-`learning-flow.js` selects new and struggling words ahead of a backlog of learned
-words. While unfinished material exists, learned-word checks are capped at one
-per six completed tasks. The review budget persists with progress and restarts
-when difficulty/category scope changes. A wrong answer changes only its own card.
+`memory-scheduler.js` uses the locally vendored MIT-licensed ts-fsrs 5.4.2 (FSRS-6).
+It applies Good/Again ratings to actual answers and keeps a per-card memory state.
+The default model weights are fixed; no personalised parameter training or remote
+service is used. Priority-1 words use 92% target retention, other words 90%. For the
+general vocabulary priority reflects frequency; job courses use curated importance.
+Intervals vary by up to 15%, with a maximum of 365 days. Faster task completion
+does not make learned words due. The bounded recent log stores eight compact
+timestamp/rating/evidence tuples; memory state summarises older answers. A storage
+quota retry reduces optional logs to two entries, keeping the model and counters.
+
+`learning-flow.js` shuffles 7/2/1 slots for new, struggling and learned-review
+questions, borrowing available slots when a group is empty. No more than two
+review questions in a row displace an available new word. New words are sampled
+from a priority window of 20, advancing its first unseen word every tenth draw.
+Every third draw within each review group takes its oldest due word to prevent
+starvation. Other draws combine overdueness, difficulty and modest priority weight.
+
+Failures receive an early corrective opportunity after 90 seconds. Unmastered
+correct answers receive one after five minutes. Recency gating requires up to
+eight other words or a two-minute pause. The shared course/language session caps
+single-mode word appearances at three, allowing a little more for mixed modes.
+It resets after a 30-minute break and persists across reloads. When nothing is
+eligible, a ready screen gives the next opportunity and wakes when it is due;
+it never fills the gap with unnecessary known-word repetitions.
+
+Legacy IDs, levels and answer counters remain intact. Legacy memory is seeded
+conservatively from counters/time, capped at 30 days, marked as estimated, and has
+no fabricated log.
+Actual placement answers are logged; inferred skipped words have zero observed
+answers and are spread over days. Explicit reveals persist an exposure immediately
+and Continue never counts it twice. A wrong answer changes only its own card.
 Completing the eligible pool automatically unlocks the next difficulty that adds
 words, preserving the language pair, categories, course and exercise mode. Lists
 have no automatic difficulty change. Existing word levels and IDs are preserved.
@@ -111,6 +138,10 @@ Combined progress and promotion require mastery in every selected mode. Disablin
 learned repetitions still permits retries of incorrect or unfinished words. A fully
 completed selection stops with an explicit option to enable repetitions. Options
 are available before course/list practice and from the navigation menu.
+
+`node data/simulate-learning.cjs` reproduces the synthetic baseline comparisons
+and one-year coverage checks in `data/reports/learning-simulation.json`. The report
+is a software-behaviour check, not measured human learning effectiveness.
 Catalogue pages read the existing local settings through `practice-resume.js` to
 offer direct resume and My words links without loading course or dictionary data.
 Resume opens the app without a course-start fragment, preserving mode and filters.

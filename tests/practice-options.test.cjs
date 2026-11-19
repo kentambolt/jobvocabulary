@@ -23,14 +23,14 @@ test('selection keeps at least one supported mode and remembers repetition indep
 
 test('disabling learned repetitions keeps incorrect-word retries and new vocabulary', () => {
   const pool = [{ id: 'known' }, { id: 'wrong' }, { id: 'fresh' }];
-  const progress = { task: 20, lastLearnedReviewTask: 0, cards: { known: learnedCard(), wrong: { lvl: 0, ok: false } } };
+  const progress = { task: 20, lastLearnedReviewTask: 0, cards: { known: learnedCard(), wrong: { lvl: 0, ok: false, wrong: 1, time: Date.now() - 86400000 } } };
   const learned = (card) => card.ok;
-  assert.equal(Flow.select(pool, progress, learned, () => 100, 0, false).word.id, 'wrong');
+  assert.equal(Flow.select([pool[1]], progress, learned, Date.now(), { repeatLearned: false }).word.id, 'wrong');
   progress.cards.wrong = learnedCard();
-  assert.equal(Flow.select(pool, progress, learned, () => 100, 0, false).word.id, 'fresh');
+  assert.equal(Flow.select(pool, progress, learned, Date.now(), { repeatLearned: false }).word.id, 'fresh');
   progress.cards.fresh = learnedCard();
-  assert.equal(Flow.select(pool, progress, learned, () => 100, 0, false), null);
-  assert.equal(Flow.select(pool, progress, learned, () => 100, 0, true).maintenance, true);
+  assert.equal(Flow.select(pool, progress, learned, Date.now(), { repeatLearned: false }), null);
+  assert.equal(Flow.select(pool, progress, learned, Date.now(), { repeatLearned: true }).maintenance, true);
 });
 
 test('actual answers alternate selected task types while preserving separate histories across reload', () => {

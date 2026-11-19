@@ -1,0 +1,4101 @@
+{
+  "synthetic": true,
+  "baselineCommit": "9036583",
+  "fsrsPackage": "ts-fsrs@5.4.2 (FSRS-6)",
+  "scope": "First 120 actual Russian easy words; 100 answers at four seconds per question; 30 fixed seeds per persona. Outcomes are reproducible per word/attempt, independently of scheduler randomness.",
+  "inputWords": [
+    {
+      "id": "in",
+      "diff": 1
+    },
+    {
+      "id": "and",
+      "diff": 1
+    },
+    {
+      "id": "not",
+      "diff": 1
+    },
+    {
+      "id": "on",
+      "diff": 1
+    },
+    {
+      "id": "what",
+      "diff": 1
+    },
+    {
+      "id": "be",
+      "diff": 1
+    },
+    {
+      "id": "with",
+      "diff": 1
+    },
+    {
+      "id": "this",
+      "diff": 1
+    },
+    {
+      "id": "i",
+      "diff": 1
+    },
+    {
+      "id": "he",
+      "diff": 1
+    },
+    {
+      "id": "but",
+      "diff": 1
+    },
+    {
+      "id": "about",
+      "diff": 1
+    },
+    {
+      "id": "all",
+      "diff": 1
+    },
+    {
+      "id": "from",
+      "diff": 1
+    },
+    {
+      "id": "to",
+      "diff": 1
+    },
+    {
+      "id": "me",
+      "diff": 1
+    },
+    {
+      "id": "how",
+      "diff": 1
+    },
+    {
+      "id": "for",
+      "diff": 1
+    },
+    {
+      "id": "you",
+      "diff": 1
+    },
+    {
+      "id": "him",
+      "diff": 1
+    },
+    {
+      "id": "we",
+      "diff": 1
+    },
+    {
+      "id": "year",
+      "diff": 1
+    },
+    {
+      "id": "so",
+      "diff": 1
+    },
+    {
+      "id": "can",
+      "diff": 1
+    },
+    {
+      "id": "she",
+      "diff": 1
+    },
+    {
+      "id": "they",
+      "diff": 1
+    },
+    {
+      "id": "her",
+      "diff": 1
+    },
+    {
+      "id": "if",
+      "diff": 1
+    },
+    {
+      "id": "one",
+      "diff": 1
+    },
+    {
+      "id": "his",
+      "diff": 1
+    },
+    {
+      "id": "when",
+      "diff": 1
+    },
+    {
+      "id": "or",
+      "diff": 1
+    },
+    {
+      "id": "no",
+      "diff": 1
+    },
+    {
+      "id": "them",
+      "diff": 1
+    },
+    {
+      "id": "us",
+      "diff": 1
+    },
+    {
+      "id": "say",
+      "diff": 1
+    },
+    {
+      "id": "my",
+      "diff": 1
+    },
+    {
+      "id": "person",
+      "diff": 1
+    },
+    {
+      "id": "who",
+      "diff": 1
+    },
+    {
+      "id": "want",
+      "diff": 1
+    },
+    {
+      "id": "day",
+      "diff": 1
+    },
+    {
+      "id": "our",
+      "diff": 1
+    },
+    {
+      "id": "yes",
+      "diff": 1
+    },
+    {
+      "id": "do",
+      "diff": 1
+    },
+    {
+      "id": "very",
+      "diff": 1
+    },
+    {
+      "id": "where",
+      "diff": 1
+    },
+    {
+      "id": "after",
+      "diff": 1
+    },
+    {
+      "id": "two",
+      "diff": 1
+    },
+    {
+      "id": "new",
+      "diff": 1
+    },
+    {
+      "id": "there",
+      "diff": 1
+    },
+    {
+      "id": "now",
+      "diff": 1
+    },
+    {
+      "id": "first",
+      "diff": 1
+    },
+    {
+      "id": "under",
+      "diff": 1
+    },
+    {
+      "id": "here",
+      "diff": 1
+    },
+    {
+      "id": "good",
+      "diff": 1
+    },
+    {
+      "id": "child",
+      "diff": 1
+    },
+    {
+      "id": "have",
+      "diff": 1
+    },
+    {
+      "id": "house",
+      "diff": 1
+    },
+    {
+      "id": "go",
+      "diff": 1
+    },
+    {
+      "id": "friend",
+      "diff": 1
+    },
+    {
+      "id": "because",
+      "diff": 1
+    },
+    {
+      "id": "see",
+      "diff": 1
+    },
+    {
+      "id": "big",
+      "diff": 1
+    },
+    {
+      "id": "also",
+      "diff": 1
+    },
+    {
+      "id": "why",
+      "diff": 1
+    },
+    {
+      "id": "today",
+      "diff": 1
+    },
+    {
+      "id": "give",
+      "diff": 1
+    },
+    {
+      "id": "three",
+      "diff": 1
+    },
+    {
+      "id": "many",
+      "diff": 1
+    },
+    {
+      "id": "find",
+      "diff": 1
+    },
+    {
+      "id": "over",
+      "diff": 1
+    },
+    {
+      "id": "woman",
+      "diff": 1
+    },
+    {
+      "id": "money",
+      "diff": 1
+    },
+    {
+      "id": "hand",
+      "diff": 1
+    },
+    {
+      "id": "night",
+      "diff": 1
+    },
+    {
+      "id": "come",
+      "diff": 1
+    },
+    {
+      "id": "love",
+      "diff": 1
+    },
+    {
+      "id": "mother",
+      "diff": 1
+    },
+    {
+      "id": "take",
+      "diff": 1
+    },
+    {
+      "id": "help",
+      "diff": 1
+    },
+    {
+      "id": "car",
+      "diff": 1
+    },
+    {
+      "id": "your",
+      "diff": 1
+    },
+    {
+      "id": "head",
+      "diff": 1
+    },
+    {
+      "id": "school",
+      "diff": 1
+    },
+    {
+      "id": "name",
+      "diff": 1
+    },
+    {
+      "id": "water",
+      "diff": 1
+    },
+    {
+      "id": "family",
+      "diff": 1
+    },
+    {
+      "id": "eye",
+      "diff": 1
+    },
+    {
+      "id": "man",
+      "diff": 1
+    },
+    {
+      "id": "game",
+      "diff": 1
+    },
+    {
+      "id": "morning",
+      "diff": 1
+    },
+    {
+      "id": "it",
+      "diff": 1
+    },
+    {
+      "id": "home",
+      "diff": 1
+    },
+    {
+      "id": "book",
+      "diff": 1
+    },
+    {
+      "id": "play",
+      "diff": 1
+    },
+    {
+      "id": "eat",
+      "diff": 1
+    },
+    {
+      "id": "five",
+      "diff": 1
+    },
+    {
+      "id": "father",
+      "diff": 1
+    },
+    {
+      "id": "thanks",
+      "diff": 1
+    },
+    {
+      "id": "write",
+      "diff": 1
+    },
+    {
+      "id": "four",
+      "diff": 1
+    },
+    {
+      "id": "door",
+      "diff": 1
+    },
+    {
+      "id": "leg",
+      "diff": 1
+    },
+    {
+      "id": "heart",
+      "diff": 1
+    },
+    {
+      "id": "brother",
+      "diff": 1
+    },
+    {
+      "id": "old",
+      "diff": 1
+    },
+    {
+      "id": "light",
+      "diff": 1
+    },
+    {
+      "id": "hear",
+      "diff": 1
+    },
+    {
+      "id": "small",
+      "diff": 1
+    },
+    {
+      "id": "bad",
+      "diff": 1
+    },
+    {
+      "id": "sit",
+      "diff": 1
+    },
+    {
+      "id": "girl",
+      "diff": 1
+    },
+    {
+      "id": "phone",
+      "diff": 1
+    },
+    {
+      "id": "table",
+      "diff": 1
+    },
+    {
+      "id": "boy",
+      "diff": 1
+    },
+    {
+      "id": "tomorrow",
+      "diff": 1
+    },
+    {
+      "id": "black",
+      "diff": 1
+    },
+    {
+      "id": "sleep",
+      "diff": 1
+    },
+    {
+      "id": "open",
+      "diff": 1
+    },
+    {
+      "id": "six",
+      "diff": 1
+    }
+  ],
+  "sessions": {
+    "confident": {
+      "before": {
+        "uniqueWords": 86,
+        "repeatQuestions": 14,
+        "maxWordAppearances": 2
+      },
+      "after": {
+        "uniqueWords": 100,
+        "repeatQuestions": 0,
+        "maxWordAppearances": 1
+      },
+      "seeds": [
+        {
+          "seed": 1,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 2,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 3,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 4,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 5,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 6,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 7,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 8,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 9,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 10,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 11,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 12,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 13,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 14,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 15,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 16,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 17,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 18,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 19,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 20,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 21,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 22,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 23,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 24,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 25,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 26,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 27,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 28,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 29,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 30,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 0,
+              "review": 14
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 100,
+            "repeatQuestions": 0,
+            "maxWordAppearances": 1,
+            "maxReviewsInRow": 0,
+            "groups": {
+              "fresh": 100,
+              "struggling": 0,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        }
+      ]
+    },
+    "gradual": {
+      "before": {
+        "uniqueWords": 31.87,
+        "repeatQuestions": 68.13,
+        "maxWordAppearances": 8.1
+      },
+      "after": {
+        "uniqueWords": 84.7,
+        "repeatQuestions": 15.3,
+        "maxWordAppearances": 2.47
+      },
+      "seeds": [
+        {
+          "seed": 1,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 32,
+            "repeatQuestions": 68,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 32,
+              "struggling": 58,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 2,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 33,
+            "repeatQuestions": 67,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 33,
+              "struggling": 55,
+              "review": 12
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 3,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 30,
+              "struggling": 60,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 4,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 11,
+            "groups": {
+              "fresh": 30,
+              "struggling": 60,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 5,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 34,
+            "repeatQuestions": 66,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 13,
+            "groups": {
+              "fresh": 34,
+              "struggling": 56,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 6,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 6,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 31,
+              "struggling": 59,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 7,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 34,
+            "repeatQuestions": 66,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 34,
+              "struggling": 55,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 8,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 39,
+            "repeatQuestions": 61,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 6,
+            "groups": {
+              "fresh": 39,
+              "struggling": 49,
+              "review": 12
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 9,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 34,
+            "repeatQuestions": 66,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 34,
+              "struggling": 53,
+              "review": 13
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 10,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 29,
+            "repeatQuestions": 71,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 11,
+            "groups": {
+              "fresh": 29,
+              "struggling": 61,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 11,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 30,
+              "struggling": 60,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 12,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 29,
+            "repeatQuestions": 71,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 29,
+              "struggling": 59,
+              "review": 12
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 13,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 31,
+              "struggling": 57,
+              "review": 12
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 14,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 11,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 26,
+              "struggling": 63,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 15,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 31,
+              "struggling": 58,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 16,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 35,
+            "repeatQuestions": 65,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 35,
+              "struggling": 54,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 17,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 13,
+            "groups": {
+              "fresh": 31,
+              "struggling": 59,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 18,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 34,
+            "repeatQuestions": 66,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 34,
+              "struggling": 55,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 19,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 35,
+            "repeatQuestions": 65,
+            "maxWordAppearances": 6,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 35,
+              "struggling": 54,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 20,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 31,
+              "struggling": 59,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 21,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 31,
+              "struggling": 58,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 22,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 35,
+            "repeatQuestions": 65,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 35,
+              "struggling": 54,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 23,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 32,
+            "repeatQuestions": 68,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 32,
+              "struggling": 57,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 24,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 30,
+              "struggling": 59,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 25,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 33,
+            "repeatQuestions": 67,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 33,
+              "struggling": 56,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 26,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 29,
+            "repeatQuestions": 71,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 29,
+              "struggling": 60,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 27,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 32,
+            "repeatQuestions": 68,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 32,
+              "struggling": 57,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 28,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 35,
+            "repeatQuestions": 65,
+            "maxWordAppearances": 6,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 35,
+              "struggling": 54,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 29,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 30,
+              "struggling": 59,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 30,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 6,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 30,
+              "struggling": 59,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        }
+      ]
+    },
+    "uneven": {
+      "before": {
+        "uniqueWords": 9,
+        "repeatQuestions": 91,
+        "maxWordAppearances": 50
+      },
+      "after": {
+        "uniqueWords": 85.2,
+        "repeatQuestions": 14.8,
+        "maxWordAppearances": 3
+      },
+      "seeds": [
+        {
+          "seed": 1,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 2,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 3,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 4,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 5,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 80,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 6,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 7,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 80,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 87,
+            "repeatQuestions": 13,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 87,
+              "struggling": 13,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 8,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 9,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 80,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 10,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 11,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 80,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 87,
+            "repeatQuestions": 13,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 87,
+              "struggling": 13,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 12,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 64,
+            "groups": {
+              "fresh": 9,
+              "struggling": 87,
+              "review": 4
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 13,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 14,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 80,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 87,
+            "repeatQuestions": 13,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 87,
+              "struggling": 13,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 15,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 66,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 16,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 17,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 18,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 19,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 66,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 20,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 66,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 21,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 22,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 23,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 24,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 25,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 26,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 64,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 87,
+            "repeatQuestions": 13,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 87,
+              "struggling": 13,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 27,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 70,
+            "groups": {
+              "fresh": 9,
+              "struggling": 88,
+              "review": 3
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 28,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 72,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 29,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 30,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 9,
+            "repeatQuestions": 91,
+            "maxWordAppearances": 50,
+            "maxReviewsInRow": 76,
+            "groups": {
+              "fresh": 9,
+              "struggling": 89,
+              "review": 2
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        }
+      ]
+    },
+    "beginner": {
+      "before": {
+        "uniqueWords": 26.77,
+        "repeatQuestions": 73.23,
+        "maxWordAppearances": 8
+      },
+      "after": {
+        "uniqueWords": 84.63,
+        "repeatQuestions": 15.37,
+        "maxWordAppearances": 2.63
+      },
+      "seeds": [
+        {
+          "seed": 1,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 26,
+              "struggling": 64,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 2,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 29,
+            "repeatQuestions": 71,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 29,
+              "struggling": 60,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 3,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 27,
+            "repeatQuestions": 73,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 11,
+            "groups": {
+              "fresh": 27,
+              "struggling": 62,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 4,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 22,
+            "repeatQuestions": 78,
+            "maxWordAppearances": 11,
+            "maxReviewsInRow": 12,
+            "groups": {
+              "fresh": 22,
+              "struggling": 68,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 5,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 30,
+            "repeatQuestions": 70,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 30,
+              "struggling": 59,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 86,
+            "repeatQuestions": 14,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 86,
+              "struggling": 14,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 6,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 26,
+              "struggling": 64,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 7,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 27,
+            "repeatQuestions": 73,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 27,
+              "struggling": 62,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 8,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 31,
+            "repeatQuestions": 69,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 31,
+              "struggling": 58,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 9,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 28,
+            "repeatQuestions": 72,
+            "maxWordAppearances": 6,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 28,
+              "struggling": 62,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 10,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 27,
+            "repeatQuestions": 73,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 27,
+              "struggling": 63,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 11,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 26,
+              "struggling": 63,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 12,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 25,
+            "repeatQuestions": 75,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 7,
+            "groups": {
+              "fresh": 25,
+              "struggling": 64,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 13,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 26,
+              "struggling": 64,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 14,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 24,
+            "repeatQuestions": 76,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 24,
+              "struggling": 66,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 15,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 27,
+            "repeatQuestions": 73,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 27,
+              "struggling": 63,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 16,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 29,
+            "repeatQuestions": 71,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 29,
+              "struggling": 61,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 17,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 11,
+            "groups": {
+              "fresh": 26,
+              "struggling": 64,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 18,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 28,
+            "repeatQuestions": 72,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 28,
+              "struggling": 61,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 19,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 26,
+              "struggling": 63,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 20,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 27,
+            "repeatQuestions": 73,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 27,
+              "struggling": 62,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 21,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 26,
+              "struggling": 63,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 1,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 22,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 29,
+            "repeatQuestions": 71,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 29,
+              "struggling": 61,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 23,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 28,
+            "repeatQuestions": 72,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 28,
+              "struggling": 63,
+              "review": 9
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 24,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 25,
+            "repeatQuestions": 75,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 25,
+              "struggling": 65,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 25,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 10,
+            "maxReviewsInRow": 10,
+            "groups": {
+              "fresh": 26,
+              "struggling": 64,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 26,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 28,
+            "repeatQuestions": 72,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 28,
+              "struggling": 61,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 27,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 7,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 26,
+              "struggling": 63,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 28,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 27,
+            "repeatQuestions": 73,
+            "maxWordAppearances": 9,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 27,
+              "struggling": 62,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 84,
+            "repeatQuestions": 16,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 84,
+              "struggling": 16,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 29,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 26,
+            "repeatQuestions": 74,
+            "maxWordAppearances": 8,
+            "maxReviewsInRow": 8,
+            "groups": {
+              "fresh": 26,
+              "struggling": 63,
+              "review": 11
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 3,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        },
+        {
+          "seed": 30,
+          "before": {
+            "questions": 100,
+            "uniqueWords": 25,
+            "repeatQuestions": 75,
+            "maxWordAppearances": 6,
+            "maxReviewsInRow": 9,
+            "groups": {
+              "fresh": 25,
+              "struggling": 65,
+              "review": 10
+            },
+            "pauses": 0
+          },
+          "after": {
+            "questions": 100,
+            "uniqueWords": 85,
+            "repeatQuestions": 15,
+            "maxWordAppearances": 2,
+            "maxReviewsInRow": 2,
+            "groups": {
+              "fresh": 85,
+              "struggling": 15,
+              "review": 0
+            },
+            "pauses": 0
+          }
+        }
+      ]
+    }
+  },
+  "longTerm": {
+    "confident": {
+      "questions": 601,
+      "uniqueWords": 120,
+      "repeatQuestions": 481,
+      "maxWordAppearances": 6,
+      "maxReviewsInRow": 20,
+      "groups": {
+        "fresh": 120,
+        "struggling": 0,
+        "review": 481
+      },
+      "pauses": 353,
+      "wordsReviewedAtLeastTwice": 120
+    },
+    "gradual": {
+      "questions": 2622,
+      "uniqueWords": 120,
+      "repeatQuestions": 2502,
+      "maxWordAppearances": 81,
+      "maxReviewsInRow": 20,
+      "groups": {
+        "fresh": 120,
+        "struggling": 571,
+        "review": 1931
+      },
+      "pauses": 339,
+      "wordsReviewedAtLeastTwice": 120
+    },
+    "uneven": {
+      "questions": 6042,
+      "uniqueWords": 120,
+      "repeatQuestions": 5922,
+      "maxWordAppearances": 360,
+      "maxReviewsInRow": 20,
+      "groups": {
+        "fresh": 120,
+        "struggling": 5418,
+        "review": 504
+      },
+      "pauses": 314,
+      "wordsReviewedAtLeastTwice": 120
+    },
+    "beginner": {
+      "questions": 2213,
+      "uniqueWords": 120,
+      "repeatQuestions": 2093,
+      "maxWordAppearances": 63,
+      "maxReviewsInRow": 20,
+      "groups": {
+        "fresh": 120,
+        "struggling": 482,
+        "review": 1611
+      },
+      "pauses": 336,
+      "wordsReviewedAtLeastTwice": 120
+    }
+  },
+  "intervals": [
+    {
+      "answers": "1111111",
+      "nextModelIntervalDays": 245,
+      "retryAfterSeconds": null
+    },
+    {
+      "answers": "0010101",
+      "nextModelIntervalDays": 3,
+      "retryAfterSeconds": null
+    },
+    {
+      "answers": "0000000",
+      "nextModelIntervalDays": 1,
+      "retryAfterSeconds": 90
+    }
+  ]
+}
