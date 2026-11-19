@@ -634,11 +634,13 @@ h1, h2, dialog h2 { font-family: var(--serif); font-weight: 500; }
 /* Fit the initial landing view to ordinary viewports without clipping content.
    Expanded help, zoom and unusually small screens retain normal page scrolling. */
 .landing { display: flex; flex-direction: column; }
+html:has(> .landing) { scrollbar-gutter: auto; }
+.landing:has(#appMenu[open]) { padding-right: var(--menu-gutter, 0px); }
 .landing > header.top, .landing > .intro { width: 100%; flex: none; }
 .landing > .intro { display: flex; flex-direction: column; justify-content: space-evenly; flex: 1 0 auto; }
 .landing > main { flex: none; background: none; }
 @media (min-width: 761px) {
-  .landing { background-image: url('images/site/landscape.svg'); background-position: left bottom; background-size: 100vw auto; background-repeat: no-repeat; }
+  .landing { background-image: url('images/site/landscape.svg'); background-position: left bottom; background-size: 100% auto; background-repeat: no-repeat; }
 }
 .landing > header.top { min-height: 68px; padding-top: 12px; padding-bottom: 12px; }
 .home-hero { min-height: clamp(240px, 35svh, 360px); padding-top: clamp(20px, 3svh, 36px); padding-bottom: 22px; }

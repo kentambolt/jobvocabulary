@@ -1731,7 +1731,13 @@ function renderStats() {
 }
 
 // ---------- Global events ----------
-$('menuBtn').onclick = () => { $('appMenu').showModal(); };
+$('menuBtn').onclick = () => {
+  // The full-width landing has no reserved gutter. Keep its content still when
+  // a menu hides an actual scrollbar on a short or expanded landing page.
+  const gutter = document.body?.classList?.contains('landing') ? Math.max(0, window.innerWidth - document.documentElement.clientWidth) : 0;
+  document.body?.style?.setProperty('--menu-gutter', `${gutter}px`);
+  $('appMenu').showModal();
+};
 $('closeMenuBtn').onclick = () => $('appMenu').close();
 $('returnCourseBtn').onclick = returnToCourse;
 $('modeBtn').onclick = () => { $('appMenu').close(); openTrainingOptions(state.settings, (chosen) => { state.settings = chosen; current = null; placement = null; lastFeedback = null; levelNotice = null; saveState(); go('play'); }); };
