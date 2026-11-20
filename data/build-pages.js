@@ -91,6 +91,13 @@ for (const f of fs.readdirSync(path.join(ROOT, 'packs')).filter((f) => f.endsWit
 vm.runInContext('this.P = PACKS;', ctx);
 const courseOrder = catalog.groups.flatMap(group => group.packs);
 const packs = Object.values(ctx.P).sort((a, b) => courseOrder.indexOf(a.id) - courseOrder.indexOf(b.id));
+const knownPacks=new Set(packs.map(pack=>pack.id));
+for(const pack of packs) {
+  if(courseOrder.filter(id=>id===pack.id).length!==1) throw new Error('Course must belong to exactly one catalogue group: '+pack.id);
+  const related=catalog.related[pack.id]||[];
+  if(related.length>6 || new Set(related).size!==related.length || related.some(id=>id===pack.id||!knownPacks.has(id))) throw new Error('Invalid related courses: '+pack.id);
+}
+if(courseOrder.some(id=>!['top','pics'].includes(id)&&!knownPacks.has(id))) throw new Error('Catalogue references a missing course');
 
 const urlOf = (p, lang) => `/${lang}/${['da','en','pl','ro','lt'].includes(lang) ? slugify(p.name[lang]) : p.id}/`;
 
@@ -107,6 +114,7 @@ function page(p, lang) {
   const name = p.name[lang];
   const total = p.categories.reduce((s, c) => s + c.rows.length, 0);
   const url = SITE + urlOf(p, lang);
+  const related = (catalog.related[p.id] || []).map(id=>packs.find(pack=>pack.id===id)).filter(Boolean);
   const cols = lang === 'da' ? LANGS : ['da', lang];
   const col = (l) => LANGS.indexOf(l) + 1;
   const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th>${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
@@ -165,7 +173,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
 
     <h2>${esc(t.others)}</h2>
-    <ul class="links">${packs.filter((o) => o.id !== p.id).map((o) => `<li><a href="${urlOf(o, lang)}">${esc(o.name[lang])}</a></li>`).join('')}</ul>
+    <ul class="links">${related.map((o) => `<li><a href="${urlOf(o, lang)}">${esc(o.name[lang])}</a></li>`).join('')}</ul>
 
     <p class="langs">${esc(t.langs)}: ${LANGS.filter((l) => l !== lang).map((l) => `<a href="${urlOf(p, l)}" hreflang="${l}" lang="${l}">${esc(LANG_NAME[l])}</a>`).join(' · ')}</p>
     <p><a href="/${lang}/">${esc(catalog.labels[lang].back)}</a></p>

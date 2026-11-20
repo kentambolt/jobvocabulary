@@ -168,5 +168,36 @@ for (const [lang, locale] of Object.entries(extraCatalogLocales)) {
   COURSE_CATALOG.home[lang] = locale.home;
   COURSE_CATALOG.groups.forEach((group,index)=>{group.name[lang]=locale.groups[index].name;group.desc[lang]=locale.groups[index].desc;});
 }
-COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice');
-COURSE_CATALOG.groups[1].packs.push('worklife','authorities','health','children','getaround');
+COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','trucking','foodindustry','jobsearch','worklife');
+COURSE_CATALOG.groups[1].packs.push('authorities','health','children','getaround','money','shopping','school','emergency','pregnancy');
+COURSE_CATALOG.related = {
+  cleaning:['hotel','propertyservice','hospital','worklife','essentials'],
+  restaurant:['foodindustry','retail','hotel','agriculture','worklife'],
+  warehouse:['trucking','transport','foodindustry','airport','worklife'],
+  construction:['propertyservice','warehouse','worklife','jobsearch','essentials'],
+  care:['health','hospital','childcare','worklife','essentials'],
+  agriculture:['foodindustry','warehouse','restaurant','worklife','essentials'],
+  retail:['shopping','restaurant','warehouse','worklife','jobsearch'],
+  transport:['trucking','bus','getaround','warehouse','driving'],
+  childcare:['children','school','care','health','worklife'],
+  hotel:['cleaning','restaurant','airport','worklife','jobsearch'],
+  hospital:['health','care','cleaning','worklife','emergency'],
+  airport:['transport','warehouse','bus','hotel','worklife'],
+  bus:['getaround','transport','driving','trucking','worklife'],
+  propertyservice:['construction','cleaning','authorities','worklife','essentials'],
+  trucking:['transport','warehouse','bus','driving','worklife'],
+  foodindustry:['restaurant','agriculture','warehouse','retail','worklife'],
+  jobsearch:['worklife','school','hotel','warehouse','cleaning'],
+  worklife:['jobsearch','school','money','authorities','essentials'],
+  essentials:['school','getaround','shopping','money','worklife'],
+  driving:['getaround','transport','bus','trucking','emergency'],
+  authorities:['money','children','school','worklife','essentials'],
+  health:['pregnancy','emergency','care','hospital','children'],
+  children:['childcare','school','pregnancy','health','authorities'],
+  getaround:['driving','bus','transport','emergency','essentials'],
+  money:['authorities','shopping','worklife','jobsearch','essentials'],
+  shopping:['money','retail','essentials','getaround','authorities'],
+  school:['essentials','jobsearch','worklife','children','authorities'],
+  emergency:['health','getaround','driving','authorities','worklife'],
+  pregnancy:['health','children','authorities','worklife','essentials']
+};

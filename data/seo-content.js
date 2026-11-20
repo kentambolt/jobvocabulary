@@ -3,7 +3,7 @@
 // Editorial content for public learning pages. Internal strategy stays private.
 const guides = [
   {
-    id: 'first-job', courses: ['worklife', 'cleaning', 'warehouse', 'restaurant'],
+    id: 'first-job', courses: ['jobsearch', 'worklife', 'cleaning', 'warehouse', 'restaurant'],
     da: {
       slug: 'dansk-til-dit-foerste-arbejde', title: 'Dansk til dit første arbejde',
       description: 'Vælg de danske ord, du får brug for på din første arbejdsdag. Se eksempler på instruktioner, spørgsmål og ord til dit fag.',
@@ -51,7 +51,7 @@ const guides = [
     examples: [['Hent vognen.', 'Fetch the trolley.'], ['Læg kassen på hylden.', 'Put the box on the shelf.'], ['Vent her.', 'Wait here.'], ['Hvilken kasse mener du?', 'Which box do you mean?'], ['Kan du gentage det?', 'Can you repeat that?']],
   },
   {
-    id: 'interview', courses: ['worklife', 'hotel', 'retail'],
+    id: 'interview', courses: ['jobsearch', 'worklife', 'hotel', 'retail'],
     da: {
       slug: 'danske-ord-til-jobsamtalen', title: 'Danske ord og sætninger til jobsamtalen',
       description: 'Forbered en enkel præsentation på dansk. Øv ord om erfaring, arbejdsopgaver, arbejdstider og spørgsmål til en jobsamtale.',
