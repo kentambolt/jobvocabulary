@@ -168,4 +168,17 @@ const contexts = {
   hospital: { da: ['Dansk til servicearbejde på hospital', 'Servicearbejde på et hospital kan omfatte rum, udstyr, transport og samarbejde med andre faggrupper. Kurset giver dig sprog at øve til de situationer, emnerne beskriver.', ['Genkend navne på rum og udstyr.', 'Øv beskeder om transport og praktiske opgaver.', 'Træn spørgsmål til kolleger.']], en: ['Danish for hospital service work', 'Hospital service work can involve rooms, equipment, transport and collaboration with other staff. Practise the vocabulary for the situations covered by the course topics.', ['Recognise room and equipment names.', 'Learn messages about transport and practical tasks.', 'Practise questions for colleagues.']] },
 };
 
+for(const lang of ['ru','uk','pl','ro']) {
+  const translations=require(`./guides-${lang}`);
+  if(Object.keys(translations).some(id=>!guides.some(g=>g.id===id))) throw Error(`Unknown guide in ${lang}`);
+  for(const guide of guides) {
+    const text=translations[guide.id];
+    if(!text || !text.slug || !text.title || !text.description || !text.intro
+      || text.sections?.length!==guide.en.sections.length
+      || text.sections.some((section,index)=>section.length!==guide.en.sections[index].length || section.some(p=>typeof p!=='string'||!p.trim()))
+      || text.exampleTranslations?.length!==guide.examples.length
+      || text.exampleTranslations.some(p=>typeof p!=='string'||!p.trim())) throw Error(`Incomplete ${lang} guide: ${guide.id}`);
+    guide[lang]=text;
+  }
+}
 module.exports = { guides, contexts };

@@ -782,6 +782,10 @@ html:has(> .landing) { scrollbar-gutter: auto; }
 .guide-page h2, .guide-card h2 { font-family: var(--serif); font-weight: 500; }
 .guide-page p, .course-context p { max-width: 72ch; }
 .guide-byline { color: var(--muted); font-size: 13px; }
+.guide-languages { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; margin-top: 24px; font-size: 14px; }
+.guide-languages > span:first-child { flex-basis: 100%; color: var(--muted); }
+.guide-languages a { text-underline-offset: 3px; }
+.guide-languages [aria-current="page"] { font-weight: 700; }
 .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 28px 0; }
 .guide-card { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--surface); }
 .guide-card h2 { margin: 0 0 12px; font-size: 23px; }
