@@ -5,6 +5,7 @@ const path = require('path');
 const vm = require('vm');
 const crypto = require('crypto');
 const catalog = require('../catalog');
+const seo = require('./seo-pages');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
@@ -111,7 +112,7 @@ function page(p, lang) {
   const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th>${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
 ${rows.map((r) => `<tr>${cols.map((l) => `<td lang="${l}"${l === 'da' ? ' class="da"' : ''}>${esc(r[col(l)])}</td>`).join('')}</tr>`).join('\n')}
 </tbody></table></div>`;
-  const desc = `${p.desc[lang]}. ${t.intro(total, p.categories.length)}`;
+  const desc = `${p.desc[lang].replace(/[.!?]$/, '')}. ${total} ${catalog.labels[lang].units}.`;
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -133,19 +134,21 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">${JSON.stringify({
-    '@context': 'https://schema.org', '@type': 'Course', name: t.title(name).replace(' | Job Vocabulary', ''), description: desc, inLanguage: lang,
+    '@context': 'https://schema.org', '@type': 'Course', '@id': url+'#course', url, name: t.title(name).replace(' | Job Vocabulary', ''), description: desc, inLanguage: [...new Set(['da',lang])],
     isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Job Vocabulary', url: SITE + '/' },
   })}</script>
 </head>
 <body class="page">
   <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><a class="catalog-link" href="/${lang}/">${esc(catalog.labels[lang].back)}</a></header>
   <main>
+    ${seo.breadcrumbs(SITE,[[t.home,'/'],[catalog.labels[lang].catalog,`/${lang}/`],[name,urlOf(p,lang)]])}
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
     <p>${esc(p.desc[lang])}. ${esc(t.intro(total, p.categories.length))}</p>
     <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
     <p class="tagline">${esc(t.free)}</p>
     ${p.id === 'driving' ? `<p class="course-note">${esc(catalog.labels[lang].safety)}</p>` : ''}
+    ${seo.courseExtras(p.id,lang,SITE)}
 
     <h2>${esc(t.howTitle)}</h2>
     <ol class="how">${t.how.map((h) => `<li>${esc(h)}</li>`).join('')}</ol>
@@ -232,6 +235,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script src="/practice-resume.js" defer></script>
   <script src="/catalog-search.js" defer></script>
+  ${seo.jsonLD({'@context':'https://schema.org','@type':'CollectionPage',url:canonical,name:l.lead,inLanguage:lang,mainEntity:{'@type':'ItemList',itemListElement:packs.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name[lang],url:SITE+urlOf(p,lang)}))}})}
 </head>
 <body class="page catalogue">
   <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></header>
@@ -244,7 +248,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
     <p class="course-note">${esc(l.note)}</p>
     <p id="courseEmpty" role="status" hidden>${esc(l.empty)}</p>
     <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p><div class="course-grid">${g.packs.map(card).join('')}</div></section>`).join('')}</div>
-    <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a></footer>
+    <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a> · <a href="${seo.guideIndex(lang)}">${esc(seo.guideLabels[lang])}</a></footer>
   </main>
 </body>
 </html>
@@ -254,6 +258,8 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   urls.push(canonical);
 }
 
+const guideOutput = seo.buildGuides({root:ROOT,site:SITE,packs,urlOf});
+urls.push(...guideOutput.urls);
 // --- sitemap ---
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -263,7 +269,7 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
 // Refresh only changed shared assets after a deployment, retaining browser caching.
 const assets = ['style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
-const pages = [indexPath, path.join(ROOT,'dictionary/attribution.html'), ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
+const pages = [indexPath, path.join(ROOT,'dictionary/attribution.html'), ...guideOutput.pages, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {
   const html = fs.readFileSync(file, 'utf8').replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
     const version = versions[asset.replace(/^\//, '')];
