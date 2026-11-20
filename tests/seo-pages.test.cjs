@@ -39,10 +39,22 @@ test('each interface opens its own guides and guide starts preserve the correct 
     const start=new URL(html.match(/<a class="primary cta" href="([^"]+)"/)[1].replace(/&amp;/g,'&'),site);
     const newcomer=app(undefined,{initialState:{},search:start.search,hash:start.hash});
     assert.equal(newcomer.run('uiLang()'),lang);
-    assert.equal(newcomer.run('draft.target'),'da');
-    assert.equal(newcomer.run('draft.base'),lang==='da'?null:lang);
-    assert.equal(newcomer.run('draft.pack'),guide.courses[0]);
-    if(lang==='da')continue;
+    if(lang==='da'){
+      assert.equal(newcomer.run('view'),'setup');
+      assert.equal(newcomer.run('draft.target'),'da');
+      assert.equal(newcomer.run('draft.base'),null);
+      assert.equal(newcomer.run('draft.pack'),guide.courses[0]);
+      continue;
+    }
+    assert.equal(newcomer.run('view'),'play');
+    assert.equal(newcomer.run('state.settings.target'),'da');
+    assert.equal(newcomer.run('state.settings.base'),lang);
+    assert.equal(newcomer.run('state.settings.pack'),guide.courses[0]);
+    assert.equal(newcomer.run('ctx().prog.offered'),true);
+    newcomer.run(fs.readFileSync(path.join(root,'packs',guide.courses[0]+'.js'),'utf8')+`;registerPack(PACKS.${guide.courses[0]});renderPlay();`);
+    assert.equal(newcomer.run('view'),'play');
+    assert.ok(newcomer.run('current?.concept.words.da'));
+    assert.ok(newcomer.run(`current?.concept.words[${JSON.stringify(lang)}]`));
     const returning=app({target:'pl',base:'en',pack:'hotel',dir:'write',diff:2},{search:start.search,hash:start.hash});
     assert.equal(returning.run('state.settings.target'),'da');
     assert.equal(returning.run('state.settings.base'),lang);

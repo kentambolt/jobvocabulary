@@ -168,7 +168,7 @@ const contexts = {
   hospital: { da: ['Dansk til servicearbejde på hospital', 'Servicearbejde på et hospital kan omfatte rum, udstyr, transport og samarbejde med andre faggrupper. Kurset giver dig sprog at øve til de situationer, emnerne beskriver.', ['Genkend navne på rum og udstyr.', 'Øv beskeder om transport og praktiske opgaver.', 'Træn spørgsmål til kolleger.']], en: ['Danish for hospital service work', 'Hospital service work can involve rooms, equipment, transport and collaboration with other staff. Practise the vocabulary for the situations covered by the course topics.', ['Recognise room and equipment names.', 'Learn messages about transport and practical tasks.', 'Practise questions for colleagues.']] },
 };
 
-for(const lang of ['ru','uk','pl','ro']) {
+for(const lang of ['ru','uk','pl','ro','lt','bg']) {
   const translations=require(`./guides-${lang}`);
   if(Object.keys(translations).some(id=>!guides.some(g=>g.id===id))) throw Error(`Unknown guide in ${lang}`);
   for(const guide of guides) {

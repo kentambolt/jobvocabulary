@@ -511,9 +511,8 @@ function applyInterfaceLink() {
 }
 applyInterfaceLink();
 
-// Direkte link fra en jobside: #start=<pakke>&base=<sprog>. Har man allerede valgt sprog,
-// gendannes det valgte kursus' egne indstillinger; nye kurser starter let.
-// Første gang åbnes opsætningen med emnet valgt på forhånd.
+// Direct course links teach Danish with the explicitly selected helper language.
+// A complete pair starts immediately; an unspecified helper still opens setup.
 function applyCourseLink() {
   const m = location.hash.match(/^#start=([a-z][a-z0-9-]*)(?:&base=([a-z]{2}))?/);
   if (!m) return;
@@ -527,7 +526,7 @@ function applyCourseLink() {
   lastFeedback = null;
   const s = state.settings;
   const preferred = base && LANGS[base] && base !== 'da' ? base : s?.base && LANGS[s.base] && s.base !== 'da' ? s.base : null;
-  if (s && preferred) {
+  if (preferred) {
     history.replaceState(null, '', location.pathname + location.search);
     state.settings = CoursePreferences.resolve(state, { pack, target: 'da', base: preferred });
     // A course page's start button already expresses the intent to practise.
@@ -894,8 +893,8 @@ function render() {
   $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
   $('licensesLink').textContent = t('licenses');
   const guidesLink = $('guidesLink');
-  guidesLink.href = `/${['lt','bg'].includes(ul) ? 'en' : ul}/guides/`;
-  guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства',uk:'Посібники',pl:'Poradniki',ro:'Ghiduri',lt:'Vadovai anglų kalba',bg:'Ръководства на английски'}[ul];
+  guidesLink.href = `/${ul}/guides/`;
+  guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства',uk:'Посібники',pl:'Poradniki',ro:'Ghiduri',lt:'Mokymosi gidai',bg:'Ръководства'}[ul];
   $('modeBtn').textContent = t('taskOptions');
   $('returnCourseBtn').textContent = lt('backToCourse');
   $('soundBtn').classList.toggle('off', !state.sound);

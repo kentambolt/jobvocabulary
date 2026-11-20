@@ -17,7 +17,7 @@ const T = {
   da: {
     title: (n) => `${n}: Lær de danske ord og sætninger | Job Vocabulary`,
     sub: 'Lær de danske ord og sætninger ét ad gangen',
-    intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk, ukrainsk, polsk og rumænsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
+    intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk, ukrainsk, polsk, rumænsk, litauisk og bulgarsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
     cta: 'Start med at øve gratis',
     howTitle: 'Sådan virker det',
     how: [
@@ -32,7 +32,7 @@ const T = {
   en: {
     title: (n) => `${n}: Learn the Danish words and phrases | Job Vocabulary`,
     sub: 'Learn the Danish words and phrases one at a time',
-    intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian, Ukrainian, Polish and Romanian. The most important come first, and what you know comes back less often.`,
+    intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian, Ukrainian, Polish, Romanian, Lithuanian and Bulgarian. The most important come first, and what you know comes back less often.`,
     cta: 'Start practising for free',
     howTitle: 'How it works',
     how: [
@@ -46,7 +46,7 @@ const T = {
   ru: {
     title: (n) => `${n}: датские слова и фразы | Job Vocabulary`,
     sub: 'Учите датские слова и фразы по одной за раз',
-    intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводами на русский, украинский, английский, польский и румынский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
+    intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводами на русский, украинский, английский, польский, румынский, литовский и болгарский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
     cta: 'Начать учить бесплатно',
     howTitle: 'Как это работает',
     how: [
@@ -60,7 +60,7 @@ const T = {
   uk: {
     title: (n) => `${n}: данські слова і фрази | Job Vocabulary`,
     sub: 'Вивчайте данські слова і фрази по одній за раз',
-    intro: (total, cats) => `${total} слів і фраз у ${cats} темах із перекладами українською, російською, англійською, польською та румунською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
+    intro: (total, cats) => `${total} слів і фраз у ${cats} темах із перекладами українською, російською, англійською, польською, румунською, литовською та болгарською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
     cta: 'Почати вчити безкоштовно',
     howTitle: 'Як це працює',
     how: [
