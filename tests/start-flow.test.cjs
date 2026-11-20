@@ -1,6 +1,20 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const app = require('./helpers/app.cjs');
+const fs = require('node:fs');
+const path = require('node:path');
+
+test('a direct course start for a returning learner reaches a task without another placement offer', () => {
+  const a = app({ target: 'ru', base: 'en', pack: 'top', dir: 'write', diff: 2 }, { hash: '#start=airport&base=pl' });
+  a.run(fs.readFileSync(path.join(__dirname, '../packs/airport.js'), 'utf8') + ';registerPack(PACKS.airport);renderPlay();');
+  assert.equal(a.run('view'), 'play');
+  assert.equal(a.run('state.settings.target'), 'da');
+  assert.equal(a.run('state.settings.base'), 'pl');
+  assert.equal(a.run('state.settings.diff'), 1);
+  assert.equal(a.run('ctx().prog.offered'), true);
+  assert.ok(a.run('current?.concept.id.startsWith("airport:")'));
+  assert.equal(a.run('placement'), null);
+});
 
 test('starting from setup reaches a task without a second placement-choice screen', () => {
   const a = app(undefined, { initialState: {} });
