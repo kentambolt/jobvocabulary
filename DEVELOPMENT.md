@@ -215,3 +215,22 @@ Public course pages use self-referencing HTTPS canonicals, reciprocal hreflang
 links and stable URLs. Personal list states use fragment routes and are not
 included in the public sitemap. Do not redirect visitors based on inferred language.
 The driving course is language practice and supplements driving instruction.
+
+`data/seo-content.js` contains the public editorial guides in Danish and English
+and course-specific usage sections. `data/seo-pages.js` renders their static HTML,
+reciprocal language links, visible breadcrumbs and Article/CollectionPage data.
+`build-pages.js` adds these pages to the sitemap and links them from courses and
+catalogues. The app exposes guides inside its existing menu. Keep the landing
+page free of extra SEO blocks and keep course start links above editorial content.
+
+Only add hreflang targets for translations that actually exist. Guide dates are
+editorial dates, not build timestamps; update them only after meaningful changes.
+Keep distinct search intents on distinct pages, with examples and relevant course
+links. Do not generate combinations of jobs, cities and languages without useful
+content. Do not add invented search volumes, credentials, reviews or ratings.
+
+Run `node --test tests/seo-pages.test.cjs` after changing public page generation.
+It validates sitemap destinations, unique titles/descriptions, canonical URLs,
+structured JSON, reciprocal guide translations and internal navigation links.
+Google Search Console uses the `jobvocabulary.com` Domain property. Preserve its
+Google verification TXT record in Simply.com and the existing HTTPS sitemap URL.

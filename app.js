@@ -878,6 +878,9 @@ function render() {
   $('menuBtn').setAttribute('aria-label', t('menu'));
   $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
   $('licensesLink').textContent = t('licenses');
+  const guidesLink = $('guidesLink');
+  guidesLink.href = ul === 'da' ? '/da/guides/' : '/en/guides/';
+  guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства на английском',uk:'Посібники англійською',pl:'Poradniki po angielsku',ro:'Ghiduri în engleză'}[ul];
   $('modeBtn').textContent = t('taskOptions');
   $('returnCourseBtn').textContent = lt('backToCourse');
   $('soundBtn').classList.toggle('off', !state.sound);
