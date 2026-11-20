@@ -43,18 +43,24 @@ test('course links retain their language before a course starts and invalid UI h
   assert.equal(corrupt.run('Array.isArray(state)'), false);
 });
 
-test('a preselected job course can start from the first setup panel without losing its language', () => {
+test('a complete course link starts immediately for a first-time learner without losing its language', () => {
   const a = app(undefined, { initialState: {}, hash: '#start=warehouse&base=uk' });
-  assert.equal(a.context.location.hash, '#start=warehouse&base=uk', 'keep the selected course recoverable before starting');
-  a.run('render = () => {}; renderSetup();');
-  assert.match(a.context.document.getElementById('app').innerHTML, /id="startBtn"/);
-  a.context.document.getElementById('startBtn').onclick();
   assert.equal(a.run('state.settings.pack'), 'warehouse');
   assert.equal(a.run('state.settings.target'), 'da');
   assert.equal(a.run('state.settings.base'), 'uk');
   assert.equal(a.run('state.uiLang'), 'uk');
   assert.equal(a.run('view'), 'play');
   assert.equal(a.context.location.hash, '', 'consume the course hint once practice actually starts');
+  assert.equal(a.run('ctx().prog.offered'),true);
+});
+
+test('a course link without a helper language retains setup rather than guessing a language',()=>{
+  const a=app(undefined,{initialState:{},search:'?ui=da',hash:'#start=warehouse'});
+  assert.equal(a.run('view'),'setup');
+  assert.equal(a.run('draft.target'),'da');
+  assert.equal(a.run('draft.base'),null);
+  assert.equal(a.run('draft.pack'),'warehouse');
+  assert.equal(a.context.location.hash,'#start=warehouse');
 });
 
 test('manual pronunciation works with automatic audio off without changing the preference', () => {

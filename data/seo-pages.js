@@ -4,14 +4,14 @@ const path = require('node:path');
 const { guides, contexts } = require('./seo-content');
 const guideUI = require('./guide-ui');
 const guideLanguages = Object.keys(guideUI);
-const guideLabels = {...Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides])),lt:'Vadovai anglų kalba',bg:'Ръководства на английски'};
+const guideLabels = Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides]));
 const guideIndex = lang => `/${guideLanguages.includes(lang) ? lang : 'en'}/guides/`;
 const guidePath = (guide, lang) => `/${lang}/guides/${guide[lang].slug}/`;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const jsonLD = object => `<script type="application/ld+json">${JSON.stringify(object).replace(/</g,'\\u003c')}</script>`;
 
 function breadcrumbs(site, items, lang = 'en') {
-  return `<nav class="breadcrumbs" aria-label="${esc(guideUI[lang]?.breadcrumb || guideUI.en.breadcrumb)}"><ol>${items.map(([name, href],i) => `<li>${i === items.length-1 ? `<span aria-current="page">${esc(name)}</span>` : `<a href="${href}">${esc(name)}</a>`}</li>`).join('')}</ol></nav>${jsonLD({
+  return `<nav class="breadcrumbs" aria-label="${esc(guideUI[lang]?.breadcrumb || guideUI.en.breadcrumb)}"><ol>${items.map(([name, href],i) => `<li>${i === items.length-1 ? `<span aria-current="page">${esc(name)}</span>` : `<a href="${href==='/' ? `/?ui=${lang}#forside` : href}">${esc(name)}</a>`}</li>`).join('')}</ol></nav>${jsonLD({
     '@context':'https://schema.org', '@type':'BreadcrumbList',
     itemListElement:items.map(([name,href],i) => ({'@type':'ListItem',position:i+1,name,item:site+href})),
   })}`;
@@ -72,20 +72,21 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
   <main>
     ${breadcrumbs(site,[[l.home,'/'],[l.guides,index]],lang)}
     <p class="eyebrow">${esc(l.lead)}</p><h1>${esc(l.title)}</h1><p class="lead">${esc(l.intro)}</p>
-    <div class="guide-grid">${guides.map(g => `<article class="guide-card"><h2><a href="${guidePath(g,lang)}">${esc(g[lang].title)}</a></h2><p>${esc(g[lang].description)}</p></article>`).join('')}</div>
+    <div class="guide-grid">${guides.map(g => `<article class="guide-card"><a class="guide-card-link" href="${guidePath(g,lang)}" aria-labelledby="guide-${g.id}-title"><h2 id="guide-${g.id}-title">${esc(g[lang].title)}</h2><p>${esc(g[lang].description)}</p></a></article>`).join('')}</div>
     ${languageLinks(lang,guideIndex)}
   </main>
 </body>
 </html>`);
     for (const guide of guides) {
       const g = guide[lang], rel = guidePath(guide,lang), first = guide.courses[0];
+      const published=g.datePublished||'2026-11-20',modified=g.dateModified||published;
       const start = `/?ui=${lang}#start=${first}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
       const related = guides.filter(o => o !== guide).sort((a,b) => b.courses.filter(id => guide.courses.includes(id)).length-a.courses.filter(id => guide.courses.includes(id)).length).slice(0,3);
       const examples = guide.examples.map(([da,en],i) => [da, g.exampleTranslations?.[i] || en]);
       const translationLang = lang === 'da' ? 'en' : lang;
       write(rel, `${head(lang,g.title,g.description,rel,other => guidePath(guide,other),{
         '@type':'Article',headline:g.title,description:g.description,inLanguage:lang,url:site+rel,
-        mainEntityOfPage:site+rel,datePublished:'2026-11-20',dateModified:'2026-11-20',
+        mainEntityOfPage:site+rel,datePublished:published,dateModified:modified,
         author:{'@type':'Organization',name:'JobVocabulary',url:site+'/'},
         publisher:{'@type':'Organization',name:'JobVocabulary',url:site+'/'},
       })}
@@ -93,7 +94,7 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
     <article>
       ${breadcrumbs(site,[[l.home,'/'],[l.guides,index],[g.title,rel]],lang)}
       <h1>${esc(g.title)}</h1><p class="lead">${esc(g.intro)}</p>
-      <p class="guide-byline">JobVocabulary · <time datetime="2026-11-20">20.11.2026</time></p>
+      <p class="guide-byline">JobVocabulary · <time datetime="${published}">${published.split('-').reverse().join('.')}</time></p>
       <p><a class="primary cta" href="${start}">${esc(l.start)}</a></p>
       ${g.sections.map(([heading,...paragraphs]) => `<section><h2>${esc(heading)}</h2>${paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}</section>`).join('\n      ')}
       ${examples.length ? `<section><h2>${esc(l.examples)}</h2><div class="table-wrap"><table><thead><tr><th>${esc(l.danish)}</th><th>${esc(l.translation)}</th></tr></thead><tbody>${examples.map(([da,translated]) => `<tr><td lang="da">${esc(da)}</td><td lang="${translationLang}">${esc(translated)}</td></tr>`).join('')}</tbody></table></div><p class="course-note">${esc(l.note)}</p></section>` : ''}
