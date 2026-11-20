@@ -8,7 +8,7 @@ const crypto = require('crypto');
 
 const DIR = path.join(__dirname, '..', 'packs');
 const stableIds = require('./stable-word-ids.json');
-const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
+const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro', 'lt', 'bg'];
 // Bevidste synonymer: samme oversættelse er tilladt for disse danske par.
 const SYNONYMS = new Set(['mug|skimmel', 'stoppet|tilstoppet']);
 // Rækkefølge i appen (resten alfabetisk efter).

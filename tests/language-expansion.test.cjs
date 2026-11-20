@@ -4,12 +4,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const app = require('./helpers/app.cjs');
 const locales = require('../locales');
-const languages = ['da','en','ru','uk','pl','ro'];
+const languages = ['da','en','ru','uk','pl','ro','lt','bg'];
 const root = path.resolve(__dirname,'..');
 
 test('new interface languages cover every UI/library key and preserve substitution variables', () => {
   const a = app();
-  for (const language of ['pl','ro']) for (const [section, original] of [['ui',a.run('UI.en')],['library',a.run('LIBRARY_TEXT.en')]]) {
+  for (const language of ['pl','ro','lt','bg']) for (const [section, original] of [['ui',a.run('UI.en')],['library',a.run('LIBRARY_TEXT.en')]]) {
     const translated = locales[language][section];
     for (const [key,value] of Object.entries(original)) {
       assert.ok(key in translated, `${language}.${section}.${key}`);
@@ -18,7 +18,7 @@ test('new interface languages cover every UI/library key and preserve substituti
   }
 });
 
-test('all published courses offer complete pools and distinct answer choices across thirty language pairs', () => {
+test('all published courses offer complete pools and distinct answer choices across fifty-six language pairs', () => {
   const a = app();
   const files = fs.readdirSync(path.join(root,'packs')).filter(name=>name.endsWith('.js') && name!=='index.js');
   assert.ok(files.length >= 21);
@@ -64,7 +64,7 @@ test('Polish and Romanian custom words survive backup and use the correct speech
   const synthesis = {getVoices:()=>[],cancel(){},speak:utterance=>spoken.push(utterance)};
   Object.assign(a.context,{speechSynthesis:synthesis,SpeechSynthesisUtterance:class{constructor(text){this.text=text;}}});
   a.context.window.speechSynthesis=synthesis;
-  for(const [lang,text,expected] of [['pl','gość','pl-PL'],['ro','oaspete','ro-RO']]) {
+  for(const [lang,text,expected] of [['pl','gość','pl-PL'],['ro','oaspete','ro-RO'],['lt','svečias','lt-LT'],['bg','гост','bg-BG']]) {
     a.run(`speak(${JSON.stringify(text)},${JSON.stringify(lang)},true);`);
     assert.equal(spoken.at(-1).lang,expected);
   }
@@ -109,7 +109,7 @@ test('core words work in every language pair and keep accented letters on the wr
     const count=a.run('buildPool(pair).length');
     assert.ok(count>=350,`${target}/${base}: ${count}`);
   }
-  for(const target of ['pl','ro']) {
+  for(const target of ['pl','ro','lt','bg']) {
     a.context.pair={target,base:'en',pack:'top',dir:'write',diff:3};
     const missing=a.run("buildPool(pair).flatMap(word=>{const c=ctx(pair),spec=writeSpec(c,word);if(!spec)return [];const keys=makeKeys(c,spec).keys;return spec.chars.filter(ch=>isLetter(ch)&&!keys.includes(ch.toLowerCase()))})");
     assert.equal(missing.length,0,target);

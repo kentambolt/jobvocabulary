@@ -82,5 +82,5 @@ test('guides are discoverable, reciprocal and link directly into real course pra
   const app=read(site+'/');
   assert.match(app,/id="guidesLink"/);
   const webApp=JSON.parse(app.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
-  assert.deepEqual(webApp.inLanguage,['da','en','ru','uk','pl','ro']);
+  assert.deepEqual(webApp.inLanguage,['da','en','ru','uk','pl','ro','lt','bg']);
 });

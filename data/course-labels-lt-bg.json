@@ -1,0 +1,1412 @@
+{
+  "categories": {
+    "Pigs": [
+      "Kiaulės",
+      "Прасета"
+    ],
+    "Cattle and milking": [
+      "Galvijai ir melžimas",
+      "Говеда и доене"
+    ],
+    "Fields and crops": [
+      "Laukai ir pasėliai",
+      "Ниви и култури"
+    ],
+    "Machines and tools": [
+      "Mašinos ir įrankiai",
+      "Машини и инструменти"
+    ],
+    "Greenhouse and market garden": [
+      "Šiltnamis ir daržininkystė",
+      "Оранжерия и зеленчукопроизводство"
+    ],
+    "Fruit and berry picking": [
+      "Vaisių ir uogų skynimas",
+      "Бране на плодове"
+    ],
+    "Slaughterhouse and food factory": [
+      "Skerdykla ir maisto gamykla",
+      "Кланица и хранителна фабрика"
+    ],
+    "Safety and hygiene": [
+      "Sauga ir higiena",
+      "Безопасност и хигиена"
+    ],
+    "Job, pay and housing": [
+      "Darbas, atlyginimas ir būstas",
+      "Работа, заплащане и жилище"
+    ],
+    "Actions": [
+      "Veiksmai",
+      "Действия"
+    ],
+    "First day": [
+      "Pirmoji diena",
+      "Първи ден"
+    ],
+    "In the barn": [
+      "Tvarte",
+      "В обора"
+    ],
+    "Sick animals and problems": [
+      "Sergantys gyvuliai ir problemos",
+      "Болни животни и проблеми"
+    ],
+    "In the field": [
+      "Lauke",
+      "На полето"
+    ],
+    "In the greenhouse": [
+      "Šiltnamyje",
+      "В оранжерията"
+    ],
+    "Picking": [
+      "Skynimas",
+      "Бране"
+    ],
+    "At the slaughterhouse and factory": [
+      "Skerdykloje ir gamykloje",
+      "В кланицата и фабриката"
+    ],
+    "Be careful!": [
+      "Būk atsargus!",
+      "Внимавай!"
+    ],
+    "Questions": [
+      "Klausimai",
+      "Въпроси"
+    ],
+    "Hours, pay and housing": [
+      "Darbo laikas, atlyginimas ir būstas",
+      "Работно време, заплащане и жилище"
+    ],
+    "The weather": [
+      "Orai",
+      "Времето"
+    ],
+    "People at the airport": [
+      "Oro uosto darbuotojai ir keleiviai",
+      "Хората на летището"
+    ],
+    "Places at the airport": [
+      "Oro uosto vietos",
+      "Места на летището"
+    ],
+    "Baggage": [
+      "Bagažas",
+      "Багаж"
+    ],
+    "The aircraft and turnaround": [
+      "Lėktuvas ir paruošimas skrydžiui",
+      "Самолетът и обслужването между полети"
+    ],
+    "Vehicles and equipment": [
+      "Transporto priemonės ir įranga",
+      "Превозни средства и оборудване"
+    ],
+    "Safety and access": [
+      "Sauga ir patekimas",
+      "Безопасност и достъп"
+    ],
+    "Cabin and assistance": [
+      "Salonas ir pagalba",
+      "Салон и помощ"
+    ],
+    "Handling baggage": [
+      "Bagažo tvarkymas",
+      "Обработка на багаж"
+    ],
+    "On the apron": [
+      "Perone",
+      "На перона"
+    ],
+    "ID card and security check": [
+      "ID kortelė ir saugumo patikra",
+      "Пропуск и проверка за сигурност"
+    ],
+    "Radio and reporting to the team leader": [
+      "Radijo ryšys ir pranešimai vadovui",
+      "Радиовръзка и докладване на ръководителя"
+    ],
+    "Helping passengers": [
+      "Pagalba keleiviams",
+      "Помощ на пътниците"
+    ],
+    "Cleaning the cabin and terminal": [
+      "Salono ir terminalo valymas",
+      "Почистване на салона и терминала"
+    ],
+    "Shifts and delays": [
+      "Pamainos ir vėlavimai",
+      "Смени и закъснения"
+    ],
+    "ID and digital services": [
+      "Tapatybės dokumentai ir skaitmeninės paslaugos",
+      "Документи за самоличност и електронни услуги"
+    ],
+    "Authorities and offices": [
+      "Institucijos ir įstaigos",
+      "Институции и служби"
+    ],
+    "Tax and banking": [
+      "Mokesčiai ir bankas",
+      "Данъци и банкови услуги"
+    ],
+    "Housing and tenancy": [
+      "Būstas ir nuoma",
+      "Жилище и наем"
+    ],
+    "In the home": [
+      "Namuose",
+      "У дома"
+    ],
+    "Waste and sorting": [
+      "Atliekos ir rūšiavimas",
+      "Отпадъци и разделно събиране"
+    ],
+    "Letters, forms and appointments": [
+      "Laiškai, formos ir susitikimai",
+      "Писма, формуляри и срещи"
+    ],
+    "At Citizen Service": [
+      "Gyventojų aptarnavimo skyriuje",
+      "В центъра за обслужване на граждани"
+    ],
+    "Questions you will be asked": [
+      "Klausimai, kuriuos tau užduos",
+      "Въпроси, които ще ти зададат"
+    ],
+    "At the bank and about tax": [
+      "Banke ir apie mokesčius",
+      "В банката и за данъците"
+    ],
+    "Landlord and repairs": [
+      "Nuomotojas ir remontas",
+      "Наемодател и ремонти"
+    ],
+    "Moving": [
+      "Persikraustymas",
+      "Преместване"
+    ],
+    "Neighbours, house rules and rubbish": [
+      "Kaimynai, namo taisyklės ir šiukšlės",
+      "Съседи, вътрешен ред и боклук"
+    ],
+    "Letters, phone calls and appointments": [
+      "Laiškai, skambučiai ir susitikimai",
+      "Писма, телефонни разговори и срещи"
+    ],
+    "The bus": [
+      "Autobusas",
+      "Автобусът"
+    ],
+    "Tickets and checking in": [
+      "Bilietai ir registravimasis kelionei",
+      "Билети и чекиране"
+    ],
+    "Routes and stops": [
+      "Maršrutai ir stotelės",
+      "Маршрути и спирки"
+    ],
+    "Passengers": [
+      "Keleiviai",
+      "Пътници"
+    ],
+    "Safety and incidents": [
+      "Sauga ir incidentai",
+      "Безопасност и инциденти"
+    ],
+    "Job, shifts and training": [
+      "Darbas, pamainos ir mokymai",
+      "Работа, смени и обучение"
+    ],
+    "Verbs": [
+      "Veiksmažodžiai",
+      "Глаголи"
+    ],
+    "Service and help": [
+      "Aptarnavimas ir pagalba",
+      "Обслужване и помощ"
+    ],
+    "Talking about tickets": [
+      "Pokalbiai apie bilietus",
+      "Разговори за билети"
+    ],
+    "Wheelchairs, prams, dogs and bikes": [
+      "Vežimėliai, šunys ir dviračiai",
+      "Инвалидни и детски колички, кучета и велосипеди"
+    ],
+    "On the route": [
+      "Maršrute",
+      "По маршрута"
+    ],
+    "Conflicts and threats": [
+      "Konfliktai ir grasinimai",
+      "Конфликти и заплахи"
+    ],
+    "Accidents, illness and lost property": [
+      "Nelaimės, susirgimai ir rasti daiktai",
+      "Злополуки, заболявания и изгубени вещи"
+    ],
+    "Rules, licence and shifts": [
+      "Taisyklės, pažymėjimas ir pamainos",
+      "Правила, свидетелство и смени"
+    ],
+    "People": [
+      "Žmonės",
+      "Хора"
+    ],
+    "Places": [
+      "Vietos",
+      "Места"
+    ],
+    "The body": [
+      "Kūnas",
+      "Тялото"
+    ],
+    "Personal care": [
+      "Asmens priežiūra",
+      "Лична грижа"
+    ],
+    "Aids and transfers": [
+      "Pagalbinės priemonės ir perkėlimas",
+      "Помощни средства и преместване"
+    ],
+    "Food and drink": [
+      "Maistas ir gėrimai",
+      "Храна и напитки"
+    ],
+    "Health and observations": [
+      "Sveikata ir stebėjimas",
+      "Здраве и наблюдения"
+    ],
+    "Hygiene and infection": [
+      "Higiena ir infekcijos",
+      "Хигиена и инфекции"
+    ],
+    "Feelings and wellbeing": [
+      "Jausmai ir savijauta",
+      "Чувства и благополучие"
+    ],
+    "The job": [
+      "Darbas",
+      "Работата"
+    ],
+    "Greetings and small talk": [
+      "Pasisveikinimas ir lengvi pokalbiai",
+      "Поздрави и непринудени разговори"
+    ],
+    "During care": [
+      "Priežiūros metu",
+      "По време на грижа"
+    ],
+    "Transfers and safety": [
+      "Perkėlimas ir sauga",
+      "Преместване и безопасност"
+    ],
+    "At mealtimes": [
+      "Valgymo metu",
+      "По време на хранене"
+    ],
+    "Pain and wellbeing": [
+      "Skausmas ir savijauta",
+      "Болка и самочувствие"
+    ],
+    "Reporting to colleagues": [
+      "Pranešimai kolegoms",
+      "Докладване на колеги"
+    ],
+    "Emergencies": [
+      "Skubūs atvejai",
+      "Спешни случаи"
+    ],
+    "What colleagues say": [
+      "Ką sako kolegos",
+      "Какво казват колегите"
+    ],
+    "Practical work talk": [
+      "Pokalbiai apie praktinį darbą",
+      "Практични разговори за работа"
+    ],
+    "Rooms and playground": [
+      "Patalpos ir žaidimų aikštelė",
+      "Помещения и детска площадка"
+    ],
+    "Care and nappy changing": [
+      "Priežiūra ir sauskelnių keitimas",
+      "Грижа и смяна на пелени"
+    ],
+    "Meals and allergies": [
+      "Maitinimas ir alergijos",
+      "Хранене и алергии"
+    ],
+    "Play and activities": [
+      "Žaidimai ir veiklos",
+      "Игри и занимания"
+    ],
+    "Safety and first aid": [
+      "Sauga ir pirmoji pagalba",
+      "Безопасност и първа помощ"
+    ],
+    "The job and responsibilities": [
+      "Darbas ir atsakomybės",
+      "Работа и отговорности"
+    ],
+    "To the children": [
+      "Kalbant su vaikais",
+      "Към децата"
+    ],
+    "Comforting and setting limits": [
+      "Raminimas ir ribų nustatymas",
+      "Утешаване и поставяне на граници"
+    ],
+    "To parents": [
+      "Kalbant su tėvais",
+      "Към родителите"
+    ],
+    "Colleagues and the pedagogue": [
+      "Kolegos ir pedagogas",
+      "Колегите и педагогът"
+    ],
+    "Safety and emergencies": [
+      "Sauga ir skubūs atvejai",
+      "Безопасност и спешни случаи"
+    ],
+    "Places and services": [
+      "Vietos ir paslaugos",
+      "Места и услуги"
+    ],
+    "Sign-up and Aula": [
+      "Registracija ir Aula",
+      "Записване и Aula"
+    ],
+    "Clothes and weather": [
+      "Drabužiai ir orai",
+      "Дрехи и време"
+    ],
+    "Food and packed lunch": [
+      "Maistas ir pietų dėžutė",
+      "Храна и обяд от вкъщи"
+    ],
+    "School": [
+      "Mokykla",
+      "Училище"
+    ],
+    "Health and illness": [
+      "Sveikata ir ligos",
+      "Здраве и болести"
+    ],
+    "Drop-off and pick-up": [
+      "Atvedimas ir pasiėmimas",
+      "Водене и вземане на детето"
+    ],
+    "Sick child and absence": [
+      "Sergantis vaikas ir neatvykimas",
+      "Болно дете и отсъствие"
+    ],
+    "Talking to staff": [
+      "Pokalbiai su darbuotojais",
+      "Разговори с персонала"
+    ],
+    "Questions about school": [
+      "Klausimai apie mokyklą",
+      "Въпроси за училището"
+    ],
+    "Places, the council and Aula": [
+      "Vietos, savivaldybė ir Aula",
+      "Места, община и Aula"
+    ],
+    "Equipment": [
+      "Įranga",
+      "Оборудване"
+    ],
+    "Cleaning products": [
+      "Valymo priemonės",
+      "Почистващи препарати"
+    ],
+    "Rooms and places": [
+      "Patalpos ir vietos",
+      "Помещения и места"
+    ],
+    "Furniture and fixtures": [
+      "Baldai ir įrenginiai",
+      "Мебели и обзавеждане"
+    ],
+    "Dirt and accidents": [
+      "Nešvarumai ir nelaimės",
+      "Замърсявания и злополуки"
+    ],
+    "Descriptions": [
+      "Apibūdinimai",
+      "Описания"
+    ],
+    "Work and time": [
+      "Darbas ir laikas",
+      "Работа и време"
+    ],
+    "Kitchen items and food": [
+      "Virtuvės reikmenys ir maistas",
+      "Кухненски принадлежности и храна"
+    ],
+    "Insects and animals": [
+      "Vabzdžiai ir gyvūnai",
+      "Насекоми и животни"
+    ],
+    "Where? Under, over, behind …": [
+      "Kur? Po, virš, už…",
+      "Къде? Под, над, зад…"
+    ],
+    "Outdoors": [
+      "Lauke",
+      "На открито"
+    ],
+    "Where and how": [
+      "Kur ir kaip",
+      "Къде и как"
+    ],
+    "Where does the rubbish go?": [
+      "Kur dėti šiukšles?",
+      "Къде се изхвърля боклукът?"
+    ],
+    "Outdoor tasks": [
+      "Lauko darbai",
+      "Задачи навън"
+    ],
+    "Greetings and understanding": [
+      "Pasisveikinimas ir supratimas",
+      "Поздрави и разбиране"
+    ],
+    "Tasks from the customer": [
+      "Kliento užduotys",
+      "Задачи от клиента"
+    ],
+    "Questions for the customer": [
+      "Klausimai klientui",
+      "Въпроси към клиента"
+    ],
+    "When the customer is home": [
+      "Kai klientas namuose",
+      "Когато клиентът е у дома"
+    ],
+    "Problems and accidents": [
+      "Problemos ir nelaimės",
+      "Проблеми и злополуки"
+    ],
+    "Small talk": [
+      "Lengvi pokalbiai",
+      "Непринудени разговори"
+    ],
+    "Boss and colleagues": [
+      "Vadovas ir kolegos",
+      "Началник и колеги"
+    ],
+    "When you are finished": [
+      "Baigus darbą",
+      "Когато приключиш"
+    ],
+    "Hand tools": [
+      "Rankiniai įrankiai",
+      "Ръчни инструменти"
+    ],
+    "Power tools and machines": [
+      "Elektriniai įrankiai ir mašinos",
+      "Електрически инструменти и машини"
+    ],
+    "Materials": [
+      "Medžiagos",
+      "Материали"
+    ],
+    "Parts of a building": [
+      "Pastato dalys",
+      "Части на сградата"
+    ],
+    "Groundwork and demolition": [
+      "Žemės darbai ir griovimas",
+      "Земни работи и разрушаване"
+    ],
+    "Safety": [
+      "Sauga",
+      "Безопасност"
+    ],
+    "The building site": [
+      "Statybvietė",
+      "Строителната площадка"
+    ],
+    "People on site": [
+      "Žmonės statybvietėje",
+      "Хора на обекта"
+    ],
+    "Hours, pay and weather": [
+      "Darbo laikas, atlyginimas ir orai",
+      "Работно време, заплащане и време"
+    ],
+    "Measurements and descriptions": [
+      "Matavimai ir apibūdinimai",
+      "Измервания и описания"
+    ],
+    "Instructions from the foreman": [
+      "Darbų vadovo nurodymai",
+      "Указания от бригадира"
+    ],
+    "Questions about the task": [
+      "Klausimai apie užduotį",
+      "Въпроси за задачата"
+    ],
+    "Safety on site": [
+      "Sauga statybvietėje",
+      "Безопасност на обекта"
+    ],
+    "Problems": [
+      "Problemos",
+      "Проблеми"
+    ],
+    "Tools and materials": [
+      "Įrankiai ir medžiagos",
+      "Инструменти и материали"
+    ],
+    "Working together": [
+      "Bendras darbas",
+      "Съвместна работа"
+    ],
+    "Clean-up and demolition": [
+      "Tvarkymas ir griovimas",
+      "Разчистване и разрушаване"
+    ],
+    "Time and pay": [
+      "Laikas ir atlyginimas",
+      "Време и заплащане"
+    ],
+    "Everyday small talk": [
+      "Kasdieniai pokalbiai",
+      "Ежедневни разговори"
+    ],
+    "Roads and places": [
+      "Keliai ir vietos",
+      "Пътища и места"
+    ],
+    "Signs and road markings": [
+      "Ženklai ir kelio ženklinimas",
+      "Знаци и пътна маркировка"
+    ],
+    "The car": [
+      "Automobilis",
+      "Колата"
+    ],
+    "Manoeuvres and actions": [
+      "Manevrai ir veiksmai",
+      "Маневри и действия"
+    ],
+    "Road users and vehicles": [
+      "Eismo dalyviai ir transporto priemonės",
+      "Участници в движението и превозни средства"
+    ],
+    "Rules and safety": [
+      "Taisyklės ir sauga",
+      "Правила и безопасност"
+    ],
+    "Licence and tests": [
+      "Vairuotojo pažymėjimas ir egzaminai",
+      "Свидетелство за управление и изпити"
+    ],
+    "Weather and conditions": [
+      "Orai ir sąlygos",
+      "Време и условия"
+    ],
+    "Directions while driving": [
+      "Nurodymai vairuojant",
+      "Указания по време на шофиране"
+    ],
+    "Manoeuvres and parking": [
+      "Manevrai ir parkavimas",
+      "Маневри и паркиране"
+    ],
+    "Questions to the instructor": [
+      "Klausimai instruktoriui",
+      "Въпроси към инструктора"
+    ],
+    "Traffic rules": [
+      "Eismo taisyklės",
+      "Правила за движение"
+    ],
+    "Before you drive": [
+      "Prieš vairuojant",
+      "Преди да потеглиш"
+    ],
+    "Feedback from the instructor": [
+      "Instruktoriaus pastabos",
+      "Обратна връзка от инструктора"
+    ],
+    "Booking and paperwork": [
+      "Registracija ir dokumentai",
+      "Записване и документи"
+    ],
+    "Numbers and amounts": [
+      "Skaičiai ir kiekiai",
+      "Числа и количества"
+    ],
+    "Weekdays and months": [
+      "Savaitės dienos ir mėnesiai",
+      "Дни от седмицата и месеци"
+    ],
+    "Time and appointments": [
+      "Laikas ir susitikimai",
+      "Време и срещи"
+    ],
+    "Colours": [
+      "Spalvos",
+      "Цветове"
+    ],
+    "Bus, train and directions": [
+      "Autobusas, traukinys ir kryptys",
+      "Автобус, влак и посоки"
+    ],
+    "Phrases to get started": [
+      "Pirmosios frazės",
+      "Изрази за начало"
+    ],
+    "Buses, trains and the metro": [
+      "Autobusai, traukiniai ir metro",
+      "Автобуси, влакове и метро"
+    ],
+    "Tickets and apps": [
+      "Bilietai ir programėlės",
+      "Билети и приложения"
+    ],
+    "Timetables and journeys": [
+      "Tvarkaraščiai ir kelionės",
+      "Разписания и пътувания"
+    ],
+    "Cycling": [
+      "Važiavimas dviračiu",
+      "Колоездене"
+    ],
+    "On foot and by e-scooter": [
+      "Pėsčiomis ir elektriniu paspirtuku",
+      "Пеша и с електрическа тротинетка"
+    ],
+    "Directions and taxis": [
+      "Kelio nurodymai ir taksi",
+      "Посоки и таксита"
+    ],
+    "Buying tickets and checking in": [
+      "Bilietų pirkimas ir registravimasis kelionei",
+      "Купуване на билети и чекиране"
+    ],
+    "Ticket inspections and rules": [
+      "Bilietų kontrolė ir taisyklės",
+      "Проверка на билети и правила"
+    ],
+    "At the station and on the bus": [
+      "Stotyje ir autobuse",
+      "На гарата и в автобуса"
+    ],
+    "Delays and changes": [
+      "Vėlavimai ir pakeitimai",
+      "Закъснения и промени"
+    ],
+    "Asking the way": [
+      "Kelio klausimas",
+      "Питане за посоката"
+    ],
+    "Taking a taxi": [
+      "Važiavimas taksi",
+      "Пътуване с такси"
+    ],
+    "Rules for cycling and walking": [
+      "Taisyklės dviratininkams ir pėstiesiems",
+      "Правила за велосипедисти и пешеходци"
+    ],
+    "The doctor and healthcare": [
+      "Gydytojas ir sveikatos priežiūra",
+      "Лекар и здравеопазване"
+    ],
+    "Symptoms and illnesses": [
+      "Simptomai ir ligos",
+      "Симптоми и заболявания"
+    ],
+    "Pharmacy and medicine": [
+      "Vaistinė ir vaistai",
+      "Аптека и лекарства"
+    ],
+    "Dentist, pregnancy and children": [
+      "Odontologas, nėštumas ir vaikai",
+      "Зъболекар, бременност и деца"
+    ],
+    "Mental health": [
+      "Psichikos sveikata",
+      "Психично здраве"
+    ],
+    "Booking an appointment": [
+      "Registracija vizitui",
+      "Записване на час"
+    ],
+    "Saying how you feel": [
+      "Kaip nusakyti savijautą",
+      "Как да кажеш как се чувстваш"
+    ],
+    "What the doctor asks and says": [
+      "Gydytojo klausimai ir žodžiai",
+      "Какво пита и казва лекарят"
+    ],
+    "How to take your medicine": [
+      "Kaip vartoti vaistus",
+      "Как да приемаш лекарството"
+    ],
+    "At the pharmacy and the dentist": [
+      "Vaistinėje ir pas odontologą",
+      "В аптеката и при зъболекаря"
+    ],
+    "Emergency help": [
+      "Skubi pagalba",
+      "Спешна помощ"
+    ],
+    "Interpreter, health card and rights": [
+      "Vertėjas, sveikatos kortelė ir teisės",
+      "Преводач, здравна карта и права"
+    ],
+    "Pregnancy, children and mental health help": [
+      "Nėštumas, vaikai ir psichologinė pagalba",
+      "Бременност, деца и помощ за психичното здраве"
+    ],
+    "People at the hospital": [
+      "Žmonės ligoninėje",
+      "Хората в болницата"
+    ],
+    "Departments and places": [
+      "Skyriai ir vietos",
+      "Отделения и места"
+    ],
+    "Transport and equipment": [
+      "Transportavimas ir įranga",
+      "Транспорт и оборудване"
+    ],
+    "Waste and soiled linen": [
+      "Atliekos ir nešvarūs skalbiniai",
+      "Отпадъци и мръсно бельо"
+    ],
+    "Verbs at work": [
+      "Darbo veiksmažodžiai",
+      "Глаголи в работата"
+    ],
+    "Alarms and emergencies": [
+      "Pavojaus signalai ir skubūs atvejai",
+      "Аларми и спешни случаи"
+    ],
+    "Talking to patients": [
+      "Pokalbiai su pacientais",
+      "Разговори с пациенти"
+    ],
+    "Patient transport": [
+      "Pacientų transportavimas",
+      "Транспорт на пациенти"
+    ],
+    "Hygiene rules": [
+      "Higienos taisyklės",
+      "Хигиенни правила"
+    ],
+    "Tasks and deliveries": [
+      "Užduotys ir pristatymai",
+      "Задачи и доставки"
+    ],
+    "In an emergency": [
+      "Skubiu atveju",
+      "При спешен случай"
+    ],
+    "Confidentiality and respect": [
+      "Konfidencialumas ir pagarba",
+      "Поверителност и уважение"
+    ],
+    "People at the hotel": [
+      "Žmonės viešbutyje",
+      "Хората в хотела"
+    ],
+    "Rooms and room status": [
+      "Kambariai ir jų būsena",
+      "Стаи и състояние на стаите"
+    ],
+    "Trolley and linen": [
+      "Vežimėlis ir skalbiniai",
+      "Количка и бельо"
+    ],
+    "Work in the room": [
+      "Darbas kambaryje",
+      "Работа в стаята"
+    ],
+    "Minibar and amenities": [
+      "Minibaras ir svečių reikmenys",
+      "Минибар и принадлежности за гостите"
+    ],
+    "Keys, reception and breakfast": [
+      "Raktai, registratūra ir pusryčiai",
+      "Ключове, рецепция и закуска"
+    ],
+    "Lost property and complaints": [
+      "Rasti daiktai ir skundai",
+      "Изгубени вещи и оплаквания"
+    ],
+    "Talking to guests": [
+      "Pokalbiai su svečiais",
+      "Разговори с гости"
+    ],
+    "In the room": [
+      "Kambaryje",
+      "В стаята"
+    ],
+    "Inspection and feedback": [
+      "Patikra ir pastabos",
+      "Проверка и обратна връзка"
+    ],
+    "Requests and complaints": [
+      "Prašymai ir skundai",
+      "Молби и оплаквания"
+    ],
+    "Lost items and problems": [
+      "Dingę daiktai ir problemos",
+      "Изгубени вещи и проблеми"
+    ],
+    "Safety at work": [
+      "Sauga darbe",
+      "Безопасност на работното място"
+    ],
+    "Building, courtyard and bin room": [
+      "Pastatas, kiemas ir atliekų patalpa",
+      "Сграда, двор и помещение за отпадъци"
+    ],
+    "Water, heating and electricity": [
+      "Vanduo, šildymas ir elektra",
+      "Вода, отопление и електричество"
+    ],
+    "Keys and access": [
+      "Raktai ir patekimas",
+      "Ключове и достъп"
+    ],
+    "Equipment and machines": [
+      "Įranga ir mašinos",
+      "Оборудване и машини"
+    ],
+    "Damage and faults": [
+      "Pažeidimai ir gedimai",
+      "Повреди и неизправности"
+    ],
+    "Tasks": [
+      "Užduotys",
+      "Задачи"
+    ],
+    "To residents": [
+      "Kalbant su gyventojais",
+      "Към живущите"
+    ],
+    "What residents say": [
+      "Ką sako gyventojai",
+      "Какво казват живущите"
+    ],
+    "Water, heating and repairs": [
+      "Vanduo, šildymas ir remontas",
+      "Вода, отопление и ремонти"
+    ],
+    "Winter and outdoor areas": [
+      "Žiema ir lauko teritorijos",
+      "Зима и външни площи"
+    ],
+    "Fault reports and tradespeople": [
+      "Pranešimai apie gedimus ir meistrai",
+      "Сигнали за повреди и майстори"
+    ],
+    "House rules": [
+      "Namo taisyklės",
+      "Вътрешен ред"
+    ],
+    "Kitchen equipment": [
+      "Virtuvės įranga",
+      "Кухненско оборудване"
+    ],
+    "Kitchen utensils": [
+      "Virtuvės reikmenys",
+      "Кухненски прибори"
+    ],
+    "Ingredients": [
+      "Ingredientai",
+      "Съставки"
+    ],
+    "Cooking": [
+      "Maisto gaminimas",
+      "Готвене"
+    ],
+    "Dishwashing": [
+      "Indų plovimas",
+      "Миене на съдове"
+    ],
+    "Hygiene and food safety": [
+      "Higiena ir maisto sauga",
+      "Хигиена и безопасност на храните"
+    ],
+    "Dining room": [
+      "Valgomoji salė",
+      "Зала за хранене"
+    ],
+    "Drinks": [
+      "Gėrimai",
+      "Напитки"
+    ],
+    "Allergies and diets": [
+      "Alergijos ir mityba",
+      "Алергии и хранителни режими"
+    ],
+    "Staff": [
+      "Darbuotojai",
+      "Персонал"
+    ],
+    "Shifts and pay": [
+      "Pamainos ir atlyginimas",
+      "Смени и заплащане"
+    ],
+    "Waiter: guests": [
+      "Padavėjas: svečiai",
+      "Сервитьор: гости"
+    ],
+    "Waiter: payment": [
+      "Padavėjas: atsiskaitymas",
+      "Сервитьор: плащане"
+    ],
+    "Café and canteen": [
+      "Kavinė ir valgykla",
+      "Кафене и столова"
+    ],
+    "Kitchen: orders and calls": [
+      "Virtuvė: užsakymai ir pranešimai",
+      "Кухня: поръчки и съобщения"
+    ],
+    "Dishwasher: tasks": [
+      "Indų plovėjas: užduotys",
+      "Мияч на съдове: задачи"
+    ],
+    "Opening and closing": [
+      "Atidarymas ir uždarymas",
+      "Отваряне и затваряне"
+    ],
+    "Shifts and pay: talking to the boss": [
+      "Pamainos ir atlyginimas: pokalbis su vadovu",
+      "Смени и заплащане: разговор с началника"
+    ],
+    "Asking the chef and colleagues": [
+      "Klausimai virėjui ir kolegoms",
+      "Въпроси към готвача и колегите"
+    ],
+    "In the shop": [
+      "Parduotuvėje",
+      "В магазина"
+    ],
+    "Payment": [
+      "Atsiskaitymas",
+      "Плащане"
+    ],
+    "Product groups": [
+      "Prekių grupės",
+      "Групи стоки"
+    ],
+    "Labels and dates": [
+      "Etiketės ir datos",
+      "Етикети и дати"
+    ],
+    "Stockroom and deliveries": [
+      "Sandėlis ir pristatymai",
+      "Склад и доставки"
+    ],
+    "Bakery and deli": [
+      "Kepykla ir delikatesų skyrius",
+      "Пекарна и щанд за деликатеси"
+    ],
+    "Clothes and other shops": [
+      "Drabužiai ir kitos parduotuvės",
+      "Дрехи и други магазини"
+    ],
+    "Job and pay": [
+      "Darbas ir atlyginimas",
+      "Работа и заплащане"
+    ],
+    "Being polite": [
+      "Mandagumas",
+      "Учтивост"
+    ],
+    "At the till": [
+      "Prie kasos",
+      "На касата"
+    ],
+    "Helping customers": [
+      "Pagalba pirkėjams",
+      "Помощ на клиентите"
+    ],
+    "At the counter": [
+      "Prie prekystalio",
+      "На щанда"
+    ],
+    "Returns and complaints": [
+      "Grąžinimai ir skundai",
+      "Връщане на стоки и рекламации"
+    ],
+    "Tasks from the manager": [
+      "Vadovo užduotys",
+      "Задачи от управителя"
+    ],
+    "Parcels and delivery": [
+      "Siuntos ir pristatymas",
+      "Пратки и доставка"
+    ],
+    "Addresses and buildings": [
+      "Adresai ir pastatai",
+      "Адреси и сгради"
+    ],
+    "Directions": [
+      "Kryptys",
+      "Посоки"
+    ],
+    "The vehicle": [
+      "Transporto priemonė",
+      "Превозното средство"
+    ],
+    "Depot and loading": [
+      "Depas ir pakrovimas",
+      "База и товарене"
+    ],
+    "Food delivery": [
+      "Maisto pristatymas",
+      "Доставка на храна"
+    ],
+    "Taxi and passengers": [
+      "Taksi ir keleiviai",
+      "Такси и пътници"
+    ],
+    "At the door": [
+      "Prie durų",
+      "На вратата"
+    ],
+    "Phone and app": [
+      "Telefonas ir programėlė",
+      "Телефон и приложение"
+    ],
+    "At the depot": [
+      "Depe",
+      "В базата"
+    ],
+    "Food orders": [
+      "Maisto užsakymai",
+      "Поръчки на храна"
+    ],
+    "In the taxi": [
+      "Taksi automobilyje",
+      "В таксито"
+    ],
+    "Freight deliveries": [
+      "Krovinių pristatymas",
+      "Доставка на товари"
+    ],
+    "Places at work": [
+      "Vietos darbe",
+      "Места на работа"
+    ],
+    "Production line": [
+      "Gamybos linija",
+      "Производствена линия"
+    ],
+    "Shifts and employment": [
+      "Pamainos ir įdarbinimas",
+      "Смени и назначаване"
+    ],
+    "Quantities and paperwork": [
+      "Kiekiai ir dokumentai",
+      "Количества и документи"
+    ],
+    "Instructions from the team leader": [
+      "Komandos vadovo nurodymai",
+      "Указания от ръководителя на екипа"
+    ],
+    "Questions at work": [
+      "Klausimai darbe",
+      "Въпроси на работа"
+    ],
+    "Safety in practice": [
+      "Sauga praktiškai",
+      "Безопасност на практика"
+    ],
+    "Shifts and breaks": [
+      "Pamainos ir pertraukos",
+      "Смени и почивки"
+    ],
+    "Pay, sick days and the agency": [
+      "Atlyginimas, nedarbingumas ir agentūra",
+      "Заплащане, болнични и агенция"
+    ],
+    "First day and colleagues": [
+      "Pirmoji diena ir kolegos",
+      "Първи ден и колеги"
+    ],
+    "People at work": [
+      "Žmonės darbe",
+      "Хора на работното място"
+    ],
+    "Employment, contract and notice": [
+      "Įdarbinimas, sutartis ir įspėjimas",
+      "Назначаване, договор и предизвестие"
+    ],
+    "Pay and payslip": [
+      "Atlyginimas ir algalapis",
+      "Заплата и фиш за заплата"
+    ],
+    "Working hours": [
+      "Darbo laikas",
+      "Работно време"
+    ],
+    "Holidays and sickness": [
+      "Atostogos ir liga",
+      "Отпуск и болест"
+    ],
+    "Unions, a-kasse and agreements": [
+      "Profesinės sąjungos, a-kasse ir sutartys",
+      "Синдикати, a-kasse и споразумения"
+    ],
+    "Working environment and safety": [
+      "Darbo aplinka ir sauga",
+      "Работна среда и безопасност"
+    ],
+    "Starting a new job": [
+      "Naujo darbo pradžia",
+      "Започване на нова работа"
+    ],
+    "Questions about pay": [
+      "Klausimai apie atlyginimą",
+      "Въпроси за заплатата"
+    ],
+    "Hours and shifts": [
+      "Darbo laikas ir pamainos",
+      "Работно време и смени"
+    ],
+    "Sickness and absence": [
+      "Liga ir neatvykimas",
+      "Болест и отсъствие"
+    ],
+    "Holidays": [
+      "Atostogos",
+      "Отпуск"
+    ],
+    "Safety and work injuries": [
+      "Sauga ir traumos darbe",
+      "Безопасност и трудови злополуки"
+    ],
+    "Rights and help": [
+      "Teisės ir pagalba",
+      "Права и помощ"
+    ]
+  },
+  "courses": {
+    "agriculture": {
+      "name": [
+        "Žemės ūkis ir maisto gamyba",
+        "Земеделие и производство на храни"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui ūkyje, šiltnamyje, renkant derlių ir skerdykloje.",
+        "Думи и изречения за работа във ферми, оранжерии, бране на реколта и кланици."
+      ]
+    },
+    "airport": {
+      "name": [
+        "Oro uostas ir antžeminis aptarnavimas",
+        "Летище и наземно обслужване"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui oro uoste: bagažas, peronas, sauga, lėktuvo valymas ir pagalba keleiviams.",
+        "Думи и изречения за работа на летище: багаж, перон, сигурност, почистване на самолети и помощ на пътниците."
+      ]
+    },
+    "authorities": {
+      "name": [
+        "Būstas ir institucijos",
+        "Жилище и институции"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai apie CPR, MitID, Digital Post, mokesčius, banką, būsto nuomą, persikraustymą ir atliekas Danijoje.",
+        "Думи и изречения за CPR, MitID, Digital Post, данъци, банки, наемане, преместване и отпадъци в Дания."
+      ]
+    },
+    "bus": {
+      "name": [
+        "Autobuso vairuotojas",
+        "Шофьор на автобус"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai autobuso vairuotojo darbui Danijoje: autobusas, bilietai, keleiviai, konfliktai, nelaimės ir taisyklės.",
+        "Думи и изречения за работа като шофьор на автобус в Дания: автобусът, билетите, пътниците, конфликтите, злополуките и правилата."
+      ]
+    },
+    "care": {
+      "name": [
+        "Pagyvenusių žmonių priežiūra",
+        "Грижа за възрастни хора"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui slaugos namuose ir teikiant pagalbą namuose.",
+        "Думи и изречения за работа в домашни грижи и домове за възрастни хора."
+      ]
+    },
+    "childcare": {
+      "name": [
+        "Darželio darbuotojo padėjėjas",
+        "Помощник в ясла и детска градина"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai padėjėjo darbui lopšelyje ar darželyje.",
+        "Думи и изречения за работа като помощник в ясла или детска градина."
+      ]
+    },
+    "children": {
+      "name": [
+        "Vaikai, mokykla ir darželis",
+        "Деца, училище и детска градина"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai tėvams: lopšelis, darželis, popamokinė priežiūra, mokykla ir pokalbiai su darbuotojais.",
+        "Думи и изречения за родители: ясла, детска градина, занималня, училище и разговори с персонала."
+      ]
+    },
+    "cleaning": {
+      "name": [
+        "Valymas",
+        "Почистване"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui valymo įmonėje.",
+        "Думи и изречения за работа в почистваща фирма."
+      ]
+    },
+    "construction": {
+      "name": [
+        "Statyba ir amatai",
+        "Строителство и занаяти"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui statybvietėje.",
+        "Думи и изречения за работа на строителен обект."
+      ]
+    },
+    "driving": {
+      "name": [
+        "Vairavimo egzaminas",
+        "Шофьорски изпит"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai teorijos egzaminui, praktiniam egzaminui ir vairavimo pamokoms.",
+        "Думи и изречения за теоретичния изпит, практическия изпит и уроците по шофиране."
+      ]
+    },
+    "essentials": {
+      "name": [
+        "Kasdienybės pagrindai",
+        "Основи за ежедневието"
+      ],
+      "desc": [
+        "Skaičiai, laikas, savaitės dienos, mėnesiai, spalvos ir transportas kasdieniam gyvenimui Danijoje.",
+        "Числа, време, дни от седмицата, месеци, цветове и транспорт за ежедневието в Дания."
+      ]
+    },
+    "getaround": {
+      "name": [
+        "Keliavimas mieste ir šalyje",
+        "Придвижване в ежедневието"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai apie autobusus, traukinius, metro, bilietus, programėles, vėlavimus, kelio klausimą, taksi, dviračius, paspirtukus ir ėjimą pėsčiomis Danijoje.",
+        "Думи и изречения за автобуси, влакове, метро, билети, приложения, закъснения, посоки, таксита, велосипеди, тротинетки и движение пеша в Дания."
+      ]
+    },
+    "health": {
+      "name": [
+        "Sveikata ir gydytojas",
+        "Здраве и лекар"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai vizitui pas gydytoją, budinčiam gydytojui, vaistinei, odontologui ir skubiai pagalbai.",
+        "Думи и изречения за лекаря, дежурния лекар, аптеката, зъболекаря и спешните случаи."
+      ]
+    },
+    "hospital": {
+      "name": [
+        "Pagalbinis darbas ligoninėje",
+        "Обслужваща работа в болница"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai ligoninės pagalbiniams darbuotojams, pacientų transportuotojams ir valytojams.",
+        "Думи и изречения за работа като болничен санитар, обслужващ служител или чистач."
+      ]
+    },
+    "hotel": {
+      "name": [
+        "Viešbutis ir kambarių tvarkymas",
+        "Хотел и почистване на стаи"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui viešbutyje, ypač kambarių tvarkymui, taip pat registratūrai ir pusryčių aptarnavimui.",
+        "Думи и изречения за работа в хотел, основно почистване на стаи, но също рецепция и закуска."
+      ]
+    },
+    "propertyservice": {
+      "name": [
+        "Pastatų priežiūra",
+        "Поддръжка на сгради"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai pastatų prižiūrėtojo darbui: laiptinės, kiemai, atliekos, smulkus remontas, šildymas, vandens žala, sniegas, raktai, gyventojai ir sauga.",
+        "Думи и изречения за работа по поддръжка на сгради: стълбища, дворове, отпадъци, дребни ремонти, отопление, течове, сняг, ключове, живущи и безопасност."
+      ]
+    },
+    "restaurant": {
+      "name": [
+        "Restoranas ir virtuvė",
+        "Ресторант и кухня"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui restorane, kavinėje ar valgykloje.",
+        "Думи и изречения за работа в ресторант, кафене или столова."
+      ]
+    },
+    "retail": {
+      "name": [
+        "Parduotuvė ir prekybos centras",
+        "Магазин и супермаркет"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui parduotuvėje ar prekybos centre.",
+        "Думи и изречения за работа в магазин или супермаркет."
+      ]
+    },
+    "transport": {
+      "name": [
+        "Vairuotojas ir kurjeris",
+        "Шофьор и куриер"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai vairuotojams, siuntų ir maisto kurjeriams bei taksi vairuotojams.",
+        "Думи и изречения за работа като шофьор, куриер на пратки, доставчик на храна или таксиметров шофьор."
+      ]
+    },
+    "warehouse": {
+      "name": [
+        "Sandėlis ir gamyba",
+        "Склад и производство"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui sandėlyje, pakuojant ar gamyboje.",
+        "Думи и изречения за работа в склад, опаковане или производство."
+      ]
+    },
+    "worklife": {
+      "name": [
+        "Darbas ir darbuotojo teisės",
+        "Работа и права на работника"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai apie sutartis, atlyginimą, darbo laiką, atostogas, ligą, saugą ir darbuotojo teises Danijoje.",
+        "Думи и изречения за договори, заплащане, работно време, отпуск, болест, безопасност и трудови права в Дания."
+      ]
+    }
+  }
+}

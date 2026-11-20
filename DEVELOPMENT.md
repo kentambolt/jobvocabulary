@@ -19,24 +19,34 @@ node data/build-pages.js
 node --test tests/*.test.cjs
 ```
 
-`build-packs.js` validates the six-language course files and updates the small
+`build-packs.js` validates the eight-language course files and updates the small
 `packs/index.js` manifest. Courses are loaded only when selected.
 
-`build-lexicon.js` creates `lexicon-v3.json` and its small version/count manifest.
-The dictionary is loaded only for saved words or personal lists. Version 3 uses
-one record per distinct six-language meaning and numeric alias references.
-The loader also accepts earlier four-language versions:
+`build-lexicon.js` creates `lexicon-v4.json` and its small version/count manifest.
+The dictionary is loaded only for saved words or personal lists. Version 4 uses
+one record per distinct eight-language meaning and numeric alias references.
+The loader also accepts earlier versions:
 
 ```text
-languages: [da, en, ru, uk, pl, ro]
-entries: [id, da, en, ru, uk, pl, ro, isPhrase, pictureConceptId]
+languages: [da, en, ru, uk, pl, ro, lt, bg]
+entries: [id, da, en, ru, uk, pl, ro, lt, bg, isPhrase, pictureConceptId]
 aliases: source item ID -> index in entries
 ```
 
-`lexicon.json` remains a compatible four-language version-2 projection for older
-tabs that are already open. Never replace that URL with the version-3 row layout:
-old parsers would misread word/phrase fields and numeric aliases. The new manifest
-selects `lexicon-v3.json`; all record IDs and source aliases match between versions.
+`lexicon.json` remains a compatible four-language version-2 projection and
+`lexicon-v3.json` retains its six-language layout for older tabs. Never change
+the row layout at an existing URL. The new manifest selects `lexicon-v4.json`;
+all record IDs and source aliases match between projections.
+
+`build-core-translations.js` imports both completed core-language deliveries.
+`import-course-languages.js` adds Lithuanian/Bulgarian to existing courses without
+changing the previous six fields. Metadata lives in `data/course-labels-lt-bg.json`.
+Use `import-new-courses.js` for explicitly selected new courses, then add their
+language overlays before building. It refuses to replace existing courses.
+The historical `import-course-content.js` is not a recurring synchronization job.
+`import-dictionary-languages.js` extends the separately licensed common-word
+collection at `dictionary/common-words-v2.json`; its old four-language URL stays
+available for previous clients. Keep the CC collection separate from project data.
 
 Keep the generated dictionary checked in: its previous aliases retain IDs when
 translations are corrected. Identical records can share an entry; different

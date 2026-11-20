@@ -64,7 +64,7 @@ var WordEntry = class WordEntry {
     this.matches = []; this.hint = 'found';
   }
   setLanguage(field, lang) {
-    if (!['target', 'base'].includes(field) || !['da', 'en', 'ru', 'uk', 'pl', 'ro'].includes(lang)) return;
+    if (!['target', 'base'].includes(field) || !['da', 'en', 'ru', 'uk', 'pl', 'ro', 'lt', 'bg'].includes(lang)) return;
     const before = { target: this.target, base: this.base };
     const other = field === 'target' ? 'base' : 'target';
     this[field] = lang;
