@@ -416,8 +416,8 @@ const MEMORY_TEXT = {
 };
 for (const [lang, text] of Object.entries(MEMORY_TEXT)) Object.assign(UI[lang], text);
 for (const [lang, locale] of Object.entries(EXTRA_LOCALES)) UI[lang] = locale.ui;
-const languageNames = { da: ['Polsk','Rumænsk'], en: ['Polish','Romanian'], ru: ['Польский','Румынский'], uk: ['Польська','Румунська'] };
-for (const [lang, [pl,ro]] of Object.entries(languageNames)) Object.assign(UI[lang].lang,{pl,ro});
+const languageNames = { da: ['Polsk','Rumænsk','Litauisk','Bulgarsk'], en: ['Polish','Romanian','Lithuanian','Bulgarian'], ru: ['Польский','Румынский','Литовский','Болгарский'], uk: ['Польська','Румунська','Литовська','Болгарська'], pl: ['polski','rumuński','litewski','bułgarski'], ro: ['poloneză','română','lituaniană','bulgară'] };
+for (const [lang, [pl,ro,lt,bg]] of Object.entries(languageNames)) Object.assign(UI[lang].lang,{pl,ro,lt,bg});
 for (const [lang,label] of Object.entries({da:'Licenser',en:'Licences',ru:'Лицензии',uk:'Ліцензії'})) UI[lang].licenses=label;
 
 // ---------- Data ----------
@@ -431,8 +431,8 @@ const IMG = typeof IMAGES !== 'undefined' ? IMAGES : {};
 for (const c of CONCEPTS) ITEM[c.id] = { ...c, phrase: false };
 function registerPack(p) {
   const sourceIds = PACK_LIST.find(info => info.id === p.id)?.sourceIds || {};
-  const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk, pl, ro]) => ({
-    id: sourceIds[da] || `${p.id}:${da}`, words: { da, en, ru, uk, pl, ro }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
+  const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk, pl, ro, lt, bg]) => ({
+    id: sourceIds[da] || `${p.id}:${da}`, words: { da, en, ru, uk, pl, ro, lt, bg }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
   })));
   // Prioritet 1 først, på skift mellem kategorierne, derefter prioritet 2 osv.
   const ordered = [];
@@ -882,8 +882,8 @@ function render() {
   $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
   $('licensesLink').textContent = t('licenses');
   const guidesLink = $('guidesLink');
-  guidesLink.href = `/${ul}/guides/`;
-  guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства',uk:'Посібники',pl:'Poradniki',ro:'Ghiduri'}[ul];
+  guidesLink.href = `/${['lt','bg'].includes(ul) ? 'en' : ul}/guides/`;
+  guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства',uk:'Посібники',pl:'Poradniki',ro:'Ghiduri',lt:'Vadovai anglų kalba',bg:'Ръководства на английски'}[ul];
   $('modeBtn').textContent = t('taskOptions');
   $('returnCourseBtn').textContent = lt('backToCourse');
   $('soundBtn').classList.toggle('off', !state.sound);
@@ -1035,13 +1035,15 @@ function languageName(lang, name) {
     uk: '<path fill="#0057b7" d="M0 0h30v10H0z"/><path fill="#ffd700" d="M0 10h30v10H0z"/>',
     pl: '<path fill="#fff" d="M0 0h30v10H0z"/><path fill="#dc143c" d="M0 10h30v10H0z"/>',
     ro: '<path fill="#002b7f" d="M0 0h10v20H0z"/><path fill="#fcd116" d="M10 0h10v20H10z"/><path fill="#ce1126" d="M20 0h10v20H20z"/>',
+    lt: '<path fill="#fdb913" d="M0 0h30v6.67H0z"/><path fill="#006a44" d="M0 6.67h30v6.66H0z"/><path fill="#c1272d" d="M0 13.33h30V20H0z"/>',
+    bg: '<path fill="#fff" d="M0 0h30v6.67H0z"/><path fill="#00966e" d="M0 6.67h30v6.66H0z"/><path fill="#d62612" d="M0 13.33h30V20H0z"/>',
   };
   return `<svg class="language-flag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">${flags[lang] || ''}</svg><span>${esc(name)}</span>`;
 }
 
 function renderHomeStart() {
   const L = UI[uiLang()].lang;
-  const shortQuestion = { da:'Vælg sprog',en:'Choose a language',ru:'Выберите язык',uk:'Виберіть мову',pl:'Wybierz język',ro:'Alege o limbă' }[uiLang()];
+  const shortQuestion = { da:'Vælg sprog',en:'Choose a language',ru:'Выберите язык',uk:'Виберіть мову',pl:'Wybierz język',ro:'Alege o limbă',lt:'Pasirink kalbą',bg:'Избери език' }[uiLang()];
   $('app').innerHTML = `<section class="setup"><p class="setup-kicker">${esc(t('setupTitle'))}</p><div class="step"><h2><span class="home-language-full">${esc(t('learnQ'))}</span><span class="home-language-short">${esc(shortQuestion)}</span></h2><div class="choices">${Object.keys(ORDER).map((lang) => `<button class="choice" data-target="${lang}"><b>${esc(LANGS[lang].name || L[lang])}</b></button>`).join('')}</div></div></section>`;
   $('app').querySelectorAll('[data-target]').forEach((button) => button.onclick = () => {
     selectedCourseLink = false;
@@ -1120,7 +1122,7 @@ function renderSetup() {
       html += `</fieldset><button class="primary" type="button" id="closeTopics">${esc(home.done)}</button></div></details></div>`;
     }
 
-    const optionTitles = { da: 'Sværhedsgrad og opgaver', en: 'Difficulty and tasks', ru: 'Сложность и задания', uk: 'Складність і завдання', pl: EXTRA_LOCALES.pl.setupOptions, ro: EXTRA_LOCALES.ro.setupOptions };
+    const optionTitles = { da: 'Sværhedsgrad og opgaver', en: 'Difficulty and tasks', ru: 'Сложность и задания', uk: 'Складність і завдання', ...Object.fromEntries(Object.entries(EXTRA_LOCALES).map(([lang,locale])=>[lang,locale.setupOptions])) };
     html += `<details class="setup-options" id="setupOptions"><summary><b>${esc(optionTitles[ul])}</b><small>${esc(t(pack ? 'packDiff' : 'diff')[d.diff])} · ${esc(PracticeOptions.modes(d).map(mode => dirName(mode, pics)).join(', '))}</small></summary><section class="step" id="practiceOptions">${practiceChoicesHTML(d, 'setup-')}</section>`;
 
     html += `<div class="step"><h2>${esc(t('diffQ'))}</h2><div class="choices">`;

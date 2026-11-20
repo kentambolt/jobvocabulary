@@ -19,6 +19,7 @@ for (const [id, metadata] of Object.entries(labels)) {
   const context = {};
   vm.runInNewContext(fs.readFileSync(path.join(root, 'packs', id+'.js'), 'utf8')+';this.pack=PACKS.'+id, context);
   const pack = context.pack;
+  if (pack.categories.some(category=>category.rows.some(row=>row.length>7))) throw new Error('Historical import would overwrite newer language fields. Use a selective importer instead.');
   Object.assign(pack.name, pair(metadata.name)); Object.assign(pack.desc, pair(metadata.desc));
   for (const category of pack.categories) {
     Object.assign(category.name, pair(metadata.categories[category.key]));

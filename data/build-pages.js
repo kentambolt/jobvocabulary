@@ -9,8 +9,8 @@ const seo = require('./seo-pages');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
-const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
-const LANG_NAME = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська', pl: 'Polski', ro: 'Română' };
+const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro', 'lt', 'bg'];
+const LANG_NAME = { da: 'Dansk', en: 'English', ru: 'Русский', uk: 'Українська', pl: 'Polski', ro: 'Română', lt:'Lietuvių', bg:'Български' };
 const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'essentials', 'driving'];
 
 const T = {
@@ -75,8 +75,8 @@ const T = {
 
 const extraLocales = require('../locales');
 for (const [lang, locale] of Object.entries(extraLocales)) T[lang] = { ...locale.page,
-  title: name => lang === 'pl' ? `${name}: duńskie słowa i zwroty | Job Vocabulary` : `${name}: cuvinte și expresii în daneză | Job Vocabulary`,
-  intro: (total,topics) => lang === 'pl' ? `${total} słów i zwrotów w ${topics} tematach, z tłumaczeniem na polski. Najważniejsze są na początku, a znane słowa wracają rzadziej.` : `${total} cuvinte și expresii în ${topics} teme, cu traducere în română. Cele mai importante apar primele, iar cele cunoscute revin mai rar.`
+  title: name => locale.page.titleSuffix ? `${name}: ${locale.page.titleSuffix} | Job Vocabulary` : lang === 'pl' ? `${name}: duńskie słowa i zwroty | Job Vocabulary` : `${name}: cuvinte și expresii în daneză | Job Vocabulary`,
+  intro: (total,topics) => locale.page.intro ? locale.page.intro.replace('{total}',total).replace('{topics}',topics) : lang === 'pl' ? `${total} słów i zwrotów w ${topics} tematach, z tłumaczeniem na polski. Najważniejsze są na początku, a znane słowa wracają rzadziej.` : `${total} cuvinte și expresii în ${topics} teme, cu traducere în română. Cele mai importante apar primele, iar cele cunoscute revin mai rar.`
 };
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const slugify = (s) => s.toLowerCase().replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa').replace(/ł/g, 'l')
@@ -92,7 +92,7 @@ vm.runInContext('this.P = PACKS;', ctx);
 const courseOrder = catalog.groups.flatMap(group => group.packs);
 const packs = Object.values(ctx.P).sort((a, b) => courseOrder.indexOf(a.id) - courseOrder.indexOf(b.id));
 
-const urlOf = (p, lang) => `/${lang}/${['da','en','pl','ro'].includes(lang) ? slugify(p.name[lang]) : p.id}/`;
+const urlOf = (p, lang) => `/${lang}/${['da','en','pl','ro','lt'].includes(lang) ? slugify(p.name[lang]) : p.id}/`;
 
 // Prioritet 1 på skift mellem emnerne (samme rækkefølge som i appen).
 function sample(p, type, n) {
@@ -190,7 +190,17 @@ for (const p of packs) {
 
 // --- links på forsiden (mellem markørerne i index.html) ---
 const indexPath = path.join(ROOT, 'index.html');
-const html = fs.readFileSync(indexPath, 'utf8');
+const homeDescription = `Lær ord og sætninger til job, transport og hverdag. Vælg mellem ${packs.length} kurser og ${LANGS.length} sprog, og træn i dit eget tempo.`;
+const html = fs.readFileSync(indexPath, 'utf8')
+  .replace(/(<meta name="description" content=")[^"]*(">)/,`$1${esc(homeDescription)}$2`)
+  .replace(/(<meta property="og:description" content=")[^"]*(">)/,`$1${esc(homeDescription)}$2`)
+  .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(match,json)=>{
+    const data=JSON.parse(json);
+    if(data['@type']!=='WebApplication') return match;
+    data.inLanguage=LANGS;
+    data.description=homeDescription;
+    return seo.jsonLD(data);
+  });
 const links = `<!-- JOBS -->\n    <nav class="jobs" aria-label="Emner">${catalog.groups.map((g) => catalog.groupLink(g, 'da')).join('')}</nav>\n    <!-- /JOBS -->`;
 if (!/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/.test(html)) throw new Error('index.html mangler <!-- JOBS --> markører');
 fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, links));

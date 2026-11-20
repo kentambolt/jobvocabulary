@@ -4,7 +4,7 @@ const path = require('node:path');
 const { guides, contexts } = require('./seo-content');
 const guideUI = require('./guide-ui');
 const guideLanguages = Object.keys(guideUI);
-const guideLabels = Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides]));
+const guideLabels = {...Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides])),lt:'Vadovai anglų kalba',bg:'Ръководства на английски'};
 const guideIndex = lang => `/${guideLanguages.includes(lang) ? lang : 'en'}/guides/`;
 const guidePath = (guide, lang) => `/${lang}/guides/${guide[lang].slug}/`;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
