@@ -7,6 +7,7 @@ const crypto = require('crypto');
 const root = path.join(__dirname, '..');
 const { CONCEPTS } = require('../words');
 const languages = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
+const stableIds = require('./stable-word-ids.json');
 // The checked-in dictionary is also the identity registry. Translation corrections
 // retain their source entry's ID, so saved personal lists keep working.
 const previousPath = fs.existsSync(path.join(root,'lexicon-v3.json')) ? path.join(root,'lexicon-v3.json') : path.join(root, 'lexicon.json');
@@ -41,7 +42,10 @@ for (const name of fs.readdirSync(path.join(root, 'packs')).filter((n) => n.ends
 }
 vm.runInContext('this.allPacks = PACKS', context);
 for (const pack of Object.values(context.allPacks)) for (const cat of pack.categories) for (const [, da, en, ru, uk, pl, ro] of cat.rows) {
-  add(`${pack.id}:${da}`, { da, en, ru, uk, pl, ro }, cat.type === 'phrase');
+  const sourceId = `${pack.id}:${da}`;
+  const stableId = stableIds[pack.id]?.[da] || sourceId;
+  add(stableId, { da, en, ru, uk, pl, ro }, cat.type === 'phrase');
+  if (stableId !== sourceId) aliases[sourceId] = aliases[stableId];
 }
 const supplementPath = path.join(root,'dictionary/project-supplement.json');
 if (fs.existsSync(supplementPath)) for (const entry of JSON.parse(fs.readFileSync(supplementPath,'utf8'))) add(entry.id,entry.words,false);

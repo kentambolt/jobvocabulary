@@ -139,7 +139,7 @@ PACKS.transport = {
       [2,"en pose","bag","пакет","пакет","torba","pungă"],
       [2,"et leveringsområde","delivery area","зона доставки","зона доставки","obszar dostaw","zonă de livrare"],
       [2,"myldretid","rush hour","час пик","година пік","godziny szczytu","oră de vârf"],
-      [2,"regntøj","rain gear","непромокаемая одежда","непромокальний одяг","odzież przeciwdeszczowa","îmbrăcăminte de ploaie"],
+      [2,"regntøj","waterproofs","непромокаемая одежда","непромокальний одяг","odzież przeciwdeszczowa","îmbrăcăminte de ploaie"],
       [3,"en aflysning","cancellation","отмена","скасування","anulowanie","anulare"]
     ] },
     { key: "taxi", type: "word", name: {"da":"Taxa og passagerer","en":"Taxi and passengers","ru":"Такси и пассажиры","uk":"Таксі і пасажири","pl":"Taksówka i pasażerowie","ro":"Taxi și pasageri"}, rows: [
@@ -174,7 +174,7 @@ PACKS.transport = {
       [2,"en chef","boss","начальник","начальник","szef","șef"],
       [2,"pr. pakke","per parcel","за посылку","за посилку","za paczkę","per colet"],
       [2,"km (kilometer)","km (kilometre)","км (километр)","км (кілометр)","km (kilometr)","km (kilometru)"],
-      [2,"ansat","employed (an employee)","сотрудник (по найму)","найманий працівник","zatrudniony (pracownik etatowy)","angajat"],
+      [2,"ansat","employed (an employee)","наёмный работник","найманий працівник","zatrudniony (pracownik etatowy)","angajat"],
       [2,"selvstændig","self-employed","самозанятый (ИП)","самозайнятий (ФОП)","samozatrudniony","lucrător pe cont propriu (PFA)"],
       [2,"et CVR-nummer","CVR number (Danish business registration number)","CVR-номер (регистрационный номер фирмы)","CVR-номер (реєстраційний номер фірми)","numer CVR (duński numer rejestracyjny firmy)","număr CVR (număr danez de înregistrare a firmei)"],
       [2,"en kørebog","mileage log","журнал поездок","журнал поїздок","ewidencja przebiegu (kilometrówka)","foaie de parcurs"],
@@ -217,7 +217,7 @@ PACKS.transport = {
     { key: "door", type: "phrase", name: {"da":"Ved døren","en":"At the door","ru":"У двери","uk":"Біля дверей","pl":"Przy drzwiach","ro":"La ușă"}, rows: [
       [1,"Hej, jeg har en pakke til dig.","Hi, I have a parcel for you.","Здравствуйте, у меня для вас посылка.","Добрий день, у мене для вас посилка.","Dzień dobry, mam paczkę dla Pana/Pani.","Bună ziua, am un colet pentru dumneavoastră."],
       [1,"Vil du skrive under her?","Could you sign here?","Распишитесь здесь, пожалуйста.","Розпишіться тут, будь ласка.","Proszę tu podpisać.","Semnați aici, vă rog."],
-      [1,"Bor Jensen her?","Does Jensen live here?","Йенсен здесь живёт?","Йенсен тут живе?","Czy tu mieszka Jensen?","Aici locuiește Jensen?"],
+      [1,"Bor Jensen her?","Does Jensen live here?","Йенсен здесь живёт?","Єнсен тут живе?","Czy tu mieszka Jensen?","Aici locuiește Jensen?"],
       [1,"Må jeg stille pakken ved døren?","May I leave the parcel by the door?","Можно оставить посылку у двери?","Можна залишити посилку біля дверей?","Czy mogę zostawić paczkę pod drzwiami?","Pot să las coletul la ușă?"],
       [1,"Jeg har lagt den i pakkeboksen.","I've put it in the parcel locker.","Я положил(а) её в постамат.","Я поклав(ла) її в поштомат.","Włożyłem(-am) ją do paczkomatu.","L-am pus în lockerul pentru colete."],
       [1,"Må jeg se noget legitimation?","May I see some ID?","Можно посмотреть ваше удостоверение личности?","Можна подивитися ваше посвідчення особи?","Czy mogę prosić o dokument tożsamości?","Pot să văd un act de identitate, vă rog?"],
@@ -251,7 +251,7 @@ PACKS.transport = {
       [2,"Kan du komme ned?","Can you come down?","Можете спуститься?","Можете спуститися?","Proszę zejść na dół.","Puteți să coborâți?"],
       [2,"Dørtelefonen virker ikke.","The intercom isn't working.","Домофон не работает.","Домофон не працює.","Domofon nie działa.","Interfonul nu funcționează."],
       [2,"Kan du lukke mig ind?","Can you let me in?","Можете меня впустить?","Можете мене впустити?","Proszę mnie wpuścić.","Puteți să-mi deschideți?"],
-      [2,"Jeg har ringet på, men der er ingen, der åbner.","I've rung the bell, but nobody's opening.","Я позвонил(а), но никто не открывает.","Я подзвонив(ла), але ніхто не відчиняє.","Dzwoniłem(-am) do drzwi, ale nikt nie otwiera.","Am sunat, dar nu deschide nimeni."],
+      [2,"Jeg har ringet på, men der er ingen, der åbner.","I've rung the bell, but nobody's answering.","Я позвонил(а), но никто не открывает.","Я подзвонив(ла), але ніхто не відчиняє.","Dzwoniłem(-am) do drzwi, ale nikt nie otwiera.","Am sunat, dar nu deschide nimeni."],
       [2,"Jeg bliver lidt forsinket.","I'll be a little late.","Я немного опоздаю.","Я трохи запізнюся.","Trochę się spóźnię.","Voi întârzia puțin."],
       [2,"Jeg har stillet den i carporten.","I've left it in the carport.","Я оставил(а) её под навесом для машины.","Я залишив(ла) її під навісом для авто.","Zostawiłem(-am) ją pod wiatą garażową.","L-am lăsat sub copertina pentru mașină."],
       [2,"Jeg sender en besked, når jeg er tæt på.","I'll send a message when I'm close.","Я напишу, когда буду рядом.","Я напишу, коли буду поруч.","Wyślę wiadomość, kiedy będę blisko.","Vă trimit un mesaj când sunt aproape."],
@@ -277,7 +277,7 @@ PACKS.transport = {
       [2,"Jeg har tre returpakker.","I have three return parcels.","У меня три возвратные посылки.","У мене три посилки на повернення.","Mam trzy paczki zwrotne.","Am trei colete de retur."],
       [2,"Hvornår skal bilen være læsset?","When does the van need to be loaded?","Когда машина должна быть загружена?","Коли машина має бути завантажена?","Na kiedy auto ma być załadowane?","Până când trebuie încărcată mașina?"],
       [2,"Hvor er nøglerne til bilen?","Where are the keys to the van?","Где ключи от машины?","Де ключі від машини?","Gdzie są kluczyki do auta?","Unde sunt cheile de la mașină?"],
-      [2,"Kan nogen hjælpe mig med at bære?","Can someone help me carry?","Кто-нибудь может помочь донести?","Хтось може допомогти донести?","Czy ktoś może mi pomóc nieść?","Mă poate ajuta cineva să car?"],
+      [2,"Kan nogen hjælpe mig med at bære?","Can someone help me carry this?","Кто-нибудь может помочь донести?","Хтось може допомогти донести?","Czy ktoś może mi pomóc nieść?","Mă poate ajuta cineva să car?"],
       [2,"Pakken skal leveres før kl. 12.","The parcel must be delivered before 12.","Посылку нужно доставить до 12.","Посилку треба доставити до 12.","Paczkę trzeba dostarczyć przed 12.","Coletul trebuie livrat înainte de ora 12."],
       [2,"Den skal retur til afsender.","It must go back to the sender.","Её нужно вернуть отправителю.","Її треба повернути відправникові.","Trzeba ją odesłać do nadawcy.","Trebuie returnat la expeditor."],
       [2,"Hvor skal jeg stille rulleburet?","Where should I put the roll cage?","Куда поставить ролл-контейнер?","Куди поставити рол-контейнер?","Gdzie mam postawić roll kontener?","Unde să pun căruciorul tip cușcă?"],
@@ -335,7 +335,7 @@ PACKS.transport = {
       [2,"Kan jeg sætte dig af her?","Can I drop you off here?","Можно высадить вас здесь?","Можна висадити вас тут?","Czy mogę Pana/Panią tu wysadzić?","Vă pot lăsa aici?"],
       [2,"Vil du have en kvittering?","Would you like a receipt?","Вам нужен чек?","Вам потрібен чек?","Czy potrzebny paragon?","Doriți o chitanță?"],
       [2,"Det er en fast pris.","It's a fixed price.","Это фиксированная цена.","Це фіксована ціна.","To jest stała cena.","Este un preț fix."],
-      [2,"Er temperaturen i orden?","Is the temperature OK?","Вам комфортная температура?","Вам комфортна температура?","Czy temperatura jest w porządku?","Temperatura este în regulă?"],
+      [2,"Er temperaturen i orden?","Is the temperature OK?","Температура в салоне вас устраивает?","Температура в салоні вас влаштовує?","Czy temperatura jest w porządku?","Temperatura este în regulă?"],
       [2,"Der er meget trafik i dag.","There's a lot of traffic today.","Сегодня на дорогах много машин.","Сьогодні на дорогах багато машин.","Dziś jest bardzo duży ruch.","Azi este trafic mare."],
       [2,"Vi bliver nødt til at køre en omvej.","We have to take a detour.","Придётся ехать в объезд.","Доведеться їхати в об’їзд.","Musimy pojechać objazdem.","Trebuie să facem un ocol."],
       [2,"Du kan også betale med MobilePay.","You can also pay with MobilePay.","Можно также оплатить через MobilePay.","Можна також оплатити через MobilePay.","Można też zapłacić przez MobilePay.","Puteți plăti și cu MobilePay."],
@@ -343,7 +343,7 @@ PACKS.transport = {
       [3,"Har du brug for hjælp til at komme ind i bilen?","Do you need help getting into the car?","Вам помочь сесть в машину?","Вам допомогти сісти в машину?","Czy pomóc przy wsiadaniu do samochodu?","Aveți nevoie de ajutor să urcați în mașină?"],
       [3,"Der må ikke ryges i bilen.","No smoking in the car.","В машине курить нельзя.","У машині курити не можна.","W samochodzie nie wolno palić.","În mașină nu se fumează."],
       [3,"Hvornår går dit fly?","What time is your flight?","Во сколько ваш рейс?","О котрій ваш рейс?","O której jest lot?","La ce oră aveți zborul?"],
-      [3,"Der er et tillæg om natten.","There's a night surcharge.","Ночью действует надбавка.","Вночі діє надбавка.","W nocy obowiązuje dopłata.","Noaptea se aplică un supliment."]
+      [3,"Der er et tillæg om natten.","There's a night surcharge.","Ночью действует доплата.","Вночі діє доплата.","W nocy obowiązuje dopłata.","Noaptea se aplică un supliment."]
     ] },
     { key: "problems", type: "phrase", name: {"da":"Problemer og uheld","en":"Problems and accidents","ru":"Проблемы и аварии","uk":"Проблеми й аварії","pl":"Problemy i wypadki","ro":"Probleme și accidente"}, rows: [
       [1,"Bilen vil ikke starte.","The van won't start.","Машина не заводится.","Машина не заводиться.","Auto nie chce zapalić.","Mașina nu pornește."],
@@ -357,7 +357,7 @@ PACKS.transport = {
       [2,"Batteriet er fladt.","The battery is flat.","Аккумулятор разряжен.","Акумулятор розряджений.","Akumulator jest rozładowany.","Bateria este descărcată."],
       [2,"Jeg er løbet tør for brændstof.","I've run out of fuel.","У меня кончилось топливо.","У мене закінчилося пальне.","Skończyło mi się paliwo.","Am rămas fără combustibil."],
       [2,"Jeg har ridset bilen.","I've scratched the van.","Я поцарапал(а) машину.","Я подряпав(ла) машину.","Porysowałem(-am) auto.","Am zgâriat mașina."],
-      [2,"Jeg er kørt ind i en parkeret bil.","I've hit a parked car.","Я задел(а) припаркованную машину.","Я зачепив(ла) припарковану машину.","Uderzyłem(-am) w zaparkowany samochód.","Am lovit o mașină parcată."],
+      [2,"Jeg er kørt ind i en parkeret bil.","I've hit a parked car.","Я въехал(а) в припаркованную машину.","Я в’їхав(ла) в припарковану машину.","Uderzyłem(-am) w zaparkowany samochód.","Am lovit o mașină parcată."],
       [2,"Jeg sidder fast i trafikken.","I'm stuck in traffic.","Я стою в пробке.","Я стою в заторі.","Stoję w korku.","Sunt blocat(ă) în trafic."],
       [2,"Jeg har tabt en pakke.","I've dropped a parcel.","Я уронил(а) посылку.","Я впустив(ла) посилку.","Upuściłem(-am) paczkę.","Am scăpat un colet."],
       [2,"En pakke er blevet væk.","A parcel has gone missing.","Пропала посылка.","Зникла посилка.","Zaginęła paczka.","S-a pierdut un colet."],
@@ -367,9 +367,9 @@ PACKS.transport = {
       [2,"Kæden er hoppet af.","The chain has come off.","Слетела цепь.","Злетів ланцюг.","Spadł łańcuch.","A sărit lanțul."],
       [2,"Bilen skal på værksted.","The van needs to go to the garage.","Машину нужно отвезти в сервис.","Машину треба відвезти в автосервіс.","Auto musi jechać do warsztatu.","Mașina trebuie dusă la service."],
       [2,"Jeg er blevet bidt af en hund.","I've been bitten by a dog.","Меня укусила собака.","Мене вкусив собака.","Pogryzł mnie pies.","M-a mușcat un câine."],
-      [3,"Jeg har brug for vejhjælp.","I need roadside assistance.","Мне нужна помощь на дороге.","Мені потрібна допомога на дорозі.","Potrzebuję pomocy drogowej.","Am nevoie de asistență rutieră."],
+      [3,"Jeg har brug for vejhjælp.","I need roadside assistance.","Мне нужна техпомощь на дороге.","Мені потрібна технічна допомога на дорозі.","Potrzebuję pomocy drogowej.","Am nevoie de asistență rutieră."],
       [3,"Den anden bilist kørte ind i mig.","The other driver hit me.","Другой водитель врезался в меня.","Інший водій врізався в мене.","Drugi kierowca we mnie wjechał.","Celălalt șofer a intrat în mine."],
-      [3,"Vi skal udfylde en skadeanmeldelse.","We need to fill in an accident report.","Нужно заполнить заявление о ДТП.","Треба заповнити повідомлення про ДТП.","Musimy wypełnić oświadczenie o zdarzeniu drogowym.","Trebuie să completăm o constatare amiabilă."],
+      [3,"Vi skal udfylde en skadeanmeldelse.","We need to fill in an accident report.","Нужно заполнить извещение о ДТП.","Треба заповнити повідомлення про ДТП.","Musimy wypełnić oświadczenie o zdarzeniu drogowym.","Trebuie să completăm o constatare amiabilă."],
       [3,"Det er glat på vejene.","The roads are slippery.","На дорогах скользко.","На дорогах слизько.","Na drogach jest ślisko.","Drumurile sunt alunecoase."],
       [3,"Jeg har mistet bilnøglen.","I've lost the car key.","Я потерял(а) ключ от машины.","Я загубив(ла) ключ від машини.","Zgubiłem(-am) kluczyk do auta.","Am pierdut cheia de la mașină."]
     ] },
@@ -381,7 +381,7 @@ PACKS.transport = {
       [1,"Jeg forstår det ikke. Kan du vise mig det?","I don't understand. Can you show me?","Я не понимаю. Можете показать?","Я не розумію. Можете показати?","Nie rozumiem. Proszę mi to pokazać.","Nu înțeleg. Puteți să-mi arătați?"],
       [2,"Hvornår har jeg fri?","When am I off?","Когда у меня выходной?","Коли в мене вихідний?","Kiedy mam wolne?","Când am liber?"],
       [2,"Kan jeg bytte vagt med nogen?","Can I swap shifts with someone?","Можно поменяться сменой с кем-нибудь?","Можна помінятися зміною з кимось?","Czy mogę się z kimś zamienić zmianą?","Pot să fac schimb de tură cu cineva?"],
-      [2,"Kan jeg få flere timer?","Can I get more hours?","Можно мне больше часов?","Можна мені більше годин?","Czy mogę dostać więcej godzin?","Pot să primesc mai multe ore?"],
+      [2,"Kan jeg få flere timer?","Can I get more hours?","Можно мне больше рабочих часов?","Можна мені більше робочих годин?","Czy mogę dostać więcej godzin?","Pot să primesc mai multe ore?"],
       [2,"Der er fejl i min løn.","There's a mistake in my pay.","В моей зарплате ошибка.","У моїй зарплаті помилка.","W mojej wypłacie jest błąd.","Este o greșeală la salariul meu."],
       [2,"Jeg har arbejdet over i dag.","I worked overtime today.","Сегодня я работал(а) сверхурочно.","Сьогодні я працював(ла) понаднормово.","Pracowałem(-am) dziś w nadgodzinach.","Azi am făcut ore suplimentare."],
       [2,"Hvor mange timer må jeg køre?","How many hours am I allowed to drive?","Сколько часов мне можно быть за рулём?","Скільки годин мені можна бути за кермом?","Ile godzin wolno mi prowadzić?","Câte ore am voie să conduc?"],
@@ -391,7 +391,7 @@ PACKS.transport = {
       [2,"Får jeg betalt pr. pakke eller pr. time?","Am I paid per parcel or per hour?","Мне платят за посылку или за час?","Мені платять за посилку чи за годину?","Czy płacą mi za paczkę, czy za godzinę?","Sunt plătit(ă) per colet sau pe oră?"],
       [3,"Skal jeg skrive kilometerne i kørebogen?","Should I write the kilometres in the logbook?","Записать километры в журнал поездок?","Записати кілометри в журнал поїздок?","Czy mam wpisać kilometry do ewidencji przebiegu?","Trebuie să trec kilometrii în foaia de parcurs?"],
       [3,"Hvem betaler p-bøden?","Who pays the parking ticket?","Кто платит штраф за парковку?","Хто платить штраф за паркування?","Kto płaci mandat za parkowanie?","Cine plătește amenda de parcare?"],
-      [3,"Er jeg ansat eller selvstændig?","Am I an employee or self-employed?","Я сотрудник или самозанятый?","Я найманий працівник чи самозайнятий?","Jestem zatrudniony(-a) czy samozatrudniony(-a)?","Sunt angajat(ă) sau lucrez pe cont propriu?"],
+      [3,"Er jeg ansat eller selvstændig?","Am I an employee or self-employed?","Я наёмный работник или самозанятый?","Я найманий працівник чи самозайнятий?","Jestem zatrudniony(-a) czy samozatrudniony(-a)?","Sunt angajat(ă) sau lucrez pe cont propriu?"],
       [3,"Skal jeg have mit eget CVR-nummer?","Do I need my own CVR number?","Мне нужен свой CVR-номер?","Мені потрібен свій CVR-номер?","Czy muszę mieć własny numer CVR?","Trebuie să am propriul număr CVR?"],
       [3,"Kan jeg køre med en kollega den første dag?","Can I ride along with a colleague on the first day?","Можно в первый день поехать с коллегой?","Можна першого дня поїхати з колегою?","Czy mogę pierwszego dnia jeździć z kolegą?","Pot să merg cu un coleg în prima zi?"]
     ] },
@@ -408,8 +408,8 @@ PACKS.transport = {
       [2,"Her er fragtbrevet.","Here's the consignment note.","Вот транспортная накладная.","Ось транспортна накладна.","Oto list przewozowy.","Poftiți scrisoarea de trăsură."],
       [2,"Der er en palle for meget.","There's one pallet too many.","Здесь лишний поддон.","Тут зайвий піддон.","Jest o jedną paletę za dużo.","Este un palet în plus."],
       [2,"Hvornår åbner varemodtagelsen?","When does goods reception open?","Когда открывается приёмка?","Коли відкривається приймання?","O której otwiera się przyjęcie towaru?","La ce oră se deschide recepția mărfii?"],
-      [3,"Jeg skal holde 45 minutters pause.","I have to take a 45-minute break.","Мне нужен перерыв 45 минут.","Мені потрібна перерва 45 хвилин.","Muszę zrobić 45 minut przerwy.","Trebuie să fac o pauză de 45 de minute."],
-      [3,"Fartskriveren skal aflæses.","The tachograph needs to be read out.","Нужно считать данные тахографа.","Треба зчитати дані тахографа.","Trzeba odczytać dane z tachografu.","Trebuie descărcate datele din tahograf."],
+      [3,"Jeg skal holde 45 minutters pause.","I have to take a 45-minute break.","Мне нужно сделать перерыв на 45 минут.","Мені треба зробити перерву на 45 хвилин.","Muszę zrobić 45 minut przerwy.","Trebuie să fac o pauză de 45 de minute."],
+      [3,"Fartskriveren skal aflæses.","The tachograph data needs to be downloaded.","Нужно считать данные тахографа.","Треба зчитати дані тахографа.","Trzeba odczytać dane z tachografu.","Trebuie descărcate datele din tahograf."],
       [3,"Må jeg vente her, til I åbner?","Can I wait here until you open?","Можно подождать здесь, пока вы не откроете?","Можна почекати тут, поки ви не відчините?","Czy mogę tu poczekać, aż otworzycie?","Pot să aștept aici până deschideți?"]
     ] }
   ]
