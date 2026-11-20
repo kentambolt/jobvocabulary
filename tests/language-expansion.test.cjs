@@ -21,8 +21,8 @@ test('new interface languages cover every UI/library key and preserve substituti
 test('all published courses offer complete pools and distinct answer choices across fifty-six language pairs', () => {
   const a = app();
   const files = fs.readdirSync(path.join(root,'packs')).filter(name=>name.endsWith('.js') && name!=='index.js');
-  assert.ok(files.length >= 21);
-  for (const id of ['airport','bus','propertyservice','getaround']) assert.ok(files.includes(id+'.js'));
+  assert.ok(files.length >= 29);
+  for (const id of ['airport','bus','propertyservice','getaround','jobsearch','money','trucking','foodindustry','shopping','school','emergency','pregnancy']) assert.ok(files.includes(id+'.js'));
   for (const file of files) a.run(fs.readFileSync(path.join(root,'packs',file),'utf8'));
   a.run('Object.values(PACKS).forEach(registerPack);');
   for (const file of files) for (const target of languages) for (const base of languages.filter(lang=>lang!==target)) {

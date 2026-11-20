@@ -1195,6 +1195,394 @@
     "Rights and help": [
       "Teisės ir pagalba",
       "Права и помощ"
+    ],
+    "Finding a job": [
+      "Darbo paieška",
+      "Търсене на работа"
+    ],
+    "Application and CV": [
+      "Paraiška ir gyvenimo aprašymas",
+      "Кандидатура и автобиография"
+    ],
+    "Experience and skills": [
+      "Patirtis ir gebėjimai",
+      "Опит и умения"
+    ],
+    "The job interview": [
+      "Darbo pokalbis",
+      "Интервюто за работа"
+    ],
+    "Job centre and cash benefit": [
+      "Užimtumo centras ir socialinė pašalpa",
+      "Бюро по труда и социална помощ"
+    ],
+    "Education and recognition": [
+      "Išsilavinimas ir kvalifikacijos pripažinimas",
+      "Образование и признаване на квалификации"
+    ],
+    "Contact, replies and follow-up": [
+      "Susisiekimas, atsakymai ir tolesni veiksmai",
+      "Контакт, отговори и последващи действия"
+    ],
+    "Good answers at the interview": [
+      "Geri atsakymai darbo pokalbyje",
+      "Добри отговори на интервюто"
+    ],
+    "Asking about the job": [
+      "Klausimai apie darbą",
+      "Въпроси за работата"
+    ],
+    "Trial day and work placement": [
+      "Bandomoji diena ir praktika",
+      "Пробен ден и стаж"
+    ],
+    "At the job centre": [
+      "Užimtumo centre",
+      "В бюрото по труда"
+    ],
+    "Rules and obligations": [
+      "Taisyklės ir pareigos",
+      "Правила и задължения"
+    ],
+    "The bank and your account": [
+      "Bankas ir tavo sąskaita",
+      "Банката и твоята сметка"
+    ],
+    "Cards and payments": [
+      "Kortelės ir mokėjimai",
+      "Карти и плащания"
+    ],
+    "Bills and budget": [
+      "Sąskaitos ir biudžetas",
+      "Сметки и бюджет"
+    ],
+    "Loans and debt": [
+      "Paskolos ir skolos",
+      "Заеми и дългове"
+    ],
+    "Fraud and security": [
+      "Sukčiavimas ir saugumas",
+      "Измами и сигурност"
+    ],
+    "Help and advice": [
+      "Pagalba ir patarimai",
+      "Помощ и съвети"
+    ],
+    "At the bank": [
+      "Banke",
+      "В банката"
+    ],
+    "Questions from the bank": [
+      "Banko klausimai",
+      "Въпроси от банката"
+    ],
+    "Paying and transferring": [
+      "Mokėjimas ir pervedimai",
+      "Плащане и преводи"
+    ],
+    "Budget, loans and debt": [
+      "Biudžetas, paskolos ir skolos",
+      "Бюджет, заеми и дългове"
+    ],
+    "Recognising fraud": [
+      "Kaip atpažinti sukčiavimą",
+      "Разпознаване на измами"
+    ],
+    "Protect yourself": [
+      "Apsisaugok",
+      "Защити се"
+    ],
+    "If you've been scammed": [
+      "Jei tapai sukčiavimo auka",
+      "Ако си станал жертва на измама"
+    ],
+    "Lorry and trailer": [
+      "Sunkvežimis ir priekaba",
+      "Камион и ремарке"
+    ],
+    "Driving time, rest and tachograph": [
+      "Vairavimo laikas, poilsis ir tachografas",
+      "Време на управление, почивка и тахограф"
+    ],
+    "Papers and documents": [
+      "Dokumentai",
+      "Документи"
+    ],
+    "Load, load securing and weight": [
+      "Krovinys, jo tvirtinimas ir svoris",
+      "Товар, укрепване и тегло"
+    ],
+    "Road, ferry and border": [
+      "Kelias, keltas ir siena",
+      "Път, ферибот и граница"
+    ],
+    "Daily vehicle check": [
+      "Kasdienė transporto priemonės patikra",
+      "Ежедневна проверка на превозното средство"
+    ],
+    "Driving time and tachograph rules": [
+      "Vairavimo laiko ir tachografo taisyklės",
+      "Правила за времето на управление и тахографа"
+    ],
+    "Consignment notes and dangerous goods": [
+      "Važtaraščiai ir pavojingi kroviniai",
+      "Товарителници и опасни товари"
+    ],
+    "At the loading bay and the customer's": [
+      "Prie krovimo rampos ir pas klientą",
+      "На товарната рампа и при клиента"
+    ],
+    "On the road, the ferry and at the border": [
+      "Kelyje, kelte ir pasienyje",
+      "На пътя, на ферибота и на границата"
+    ],
+    "Checks, accidents and breakdowns": [
+      "Patikros, nelaimės ir gedimai",
+      "Проверки, злополуки и повреди"
+    ],
+    "Dispatcher and customers": [
+      "Dispečeris ir klientai",
+      "Диспечер и клиенти"
+    ],
+    "People and places": [
+      "Žmonės ir vietos",
+      "Хора и места"
+    ],
+    "Emergency calls and help": [
+      "Skubūs skambučiai ir pagalba",
+      "Спешни обаждания и помощ"
+    ],
+    "Fire": [
+      "Gaisras",
+      "Пожар"
+    ],
+    "Crime": [
+      "Nusikaltimai",
+      "Престъпления"
+    ],
+    "Police and documents": [
+      "Policija ir dokumentai",
+      "Полиция и документи"
+    ],
+    "Road accidents": [
+      "Eismo įvykiai",
+      "Пътни произшествия"
+    ],
+    "Warnings and crises": [
+      "Įspėjimai ir krizės",
+      "Предупреждения и кризи"
+    ],
+    "When you call 112": [
+      "Skambinant 112",
+      "Когато звъниш на 112"
+    ],
+    "Fire and sirens": [
+      "Gaisras ir sirenos",
+      "Пожар и сирени"
+    ],
+    "Burglary, theft and reporting": [
+      "Įsilaužimas, vagystė ir pranešimas policijai",
+      "Взлом, кражба и подаване на сигнал"
+    ],
+    "Violence and threats": [
+      "Smurtas ir grasinimai",
+      "Насилие и заплахи"
+    ],
+    "Talking to the police": [
+      "Pokalbis su policija",
+      "Разговор с полицията"
+    ],
+    "At a road accident": [
+      "Eismo įvykio vietoje",
+      "На мястото на пътно произшествие"
+    ],
+    "Production and cutting": [
+      "Gamyba ir mėsos pjaustymas",
+      "Производство и разфасоване"
+    ],
+    "Knives and protective equipment": [
+      "Peiliai ir apsaugos priemonės",
+      "Ножове и предпазни средства"
+    ],
+    "Hygiene and cleaning": [
+      "Higiena ir valymas",
+      "Хигиена и почистване"
+    ],
+    "Cold, quality and labelling": [
+      "Šaltis, kokybė ir ženklinimas",
+      "Студ, качество и етикетиране"
+    ],
+    "Packing and pallets": [
+      "Pakavimas ir padėklai",
+      "Опаковане и палети"
+    ],
+    "Hygiene rules and illness": [
+      "Higienos taisyklės ir liga",
+      "Хигиенни правила и заболяване"
+    ],
+    "On the line": [
+      "Prie gamybos linijos",
+      "На производствената линия"
+    ],
+    "Knives and safety": [
+      "Peiliai ir sauga",
+      "Ножове и безопасност"
+    ],
+    "Quality, temperature and allergens": [
+      "Kokybė, temperatūra ir alergenai",
+      "Качество, температура и алергени"
+    ],
+    "Body, cold and accidents": [
+      "Kūnas, šaltis ir nelaimės",
+      "Тяло, студ и злополуки"
+    ],
+    "Food and other goods": [
+      "Maistas ir kitos prekės",
+      "Храна и други стоки"
+    ],
+    "Prices and offers": [
+      "Kainos ir pasiūlymai",
+      "Цени и предложения"
+    ],
+    "Quantities, packaging and deposit": [
+      "Kiekiai, pakuotės ir užstatas",
+      "Количества, опаковки и депозит"
+    ],
+    "Exchanges, returns and rights": [
+      "Keitimas, grąžinimas ir teisės",
+      "Замяна, връщане и права"
+    ],
+    "Online shopping, parcels and second-hand": [
+      "Pirkimas internetu, siuntos ir naudoti daiktai",
+      "Онлайн пазаруване, пратки и стоки втора употреба"
+    ],
+    "Pharmacy and personal care": [
+      "Vaistinė ir asmens priežiūra",
+      "Аптека и лична грижа"
+    ],
+    "Finding things": [
+      "Prekių paieška",
+      "Намиране на стоки"
+    ],
+    "Deposit and bottles": [
+      "Užstatas ir buteliai",
+      "Депозит и бутилки"
+    ],
+    "Exchanges, returns and complaints": [
+      "Keitimas, grąžinimas ir skundai",
+      "Замяна, връщане и рекламации"
+    ],
+    "Online shopping and parcels": [
+      "Pirkimas internetu ir siuntos",
+      "Онлайн пазаруване и пратки"
+    ],
+    "Buying and selling used things": [
+      "Naudotų daiktų pirkimas ir pardavimas",
+      "Купуване и продаване на употребявани вещи"
+    ],
+    "Pharmacy and opening hours": [
+      "Vaistinė ir darbo laikas",
+      "Аптека и работно време"
+    ],
+    "Danish language course": [
+      "Danų kalbos kursas",
+      "Курс по датски език"
+    ],
+    "In class": [
+      "Pamokoje",
+      "В час"
+    ],
+    "Tests and exams": [
+      "Testai ir egzaminai",
+      "Тестове и изпити"
+    ],
+    "Attendance and absence": [
+      "Lankomumas ir neatvykimas",
+      "Присъствие и отсъствие"
+    ],
+    "Computers and online": [
+      "Kompiuteriai ir internetas",
+      "Компютри и интернет"
+    ],
+    "Further education": [
+      "Tolesnis mokymasis",
+      "Продължаване на образованието"
+    ],
+    "What the teacher says": [
+      "Ką sako mokytojas",
+      "Какво казва учителят"
+    ],
+    "Asking for help in class": [
+      "Pagalbos prašymas pamokoje",
+      "Искане на помощ в час"
+    ],
+    "Homework and assignments": [
+      "Namų darbai ir užduotys",
+      "Домашни работи и задачи"
+    ],
+    "Absence and calling in": [
+      "Neatvykimas ir pranešimas apie jį",
+      "Отсъствие и уведомяване"
+    ],
+    "In the online class": [
+      "Nuotolinėje pamokoje",
+      "В онлайн часа"
+    ],
+    "Rules for the Danish course": [
+      "Danų kalbos kurso taisyklės",
+      "Правила за курса по датски"
+    ],
+    "Asking about education": [
+      "Klausimai apie mokslus",
+      "Въпроси за образованието"
+    ],
+    "Pregnancy": [
+      "Nėštumas",
+      "Бременност"
+    ],
+    "Body and warning signs": [
+      "Kūnas ir įspėjamieji požymiai",
+      "Тяло и предупредителни признаци"
+    ],
+    "The birth": [
+      "Gimdymas",
+      "Раждането"
+    ],
+    "Leave and paperwork": [
+      "Atostogos ir dokumentai",
+      "Отпуск и документи"
+    ],
+    "The baby": [
+      "Kūdikis",
+      "Бебето"
+    ],
+    "Breast and bottle": [
+      "Žindymas ir maitinimas iš buteliuko",
+      "Кърмене и хранене с шише"
+    ],
+    "At the GP and the midwife": [
+      "Pas šeimos gydytoją ir akušerę",
+      "При личния лекар и акушерката"
+    ],
+    "Call straight away": [
+      "Skambink nedelsiant",
+      "Обади се веднага"
+    ],
+    "During labour": [
+      "Gimdymo metu",
+      "По време на раждането"
+    ],
+    "Leave, name and paternity": [
+      "Atostogos, vardas ir tėvystė",
+      "Отпуск, име и бащинство"
+    ],
+    "Health visitor, feeding and sleep": [
+      "Sveikatos slaugytoja, maitinimas ir miegas",
+      "Патронажна сестра, хранене и сън"
+    ],
+    "When the baby is ill": [
+      "Kai kūdikis serga",
+      "Когато бебето е болно"
     ]
   },
   "courses": {
@@ -1406,6 +1794,86 @@
       "desc": [
         "Žodžiai ir sakiniai apie sutartis, atlyginimą, darbo laiką, atostogas, ligą, saugą ir darbuotojo teises Danijoje.",
         "Думи и изречения за договори, заплащане, работно време, отпуск, болест, безопасност и трудови права в Дания."
+      ]
+    },
+    "jobsearch": {
+      "name": [
+        "Darbo paieška",
+        "Търсене на работа"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbo paieškai Danijoje: skelbimai, gyvenimo aprašymas, paraiška, pokalbis, bandomoji diena, užimtumo centras, pašalpa ir kvalifikacijos pripažinimas.",
+        "Думи и изречения за намиране на работа в Дания: обяви, автобиография, кандидатура, интервю, пробен ден, бюро по труда, социална помощ и признаване на квалификации."
+      ]
+    },
+    "money": {
+      "name": [
+        "Pinigai, bankas ir sukčiavimas",
+        "Пари, банки и измами"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai apie banko sąskaitas, korteles, MobilePay, mokėjimus, biudžetą, paskolas, skolas ir apsisaugojimą nuo sukčiavimo.",
+        "Думи и изречения за банкови сметки, карти, MobilePay, плащания, бюджет, заеми, дългове и предпазване от измами."
+      ]
+    },
+    "trucking": {
+      "name": [
+        "Sunkvežimio vairavimas ir tarptautinis transportas",
+        "Управление на камион и международен транспорт"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai sunkvežimių vairuotojams: vairavimo ir poilsio laikas, tachografas, CMR, krovinio tvirtinimas, patikros kelyje ir keltai.",
+        "Думи и изречения за шофьори на камиони: време на управление и почивка, тахограф, CMR, укрепване на товари, пътни проверки и фериботи."
+      ]
+    },
+    "emergency": {
+      "name": [
+        "Skubūs atvejai ir policija",
+        "Спешни случаи и полиция"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai skambučiams 112 ir 114, gaisrui, įsilaužimui, smurtui, eismo įvykiams ir pokalbiui su policija.",
+        "Думи и изречения за 112 и 114, пожар, взлом, насилие, пътни произшествия и разговори с полицията."
+      ]
+    },
+    "foodindustry": {
+      "name": [
+        "Maisto pramonė ir skerdyklos",
+        "Хранителна промишленост и кланици"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai darbui skerdyklose ir maisto gamyklose: pjaustymas, peiliai, higiena, šaltis, kokybė, pakavimas, sauga ir pamainos.",
+        "Думи и изречения за работа в кланици и хранителни фабрики: разфасоване, ножове, хигиена, студ, качество, опаковане, безопасност и смени."
+      ]
+    },
+    "shopping": {
+      "name": [
+        "Apsipirkimas ir vartotojo teisės",
+        "Пазаруване и потребителски права"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai pirkėjui parduotuvėje, internete ir perkant naudotus daiktus: kainos, pasiūlymai, užstatas, keitimas, skundai ir sutarties atsisakymas.",
+        "Думи и изречения за пазаруване в супермаркета, онлайн и втора употреба: цени, предложения, депозит, замяна, рекламации и право на отказ."
+      ]
+    },
+    "school": {
+      "name": [
+        "Kalbų mokykla ir mokymasis",
+        "Езикова школа и образование"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai danų kalbos pamokoms: moduliai, egzaminai, namų darbai, neatvykimas, nuotolinis mokymas ir tolesnio mokymosi galimybės Danijoje.",
+        "Думи и изречения за часовете по датски: модули, изпити, домашни работи, отсъствия, онлайн обучение и възможности за продължаване на образованието в Дания."
+      ]
+    },
+    "pregnancy": {
+      "name": [
+        "Nėštumas, gimdymas ir kūdikiai",
+        "Бременност, раждане и бебета"
+      ],
+      "desc": [
+        "Žodžiai ir sakiniai nėštumo patikroms, gimdymui, tėvystės atostogoms, dokumentams, maitinimui, saugiam miegui ir kūdikio ligai.",
+        "Думи и изречения за прегледи по време на бременност, раждане, родителски отпуск, документи, хранене, безопасен сън и заболяване на бебето."
       ]
     }
   }

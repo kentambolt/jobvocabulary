@@ -719,6 +719,18 @@ function optionLabel(c, x, qdir) {
   if (qdir === 'rec') return c.pics ? x.id : lexicalForm(x,c.s.base).toLowerCase();
   return lexicalForm(x,c.s.target).toLowerCase();
 }
+// These terms overlap in ordinary use even when their translations are distinct.
+// Keep their learning records separate, but never mark one as the other's wrong answer.
+const OVERLAPPING_ANSWERS = [
+  ['job','arbejde','stilling','ledig stilling'],
+  ['chef','leder'],
+  ['ansat','medarbejder','lønmodtager','arbejdstager'],
+];
+function overlappingAnswers(a,b) {
+  const source = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
+  const first=source(a),second=source(b);
+  return OVERLAPPING_ANSWERS.some(group=>group.includes(first)&&group.includes(second));
+}
 function pickDistractors(c, concept, qdir, n = 3) {
   const answer = optionLabel(c, concept, qdir);
   const used = new Set([answer]);
@@ -726,7 +738,7 @@ function pickDistractors(c, concept, qdir, n = 3) {
   // Synonymer (fx "mug" og "skimmel") må ikke optræde som forkerte svar for hinanden.
   const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]] && lexicalForm(x,c.s[k]).toLowerCase() === lexicalForm(concept,c.s[k]).toLowerCase());
   const candidates = isList(c.s) ? Object.values(ITEM).filter((x) => x.id.startsWith('lex:') && x.words[c.s.target] && x.words[c.s.base]) : c.pool;
-  const cand = candidates.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x)
+  const cand = candidates.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x) && !overlappingAnswers(x,concept)
     && !(c.pics && confusable(x.id, concept.id)));
   const seen = (x) => !!c.prog.cards[x.id];
   const samePos = (x) => x.pos === concept.pos;
