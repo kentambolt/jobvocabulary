@@ -1350,6 +1350,8 @@ function startWrite(c, x) {
 }
 function writeHTML(c, x) {
   const w = current;
+  const mixed = PracticeOptions.modes(c.s).length > 1 || PracticeOptions.modes(c.s).includes('path');
+  const keyCols = mixed ? Math.max(2, Math.ceil(w.keys.length / 3)) : w.cols;
   const sp = w.spec;
   const done = !!w.answered;
   const n = sp.chars.length + (sp.prefix ? sp.prefix.length + 1 : 0);
@@ -1369,7 +1371,7 @@ function writeHTML(c, x) {
   let html = `<p class="task-q">${esc(questionText(c, x, 'write'))}</p>
     <div class="slots${state2}" style="--n:${n}" lang="${c.s.target}" aria-label="${esc(done ? x.words[c.s.target] : '')}">
       ${sp.prefix ? `<span class="prefix">${esc(sp.prefix)}</span>` : ''}${slots}</div>
-    ${done ? '' : `<div class="keys" style="--cols:${w.cols}">${keys}</div>`}
+    ${done && !mixed ? '' : `<div class="keys" style="--cols:${keyCols}">${keys}</div>`}
     <div class="feedback" aria-live="polite">`;
   if (done) {
     html += w.answered === 'ok' ? `<div class="msg good">${esc(t('correct'))}</div>`
@@ -1487,7 +1489,8 @@ function renderPlayView() {
     }
     html += `</div>`;
   }
-  $('app').innerHTML = html;
+  const mixed = PracticeOptions.modes(c.s).length > 1 || PracticeOptions.modes(c.s).includes('path');
+  $('app').innerHTML = mixed ? `<div class="practice-stage${c.pics ? ' has-pictures' : ''}">${html}</div>` : html;
   bindWordSave(x);
   fitAnswerText();
 

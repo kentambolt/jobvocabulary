@@ -771,23 +771,51 @@ html:has(> .landing) { scrollbar-gutter: auto; }
 }
 
 /* Exercise slots keep their geometry when the next word or phrase changes. */
-#app > .prompt { height: 170px; min-height: 170px; }
-#app > .prompt.pics { height: 340px; min-height: 340px; }
-#app > .prompt .w, #app > .prompt .sub { max-width: 100%; flex-shrink: 0; overflow-wrap: normal; word-break: normal; line-height: 1.2; }
-#app > .task-q { height: 40px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-#app > .answer-receipt { height: 26px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#app > .options:not(.pics) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-#app > .options:not(.pics) .opt { height: 92px; min-height: 92px; flex-direction: column; justify-content: center; text-align: center; padding: 10px; gap: 4px; }
-#app > .options .w { flex-shrink: 0; line-height: 1.25; }
-#app > .options .key { margin-left: 0; }
-#app > .options.pics .opt { height: 156px; min-height: 156px; }
+.practice-stage {
+  --practice-prompt: 170px;
+  --practice-response: 232px;
+  display: grid;
+  grid-template-areas: 'context' 'progress' 'receipt' 'prompt' 'question' 'response' 'feedback';
+  grid-template-rows: 20px 8px 26px var(--practice-prompt) 40px var(--practice-response) 92px;
+  gap: 4px;
+  overflow-anchor: none;
+}
+.practice-stage.has-pictures { --practice-prompt: 340px; --practice-response: 324px; }
+.practice-stage > .meta { grid-area: context; margin: 0; }
+.practice-stage > .progress { grid-area: progress; margin: 0; }
+.practice-stage > .answer-receipt { grid-area: receipt; margin: 0; }
+#app > .practice-stage > .prompt { grid-area: prompt; height: 100%; min-height: 0; margin: 0; padding-top: 52px; padding-bottom: 20px; }
+#app > .practice-stage > .task-q { grid-area: question; margin: 0; }
+.practice-stage > .options { grid-area: response; align-self: start; }
+.practice-stage > .slots, .practice-stage > .build { grid-area: response; align-self: start; margin: 0; }
+.practice-stage > .slots { --slot: min(40px, calc((min(100vw, 720px) - 48px) / var(--n, 6) - 5px)); height: 60px; min-height: 0; align-items: center; }
+.practice-stage > .keys { grid-area: response; align-self: end; width: 100%; height: 144px; max-width: calc(var(--cols) * 64px); gap: 6px; grid-template-rows: repeat(3, 44px); grid-auto-rows: 44px; align-content: start; }
+.practice-stage .kb { height: 44px; aspect-ratio: auto; font-size: 24px; border-radius: 10px; }
+.practice-stage > .tiles { grid-area: response; align-self: end; max-height: calc(var(--practice-response) - 72px); overflow-y: auto; margin: 0; }
+.practice-stage > .build { max-height: 64px; min-height: 60px; overflow-y: auto; }
+.practice-stage > .feedback { grid-area: feedback; height: 92px; min-height: 0; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; overflow-y: auto; }
+.practice-stage > .feedback .msg { margin: 0; }
 @media (max-width: 600px) {
-  #app > .prompt { height: 140px; min-height: 140px; }
-  #app > .prompt.pics { height: 280px; min-height: 280px; }
-  #app > .options:not(.pics) { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  #app > .options:not(.pics) .opt { height: 48px; min-height: 48px; flex-direction: row; text-align: left; justify-content: flex-start; padding: 8px 10px; gap: 10px; }
-  #app > .options:not(.pics) .w { flex: 1; }
-  #app > .options:not(.pics) .key { margin-left: auto; }
-  #app > .options.pics .opt { height: 128px; min-height: 128px; }
-  #app > .options.pics .pic { width: 100px; height: 100px; }
+  .practice-stage { --practice-prompt: 140px; --practice-response: 216px; }
+  .practice-stage.has-pictures { --practice-prompt: 280px; --practice-response: 264px; }
+}
+:is(#app, .practice-stage) > .prompt { height: 170px; min-height: 170px; }
+:is(#app, .practice-stage) > .prompt.pics { height: 340px; min-height: 340px; }
+:is(#app, .practice-stage) > .prompt .w, :is(#app, .practice-stage) > .prompt .sub { max-width: 100%; flex-shrink: 0; overflow-wrap: normal; word-break: normal; line-height: 1.2; }
+:is(#app, .practice-stage) > .task-q { height: 40px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+:is(#app, .practice-stage) > .answer-receipt { height: 26px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+:is(#app, .practice-stage) > .options:not(.pics) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+:is(#app, .practice-stage) > .options:not(.pics) .opt { height: 92px; min-height: 92px; flex-direction: column; justify-content: center; text-align: center; padding: 10px; gap: 4px; }
+:is(#app, .practice-stage) > .options .w { flex-shrink: 0; line-height: 1.25; }
+:is(#app, .practice-stage) > .options .key { margin-left: 0; }
+:is(#app, .practice-stage) > .options.pics .opt { height: 156px; min-height: 156px; }
+@media (max-width: 600px) {
+  :is(#app, .practice-stage) > .prompt { height: 140px; min-height: 140px; }
+  :is(#app, .practice-stage) > .prompt.pics { height: 280px; min-height: 280px; }
+  :is(#app, .practice-stage) > .options:not(.pics) { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  :is(#app, .practice-stage) > .options:not(.pics) .opt { height: 48px; min-height: 48px; flex-direction: row; text-align: left; justify-content: flex-start; padding: 8px 10px; gap: 10px; }
+  :is(#app, .practice-stage) > .options:not(.pics) .w { flex: 1; }
+  :is(#app, .practice-stage) > .options:not(.pics) .key { margin-left: auto; }
+  :is(#app, .practice-stage) > .options.pics .opt { height: 128px; min-height: 128px; }
+  :is(#app, .practice-stage) > .options.pics .pic { width: 100px; height: 100px; }
 }
