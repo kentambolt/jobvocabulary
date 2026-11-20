@@ -216,8 +216,10 @@ links and stable URLs. Personal list states use fragment routes and are not
 included in the public sitemap. Do not redirect visitors based on inferred language.
 The driving course is language practice and supplements driving instruction.
 
-`data/seo-content.js` contains the public editorial guides in Danish and English
-and course-specific usage sections. `data/seo-pages.js` renders their static HTML,
+`data/seo-content.js` contains the public Danish/English editorial guides and
+course-specific usage sections. `data/guides-{ru,uk,pl,ro}.js` supplies complete
+guide translations and translated examples; `data/guide-ui.js` defines navigation
+in all six languages. `data/seo-pages.js` renders their static HTML,
 reciprocal language links, visible breadcrumbs and Article/CollectionPage data.
 `build-pages.js` adds these pages to the sitemap and links them from courses and
 catalogues. The app exposes guides inside its existing menu. Keep the landing

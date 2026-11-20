@@ -141,7 +141,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
 <body class="page">
   <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><a class="catalog-link" href="/${lang}/">${esc(catalog.labels[lang].back)}</a></header>
   <main>
-    ${seo.breadcrumbs(SITE,[[t.home,'/'],[catalog.labels[lang].catalog,`/${lang}/`],[name,urlOf(p,lang)]])}
+    ${seo.breadcrumbs(SITE,[[t.home,'/'],[catalog.labels[lang].catalog,`/${lang}/`],[name,urlOf(p,lang)]],lang)}
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
     <p>${esc(p.desc[lang])}. ${esc(t.intro(total, p.categories.length))}</p>
