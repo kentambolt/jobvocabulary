@@ -530,6 +530,8 @@ function applyCourseLink() {
   if (s && preferred) {
     history.replaceState(null, '', location.pathname + location.search);
     state.settings = CoursePreferences.resolve(state, { pack, target: 'da', base: preferred });
+    // A course page's start button already expresses the intent to practise.
+    for (const dir of PracticeOptions.modes(state.settings)) ctx({ ...state.settings, dir }).prog.offered = true;
     saveState();
     view = 'play';
   } else {

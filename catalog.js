@@ -168,5 +168,5 @@ for (const [lang, locale] of Object.entries(extraCatalogLocales)) {
   COURSE_CATALOG.home[lang] = locale.home;
   COURSE_CATALOG.groups.forEach((group,index)=>{group.name[lang]=locale.groups[index].name;group.desc[lang]=locale.groups[index].desc;});
 }
-COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital');
-COURSE_CATALOG.groups[1].packs.push('worklife','authorities','health','children');
+COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice');
+COURSE_CATALOG.groups[1].packs.push('worklife','authorities','health','children','getaround');

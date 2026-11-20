@@ -18,10 +18,11 @@ test('new interface languages cover every UI/library key and preserve substituti
   }
 });
 
-test('all seventeen courses offer complete pools and distinct answer choices across thirty language pairs', () => {
+test('all published courses offer complete pools and distinct answer choices across thirty language pairs', () => {
   const a = app();
   const files = fs.readdirSync(path.join(root,'packs')).filter(name=>name.endsWith('.js') && name!=='index.js');
-  assert.equal(files.length,17);
+  assert.ok(files.length >= 21);
+  for (const id of ['airport','bus','propertyservice','getaround']) assert.ok(files.includes(id+'.js'));
   for (const file of files) a.run(fs.readFileSync(path.join(root,'packs',file),'utf8'));
   a.run('Object.values(PACKS).forEach(registerPack);');
   for (const file of files) for (const target of languages) for (const base of languages.filter(lang=>lang!==target)) {
