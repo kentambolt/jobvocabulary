@@ -75,6 +75,7 @@ test('dictionary IDs survive translation corrections and keep homonyms separate'
     fs.mkdirSync(path.join(directory, 'data'));
     fs.mkdirSync(path.join(directory, 'packs'));
     fs.copyFileSync(path.join(__dirname, '../data/build-lexicon.js'), path.join(directory, 'data/build-lexicon.js'));
+    fs.writeFileSync(path.join(directory, 'data/stable-word-ids.json'), '{}');
     const write = (translation, id = 'bank-seat', da = 'bænk') => fs.writeFileSync(path.join(directory, 'words.js'), 'module.exports = ' + JSON.stringify({ CONCEPTS: [{ id, words: { da, en: 'bench', ru: translation, uk: 'лава' } }, { id: 'bank-finance', words: { da: 'bank', en: 'bank', ru: 'банк', uk: 'банк' } }, { id: 'bank-river', words: { da: 'bred', en: 'bank', ru: 'берег', uk: 'берег' } }] }));
     const build = () => { execFileSync(process.execPath, [path.join(directory, 'data/build-lexicon.js')]); return JSON.parse(fs.readFileSync(path.join(directory, 'lexicon.json'), 'utf8')); };
     write('скамья'); const first = build();

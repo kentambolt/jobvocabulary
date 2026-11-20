@@ -44,6 +44,11 @@ meanings must remain separate. Do not overwrite the dictionary with an unrelated
 regenerated dataset, or change existing course IDs without an explicit migration.
 If a Danish source phrase changes, map its retired source ID to the replacement
 in `data/lexicon-migrations.json`; saved words will follow the corrected entry.
+For a wording correction to an existing learning item, also retain its immutable
+practice ID through `data/stable-word-ids.json`. The pack manifest carries that
+mapping to the app; the dictionary accepts both source spellings. Never reuse an
+old ID for a different concept. This preserves card history when displayed text
+is corrected without rewriting the user's stored progress.
 External additions towards a larger common-word dictionary require reviewed
 translations, distinct meanings, source attribution and a compatible licence.
 Candidates, translation reviews, provenance and common-word extraction tools

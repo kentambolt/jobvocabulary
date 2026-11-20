@@ -7,6 +7,7 @@ const vm = require('vm');
 const crypto = require('crypto');
 
 const DIR = path.join(__dirname, '..', 'packs');
+const stableIds = require('./stable-word-ids.json');
 const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro'];
 // Bevidste synonymer: samme oversættelse er tilladt for disse danske par.
 const SYNONYMS = new Set(['mug|skimmel', 'stoppet|tilstoppet']);
@@ -59,7 +60,14 @@ for (const f of files) {
       cats.push({ key: cat.key, type: cat.type, name: cat.name, n });
     }
     const v = crypto.createHash('md5').update(code).digest('hex').slice(0, 8);
-    index.push({ id: p.id, name: p.name, desc: p.desc, total, v, categories: cats });
+    const sourceIds = stableIds[p.id] || {};
+    for (const [text,id] of Object.entries(sourceIds)) {
+      if (!seen['da|'+text.toLowerCase()]) warn(`stabilt id har ingen kilde: ${text}`);
+      if (!id.startsWith(p.id+':')) warn(`stabilt id har forkert kursus: ${id}`);
+    }
+    const ids = p.categories.flatMap(cat => cat.rows.map(row => sourceIds[row[1]] || `${p.id}:${row[1]}`));
+    if (new Set(ids).size !== ids.length) warn('stabile id er ikke entydige');
+    index.push({ id: p.id, name: p.name, desc: p.desc, total, v, categories: cats, ...(Object.keys(sourceIds).length ? {sourceIds} : {}) });
     console.log(`  ${cats.length} emner, ${total} ord og sætninger`);
   }
 }

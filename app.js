@@ -430,8 +430,9 @@ const PACK_LIST = typeof PACK_INDEX !== 'undefined' ? PACK_INDEX : [];
 const IMG = typeof IMAGES !== 'undefined' ? IMAGES : {};
 for (const c of CONCEPTS) ITEM[c.id] = { ...c, phrase: false };
 function registerPack(p) {
+  const sourceIds = PACK_LIST.find(info => info.id === p.id)?.sourceIds || {};
   const byCat = p.categories.map((cat) => cat.rows.map(([prio, da, en, ru, uk, pl, ro]) => ({
-    id: `${p.id}:${da}`, words: { da, en, ru, uk, pl, ro }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
+    id: sourceIds[da] || `${p.id}:${da}`, words: { da, en, ru, uk, pl, ro }, pos: cat.key, cat: cat.key, diff: prio, phrase: cat.type === 'phrase',
   })));
   // Prioritet 1 først, på skift mellem kategorierne, derefter prioritet 2 osv.
   const ordered = [];
