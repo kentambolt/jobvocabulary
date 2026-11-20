@@ -725,28 +725,35 @@ const OVERLAPPING_ANSWERS = [
   ['chef','leder'],
   ['ansat','medarbejder','lønmodtager','arbejdstager'],
 ];
-function overlappingAnswers(a,b) {
-  const source = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
-  const first=source(a),second=source(b);
-  return OVERLAPPING_ANSWERS.some(group=>group.includes(first)&&group.includes(second));
-}
+const answerSource = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
 function pickDistractors(c, concept, qdir, n = 3) {
   const answer = optionLabel(c, concept, qdir);
   const used = new Set([answer]);
   const picked = [];
   // Synonymer (fx "mug" og "skimmel") må ikke optræde som forkerte svar for hinanden.
   const sameMeaning = (x) => ['base', 'target'].some((k) => x.words[c.s[k]] && lexicalForm(x,c.s[k]).toLowerCase() === lexicalForm(concept,c.s[k]).toLowerCase());
-  const candidates = isList(c.s) ? Object.values(ITEM).filter((x) => x.id.startsWith('lex:') && x.words[c.s.target] && x.words[c.s.base]) : c.pool;
-  const cand = candidates.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x) && !overlappingAnswers(x,concept)
+  const source=answerSource(concept);
+  const overlapping=OVERLAPPING_ANSWERS.find(group=>group.includes(source));
+  const candidates = isList(c.s)
+    ? Object.values(ITEM).filter((x) => x.id.startsWith('lex:') && x.words[c.s.target] && x.words[c.s.base])
+    : isPack(c.s)
+      ? (PACK_ITEMS[c.s.pack] || []).filter(x=>x.diff<=c.s.diff && x.words[c.s.target] && x.words[c.s.base])
+      : c.pool;
+  const cand = candidates.filter((x) => x.id !== concept.id && x.phrase === concept.phrase && !sameMeaning(x) && !(overlapping && overlapping.includes(answerSource(x)))
     && !(c.pics && confusable(x.id, concept.id)));
+  const scope=new Set(c.pool.map(x=>x.id));
+  const scoped=cand.filter(x=>scope.has(x.id));
   const seen = (x) => !!c.prog.cards[x.id];
   const samePos = (x) => x.pos === concept.pos;
   const near = new Set(c.pool.slice(0, Math.max(40, c.pool.indexOf(concept) + 20)).map((x) => x.id));
   const tiers = [
-    cand.filter((x) => seen(x) && samePos(x)),
-    cand.filter((x) => !seen(x) && samePos(x) && near.has(x.id)),
-    cand.filter((x) => seen(x)),
-    cand.filter((x) => near.has(x.id)),
+    scoped.filter((x) => seen(x) && samePos(x)),
+    scoped.filter((x) => !seen(x) && samePos(x) && near.has(x.id)),
+    scoped.filter((x) => seen(x)),
+    scoped.filter((x) => near.has(x.id)),
+    scoped,
+    // A small selected topic may need other same-course words as wrong choices.
+    // These are never added to the question pool or promoted above the chosen level.
     cand,
   ];
   for (const tier of tiers) {
