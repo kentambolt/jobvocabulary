@@ -314,5 +314,14 @@ module.exports={
       "Paklauskite, nuo ko pradėti ir ko pageidauja klientas.",
       "Praneškite apie įrangą, sodo atliekas ir sutvarkytas teritorijas."
     ]
+  ],
+  "laundry": [
+    "Danų kalba darbui skalbykloje",
+    "Skalbykloje tekstilė keliauja nuo priėmimo ir rūšiavimo iki lankstymo, pakavimo ir pristatymo. Mokykis skalbinių, mašinų ir ženklinimo pavadinimų, kad galėtum kolegai užduoti konkrečius klausimus. Sakiniai padeda pranešti apie klaidą, pasitikslinti užsakymą ir pasakyti, kas jau paruošta. Kursas moko kalbos ir nepakeičia mokymo dirbti su mašinomis, cheminėmis medžiagomis ar laikytis higienos.",
+    [
+      "Paklausk, kaip rūšiuoti ir lankstyti skalbinius.",
+      "Pranešk apie dėmes, skyles ir mašinų klaidas.",
+      "Patikslink kiekį, kliento pavadinimą ir atsiėmimo laiką."
+    ]
   ]
 };

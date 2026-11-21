@@ -219,6 +219,16 @@
     "ru": "/ru/jobsearch/",
     "uk": "/uk/jobsearch/"
   },
+  "laundry": {
+    "bg": "/bg/laundry/",
+    "da": "/da/vaskeri-og-tekstilservice/",
+    "en": "/en/laundry-and-textile-services/",
+    "lt": "/lt/skalbykla-ir-tekstiles-prieziura/",
+    "pl": "/pl/pralnia-i-serwis-tekstyliow/",
+    "ro": "/ro/spalatorie-si-servicii-textile/",
+    "ru": "/ru/laundry/",
+    "uk": "/uk/laundry/"
+  },
   "money": {
     "bg": "/bg/money/",
     "da": "/da/penge-bank-og-svindel/",

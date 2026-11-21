@@ -314,5 +314,14 @@ module.exports={
       "Întrebați de unde începeți și ce dorește clientul.",
       "Comunicați despre echipamente, deșeuri de grădină și zone terminate."
     ]
+  ],
+  "laundry": [
+    "Daneză pentru munca într-o spălătorie",
+    "Într-o spălătorie, textilele trec de la primire și sortare la împăturire, ambalare și livrare. Exersează denumirile lenjeriei, mașinilor și marcajelor pentru a pune întrebări clare unui coleg. Expresiile te ajută să raportezi o eroare, să clarifici o comandă și să spui ce este gata. Cursul predă limba și nu înlocuiește instruirea privind mașinile, substanțele chimice sau igiena.",
+    [
+      "Întreabă cum trebuie sortată și împăturită lenjeria.",
+      "Raportează pete, găuri și erori ale mașinilor.",
+      "Confirmă cantitatea, numele clientului și ora preluării."
+    ]
   ]
 };

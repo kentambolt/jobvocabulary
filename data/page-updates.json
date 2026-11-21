@@ -1,10 +1,10 @@
 {
   "/": {
-    "digest": "d5422122132a5cf4bbc49086c69bd13d8e964af58b1c0524a4301eef7e8ee75c",
+    "digest": "4c721189c8ee892a77733c2cc93486f14090145fd96f645aeccf6cadc83025e3",
     "lastmod": "2026-11-21"
   },
   "/bg/": {
-    "digest": "332a5aeb093ee8278da1463a028e2721905a2f8a5bb71e89845d0f3543b5375d",
+    "digest": "593d1cac46b2b161e07986950b55adc3bbe1872c25a5aa921f9bd5cba155df13",
     "lastmod": "2026-11-21"
   },
   "/bg/agriculture/": {
@@ -124,7 +124,7 @@
     "lastmod": "2026-11-21"
   },
   "/bg/hotel/": {
-    "digest": "33132643d01a571331561100f543e911b2e098198f880cc6b237152ed858d993",
+    "digest": "eeef0419aedb7a492f9a3778a560795431797251b4fb48c8dd61d9c5dcb18a54",
     "lastmod": "2026-11-21"
   },
   "/bg/itsupport/": {
@@ -133,6 +133,10 @@
   },
   "/bg/jobsearch/": {
     "digest": "7618f62d5b7b596a8c4424058b17f1105443df1ad195c42b4b0aa491e2c34323",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/laundry/": {
+    "digest": "adb8300c3a111f86a239a34c37c4fa6fd24258fc5fd4f7abec45027a4ad40640",
     "lastmod": "2026-11-21"
   },
   "/bg/money/": {
@@ -188,7 +192,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/": {
-    "digest": "f84c4a1b6ab1cee97a198cfa544eb33c2f27bb9548707f62fcd71f090f587262",
+    "digest": "c4d2f585d2e5c69c9a36de983c487cea1bb52af57565c737ca7a3aec7aaa9b27",
     "lastmod": "2026-11-21"
   },
   "/da/aeldrepleje/": {
@@ -300,7 +304,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/hotel-og-housekeeping/": {
-    "digest": "315f3cc1fe3c06b1d794a3e412bee652033dcdc129d634879ef15fde498110a2",
+    "digest": "54187fb7893cfe6807a2ff160d097e0579fda996e2d37de56fcd2e924046d669",
     "lastmod": "2026-11-21"
   },
   "/da/hverdagens-grundord/": {
@@ -371,8 +375,12 @@
     "digest": "fe43e72b51c7643095979934debe7064f5cb88a8c88bbc720cb6e350dc75c2a5",
     "lastmod": "2026-11-21"
   },
+  "/da/vaskeri-og-tekstilservice/": {
+    "digest": "04142571cc591f802cb092d201833a9c9872e821b356866d202db15dfd3d07ad",
+    "lastmod": "2026-11-21"
+  },
   "/en/": {
-    "digest": "733e01d0075cee7aed36a10f7851016ccc739d397a04dff88b2697e61229a833",
+    "digest": "3fa29691543d293d3a7a5d0c38e97399892b0d87fdc11894f836bba1749a56b8",
     "lastmod": "2026-11-21"
   },
   "/en/airport-and-ground-handling/": {
@@ -496,7 +504,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/hotel-and-housekeeping/": {
-    "digest": "160b60e00d1c79bfcd714b3d422584393c0c640a4ade167f86a67d2909d7151e",
+    "digest": "10a2033bec23bb36edb83512662d5b1551cb46a243b97e2f7ba38a408d916fec",
     "lastmod": "2026-11-21"
   },
   "/en/housing-and-authorities/": {
@@ -513,6 +521,10 @@
   },
   "/en/language-school-and-education/": {
     "digest": "c8ad727ebe07103afb98ca70576b212d1c00708ffb27db5ae535171998e378c7",
+    "lastmod": "2026-11-21"
+  },
+  "/en/laundry-and-textile-services/": {
+    "digest": "6114ced7167d56311012cdc329445c07b4c32b93bcfbff7c4855153961e67745",
     "lastmod": "2026-11-21"
   },
   "/en/lorry-driving-and-international-transport/": {
@@ -556,7 +568,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/": {
-    "digest": "7b8e683ba24ef87e087bb093b54be8c1ab538989c47b80172c615495e4a74c4a",
+    "digest": "e9b5a6e8d8b8dfe6118c0fecc48d59df2052184fd774dd41241e60da65efef25",
     "lastmod": "2026-11-21"
   },
   "/lt/apsipirkimas-ir-vartotojo-teises/": {
@@ -695,6 +707,10 @@
     "digest": "dc8562cfd0af694ea93bef6c99c404887b9e7888c845c1b249dbd8e1c2afad88",
     "lastmod": "2026-11-21"
   },
+  "/lt/skalbykla-ir-tekstiles-prieziura/": {
+    "digest": "642f12b02b25b2c5fe4677f6341faa138339a088794d0f3c757928a0c75deacb",
+    "lastmod": "2026-11-21"
+  },
   "/lt/skubus-atvejai-ir-policija/": {
     "digest": "8923ba6819b60c6a7a7691d9fa0c3d3b7955644e9b37f567e0ea0cecb498d0e8",
     "lastmod": "2026-11-21"
@@ -732,7 +748,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/viesbutis-ir-kambariu-tvarkymas/": {
-    "digest": "9e276517bddae3f90d6360fafca9225374f11a032b2046287187a20a719575a6",
+    "digest": "c4e92e7f0b800954d35a69d25bff9cc8d2d87da137656dc88f07163db5d661e2",
     "lastmod": "2026-11-21"
   },
   "/lt/zemes-ukis-ir-maisto-gamyba/": {
@@ -740,7 +756,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/": {
-    "digest": "de5477fdbd5c7a57df109593b62eb4ad0d0ab75b05006c5a669b884bbc9051e6",
+    "digest": "ff419e9d0e6660147e218a459bc1c4e160248c795aa5a79962cc5482b43855ac",
     "lastmod": "2026-11-21"
   },
   "/pl/biuro-i-obsluga-klienta/": {
@@ -808,7 +824,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/hotel-i-sprzatanie-pokoi/": {
-    "digest": "c168ec6148059921395e3e6c14242f7a6892560b2050b963e6362da22f9f541c",
+    "digest": "cf21e5b750a30210e96d7e00986f76804e8fad01c82823b65930ad2a70fc136f",
     "lastmod": "2026-11-21"
   },
   "/pl/kierowca-autobusu/": {
@@ -865,6 +881,10 @@
   },
   "/pl/praca-i-prawa-pracownika/": {
     "digest": "875a3ae574b7c2fcbb80f55d51f99d86056b694794f2047fc5d00da15dc828e6",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/pralnia-i-serwis-tekstyliow/": {
+    "digest": "7e8aeec0f7c08dad902df6aa605a65cdd0b6b397f0f96af115fe269fa1da331c",
     "lastmod": "2026-11-21"
   },
   "/pl/prawo-jazdy/": {
@@ -924,7 +944,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/": {
-    "digest": "f8fa8732f27a7cc867d11a2393d7c6074a5431d5d12465703bf8a91cad027290",
+    "digest": "e2ca205d47e076b160afdba88ff32cb5c52c8d149bf50b04dc9bfbe10d6d84b5",
     "lastmod": "2026-11-21"
   },
   "/ro/aeroport-si-handling-la-sol/": {
@@ -1040,7 +1060,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/hotel-si-curatenia-camerelor/": {
-    "digest": "4dce63762b8411c544e9d4f20a9ba5202241ab37acb14caf12362fe53fc2421c",
+    "digest": "41b200669836f599e561f7014c6a53dd08ccc3c6d6de12b0939857309cd69bd2",
     "lastmod": "2026-11-21"
   },
   "/ro/industria-alimentara-si-abatoare/": {
@@ -1091,6 +1111,10 @@
     "digest": "5114bc0dbc9cef1805298f42c50a69d3592fb49d227dc74b742ba69e34e90ba5",
     "lastmod": "2026-11-21"
   },
+  "/ro/spalatorie-si-servicii-textile/": {
+    "digest": "078eed124b5980b4bd1beb55f4909b9afdd7adef48d7ef60d4f55de6f5a25f4f",
+    "lastmod": "2026-11-21"
+  },
   "/ro/spital-si-servicii/": {
     "digest": "4357e95aa0ed7b03e7bfc99428b97bc748aab5f82df5efb3716e49960d3a6872",
     "lastmod": "2026-11-21"
@@ -1108,7 +1132,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/": {
-    "digest": "af872514eb87f5ddb197db877676311c12f3b6e7b58bfaf908e50e3867221bd1",
+    "digest": "689e8cd2ac06769598be8142194cbbdb5d2ddcc5adbdf9f8d96c0eb47a3ea59d",
     "lastmod": "2026-11-21"
   },
   "/ru/agriculture/": {
@@ -1228,7 +1252,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/hotel/": {
-    "digest": "9be14682dd7f753dc2758e55356534ce980a40f05d9c30244eca12538f6085f6",
+    "digest": "1b6ab051400404bbb605839548d31836221414ef5864e4c7f5e1a3fda9288380",
     "lastmod": "2026-11-21"
   },
   "/ru/itsupport/": {
@@ -1237,6 +1261,10 @@
   },
   "/ru/jobsearch/": {
     "digest": "4eeda0094ddac5cc103b99781772439e87f753f84dd00890e041880d2abe119a",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/laundry/": {
+    "digest": "a8d26109060831829cc32dccfc3f41843b248a8fd6cf2edb438f96f1ed543a24",
     "lastmod": "2026-11-21"
   },
   "/ru/money/": {
@@ -1292,7 +1320,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/": {
-    "digest": "9636eb470e10d3a315ec3526a09dd68b4e0642cc70d8d09f08eec2c2cdba7030",
+    "digest": "a628db4839b7ec1e3eefd26af4226bdf53186daf1c5688c87c210aa7f2d57fde",
     "lastmod": "2026-11-21"
   },
   "/uk/agriculture/": {
@@ -1412,7 +1440,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/hotel/": {
-    "digest": "2375df2f9e6037f8a3944e61c1a754f66c10124903fdf4e23d446fd41d1dbdb1",
+    "digest": "4dad13998f9772da9db4367a1f44ebe4f9dac0819bed182b4a809e974d1d1fea",
     "lastmod": "2026-11-21"
   },
   "/uk/itsupport/": {
@@ -1421,6 +1449,10 @@
   },
   "/uk/jobsearch/": {
     "digest": "3f9b41851959bd356a408ecd2d34b48c6c94531c6239e50df3545829a89df69f",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/laundry/": {
+    "digest": "f5369a9dcc92633fb593df02b3211ec78c64ee0ab0406e6088b517a54ee11284",
     "lastmod": "2026-11-21"
   },
   "/uk/money/": {

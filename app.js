@@ -755,6 +755,9 @@ const OVERLAPPING_ANSWERS = [
   ['klippe','trimme'],
   ['spade','skovl'],
   ['jord','muld'],
+  ['vaskepulver','vaskemiddel'],
+  ['etiket','vaskemærkning'],
+  ['arbejdstøj','uniform'],
 ];
 const answerSource = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
 function pickDistractors(c, concept, qdir, n = 3) {
