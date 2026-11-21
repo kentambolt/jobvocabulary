@@ -32,7 +32,7 @@ var PracticeResume = {
         if (!list || typeof list.name !== 'string' || !list.name.trim() || !Array.isArray(list.items) || !list.items.length) return null;
         title = list.name;
       }
-    } else title = Object.hasOwn(names, pack) ? names[pack] : null;
+    } else title = s.starterPath === pack+'-first-steps' && Object.hasOwn(names,s.starterPath) ? names[s.starterPath] : Object.hasOwn(names, pack) ? names[pack] : null;
     return typeof title === 'string' && title ? { title, pair: `${languages[s.target]} / ${languages[s.base]}` } : null;
   }
 };

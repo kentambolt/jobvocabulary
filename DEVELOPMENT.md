@@ -9,6 +9,22 @@ invented frequency statistics.
 
 ## Build and check
 
+`starter-paths.js` defines three 20-item subsets of the cleaning, warehouse and
+hotel courses. `build-pages.js` validates their eight-language source rows. They
+use existing item IDs and course progress keys; only course preferences and pool
+scope distinguish a starter from its full course. Continue to the full course
+without copying or resetting learning evidence.
+
+Native picture introductions lead straight to practice of that word. Exposure is
+shared across task types, while correct/incorrect answers and mastery stay separate.
+An introduction does not consume a graded-review visit or advance mixed task types.
+
+`activation-meter.js` holds the current run's three action milestones in memory.
+It never reads/writes browser storage and sends no properties or identifiers.
+Its transport is currently disabled pending the shared aggregate service. Counts
+will describe actions, not unique people or cross-visit retention. Personal-list
+practice and placement tests do not emit course activation milestones.
+
 Run these commands from the repository root after content or shared asset changes:
 
 ```sh
