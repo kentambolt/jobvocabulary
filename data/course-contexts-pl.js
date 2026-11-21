@@ -287,5 +287,14 @@ module.exports={
       "Rozpoznawaj nazwy części samochodowych, płynów i narzędzi.",
       "Wyjaśnij, czy samochód jest gotowy, czy czekacie na część."
     ]
+  ],
+  "bakery": [
+    "Duński do pracy w piekarni i cukierni",
+    "W piekarni trzeba rozumieć przepis, koordynować pracę z zespołem i pilnować zamówień. Zacznij od składników i wyposażenia, a potem układaj pytania o ciasto, pieczenie i ilości. W sklepie ćwicz przyjmowanie zamówienia i sprawdzanie składu, gdy klient o niego pyta.",
+    [
+      "Rozpoznawaj składniki, wyposażenie piekarni i rodzaje pieczywa.",
+      "Pytaj o przepis, czas wyrastania ciasta lub konsystencję.",
+      "Potwierdzaj ilość, nazwisko i termin odbioru zamówienia."
+    ]
   ]
 };

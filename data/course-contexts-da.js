@@ -287,5 +287,14 @@ module.exports={
       "Genkend navne på bildele, væsker og værktøj.",
       "Forklar, om bilen er færdig, eller om I venter på en del."
     ]
+  ],
+  "bakery": [
+    "Dansk til bageri og konditori",
+    "I bageriet skal du både forstå en opskrift, koordinere med kolleger og holde styr på bestillinger. Begynd med ingredienser og udstyr, og sæt derefter ordene sammen til spørgsmål om dej, bagning og antal. I butikken kan du øve at tage imod en bestilling og undersøge ingredienser, når en kunde spørger.",
+    [
+      "Genkend ingredienser, bageudstyr og forskellige brød.",
+      "Spørg en kollega om opskrift, hævetid eller konsistens.",
+      "Bekræft antal, navn og afhentning på en bestilling."
+    ]
   ]
 };

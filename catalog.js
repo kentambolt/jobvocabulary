@@ -168,11 +168,11 @@ for (const [lang, locale] of Object.entries(extraCatalogLocales)) {
   COURSE_CATALOG.home[lang] = locale.home;
   COURSE_CATALOG.groups.forEach((group,index)=>{group.name[lang]=locale.groups[index].name;group.desc[lang]=locale.groups[index].desc;});
 }
-COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','itsupport','office','automotive','trucking','foodindustry','jobsearch','worklife');
+COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','itsupport','office','bakery','automotive','trucking','foodindustry','jobsearch','worklife');
 COURSE_CATALOG.groups[1].packs.push('authorities','health','children','getaround','money','shopping','school','emergency','pregnancy');
 COURSE_CATALOG.related = {
   cleaning:['hotel','propertyservice','hospital','worklife','essentials'],
-  restaurant:['foodindustry','retail','hotel','agriculture','worklife'],
+  restaurant:['bakery','foodindustry','retail','hotel','worklife'],
   warehouse:['trucking','transport','foodindustry','airport','worklife'],
   construction:['propertyservice','warehouse','worklife','jobsearch','essentials'],
   care:['health','hospital','childcare','worklife','essentials'],
@@ -187,9 +187,10 @@ COURSE_CATALOG.related = {
   propertyservice:['construction','cleaning','authorities','worklife','essentials'],
   itsupport:['worklife','jobsearch','school','essentials','money'],
   office:['itsupport','worklife','jobsearch','retail','hotel'],
+  bakery:['restaurant','foodindustry','retail','worklife','jobsearch'],
   automotive:['driving','trucking','transport','worklife','jobsearch'],
   trucking:['transport','warehouse','bus','driving','worklife'],
-  foodindustry:['restaurant','agriculture','warehouse','retail','worklife'],
+  foodindustry:['restaurant','bakery','agriculture','warehouse','worklife'],
   jobsearch:['worklife','school','hotel','warehouse','cleaning'],
   worklife:['jobsearch','school','money','authorities','essentials'],
   essentials:['school','getaround','shopping','money','worklife'],

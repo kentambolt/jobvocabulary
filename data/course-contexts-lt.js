@@ -287,5 +287,14 @@ module.exports={
       "Atpažinkite automobilių dalių, skysčių ir įrankių pavadinimus.",
       "Paaiškinkite, ar automobilis paruoštas, ar laukiate dalies."
     ]
+  ],
+  "bakery": [
+    "Danų kalba kepyklai ir konditerijai",
+    "Kepykloje reikia suprasti receptą, derinti darbą su kolegomis ir sekti užsakymus. Pradėkite nuo ingredientų ir įrangos, o paskui mokykitės klausti apie tešlą, kepimą ir kiekius. Parduotuvėje mokykitės priimti užsakymą ir patikrinti sudėtį, kai klientas jos teiraujasi.",
+    [
+      "Atpažinkite ingredientus, kepimo įrangą ir duonos rūšis.",
+      "Paklauskite kolegos apie receptą, tešlos kildinimo laiką ar konsistenciją.",
+      "Patikslinkite užsakymo kiekį, vardą ir atsiėmimo laiką."
+    ]
   ]
 };

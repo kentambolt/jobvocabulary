@@ -39,6 +39,16 @@
     "ru": "/ru/automotive/",
     "uk": "/uk/automotive/"
   },
+  "bakery": {
+    "bg": "/bg/bakery/",
+    "da": "/da/bageri-og-konditori/",
+    "en": "/en/bakery-and-pastry-work/",
+    "lt": "/lt/kepykla-ir-konditerija/",
+    "pl": "/pl/piekarnia-i-cukiernia/",
+    "ro": "/ro/brutarie-si-cofetarie/",
+    "ru": "/ru/bakery/",
+    "uk": "/uk/bakery/"
+  },
   "bus": {
     "bg": "/bg/bus/",
     "da": "/da/buschauffoer/",
