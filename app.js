@@ -61,7 +61,7 @@ const UI = {
     catsQ: 'Emner',
     modeQ: 'Hvad vil du øve?',
     recB: 'Forstå', recS: 'Se {T}, vælg {B}',
-    prodB: 'Sig det selv', prodS: 'Se {B}, find og byg det på {T}',
+    prodB: 'Find og byg', prodS: 'Se {B}. Vælg først oversættelsen på {T}. Senere bygger du svaret.', navigation: 'Navigation',
     recNB: 'Find billedet', recNS: 'Se ordet, vælg billedet',
     prodNB: 'Læs ordet', prodNS: 'Se billedet, vælg det rigtige ord',
     writeB: 'Skriv det', writeS: 'Se {B}. Stav ord og byg sætninger på {T}.',
@@ -153,7 +153,7 @@ const UI = {
     catsQ: 'Topics',
     modeQ: 'What do you want to practise?',
     recB: 'Understand', recS: 'See {T}, pick {B}',
-    prodB: 'Say it yourself', prodS: 'See {B}, find and build it in {T}',
+    prodB: 'Find and build', prodS: 'See {B}. First choose the {T} translation, then build the answer as you improve.', navigation: 'Navigation',
     recNB: 'Find the picture', recNS: 'See the word, pick the picture',
     prodNB: 'Read the word', prodNS: 'See the picture, pick the right word',
     writeB: 'Write it', writeS: 'See {B}. Spell words and build sentences in {T}.',
@@ -245,7 +245,7 @@ const UI = {
     catsQ: 'Темы',
     modeQ: 'Что будем тренировать?',
     recB: 'Понимать', recS: 'Видите {T}, выбираете {B}',
-    prodB: 'Сказать самому', prodS: 'Видите {B}, находите и собираете на языке: {T}',
+    prodB: 'Выбрать и собрать', prodS: 'Видите {B}. Сначала выбирайте перевод на языке: {T}, затем собирайте ответ по мере прогресса.', navigation: 'Навигация',
     recNB: 'Найти картинку', recNS: 'Видите слово, выбираете картинку',
     prodNB: 'Прочитать слово', prodNS: 'Видите картинку, выбираете нужное слово',
     writeB: 'Написать', writeS: 'Перевод: {B}. Пишите слова по буквам и собирайте предложения: {T}.',
@@ -337,7 +337,7 @@ const UI = {
     catsQ: 'Теми',
     modeQ: 'Що будемо тренувати?',
     recB: 'Розуміти', recS: 'Бачите {T}, обираєте {B}',
-    prodB: 'Сказати самому', prodS: 'Бачите {B}, знаходите і складаєте мовою: {T}',
+    prodB: 'Вибрати й скласти', prodS: 'Бачите {B}. Спочатку вибирайте переклад мовою: {T}, а згодом складайте відповідь.', navigation: 'Навігація',
     recNB: 'Знайти картинку', recNS: 'Бачите слово, обираєте картинку',
     prodNB: 'Прочитати слово', prodNS: 'Бачите картинку, обираєте потрібне слово',
     writeB: 'Написати', writeS: 'Переклад: {B}. Пишіть слова по літерах і складайте речення: {T}.',
@@ -901,6 +901,7 @@ function render() {
   clearTimeout(timer);
   const ul = uiLang();
   document.documentElement.lang = ul;
+  $('mainNav').setAttribute('aria-label', t('navigation'));
   const inGame = !!state.settings && !['home', 'setup', 'library'].includes(view);
   $('score').hidden = !inGame;
   $('statsBtn').hidden = !state.settings;
@@ -987,12 +988,14 @@ function renderIntro(ul) {
   if (intro.hidden || intro.dataset.lang === ul) return;
   intro.dataset.lang = ul;
   const home = COURSE_CATALOG.home[ul];
-  intro.querySelectorAll('.how li').forEach((li, i) => (li.textContent = home.steps[i]));
+  intro.querySelectorAll('.how li').forEach((li, i) => (li.innerHTML = `<span class="step-number" aria-hidden="true">${i+1}</span><span>${esc(home.steps[i])}</span>`));
   $('homeEyebrow').textContent = home.eyebrow;
   $('howTitle').textContent = home.howTitle;
   $('landingNav').innerHTML = `<a href="/${ul}/#work">${esc(home.groupNames[0])}</a><a href="/${ul}/#everyday">${esc(home.groupNames[1])}</a><a href="#app" data-get-started>${esc(t('setupTitle'))}</a>`;
   document.querySelectorAll('[data-get-started]').forEach((link) => link.onclick = (event) => { event.preventDefault(); $('app').scrollIntoView({ block: 'start' }); $('app').querySelector('[data-target]')?.focus({ preventScroll: true }); });
   const labels = COURSE_CATALOG.labels[ul];
+  $('landingNav').setAttribute('aria-label', t('catsQ'));
+  intro.querySelector('.jobs').setAttribute('aria-label', t('catsQ'));
   intro.querySelector('h1').textContent = labels.lead;
   intro.querySelector('.lead').textContent = labels.intro;
   intro.querySelector('.jobs').innerHTML = COURSE_CATALOG.groups.map((group) => COURSE_CATALOG.groupLink(group, ul)).join('');
