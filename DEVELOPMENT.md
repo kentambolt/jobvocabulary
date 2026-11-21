@@ -268,6 +268,15 @@ Text asset versions use `data/text-asset-version.js` to normalize Windows/Linux
 line endings. Use that helper for shared scripts, styles, pack versions and JSON
 cache URLs so a checkout does not invalidate otherwise unchanged content.
 
+`data/build-lexicon.js` also generates `shared-word-groups.js`, a small index of
+active practice IDs with identical translations in all eight languages and the
+same word/phrase type. `course-knowledge.js` can reuse actual successful practice
+from another course for the same language pair and task type. It preserves the
+source schedule without inventing answers or copying review events. Existing
+target cards always take precedence, and newer mistakes block older confidence.
+Placement estimates alone never propagate. Personal lists and picture practice
+remain separate. A course reset records a cutoff so old evidence cannot undo it.
+
 Only add hreflang targets for translations that actually exist. Guide dates are
 editorial dates, not build timestamps; update them only after meaningful changes.
 Keep distinct search intents on distinct pages, with examples and relevant course
