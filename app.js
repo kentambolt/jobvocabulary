@@ -64,7 +64,7 @@ const UI = {
     prodB: 'Sig det selv', prodS: 'Se {B}, find og byg det på {T}',
     recNB: 'Find billedet', recNS: 'Se ordet, vælg billedet',
     prodNB: 'Læs ordet', prodNS: 'Se billedet, vælg det rigtige ord',
-    writeB: 'Skriv det', writeS: 'Se {B}, og skriv det på {T} bogstav for bogstav',
+    writeB: 'Skriv det', writeS: 'Se {B}. Stav ord og byg sætninger på {T}.',
     writeNB: 'Skriv ordet', writeNS: 'Se billedet, hør ordet og skriv det bogstav for bogstav',
     pathB: 'Hele forløbet', pathS: 'Find billedet, læs ordet og skriv det. Opgaverne bliver sværere, efterhånden som du lærer ordene.',
     picsB: 'Ord med billeder', picsS: 'Billeder i stedet for oversættelse · {n} ord',
@@ -156,7 +156,7 @@ const UI = {
     prodB: 'Say it yourself', prodS: 'See {B}, find and build it in {T}',
     recNB: 'Find the picture', recNS: 'See the word, pick the picture',
     prodNB: 'Read the word', prodNS: 'See the picture, pick the right word',
-    writeB: 'Write it', writeS: 'See {B} and write it in {T}, letter by letter',
+    writeB: 'Write it', writeS: 'See {B}. Spell words and build sentences in {T}.',
     writeNB: 'Write the word', writeNS: 'See the picture, hear the word and write it letter by letter',
     pathB: 'The whole course', pathS: 'Find the picture, read the word and write it. Tasks get harder as you learn the words.',
     picsB: 'Words with pictures', picsS: 'Pictures instead of translations · {n} words',
@@ -248,7 +248,7 @@ const UI = {
     prodB: 'Сказать самому', prodS: 'Видите {B}, находите и собираете на языке: {T}',
     recNB: 'Найти картинку', recNS: 'Видите слово, выбираете картинку',
     prodNB: 'Прочитать слово', prodNS: 'Видите картинку, выбираете нужное слово',
-    writeB: 'Написать', writeS: 'Видите {B} и пишете на языке: {T} по буквам',
+    writeB: 'Написать', writeS: 'Перевод: {B}. Пишите слова по буквам и собирайте предложения: {T}.',
     writeNB: 'Написать слово', writeNS: 'Видите картинку, слышите слово и пишете его по буквам',
     pathB: 'Весь курс', pathS: 'Найти картинку, прочитать слово и написать его. Задания усложняются по мере изучения слов.',
     picsB: 'Слова с картинками', picsS: 'Картинки вместо перевода · {n} слов',
@@ -340,7 +340,7 @@ const UI = {
     prodB: 'Сказати самому', prodS: 'Бачите {B}, знаходите і складаєте мовою: {T}',
     recNB: 'Знайти картинку', recNS: 'Бачите слово, обираєте картинку',
     prodNB: 'Прочитати слово', prodNS: 'Бачите картинку, обираєте потрібне слово',
-    writeB: 'Написати', writeS: 'Бачите {B} і пишете мовою: {T} по літерах',
+    writeB: 'Написати', writeS: 'Переклад: {B}. Пишіть слова по літерах і складайте речення: {T}.',
     writeNB: 'Написати слово', writeNS: 'Бачите картинку, чуєте слово і пишете його по літерах',
     pathB: 'Увесь курс', pathS: 'Знайти картинку, прочитати слово і написати його. Завдання ускладнюються в міру вивчення слів.',
     picsB: 'Слова з картинками', picsS: 'Картинки замість перекладу · {n} слів',
@@ -712,7 +712,10 @@ function pickNext(c) {
   const fresh = selected.word;
   // Børn (modersmål) ser altid ordet først. Andre prøver først, om de kender det.
   if (c.native) return { kind: 'intro', concept: fresh };
-  if (c.s.dir === 'write' && writeSpec(c, fresh)) return { kind: 'write', concept: fresh, qdir: 'prod', isNew: true };
+  if (c.s.dir === 'write') {
+    if (writeSpec(c, fresh)) return { kind: 'write', concept: fresh, qdir: 'prod', isNew: true };
+    if (buildSpec(c, fresh)) return { kind: 'build', concept: fresh, qdir: 'prod', isNew: true };
+  }
   return { kind: 'new', concept: fresh, qdir: c.s.dir === 'rec' || c.s.dir === 'path' ? 'rec' : 'prod' };
 }
 
@@ -1655,7 +1658,8 @@ function checkBuild() {
   const built = current.picked.map((i) => current.tiles[i].tk).join(sp.sep);
   const correct = norm(built) === norm(sp.answer.join(sp.sep));
   const before = scoreOf(c.prog);
-  grade(c, x, correct);
+  if(current.isNew)c.prog.cards[x.id]=correct?newCard(c,CONFIG.knownStartLevel,true,{verify:true}):newCard(c,0,false);
+  else grade(c, x, correct);
   current.answered = correct ? 'ok' : 'bad';
   finishTask(c, x, before);
   if (correct) advance();

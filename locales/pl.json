@@ -50,7 +50,7 @@
     "prodNB": "Przeczytaj słowo",
     "prodNS": "Zobacz obrazek i wybierz właściwe słowo",
     "writeB": "Pisanie",
-    "writeS": "Zobacz słowo ({B}) i zapisz je litera po literze ({T}).",
+    "writeS": "Znaczenie: {B}. Literuj słowa i układaj zdania ({T}).",
     "writeNB": "Napisz słowo",
     "writeNS": "Zobacz obrazek, posłuchaj i napisz słowo litera po literze",
     "pathB": "Cały kurs",
