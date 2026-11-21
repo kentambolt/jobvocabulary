@@ -270,6 +270,14 @@ A guide can define `startTopics` using category keys from its first course.
 Its primary link then starts those topics directly; the app validates keys against
 the public manifest and retains the learner's existing cards and level choice.
 
+App course-switch links use an explicit `?target=pl&base=lt` context on the
+catalogue. Validated context changes cards into direct practice starts and keeps
+both languages when switching the catalogue interface. Public visits retain their
+static Danish-course links and canonical/hreflang URLs. These query variants are
+not added to the sitemap. `#start=` accepts a validated optional `target` and
+defaults to Danish for existing public course/guide links. Native picture starts
+are supported; a native job-course start asks for a helper language first.
+
 `data/social-meta.js` selects relevant existing topic illustrations or generated
 course images and writes static Open Graph metadata, image dimensions, locale and
 translated alt descriptions. Every new course or guide needs an explicit image

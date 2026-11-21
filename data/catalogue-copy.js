@@ -9,7 +9,17 @@ const text={
  lt:{title:'Danų kalba darbui: pasirinkite kursą',heading:'Pasirinkite kursą',intro:'Pasirinkite danų kalbos žodžius darbui ar kasdienybei.',shortGroups:['Darbas','Kasdienai','Pagrindai'],description:'Praktikuokite danų kalbos žodžius ir sakinius {n} darbo ir kasdienybės kursuose. Rinkitės valymą, sandėlį, priežiūrą ar transportą ir pradėkite užduotis.'},
  bg:{title:'Датски за работа: изберете курс',heading:'Изберете курс',intro:'Изберете датски думи за работа или ежедневие.',shortGroups:['Работа','Ежедневие','Основи'],description:'Упражнявайте датски думи и изречения в {n} курса за работа и ежедневие. Изберете почистване, склад, грижи или транспорт и започнете упражненията.'}
 };
+const switchIntro={
+ da:'Læringssprog: {target}. Vælg et kursus for at fortsætte.',
+ en:'Learning language: {target}. Choose a course to continue.',
+ ru:'Изучаемый язык: {target}. Выберите курс, чтобы продолжить.',
+ uk:'Мова навчання: {target}. Виберіть курс, щоб продовжити.',
+ pl:'Język nauki: {target}. Wybierz kurs, aby kontynuować.',
+ ro:'Limba învățată: {target}. Alege un curs pentru a continua.',
+ lt:'Mokymosi kalba: {target}. Pasirinkite kursą ir tęskite.',
+ bg:'Изучаван език: {target}. Изберете курс, за да продължите.'
+};
 module.exports=(lang,count)=>{
  if(!Object.hasOwn(text,lang)||!Number.isInteger(count)||count<1)throw Error('Invalid catalogue copy request');
- return {...text[lang],description:text[lang].description.replace('{n}',count)};
+ return {...text[lang],description:text[lang].description.replace('{n}',count),switchIntro:switchIntro[lang]};
 };

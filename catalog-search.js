@@ -1,8 +1,10 @@
 'use strict';
-// Personalise only after load; every public course link remains static and indexable.
+// Explicit app course-switch links preserve the learning pair. Public visits keep static course pages.
+const courseSwitchContext=typeof PracticeResume!=='undefined'?PracticeResume.switchContext(window.location?.search||''):null;
 const resumePanel = document.getElementById('resumePanel');
 function refreshPracticeResume() {
   if (!resumePanel) return;
+  if(courseSwitchContext){resumePanel.hidden=true;return;}
   let resume = null;
   try { resume = PracticeResume.describe(PracticeResume.read(window.localStorage), JSON.parse(resumePanel.dataset.names)); } catch { /* storage may be unavailable */ }
   resumePanel.hidden = !resume;
@@ -14,6 +16,23 @@ function refreshPracticeResume() {
 refreshPracticeResume();
 window.addEventListener('pageshow', refreshPracticeResume);
 window.addEventListener('storage', (event) => { if (event.key === 'topwords.v2' || event.key === null) refreshPracticeResume(); });
+function applyCourseSwitchContext(){
+  if(!courseSwitchContext||!resumePanel)return;
+  const hero=document.getElementById('catalogueHero');
+  if(!hero)return;
+  let names;try{names=JSON.parse(resumePanel.dataset.names);}catch{return;}
+  const intro=hero.dataset.switchIntro.replace('{target}',PracticeResume.languages[courseSwitchContext.target]);
+  hero.querySelector('.lead').textContent=intro;
+  document.title=hero.dataset.switchTitle;
+  for(const [selector,value]of [['meta[name="description"]',intro],['meta[property="og:description"]',intro],['meta[property="og:title"]',document.title]])document.querySelector?.(selector)?.setAttribute('content',value);
+  for(const link of document.querySelectorAll('.course-card-link[data-pack]')){
+    const href=PracticeResume.startLink(courseSwitchContext,link.dataset.pack,names);
+    if(href){link.setAttribute('href',href);link.querySelector('.course-open').textContent=hero.dataset.switchAction;}
+  }
+  const query=new URLSearchParams(courseSwitchContext).toString();
+  for(const link of document.querySelectorAll('.language-nav a, .language-choices a'))link.setAttribute('href',link.getAttribute('href').split('?')[0]+'?'+query);
+}
+applyCourseSwitchContext();
 // Search supplements the static catalogue: without JavaScript, every course remains linked.
 const courseSearch = document.getElementById('courseSearch');
 const normalizeSearch = (value) => value.toLowerCase().normalize('NFKD')

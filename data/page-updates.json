@@ -1,10 +1,10 @@
 {
   "/": {
-    "digest": "2ecee44c489b6ca8c886cd1de7efdfe841aa2fb2b7ce1be318f3d6ef49948686",
+    "digest": "c4fba7e8ff7021460e75c5432adaf14718d45004b47a0858f949771427fd0592",
     "lastmod": "2026-11-21"
   },
   "/bg/": {
-    "digest": "2a165d827f422abed5d49808edcaf623a7c4705522719b15d39cef70dae43e42",
+    "digest": "332a5aeb093ee8278da1463a028e2721905a2f8a5bb71e89845d0f3543b5375d",
     "lastmod": "2026-11-21"
   },
   "/bg/agriculture/": {
@@ -188,7 +188,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/": {
-    "digest": "2e95e316071a579ce0bfc23169ba5d23ee34af98fccf6d406e626889e18d0ec4",
+    "digest": "f84c4a1b6ab1cee97a198cfa544eb33c2f27bb9548707f62fcd71f090f587262",
     "lastmod": "2026-11-21"
   },
   "/da/aeldrepleje/": {
@@ -372,7 +372,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/": {
-    "digest": "388910de9113d48b382b7350d162825e63bd1415f05a9254c1ac4a545106ee98",
+    "digest": "733e01d0075cee7aed36a10f7851016ccc739d397a04dff88b2697e61229a833",
     "lastmod": "2026-11-21"
   },
   "/en/airport-and-ground-handling/": {
@@ -556,7 +556,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/": {
-    "digest": "bf26ece8080319022557267ddf9a04ab344fa94e1332d996443d44756176b61e",
+    "digest": "7b8e683ba24ef87e087bb093b54be8c1ab538989c47b80172c615495e4a74c4a",
     "lastmod": "2026-11-21"
   },
   "/lt/apsipirkimas-ir-vartotojo-teises/": {
@@ -740,7 +740,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/": {
-    "digest": "171e4b133c958f6a5ce9c6968560d65fb60b1b605792b0b3659022f7eae5ee97",
+    "digest": "de5477fdbd5c7a57df109593b62eb4ad0d0ab75b05006c5a669b884bbc9051e6",
     "lastmod": "2026-11-21"
   },
   "/pl/biuro-i-obsluga-klienta/": {
@@ -924,7 +924,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/": {
-    "digest": "305a2db5df895c8bfccb2964962f835b0ec1577d9b0cc7ce352e7ca48d8570fd",
+    "digest": "f8fa8732f27a7cc867d11a2393d7c6074a5431d5d12465703bf8a91cad027290",
     "lastmod": "2026-11-21"
   },
   "/ro/aeroport-si-handling-la-sol/": {
@@ -1108,7 +1108,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/": {
-    "digest": "9957655c3aea5b9eff94fc4a72bb886cec9fc5ad85e4a9120523cc2ecf9de60c",
+    "digest": "af872514eb87f5ddb197db877676311c12f3b6e7b58bfaf908e50e3867221bd1",
     "lastmod": "2026-11-21"
   },
   "/ru/agriculture/": {
@@ -1292,7 +1292,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/": {
-    "digest": "02df4e980b11fdd8cd528c55246e5e2e1c8fd97641c137e9d172bdee57fe9b9b",
+    "digest": "9636eb470e10d3a315ec3526a09dd68b4e0642cc70d8d09f08eec2c2cdba7030",
     "lastmod": "2026-11-21"
   },
   "/uk/agriculture/": {
