@@ -1,6 +1,7 @@
 'use strict';
 // Shared daily counters, deliberately separate from Umami visitor/session tracking.
 var AggregateTransport = {
+  enabled: true,
   create({enabled = false, allowStaging = false, environment = globalThis} = {}) {
     const events = new Set(['course_started','first_answer','ten_answers']);
     const origin = environment.location?.origin;

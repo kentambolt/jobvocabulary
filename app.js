@@ -533,8 +533,8 @@ let pendingPlacement = false;
 let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
-// Transport remains disabled until the shared aggregate endpoint is ready.
-const activation = ActivationMeter.create(AggregateTransport.create({enabled:false}));
+// Three best-effort daily counters, independent of learning and visitor tracking.
+const activation = ActivationMeter.create(AggregateTransport.create({enabled:AggregateTransport.enabled}));
 
 // Public language pages can hand their explicit interface choice to the app
 // before a course/language pair exists. Consume this UI hint without changing progress.
@@ -1024,6 +1024,8 @@ function render() {
   $('menuBtn').setAttribute('aria-label', t('menu'));
   $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
   $('licensesLink').textContent = t('licenses');
+  $('privacyLink').href = `/${ul}/privacy/`;
+  $('privacyLink').textContent = {da:'Privatliv og kontakt',en:'Privacy and contact',ru:'Конфиденциальность и контакты',uk:'Конфіденційність і контакти',pl:'Prywatność i kontakt',ro:'Confidențialitate și contact',lt:'Privatumas ir kontaktai',bg:'Поверителност и контакт'}[ul];
   const guidesLink = $('guidesLink');
   guidesLink.href = `/${ul}/guides/`;
   guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства',uk:'Посібники',pl:'Poradniki',ro:'Ghiduri',lt:'Mokymosi gidai',bg:'Ръководства'}[ul];
@@ -1423,7 +1425,6 @@ function renderPlay() {
 }
 
 function presentTask(c, next, feminine = chooseExerciseForm(c,next.concept)) {
-    if (!isList(c.s)) activation.start(JSON.stringify([c.s.pack,c.s.target,c.s.base,c.s.starterPath||null,c.s.cats||null]));
     current = { ...next, answered: null, feminine };
     if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {
@@ -1433,9 +1434,13 @@ function presentTask(c, next, feminine = chooseExerciseForm(c,next.concept)) {
     }
     if (next.kind === 'write') startWrite(c, next.concept);
     renderPlayView();
+    trackCourseStart(c);
     // Højt: nye ord, ord man skal forstå (ikke for børn, der skal læse selv), og ord der skal skrives ud fra et billede.
     if (next.kind === 'intro' || (next.qdir === 'rec' && next.kind !== 'write' && !c.native) || (next.kind === 'write' && c.pics)) speakTarget(next.concept);
 
+}
+function trackCourseStart(c) {
+  if (!isList(c.s)) activation.start(JSON.stringify([c.s.pack,c.s.target,c.s.base,c.s.starterPath||null,c.s.cats||null]));
 }
 
 function wordParts(x,language,feminine=!!current?.feminine) {
@@ -1752,7 +1757,6 @@ function grade(c, x, correct) {
   card.time = Date.now();
 }
 function finishTask(c, x, before) {
-  if (!isList(c.s)) activation.answer(current);
   c.prog.task += 1;
   completeModeTurn(c.s);
   const correct = current.answered === x.id || current.answered === 'ok';
@@ -1763,6 +1767,7 @@ function finishTask(c, x, before) {
   if (current.maintenance) c.prog.lastLearnedReviewTask = c.prog.task;
   c.prog.lastId = x.id;
   saveState();
+  if (!isList(c.s)) activation.answer(current);
   lastFeedback = correct ? { id: x.id, word: lexicalForm(x,c.s.target), meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
   renderPlayView();
   updateScore(scoreOf(c.prog) - before);
@@ -1923,6 +1928,7 @@ function renderPlace() {
   $('app').innerHTML = `<div class="practice-stage${c.pics ? ' has-pictures' : ''}${practiceReadingClass(c)}">${html}</div>`;
   bindWordSave(x);
   fitAnswerText();
+  trackCourseStart(c);
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
   const dk = $('dkBtn');
   if (dk) dk.onclick = () => { if (!current.answered) { current.answered = '-'; placementAnswer(false); } };
@@ -1947,6 +1953,7 @@ function placementAnswer(correct) {
   if(typeof CourseKnowledge!=='undefined')CourseKnowledge.mark(c.prog.cards[x.id],x.id);
   MemoryScheduler.record(MemoryScheduler.session(state, c.s, now), x.id, now);
   saveState();
+  if (!isList(c.s)) activation.answer(current);
   lastFeedback = correct ? { id: current.concept.id, word: lexicalForm(current.concept,c.s.target), meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
   if (correct) advancePlace(); else renderPlace();
 }

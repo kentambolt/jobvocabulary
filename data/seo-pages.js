@@ -60,9 +60,6 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
   ${socialMetadata(lang,image,site)}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   ${jsonLD({'@context':'https://schema.org',...structured})}
 </head>
 <body class="page guide-page">
