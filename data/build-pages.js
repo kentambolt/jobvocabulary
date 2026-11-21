@@ -246,7 +246,7 @@ for (const lang of LANGS) {
     const searchNames = p ? Object.values(p.name) : LANGS.map(code => catalog.labels[code][id === 'top' ? 'general' : 'pictures']);
     const searchTopics = p ? p.categories.map(c => c.name[lang]) : [];
     const searchText = [...searchNames, ...searchTopics, courseSearchAliases[id] || '', ...Object.values(routes[id] || {})].join(' ');
-    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
+    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" data-pack="${id}" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
   };
   const canonical = `${SITE}/${lang}/`;
   const output = `<!doctype html>
@@ -277,7 +277,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
 <body class="page catalogue">
   <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav><details class="catalogue-language-picker"><summary aria-label="${esc(T[lang].langs)}: ${esc(LANG_NAME[lang])}">${esc(LANG_NAME[lang])}<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></summary><nav class="language-choices" aria-label="${esc(T[lang].langs)}">${LANGS.map(other=>`<a href="/${other}/" lang="${other}" hreflang="${other}"${other===lang?' aria-current="page"':''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></details></header>
   <main>
-    <section class="catalogue-hero"><h1>${esc(copy.heading)}</h1><p class="lead">${esc(copy.intro)}</p></section>
+    <section class="catalogue-hero" id="catalogueHero" data-switch-intro="${esc(copy.switchIntro)}" data-switch-title="${esc(copy.heading)} | JobVocabulary" data-switch-action="${esc(l.practice)}"><h1>${esc(copy.heading)}</h1><p class="lead">${esc(copy.intro)}</p></section>
     <section class="resume-panel" id="resumePanel" data-names="${esc(JSON.stringify(resumeNames))}" data-nosnippet hidden><div><p class="eyebrow">${esc(personal.resume)}</p><h2 id="resumeCourse"></h2><p id="resumePair"></p></div><a class="primary cta" href="/?ui=${lang}">${esc(personal.action)}</a></section>
     <p class="catalogue-personal"><a href="/?ui=${lang}#mine-ord">♡ ${esc(personal.words)}</a></p>
     <div class="catalogue-search"><label for="courseSearch">${esc(l.search)}</label><input id="courseSearch" type="search" autocomplete="off" placeholder="${esc(l.search)}" aria-controls="courseSections"></div>

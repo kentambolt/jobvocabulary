@@ -527,7 +527,9 @@ applyInterfaceLink();
 function applyCourseLink() {
   if (!location.hash.startsWith('#start=')) return;
   const parameters = new URLSearchParams(location.hash.slice(1));
-  const pack = parameters.get('start'), requestedBase = parameters.get('base');
+  const pack = parameters.get('start'), requestedBase = parameters.get('base'), requestedTarget=parameters.get('target');
+  if(parameters.has('target')&&!Object.hasOwn(LANGS,requestedTarget))return;
+  const target=requestedTarget||'da';
   const base = Object.hasOwn(LANGS,requestedBase) ? requestedBase : null;
   if (![TOP, PICS].includes(pack) && !PACK_LIST.some((p) => p.id === pack)) return;
   const availableTopics = PACK_LIST.find(p=>p.id===pack)?.categories.map(category=>category.key) || [];
@@ -539,17 +541,18 @@ function applyCourseLink() {
   placement = null;
   lastFeedback = null;
   const s = state.settings;
-  const preferred = base && base !== 'da' ? base : s?.base && Object.hasOwn(LANGS,s.base) && s.base !== 'da' ? s.base : null;
+  const compatibleBase=value=>Object.hasOwn(LANGS,value)&&(value!==target||[TOP,PICS].includes(pack));
+  const preferred=compatibleBase(base)?base:base===target?null:compatibleBase(s?.base)?s.base:null;
   if (preferred) {
     history.replaceState(null, '', location.pathname + location.search);
-    state.settings = CoursePreferences.resolve(state, { pack, target: 'da', base: preferred });
+    state.settings = CoursePreferences.resolve(state, { pack, target, base: preferred });
     if (topics.length) state.settings.cats = topics;
     // A course page's start button already expresses the intent to practise.
     for (const dir of PracticeOptions.modes(state.settings)) ctx({ ...state.settings, dir }).prog.offered = true;
     saveState();
     view = 'play';
   } else {
-    draft = { target: 'da', base: base && LANGS[base] && base !== 'da' ? base : null, pack, dir: 'rec', diff: 1, cats: topics.length ? topics : null };
+    draft = { target, base: null, pack, dir: 'rec', diff: 1, cats: topics.length ? topics : null };
     saveState();
     view = 'setup';
   }
@@ -910,6 +913,11 @@ function speak(text, lang, explicit = false) {
 function speakTarget(x, explicit = false) { speak(lexicalForm(x,state.settings.target), state.settings.target, explicit); }
 
 // ---------- Rendering ----------
+function catalogueHref(lang,settings=state.settings) {
+  const root=`/${lang}/`;
+  if(!settings||!Object.hasOwn(LANGS,settings.target)||!Object.hasOwn(LANGS,settings.base))return root;
+  return root+'?'+new URLSearchParams({target:settings.target,base:settings.base});
+}
 function renderSiteMetadata(lang) {
   const copy=COURSE_CATALOG.siteMetadata(lang,PACK_INDEX.length);
   document.title=copy.title;
@@ -967,7 +975,7 @@ function render() {
   $('libraryBtn').setAttribute('aria-label', t('libraryMenu'));
   const catalogLink = $('catalogLink');
   if (catalogLink) {
-    catalogLink.href = `/${ul}/`;
+    catalogLink.href = catalogueHref(ul,view==='setup'&&draft?.target&&draft?.base?draft:state.settings);
     catalogLink.textContent = COURSE_CATALOG.labels[ul].catalog;
   }
   renderIntro(ul);
@@ -1019,20 +1027,22 @@ function renderIntro(ul) {
   if (!intro) return;
   intro.hidden = !(view === 'home' || (view === 'setup' && !state.settings && !selectedCourseLink && !draft?.target));
   document.body?.classList?.toggle('landing', !intro.hidden);
-  if (intro.hidden || intro.dataset.lang === ul) return;
+  const catalogueUrl=catalogueHref(ul);
+  if (intro.hidden || intro.dataset.lang === ul && intro.dataset.catalogue === catalogueUrl) return;
   intro.dataset.lang = ul;
+  intro.dataset.catalogue = catalogueUrl;
   const home = COURSE_CATALOG.home[ul];
   intro.querySelectorAll('.how li').forEach((li, i) => (li.innerHTML = `<span class="step-number" aria-hidden="true">${i+1}</span><span>${esc(home.steps[i])}</span>`));
   $('homeEyebrow').textContent = home.eyebrow;
   $('howTitle').textContent = home.howTitle;
-  $('landingNav').innerHTML = `<a href="/${ul}/#work">${esc(home.groupNames[0])}</a><a href="/${ul}/#everyday">${esc(home.groupNames[1])}</a><a href="#app" data-get-started>${esc(t('setupTitle'))}</a>`;
+  $('landingNav').innerHTML = `<a href="${esc(catalogueUrl+'#work')}">${esc(home.groupNames[0])}</a><a href="${esc(catalogueUrl+'#everyday')}">${esc(home.groupNames[1])}</a><a href="#app" data-get-started>${esc(t('setupTitle'))}</a>`;
   document.querySelectorAll('[data-get-started]').forEach((link) => link.onclick = (event) => { event.preventDefault(); $('app').scrollIntoView({ block: 'start' }); $('app').querySelector('[data-target]')?.focus({ preventScroll: true }); });
   const labels = COURSE_CATALOG.labels[ul];
   $('landingNav').setAttribute('aria-label', t('catsQ'));
   intro.querySelector('.jobs').setAttribute('aria-label', t('catsQ'));
   intro.querySelector('h1').textContent = labels.lead;
   intro.querySelector('.lead').textContent = labels.intro;
-  intro.querySelector('.jobs').innerHTML = COURSE_CATALOG.groups.map((group) => COURSE_CATALOG.groupLink(group, ul)).join('');
+  intro.querySelector('.jobs').innerHTML = COURSE_CATALOG.groups.map((group) => COURSE_CATALOG.groupLink(group, ul, catalogueUrl)).join('');
 }
 
 // ----- Øvelsestyper -----
