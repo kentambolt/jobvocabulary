@@ -43,6 +43,7 @@ const UI = {
     cancel: 'Annuller',
     loading: 'Henter …',
     loadFail: 'Kunne ikke hente indholdet. Tjek din internetforbindelse.',
+    retryLoad: 'Prøv igen',
     nativeShort: 'modersmål',
     switchDir: 'Skift retning',
     progress: '{n} af {m} lært',
@@ -139,6 +140,7 @@ const UI = {
     cancel: 'Cancel',
     loading: 'Loading …',
     loadFail: 'Could not load the content. Check your internet connection.',
+    retryLoad: 'Try again',
     nativeShort: 'first language',
     switchDir: 'Switch direction',
     progress: '{n} of {m} learned',
@@ -235,6 +237,7 @@ const UI = {
     cancel: 'Отмена',
     loading: 'Загрузка …',
     loadFail: 'Не удалось загрузить. Проверьте подключение к интернету.',
+    retryLoad: 'Повторить загрузку',
     nativeShort: 'родной язык',
     switchDir: 'Сменить направление',
     progress: 'Выучено {n} из {m}',
@@ -331,6 +334,7 @@ const UI = {
     cancel: 'Скасувати',
     loading: 'Завантаження …',
     loadFail: 'Не вдалося завантажити. Перевірте підключення до інтернету.',
+    retryLoad: 'Спробувати ще раз',
     nativeShort: 'рідна мова',
     switchDir: 'Змінити напрямок',
     progress: 'Вивчено {n} з {m}',
@@ -478,8 +482,12 @@ function loadPack(id) {
       const info = PACK_LIST.find((p) => p.id === id);
       const el = document.createElement('script');
       el.src = `packs/${id}.js${info ? `?v=${info.v}` : ''}`;
-      el.onload = () => { if (typeof PACKS !== 'undefined' && PACKS[id]) registerPack(PACKS[id]); resolve(); };
-      el.onerror = () => { delete packLoads[id]; reject(new Error('pack ' + id)); };
+      const fail = () => { delete packLoads[id]; el.remove(); reject(new Error('pack ' + id)); };
+      el.onload = () => {
+        if (typeof PACKS === 'undefined' || !PACKS[id]) { fail(); return; }
+        try { registerPack(PACKS[id]); resolve(); } catch { fail(); }
+      };
+      el.onerror = fail;
       document.head.appendChild(el);
     });
   }
@@ -973,6 +981,16 @@ function renderSiteMetadata(lang) {
     }
   } catch { /* A metadata failure must not interrupt practice. */ }
 }
+function awaitPracticeContent(loader) {
+  const waitingView=view,waitingSettings=state.settings;
+  const active=()=>view===waitingView&&state.settings===waitingSettings;
+  $('app').innerHTML=`<p role="status">${esc(t('loading'))}</p>`;
+  return loader().then(()=>{if(active())render();},()=>{
+    if(!active())return;
+    $('app').innerHTML=`<p role="alert">${esc(t('loadFail'))}</p><div class="row actions"><button class="primary" id="retryContent">${esc(t('retryLoad'))}</button><a class="secondary" href="${esc(catalogueHref(uiLang(),state.settings))}">${esc(COURSE_CATALOG.labels[uiLang()].catalog)}</a></div>`;
+    $('retryContent').onclick=render;
+  });
+}
 function render() {
   clearTimeout(timer);
   const ul = uiLang();
@@ -1017,16 +1035,12 @@ function render() {
   if (view === 'home') { renderHomeStart(); return; }
   if (view === 'library') { renderLibrary(); return; }
   if (inGame && (isList(state.settings || {}) || wordLibrary.data.favorites.length) && !dictionaryData) {
-    $('app').innerHTML = `<p role="status">${esc(t('loading'))}</p>`;
-    loadDictionary().then(render, () => { $('app').innerHTML = `<p>${esc(t('loadFail'))}</p>`; });
+    awaitPracticeContent(loadDictionary);
     return;
   }
   // Branchepakken hentes først, når den skal bruges.
   if (inGame && isPack(state.settings) && !PACK_ITEMS[state.settings.pack]) {
-    $('app').innerHTML = `<p class="task-q">${esc(t('loading'))}</p>`;
-    loadPack(state.settings.pack).then(render, () => {
-      $('app').innerHTML = `<p class="task-q">${esc(t('loadFail'))}</p>`;
-    });
+    awaitPracticeContent(()=>loadPack(state.settings.pack));
     return;
   }
   if (inGame) updateScore();

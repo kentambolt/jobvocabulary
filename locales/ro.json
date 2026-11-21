@@ -22,7 +22,7 @@
     "save": "Salvează și continuă",
     "cancel": "Anulează",
     "loading": "Se încarcă…",
-    "loadFail": "Conținutul nu a putut fi încărcat. Verifică legătura la internet.",
+    "retryLoad":"Încearcă din nou","loadFail": "Conținutul nu a putut fi încărcat. Verifică legătura la internet.",
     "nativeShort": "limbă maternă",
     "switchDir": "Schimbă direcția",
     "progress": "{n} din {m} învățate",

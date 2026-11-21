@@ -22,7 +22,7 @@
     "save": "Zapisz i kontynuuj",
     "cancel": "Anuluj",
     "loading": "Wczytywanie…",
-    "loadFail": "Nie udało się wczytać treści. Sprawdź połączenie z internetem.",
+    "retryLoad":"Spróbuj ponownie","loadFail": "Nie udało się wczytać treści. Sprawdź połączenie z internetem.",
     "nativeShort": "język ojczysty",
     "switchDir": "Zmień kierunek",
     "progress": "Opanowano {n} z {m}",
