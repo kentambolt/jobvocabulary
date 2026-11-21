@@ -296,5 +296,14 @@ module.exports={
       "Paklauskite kolegos apie receptą, tešlos kildinimo laiką ar konsistenciją.",
       "Patikslinkite užsakymo kiekį, vardą ir atsiėmimo laiką."
     ]
+  ],
+  "salon": [
+    "Danų kalba kirpėjams ir salonų darbuotojams",
+    "Darbas salone prasideda nuo kliento pageidavimų supratimo. Praktikuokite klausimus apie ilgį, šukuoseną ir spalvą, mokykitės kolegų naudojamų įrankių bei priemonių pavadinimų. Toliau pereikite prie trumpų sakinių apie plaukų plovimą, patogumą, vizitų registraciją ir atsiskaitymą. Pasirinkite vieną temą ir repetuokite reikiamą pokalbio su klientu dalį.",
+    [
+      "Pasitikslinkite, kiek plaukų klientas nori patrumpinti.",
+      "Atpažinkite šukų, žirklių, džiovintuvų ir plaukų priemonių pavadinimus.",
+      "Sutarkite vizito laiką, paaiškinkite, kas įskaičiuota į kainą, ir užbaikite apsilankymą."
+    ]
   ]
 };

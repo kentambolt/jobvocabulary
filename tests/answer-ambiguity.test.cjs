@@ -33,3 +33,15 @@ test('hotel room attendants and chambermaids never compete as wrong alternatives
     assert.equal(result.wrongOverlap,false,JSON.stringify({target,base,source,direction}));
   }
 });
+
+test('salon cutting and trimming remain separate words without penalising their overlapping meaning',()=>{
+  const a=app();
+  a.run(fs.readFileSync(path.join(__dirname,'../packs/salon.js'),'utf8')+';registerPack(PACKS.salon);');
+  const languages=['da','en','ru','uk','pl','ro','lt','bg'];
+  for(const target of languages)for(const base of languages.filter(lang=>lang!==target))for(const source of ['klippe','trimme'])for(const direction of ['rec','prod']){
+    Object.assign(a.context,{pair:{pack:'salon',target,base,diff:3,dir:'rec'},source,direction});
+    const result=a.run(`(()=>{const c=ctx(pair),word=c.pool.find(x=>answerSource(x)===source);return {choices:makeOptions(c,word,direction).length,wrongOverlap:pickDistractors(c,word,direction,1000).some(x=>['klippe','trimme'].includes(answerSource(x)))};})()`);
+    assert.equal(result.choices,4);
+    assert.equal(result.wrongOverlap,false,JSON.stringify({target,base,source,direction}));
+  }
+});

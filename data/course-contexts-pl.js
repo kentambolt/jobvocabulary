@@ -296,5 +296,14 @@ module.exports={
       "Pytaj o przepis, czas wyrastania ciasta lub konsystencję.",
       "Potwierdzaj ilość, nazwisko i termin odbioru zamówienia."
     ]
+  ],
+  "salon": [
+    "Duński do pracy w salonie fryzjerskim",
+    "Praca w salonie zaczyna się od zrozumienia życzeń klienta. Ćwicz pytania o długość, fryzurę i kolor oraz poznaj nazwy narzędzi i produktów używanych przez zespół. Następnie przejdź do krótkich zdań o myciu włosów, komforcie, umawianiu wizyt i płatności. Wybierz jeden temat, aby przećwiczyć potrzebny fragment rozmowy z klientem.",
+    [
+      "Ustal, ile włosów klient chce obciąć.",
+      "Rozpoznawaj nazwy grzebieni, nożyczek, suszarek i produktów do włosów.",
+      "Umów wizytę, wyjaśnij, co obejmuje cena, i zakończ obsługę."
+    ]
   ]
 };

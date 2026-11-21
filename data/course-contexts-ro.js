@@ -296,5 +296,14 @@ module.exports={
       "Întreabă un coleg despre rețetă, timpul de dospire sau consistență.",
       "Confirmă cantitatea, numele și detaliile ridicării unei comenzi."
     ]
+  ],
+  "salon": [
+    "Daneză pentru coafori și saloane",
+    "Munca în salon începe cu înțelegerea dorințelor clientului. Exersați întrebări despre lungime, coafură și culoare și învățați denumirile instrumentelor și produselor folosite de colegi. Continuați cu fraze scurte despre spălatul părului, confort, programări și plată. Alegeți un singur subiect pentru a repeta partea de conversație de care aveți nevoie.",
+    [
+      "Clarificați cât din păr dorește clientul să fie tăiat.",
+      "Recunoașteți denumirile pieptenilor, foarfecelor, uscătoarelor și produselor de păr.",
+      "Stabiliți o programare, clarificați ce include prețul și încheiați vizita."
+    ]
   ]
 };
