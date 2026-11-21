@@ -814,7 +814,7 @@ function makeTiles(c, x, spec) {
   const inAnswer = new Set(spec.answer.map((a) => a.toLowerCase()));
   const others = shuffle(c.pool.filter((o) => o.id !== x.id && o.phrase === x.phrase).slice(0, 80));
   for (const o of others) {
-    for (const w of shuffle(o.words[c.s.target].split(/\s+/).slice(1))) {
+    for (const w of shuffle(lexicalForm(o,c.s.target).split(/\s+/).slice(1))) {
       const tok = w.replace(/[.,!?;:]+$/, '');
       if (tok && !inAnswer.has(tok.toLowerCase()) && !extra.includes(tok)) { extra.push(tok); break; }
     }
@@ -1432,7 +1432,7 @@ function writeHTML(c, x) {
     return `<button class="${cls}" data-key="${esc(k)}" ${done ? 'disabled' : ''} lang="${c.s.target}">${esc(k)}</button>`;
   }).join('');
   let html = `<p class="task-q">${esc(questionText(c, x, 'write'))}</p>
-    <div class="slots${state2}" style="--n:${n}" lang="${c.s.target}" aria-label="${esc(done ? x.words[c.s.target] : '')}">
+    <div class="slots${state2}" style="--n:${n}" lang="${c.s.target}" aria-label="${esc(done ? lexicalForm(x,c.s.target) : '')}">
       ${sp.prefix ? `<span class="prefix">${esc(sp.prefix)}</span>` : ''}${slots}</div>
     ${done && !mixed ? '' : `<div class="keys" style="--cols:${keyCols}">${keys}</div>`}
     <div class="feedback" aria-live="polite">`;
@@ -1507,7 +1507,7 @@ function renderPlayView() {
     html += `<div class="prompt${c.pics ? ' pics' : ''}">${promptActionsHTML(x, speakBtn)}
       ${c.pics ? picHTML(x) : ''}
       ${targetHTML(c, x)}
-      ${c.pics ? '' : `<span class="sub">${esc(x.words[c.s.base])}</span>`}
+      ${c.pics ? '' : `<span class="sub">${esc(lexicalForm(x,c.s.base))}</span>`}
     </div>
     <div class="feedback" aria-live="polite"><button class="primary" id="nextBtn">${esc(t('next'))}</button></div>`;
   } else if (current.kind === 'write') {
@@ -1531,7 +1531,7 @@ function renderPlayView() {
     if (current.answered) {
       const ok = current.answered === 'ok';
       html += ok ? `<div class="msg good">${esc(t('correct'))}</div>`
-        : `<div class="msg bad">${esc(t('wrongBuild'))} <b>${esc(x.words[c.s.target])}</b></div><button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
+        : `<div class="msg bad">${esc(t('wrongBuild'))} <b>${esc(lexicalForm(x,c.s.target))}</b></div><button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
     } else {
       html += `<div class="row center"><button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>
         <button class="primary" id="checkBtn" ${current.picked.length ? '' : 'disabled'}>${esc(t('checkBtn'))}</button></div>`;
@@ -1599,7 +1599,7 @@ function finishTask(c, x, before) {
   if (current.maintenance) c.prog.lastLearnedReviewTask = c.prog.task;
   c.prog.lastId = x.id;
   saveState();
-  lastFeedback = correct ? { id: x.id, word: x.words[c.s.target], meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
+  lastFeedback = correct ? { id: x.id, word: lexicalForm(x,c.s.target), meaning: c.pics ? '' : x.words[c.s.base], lang: c.s.target } : null;
   renderPlayView();
   updateScore(scoreOf(c.prog) - before);
   if (!correct) speakTarget(x);
@@ -1774,7 +1774,7 @@ function placementAnswer(correct) {
   if(typeof CourseKnowledge!=='undefined')CourseKnowledge.mark(c.prog.cards[x.id],x.id);
   MemoryScheduler.record(MemoryScheduler.session(state, c.s, now), x.id, now);
   saveState();
-  lastFeedback = correct ? { id: current.concept.id, word: current.concept.words[c.s.target], meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
+  lastFeedback = correct ? { id: current.concept.id, word: lexicalForm(current.concept,c.s.target), meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
   if (correct) advancePlace(); else renderPlace();
 }
 function advancePlace() {
@@ -1857,11 +1857,11 @@ function renderStats() {
         : isLearned(card) ? `<span class="dot ok"></span>${esc(t('learnedS'))}`
         : card.wrong && !card.ok ? `<span class="dot no"></span>${esc(t('wrongS'))}`
         : `<span class="dot"></span>${esc(t('notYet'))}`;
-      const meaning = c.pics ? picHTML(x, 'pic-sm') : esc(x.words[c.s.base]);
+      const meaning = c.pics ? picHTML(x, 'pic-sm') : esc(lexicalForm(x,c.s.base));
       const ipm = !isPack(c.s) && IPM[c.s.target] ? (IPM[c.s.target][id] || 0).toLocaleString(uiLang()) : '';
       html += `<tr>
         <td class="num">${rankOf(c.s, id)}</td>
-        <td class="wrap"><b>${esc(x.words[c.s.target])}</b></td>
+        <td class="wrap"><b>${esc(lexicalForm(x,c.s.target))}</b></td>
         <td class="num">${ipm}</td>
         <td class="wrap">${meaning}</td>
         <td class="num">${card.lvl}</td>
