@@ -533,7 +533,7 @@ let pendingPlacement = false;
 let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
-// Transport remains disabled until the shared aggregate endpoint is ready.
+// Three best-effort daily counters, independent of learning and visitor tracking.
 const activation = ActivationMeter.create(AggregateTransport.create({enabled:AggregateTransport.enabled}));
 
 // Public language pages can hand their explicit interface choice to the app

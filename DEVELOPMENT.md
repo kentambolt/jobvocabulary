@@ -21,8 +21,8 @@ An introduction does not consume a graded-review visit or advance mixed task typ
 
 `activation-meter.js` holds the current run's three action milestones in memory.
 It never reads/writes browser storage and sends no properties or identifiers.
-Its transport is currently disabled pending the shared aggregate service. Counts
-will describe actions, not unique people or cross-visit retention. Personal-list
+Its transport uses the shared aggregate service. Counts describe actions, not
+unique people or cross-visit retention. Personal-list
 practice does not emit course activation milestones. Actual graded placement
 answers are included; opening an offer or showing an introduction is not an answer.
 
