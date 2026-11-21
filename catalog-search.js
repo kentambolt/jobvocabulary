@@ -27,6 +27,17 @@ const searchableGroups = [...document.querySelectorAll('[data-course-group]')].m
     return {card, text, words:new Set(text.split(' '))};
   })
 }));
+const categoryLinks=[...document.querySelectorAll('.category-nav a')];
+function syncCategoryLinks(){
+  const hash=window.location?.hash||'';
+  for(const link of categoryLinks){
+    const target=link.getAttribute('href');
+    const group=searchableGroups.find(({group})=>'#'+group.id===target)?.group;
+    link.hidden=!!group?.hidden;
+    if(!link.hidden&&hash===target)link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+  }
+}
 function filterCourses() {
   if (!courseSearch) return;
   const tokens = normalizeSearch(courseSearch.value).split(' ').filter(Boolean);
@@ -42,9 +53,16 @@ function filterCourses() {
     count += visible;
   });
   document.getElementById('courseEmpty').hidden = count !== 0;
+  syncCategoryLinks();
 }
 if (courseSearch) {
   courseSearch.addEventListener('input', filterCourses);
   window.addEventListener('pageshow', filterCourses);
+  window.addEventListener('hashchange', syncCategoryLinks);
   filterCourses();
+}
+const languagePicker=document.querySelector?.('.catalogue-language-picker');
+if(languagePicker){
+  document.addEventListener('pointerdown',event=>{if(languagePicker.open&&!languagePicker.contains(event.target))languagePicker.open=false;});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&languagePicker.open){languagePicker.open=false;languagePicker.querySelector('summary').focus();event.preventDefault();}});
 }

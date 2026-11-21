@@ -10,6 +10,7 @@ const courseRoutes = require('./course-routes');
 const courseSearchAliases = require('./course-search-aliases.json');
 const {writeSitemap} = require('./build-sitemap');
 const {socialMetadata,courseImage}=require('./social-meta');
+const catalogueCopy=require('./catalogue-copy');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
@@ -224,6 +225,7 @@ fs.writeFileSync(indexPath, html.replace(/<!-- JOBS -->[\s\S]*<!-- \/JOBS -->/, 
 // Public, indexable course catalogue in each interface language.
 for (const lang of LANGS) {
   const l = catalog.labels[lang];
+  const copy=catalogueCopy(lang,packs.length);
   const personal = {
     da: { resume: 'Fortsæt, hvor du slap', action: 'Fortsæt øvelsen', words: 'Mine ord', favorites: 'Gemte ord' },
     en: { resume: 'Pick up where you left off', action: 'Continue practising', words: 'My words', favorites: 'Saved words' },
@@ -248,15 +250,15 @@ for (const lang of LANGS) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f4ee">
-  <title>${esc(l.catalog)}: ${esc(l.lead)} | Job Vocabulary</title>
-  <meta name="description" content="${esc(l.intro)}">
+  <title>${esc(copy.title)} | JobVocabulary</title>
+  <meta name="description" content="${esc(copy.description)}">
   <link rel="canonical" href="${canonical}">
 ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE}/${other}/">`).join('\n')}
   <link rel="alternate" hreflang="x-default" href="${SITE}/en/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:title" content="${esc(l.catalog)} | Job Vocabulary">
-  <meta property="og:description" content="${esc(l.intro)}">
+  <meta property="og:title" content="${esc(copy.title)} | JobVocabulary">
+  <meta property="og:description" content="${esc(copy.description)}">
   ${socialMetadata(lang)}
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,17 +267,16 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script src="/practice-resume.js" defer></script>
   <script src="/catalog-search.js" defer></script>
-  ${seo.jsonLD({'@context':'https://schema.org','@type':'CollectionPage',url:canonical,name:l.lead,inLanguage:lang,mainEntity:{'@type':'ItemList',itemListElement:packs.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name[lang],url:SITE+urlOf(p,lang)}))}})}
+  ${seo.jsonLD({'@context':'https://schema.org','@type':'CollectionPage',url:canonical,name:copy.heading,inLanguage:lang,mainEntity:{'@type':'ItemList',itemListElement:packs.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name[lang],url:SITE+urlOf(p,lang)}))}})}
 </head>
 <body class="page catalogue">
-  <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></header>
+  <header class="top"><a class="brand" href="/?ui=${lang}#forside">Job<span>Vocabulary</span></a><nav class="language-nav" aria-label="${esc(T[lang].langs)}">${LANGS.map((other) => `<a href="/${other}/" lang="${other}" hreflang="${other}"${other === lang ? ' aria-current="page"' : ''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav><details class="catalogue-language-picker"><summary aria-label="${esc(T[lang].langs)}: ${esc(LANG_NAME[lang])}">${esc(LANG_NAME[lang])}<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 9 6 6 6-6"/></svg></summary><nav class="language-choices" aria-label="${esc(T[lang].langs)}">${LANGS.map(other=>`<a href="/${other}/" lang="${other}" hreflang="${other}"${other===lang?' aria-current="page"':''}>${esc(LANG_NAME[other])}</a>`).join('')}</nav></details></header>
   <main>
-    <section class="catalogue-hero"><p class="eyebrow">Job Vocabulary</p><h1>${esc(l.lead)}</h1><p class="lead">${esc(l.intro)}</p><p class="tagline">${esc(T[lang].free)}</p></section>
+    <section class="catalogue-hero"><h1>${esc(copy.heading)}</h1><p class="lead">${esc(copy.intro)}</p></section>
     <section class="resume-panel" id="resumePanel" data-names="${esc(JSON.stringify(resumeNames))}" data-nosnippet hidden><div><p class="eyebrow">${esc(personal.resume)}</p><h2 id="resumeCourse"></h2><p id="resumePair"></p></div><a class="primary cta" href="/?ui=${lang}">${esc(personal.action)}</a></section>
     <p class="catalogue-personal"><a href="/?ui=${lang}#mine-ord">♡ ${esc(personal.words)}</a></p>
-    <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g) => `<a href="#${g.id}">${esc(g.name[lang])}</a>`).join('')}</nav>
     <div class="catalogue-search"><label for="courseSearch">${esc(l.search)}</label><input id="courseSearch" type="search" autocomplete="off" placeholder="${esc(l.search)}" aria-controls="courseSections"></div>
-    <p class="course-note">${esc(l.note)}</p>
+    <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g,i) => `<a href="#${g.id}" aria-label="${esc(g.name[lang])}"><span class="category-full">${esc(g.name[lang])}</span><span class="category-short" aria-hidden="true">${esc(copy.shortGroups[i])}</span></a>`).join('')}</nav>
     <p id="courseEmpty" role="status" hidden>${esc(l.empty)}</p>
     <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p><div class="course-grid">${g.packs.map(card).join('')}</div></section>`).join('')}</div>
     <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a> · <a href="${seo.guideIndex(lang)}">${esc(seo.guideLabels[lang])}</a></footer>

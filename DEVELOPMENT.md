@@ -261,6 +261,10 @@ reciprocal language links, visible breadcrumbs and Article/CollectionPage data.
 `build-pages.js` adds these pages to the sitemap and links them from courses and
 catalogues. The app exposes guides inside its existing menu. Keep the landing
 page free of extra SEO blocks and keep course start links above editorial content.
+`data/catalogue-copy.js` owns the compact course-finder headings, short mobile
+category labels and concise translated search metadata. Its course count comes
+from the published packs. Mobile language links use a native details dropdown;
+desktop language links remain directly visible, including without JavaScript.
 
 A guide can define `startTopics` using category keys from its first course.
 Its primary link then starts those topics directly; the app validates keys against
