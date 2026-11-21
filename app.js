@@ -857,7 +857,7 @@ function writeSpec(c, x) {
   if (/\s/.test(rest.trim())) return null;
   const chars = Array.from(rest.trim());
   const n = chars.filter(isLetter).length;
-  if (n < 2 || n > 14) return null;
+  if (n < 1 || n > 32 || chars.length > 36) return null;
   return { prefix, chars };
 }
 function makeKeys(c, spec) {
