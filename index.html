@@ -28,13 +28,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3a6043135431">
+  <link rel="stylesheet" href="style.css?v=df3707853a07">
 </head>
 <body class="landing">
   <header class="top">
     <a class="brand" id="homeBtn" href="#forside" aria-label="Job Vocabulary">Job<span>Vocabulary</span></a>
     <nav class="landing-nav" aria-label="Emner" id="landingNav"><a href="/da/#work">Job og arbejdsliv</a><a href="/da/#everyday">Hverdag og transport</a><a href="#app" data-get-started>Kom i gang</a></nav>
-    <nav class="nav" aria-label="Træning">
+    <nav class="nav" id="mainNav" aria-label="Navigation">
       <button class="icon-btn" id="soundBtn" title="Læs højt" aria-label="Læs højt" aria-pressed="true" hidden><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4 6 8H3v8h3l5 4Z"/><path class="waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="mute" d="m16 9 5 6m0-6-5 6"/></svg></button>
       <button class="icon-btn" id="menuBtn" aria-label="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </nav>
@@ -50,7 +50,7 @@
     <!-- JOBS -->
     <nav class="jobs" aria-label="Emner"><a class="category-entry" href="/da/#work"><svg class="category-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="26" height="21" rx="2"/><path d="M11 7V4h10v3M3 14c8 4 18 4 26 0M14 15v5h4v-5"/></svg><div><b>Job og arbejdsliv</b><small>Ord og sætninger fra din arbejdsdag. Vælg dit fag, og øv det vigtigste først.</small></div></a><a class="category-entry" href="/da/#everyday"><svg class="category-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="18" height="23" rx="4"/><path d="M10 7h12v9H10zM10 30l3-4m9 4-3-4"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg><div><b>Hverdag og transport</b><small>Transport, sundhed, familie og hverdagen i et nyt land.</small></div></a><a class="category-entry" href="/da/#start"><svg class="category-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7C12 3 5 4 2 5v22c5-2 10-1 14 2 4-3 9-4 14-2V5c-3-1-10-2-14 2Zm0 0v22"/></svg><div><b>Byg dit sprog</b><small>Byg dit ordforråd op med de mest brugte ord eller enkle ord med billeder.</small></div></a></nav>
     <!-- /JOBS -->
-    <details class="home-how" id="how-it-works" open><summary><h2 id="howTitle">Sådan fungerer det</h2></summary><ol class="how"><li>Vælg dit sprog og emne</li><li>Lær ét ord eller én sætning ad gangen</li><li>Svar og se din fremgang med det samme</li></ol></details>
+    <details class="home-how" id="how-it-works" open><summary><h2 id="howTitle">Sådan fungerer det</h2></summary><ol class="how"><li><span class="step-number" aria-hidden="true">1</span><span>Vælg dit sprog og emne</span></li><li><span class="step-number" aria-hidden="true">2</span><span>Lær ét ord eller én sætning ad gangen</span></li><li><span class="step-number" aria-hidden="true">3</span><span>Svar og se din fremgang med det samme</span></li></ol></details>
     <noscript>
       <p>Job Vocabulary kræver JavaScript. Indhold: de mest brugte ord på dansk, engelsk og russisk; ord og sætninger til rengøring, restaurant og køkken, lager og produktion, byggeri og håndværk, ældrepleje, landbrug og fødevarer, butik og supermarked, chauffør og bud samt til køreprøven. Oversættelser til dansk, engelsk, russisk og ukrainsk.</p>
     </noscript>
@@ -75,7 +75,7 @@
   <dialog id="trainingDialog" aria-labelledby="trainingTitle"></dialog>
   <dialog id="saveWordDialog" aria-label="Gem ord på en liste"></dialog>
 
-  <script src="locales.js?v=73f5b7fbbb9a" defer></script>
+  <script src="locales.js?v=ce2f06f53dcb" defer></script>
   <script src="core-translations.js?v=19da19951613" defer></script>
   <script src="words.js?v=8f3f76cab159" defer></script>
   <script src="packs/index.js?v=7309f64ca65b" defer></script>
@@ -92,6 +92,6 @@
   <script src="learning-flow.js?v=cbaf587ddcb1" defer></script>
   <script src="shared-word-groups.js?v=9e8c9bbbc1ca" defer></script>
   <script src="course-knowledge.js?v=1667c4cc01ac" defer></script>
-  <script src="app.js?v=29bb50e378c8" defer></script>
+  <script src="app.js?v=532171d8fd54" defer></script>
 </body>
 </html>
