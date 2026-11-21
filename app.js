@@ -897,10 +897,31 @@ function speak(text, lang, explicit = false) {
 function speakTarget(x, explicit = false) { speak(lexicalForm(x,state.settings.target), state.settings.target, explicit); }
 
 // ---------- Rendering ----------
+function renderSiteMetadata(lang) {
+  const copy=COURSE_CATALOG.siteMetadata(lang,PACK_INDEX.length);
+  document.title=copy.title;
+  for(const [selector,value]of [
+    ['meta[name="description"]',copy.description],
+    ['meta[property="og:title"]',copy.title],
+    ['meta[property="og:description"]',copy.description],
+    ['meta[property="og:locale"]',copy.locale],
+    ['meta[property="og:image:alt"]',copy.imageAlt],
+    ['meta[name="twitter:image:alt"]',copy.imageAlt],
+  ])document.querySelector(selector)?.setAttribute('content',value);
+  const structured=document.querySelector('script[type="application/ld+json"]');
+  if(structured)try {
+    const data=JSON.parse(structured.textContent);
+    if(data['@type']==='WebApplication'){
+      data.name='JobVocabulary';data.description=copy.description;
+      structured.textContent=JSON.stringify(data);
+    }
+  } catch { /* A metadata failure must not interrupt practice. */ }
+}
 function render() {
   clearTimeout(timer);
   const ul = uiLang();
   document.documentElement.lang = ul;
+  renderSiteMetadata(ul);
   $('mainNav').setAttribute('aria-label', t('navigation'));
   const inGame = !!state.settings && !['home', 'setup', 'library'].includes(view);
   $('score').hidden = !inGame;

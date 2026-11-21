@@ -207,14 +207,18 @@ for (const p of packs) {
 
 // --- links på forsiden (mellem markørerne i index.html) ---
 const indexPath = path.join(ROOT, 'index.html');
-const homeDescription = `Lær ord og sætninger til job, transport og hverdag. Vælg mellem ${packs.length} kurser og ${LANGS.length} sprog, og træn i dit eget tempo.`;
+const homeMetadata=catalog.siteMetadata('da',packs.length);
+const homeDescription=homeMetadata.description;
 const html = fs.readFileSync(indexPath, 'utf8')
+  .replace(/<title>[^<]*<\/title>/,`<title>${esc(homeMetadata.title)}</title>`)
+  .replace(/(<meta property="og:title" content=")[^"]*(">)/,`$1${esc(homeMetadata.title)}$2`)
   .replace(/<!-- SOCIAL -->[\s\S]*?<!-- \/SOCIAL -->/,`<!-- SOCIAL -->\n  ${socialMetadata('da')}\n  <!-- /SOCIAL -->`)
   .replace(/(<meta name="description" content=")[^"]*(">)/,`$1${esc(homeDescription)}$2`)
   .replace(/(<meta property="og:description" content=")[^"]*(">)/,`$1${esc(homeDescription)}$2`)
   .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(match,json)=>{
     const data=JSON.parse(json);
     if(data['@type']!=='WebApplication') return match;
+    data.name='JobVocabulary';
     data.inLanguage=LANGS;
     data.description=homeDescription;
     return seo.jsonLD(data);

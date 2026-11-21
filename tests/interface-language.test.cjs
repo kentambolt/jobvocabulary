@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const app = require('./helpers/app.cjs');
 
 test('a first visit from a language page keeps that interface in My words and after reload', () => {
-  for (const lang of ['da', 'en', 'ru', 'uk']) {
+  for (const lang of ['da', 'en', 'ru', 'uk', 'pl', 'ro', 'lt', 'bg']) {
     const initialState = { progress: { existing: { task: 12, cards: {} } }, library: { favorites: ['lex:saved'] } };
     const a = app(undefined, { initialState, search: '?ui=' + lang + '&campaign=example', hash: '#mine-ord' });
     assert.equal(a.run('view'), 'library');
