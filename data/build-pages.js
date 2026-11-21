@@ -11,6 +11,7 @@ const courseSearchAliases = require('./course-search-aliases.json');
 const {writeSitemap} = require('./build-sitemap');
 const {socialMetadata,courseImage}=require('./social-meta');
 const catalogueCopy=require('./catalogue-copy');
+const courseCounts=require('./course-counts');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
@@ -21,7 +22,6 @@ const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'a
 const T = {
   da: {
     sub: 'Lær de danske ord og sætninger ét ad gangen',
-    intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk, ukrainsk, polsk, rumænsk, litauisk og bulgarsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
     cta: 'Start med at øve gratis',
     howTitle: 'Sådan virker det',
     how: [
@@ -35,7 +35,6 @@ const T = {
   },
   en: {
     sub: 'Learn the Danish words and phrases one at a time',
-    intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian, Ukrainian, Polish, Romanian, Lithuanian and Bulgarian. The most important come first, and what you know comes back less often.`,
     cta: 'Start practising for free',
     howTitle: 'How it works',
     how: [
@@ -48,7 +47,6 @@ const T = {
   },
   ru: {
     sub: 'Учите датские слова и фразы по одной за раз',
-    intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводами на русский, украинский, английский, польский, румынский, литовский и болгарский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
     cta: 'Начать учить бесплатно',
     howTitle: 'Как это работает',
     how: [
@@ -61,7 +59,6 @@ const T = {
   },
   uk: {
     sub: 'Вивчайте данські слова і фрази по одній за раз',
-    intro: (total, cats) => `${total} слів і фраз у ${cats} темах із перекладами українською, російською, англійською, польською, румунською, литовською та болгарською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
     cta: 'Почати вчити безкоштовно',
     howTitle: 'Як це працює',
     how: [
@@ -75,9 +72,7 @@ const T = {
 };
 
 const extraLocales = require('../locales');
-for (const [lang, locale] of Object.entries(extraLocales)) T[lang] = { ...locale.page,
-  intro: (total,topics) => locale.page.intro ? locale.page.intro.replace('{total}',total).replace('{topics}',topics) : lang === 'pl' ? `${total} słów i zwrotów w ${topics} tematach, z tłumaczeniem na polski. Najważniejsze są na początku, a znane słowa wracają rzadziej.` : `${total} cuvinte și expresii în ${topics} teme, cu traducere în română. Cele mai importante apar primele, iar cele cunoscute revin mai rar.`
-};
+for (const [lang, locale] of Object.entries(extraLocales)) T[lang] = { ...locale.page };
 // Keep the subject first and the repeated suffix short. Do not truncate course names.
 const courseTitleSubject = {
   da: 'Dansk ordforråd', en: 'Danish vocabulary', ru: 'Датская лексика', uk: 'Данська лексика',
@@ -128,7 +123,7 @@ function page(p, lang) {
   const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th scope="col" lang="${l}">${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
 ${rows.map((r) => `<tr>${cols.map((l) => `<td lang="${l}"${l === 'da' ? ' class="da"' : ''}>${esc(r[col(l)])}</td>`).join('')}</tr>`).join('\n')}
 </tbody></table></div>`;
-  const desc = `${p.desc[lang].replace(/[.!?]$/, '')}. ${total} ${catalog.labels[lang].units}.`;
+  const desc = `${p.desc[lang].replace(/[.!?]$/, '')}. ${courseCounts.count(lang,total)}.`;
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -161,7 +156,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     ${seo.breadcrumbs(SITE,[[t.home,'/'],[catalog.labels[lang].catalog,`/${lang}/`],[name,urlOf(p,lang)]],lang)}
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
-    <p class="course-intro">${esc(p.desc[lang].replace(/[.!?]\s*$/, ''))}. ${esc(t.intro(total, p.categories.length))}</p>
+    <p class="course-intro">${esc(p.desc[lang].replace(/[.!?]\s*$/, ''))}. ${esc(courseCounts.intro(lang,total,p.categories.length))}</p>
     <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
     <p class="tagline">${esc(t.free)}</p>
     ${p.id === 'driving' ? `<p class="course-note">${esc(catalog.labels[lang].safety)}</p>` : ''}
@@ -248,7 +243,7 @@ for (const lang of LANGS) {
     const searchNames = p ? Object.values(p.name) : LANGS.map(code => catalog.labels[code][id === 'top' ? 'general' : 'pictures']);
     const searchTopics = p ? p.categories.map(c => c.name[lang]) : [];
     const searchText = [...searchNames, ...searchTopics, courseSearchAliases[id] || '', ...Object.values(routes[id] || {})].join(' ');
-    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" data-pack="${id}" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
+    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" data-pack="${id}" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${esc(courseCounts.count(lang,p.categories.reduce((sum,c)=>sum+c.rows.length,0),p.categories.length))}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
   };
   const canonical = `${SITE}/${lang}/`;
   const output = `<!doctype html>
