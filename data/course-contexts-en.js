@@ -314,5 +314,14 @@ module.exports={
       "Ask where to start and what the customer wants.",
       "Report on equipment, garden waste and completed areas."
     ]
+  ],
+  "laundry": [
+    "Danish for work in a laundry",
+    "In a laundry, textiles move from receiving and sorting to folding, packing and delivery. Practise the names of linen, machines and labels so you can ask a colleague specific questions. The phrases help you report an error, clarify an order and explain what is ready. This course teaches language and does not replace training in machines, chemicals or hygiene.",
+    [
+      "Ask how linen should be sorted and folded.",
+      "Report stains, holes and machine errors.",
+      "Confirm quantities, customer names and collection times."
+    ]
   ]
 };

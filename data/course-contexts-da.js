@@ -314,5 +314,14 @@ module.exports={
       "Spørg hvor arbejdet skal begynde, og hvad kunden ønsker.",
       "Giv besked om udstyr, haveaffald og færdige områder."
     ]
+  ],
+  "laundry": [
+    "Dansk til arbejdet på et vaskeri",
+    "På et vaskeri følger du tekstiler fra modtagelse og sortering til foldning, pakning og levering. Øv navnene på linned, maskiner og mærkninger, så du kan stille konkrete spørgsmål til en kollega. Sætningerne hjælper dig med at melde en fejl, afklare en ordre og fortælle, hvad der er klar. Kurset træner sproget og erstatter ikke oplæring i maskiner, kemi eller hygiejne.",
+    [
+      "Spørg, hvordan linned skal sorteres og foldes.",
+      "Fortæl om pletter, huller og fejl på en maskine.",
+      "Afklar antal, kundenavn og tidspunkt for afhentning."
+    ]
   ]
 };

@@ -314,5 +314,14 @@ module.exports={
       "Pytaj, od czego zacząć i czego oczekuje klient.",
       "Informuj o sprzęcie, odpadach ogrodowych i gotowych obszarach."
     ]
+  ],
+  "laundry": [
+    "Duński do pracy w pralni",
+    "W pralni tekstylia przechodzą od przyjęcia i sortowania do składania, pakowania i dostawy. Ćwicz nazwy bielizny, maszyn i oznaczeń, aby zadawać współpracownikowi konkretne pytania. Zwroty pomogą zgłosić błąd, wyjaśnić zamówienie i powiedzieć, co jest gotowe. Kurs uczy języka i nie zastępuje szkolenia z obsługi maszyn, stosowania środków chemicznych ani higieny.",
+    [
+      "Zapytaj, jak sortować i składać bieliznę.",
+      "Zgłaszaj plamy, dziury i błędy maszyn.",
+      "Potwierdzaj liczbę sztuk, nazwę klienta i czas odbioru."
+    ]
   ]
 };
