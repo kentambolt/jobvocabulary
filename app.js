@@ -1901,9 +1901,11 @@ function renderPlaceDone() {
 function fmtDuration(min) {
   const ul = uiLang();
   const dec = ul === 'en' ? '.' : ',';
-  const H = { da: 't', en: 'h', ru: 'ч', uk: 'год' }[ul];
-  const D = { da: 'd', en: 'd', ru: 'дн', uk: 'дн' }[ul];
-  if (min < 60) return `${Math.round(min)} min`;
+  const [M,H,D] = {
+    da:['min','t','d'],en:['min','h','d'],ru:['мин','ч','дн'],uk:['хв','год','дн'],
+    pl:['min','godz.','d'],ro:['min','h','z'],lt:['min','val.','d.'],bg:['мин','ч','дн'],
+  }[ul];
+  if (min < 60) return `${Math.round(min)} ${M}`;
   if (min < 60 * 24) return `${(min / 60).toFixed(min < 600 ? 1 : 0).replace('.', dec)} ${H}`;
   return `${(min / 1440).toFixed(min < 14400 ? 1 : 0).replace('.', dec)} ${D}`;
 }
@@ -1913,7 +1915,8 @@ function renderStats() {
   const now = Date.now();
   const ids = Object.keys(c.prog.cards).filter((id) => ITEM[id] && c.pool.some((p) => p.id === id))
     .sort((a, b) => rankOf(c.s, a) - rankOf(c.s, b));
-  const cols = t('cols');
+  const showFrequency = c.s.pack === TOP && !!IPM[c.s.target];
+  const cols = t('cols').filter((_,index)=>showFrequency||index!==2);
   let html = `<section class="stats"><div class="row" style="justify-content:space-between">
       <h1>${esc(t('stats'))}</h1><button class="secondary" id="backBtn">${esc(t('back'))}</button></div>
     <p class="course-note">${esc(dirName(c.s.dir, c.pics))}</p><div class="explain"><b>${esc(t('howTitle'))}</b><p>${esc(t('explainSimple'))}</p>
@@ -1937,7 +1940,7 @@ function renderStats() {
       html += `<tr>
         <td class="num">${rankOf(c.s, id)}</td>
         <td class="wrap"><b>${esc(lexicalForm(x,c.s.target))}</b></td>
-        <td class="num">${ipm}</td>
+        ${showFrequency?`<td class="num">${ipm}</td>`:''}
         <td class="wrap">${meaning}</td>
         <td class="num">${card.lvl}</td>
         <td class="num">${fmtDuration(Math.max(0, MemoryScheduler.dueAt(card, isLearned(card), now) - (m.last ?? card.time)) / 60000)}</td>
