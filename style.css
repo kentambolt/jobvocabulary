@@ -887,3 +887,7 @@ html:has(> .landing) { scrollbar-gutter: auto; }
   .practice-stage.reading-room { --practice-option: 112px; --practice-response: 472px; }
   .practice-stage.reading-long { --practice-option: 120px; --practice-response: 504px; }
 }
+.noscript-fallback { padding: 16px 24px; }
+.noscript-fallback .links a { display: block; min-height: 44px; padding: 10px 16px; }
+.landing:has(.noscript-fallback) #mainNav,
+.landing:has(.noscript-fallback) [data-get-started] { display: none; }
