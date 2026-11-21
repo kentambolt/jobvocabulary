@@ -31,6 +31,11 @@ rendering, speech, spelling/building and answer reveal. Reading space is calcula
 for both forms so a later variant does not move the controls. The dictionary keeps
 its original records and IDs; lookup accepts either complete form, with a cache
 that refreshes when a custom entry changes. No gender profile is collected.
+When the target has grammatical variants, the existing task instruction names the
+requested form. Alternative valid gender tokens are excluded from wrong build
+tiles. Single-word replies use spelling even if their source category is phrases.
+Prefer natural neutral wording for new content, or add complete reviewed variants;
+do not introduce new compact notation without corresponding forms.
 
 `build-pages.js` preserves published course paths in `data/course-urls.json`.
 Correcting a translated title does not rename its URL. Keep retired paths reserved;

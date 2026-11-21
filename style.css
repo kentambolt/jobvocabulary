@@ -839,7 +839,7 @@ html:has(> .landing) { scrollbar-gutter: auto; }
 .practice-stage > .answer-receipt { grid-area: receipt; margin: 0; }
 .practice-stage > .answer-receipt.level-notice { padding: 3px 8px; font-size: 12px; line-height: 18px; }
 #app > .practice-stage > .prompt { grid-area: prompt; height: 100%; min-height: 0; margin: 0; padding-top: 52px; padding-bottom: 20px; }
-#app > .practice-stage > .task-q { grid-area: question; margin: 0; }
+#app > .practice-stage > .task-q { grid-area: question; margin: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 20px; }
 .practice-stage > .options { grid-area: response; align-self: start; }
 .practice-stage > .revealed-meaning { grid-area: response; height: 100%; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-align: center; }
 .revealed-meaning .sub { max-width: 100%; flex-shrink: 0; font-size: 24px; line-height: 1.3; overflow-wrap: normal; word-break: normal; color: var(--ink); }
@@ -869,6 +869,7 @@ html:has(> .landing) { scrollbar-gutter: auto; }
 :is(#app, .practice-stage) > .options.pics .opt { height: 156px; min-height: 156px; }
 @media (max-width: 600px) {
   .practice-stage { --practice-option: 48px; }
+  #app > .practice-stage > .task-q { font-size: 16px; }
   .practice-stage > .prompt { padding-left: 12px; padding-right: 12px; }
   .practice-stage.reading-space { --practice-option: 72px; --practice-response: 312px; }
   .practice-stage.reading-room { --practice-option: 96px; --practice-response: 408px; --practice-prompt: 168px; }

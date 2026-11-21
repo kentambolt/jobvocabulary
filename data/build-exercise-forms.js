@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path');
 function build(){
  const forms=require('./exercise-forms.json');
  for(const [lang,entries]of Object.entries(forms)){
-  if(!['ru','uk','pl','ro','bg'].includes(lang)||!entries||Array.isArray(entries))throw Error('Invalid exercise-form language');
+  if(!['ru','uk','pl','ro','lt','bg'].includes(lang)||!entries||Array.isArray(entries))throw Error('Invalid exercise-form language');
   for(const [pattern,pair]of Object.entries(entries)){
    if(pattern!==pattern.toLowerCase()||!Array.isArray(pair)||pair.length!==2||pair.some(value=>typeof value!=='string'||!value.trim()||/[()]/u.test(value))||pair[0]===pair[1])throw Error('Invalid exercise form: '+lang+':'+pattern);
   }

@@ -179,6 +179,14 @@
     "șomer(ă)": [
       "șomer",
       "șomeră"
+    ],
+    "ca suspect, nu sunteți obligat(ă) să spuneți nimic în afară de nume, adresă și data nașterii.": [
+      "Ca suspect, nu sunteți obligat să spuneți nimic în afară de nume, adresă și data nașterii.",
+      "Ca suspectă, nu sunteți obligată să spuneți nimic în afară de nume, adresă și data nașterii."
+    ],
+    "ca cetățean străin, puteți cere să fiți asimilat(ă) cetățenilor danezi, ca să puteți primi su.": [
+      "Ca cetățean străin, puteți cere să fiți asimilat cetățenilor danezi, ca să puteți primi SU.",
+      "Ca cetățeană străină, puteți cere să fiți asimilată cetățenilor danezi, ca să puteți primi SU."
     ]
   },
   "bg": {
@@ -623,6 +631,50 @@
     "хотел(а)": [
       "хотел",
       "хотела"
+    ],
+    "поменялся(-лась)": [
+      "поменялся",
+      "поменялась"
+    ],
+    "отметился(-лась)": [
+      "отметился",
+      "отметилась"
+    ],
+    "заблудился(-лась)": [
+      "заблудился",
+      "заблудилась"
+    ],
+    "готовым(-ой)": [
+      "готовым",
+      "готовой"
+    ],
+    "безработный(-ая)": [
+      "безработный",
+      "безработная"
+    ],
+    "загрузился(-лась)": [
+      "загрузился",
+      "загрузилась"
+    ],
+    "ударился(-лась)": [
+      "ударился",
+      "ударилась"
+    ],
+    "ошибся(-лась)": [
+      "ошибся",
+      "ошиблась"
+    ],
+    "порезался(-лась)": [
+      "порезался",
+      "порезалась"
+    ],
+    "новенький(-ая)": [
+      "новенький",
+      "новенькая"
+    ],
+    "ударился(-ась)": [
+      "ударился",
+      "ударилась"
     ]
   },
   "uk": {
@@ -901,6 +953,70 @@
     "чіпав(ла)": [
       "чіпав",
       "чіпала"
+    ],
+    "помінявся(-лася)": [
+      "помінявся",
+      "помінялася"
+    ],
+    "втомився(-лася)": [
+      "втомився",
+      "втомилася"
+    ],
+    "заселився(-лася)": [
+      "заселився",
+      "заселилася"
+    ],
+    "непритомний(-а)": [
+      "непритомний",
+      "непритомна"
+    ],
+    "відмітився(-лася)": [
+      "відмітився",
+      "відмітилася"
+    ],
+    "спізнився(-лася)": [
+      "спізнився",
+      "спізнилася"
+    ],
+    "заблукав(-ла)": [
+      "заблукав",
+      "заблукала"
+    ],
+    "готовим(-ою)": [
+      "готовим",
+      "готовою"
+    ],
+    "безробітний(-на)": [
+      "безробітний",
+      "безробітна"
+    ],
+    "завантажився(-лася)": [
+      "завантажився",
+      "завантажилася"
+    ],
+    "вдарився(-лася)": [
+      "вдарився",
+      "вдарилася"
+    ],
+    "помилився(-лася)": [
+      "помилився",
+      "помилилася"
+    ],
+    "порізався(-лася)": [
+      "порізався",
+      "порізалася"
+    ],
+    "новенький(-а)": [
+      "новенький",
+      "новенька"
+    ],
+    "впевнений(-а)": [
+      "впевнений",
+      "впевнена"
+    ],
+    "здоровий(-а)": [
+      "здоровий",
+      "здорова"
     ]
   },
   "pl": {
@@ -959,6 +1075,584 @@
     "zrobił(a)": [
       "zrobił",
       "zrobiła"
+    ],
+    "nowy(-a)": [
+      "nowy",
+      "nowa"
+    ],
+    "pracowałem(-am)": [
+      "pracowałem",
+      "pracowałam"
+    ],
+    "robiłem(-am)": [
+      "robiłem",
+      "robiłam"
+    ],
+    "wziąłem(-ęłam)": [
+      "wziąłem",
+      "wzięłam"
+    ],
+    "skończyłem(-am)": [
+      "skończyłem",
+      "skończyłam"
+    ],
+    "skaleczyłem(-am)": [
+      "skaleczyłem",
+      "skaleczyłam"
+    ],
+    "przepracowałem(-am)": [
+      "przepracowałem",
+      "przepracowałam"
+    ],
+    "chory(-a)": [
+      "chory",
+      "chora"
+    ],
+    "dostałem(-am)": [
+      "dostałem",
+      "dostałam"
+    ],
+    "chciałbym(-abym)": [
+      "chciałbym",
+      "chciałabym"
+    ],
+    "zapomniałem(-am)": [
+      "zapomniałem",
+      "zapomniałam"
+    ],
+    "zgubiłem(-am)": [
+      "zgubiłem",
+      "zgubiłam"
+    ],
+    "przyjąłem(-am)": [
+      "przyjąłem",
+      "przyjęłam"
+    ],
+    "zamieniłem(-am)": [
+      "zamieniłem",
+      "zamieniłam"
+    ],
+    "miałem(-am)": [
+      "miałem",
+      "miałam"
+    ],
+    "zmęczony(-a)": [
+      "zmęczony",
+      "zmęczona"
+    ],
+    "spisałem(-am)": [
+      "spisałem",
+      "spisałam"
+    ],
+    "wprowadziłem(-am)": [
+      "wprowadziłem",
+      "wprowadziłam"
+    ],
+    "czekałem(-am)": [
+      "czekałem",
+      "czekałam"
+    ],
+    "wysłałem(-am)": [
+      "wysłałem",
+      "wysłałam"
+    ],
+    "musiałem(-am)": [
+      "musiałem",
+      "musiałam"
+    ],
+    "znalazłem(-am)": [
+      "znalazłem",
+      "znalazłam"
+    ],
+    "zdążyłem(-am)": [
+      "zdążyłem",
+      "zdążyłam"
+    ],
+    "spóźniłem(-am)": [
+      "spóźniłem",
+      "spóźniłam"
+    ],
+    "głodny(-a)": [
+      "głodny",
+      "głodna"
+    ],
+    "przyjął(-ęła)": [
+      "przyjął",
+      "przyjęła"
+    ],
+    "podałem(-am)": [
+      "podałem",
+      "podałam"
+    ],
+    "zmierzyłem(-am)": [
+      "zmierzyłem",
+      "zmierzyłam"
+    ],
+    "udokumentowałem(-am)": [
+      "udokumentowałem",
+      "udokumentowałam"
+    ],
+    "nacisnąłem(-ęłam)": [
+      "nacisnąłem",
+      "nacisnęłam"
+    ],
+    "odłożyłem(-am)": [
+      "odłożyłem",
+      "odłożyłam"
+    ],
+    "uderzyłeś(-aś)": [
+      "uderzyłeś",
+      "uderzyłaś"
+    ],
+    "przewinąłem(-ęłam)": [
+      "przewinąłem",
+      "przewinęłam"
+    ],
+    "widziałem(-am)": [
+      "widziałem",
+      "widziałam"
+    ],
+    "zrozumiałem(-am)": [
+      "zrozumiałem",
+      "zrozumiałam"
+    ],
+    "zgłosiłem(-am)": [
+      "zgłosiłem",
+      "zgłosiłam"
+    ],
+    "upuściłem(-am)": [
+      "upuściłem",
+      "upuściłam"
+    ],
+    "porysowałem(-am)": [
+      "porysowałem",
+      "porysowałam"
+    ],
+    "zadowolony(-a)": [
+      "zadowolony",
+      "zadowolona"
+    ],
+    "zamknąłem(-ęłam)": [
+      "zamknąłem",
+      "zamknęłam"
+    ],
+    "włożyłem(-am)": [
+      "włożyłem",
+      "włożyłam"
+    ],
+    "zgasiłem(-am)": [
+      "zgasiłem",
+      "zgasiłam"
+    ],
+    "wyniosłem(-am)": [
+      "wyniosłem",
+      "wyniosłam"
+    ],
+    "zostawiłem(-am)": [
+      "zostawiłem",
+      "zostawiłam"
+    ],
+    "pewny(-a)": [
+      "pewny",
+      "pewna"
+    ],
+    "uderzyłem(-am)": [
+      "uderzyłem",
+      "uderzyłam"
+    ],
+    "przewierciłem(-am)": [
+      "przewierciłem",
+      "przewierciłam"
+    ],
+    "gotowy(-a)": [
+      "gotowy",
+      "gotowa"
+    ],
+    "robiłeś(-aś)": [
+      "robiłeś",
+      "robiłaś"
+    ],
+    "zrobiłem(-am)": [
+      "zrobiłem",
+      "zrobiłam"
+    ],
+    "zdałem(-am)": [
+      "zdałem",
+      "zdałam"
+    ],
+    "oblałem(-am)": [
+      "oblałem",
+      "oblałam"
+    ],
+    "ukończyłem(-am)": [
+      "ukończyłem",
+      "ukończyłam"
+    ],
+    "nieprzytomny(-a)": [
+      "nieprzytomny",
+      "nieprzytomna"
+    ],
+    "dotykałem(-am)": [
+      "dotykałem",
+      "dotykałam"
+    ],
+    "ubezpieczony(-a)": [
+      "ubezpieczony",
+      "ubezpieczona"
+    ],
+    "wymiotowałem(-am)": [
+      "wymiotowałem",
+      "wymiotowałam"
+    ],
+    "wymiotowałeś(-aś)": [
+      "wymiotowałeś",
+      "wymiotowałaś"
+    ],
+    "powinieneś(-naś)": [
+      "powinieneś",
+      "powinnaś"
+    ],
+    "chciałbym(-ałabym)": [
+      "chciałbym",
+      "chciałabym"
+    ],
+    "myślałem(-am)": [
+      "myślałem",
+      "myślałam"
+    ],
+    "zamówiłem(-am)": [
+      "zamówiłem",
+      "zamówiłam"
+    ],
+    "uczulony(-a)": [
+      "uczulony",
+      "uczulona"
+    ],
+    "przekazałem(-am)": [
+      "przekazałem",
+      "przekazałam"
+    ],
+    "wolny(-a)": [
+      "wolny",
+      "wolna"
+    ],
+    "pokwitowałem(-am)": [
+      "pokwitowałem",
+      "pokwitowałam"
+    ],
+    "ukłułem(-am)": [
+      "ukłułem",
+      "ukłułam"
+    ],
+    "zapomniałeś(-aś)": [
+      "zapomniałeś",
+      "zapomniałaś"
+    ],
+    "chciałem(-am)": [
+      "chciałem",
+      "chciałam"
+    ],
+    "zdobyłem(-am)": [
+      "zdobyłem",
+      "zdobyłam"
+    ],
+    "przeprowadziłem(-am)": [
+      "przeprowadziłem",
+      "przeprowadziłam"
+    ],
+    "zaktualizowałem(-am)": [
+      "zaktualizowałem",
+      "zaktualizowałam"
+    ],
+    "złożyłem(-am)": [
+      "złożyłem",
+      "złożyłam"
+    ],
+    "uznany(-a)": [
+      "uznany",
+      "uznana"
+    ],
+    "gotowego(-ą)": [
+      "gotowego",
+      "gotową"
+    ],
+    "zapłaciłem(-am)": [
+      "zapłaciłem",
+      "zapłaciłam"
+    ],
+    "zostałem(-am)": [
+      "zostałem",
+      "zostałam"
+    ],
+    "oszukany(-a)": [
+      "oszukany",
+      "oszukana"
+    ],
+    "zatwierdziłem(-am)": [
+      "zatwierdziłem",
+      "zatwierdziłam"
+    ],
+    "rozpocząłem(-ęłam)": [
+      "rozpocząłem",
+      "rozpoczęłam"
+    ],
+    "wezwałem(-am)": [
+      "wezwałem",
+      "wezwałam"
+    ],
+    "zatrzasnąłem(-ęłam)": [
+      "zatrzasnąłem",
+      "zatrzasnęłam"
+    ],
+    "wymieniłem(-am)": [
+      "wymieniłem",
+      "wymieniłam"
+    ],
+    "zarejestrowałem(-am)": [
+      "zarejestrowałem",
+      "zarejestrowałam"
+    ],
+    "sprawdziłem(-am)": [
+      "sprawdziłem",
+      "sprawdziłam"
+    ],
+    "oparzyłem(-am)": [
+      "oparzyłem",
+      "oparzyłam"
+    ],
+    "popełniłem(-am)": [
+      "popełniłem",
+      "popełniłam"
+    ],
+    "nabiłem(-am)": [
+      "nabiłem",
+      "nabiłam"
+    ],
+    "odbiłem(-am)": [
+      "odbiłem",
+      "odbiłam"
+    ],
+    "zrównanym(-ą)": [
+      "zrównanym",
+      "zrównaną"
+    ],
+    "napisałem(-am)": [
+      "napisałem",
+      "napisałam"
+    ],
+    "chorowałem(-am)": [
+      "chorowałem",
+      "chorowałam"
+    ],
+    "kupiłem(-am)": [
+      "kupiłem",
+      "kupiłam"
+    ],
+    "zadzwoniłem(-am)": [
+      "zadzwoniłem",
+      "zadzwoniłam"
+    ],
+    "dzwoniłem(-am)": [
+      "dzwoniłem",
+      "dzwoniłam"
+    ],
+    "złapałem(-am)": [
+      "złapałem",
+      "złapałam"
+    ],
+    "zatrudniony(-a)": [
+      "zatrudniony",
+      "zatrudniona"
+    ],
+    "samozatrudniony(-a)": [
+      "samozatrudniony",
+      "samozatrudniona"
+    ],
+    "włożyłeś(-aś)": [
+      "włożyłeś",
+      "włożyłaś"
+    ],
+    "zarezerwowałem(-am)": [
+      "zarezerwowałem",
+      "zarezerwowałam"
+    ],
+    "załadowany(-a)": [
+      "załadowany",
+      "załadowana"
+    ],
+    "pomyliłem(-am)": [
+      "pomyliłem",
+      "pomyliłam"
+    ],
+    "zeskanowałem(-am)": [
+      "zeskanowałem",
+      "zeskanowałam"
+    ],
+    "zdrowy(-a)": [
+      "zdrowy",
+      "zdrowa"
+    ],
+    "byłem(-am)": [
+      "byłem",
+      "byłam"
+    ],
+    "doznałem(-am)": [
+      "doznałem",
+      "doznałam"
+    ],
+    "przeszedłem(-am)": [
+      "przeszedłem",
+      "przeszłam"
+    ]
+  },
+  "lt": {
+    "naujas (-a)": [
+      "naujas",
+      "nauja"
+    ],
+    "dirbęs (-usi)": [
+      "dirbęs",
+      "dirbusi"
+    ],
+    "daręs (-iusi)": [
+      "daręs",
+      "dariusi"
+    ],
+    "valytojas (-a)": [
+      "valytojas",
+      "valytoja"
+    ],
+    "pavargęs (-usi)": [
+      "pavargęs",
+      "pavargusi"
+    ],
+    "sutuoktinis (-ė)": [
+      "sutuoktinis",
+      "sutuoktinė"
+    ],
+    "alkanas (-a)": [
+      "alkanas",
+      "alkana"
+    ],
+    "ištroškęs (-usi)": [
+      "ištroškęs",
+      "ištroškusi"
+    ],
+    "nusiminęs (-usi)": [
+      "nusiminęs",
+      "nusiminusi"
+    ],
+    "išeidamas (-a)": [
+      "išeidamas",
+      "išeidama"
+    ],
+    "alergiškas (-a)": [
+      "alergiškas",
+      "alergiška"
+    ],
+    "patenkintas (-a)": [
+      "patenkintas",
+      "patenkinta"
+    ],
+    "eidamas (-a)": [
+      "eidamas",
+      "eidama"
+    ],
+    "pasiruošęs (-usi)": [
+      "pasiruošęs",
+      "pasiruošusi"
+    ],
+    "sulaikytam (-ai)": [
+      "sulaikytam",
+      "sulaikytai"
+    ],
+    "įtariamas (-a)": [
+      "įtariamas",
+      "įtariama"
+    ],
+    "sulaikytas (-a)": [
+      "sulaikytas",
+      "sulaikyta"
+    ],
+    "pilietis (-ė)": [
+      "pilietis",
+      "pilietė"
+    ],
+    "slaugytojas (-a)": [
+      "slaugytojas",
+      "slaugytoja"
+    ],
+    "sekretorius (-ė)": [
+      "sekretorius",
+      "sekretorė"
+    ],
+    "įeidamas (-a)": [
+      "įeidamas",
+      "įeidama"
+    ],
+    "kruopštus (-i)": [
+      "kruopštus",
+      "kruopšti"
+    ],
+    "nekantrus (-i)": [
+      "nekantrus",
+      "nekantri"
+    ],
+    "bedarbiu (-e)": [
+      "bedarbiu",
+      "bedarbe"
+    ],
+    "pripažintas (-a)": [
+      "pripažintas",
+      "pripažinta"
+    ],
+    "pasirengusiu (-ia)": [
+      "pasirengusiu",
+      "pasirengusia"
+    ],
+    "pasirengęs (-usi)": [
+      "pasirengęs",
+      "pasirengusi"
+    ],
+    "įtrauktas (-a)": [
+      "įtrauktas",
+      "įtraukta"
+    ],
+    "vienas (-a)": [
+      "vienas",
+      "viena"
+    ],
+    "bedarbis (-ė)": [
+      "bedarbis",
+      "bedarbė"
+    ],
+    "prilygintas (-a)": [
+      "prilygintas",
+      "prilyginta"
+    ],
+    "išvažiuodamas (-a)": [
+      "išvažiuodamas",
+      "išvažiuodama"
+    ],
+    "sveikas (-a)": [
+      "sveikas",
+      "sveika"
+    ],
+    "įdarbintas (-a)": [
+      "įdarbintas",
+      "įdarbinta"
+    ],
+    "narys (-ė)": [
+      "narys",
+      "narė"
+    ],
+    "pasirašydamas (-a)": [
+      "pasirašydamas",
+      "pasirašydama"
+    ],
+    "vienam (-ai)": [
+      "vienam",
+      "vienai"
     ]
   }
 }
