@@ -69,7 +69,7 @@ const indices = new Map(entries.map((row, index) => [row[0], index]));
 const commonFile = fs.existsSync(path.join(root,'dictionary/common-words-v2.json')) ? 'dictionary/common-words-v2.json' : 'dictionary/common-words.json';
 const commonPath = path.join(root,commonFile);
 const common = fs.existsSync(commonPath) ? JSON.parse(fs.readFileSync(commonPath,'utf8')) : null;
-const supplements = common ? [{url:commonFile+'?v='+crypto.createHash('sha256').update(fs.readFileSync(commonPath)).digest('hex').slice(0,12)}] : [];
+const supplements = common ? [{url:commonFile+'?v='+require('./text-asset-version')(fs.readFileSync(commonPath))}] : [];
 const dictionary = { version: 4, languages, entries, supplements, aliases: Object.fromEntries(Object.entries(aliases).map(([key, id]) => [key, indices.get(id)])) };
 const json = JSON.stringify(dictionary);
 const version = crypto.createHash('sha256').update(json).digest('hex').slice(0, 12);

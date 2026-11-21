@@ -3,12 +3,13 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const crypto = require('crypto');
+const textAssetVersion=require('./text-asset-version');
 const catalog = require('../catalog');
 const seo = require('./seo-pages');
 const courseRoutes = require('./course-routes');
 const courseSearchAliases = require('./course-search-aliases.json');
 const {writeSitemap} = require('./build-sitemap');
+const {socialMetadata,courseImage}=require('./social-meta');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
@@ -141,6 +142,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   <meta property="og:url" content="${url}">
   <meta property="og:title" content="${esc(t.title(name))}">
   <meta property="og:description" content="${esc(desc)}">
+  ${socialMetadata(lang,courseImage(p.id))}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -205,6 +207,7 @@ for (const p of packs) {
 const indexPath = path.join(ROOT, 'index.html');
 const homeDescription = `Lær ord og sætninger til job, transport og hverdag. Vælg mellem ${packs.length} kurser og ${LANGS.length} sprog, og træn i dit eget tempo.`;
 const html = fs.readFileSync(indexPath, 'utf8')
+  .replace(/<!-- SOCIAL -->[\s\S]*?<!-- \/SOCIAL -->/,`<!-- SOCIAL -->\n  ${socialMetadata('da')}\n  <!-- /SOCIAL -->`)
   .replace(/(<meta name="description" content=")[^"]*(">)/,`$1${esc(homeDescription)}$2`)
   .replace(/(<meta property="og:description" content=")[^"]*(">)/,`$1${esc(homeDescription)}$2`)
   .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(match,json)=>{
@@ -254,6 +257,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <meta property="og:url" content="${canonical}">
   <meta property="og:title" content="${esc(l.catalog)} | Job Vocabulary">
   <meta property="og:description" content="${esc(l.intro)}">
+  ${socialMetadata(lang)}
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -288,7 +292,7 @@ const guideOutput = seo.buildGuides({root:ROOT,site:SITE,packs,urlOf});
 urls.push(...guideOutput.urls);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
 const assets = ['style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
-const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
+const versions = Object.fromEntries(assets.map((asset) => [asset, textAssetVersion(fs.readFileSync(path.join(ROOT, asset)))]));
 const pages = [indexPath, path.join(ROOT,'dictionary/attribution.html'), ...guideOutput.pages, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {
   const html = fs.readFileSync(file, 'utf8').replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
