@@ -305,5 +305,14 @@ module.exports={
       "Recognise combs, scissors, hairdryers and hair products by name.",
       "Arrange an appointment, clarify what the price includes and finish the visit."
     ]
+  ],
+  "gardening": [
+    "Danish for gardening and grounds maintenance",
+    "When working in gardens and green spaces, you need to connect the work plan with the plants, tools and materials in front of you. Practise short questions about the area, position and desired height before continuing. Also rehearse telling a colleague what is missing and clarifying the clean-up with the customer.",
+    [
+      "Recognise plants, gardening tools and materials by name.",
+      "Ask where to start and what the customer wants.",
+      "Report on equipment, garden waste and completed areas."
+    ]
   ]
 };

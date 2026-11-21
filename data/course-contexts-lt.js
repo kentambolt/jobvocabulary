@@ -305,5 +305,14 @@ module.exports={
       "Atpažinkite šukų, žirklių, džiovintuvų ir plaukų priemonių pavadinimus.",
       "Sutarkite vizito laiką, paaiškinkite, kas įskaičiuota į kainą, ir užbaikite apsilankymą."
     ]
+  ],
+  "gardening": [
+    "Danų kalba sodininkystei ir želdynų priežiūrai",
+    "Dirbant soduose ir želdynuose reikia susieti darbo planą su priešais esančiais augalais, įrankiais ir medžiagomis. Prieš tęsdami praktikuokite trumpus klausimus apie teritoriją, vietą ir norimą aukštį. Taip pat mokykitės pasakyti kolegai, ko trūksta, ir su klientu aptarti sutvarkymą po darbo.",
+    [
+      "Atpažinkite augalų, sodo įrankių ir medžiagų pavadinimus.",
+      "Paklauskite, nuo ko pradėti ir ko pageidauja klientas.",
+      "Praneškite apie įrangą, sodo atliekas ir sutvarkytas teritorijas."
+    ]
   ]
 };
