@@ -267,6 +267,8 @@ image-generation output path.
 Text asset versions use `data/text-asset-version.js` to normalize Windows/Linux
 line endings. Use that helper for shared scripts, styles, pack versions and JSON
 cache URLs so a checkout does not invalidate otherwise unchanged content.
+The app's external scripts use `defer`: they download in parallel and execute in
+document order after parsing. Preserve dependency order and do not use `async`.
 
 `data/build-lexicon.js` also generates `shared-word-groups.js`, a small index of
 active practice IDs with identical translations in all eight languages and the
