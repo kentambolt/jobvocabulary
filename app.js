@@ -416,6 +416,17 @@ const MEMORY_TEXT = {
 };
 for (const [lang, text] of Object.entries(MEMORY_TEXT)) Object.assign(UI[lang], text);
 for (const [lang, locale] of Object.entries(EXTRA_LOCALES)) UI[lang] = locale.ui;
+const PROGRESS_TEXT = {
+  da:['Fremskridt','Et ord er lært, når du kan det i alle valgte opgavetyper. Bjælken viser også de dele, du allerede har klaret.'],
+  en:['Progress','A word is learned when you know it in every selected task type. The bar also includes the parts you have already mastered.'],
+  ru:['Прогресс','Слово считается выученным после освоения всех выбранных типов заданий. Полоса учитывает и уже освоенные части.'],
+  uk:['Прогрес','Слово вважається вивченим після опанування всіх вибраних типів завдань. Смужка враховує і вже опановані частини.'],
+  pl:['Postępy','Słowo jest opanowane po poprawnych odpowiedziach we wszystkich wybranych typach zadań. Pasek uwzględnia też opanowane już części.'],
+  ro:['Progres','Un cuvânt este învățat când îl cunoști în fiecare tip de exercițiu ales. Bara include și părțile pe care le stăpânești deja.'],
+  lt:['Pažanga','Žodis laikomas išmoktu, kai jį moki visuose pasirinktuose užduočių tipuose. Juosta rodo ir jau išmoktas dalis.'],
+  bg:['Напредък','Думата е научена, когато я знаеш във всички избрани видове задачи. Лентата отчита и вече усвоените части.'],
+};
+for(const [lang,[progressLabel,progressMixedHint]]of Object.entries(PROGRESS_TEXT))Object.assign(UI[lang],{progressLabel,progressMixedHint});
 const languageNames = { da: ['Polsk','Rumænsk','Litauisk','Bulgarsk'], en: ['Polish','Romanian','Lithuanian','Bulgarian'], ru: ['Польский','Румынский','Литовский','Болгарский'], uk: ['Польська','Румунська','Литовська','Болгарська'], pl: ['polski','rumuński','litewski','bułgarski'], ro: ['poloneză','română','lituaniană','bulgară'] };
 for (const [lang, [pl,ro,lt,bg]] of Object.entries(languageNames)) Object.assign(UI[lang].lang,{pl,ro,lt,bg});
 for (const [lang,label] of Object.entries({da:'Licenser',en:'Licences',ru:'Лицензии',uk:'Ліцензії'})) UI[lang].licenses=label;
@@ -1037,7 +1048,7 @@ function practiceChoicesHTML(settings, prefix) {
   const selected = PracticeOptions.modes(settings);
   const pics = isPics(settings);
   const vars = { T: exerciseLanguage(settings.target), B: exerciseLanguage(settings.base) };
-  return `<fieldset class="mode-fieldset"><legend>${esc(t('modeQ'))}</legend><p class="course-note">${esc(t('modesHint'))}</p><div class="choices">${PracticeOptions.allowed(settings).map((mode) => `<button type="button" class="choice" data-mode="${mode}" aria-pressed="${selected.includes(mode)}"><b>${esc(dirName(mode, pics))}</b><small>${esc(dirSub(mode, pics, vars))}</small></button>`).join('')}</div></fieldset><label class="repeat-option" for="${prefix}repeatLearned"><input type="checkbox" id="${prefix}repeatLearned"${settings.repeatLearned !== false ? ' checked' : ''}><span><b>${esc(t('repeatLearned'))}</b><small>${esc(t('repeatHint'))}</small></span></label>`;
+  return `<fieldset class="mode-fieldset"><legend>${esc(t('modeQ'))}</legend><p class="course-note">${esc(t('modesHint'))}</p><div class="choices">${PracticeOptions.allowed(settings).map((mode) => `<button type="button" class="choice" data-mode="${mode}" aria-pressed="${selected.includes(mode)}"><b>${esc(dirName(mode, pics))}</b><small>${esc(dirSub(mode, pics, vars))}</small></button>`).join('')}</div>${selected.length>1 ? `<p class="course-note">${esc(t("progressMixedHint"))}</p>` : ""}</fieldset><label class="repeat-option" for="${prefix}repeatLearned"><input type="checkbox" id="${prefix}repeatLearned"${settings.repeatLearned !== false ? ' checked' : ''}><span><b>${esc(t('repeatLearned'))}</b><small>${esc(t('repeatHint'))}</small></span></label>`;
 }
 function openTrainingOptions(settings, apply, options = {}) {
   let choices = PracticeOptions.apply(settings);
@@ -1070,6 +1081,18 @@ function combinedCards(settings, pool) {
     const known = progress.every(prog=>prog.cards[word.id]&&isLearned(prog.cards[word.id]));
     return [word.id, { seen, ok: known, lvl: known ? CONFIG.learnedLevel : 0 }];
   }));
+}
+function practiceProgress(settings,pool) {
+  const modes=PracticeOptions.modes(settings);
+  const progress=modes.map(dir=>progressFor({...settings,dir},pool));
+  let learnedWords=0,completedModes=0;
+  for(const word of pool){
+    const completed=progress.filter(prog=>prog.cards[word.id]&&isLearned(prog.cards[word.id])).length;
+    completedModes+=completed;
+    if(completed===modes.length)learnedWords++;
+  }
+  const totalModes=pool.length*modes.length;
+  return {learnedWords,completedModes,totalModes,percent:totalModes?100*completedModes/totalModes:0,mixed:modes.length>1};
 }
 function renderPracticeComplete(c) {
   $('app').innerHTML = `<section class="practice-complete"><h1>${esc(t('completeTitle'))}</h1><p>${esc(t('completeHint'))}</p><div class="row actions"><a class="primary cta" href="/${uiLang()}/">${esc(COURSE_CATALOG.labels[uiLang()].catalog)}</a><button class="secondary" id="enableReview">${esc(t('enableReview'))}</button>${isList(c.s) && lastCourseSettings() ? `<button class="secondary" id="completeReturn">${esc(lt('backToCourse'))}</button>` : ''}</div></section>`;
@@ -1338,14 +1361,16 @@ function questionText(c, x, kind) {
 }
 
 function metaHTML(c, x) {
-  const cards = combinedCards(c.s, c.pool);
-  const score = c.pool.filter((p) => isLearned(cards[p.id])).length;
+  const progress=practiceProgress(c.s,c.pool);
+  const score=progress.learnedWords;
   void x;
   const course = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(isPics(c.s) ? 'picsB' : 'topB');
   const difficulty = isList(c.s) ? '' : t(isPack(c.s) ? 'packDiff' : 'diff')[c.s.diff];
-  return `<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(difficulty)}</span><span class="course-progress">${esc(t('progress', { n: score, m: c.pool.length }))}</span>
+  const label=t('progress', { n: score, m: c.pool.length });
+  const hint=progress.mixed?t('progressMixedHint'):'';
+  return `<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(difficulty)}</span><span class="course-progress"${hint?` title="${esc(hint)}"`:''}>${esc(label)}</span>
     </div>
-    <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
+    <div class="progress" role="progressbar" aria-label="${esc(t('progressLabel'))}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${+progress.percent.toFixed(1)}" aria-valuetext="${esc(label+(hint?' '+hint:''))}"><div style="width:${progress.percent}%"></div></div>`;
 }
 
 // Fit text inside fixed exercise slots without moving the following controls.
