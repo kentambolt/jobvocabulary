@@ -1,8 +1,8 @@
 # Job Vocabulary
 
 Static, browser-based vocabulary practice. The current content focuses on Danish
-for work and everyday life, with Danish, English, Russian, Ukrainian, Polish and
-Romanian interfaces and course translations. All six can be learning or helper
+for work and everyday life, with Danish, English, Russian, Ukrainian, Polish,
+Romanian, Lithuanian and Bulgarian interfaces and course translations. All eight can be learning or helper
 languages. Original corpus rankings remain for Danish, English and Russian;
 the additional languages use the shared Danish concept sequence and do not show
 invented frequency statistics.
@@ -82,7 +82,7 @@ This repository is `kentambolt/jobvocabulary` (renamed from `trafficwords` on 20
 A local private checkout must use the remote `kentambolt/jobvocabulary-private`: the old
 private name `kentambolt/jobvocabulary` now points to this public repository.
 
-`build-pages.js` writes the six language catalogues and course pages, updates the
+`build-pages.js` writes the eight language catalogues, course and guide pages, updates the
 sitemap and adds content hashes to shared asset URLs. Existing published course
 paths are preserved. The shared category definitions live in `catalog.js`.
 
@@ -299,8 +299,13 @@ not merge dictionary IDs, rewrite saved lists or transfer learning history.
 Incomplete translations, different qualifiers and distinct meanings stay separate.
 
 `data/build-lexicon.js` also generates `shared-word-groups.js`, a small index of
-active practice IDs with identical translations in all eight languages and the
-same word/phrase type. `course-knowledge.js` can reuse actual successful practice
+active practice IDs with matching translations in all eight languages and the
+same word/phrase type. For complete noun records, an optional Danish en/et is
+ignored; qualifiers and all other translations must still match. Each group keeps
+current raw fingerprints as compatibility keys alongside its stable article-free
+fingerprint. This preserves earlier genuine answers without accepting changed
+meanings. Dictionary entries and practice IDs are not merged by this index.
+`course-knowledge.js` can reuse actual successful practice
 from another course for the same language pair and task type. It preserves the
 source schedule without inventing answers or copying review events. Existing
 target cards always take precedence, and newer mistakes block older confidence.
