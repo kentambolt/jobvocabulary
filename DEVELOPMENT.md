@@ -211,6 +211,9 @@ coverage in every selected mode and at least 80% of words learned across them. D
 learned repetitions still permits retries of incorrect or unfinished words. A fully
 completed selection stops with an explicit option to enable repetitions. Options
 are available before course/list practice and from the navigation menu.
+Writing mode uses letter tasks for eligible single words and word tiles for
+multiword terms and sentences, including their first appearance. A first sentence
+build creates a card only after an actual answer; revealing it records exposure.
 
 `node data/simulate-learning.cjs` reproduces the synthetic baseline comparisons
 and one-year coverage checks in `data/reports/learning-simulation.json`. The report
