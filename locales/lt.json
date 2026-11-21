@@ -6,7 +6,7 @@
     "lead":"Kasdienybei, naujam darbui ar vairavimo egzaminui. Svarbiausi žodžiai pirmiausia, o išmokti kartojami rečiau.",
     "how":["Pasirink kalbas ir temą: dažnus žodžius, profesiją ar vairavimą.","Mokykis po vieną žodį ar sakinį. Svarbiausi pateikiami pirmiausia.","Teisingai atsakius žodis kartojamas vėliau. Suklydus jis grįžta anksčiau. Rezultatas rodo pažangą."],
     "tagline":"Nemokamai · be paskyros · ir telefone",
-    "settings":"Nustatymai","setupTitle":"Pradėk mokytis","save":"Išsaugoti ir tęsti","cancel":"Atšaukti","loading":"Įkeliama…","loadFail":"Nepavyko įkelti turinio. Patikrink interneto ryšį.",
+    "settings":"Nustatymai","setupTitle":"Pradėk mokytis","save":"Išsaugoti ir tęsti","cancel":"Atšaukti","loading":"Įkeliama…","retryLoad":"Bandyti dar kartą","loadFail":"Nepavyko įkelti turinio. Patikrink interneto ryšį.",
     "nativeShort":"gimtoji kalba","switchDir":"Keisti kryptį","progress":"Išmokta {n} iš {m}","levelAdvanced":"Susipažinai su lygio „{from}“ žodžiais. Dabar lygis „{to}“.",
     "howTitle":"Kaip tai veikia","explainSimple":"Dauguma užduočių pristato naujus žodžius. Sunkūs žodžiai grįžta po pertraukos. Įjungus kartojimą, išmokti žodžiai pasirodo rečiau. Klaida turi įtakos tik tam žodžiui. Pristačius visus lygio žodžius ir išmokus bent 80%, automatiškai pereinama toliau. Likę sunkūs žodžiai lieka pratybose.","formula":"Kaip parenkami žodžiai",
     "learnQ":"Kokią kalbą nori išmokti?","baseQ":"Kurią kalbą supranti geriausiai?","nativeB":"Tai mano gimtoji kalba","nativeS":"Mokytis skaityti su paveikslėliais","nativeSoon":"Paveikslėliai bus pridėti vėliau","otherS":"Rodyti vertimus","whatQ":"Ko nori mokytis?","topB":"Dažniausi žodžiai","topS":"Pagal vartojimo dažnumą","catsQ":"Temos",

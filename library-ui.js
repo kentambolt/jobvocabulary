@@ -333,7 +333,7 @@ function saveToListDialog(sourceId) {
       if (view === 'library') renderLibrary();
     };
     $('dialogFavoriteBtn').focus();
-  }).catch(() => { if (dialog.open) { dialog.innerHTML = `<p role="status">${esc(t('loadFail'))}</p><button class="secondary" id="cancelWordLoad">${esc(t('cancel'))}</button>`; $('cancelWordLoad').onclick = () => dialog.close(); } });
+  }).catch(() => { if (dialog.open && dialog.dataset.sourceId === sourceId) { dialog.innerHTML = `<p role="alert">${esc(t('loadFail'))}</p><div class="row actions"><button class="primary" id="retryWordLoad">${esc(t('retryLoad'))}</button><button class="secondary" id="cancelWordLoad">${esc(t('cancel'))}</button></div>`; $('cancelWordLoad').onclick = () => dialog.close(); $('retryWordLoad').onclick = () => { dialog.close(); saveToListDialog(sourceId); }; } });
 }
 
 function updateFavoriteButton(button, sourceId) {
@@ -448,7 +448,7 @@ function renderLibrary() {
   if (!dictionaryData) {
     $('app').innerHTML = `<p role="status">${esc(t('loading'))}</p>`;
     loadDictionary().then(() => { if (view === 'library') renderLibrary(); }, () => {
-      if (view === 'library') { $('app').innerHTML = `<p>${esc(t('loadFail'))}</p><button id="dictionaryRetry" class="primary">${esc(lt('title'))}</button>`; $('dictionaryRetry').onclick = renderLibrary; }
+      if (view === 'library') { $('app').innerHTML = `<p role="alert">${esc(t('loadFail'))}</p><button id="dictionaryRetry" class="primary">${esc(t('retryLoad'))}</button>`; $('dictionaryRetry').onclick = renderLibrary; }
     });
     return;
   }
