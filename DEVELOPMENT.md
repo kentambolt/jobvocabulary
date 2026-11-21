@@ -290,3 +290,8 @@ It validates sitemap destinations, unique titles/descriptions, canonical URLs,
 structured JSON, reciprocal guide translations and internal navigation links.
 Google Search Console uses the `jobvocabulary.com` Domain property. Preserve its
 Google verification TXT record in Simply.com and the existing HTTPS sitemap URL.
+
+`404.html` is GitHub Pages' custom missing-page response. `not-found.js` localizes
+its recovery links from a supported UI hint, path prefix or browser language.
+Keep the page out of the sitemap and never redirect unknown URLs to the home page.
+Verify a genuinely missing public URL still returns HTTP 404 after deployment.
