@@ -16,8 +16,10 @@ test('statistics omit unavailable frequency columns while retaining core corpus 
   if(pack==='list:favorites')a.run(`wordLibrary.addCustom({da:'mit testord',en:'my test word'});const id=Object.keys(wordLibrary.data.custom)[0];wordLibrary.add(id);registerOwnWords();`);
   const html=a.run(`(()=>{const c=ctx(),x=c.pool[0];c.prog.cards[x.id]={lvl:2,ok:true,right:1,wrong:0,time:Date.now()-1000,task:1};renderStats();return document.getElementById('app').innerHTML;})()`);
   const header=html.match(/<thead>([\s\S]*?)<\/thead>/)[1],row=html.match(/<tbody>\s*<tr>([\s\S]*?)<\/tr>/)[1];
-  assert.equal((header.match(/<th>/g)||[]).length,show?8:7,pack+'/'+target);
+  assert.equal((header.match(/<th scope="col">/g)||[]).length,show?8:7,pack+'/'+target);
   assert.equal((row.match(/<td\b/g)||[]).length,show?8:7,pack+'/'+target);
   assert.equal(header.includes(a.run("t('cols')[2]")),show,pack+'/'+target);
+  assert.ok(row.includes(`<td class="wrap" lang="${target}">`));
+  assert.ok(row.includes(`<td class="wrap" lang="${target==='en'?'da':'en'}">`));
  }
 });

@@ -1956,7 +1956,7 @@ function renderStats() {
   if (!ids.length) {
     html += `<p class="task-q">${esc(t('noStats'))}</p>`;
   } else {
-    html += `<div class="table-wrap"><table><thead><tr>${cols.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>`;
+    html += `<div class="table-wrap"><table aria-label="${esc(t('stats'))}"><thead><tr>${cols.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>`;
     for (const id of ids) {
       const x = ITEM[id];
       const card = c.prog.cards[id];
@@ -1970,9 +1970,9 @@ function renderStats() {
       const ipm = !isPack(c.s) && IPM[c.s.target] ? (IPM[c.s.target][id] || 0).toLocaleString(uiLang()) : '';
       html += `<tr>
         <td class="num">${rankOf(c.s, id)}</td>
-        <td class="wrap"><b>${esc(lexicalForm(x,c.s.target))}</b></td>
+        <td class="wrap" lang="${c.s.target}"><b>${esc(lexicalForm(x,c.s.target))}</b></td>
         ${showFrequency?`<td class="num">${ipm}</td>`:''}
-        <td class="wrap">${meaning}</td>
+        <td class="wrap" lang="${c.s.base}">${meaning}</td>
         <td class="num">${card.lvl}</td>
         <td class="num">${fmtDuration(Math.max(0, MemoryScheduler.dueAt(card, isLearned(card), now) - (m.last ?? card.time)) / 60000)}</td>
         <td>${status}</td>
