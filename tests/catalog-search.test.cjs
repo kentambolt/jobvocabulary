@@ -4,18 +4,35 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const aliases = require('../data/course-search-aliases.json');
 
-function catalogue(initialQuery='') {
+function catalogue(initialQuery='',hash='') {
   const input = {value:initialQuery, addEventListener(type, fn) { this[type] = fn; }};
   const empty = {hidden:true};
   const cards = Object.entries(aliases).map(([id, search]) => ({id, textContent:id, dataset:{search}, hidden:false}));
-  const groups = [cards.slice(0,15),cards.slice(15)].map(items => ({hidden:false,querySelectorAll:()=>items}));
+  const groups=require('../catalog').groups.map(group=>({id:group.id,hidden:false,querySelectorAll:()=>cards.filter(card=>group.packs.includes(card.id))}));
+  const links=groups.map(group=>({hidden:false,attributes:{href:'#'+group.id},getAttribute(name){return this.attributes[name];},setAttribute(name,value){this.attributes[name]=value;},removeAttribute(name){delete this.attributes[name];}}));
+  const listeners={},window={location:{hash},addEventListener(name,fn){listeners[name]=fn;}};
   const document = {
     getElementById:id=>id==='courseSearch'?input:id==='courseEmpty'?empty:null,
-    querySelectorAll:()=>groups
+    querySelectorAll:selector=>selector==='[data-course-group]'?groups:selector==='.category-nav a'?links:[]
   };
-  vm.runInNewContext(fs.readFileSync(require.resolve('../catalog-search.js'),'utf8'),{document,window:{addEventListener(){}}});
-  return {groups, empty, search(query) {input.value=query; input.input(); return cards.filter(card=>!card.hidden).map(card=>card.id);}};
+  vm.runInNewContext(fs.readFileSync(require.resolve('../catalog-search.js'),'utf8'),{document,window});
+  return {groups,links,empty,navigate(hash){window.location.hash=hash;listeners.hashchange();},search(query) {input.value=query; input.input(); return cards.filter(card=>!card.hidden).map(card=>card.id);}};
 }
+
+test('category links follow the selected fragment and never point to hidden empty results',()=>{
+  const page=catalogue('','#everyday');
+  assert.equal(page.links[1].attributes['aria-current'],'location');
+  assert.equal(page.links[0].attributes['aria-current'],undefined);
+  page.search('rengoring');
+  assert.equal(page.links[0].hidden,false);
+  assert.equal(page.links[1].hidden,true);
+  assert.equal(page.links[1].attributes['aria-current'],undefined);
+  page.navigate('#work');
+  assert.equal(page.links[0].attributes['aria-current'],'location');
+  page.search('');
+  assert.ok(page.links.every(link=>!link.hidden));
+  assert.equal(page.links[0].attributes['aria-current'],'location');
+});
 
 test('catalogue search finds job synonyms across the eight supported languages',()=>{
   const page=catalogue();
