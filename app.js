@@ -559,7 +559,7 @@ function applyCourseLink() {
 }
 applyCourseLink();
 window.addEventListener('hashchange', () => {
-  if (/^#start=/.test(location.hash)) { applyCourseLink(); render(); }
+  if (/^#start=/.test(location.hash)) { closeDialogs(); applyCourseLink(); render(); }
 });
 
 function viewFromHash() {
@@ -571,8 +571,14 @@ function viewFromHash() {
   return 'play';
 }
 // Navigation med rigtige URL'er, så browserens tilbage-knap virker.
+function closeDialogs() {
+  for(const id of ['appMenu','trainingDialog','saveWordDialog']) {
+    const dialog=$(id);
+    if(dialog?.open)dialog.close();
+  }
+}
 function go(v, { keepDraft = false } = {}) {
-  if ($('appMenu')?.open) $('appMenu').close();
+  closeDialogs();
   if (v !== 'play' && v !== 'place') pendingPlacement = false;
   if (v === 'play' && placement && current?.kind === 'place') v = 'place';
   if (v !== 'play') { lastFeedback = null; levelNotice = null; }
@@ -584,6 +590,7 @@ function go(v, { keepDraft = false } = {}) {
   render();
 }
 window.addEventListener('popstate', () => {
+  closeDialogs();
   if (/^#start=/.test(location.hash)) { applyCourseLink(); render(); return; }
   view = viewFromHash();
   if (view === 'play' && placement && current?.kind === 'place') view = 'place';
