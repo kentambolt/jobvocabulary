@@ -278,5 +278,14 @@ module.exports={
       "Confirm an appointment or ask for missing information.",
       "Tell a colleague what needs following up."
     ]
+  ],
+  "automotive": [
+    "Danish for car workshops and mechanics",
+    "A workshop day often starts with the customer describing a fault. Learn tool and part names alongside questions about noises, warning lights and previous servicing. Also practise telling a colleague what is missing and giving the customer a clear update. The course teaches language and does not replace workshop instructions or professional training.",
+    [
+      "Ask the customer when the problem occurs.",
+      "Recognise names of vehicle parts, fluids and tools.",
+      "Explain whether the car is ready or you are waiting for a part."
+    ]
   ]
 };

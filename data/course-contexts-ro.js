@@ -278,5 +278,14 @@ module.exports={
       "Confirmă o programare sau cere o informație care lipsește.",
       "Spune unui coleg ce necesită urmărire."
     ]
+  ],
+  "automotive": [
+    "Daneza pentru ateliere auto și mecanici",
+    "Ziua în atelier începe adesea cu descrierea unei defecțiuni de către client. Învață denumirile uneltelor și pieselor împreună cu întrebări despre zgomote, martori de avertizare și reviziile anterioare. Exersează și cum să îi spui unui coleg ce lipsește și cum să informezi clar clientul despre stadiul lucrării. Cursul predă limba și nu înlocuiește instrucțiunile atelierului sau pregătirea profesională.",
+    [
+      "Întreabă clientul când apare problema.",
+      "Recunoaște denumirile pieselor auto, lichidelor și uneltelor.",
+      "Explică dacă mașina este gata sau dacă așteptați o piesă."
+    ]
   ]
 };

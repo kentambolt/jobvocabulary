@@ -278,5 +278,14 @@ module.exports={
       "Patvirtinkite susitikimą arba paprašykite trūkstamos informacijos.",
       "Pasakykite kolegai, kuo reikia pasidomėti toliau."
     ]
+  ],
+  "automotive": [
+    "Danų kalba autoservisui ir mechanikams",
+    "Diena autoservise dažnai prasideda nuo kliento pasakojimo apie gedimą. Mokykitės įrankių ir dalių pavadinimų kartu su klausimais apie garsus, įspėjamąsias lemputes ir ankstesnę techninę priežiūrą. Taip pat mokykitės pasakyti kolegai, ko trūksta, ir aiškiai informuoti klientą apie darbų eigą. Kursas moko kalbos ir nepakeičia autoserviso instrukcijų ar profesinio mokymo.",
+    [
+      "Paklauskite kliento, kada kyla problema.",
+      "Atpažinkite automobilių dalių, skysčių ir įrankių pavadinimus.",
+      "Paaiškinkite, ar automobilis paruoštas, ar laukiate dalies."
+    ]
   ]
 };
