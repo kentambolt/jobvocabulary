@@ -76,7 +76,7 @@
     "lastmod": "2026-11-21"
   },
   "/bg/guides/": {
-    "digest": "c311c2ce05e7770dedd627738c863cf2b45cefbc7fda7b6a8d456137aaad9724",
+    "digest": "791b563d6525305cbcb57c198da9313aa62bcc61be86bd0174a59faaaa9f47e5",
     "lastmod": "2026-11-21"
   },
   "/bg/guides/chisla-chas-i-dati-na-datski/": {
@@ -92,7 +92,7 @@
     "lastmod": "2026-11-21"
   },
   "/bg/guides/datski-instruktsii-na-rabota/": {
-    "digest": "47e42ae66091046664bf7160c352cb2f148fc08e060dab810f535afaadb0b3f1",
+    "digest": "052cdcdd55b883b08be2b817dbe063364027237c8891d4f54d98e2163ab035a5",
     "lastmod": "2026-11-21"
   },
   "/bg/guides/datski-za-parvata-rabota/": {
@@ -104,15 +104,19 @@
     "lastmod": "2026-11-21"
   },
   "/bg/guides/imeyli-i-saobshteniya-na-datski/": {
-    "digest": "39ef548edb7318355d9dc3996889e9859d313466579db9e3bcbde152316f1f6a",
+    "digest": "6f1677a54afbfec0cc63f9a1af7f2ab981d36aa25b7e690b1a8b31c3162ff12d",
     "lastmod": "2026-11-21"
   },
   "/bg/guides/kak-da-razberete-obyava-za-rabota-na-datski/": {
     "digest": "3a02cd2311f7cbe6d1fc2029141c653fb104cc322a2d6d88975c73013a896c47",
     "lastmod": "2026-11-21"
   },
+  "/bg/guides/kratki-razgovori-s-klienti-na-datski/": {
+    "digest": "0b0c60e2b9ebd4897f28e837e2984844c44ed1277226ffd9fd8e0d43a17e2986",
+    "lastmod": "2026-11-21"
+  },
   "/bg/guides/telefonni-razgovori-na-datski-na-rabota/": {
-    "digest": "20479225e6c6578abc92d2c55be77cb2a061ae2c2f684889b38be26e58ac2dd6",
+    "digest": "20439577d26130cfd55669cc35ed4eac4b3699fe206d8421bea69bfc09a51718",
     "lastmod": "2026-11-21"
   },
   "/bg/guides/uchene-na-dumi-s-lichni-spisatsi/": {
@@ -164,11 +168,11 @@
     "lastmod": "2026-11-21"
   },
   "/bg/retail/": {
-    "digest": "68f13a1252a0ac14439285d185da197591a8fd716a1b0c12611de7008dab5691",
+    "digest": "49862ef612569fbf196d36a28e666de1ba73754d94aa373e56701c7cdd5634d2",
     "lastmod": "2026-11-21"
   },
   "/bg/salon/": {
-    "digest": "5ef0b97add2d030b4618902e9f56aafac60a398c18c10eabf6a2fe142d8b54de",
+    "digest": "65ef10877b91f81c3c9b33cb3ce481e4ceb1a0edb84e468e3e4fe1bc223ed1b3",
     "lastmod": "2026-11-21"
   },
   "/bg/school/": {
@@ -228,7 +232,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/butik-og-supermarked/": {
-    "digest": "244042af28495f554919e599827bcf31b07ab39930af740a8bb22b07d38559a6",
+    "digest": "fc43ce0d47fe6d13b5fae7cea0689b598416dd5adfd15044505012e16db8df2c",
     "lastmod": "2026-11-21"
   },
   "/da/byggeri-og-haandvaerk/": {
@@ -252,7 +256,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/frisoer-og-salon/": {
-    "digest": "140a90edf812bbf7f1d3b569ebf06f02a1c884391d6ed685ae0771d30eec072e",
+    "digest": "1367a830d0bc34a3cb6a7cbddfc6b1af6ad52c0bdafdfeadf8e83a3bda6be454",
     "lastmod": "2026-11-21"
   },
   "/da/gartner-og-groen-pleje/": {
@@ -264,7 +268,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/guides/": {
-    "digest": "4c03abf0b7dd275b1056feb5d1399fa03e334b2ec64dccdd7cb5e3c4735ca256",
+    "digest": "1850b5b5d770e0ea82338f705c5d55e56a66a58a0cd6802eb461748730e761b7",
     "lastmod": "2026-11-21"
   },
   "/da/guides/dansk-til-dit-foerste-arbejde/": {
@@ -280,7 +284,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/guides/e-mails-og-beskeder-paa-arbejdet/": {
-    "digest": "fd932a538be0949734b3142f9626cc88b7653ed50477d0200b24b53e892e6c70",
+    "digest": "cda6059bb10dcaf7c3b47b67ac88e1496cd51abcd32ce60fed597376c9b83197",
     "lastmod": "2026-11-21"
   },
   "/da/guides/forstaa-en-dansk-jobannonce/": {
@@ -288,7 +292,11 @@
     "lastmod": "2026-11-21"
   },
   "/da/guides/forstaa-instruktioner-paa-arbejdet/": {
-    "digest": "664ede4d9cedbba144feb3315dc07e9feffae7b6761c69750667a20d69de31cf",
+    "digest": "1011fb64eb6ccbbad695d4c4ec9767174447f49d15f3ed87ff73d20ce882ca85",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/korte-kundesamtaler-paa-dansk/": {
+    "digest": "0a2877368e525d84b3684f4beeae0539bbb9758efeb1406ba0db2bccecb80d6d",
     "lastmod": "2026-11-21"
   },
   "/da/guides/saadan-traener-du-ord-og-egne-lister/": {
@@ -300,7 +308,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/guides/telefonsamtaler-paa-dansk-paa-arbejdet/": {
-    "digest": "753f21381001222fb7fb12adddfeeabf9e4bee0ceca20961ee34d6e18a0afd3e",
+    "digest": "23f39201a5c88db4afb9f121be68d6defd4c7897bffed6c9d39d4adc8e0b5a21",
     "lastmod": "2026-11-21"
   },
   "/da/guides/vagtplan-og-arbejdstid-paa-dansk/": {
@@ -460,7 +468,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/guides/": {
-    "digest": "fe29014aba076156a124a47f7ba9b331b421bc9a382a1f2f525644403031250d",
+    "digest": "781a83c703f3dd95db873692a161fdc270fb463a957f0a743ee62c26494a28c0",
     "lastmod": "2026-11-21"
   },
   "/en/guides/danish-for-your-first-job/": {
@@ -476,7 +484,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/guides/emails-and-messages-in-danish-at-work/": {
-    "digest": "20fdc600e797a754bedc4eb8a6faa9f475a1c6604b4afc01baf29536621a0de8",
+    "digest": "986384c2e89b158fb65d702986643d8848ec20d015a9ccbae2e9734ba7e459ca",
     "lastmod": "2026-11-21"
   },
   "/en/guides/numbers-time-and-dates-in-danish/": {
@@ -484,7 +492,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/guides/phone-calls-in-danish-at-work/": {
-    "digest": "cfec53862f8777e96e903f14f74fd6768fcb52f815e09c15635832673fd8f376",
+    "digest": "63ece37caf869d765fc893b0a10f2226e158ee639b941f2dfa6ab10e63a6f439",
     "lastmod": "2026-11-21"
   },
   "/en/guides/practise-vocabulary-with-personal-word-lists/": {
@@ -495,16 +503,20 @@
     "digest": "f0eea6cd08e7db67edafc367c2acdd06e2c8b1238a453740568137114a3c4ba3",
     "lastmod": "2026-11-21"
   },
+  "/en/guides/short-customer-conversations-in-danish/": {
+    "digest": "9f77260a9306a2bb10b13cf995a2adfeb06499062ccd029966ef8cee0ade9953",
+    "lastmod": "2026-11-21"
+  },
   "/en/guides/understand-a-danish-job-advert/": {
     "digest": "582b732315f384ff42c2ecab6f348e44cf89cda26306470de4bc7af575813ad8",
     "lastmod": "2026-11-21"
   },
   "/en/guides/understand-danish-workplace-instructions/": {
-    "digest": "cd308d73d3f0d1ac68be225371ec15341eba7bf2d65d6ef12d1c841ca834cc3a",
+    "digest": "834af9920ad8b8f4d4202598c1db07538b11e30ef63ecfc8a870f64f61acd85a",
     "lastmod": "2026-11-21"
   },
   "/en/hairdressing-and-salon-work/": {
-    "digest": "4934fa18f381204bc8eb37b45253148bd42e9216cc4d285a36c60f0052a84dac",
+    "digest": "c1ef9fb4414d3962a161ee92c7eeb12fe29b68ccecfc3997c7295a174f0281e3",
     "lastmod": "2026-11-21"
   },
   "/en/health-and-the-doctor/": {
@@ -564,7 +576,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/shop-and-supermarket/": {
-    "digest": "4d2818315e4a2bd1d76e346a810ab975d60d4b03eff1477dec8bbf102944bcce",
+    "digest": "cd4797d3b82bca813e3771b2453136235656bc3916ae77e5103119214e696133",
     "lastmod": "2026-11-21"
   },
   "/en/shopping-and-consumer-rights/": {
@@ -616,7 +628,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/guides/": {
-    "digest": "9f5b8f2292cdca7aa9cd6af98a2bd07615cea8438a9c2c7f4dfc195b6790ebe7",
+    "digest": "b49f0c75dfd4c441ae9cfc8483e80288e67cb414f3b13818b9154c067b931401",
     "lastmod": "2026-11-21"
   },
   "/lt/guides/danu-kalba-pirmajam-darbui/": {
@@ -624,7 +636,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/guides/danu-nurodymai-darbe/": {
-    "digest": "4a05ed6aafd52c815ebbfa2417ce57d9e3d6599c269a424e694ffa7cf9173902",
+    "digest": "d37db4d5b4203adb7b1ab83bce71050ee7f86d4883fcd43aef4aa5276cafdc58",
     "lastmod": "2026-11-21"
   },
   "/lt/guides/danu-zodziai-darbo-pokalbiui/": {
@@ -636,7 +648,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/guides/elektroniniai-laiskai-ir-zinutes-daniskai/": {
-    "digest": "bbe1594ef541567ff830e4592cb7be9c9e1e0c5d31784ca61e67cf1b41d0fd48",
+    "digest": "d100d1471b774fff160fd92e901b4def8f18a8aad6f31ff61fea86eb3e1be596",
     "lastmod": "2026-11-21"
   },
   "/lt/guides/kaip-suprasti-daniska-darbo-skelbima/": {
@@ -648,11 +660,15 @@
     "lastmod": "2026-11-21"
   },
   "/lt/guides/pokalbiai-telefonu-daniskai-darbe/": {
-    "digest": "025bf89a5705a39dedad57ff229084f8aea54cdd82632cd5092674cd0aead337",
+    "digest": "261a805662c97a61bf34d47f92ea88b6d23d254a7a3a02ca5f4b9fc7189241fa",
     "lastmod": "2026-11-21"
   },
   "/lt/guides/skaiciai-laikas-ir-datos-danu-kalba/": {
     "digest": "ab998abbdb00596fa61149e78b0cb72fd539c9add38bcc0ab7b3caf7a809ccff",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/trumpi-pokalbiai-su-klientais-daniskai/": {
+    "digest": "dec025d0a4f573a7d2a5445a3f6ad8175240549d1d3818655d274d59ee886e03",
     "lastmod": "2026-11-21"
   },
   "/lt/guides/zodziu-mokymasis-su-savo-sarasais/": {
@@ -680,7 +696,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/kirpykla-ir-salonas/": {
-    "digest": "29d9b6e0e956c212d609132896fedc70483c9f5e9fb2305e71f4abf1fb0e5059",
+    "digest": "110e37655b48bd97dfeb8bbdc03d745a337c77d6d44000c7e3530ce9b5ef0c95",
     "lastmod": "2026-11-21"
   },
   "/lt/maisto-pramone-ir-skerdyklos/": {
@@ -704,7 +720,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/parduotuve-ir-prekybos-centras/": {
-    "digest": "ff8a97610cc1407727287d9a15bad014af178045bc425e9a546164eb7660aa4e",
+    "digest": "bbb90377dc6782a5c3f8d685dfcbb837a55d2d4d1a8d8acab74cd6b8aff61982",
     "lastmod": "2026-11-21"
   },
   "/lt/pastatu-prieziura/": {
@@ -796,11 +812,11 @@
     "lastmod": "2026-11-21"
   },
   "/pl/fryzjerstwo-i-salon/": {
-    "digest": "bdae5514dd31d14fcece01ffa39620a4c2abf5712255bd6065adfd6622623823",
+    "digest": "1a501d807bb62b53c1553c3107e03c1ee005d9ef15dca7f2969e3b2164415e23",
     "lastmod": "2026-11-21"
   },
   "/pl/guides/": {
-    "digest": "0ce5d4e5aca5cd59bafc471794b461ebf7dace677d829cc5717f789ceb434441",
+    "digest": "e04f70907d19cdce19c06031b9b49971fc739978bc4be2fd46cc47489c08fe2d",
     "lastmod": "2026-11-21"
   },
   "/pl/guides/dunski-w-pierwszej-pracy/": {
@@ -816,7 +832,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/guides/e-maile-i-wiadomosci-po-dunsku-w-pracy/": {
-    "digest": "51c457d69e24bfb92651067d9ce0f5720b481dee4e2f3771d944390b2beab4a3",
+    "digest": "ac84a568e534eb9a4886410dd7938c04db8e57fcc140e7dcb2b7bd1a2372eecf",
     "lastmod": "2026-11-21"
   },
   "/pl/guides/grafik-zmian-i-czas-pracy-po-dunsku/": {
@@ -825,6 +841,10 @@
   },
   "/pl/guides/jak-zrozumiec-dunskie-ogloszenie-o-prace/": {
     "digest": "5e03d2521de4f6f7e527ed67bca1c03c0f27433b4cd87592c42c5fe0624e1681",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/krotkie-rozmowy-z-klientami-po-dunsku/": {
+    "digest": "552767e01d17921727210b2e59e214e6ab68fbdb1a9b0226febe9f55e2f3f071",
     "lastmod": "2026-11-21"
   },
   "/pl/guides/liczby-godziny-i-daty-po-dunsku/": {
@@ -836,11 +856,11 @@
     "lastmod": "2026-11-21"
   },
   "/pl/guides/rozmowy-telefoniczne-po-dunsku-w-pracy/": {
-    "digest": "bb0646bbe843c0e7b462b34dcd0436b5d9df1ccdca0a1cf3b677df80018d0e77",
+    "digest": "93b162f80e909f1a1241896aa4ee90923cff5f8180b53eca799a85f372681d9f",
     "lastmod": "2026-11-21"
   },
   "/pl/guides/rozumienie-dunskich-polecen-w-pracy/": {
-    "digest": "13136d830c311d8937ee703d0556d34e3af699f57deedfbfa60c5347860c75bb",
+    "digest": "83dcd417680920e4856c4802c55f934552731d536d42716d555aeaabdd21d147",
     "lastmod": "2026-11-21"
   },
   "/pl/hotel-i-sprzatanie-pokoi/": {
@@ -924,7 +944,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/sklep-i-supermarket/": {
-    "digest": "01c4581ca96fd17edf476d9be4d9935968e61e3baf0cd8746669f0585da2d382",
+    "digest": "947c513ea426ef35136de19e1e7b2c16cee82088aac42c869a08f575d6c75eb3",
     "lastmod": "2026-11-21"
   },
   "/pl/sprzatanie/": {
@@ -1008,7 +1028,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/coafura-si-salon/": {
-    "digest": "3383124d79668398bdc1ea1081a5ba692de06483cf049cd3cf1187034c15a4ed",
+    "digest": "8d4a5d588f5d62598d399650c44dc6c357671491374bffaf30ad5309ef454a85",
     "lastmod": "2026-11-21"
   },
   "/ro/constructii-si-meserii/": {
@@ -1040,11 +1060,15 @@
     "lastmod": "2026-11-21"
   },
   "/ro/guides/": {
-    "digest": "a1ca65ecc0b2d2015b8e6eeb682ad7febe0f7ebaf4299d1f59f6e36ade6299f7",
+    "digest": "1ae280424d1da111abfefc545e76b116a00d503cdb665ae49c09ddab494ef623",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/conversatii-scurte-cu-clientii-in-daneza/": {
+    "digest": "bc90c71360c9b05203efac783e8fc62558678e1a316666b69c0fb724bb35164b",
     "lastmod": "2026-11-21"
   },
   "/ro/guides/convorbiri-telefonice-in-daneza-la-serviciu/": {
-    "digest": "299186e5ed3eca4b6c5b68eec1a06f4cfbc973bc5123753285533678fe040daa",
+    "digest": "bc06a96963111a6658b3749191a29b69d5747c25c9ebcea00cbce5ef9a39dda8",
     "lastmod": "2026-11-21"
   },
   "/ro/guides/cum-intelegi-un-anunt-de-angajare-in-daneza/": {
@@ -1060,7 +1084,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/guides/e-mailuri-si-mesaje-in-daneza-la-serviciu/": {
-    "digest": "2c0b2b57c6af4364dae644bba0a4cc1c13bb87bc7e177d17300cf519f477e267",
+    "digest": "2ef6a04798022f96ecc95bed3a520ee2199d3dfcb0aef05ddfe9870114c73722",
     "lastmod": "2026-11-21"
   },
   "/ro/guides/exerseaza-vocabularul-cu-liste-personale/": {
@@ -1068,7 +1092,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/guides/intelege-instructiunile-daneze-la-lucru/": {
-    "digest": "10a1a8736378ba38eb3ee0668e35775901ae07741a4b962fc5a9187447e9c817",
+    "digest": "04c3ae3be9c37702e486dff79812a1c3c629b86ee4184d78fcec9aa09c6c26a0",
     "lastmod": "2026-11-21"
   },
   "/ro/guides/numere-ore-si-date-in-daneza/": {
@@ -1104,7 +1128,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/magazin-si-supermarket/": {
-    "digest": "0a8fc65a4903233cdd15526161891fd3b4fa7a378a07180a9456a360a098caaf",
+    "digest": "8381274bc7c24e5b608d39c4b2f5ddb5ac0913583ff7ce2265c6c2d46d832f11",
     "lastmod": "2026-11-21"
   },
   "/ro/notiuni-de-baza-pentru-viata-de-zi-cu-zi/": {
@@ -1228,7 +1252,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/guides/": {
-    "digest": "90118f49317876fa58bbd57cdbe674578a92a5fb9459b7a15ddf6a8b94cb669c",
+    "digest": "b91c57f575572f9f62572faeeddfc61d81cf51bc372d0ea0f6c299fdf754e6f3",
     "lastmod": "2026-11-21"
   },
   "/ru/guides/chisla-vremya-i-daty-na-datskom/": {
@@ -1259,16 +1283,20 @@
     "digest": "f923c3c86643f7feaf84fc6c8c4bc2fa022cd7c0a5b5c3b28053608ba3623929",
     "lastmod": "2026-11-21"
   },
+  "/ru/guides/korotkie-razgovory-s-klientami-na-datskom/": {
+    "digest": "db4ebcc9c0dfd2e45d55b5d9e69a15394dab0466b5ec62aff0012b8d9448dbc2",
+    "lastmod": "2026-11-21"
+  },
   "/ru/guides/pisma-i-soobshcheniya-na-datskom/": {
-    "digest": "e010471050bb267614dd9c988c8119ab03867aac93ce6c7e1bfd607889a9d439",
+    "digest": "cbe65660a42bb5832bdcbaf613e6db3a2c28b65af2aebe12fc6a898870796919",
     "lastmod": "2026-11-21"
   },
   "/ru/guides/ponimat-datskie-instruktsii-na-rabote/": {
-    "digest": "00fed4414cc7e238022f024b66c08a47bf058543496ef260f880acc384d32945",
+    "digest": "6476675390222087202a9646679c31659dc871cd008b2dc93200d54898b1fd34",
     "lastmod": "2026-11-21"
   },
   "/ru/guides/telefonnye-razgovory-na-datskom-na-rabote/": {
-    "digest": "bd40b5479dc16296b6e07fe4fd7bb5eed9841eb30428432532f3a4a4ba7ac1d2",
+    "digest": "f4eb9da679eea4c8c6754670ef437309e193ad818997a975b3a392000385ab7c",
     "lastmod": "2026-11-21"
   },
   "/ru/health/": {
@@ -1316,11 +1344,11 @@
     "lastmod": "2026-11-21"
   },
   "/ru/retail/": {
-    "digest": "745b49fb4dad73e72fd8e1c78f7cba88da54c367bddf2b092fb6becb518f53d8",
+    "digest": "b316dbda9e9c20ac9e194bb772a31435c81d7b0062bd605296db40623e625266",
     "lastmod": "2026-11-21"
   },
   "/ru/salon/": {
-    "digest": "c7a2ee8b968c45d90dade103fc3d8f63d7789ac2b3ae05c14e4558381a96cdc3",
+    "digest": "08dc3b680e2fd50bbea9054bf2ce13ec84b6557a1fb4a0548cee86c26df2869a",
     "lastmod": "2026-11-21"
   },
   "/ru/school/": {
@@ -1420,7 +1448,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/guides/": {
-    "digest": "523548444a4ab174da9118853fe26107ca195d132ac2f623b5e6f6023d329e38",
+    "digest": "fbe310f743554a8b783c047e27c2026542c721c070b33f8bd3ee0c6f856ab807",
     "lastmod": "2026-11-21"
   },
   "/uk/guides/chysla-chas-i-daty-danskoiu/": {
@@ -1443,16 +1471,20 @@
     "digest": "f6f93a3738ae5905e8ec157e4f44fe8635174bc5f44c83c01ecfb6136cb0f5cc",
     "lastmod": "2026-11-21"
   },
+  "/uk/guides/korotki-rozmovy-z-kliientamy-danskoiu/": {
+    "digest": "be98623924eced761474f8ea95ac149dff4e164379f3ac630ee293693251c606",
+    "lastmod": "2026-11-21"
+  },
   "/uk/guides/lysty-i-povidomlennia-danskoiu/": {
-    "digest": "4d71be53ea5ca0a8ec7576fcceb432343025579ba29e40e4f86bfd40c52904ea",
+    "digest": "255ebe9e0ca34aeae9b34a43d2436f40f0d436aa53bf55374a193f24facd2327",
     "lastmod": "2026-11-21"
   },
   "/uk/guides/rozumity-danski-instruktsii-na-roboti/": {
-    "digest": "3867b4fa28d0c4b08575aa6a8c30c67cebece3006608e19175e218006b8a71de",
+    "digest": "a3b8aa130f5c6ed618614ac20a6a79b027ac8d4eb4c95ea3fd723758e6136f7d",
     "lastmod": "2026-11-21"
   },
   "/uk/guides/telefonni-rozmovy-danskoiu-na-roboti/": {
-    "digest": "dffef61708c8d7c9e709c43652d523fa7d0a95ad2fe84378ea66dcea434d0d4c",
+    "digest": "be7337bc37d87182b561409ebab3bb654ef3212ee18bebd0cb4e1f91bf2c0ef9",
     "lastmod": "2026-11-21"
   },
   "/uk/guides/yak-trenuvaty-slova-z-vlasnymy-spyskamy/": {
@@ -1508,11 +1540,11 @@
     "lastmod": "2026-11-21"
   },
   "/uk/retail/": {
-    "digest": "5b2044289088fc729650dc5c91c59df5e02f1c01488134ba56cc3d79802ace48",
+    "digest": "19822034c905b914656d44a9d0f485a04954e024f342118fff7427bd15ab08a1",
     "lastmod": "2026-11-21"
   },
   "/uk/salon/": {
-    "digest": "4d0bede83e0219c82c0c975d5c5c33cd3785d0963772997070f13d6029a459e6",
+    "digest": "a6f6a2c24a765970f350e8efe5c02244d11a89e7fbda3b2cc5f18d7a48b82dd2",
     "lastmod": "2026-11-21"
   },
   "/uk/school/": {
