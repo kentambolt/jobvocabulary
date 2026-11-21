@@ -312,7 +312,8 @@ a.brand { text-decoration: none; color: var(--ink); }
 
 /* ---------- Billed-mode ---------- */
 .prompt.pics .pic { width: 190px; height: 190px; }
-.options.pics .opt { min-height: 140px; padding: 8px; }
+.options.pics .opt { position: relative; min-height: 140px; padding: 8px; }
+.options.pics .opt .key { position: absolute; top: 6px; right: 8px; line-height: 1; }
 .options.pics .opt .pic { width: 124px; height: 124px; }
 @media (max-width: 420px) {
   .prompt.pics .pic { width: 150px; height: 150px; }
@@ -881,7 +882,7 @@ html:has(> .landing) { scrollbar-gutter: auto; }
   :is(#app, .practice-stage) > .options:not(.pics) { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   :is(#app, .practice-stage) > .options:not(.pics) .opt { height: var(--practice-option, 48px); min-height: var(--practice-option, 48px); flex-direction: row; text-align: left; justify-content: flex-start; padding: 6px 10px; gap: 10px; }
   :is(#app, .practice-stage) > .options:not(.pics) .w { flex: 1; line-height: 1.2; }
-  :is(#app, .practice-stage) > .options:not(.pics) .key { display: none; }
+  :is(#app, .practice-stage) > .options .key { display: none; }
   :is(#app, .practice-stage) > .options.pics .opt { height: 104px; min-height: 104px; }
   :is(#app, .practice-stage) > .options.pics .pic { width: 80px; height: 80px; }
 }
