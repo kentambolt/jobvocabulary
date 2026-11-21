@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 const textAssetVersion=require('./text-asset-version');
+require('./build-exercise-forms')();
 
 const DIR = path.join(__dirname, '..', 'packs');
 const stableIds = require('./stable-word-ids.json');

@@ -1,0 +1,47 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const WordEntry=require('../word-entry'),app=require('./helpers/app.cjs');
+test('reviewed gender alternatives become complete natural forms and keep unrelated punctuation',()=>{
+ const cases=[['ru','Я прошёл(а) курс.','Я прошёл курс.','Я прошла курс.'],['ru','Я порезался(лась).','Я порезался.','Я порезалась.'],['uk','Я знайшов(ла) це.','Я знайшов це.','Я знайшла це.'],['uk','Готовий(а)','Готовий','Готова'],['uk','Я втомився(лася).','Я втомився.','Я втомилася.'],['pl','Chciał(a)bym pomóc.','Chciałbym pomóc.','Chciałabym pomóc.'],['pl','Czy miał(a) Pan/Pani kontakt?','Czy miał Pan kontakt?','Czy miała Pani kontakt?'],['pl','Jestem tu z Panem/Panią.','Jestem tu z Panem.','Jestem tu z Panią.'],['pl','Odprowadzę Pana/Panią.','Odprowadzę Pana.','Odprowadzę Panią.'],['pl','Czy zrobił Pan/zrobiła Pani check-in?','Czy zrobił Pan check-in?','Czy zrobiła Pani check-in?'],['ro','Sunt meticulos(oasă).','Sunt meticulos.','Sunt meticuloasă.'],['bg','Болен(а) съм.','Болен съм.','Болна съм.'],['bg','Уморен(а) съм.','Уморен съм.','Уморена съм.']];
+ for(const [lang,raw,m,f]of cases){assert.equal(WordEntry.form(raw,lang,false),m);assert.equal(WordEntry.form(raw,lang,true),f);}
+ for(const lang of ['pl','ru','uk','ro','bg','da','en','lt'])assert.equal(WordEntry.form('Try f(a), CPR/MitID and (a note).',lang,true),'Try f(a), CPR/MitID and (a note).');
+});
+test('the bundled forms match the reviewed source table and preserve original lookup data',()=>{
+ const source=require('../data/exercise-forms.json');assert.deepEqual(WordEntry.exerciseForms,source);
+ const x={words:{ro:'bolnav(ă)'},phrase:false};assert.equal(WordEntry.exerciseParts(x,'ro',true).text,'bolnavă');assert.equal(x.words.ro,'bolnav(ă)');assert.equal(WordEntry.parts(x,'ro').text,'bolnav(ă)');
+});
+test('every published compact gender notation resolves for either exercise form',()=>{
+ const c={};for(const file of fs.readdirSync(require('path').join(__dirname,'../packs')).filter(f=>f.endsWith('.js')&&f!=='index.js'))vm.runInNewContext(fs.readFileSync(require.resolve('../packs/'+file),'utf8'),c);
+ const langs=['da','en','ru','uk','pl','ro','lt','bg'];let checked=0;
+ for(const p of Object.values(c.PACKS))for(const category of p.categories)for(const row of category.rows)for(let i=0;i<langs.length;i++){
+  const raw=row[i+1];if(!/[\p{L}]\([\p{L}]+\)[\p{L}]?/u.test(raw)&&!raw.includes('Pan/Pani'))continue;
+  for(const form of [false,true]){const value=WordEntry.form(raw,langs[i],form);assert.doesNotMatch(value,/[\p{L}]\([\p{L}]+\)[\p{L}]?|Pan\/Pani/u,p.id+':'+row[1]);checked++;}
+ }
+ assert.ok(checked>1200);
+});
+test('actual phrase builds grade either complete form and reveal keeps the selected form',()=>{
+ for(const feminine of [false,true]){
+  const a=app({pack:'agriculture',target:'ru',base:'en',dir:'write',diff:3});a.context.feminine=feminine;
+  a.run(fs.readFileSync(require.resolve('../packs/agriculture.js'),'utf8')+';registerPack(PACKS.agriculture);');
+  a.run(`const x=ITEM['agriculture:Jeg har arbejdet med grise før.'];current={kind:'build',concept:x,qdir:'prod',isNew:true,feminine};current.spec=buildSpec(ctx(),x);current.tiles=makeTiles(ctx(),x,current.spec);current.picked=[];`);
+  assert.equal(a.run('lexicalForm(current.concept,"ru")'),feminine?'Я уже работала со свиньями.':'Я уже работал со свиньями.');
+  a.run(`const task=current,unused=new Set(task.tiles.map((_,i)=>i));task.picked=task.spec.answer.map(t=>{const i=[...unused].find(i=>task.tiles[i].tk===t);unused.delete(i);return i;});checkBuild();`);
+  assert.equal(a.run(`ctx().prog.cards['agriculture:Jeg har arbejdet med grise før.'].right`),1);
+  a.run(`delete ctx().prog.cards[x.id];current={kind:'new',concept:x,qdir:'prod',isNew:true,answered:null,feminine};dontKnow();`);
+  assert.equal(a.run('current.feminine'),feminine);assert.equal(a.run('lexicalForm(current.concept,"ru")').includes('('),false);
+ }
+});
+
+test('dictionary lookup accepts complete gender forms without making new word IDs',()=>{
+ const entries=[{id:'lex:known-phrase',phrase:true,words:{da:'Jeg har fundet det.',en:'I have found it.',uk:'Я знайшов(ла) це.'}}];
+ const draft=new WordEntry(entries,{target:'uk',base:'en'});draft.setWord('Я знайшла це.');assert.equal(draft.translation,'I have found it.');assert.equal(draft.knownId(),'lex:known-phrase');
+ assert.equal(WordEntry.search(entries,'знайшла',draft)[0].id,'lex:known-phrase');
+ assert.equal(WordEntry.search(entries,'знайшов',draft)[0].id,'lex:known-phrase');
+});
+
+test('cached form lookup refreshes after a custom word is edited',()=>{
+ const entry={id:'user:editable',phrase:true,words:{ru:'Я работал(а).',en:'I worked.'}};
+ assert.equal(WordEntry.exact(entry,'ru','Я работала.'),true);
+ entry.words.ru='Я сдал(а).';
+ assert.equal(WordEntry.exact(entry,'ru','Я работала.'),false);
+ assert.equal(WordEntry.exact(entry,'ru','Я сдала.'),true);
+});

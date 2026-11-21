@@ -21,6 +21,16 @@ node --test tests/*.test.cjs
 
 `build-packs.js` validates the eight-language course files and updates the small
 `packs/index.js` manifest. Courses are loaded only when selected.
+It also bundles `data/exercise-forms.json` into the marked section of `word-entry.js`.
+This reviewed table resolves compact grammatical alternatives into complete forms;
+it is not a general inflection engine. Keep unknown notation and ordinary
+parenthetical content intact. Add explicit forms when introducing a new pattern.
+
+Practice selects one complete grammatical form per question and keeps it through
+rendering, speech, spelling/building and answer reveal. Reading space is calculated
+for both forms so a later variant does not move the controls. The dictionary keeps
+its original records and IDs; lookup accepts either complete form, with a cache
+that refreshes when a custom entry changes. No gender profile is collected.
 
 `build-pages.js` preserves published course paths in `data/course-urls.json`.
 Correcting a translated title does not rename its URL. Keep retired paths reserved;

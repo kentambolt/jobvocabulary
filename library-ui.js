@@ -245,7 +245,7 @@ function libraryFilteredItems() {
   return (wordLibrary.list(libraryActive)?.items || []).filter((id) => !q || Object.values(ITEM[canonicalWord(id)]?.words || {}).some((word) => dictionaryNorm(word).includes(q)));
 }
 function libraryAudio(x, lang) {
-  return x.words[lang] && 'speechSynthesis' in window ? `<button class="secondary library-audio" data-listen-word="${esc(x.id)}" data-listen-lang="${lang}" aria-label="${esc(lt('listen') + ': ' + x.words[lang])}">${SPEAK_SVG}</button>` : '';
+  return x.words[lang] && 'speechSynthesis' in window ? `<button class="secondary library-audio" data-listen-word="${esc(x.id)}" data-listen-lang="${lang}" aria-label="${esc(lt('listen') + ': ' + lexicalForm(x,lang))}">${SPEAK_SVG}</button>` : '';
 }
 function bindLibraryAudio(container) {
   container.querySelectorAll('[data-listen-word]').forEach((button) => button.onclick = () => speak(lexicalForm(ITEM[button.dataset.listenWord],button.dataset.listenLang), button.dataset.listenLang, true));

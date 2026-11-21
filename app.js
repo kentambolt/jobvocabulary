@@ -1352,7 +1352,7 @@ function renderPlay() {
     else { $('app').innerHTML = `<p class="task-q" role="status">${esc(t('empty'))}</p><button class="secondary" id="emptySetup">${esc(t('settings'))}</button>`; $('emptySetup').onclick = () => go('setup'); }
     return;
   }
-    current = { ...next, answered: null };
+    current = { ...next, answered: null, feminine: chooseExerciseForm(c,next.concept) };
     if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {
       current.spec = buildSpec(c, next.concept);
@@ -1367,7 +1367,11 @@ function renderPlay() {
 }
 
 function wordParts(x,language) {
-  return WordEntry.parts(x,language);
+  return WordEntry.exerciseParts(x,language,!!current?.feminine);
+}
+function chooseExerciseForm(c,x) {
+  const varied=[c.s.target,c.s.base].some(lang=>WordEntry.exerciseParts(x,lang,false).text!==WordEntry.exerciseParts(x,lang,true).text);
+  return varied && Math.random()<0.5;
 }
 function lexicalForm(x,language) { return wordParts(x,language).text; }
 function wordHTML(x,language) {
@@ -1418,7 +1422,7 @@ function practiceReadingClass(c) {
   const candidates = isPack(c.s) ? source.filter(x=>types.has(x.phrase)) : scope;
   let longest = 0;
   for (const item of candidates) for (const lang of [c.s.target,c.s.base]) {
-    if (item.words[lang]) longest = Math.max(longest,lexicalForm(item,lang).length);
+    if (item.words[lang]) longest = Math.max(longest,...[false,true].map(form=>WordEntry.exerciseParts(item,lang,form).text.length));
   }
   // A saved phrase can draw wrong choices from the shared dictionary.
   if (isList(c.s) && types.has(true)) longest = Math.max(longest,131);
@@ -1718,7 +1722,7 @@ function dontKnow() {
     MemoryScheduler.record(MemoryScheduler.session(state, c.s, Date.now()), x.id, Date.now());
     c.prog.task += 1;
     c.prog.lastId = x.id;
-    current = { kind: 'intro', concept: x, answered: null, exposureRecorded: true };
+    current = { kind: 'intro', concept: x, answered: null, exposureRecorded: true, feminine: current.feminine };
     saveState();
     renderPlayView();
     speakTarget(x);
@@ -1816,7 +1820,8 @@ function renderPlace() {
     const x = P.queue.shift();
     // Niveautesten er altid valgmuligheder: "forstå"-retningen, undtagen når man øver at sige/skrive selv.
     const qdir = c.s.dir === 'prod' || c.s.dir === 'write' ? 'prod' : 'rec';
-    current = { kind: 'place', concept: x, qdir, options: makeOptions(c, x, qdir), answered: null };
+    current = { kind: 'place', concept: x, qdir, options: [], answered: null, feminine: chooseExerciseForm(c,x) };
+    current.options=makeOptions(c,x,qdir);
     P.total++;
   }
   const x = current.concept;
