@@ -284,6 +284,12 @@ cache URLs so a checkout does not invalidate otherwise unchanged content.
 The app's external scripts use `defer`: they download in parallel and execute in
 document order after parsing. Preserve dependency order and do not use `async`.
 
+`WordEntry.search` groups display-equivalent noun records only when all eight
+translations match, allowing an optional Danish en/et article. It prefers a record
+already in the active list. This affects search and automatic lookup only; it does
+not merge dictionary IDs, rewrite saved lists or transfer learning history.
+Incomplete translations, different qualifiers and distinct meanings stay separate.
+
 `data/build-lexicon.js` also generates `shared-word-groups.js`, a small index of
 active practice IDs with identical translations in all eight languages and the
 same word/phrase type. `course-knowledge.js` can reuse actual successful practice
