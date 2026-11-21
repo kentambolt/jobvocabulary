@@ -20,6 +20,8 @@ test('every indexed page has one complete static social image with a real local 
     assert.equal(value(html,'twitter:image:alt'),value(html,'og:image:alt'),url);
     assert.ok(+value(html,'og:image:width')>=1024,url);
     assert.ok(+value(html,'og:image:height')>=1024,url);
+    const articles=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1])).filter(schema=>schema['@type']==='Article');
+    for(const article of articles)assert.equal(article.image,image,url+' article and social preview must refer to the same relevant image');
     const asset=new URL(image);
     assert.equal(asset.origin,page.origin,url);
     assert.ok(fs.existsSync(path.join(root,asset.pathname)),image);
