@@ -1636,7 +1636,7 @@ function renderPlayView() {
     if (current.answered) {
       const ok = current.answered === 'ok';
       html += ok ? `<div class="msg good">${esc(t('correct'))}</div>`
-        : `<div class="msg bad">${esc(t('wrongBuild'))} <b>${esc(lexicalForm(x,c.s.target))}</b></div><button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
+        : `<div class="msg bad">${esc(t('wrongBuild'))} <b lang="${c.s.target}">${esc(lexicalForm(x,c.s.target))}</b></div><button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
     } else {
       html += `<div class="row center"><button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>
         <button class="primary" id="checkBtn" ${current.picked.length ? '' : 'disabled'}>${esc(t('checkBtn'))}</button></div>`;
@@ -1651,7 +1651,9 @@ function renderPlayView() {
     <div class="feedback" aria-live="polite">`;
     if (current.answered) {
       const ok = current.answered === x.id;
-      html += `<div class="msg ${ok ? 'good' : 'bad'}">${esc(ok ? t('correct') : t('wrong'))}</div>`;
+      const answerLanguage = rec && !c.pics ? c.s.base : c.s.target;
+      html += ok ? `<div class="msg good">${esc(t('correct'))}</div>`
+        : `<div class="msg bad"><span aria-hidden="true">${esc(t('wrong'))}</span><span class="sr-only">${esc(t('wrongBuild'))} <span lang="${answerLanguage}">${esc(lexicalForm(x,answerLanguage))}</span></span></div>`;
       if (!ok) html += `<button class="primary" id="nextBtn">${esc(t('next'))}</button>`;
     } else if (current.kind === 'new') {
       html += `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`;
