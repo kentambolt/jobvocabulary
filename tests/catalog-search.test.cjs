@@ -31,12 +31,20 @@ test('multiple search words match in either order and ignore punctuation and cas
   assert.deepEqual(page.search('DRIVER TRUCK'),['trucking']);
 });
 
+test('job acronyms match whole terms while ordinary partial queries still work',()=>{
+  const page=catalogue();
+  assert.deepEqual(page.search('IT'),['itsupport']);
+  assert.deepEqual(page.search('cv'),['jobsearch']);
+  assert.ok(page.search('ho').includes('hotel'));
+  assert.ok(page.search('уб').includes('cleaning'));
+});
+
 test('no results hides empty groups and clearing restores all courses',()=>{
   const page=catalogue();
   assert.deepEqual(page.search('zzzznomatchingcourse'),[]);
   assert.equal(page.empty.hidden,false);
   assert.ok(page.groups.every(group=>group.hidden));
-  assert.equal(page.search('').length,31);
+  assert.equal(page.search('').length,Object.keys(aliases).length);
   assert.equal(page.empty.hidden,true);
   assert.ok(page.groups.every(group=>!group.hidden));
 });
@@ -55,7 +63,7 @@ test('generated catalogues retain static links and index all translated course n
   const languages=['da','en','ru','uk','pl','ro','lt','bg'];
   for(const lang of languages){
     const html=fs.readFileSync(require.resolve('../'+lang+'/index.html'),'utf8');
-    assert.equal((html.match(/data-course data-search=/g)||[]).length,31);
+    assert.equal((html.match(/data-course data-search=/g)||[]).length,packs.length+2);
     for(const pack of packs){
       assert.ok(html.includes('id="course-'+pack.id+'-title"'),lang+'/'+pack.id);
       assert.ok(Object.hasOwn(aliases,pack.id),pack.id+' has search synonyms');

@@ -29,10 +29,15 @@ const factCorrections = {
 };
 const planned = [];
 let rows = 0;
+let skipped = 0;
 for (const file of fs.readdirSync(path.join(root,'packs')).filter(f=>f.endsWith('.js')&&f!=='index.js')) {
   const context = {};
   vm.runInNewContext(fs.readFileSync(path.join(root,'packs',file),'utf8'),context);
   const pack = Object.values(context.PACKS)[0];
+  // New courses can already include reviewed translations. A legacy overlay must not replace them.
+  const complete = [pack.name,pack.desc,...pack.categories.map(category=>category.name)].every(value=>['lt','bg'].every(lang=>typeof value?.[lang]==='string'&&value[lang].trim()))
+    && pack.categories.every(category=>category.rows.every(row=>row.length===9&&row.slice(7).every(value=>typeof value==='string'&&value.trim())));
+  if (complete) { skipped++; continue; }
   Object.assign(pack.name,pair(labels.courses[pack.id]?.name));
   Object.assign(pack.desc,pair(labels.courses[pack.id]?.desc));
   for (const category of pack.categories) {
@@ -49,4 +54,4 @@ for (const file of fs.readdirSync(path.join(root,'packs')).filter(f=>f.endsWith(
   planned.push([path.join(root,'packs',file),`// Learning data. Internal reviews are held in the private content repository.\nvar PACKS = typeof PACKS !== 'undefined' ? PACKS : {};\nPACKS.${pack.id} = {\n  id: ${JSON.stringify(pack.id)},\n  name: ${JSON.stringify(pack.name)},\n  desc: ${JSON.stringify(pack.desc)},\n  categories: [\n${categories}\n  ]\n};\n`]);
 }
 for (const [file,code] of planned) fs.writeFileSync(file,code);
-console.log(`Added Lithuanian and Bulgarian to ${rows} learning rows; existing translations and IDs retained.`);
+console.log(`Added Lithuanian and Bulgarian to ${rows} learning rows; skipped ${skipped} complete courses. Existing translations and IDs retained.`);

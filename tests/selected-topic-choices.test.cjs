@@ -19,3 +19,13 @@ test('small topics have four unambiguous choices without widening their question
     assert.equal(result.poolUnchanged,true);
   }
 });
+
+test('program and app are not marked as wrong answers for each other',()=>{
+  const a=app();
+  a.run(fs.readFileSync(path.join(__dirname,'../packs/itsupport.js'),'utf8')+';registerPack(PACKS.itsupport);state.settings={pack:"itsupport",target:"da",base:"en",diff:3,dir:"rec"};');
+  for(const source of ['program','app'])for(const direction of ['rec','prod']) {
+    a.context.source=source;a.context.direction=direction;
+    const result=a.run('(()=>{const c=ctx(),word=c.pool.find(x=>answerSource(x)===source);return makeOptions(c,word,direction).filter(x=>x.id!==word.id).map(answerSource);})()');
+    assert.equal(result.some(value=>['program','app'].includes(value)),false);
+  }
+});

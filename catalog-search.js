@@ -22,7 +22,10 @@ const normalizeSearch = (value) => value.toLowerCase().normalize('NFKD')
 // Normalize once, rather than rebuilding every course's search index on each keystroke.
 const searchableGroups = [...document.querySelectorAll('[data-course-group]')].map(group => ({
   group,
-  cards: [...group.querySelectorAll('[data-course]')].map(card => ({card, text: normalizeSearch(card.textContent + ' ' + (card.dataset.search || ''))}))
+  cards: [...group.querySelectorAll('[data-course]')].map(card => {
+    const text = normalizeSearch(card.textContent + ' ' + (card.dataset.search || ''));
+    return {card, text, words:new Set(text.split(' '))};
+  })
 }));
 function filterCourses() {
   if (!courseSearch) return;
@@ -30,8 +33,9 @@ function filterCourses() {
   let count = 0;
   searchableGroups.forEach(({group, cards}) => {
     let visible = 0;
-    cards.forEach(({card, text}) => {
-      card.hidden = !tokens.every(token => text.includes(token));
+    cards.forEach(({card, text, words}) => {
+      // Job acronyms must not match fragments of words such as "with" or "hospital".
+      card.hidden = !tokens.every(token => ['it','cv'].includes(token) ? words.has(token) : text.includes(token));
       if (!card.hidden) visible++;
     });
     group.hidden = visible === 0;

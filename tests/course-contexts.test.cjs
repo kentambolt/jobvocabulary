@@ -13,6 +13,9 @@ test('every published course has its own practical context in all eight page lan
     for(const lang of languages) {
       const [heading,paragraph,actions]=localized[lang];
       const html=fs.readFileSync(require.resolve('..'+routes[id][lang]+'index.html'),'utf8');
+      const intro=html.match(/<p class="course-intro">(.*?)<\/p>/s)?.[1];
+      assert.ok(intro,id+'/'+lang+' introduction');
+      assert.doesNotMatch(intro,/[.!?]\s*\./,id+'/'+lang+' repeated sentence punctuation');
       assert.ok(html.includes('<section class="course-context"><h2>'+escape(heading)+'</h2><p>'+escape(paragraph)+'</p>'),id+'/'+lang);
       assert.equal(actions.length,3);
       for(const action of actions)assert.ok(html.includes('<li>'+escape(action)+'</li>'),id+'/'+lang+'/'+action);

@@ -168,7 +168,7 @@ for (const [lang, locale] of Object.entries(extraCatalogLocales)) {
   COURSE_CATALOG.home[lang] = locale.home;
   COURSE_CATALOG.groups.forEach((group,index)=>{group.name[lang]=locale.groups[index].name;group.desc[lang]=locale.groups[index].desc;});
 }
-COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','trucking','foodindustry','jobsearch','worklife');
+COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','itsupport','trucking','foodindustry','jobsearch','worklife');
 COURSE_CATALOG.groups[1].packs.push('authorities','health','children','getaround','money','shopping','school','emergency','pregnancy');
 COURSE_CATALOG.related = {
   cleaning:['hotel','propertyservice','hospital','worklife','essentials'],
@@ -185,6 +185,7 @@ COURSE_CATALOG.related = {
   airport:['transport','warehouse','bus','hotel','worklife'],
   bus:['getaround','transport','driving','trucking','worklife'],
   propertyservice:['construction','cleaning','authorities','worklife','essentials'],
+  itsupport:['worklife','jobsearch','school','essentials','money'],
   trucking:['transport','warehouse','bus','driving','worklife'],
   foodindustry:['restaurant','agriculture','warehouse','retail','worklife'],
   jobsearch:['worklife','school','hotel','warehouse','cleaning'],

@@ -260,5 +260,14 @@ module.exports={
       "Opisz obserwację dotyczącą siebie lub dziecka.",
       "Rozpoznawaj słowa o wizytach, urlopie i rejestracji."
     ]
+  ],
+  "itsupport": [
+    "Duński we wsparciu IT i helpdesku",
+    "Rozmowa ze wsparciem często zaczyna się od jasnego opisu problemu. Ćwicz pytania o program, komunikat o błędzie i moment wystąpienia problemu wraz z nazwami sprzętu użytkownika. Następnie poznaj krótkie instrukcje i jasne wyjaśnienie kolejnego kroku.",
+    [
+      "Poproś użytkownika o pokazanie lub przeczytanie komunikatu o błędzie.",
+      "Podaj krótką instrukcję dotyczącą pliku, połączenia lub ponownego uruchomienia.",
+      "Wyjaśnij, co stanie się ze zgłoszeniem dalej."
+    ]
   ]
 };
