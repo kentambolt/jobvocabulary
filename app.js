@@ -534,7 +534,7 @@ let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
 // Transport remains disabled until the shared aggregate endpoint is ready.
-const activation = ActivationMeter.create(AggregateTransport.create({enabled:false}));
+const activation = ActivationMeter.create(AggregateTransport.create({enabled:AggregateTransport.enabled}));
 
 // Public language pages can hand their explicit interface choice to the app
 // before a course/language pair exists. Consume this UI hint without changing progress.
@@ -1024,6 +1024,8 @@ function render() {
   $('menuBtn').setAttribute('aria-label', t('menu'));
   $('closeMenuBtn').setAttribute('aria-label', t('closeMenu'));
   $('licensesLink').textContent = t('licenses');
+  $('privacyLink').href = `/${ul}/privacy/`;
+  $('privacyLink').textContent = {da:'Privatliv og kontakt',en:'Privacy and contact',ru:'Конфиденциальность и контакты',uk:'Конфіденційність і контакти',pl:'Prywatność i kontakt',ro:'Confidențialitate și contact',lt:'Privatumas ir kontaktai',bg:'Поверителност и контакт'}[ul];
   const guidesLink = $('guidesLink');
   guidesLink.href = `/${ul}/guides/`;
   guidesLink.textContent = {da:'Guides',en:'Guides',ru:'Руководства',uk:'Посібники',pl:'Poradniki',ro:'Ghiduri',lt:'Mokymosi gidai',bg:'Ръководства'}[ul];

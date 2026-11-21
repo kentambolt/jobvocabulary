@@ -6,6 +6,7 @@ const vm = require('vm');
 const textAssetVersion=require('./text-asset-version');
 const catalog = require('../catalog');
 const starterPaths = require('../starter-paths');
+const privacy = require('./privacy-pages');
 const seo = require('./seo-pages');
 const courseRoutes = require('./course-routes');
 const courseSearchAliases = require('./course-search-aliases.json');
@@ -146,9 +147,6 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   <meta property="og:description" content="${esc(desc)}">
   ${socialMetadata(lang,courseImage(p.id))}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Course', '@id': url+'#course', url, name: t.title(name).replace(' | JobVocabulary', ''), description: desc, inLanguage: [...new Set(['da',lang])],
@@ -268,9 +266,6 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
   <meta property="og:description" content="${esc(copy.description)}">
   ${socialMetadata(lang)}
   <link rel="stylesheet" href="/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script src="/practice-resume.js" defer></script>
   <script src="/catalog-search.js" defer></script>
@@ -286,7 +281,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
     <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g,i) => `<a href="#${g.id}" aria-label="${esc(g.name[lang])}"><span class="category-full">${esc(g.name[lang])}</span><span class="category-short" aria-hidden="true">${esc(copy.shortGroups[i])}</span></a>`).join('')}</nav>
     <p id="courseEmpty" role="status" hidden>${esc(l.empty)}</p>
     <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p><div class="course-grid">${g.packs.map(card).join('')}</div></section>`).join('')}</div>
-    <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a> · <a href="${seo.guideIndex(lang)}">${esc(seo.guideLabels[lang])}</a></footer>
+    <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a> · <a href="${seo.guideIndex(lang)}">${esc(seo.guideLabels[lang])}</a> · <a href="/${lang}/privacy/">${esc(privacy.copy[lang].title)}</a></footer>
   </main>
 </body>
 </html>
@@ -297,11 +292,12 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
 }
 
 const guideOutput = seo.buildGuides({root:ROOT,site:SITE,packs,urlOf});
+const privacyPages = privacy.build(ROOT);
 urls.push(...guideOutput.urls);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
 const assets = ['aggregate-transport.js', 'activation-meter.js', 'starter-paths.js', 'not-found.js', 'style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'shared-word-groups.js', 'course-knowledge.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, textAssetVersion(fs.readFileSync(path.join(ROOT, asset)))]));
-const pages = [indexPath, path.join(ROOT,'404.html'), path.join(ROOT,'dictionary/attribution.html'), ...guideOutput.pages, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
+const pages = [indexPath, path.join(ROOT,'404.html'), path.join(ROOT,'dictionary/attribution.html'), ...guideOutput.pages, ...privacyPages, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {
   const html = fs.readFileSync(file, 'utf8').replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
     const version = versions[asset.replace(/^\//, '')];
