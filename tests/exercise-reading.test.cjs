@@ -39,6 +39,17 @@ test('new words, choice questions and spelling all render inside the same fixed 
   assert.match(a.context.document.getElementById('app').innerHTML,/^<div class="practice-stage reading-space">/);
 });
 
+test('revealing a long answer keeps one language in the prompt and uses the existing response area for its meaning',()=>{
+  const a=practice('bus','lt','uk');a.run(renderer);
+  a.run(`const c=ctx();const concept=c.pool.slice().sort((a,b)=>lexicalForm(b,'lt').length-lexicalForm(a,'lt').length)[0];current={kind:'intro',concept,qdir:'rec'};renderPlayView();`);
+  const html=a.context.document.getElementById('app').innerHTML;
+  const prompt=html.match(/<div class="prompt[^>]*>([\s\S]*?)<\/div>/)[1];
+  assert.doesNotMatch(prompt,/class="sub"/);
+  assert.match(html,/<div class="revealed-meaning" lang="uk"><span class="sub">/);
+  assert.equal((html.match(/id="nextBtn"/g)||[]).length,1);
+  assert.match(html,/^<div class="practice-stage reading-long">/);
+});
+
 test('a level change uses the existing receipt row without adding a block above the prompt',()=>{
   const a=practice();
   a.run('const c=ctx();levelNotice={key:c.key,diff:c.s.diff,task:c.prog.task,text:"Easy completed. Continue with Medium."};');

@@ -1347,7 +1347,7 @@ function practiceReadingClass(c) {
 }
 
 function fitAnswerText() {
-  for (const prompt of $('app').querySelectorAll('.prompt')) {
+  for (const prompt of $('app').querySelectorAll('.prompt, .revealed-meaning')) {
     const labels = [...prompt.querySelectorAll(':scope > .w, :scope > .sub')];
     labels.forEach(label => label.style.removeProperty('font-size'));
     if (!labels.length) continue;
@@ -1508,8 +1508,8 @@ function renderPlayView() {
     html += `<div class="prompt${c.pics ? ' pics' : ''}">${promptActionsHTML(x, speakBtn)}
       ${c.pics ? picHTML(x) : ''}
       ${targetHTML(c, x)}
-      ${c.pics ? '' : `<span class="sub">${esc(lexicalForm(x,c.s.base))}</span>`}
     </div>
+    ${c.pics ? '' : `<div class="revealed-meaning" lang="${c.s.base}"><span class="sub">${esc(lexicalForm(x,c.s.base))}</span></div>`}
     <div class="feedback" aria-live="polite"><button class="primary" id="nextBtn">${esc(t('next'))}</button></div>`;
   } else if (current.kind === 'write') {
     // Børn hører ordet (højttaler); ved oversættelse vises betydningen.
