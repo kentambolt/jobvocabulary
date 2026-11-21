@@ -23,7 +23,8 @@ An introduction does not consume a graded-review visit or advance mixed task typ
 It never reads/writes browser storage and sends no properties or identifiers.
 Its transport is currently disabled pending the shared aggregate service. Counts
 will describe actions, not unique people or cross-visit retention. Personal-list
-practice and placement tests do not emit course activation milestones.
+practice does not emit course activation milestones. Actual graded placement
+answers are included; opening an offer or showing an introduction is not an answer.
 
 `AggregateTransport.enabled` is the single production switch. Privacy pages in
 all eight languages reflect that switch at build time; rebuild before publishing

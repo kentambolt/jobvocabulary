@@ -34,3 +34,14 @@ test('real native introductions and renders are not answers, while ten real task
   }
   assert.deepEqual(events,['course_started','first_answer','ten_answers']);
 });
+
+test('a real placement answer counts without adding a second course start for rerenders',()=>{
+  const events=[];
+  const a=app({target:'da',base:'en',pack:'top',dir:'rec',diff:1},{sendActivation:event=>events.push(event)});
+  a.run('render=()=>{if(view==="place")renderPlace();};startPlacement();renderPlace();');
+  assert.deepEqual(events,['course_started']);
+  a.run('choose(current.options.findIndex(x=>x.id===current.concept.id));');
+  assert.deepEqual(events,['course_started','first_answer']);
+  a.run('renderPlace();');
+  assert.deepEqual(events,['course_started','first_answer']);
+});
