@@ -278,5 +278,14 @@ module.exports={
       "Potwierdź spotkanie lub poproś o brakującą informację.",
       "Przekaż współpracownikowi, co wymaga dalszego kontaktu."
     ]
+  ],
+  "automotive": [
+    "Duński dla warsztatu samochodowego i mechaników",
+    "Dzień w warsztacie często zaczyna się od opisu usterki przez klienta. Ucz się nazw narzędzi i części razem z pytaniami o dźwięki, kontrolki i wcześniejszy serwis. Ćwicz również informowanie współpracownika o brakach oraz przekazywanie klientowi jasnych informacji o postępie pracy. Kurs uczy języka i nie zastępuje instrukcji warsztatowych ani szkolenia zawodowego.",
+    [
+      "Zapytaj klienta, kiedy występuje problem.",
+      "Rozpoznawaj nazwy części samochodowych, płynów i narzędzi.",
+      "Wyjaśnij, czy samochód jest gotowy, czy czekacie na część."
+    ]
   ]
 };

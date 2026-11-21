@@ -1,10 +1,10 @@
 {
   "/": {
-    "digest": "2a68ae4d17ae19b16b396cde6f7cc86a49dcd0c183e3d64b595566a7f20dd8d0",
+    "digest": "af49b7db142acbabd2c6addeea8b458d1689a0baafc940c6af7ce4b1d239fd07",
     "lastmod": "2026-11-21"
   },
   "/bg/": {
-    "digest": "73266136a924b7882a41f28b32b6271f91b1291e1aac6cb74447912f1a31702d",
+    "digest": "b565b318744e08d3f56ce1d388362531ec4fe9801601ea82498d9dff28ccaee4",
     "lastmod": "2026-11-21"
   },
   "/bg/agriculture/": {
@@ -17,6 +17,10 @@
   },
   "/bg/authorities/": {
     "digest": "f3c1f8b02f22e44f2009bbd89a29154c683e6ba161e55fdf3a6cfd4a6b5bcdf6",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/automotive/": {
+    "digest": "f6ada76efef4eeed81b8d825741599d7f43676a007afc844b0ac3fc4a10f66d2",
     "lastmod": "2026-11-21"
   },
   "/bg/bus/": {
@@ -164,7 +168,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/": {
-    "digest": "1686544ea2fc15eac8d0d8f117ce73972f0b59027994b7e6892cb4b3028e2c05",
+    "digest": "cce03572a2fa273ce72192565a74a748cc9baa599e9b1dadc5c5cf83d7a998a4",
     "lastmod": "2026-11-21"
   },
   "/da/aeldrepleje/": {
@@ -173,6 +177,10 @@
   },
   "/da/arbejdsliv-og-rettigheder/": {
     "digest": "df0e15bb05ad7e1da637927e0984051048ff3d1ce2990afd817f634d9529f3c6",
+    "lastmod": "2026-11-21"
+  },
+  "/da/autovaerksted-og-mekaniker/": {
+    "digest": "7f4620a62dda29e64162fd2eaeb02e9dcbb66b0a5379cbcb7a1f3378375f181a",
     "lastmod": "2026-11-21"
   },
   "/da/boern-skole-og-daginstitution/": {
@@ -324,7 +332,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/": {
-    "digest": "9e02042b13cf396de7f38ded29ab74af61b2a2ac740355d8abba7ea4b578bbda",
+    "digest": "eea545aecfd007ae686c054d6dc4ae14214771438838daad2306f5814d3c2347",
     "lastmod": "2026-11-21"
   },
   "/en/airport-and-ground-handling/": {
@@ -333,6 +341,10 @@
   },
   "/en/bus-driver/": {
     "digest": "5bf750b80a97dbe6604099337b7e7932916a0ce67cbcd5a14bb32ca0b15c2410",
+    "lastmod": "2026-11-21"
+  },
+  "/en/car-workshop-and-mechanics/": {
+    "digest": "169404ed3807c4e4945081f744df9cb2188470e0db1378da9e6a78b81d835173",
     "lastmod": "2026-11-21"
   },
   "/en/children-school-and-daycare/": {
@@ -484,7 +496,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/": {
-    "digest": "43671fc93c40e06c6dabb9efa6f8f79979c4f2bfa51ca83f6085a99d31593047",
+    "digest": "4fcca09141f6bb0caa0b8c0c157c3467b85af784c03e9965622a21ce52d095f3",
     "lastmod": "2026-11-21"
   },
   "/lt/apsipirkimas-ir-vartotojo-teises/": {
@@ -493,6 +505,10 @@
   },
   "/lt/autobuso-vairuotojas/": {
     "digest": "825f8e5fe94a0bc96337e8dd4d466521520ca0396a87afa8515694c86d0444a0",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/autoservisas-ir-mechaniko-darbas/": {
+    "digest": "dbd81f25a838bb9deeacd55bc3eae068bdfad0c62db576bd6e4374243b781d8b",
     "lastmod": "2026-11-21"
   },
   "/lt/biuras-ir-klientu-aptarnavimas/": {
@@ -644,7 +660,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/": {
-    "digest": "9d19145590ccbbfe15843ce6b8a9e2d5bb9ba7139d11cb388d841143676a42df",
+    "digest": "6c26e0ef4cccc4d7190db0970ae2d3429b663697c72cfa969d1592a3654fe3be",
     "lastmod": "2026-11-21"
   },
   "/pl/biuro-i-obsluga-klienta/": {
@@ -791,6 +807,10 @@
     "digest": "4f374dfd68626c376d7941ca2a56f6598a7b108662355fb57e541d585f1573b6",
     "lastmod": "2026-11-21"
   },
+  "/pl/warsztat-samochodowy-i-mechanika/": {
+    "digest": "9b625bebfb5e952044ccafd61e4d0806f4fe6fe2c67bfdeb20c0c5bf6a7b9e88",
+    "lastmod": "2026-11-21"
+  },
   "/pl/wsparcie-it-i-helpdesk/": {
     "digest": "fbf51c94cbf147637961f67e143d69d85d371bad8d1117e3ad6d46f86d82b7ae",
     "lastmod": "2026-11-21"
@@ -804,7 +824,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/": {
-    "digest": "2c1a8008d28fb5787e98494941001482769f663232352184aa43e98901d0c346",
+    "digest": "f24cc263f80284f30183a19cf792e1c8d9483d1f0b36bd7697c439bac058776e",
     "lastmod": "2026-11-21"
   },
   "/ro/aeroport-si-handling-la-sol/": {
@@ -821,6 +841,10 @@
   },
   "/ro/asistenta-it-si-helpdesk/": {
     "digest": "adfdc703b7fd58a70a12ee1c1953062eb62a17ddd5c1fe5803131cd1e9e148a2",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/atelier-auto-si-mecanica/": {
+    "digest": "5e044d8a773bd4d4f8e4d5eb4aa6c15aee7095b559995b83fe840931befd9a88",
     "lastmod": "2026-11-21"
   },
   "/ro/bani-banca-si-fraude/": {
@@ -964,7 +988,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/": {
-    "digest": "29e370caf05e695a3eccbf6c92207ac6b5813a4c308e42dd38b6ba1e27d9bd23",
+    "digest": "52995ba1504f5a314205d046dc371b456f663459886c1b41aca64c25429a6570",
     "lastmod": "2026-11-21"
   },
   "/ru/agriculture/": {
@@ -977,6 +1001,10 @@
   },
   "/ru/authorities/": {
     "digest": "919ff06594e20e4a8630c82e8fb02e1433f885b1c836104f857dc249b4551f3f",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/automotive/": {
+    "digest": "423826c5ae6a575a32b9e993fc09bb3f7443244977a5d64956c65cdc87ef8951",
     "lastmod": "2026-11-21"
   },
   "/ru/bus/": {
@@ -1124,7 +1152,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/": {
-    "digest": "a2f0f573a4b01b696a40adec32a83e70a1c92dc6ce822ca81f676faac77b6131",
+    "digest": "116055faaaf26017e68b2af948558e525afe8b88190df3460eb75dc023b7ef51",
     "lastmod": "2026-11-21"
   },
   "/uk/agriculture/": {
@@ -1137,6 +1165,10 @@
   },
   "/uk/authorities/": {
     "digest": "54586e9eab70e98e7dc1bbf5f3261edb0dbcfc5c9232ca80ae61f88685158ca4",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/automotive/": {
+    "digest": "0a6f74b6c91157e5b5f667a1b2700958af29c830bb41b059d2ca89af9d2ff6f6",
     "lastmod": "2026-11-21"
   },
   "/uk/bus/": {

@@ -31,5 +31,27 @@
   "itsupport": "IT helpdesk servicedesk technical support computer support teknisk support EDB техническая поддержка техподдержка технічна підтримка техпідтримка pomoc techniczna wsparcie informatyczne suport tehnic asistență informatică kompiuterių pagalba techninė pagalba компютърна поддръжка техническа поддръжка",
   "office": "office customer service call centre call center receptionist secretary administration kontor kundeservice reception sekretær administration telefon офис обслуживание клиентов секретарь колл-центр офіс обслуговування клієнтів секретар biuro obsługa klienta sekretariat recepcja birou relații cu clienții secretariat recepție biuras klientų aptarnavimas sekretorius registratūra офис обслужване на клиенти секретар рецепция",
   "top": "common words vocabulary basics beginner frequent words grundord ordforråd begynder частые слова словарный запас початківець słownictwo początkujący vocabular începător žodynas pradedantysis речник начинаещ",
-  "pics": "pictures illustrated images beginner billedord billeder illustrationer картинки малюнки obrazki imagini paveikslėliai картинки"
+  "pics": "pictures illustrated images beginner billedord billeder illustrationer картинки малюнки obrazki imagini paveikslėliai картинки",
+  "automotive": [
+    "mechanic",
+    "automotive",
+    "garage",
+    "car repair",
+    "motor",
+    "mekaniker",
+    "autoværksted",
+    "bilmekaniker",
+    "автомеханик",
+    "автосервис",
+    "автомеханік",
+    "автосервіс",
+    "mechanik",
+    "warsztat",
+    "mecanic",
+    "atelier auto",
+    "autoservisas",
+    "automechanikas",
+    "автомонтьор",
+    "автосервиз"
+  ]
 }

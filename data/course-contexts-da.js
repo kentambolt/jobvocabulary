@@ -278,5 +278,14 @@ module.exports={
       "Bekræft en aftale eller bed om en manglende oplysning.",
       "Giv en kollega besked om, hvad der skal følges op på."
     ]
+  ],
+  "automotive": [
+    "Dansk til autoværksted og mekanikerarbejde",
+    "En arbejdsdag på værkstedet begynder ofte med kundens beskrivelse af en fejl. Lær navnene på værktøj og dele sammen med spørgsmål om lyde, advarselslamper og tidligere service. Øv også at fortælle en kollega, hvad der mangler, og give kunden en klar status. Kurset træner sproget og erstatter ikke værkstedets instruktion eller faglige oplæring.",
+    [
+      "Spørg kunden, hvornår problemet opstår.",
+      "Genkend navne på bildele, væsker og værktøj.",
+      "Forklar, om bilen er færdig, eller om I venter på en del."
+    ]
   ]
 };

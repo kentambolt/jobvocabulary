@@ -29,6 +29,16 @@
     "ru": "/ru/authorities/",
     "uk": "/uk/authorities/"
   },
+  "automotive": {
+    "bg": "/bg/automotive/",
+    "da": "/da/autovaerksted-og-mekaniker/",
+    "en": "/en/car-workshop-and-mechanics/",
+    "lt": "/lt/autoservisas-ir-mechaniko-darbas/",
+    "pl": "/pl/warsztat-samochodowy-i-mechanika/",
+    "ro": "/ro/atelier-auto-si-mecanica/",
+    "ru": "/ru/automotive/",
+    "uk": "/uk/automotive/"
+  },
   "bus": {
     "bg": "/bg/bus/",
     "da": "/da/buschauffoer/",
