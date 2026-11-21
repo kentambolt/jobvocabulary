@@ -39,3 +39,15 @@ test('rendered root metadata follows all eight interface languages without chang
     assert.deepEqual(JSON.parse(a.run('JSON.stringify(state.settings)')),settings);
   }
 });
+
+test('the root declares one consistent site name and links to every language catalogue without scripts',()=>{
+ const site=JSON.parse(html.match(/<script id="websiteSchema" type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+ assert.equal(site['@type'],'WebSite');assert.equal(site.name,'JobVocabulary');assert.equal(site.url,'https://jobvocabulary.com/');
+ assert.equal(site.alternateName,'Job Vocabulary');assert.deepEqual(site.inLanguage,languages);
+ const schemas=[...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
+ assert.equal(schemas.filter(s=>s['@type']==='WebSite').length,1);
+ const fallback=html.match(/<noscript id="noScriptFallback">([\s\S]*?)<\/noscript>/)[1];
+ const links=[...fallback.matchAll(/<a href="([^"]+)"/g)].map(m=>m[1]);
+ assert.deepEqual(links,languages.map(l=>'/'+l+'/'));
+ for(const href of links)assert.ok(fs.existsSync(require('path').resolve(__dirname,'..',href.slice(1),'index.html')));
+});

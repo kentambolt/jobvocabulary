@@ -210,6 +210,8 @@ const indexPath = path.join(ROOT, 'index.html');
 const homeMetadata=catalog.siteMetadata('da',packs.length);
 const homeDescription=homeMetadata.description;
 const html = fs.readFileSync(indexPath, 'utf8')
+  .replace(/<script id="websiteSchema" type="application\/ld\+json">[\s\S]*?<\/script>/,`<script id="websiteSchema" type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':'WebSite','@id':SITE+'/#website',name:'JobVocabulary',alternateName:'Job Vocabulary',url:SITE+'/',inLanguage:LANGS})}</script>`)
+  .replace(/<noscript id="noScriptFallback">[\s\S]*?<\/noscript>/,`<noscript id="noScriptFallback"><div class="noscript-fallback"><p>Selve øvelserne kræver JavaScript. Du kan stadig læse kurser, ordlister og guides. Vælg dit sprog:</p><ul class="links">${LANGS.map(lang=>`<li><a href="/${lang}/" lang="${lang}" hreflang="${lang}">${LANG_NAME[lang]}</a></li>`).join('')}</ul></div></noscript>`)
   .replace(/<title>[^<]*<\/title>/,`<title>${esc(homeMetadata.title)}</title>`)
   .replace(/(<meta property="og:title" content=")[^"]*(">)/,`$1${esc(homeMetadata.title)}$2`)
   .replace(/<!-- SOCIAL -->[\s\S]*?<!-- \/SOCIAL -->/,`<!-- SOCIAL -->\n  ${socialMetadata('da')}\n  <!-- /SOCIAL -->`)
