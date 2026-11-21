@@ -1302,12 +1302,34 @@ function metaHTML(c, x) {
   void x;
   const course = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(isPics(c.s) ? 'picsB' : 'topB');
   const difficulty = isList(c.s) ? '' : t(isPack(c.s) ? 'packDiff' : 'diff')[c.s.diff];
-  return `${levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3 ? `<p class="level-notice" role="status">${esc(levelNotice.text)}</p>` : ''}<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(difficulty)}</span><span class="course-progress">${esc(t('progress', { n: score, m: c.pool.length }))}</span>
+  return `<div class="meta course-meta"><span class="course-name" title="${esc(course)}">${esc(course)}</span><span class="course-difficulty">${esc(difficulty)}</span><span class="course-progress">${esc(t('progress', { n: score, m: c.pool.length }))}</span>
     </div>
     <div class="progress"><div style="width:${Math.min(100, (score / Math.max(1, c.pool.length)) * 100)}%"></div></div>`;
 }
 
 // Fit text inside fixed exercise slots without moving the following controls.
+let practiceReadingCache = null;
+function practiceReadingClass(c) {
+  if (c.pics) return '';
+  const source = isPack(c.s) ? PACK_ITEMS[c.s.pack] || [] : ITEM;
+  const key = JSON.stringify([c.s.pack,c.s.target,c.s.base,c.s.cats || null,
+    isList(c.s) ? c.pool.map(x=>[x.id,x.words[c.s.target],x.words[c.s.base]]) : null]);
+  if (practiceReadingCache?.key === key && practiceReadingCache.source === source) return practiceReadingCache.value;
+  // Plan for the whole chosen topic, including later levels, rather than the current question.
+  const scope = isList(c.s) ? c.pool : buildPool({...c.s,diff:3});
+  const types = new Set(scope.map(x=>x.phrase));
+  const candidates = isPack(c.s) ? source.filter(x=>types.has(x.phrase)) : scope;
+  let longest = 0;
+  for (const item of candidates) for (const lang of [c.s.target,c.s.base]) {
+    if (item.words[lang]) longest = Math.max(longest,lexicalForm(item,lang).length);
+  }
+  // A saved phrase can draw wrong choices from the shared dictionary.
+  if (isList(c.s) && types.has(true)) longest = Math.max(longest,131);
+  const value = longest > 130 ? ' reading-long' : longest > 80 ? ' reading-room' : longest > 35 && types.has(true) ? ' reading-space' : '';
+  practiceReadingCache = {key,source,value};
+  return value;
+}
+
 function fitAnswerText() {
   for (const prompt of $('app').querySelectorAll('.prompt')) {
     const labels = [...prompt.querySelectorAll(':scope > .w, :scope > .sub')];
@@ -1377,7 +1399,7 @@ function startWrite(c, x) {
 function writeHTML(c, x) {
   const w = current;
   const mixed = PracticeOptions.modes(c.s).length > 1 || PracticeOptions.modes(c.s).includes('path');
-  const keyCols = mixed ? Math.max(2, Math.ceil(w.keys.length / 3)) : w.cols;
+  const keyCols = Math.max(2, Math.ceil(w.keys.length / 3));
   const sp = w.spec;
   const done = !!w.answered;
   const n = sp.chars.length + (sp.prefix ? sp.prefix.length + 1 : 0);
@@ -1454,7 +1476,8 @@ function finishWrite() {
   if (correct) advance();
 }
 
-function feedbackReceiptHTML() {
+function feedbackReceiptHTML(c) {
+  if (c && levelNotice?.key === c.key && levelNotice.diff === c.s.diff && c.prog.task - levelNotice.task < 3) return `<div class="answer-receipt level-notice" role="status" title="${esc(levelNotice.text)}">${esc(levelNotice.text)}</div>`;
   return lastFeedback ? `<div class="answer-receipt" role="status" aria-live="polite">✓ ${esc(t('correct'))} · <span lang="${lastFeedback.lang}">${esc(lastFeedback.word)}</span></div>` : '<div class="answer-receipt" aria-hidden="true"></div>';
 }
 
@@ -1463,7 +1486,7 @@ function renderPlayView() {
   const x = current.concept;
   const rec = current.qdir === 'rec';
   const speakBtn = `<button class="speak" id="speakBtn" aria-label="${esc(lt('listen'))}">${SPEAK_SVG}</button>`;
-  let html = metaHTML(c, x) + feedbackReceiptHTML();
+  let html = metaHTML(c, x) + feedbackReceiptHTML(c);
 
   if (current.kind === 'intro') {
     html += `<div class="prompt${c.pics ? ' pics' : ''}">${promptActionsHTML(x, speakBtn)}
@@ -1515,8 +1538,7 @@ function renderPlayView() {
     }
     html += `</div>`;
   }
-  const mixed = PracticeOptions.modes(c.s).length > 1 || PracticeOptions.modes(c.s).includes('path');
-  $('app').innerHTML = mixed ? `<div class="practice-stage${c.pics ? ' has-pictures' : ''}">${html}</div>` : html;
+  $('app').innerHTML = `<div class="practice-stage${c.pics ? ' has-pictures' : ''}${practiceReadingClass(c)}">${html}</div>`;
   bindWordSave(x);
   fitAnswerText();
 
@@ -1708,7 +1730,7 @@ function renderPlace() {
     ${optionsHTML(c, x, current.answered)}
     ${feedbackReceiptHTML()}
     <div class="feedback" aria-live="polite">${current.answered ? `<button class="primary" id="nextBtn">${esc(t('next'))}</button>` : `<button class="secondary" id="dkBtn">${esc(t('dontKnow'))}</button>`}</div>`;
-  $('app').innerHTML = html;
+  $('app').innerHTML = `<div class="practice-stage${c.pics ? ' has-pictures' : ''}${practiceReadingClass(c)}">${html}</div>`;
   bindWordSave(x);
   fitAnswerText();
   $('app').querySelectorAll('.opt').forEach((b) => (b.onclick = () => choose(Number(b.dataset.i))));
