@@ -20,7 +20,8 @@ function breadcrumbs(site, items, lang = 'en') {
 
 function courseExtras(pack, lang) {
   const context = contexts[pack]?.[lang];
-  const related = guides.filter(g => g[lang] && g.courses.includes(pack)).slice(0,3);
+  const related = guides.filter(g => g[lang] && g.courses.includes(pack))
+    .sort((a,b) => Number(b.courses[0]===pack)-Number(a.courses[0]===pack)).slice(0,3);
   return `${context ? `<section class="course-context"><h2>${esc(context[0])}</h2><p>${esc(context[1])}</p><ul>${context[2].map(s => `<li>${esc(s)}</li>`).join('')}</ul></section>` : ''}${related.length ? `<section class="related-guides"><h2>${esc(guideUI[lang].practiceGuides)}</h2><ul class="links">${related.map(g => `<li><a href="${guidePath(g,lang)}">${esc(g[lang].title)}</a></li>`).join('')}</ul></section>` : ''}`;
 }
 
