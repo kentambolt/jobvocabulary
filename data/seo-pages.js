@@ -4,6 +4,8 @@ const path = require('node:path');
 const { guides, contexts } = require('./seo-content');
 const {socialMetadata,guideImage,imageInfo}=require('./social-meta');
 const guideUI = require('./guide-ui');
+const {applyArticleTimes}=require('./guide-times');
+const guideTimes=require('./guide-times.json');
 const guideLanguages = Object.keys(guideUI);
 const guideLabels = Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides]));
 const guideIndex = lang => `/${guideLanguages.includes(lang) ? lang : 'en'}/guides/`;
@@ -32,6 +34,7 @@ function languageLinks(lang, href) {
 function buildGuides({root, site, packs, urlOf}) {
   const pages = [], urls = [];
   function write(rel, html) {
+    html=applyArticleTimes(html,guideTimes[rel]);
     const file = path.join(root, rel, 'index.html');
     fs.mkdirSync(path.dirname(file), {recursive:true});
     fs.writeFileSync(file, html.replace(/[ \t]+$/gm, ''));
