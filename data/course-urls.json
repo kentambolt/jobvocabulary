@@ -1,0 +1,292 @@
+{
+  "agriculture": {
+    "bg": "/bg/agriculture/",
+    "da": "/da/landbrug-og-foedevarer/",
+    "en": "/en/farming-and-food-production/",
+    "lt": "/lt/zemes-ukis-ir-maisto-gamyba/",
+    "pl": "/pl/rolnictwo-i-produkcja-zywnosci/",
+    "ro": "/ro/agricultura-si-productie-alimentara/",
+    "ru": "/ru/agriculture/",
+    "uk": "/uk/agriculture/"
+  },
+  "airport": {
+    "bg": "/bg/airport/",
+    "da": "/da/lufthavn-og-ground-handling/",
+    "en": "/en/airport-and-ground-handling/",
+    "lt": "/lt/oro-uostas-ir-antzeminis-aptarnavimas/",
+    "pl": "/pl/lotnisko-i-obsluga-naziemna/",
+    "ro": "/ro/aeroport-si-handling-la-sol/",
+    "ru": "/ru/airport/",
+    "uk": "/uk/airport/"
+  },
+  "authorities": {
+    "bg": "/bg/authorities/",
+    "da": "/da/bolig-og-myndigheder/",
+    "en": "/en/housing-and-authorities/",
+    "lt": "/lt/bustas-ir-institucijos/",
+    "pl": "/pl/mieszkanie-i-urzedy/",
+    "ro": "/ro/locuinta-si-autoritati/",
+    "ru": "/ru/authorities/",
+    "uk": "/uk/authorities/"
+  },
+  "bus": {
+    "bg": "/bg/bus/",
+    "da": "/da/buschauffoer/",
+    "en": "/en/bus-driver/",
+    "lt": "/lt/autobuso-vairuotojas/",
+    "pl": "/pl/kierowca-autobusu/",
+    "ro": "/ro/sofer-de-autobuz/",
+    "ru": "/ru/bus/",
+    "uk": "/uk/bus/"
+  },
+  "care": {
+    "bg": "/bg/care/",
+    "da": "/da/aeldrepleje/",
+    "en": "/en/elderly-care/",
+    "lt": "/lt/pagyvenusiu-zmoniu-prieziura/",
+    "pl": "/pl/opieka-nad-osobami-starszymi/",
+    "ro": "/ro/ingrijirea-persoanelor-varstnice/",
+    "ru": "/ru/care/",
+    "uk": "/uk/care/"
+  },
+  "childcare": {
+    "bg": "/bg/childcare/",
+    "da": "/da/daginstitution-medhjaelper/",
+    "en": "/en/daycare-assistant/",
+    "lt": "/lt/darzelio-darbuotojo-padejejas/",
+    "pl": "/pl/pomoc-w-zlobku-i-przedszkolu/",
+    "ro": "/ro/asistent-in-cresa-si-gradinita/",
+    "ru": "/ru/childcare/",
+    "uk": "/uk/childcare/"
+  },
+  "children": {
+    "bg": "/bg/children/",
+    "da": "/da/boern-skole-og-daginstitution/",
+    "en": "/en/children-school-and-daycare/",
+    "lt": "/lt/vaikai-mokykla-ir-darzelis/",
+    "pl": "/pl/dzieci-szkola-i-przedszkole/",
+    "ro": "/ro/copii-scoala-si-gradinita/",
+    "ru": "/ru/children/",
+    "uk": "/uk/children/"
+  },
+  "cleaning": {
+    "bg": "/bg/cleaning/",
+    "da": "/da/rengoering/",
+    "en": "/en/cleaning/",
+    "lt": "/lt/valymas/",
+    "pl": "/pl/sprzatanie/",
+    "ro": "/ro/curatenie/",
+    "ru": "/ru/cleaning/",
+    "uk": "/uk/cleaning/"
+  },
+  "construction": {
+    "bg": "/bg/construction/",
+    "da": "/da/byggeri-og-haandvaerk/",
+    "en": "/en/construction-and-trades/",
+    "lt": "/lt/statyba-ir-amatai/",
+    "pl": "/pl/budownictwo-i-rzemioslo/",
+    "ro": "/ro/constructii-si-meserii/",
+    "ru": "/ru/construction/",
+    "uk": "/uk/construction/"
+  },
+  "driving": {
+    "bg": "/bg/driving/",
+    "da": "/da/koereproeve/",
+    "en": "/en/driving-test/",
+    "lt": "/lt/vairavimo-egzaminas/",
+    "pl": "/pl/prawo-jazdy/",
+    "ro": "/ro/examenul-auto/",
+    "ru": "/ru/driving/",
+    "uk": "/uk/driving/"
+  },
+  "emergency": {
+    "bg": "/bg/emergency/",
+    "da": "/da/noedsituationer-og-politi/",
+    "en": "/en/emergencies-and-the-police/",
+    "lt": "/lt/skubus-atvejai-ir-policija/",
+    "pl": "/pl/sytuacje-nagle-i-policja/",
+    "ro": "/ro/urgente-si-politia/",
+    "ru": "/ru/emergency/",
+    "uk": "/uk/emergency/"
+  },
+  "essentials": {
+    "bg": "/bg/essentials/",
+    "da": "/da/hverdagens-grundord/",
+    "en": "/en/everyday-essentials/",
+    "lt": "/lt/kasdienybes-pagrindai/",
+    "pl": "/pl/podstawy-na-co-dzien/",
+    "ro": "/ro/notiuni-de-baza-pentru-viata-de-zi-cu-zi/",
+    "ru": "/ru/essentials/",
+    "uk": "/uk/essentials/"
+  },
+  "foodindustry": {
+    "bg": "/bg/foodindustry/",
+    "da": "/da/foedevareindustri-og-slagteri/",
+    "en": "/en/food-industry-and-slaughterhouses/",
+    "lt": "/lt/maisto-pramone-ir-skerdyklos/",
+    "pl": "/pl/przemysl-spozywczy-i-zaklad-miesny/",
+    "ro": "/ro/industria-alimentara-si-abatoare/",
+    "ru": "/ru/foodindustry/",
+    "uk": "/uk/foodindustry/"
+  },
+  "getaround": {
+    "bg": "/bg/getaround/",
+    "da": "/da/transport-som-borger/",
+    "en": "/en/getting-around/",
+    "lt": "/lt/keliavimas-mieste-ir-salyje/",
+    "pl": "/pl/komunikacja-na-co-dzien/",
+    "ro": "/ro/transportul-de-zi-cu-zi/",
+    "ru": "/ru/getaround/",
+    "uk": "/uk/getaround/"
+  },
+  "health": {
+    "bg": "/bg/health/",
+    "da": "/da/sundhed-og-laegen/",
+    "en": "/en/health-and-the-doctor/",
+    "lt": "/lt/sveikata-ir-gydytojas/",
+    "pl": "/pl/zdrowie-i-lekarz/",
+    "ro": "/ro/sanatatea-si-medicul/",
+    "ru": "/ru/health/",
+    "uk": "/uk/health/"
+  },
+  "hospital": {
+    "bg": "/bg/hospital/",
+    "da": "/da/hospital-og-service/",
+    "en": "/en/hospital-service-work/",
+    "lt": "/lt/pagalbinis-darbas-ligonineje/",
+    "pl": "/pl/szpital-i-obsluga/",
+    "ro": "/ro/spital-si-servicii/",
+    "ru": "/ru/hospital/",
+    "uk": "/uk/hospital/"
+  },
+  "hotel": {
+    "bg": "/bg/hotel/",
+    "da": "/da/hotel-og-housekeeping/",
+    "en": "/en/hotel-and-housekeeping/",
+    "lt": "/lt/viesbutis-ir-kambariu-tvarkymas/",
+    "pl": "/pl/hotel-i-sprzatanie-pokoi/",
+    "ro": "/ro/hotel-si-curatenia-camerelor/",
+    "ru": "/ru/hotel/",
+    "uk": "/uk/hotel/"
+  },
+  "jobsearch": {
+    "bg": "/bg/jobsearch/",
+    "da": "/da/jobsoegning/",
+    "en": "/en/job-hunting/",
+    "lt": "/lt/darbo-paieska/",
+    "pl": "/pl/szukanie-pracy/",
+    "ro": "/ro/cautarea-unui-loc-de-munca/",
+    "ru": "/ru/jobsearch/",
+    "uk": "/uk/jobsearch/"
+  },
+  "money": {
+    "bg": "/bg/money/",
+    "da": "/da/penge-bank-og-svindel/",
+    "en": "/en/money-banking-and-fraud/",
+    "lt": "/lt/pinigai-bankas-ir-sukciavimas/",
+    "pl": "/pl/pieniadze-bank-i-oszustwa/",
+    "ro": "/ro/bani-banca-si-fraude/",
+    "ru": "/ru/money/",
+    "uk": "/uk/money/"
+  },
+  "pregnancy": {
+    "bg": "/bg/pregnancy/",
+    "da": "/da/graviditet-foedsel-og-spaedboern/",
+    "en": "/en/pregnancy-birth-and-babies/",
+    "lt": "/lt/nestumas-gimdymas-ir-kudikiai/",
+    "pl": "/pl/ciaza-porod-i-niemowleta/",
+    "ro": "/ro/sarcina-nasterea-si-bebelusii/",
+    "ru": "/ru/pregnancy/",
+    "uk": "/uk/pregnancy/"
+  },
+  "propertyservice": {
+    "bg": "/bg/propertyservice/",
+    "da": "/da/ejendomsservice-og-vicevaert/",
+    "en": "/en/property-maintenance-and-caretaking/",
+    "lt": "/lt/pastatu-prieziura/",
+    "pl": "/pl/obsluga-nieruchomosci-i-konserwator/",
+    "ro": "/ro/intretinerea-cladirilor-si-ingrijitor/",
+    "ru": "/ru/propertyservice/",
+    "uk": "/uk/propertyservice/"
+  },
+  "restaurant": {
+    "bg": "/bg/restaurant/",
+    "da": "/da/restaurant-og-koekken/",
+    "en": "/en/restaurant-and-kitchen/",
+    "lt": "/lt/restoranas-ir-virtuve/",
+    "pl": "/pl/restauracja-i-kuchnia/",
+    "ro": "/ro/restaurant-si-bucatarie/",
+    "ru": "/ru/restaurant/",
+    "uk": "/uk/restaurant/"
+  },
+  "retail": {
+    "bg": "/bg/retail/",
+    "da": "/da/butik-og-supermarked/",
+    "en": "/en/shop-and-supermarket/",
+    "lt": "/lt/parduotuve-ir-prekybos-centras/",
+    "pl": "/pl/sklep-i-supermarket/",
+    "ro": "/ro/magazin-si-supermarket/",
+    "ru": "/ru/retail/",
+    "uk": "/uk/retail/"
+  },
+  "school": {
+    "bg": "/bg/school/",
+    "da": "/da/sprogskole-og-uddannelse/",
+    "en": "/en/language-school-and-education/",
+    "lt": "/lt/kalbu-mokykla-ir-mokymasis/",
+    "pl": "/pl/szkola-jezykowa-i-ksztalcenie/",
+    "ro": "/ro/scoala-de-limbi-si-studii/",
+    "ru": "/ru/school/",
+    "uk": "/uk/school/"
+  },
+  "shopping": {
+    "bg": "/bg/shopping/",
+    "da": "/da/indkoeb-og-forbrugerrettigheder/",
+    "en": "/en/shopping-and-consumer-rights/",
+    "lt": "/lt/apsipirkimas-ir-vartotojo-teises/",
+    "pl": "/pl/zakupy-i-prawa-konsumenta/",
+    "ro": "/ro/cumparaturi-si-drepturile-consumatorului/",
+    "ru": "/ru/shopping/",
+    "uk": "/uk/shopping/"
+  },
+  "transport": {
+    "bg": "/bg/transport/",
+    "da": "/da/chauffoer-og-bud/",
+    "en": "/en/driver-and-courier/",
+    "lt": "/lt/vairuotojas-ir-kurjeris/",
+    "pl": "/pl/kierowca-i-kurier/",
+    "ro": "/ro/sofer-si-curier/",
+    "ru": "/ru/transport/",
+    "uk": "/uk/transport/"
+  },
+  "trucking": {
+    "bg": "/bg/trucking/",
+    "da": "/da/lastbil-og-international-koersel/",
+    "en": "/en/lorry-driving-and-international-transport/",
+    "lt": "/lt/sunkvezimio-vairavimas-ir-tarptautinis-transportas/",
+    "pl": "/pl/ciezarowka-i-transport-miedzynarodowy/",
+    "ro": "/ro/camion-si-transport-international/",
+    "ru": "/ru/trucking/",
+    "uk": "/uk/trucking/"
+  },
+  "warehouse": {
+    "bg": "/bg/warehouse/",
+    "da": "/da/lager-og-produktion/",
+    "en": "/en/warehouse-and-production/",
+    "lt": "/lt/sandelis-ir-gamyba/",
+    "pl": "/pl/magazyn-i-produkcja/",
+    "ro": "/ro/depozit-si-productie/",
+    "ru": "/ru/warehouse/",
+    "uk": "/uk/warehouse/"
+  },
+  "worklife": {
+    "bg": "/bg/worklife/",
+    "da": "/da/arbejdsliv-og-rettigheder/",
+    "en": "/en/working-life-and-rights/",
+    "lt": "/lt/darbas-ir-darbuotojo-teises/",
+    "pl": "/pl/praca-i-prawa-pracownika/",
+    "ro": "/ro/viata-profesionala-si-drepturi/",
+    "ru": "/ru/worklife/",
+    "uk": "/uk/worklife/"
+  }
+}

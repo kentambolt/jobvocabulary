@@ -1,0 +1,1190 @@
+{
+  "/": {
+    "digest": "0ff071995d316a123cbd28162ec03bcd6cc528267a4ce05ad6f3f88ca67a0f44",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/": {
+    "digest": "9c59e37cfc28f724fe6cede97dafac3623bd04ab8a3c01e966b150b115e13896",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/agriculture/": {
+    "digest": "cec62140fb54b6f9baf286344b488f67c845dd31088ab8b9b3f50af651eaa0e6",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/airport/": {
+    "digest": "ceaf669c69c59e95147517afb6559fbcd7df865db51e11385d73357d4ed13330",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/authorities/": {
+    "digest": "f2b8ecc269e99504cd1873af8e6f6732b2fd1ca592fbf93cef4bd2229ef5d99e",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/bus/": {
+    "digest": "b31a66bc644c032e6428686b5bf1ce2e3f31fae2e12a840b82accaee89193646",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/care/": {
+    "digest": "605dc45c7b1b7e46261af0766cb6dc4bfca70a39540401a89097c2190e6f57a7",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/childcare/": {
+    "digest": "0d53e9c4c2e5a973922d567bffe90c7fe68fff9291b78af7628356b881215211",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/children/": {
+    "digest": "439dbc3dffaecab3d78ec0d8dd4e3b93ecf6762d773475b07c9420b4e72ef8db",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/cleaning/": {
+    "digest": "309856a98ba363cf0173ea6a4d147dd5b0a3e1ba4ec4fee6ecb272089312c857",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/construction/": {
+    "digest": "6f9d7661fc99a7ded54e0849af919c4920ba74421fb37c45b50e82c57249e10b",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/driving/": {
+    "digest": "906345c1e4756ed0da1772ea7a4f5d68a29ee13dd9fa3bb9a956970c61f83d72",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/emergency/": {
+    "digest": "aafc3788240566def6df9d26f94e668f6085ce085a573ae2e27dd619fe736a42",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/essentials/": {
+    "digest": "ce547b929f8bc12e708198a7b7176b24a454798448dcabdba25ef19f4c1b6fe0",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/foodindustry/": {
+    "digest": "fdf6ffd7016ed58e310f2ce6962d912e56257cf293fb2c60c85561f7d401486c",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/getaround/": {
+    "digest": "9ea66981f1ec559f0f00e288277c6dbb9dafe31bc0f792c3d19df5bdfb88221e",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/": {
+    "digest": "127a48a3cf3a8eb85dd3a826ddc545d46c6a34d4097ab6a1ee822d0d05f2dfce",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/chisla-chas-i-dati-na-datski/": {
+    "digest": "bf7f2be44d2fddb55e91d8f4665e8ad36a4f5551a8325a162a06ccf30612020a",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/datski-dumi-za-intervyu-za-rabota/": {
+    "digest": "e6bbda0347712c481085f39907bba20fa36eb113bc823cd8e909f824a2d5da1c",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/datski-dumi-za-shofyorski-urotsi/": {
+    "digest": "69fa0cca51a48acc3384ff464b660bca180fa4e74450e6bd05f8eb5a4fd90617",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/datski-instruktsii-na-rabota/": {
+    "digest": "e98bbabba5c88edc9e5a400cb2a511d973520c65b6bce5da565f258720285ed2",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/datski-za-parvata-rabota/": {
+    "digest": "495937ca6e837969ac6a1bfff4fcf2fb034e72969633fed8ed0224316c2609f5",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/guides/uchene-na-dumi-s-lichni-spisatsi/": {
+    "digest": "a61965c3724097d3b74c9c2174d5dc7b2843f8af85134e31d369010bcde029f4",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/health/": {
+    "digest": "bbe56527fe255a91917defd188763b680121ff91e9ac352237300802b16277c8",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/hospital/": {
+    "digest": "1d7514ab33e407a3eb08b7533a3913bb6ecaba6acae9ffd12bb94f5c32a79f26",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/hotel/": {
+    "digest": "24551ccd5a4c0ac5c4da788c9541d8f30c4ba2c8640cc849e0bca5131ffe536e",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/jobsearch/": {
+    "digest": "a249eaccfa508a1852213d7290cf1e2ccb08139eb48134ccfc9b499fa61185dc",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/money/": {
+    "digest": "97a231f2605777f462295be3c40e834b10f73c24a83f36358a606617b2269188",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/pregnancy/": {
+    "digest": "e9865e0788a2bbcdcf5812a0310115e3828b569fca47496a8d54270a4787ec5f",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/propertyservice/": {
+    "digest": "d340be1109cef644f5de85abb350b147691e6b2405575dc410e279678c5aa2a7",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/restaurant/": {
+    "digest": "90976bc11ad878897705552a244af0f87137f9404c920ec4b77860d93bb4e472",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/retail/": {
+    "digest": "a036bee1943605ffc7c7c9ddaeba1ade5c4d65ea19e7dcdeae748a51d136d040",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/school/": {
+    "digest": "6b0a812ffbb53423ad5f5e4649ebd3a246dcda0d7e5e8eb018b4d7df213ed44c",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/shopping/": {
+    "digest": "b3dd02f475c601eda579c685e885ee9c8ac95cf4930464516f0538acb301c4b0",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/transport/": {
+    "digest": "e84163c8c572d62a3886cddbf25e64c2e8545a20728a597dd7dc97cdc29f6a91",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/trucking/": {
+    "digest": "1ac92d6662f273aa7e8aa415bb877d7389f721713711d7e9c14458ec5e886017",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/warehouse/": {
+    "digest": "125861d51c34e237db0e59f4ddab904e4502e49c659710905981d7c5c75ccd6d",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/worklife/": {
+    "digest": "c387f8494d148bc5d0fdf8fcd285a8e7d15bd4587d9667c26da5c261e4e873b1",
+    "lastmod": "2026-11-21"
+  },
+  "/da/": {
+    "digest": "ce81c55517a3f238c962686c8656ae4f220f746e65d0f53de3212a88ef4c860b",
+    "lastmod": "2026-11-21"
+  },
+  "/da/aeldrepleje/": {
+    "digest": "ad862f8e4f07e048652c943545f1ce75a406cccddb24fc4b15d7df3ee3e0e8a0",
+    "lastmod": "2026-11-21"
+  },
+  "/da/arbejdsliv-og-rettigheder/": {
+    "digest": "acaa80acb4076d926a45f770e4db52110d4f90bd586c1e8884a43baefcf85895",
+    "lastmod": "2026-11-21"
+  },
+  "/da/boern-skole-og-daginstitution/": {
+    "digest": "40c0ad005021a86d34fa6b83b7222c00ccd23137ddb61b1d92cf96a21e82587b",
+    "lastmod": "2026-11-21"
+  },
+  "/da/bolig-og-myndigheder/": {
+    "digest": "c7b041e214540ec8c4332d4e2ec9336b5f43f38206312901961c758d506c6034",
+    "lastmod": "2026-11-21"
+  },
+  "/da/buschauffoer/": {
+    "digest": "84fb45229fa183fd7b81d0cd0cd384d460474e750c776d0e2aabfc6e7da1f632",
+    "lastmod": "2026-11-21"
+  },
+  "/da/butik-og-supermarked/": {
+    "digest": "df86a7fd0755cb1f7f1377081820f8f8f810ce382da5952f8953033d75e5d0f3",
+    "lastmod": "2026-11-21"
+  },
+  "/da/byggeri-og-haandvaerk/": {
+    "digest": "f8a3776bbe6c057d4acea3a5634ef1034b36f8e837145cc966166924dc6ff319",
+    "lastmod": "2026-11-21"
+  },
+  "/da/chauffoer-og-bud/": {
+    "digest": "a142f1b9a03cdfb61edd1ede81c5f80944ccead82d7d5cee51537041541ee861",
+    "lastmod": "2026-11-21"
+  },
+  "/da/daginstitution-medhjaelper/": {
+    "digest": "dade4acae473133fe95bb823b67434da6e5aaa8a1c54eb611e437601d4c909fd",
+    "lastmod": "2026-11-21"
+  },
+  "/da/ejendomsservice-og-vicevaert/": {
+    "digest": "3294f8f8eaaf4e05ab74cf506e9e82821d89a5bec41b96fc706f23d27d779244",
+    "lastmod": "2026-11-21"
+  },
+  "/da/foedevareindustri-og-slagteri/": {
+    "digest": "ea62c783f8716caabba46c60455a1586dca252bcf0968503425e1bc8d5687e0f",
+    "lastmod": "2026-11-21"
+  },
+  "/da/graviditet-foedsel-og-spaedboern/": {
+    "digest": "72883c118cd3ba6101f82778f2960abff0de5c61971595cb54b004bb516c2bc1",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/": {
+    "digest": "c63d47600a9a19ee74f31faa552004e0e6374842d8c962489ed3ad4d0b76b0a9",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/dansk-til-dit-foerste-arbejde/": {
+    "digest": "62ecd05b5518680c638b9a78cb9b95284b6b31f19ea96520ebc61d857686f795",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/danske-ord-til-jobsamtalen/": {
+    "digest": "32692aeb30fe9cbd546663b02b704aec60ba1945c17a00ec629d9e2daa46d541",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/danske-ord-til-koerekort/": {
+    "digest": "4d5c2a66f746184018b3ccb8dd38e148979a13ecae89218b6e81a577541dc494",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/forstaa-instruktioner-paa-arbejdet/": {
+    "digest": "dda79d1649a9bc74125833d300f68becf0799c6b4544ab98fc708f3d51b72cff",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/saadan-traener-du-ord-og-egne-lister/": {
+    "digest": "34716b25ecfc6973c92490d20691f3388a9b0ae93f39dfbc7535ecc48fac3329",
+    "lastmod": "2026-11-21"
+  },
+  "/da/guides/tal-tid-og-datoer-paa-dansk/": {
+    "digest": "e9dafa871c455e339baaef232b94baf7f945a35a76dfbce4104f3924231ee31c",
+    "lastmod": "2026-11-21"
+  },
+  "/da/hospital-og-service/": {
+    "digest": "c069da0a787413dbf12fe9802301211bcc89f189d0dec64de133d156fd91ca48",
+    "lastmod": "2026-11-21"
+  },
+  "/da/hotel-og-housekeeping/": {
+    "digest": "ca536c32c10f380c26d8df60f819dfee0b266ffd14a84ef86e0d445285a455f9",
+    "lastmod": "2026-11-21"
+  },
+  "/da/hverdagens-grundord/": {
+    "digest": "875ba5e505f8e0013eb3b7e8ea9373f58eb41539492d8bb602af14d60e6898fe",
+    "lastmod": "2026-11-21"
+  },
+  "/da/indkoeb-og-forbrugerrettigheder/": {
+    "digest": "f75efc1b006c27d1e121bf4207df533a52132fc381e804cc48e26e9b66826555",
+    "lastmod": "2026-11-21"
+  },
+  "/da/jobsoegning/": {
+    "digest": "4de1875307e35d9c5f0ec7e9083b348946c628eb27f856c1bcd4b8bc72d5c22d",
+    "lastmod": "2026-11-21"
+  },
+  "/da/koereproeve/": {
+    "digest": "434a4f3b475547d8bc81e9a6e42666febf95792f35e56edcf9d5cd35d9ce0eeb",
+    "lastmod": "2026-11-21"
+  },
+  "/da/lager-og-produktion/": {
+    "digest": "bb0dbd8d981b011acccedbca4d8fe6d96c2bb11a0cb0bff6c7968d5efb7e340b",
+    "lastmod": "2026-11-21"
+  },
+  "/da/landbrug-og-foedevarer/": {
+    "digest": "80c975a8de35345265c29ee20e987a6a9e81dd735328f23d0e9dbb834c533315",
+    "lastmod": "2026-11-21"
+  },
+  "/da/lastbil-og-international-koersel/": {
+    "digest": "5a0a39177d8b658f0ad386a32a852ef0724c02f269ff387bf336de073ed49613",
+    "lastmod": "2026-11-21"
+  },
+  "/da/lufthavn-og-ground-handling/": {
+    "digest": "5fcbd1354b1baed4e074e248d53588c1edf756b7ac13e82dea04732ab9266c2d",
+    "lastmod": "2026-11-21"
+  },
+  "/da/noedsituationer-og-politi/": {
+    "digest": "d63ceeaa368fb14e167635ba50deb6ee0799c4072d5b38dc230a8613f77f07e8",
+    "lastmod": "2026-11-21"
+  },
+  "/da/penge-bank-og-svindel/": {
+    "digest": "e9b8a96ffdaf78028be1a3804da1705cf7721547b34e5ccea9d6c2f33fe203f1",
+    "lastmod": "2026-11-21"
+  },
+  "/da/rengoering/": {
+    "digest": "2d7ba9959d3971144dd367aa3f0dde81c829a34c654b4c8ea068dd2387f2c73e",
+    "lastmod": "2026-11-21"
+  },
+  "/da/restaurant-og-koekken/": {
+    "digest": "fb5a8e6fef3d8e2a018c5580bb9b9d4d909368c1113b451a9d22c964c6212ffe",
+    "lastmod": "2026-11-21"
+  },
+  "/da/sprogskole-og-uddannelse/": {
+    "digest": "c3a4bbfdc2235615a683415c6644cb78cf020ce88713623d4ae30a915936de03",
+    "lastmod": "2026-11-21"
+  },
+  "/da/sundhed-og-laegen/": {
+    "digest": "56bd04cb546af8e30e5802b15d4426ef2b567e9039938ca24b1a117a953272c8",
+    "lastmod": "2026-11-21"
+  },
+  "/da/transport-som-borger/": {
+    "digest": "cd166029dd28f1ffff0774b0a88f05590445fc945c39d9be6e9572579468002a",
+    "lastmod": "2026-11-21"
+  },
+  "/en/": {
+    "digest": "cc57bdd11c04b29594cea45b13414b8469a4c42c2a890474045c82c1927623a5",
+    "lastmod": "2026-11-21"
+  },
+  "/en/airport-and-ground-handling/": {
+    "digest": "4909bd6cb793095374302196eb8a2ae380f6323f692492cf47c25239b597aced",
+    "lastmod": "2026-11-21"
+  },
+  "/en/bus-driver/": {
+    "digest": "7c863af6da778bbe956dd2e37dbc3b9f9bc892159a990470faf71fdc51459945",
+    "lastmod": "2026-11-21"
+  },
+  "/en/children-school-and-daycare/": {
+    "digest": "d5f934d6e921198389b0fcbc180023aa40f40ce80bbb6084976a1a8048d372f1",
+    "lastmod": "2026-11-21"
+  },
+  "/en/cleaning/": {
+    "digest": "3a063f26cef99ab23c2228fc54bf42f9de189ec625173a044319748c3331b2ef",
+    "lastmod": "2026-11-21"
+  },
+  "/en/construction-and-trades/": {
+    "digest": "26f4fe0247b11205bcd24fecd205c5fdfd88e9c5861706e98666b3f1d9e59bda",
+    "lastmod": "2026-11-21"
+  },
+  "/en/daycare-assistant/": {
+    "digest": "f6ae78a6eb7b1e955f55dd818315ab62499ae69a68c4472065a2e4097194b416",
+    "lastmod": "2026-11-21"
+  },
+  "/en/driver-and-courier/": {
+    "digest": "10a503876a713ae50cf7ec4bab533ec2777e0895e049eeecd55cfe3f58ad5d7c",
+    "lastmod": "2026-11-21"
+  },
+  "/en/driving-test/": {
+    "digest": "cc92294258009f6f2146aa9c0ccf3e7274f762c6396a655dffaeaa8edfac05ce",
+    "lastmod": "2026-11-21"
+  },
+  "/en/elderly-care/": {
+    "digest": "cc1693914487448303482c2d6dbf56d9c80215d3401802e691e2014a1ff606c9",
+    "lastmod": "2026-11-21"
+  },
+  "/en/emergencies-and-the-police/": {
+    "digest": "997e2d0bba0a768a31bc308d3671b9e708416e962dfbbedf11501d4b0db54e83",
+    "lastmod": "2026-11-21"
+  },
+  "/en/everyday-essentials/": {
+    "digest": "9b734d494afebf1762d91b572798db47f7335da5d67d7663deadec69a83cc0ac",
+    "lastmod": "2026-11-21"
+  },
+  "/en/farming-and-food-production/": {
+    "digest": "9c74a1a458bfba2972e651b1b4f7ada7b1d1ab65c37e586f770342a2bf7f3ea8",
+    "lastmod": "2026-11-21"
+  },
+  "/en/food-industry-and-slaughterhouses/": {
+    "digest": "35a653d0a60cdd260ac6bdcfb8c1feccb40a1374eb4ab07f8f108476dd3f46b5",
+    "lastmod": "2026-11-21"
+  },
+  "/en/getting-around/": {
+    "digest": "f1a9437eecc63ffb3eac839736dbdf180546eb7096943ff9468b82681658805f",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/": {
+    "digest": "15acd236f9806d546f0bd1b73474108d3ac98f33972d69ef4e9b8d8b44cfa819",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/danish-for-your-first-job/": {
+    "digest": "bcdc4462b27fe6586d9d5af6d05b9ffe3fd456035b3bffd45ce38e6647a19771",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/danish-vocabulary-for-driving-lessons/": {
+    "digest": "cf66a36efa6e833c74eeab5b590e03b9ce314dde94daf87d1f0e21de6daf89c1",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/danish-vocabulary-for-job-interviews/": {
+    "digest": "c40ea4f95a7e79d65455053772a5e0c6b6b00ebb244122e93753c8ec0b2d7636",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/numbers-time-and-dates-in-danish/": {
+    "digest": "70ec669c7652d4b38f9e3d708e236a8e7ad5633f15ca7dad6fa70a45dac183f7",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/practise-vocabulary-with-personal-word-lists/": {
+    "digest": "171357655074aeb26e40202f9651904fe737a4482f7b4d5629661b079c5d772d",
+    "lastmod": "2026-11-21"
+  },
+  "/en/guides/understand-danish-workplace-instructions/": {
+    "digest": "d2e6bbb2db7df92260895a4b8a617e7fea455196a8e9ecdf2e2dff355cf6edf1",
+    "lastmod": "2026-11-21"
+  },
+  "/en/health-and-the-doctor/": {
+    "digest": "e4fa1e403a7da8f8df1e64362be3fb1c71cdf1234286ff42ad185127b23e81a8",
+    "lastmod": "2026-11-21"
+  },
+  "/en/hospital-service-work/": {
+    "digest": "d6d0e9084c4e9b086b626133c8240316cb0feff2396472947f550f8140834e65",
+    "lastmod": "2026-11-21"
+  },
+  "/en/hotel-and-housekeeping/": {
+    "digest": "88265ee4a456380f7e087050436736802975381b985f8cfa51ef01bf546a0e0b",
+    "lastmod": "2026-11-21"
+  },
+  "/en/housing-and-authorities/": {
+    "digest": "bd15b34bd70fa57ac38f44ef2658ce8c73f717e989a801504bda7f8ae8ca81cd",
+    "lastmod": "2026-11-21"
+  },
+  "/en/job-hunting/": {
+    "digest": "1025855c56965ada8047507671ff4ad5659039d239d7342ef440806f5af7b04c",
+    "lastmod": "2026-11-21"
+  },
+  "/en/language-school-and-education/": {
+    "digest": "43a2dc65b0ac6eea72f083eb9761ec89969225f48bb855b9e74ef60c93df3e79",
+    "lastmod": "2026-11-21"
+  },
+  "/en/lorry-driving-and-international-transport/": {
+    "digest": "b04bde2ac41e37352f10f85ccc3cea39dd8ca3c8e70eb7641f73c406f43b82fd",
+    "lastmod": "2026-11-21"
+  },
+  "/en/money-banking-and-fraud/": {
+    "digest": "3ce5f49122b9b8fc11f5d0a67b18348ca72fe26a3f81e9d7b169e0b1713132fa",
+    "lastmod": "2026-11-21"
+  },
+  "/en/pregnancy-birth-and-babies/": {
+    "digest": "d35fdf9c6361b9b42691c82602aef1f2147276f0e7a5166c1e9451542a3dfb59",
+    "lastmod": "2026-11-21"
+  },
+  "/en/property-maintenance-and-caretaking/": {
+    "digest": "e12586822150575dd21d9028a15b84a57f3565236a0a0065d4759a3fd0586d68",
+    "lastmod": "2026-11-21"
+  },
+  "/en/restaurant-and-kitchen/": {
+    "digest": "a6d1d859f77d9ae81fde61dbd29eed6c07412f09985ceec611bc4b13e37c457e",
+    "lastmod": "2026-11-21"
+  },
+  "/en/shop-and-supermarket/": {
+    "digest": "dd2e1e5210f823d9dca7011363a37d7e49b2c3adbd7fc4fc143bf5e9bf01c5f7",
+    "lastmod": "2026-11-21"
+  },
+  "/en/shopping-and-consumer-rights/": {
+    "digest": "4803be3b51eef104395851f3c614b48a69fe7c926bf06386f0d50a9b98ea8663",
+    "lastmod": "2026-11-21"
+  },
+  "/en/warehouse-and-production/": {
+    "digest": "8ca3bdf57c3cd12bf0eb8d7d74e8d7ee78387aa791ef75ccf65a5156a4af690e",
+    "lastmod": "2026-11-21"
+  },
+  "/en/working-life-and-rights/": {
+    "digest": "85c69fb543d58a109df8ba85a7b9b5028efb31bd7a9f2111d03b8e367bc4bfce",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/": {
+    "digest": "69b073f4bcc1eac3b5fe021b4ad1c58b4219703bb6d6e122f81b7295f59fb185",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/apsipirkimas-ir-vartotojo-teises/": {
+    "digest": "f9bc521458f1218d0598e44fa4b795f1dbad384c32f3656ad4e7123e3c66bfad",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/autobuso-vairuotojas/": {
+    "digest": "1451b4df5f426c8c9cfcdd1db4aff47abd300714c59468ae32e1c03dc012635a",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/bustas-ir-institucijos/": {
+    "digest": "10c6766b9e020ed60b3424ed4fb555157d7b43c553ccacb03305ab4f7820b8a7",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/darbas-ir-darbuotojo-teises/": {
+    "digest": "318d685ba82380323e683b1e7a71b799e68345986b3234404a380f7051eb8e30",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/darbo-paieska/": {
+    "digest": "9e76b08248839a9317e36781eb64032bcd509fc8a32c74c453bcf2f242ab2cc7",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/darzelio-darbuotojo-padejejas/": {
+    "digest": "2b1da656544729c6f50ec8d631ab50b6361fe6e83b61b6d60cb2524e92691405",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/": {
+    "digest": "2ab1fcee1cdb44c3c253a27becbe48b58d2d545b6cac57d24411527cece338d4",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/danu-kalba-pirmajam-darbui/": {
+    "digest": "099e8736adb92561cfeb4a3ce5cc7b5b2726d6e21fb36d0b505ce41d1bc5bcd6",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/danu-nurodymai-darbe/": {
+    "digest": "27f51f256949f553a3e4a4f3e8780a213f59c1d8dbe6056bff86bef9b7ee0fe4",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/danu-zodziai-darbo-pokalbiui/": {
+    "digest": "38c5329eea94bb366e3a14de949f2dce5b2507c1b50a0c254f3fe680e236659a",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/danu-zodziai-vairavimo-pamokoms/": {
+    "digest": "c9341cb4a09114d350dbe8821cdfe700beab23f8078748c373262acc3c0885bb",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/skaiciai-laikas-ir-datos-danu-kalba/": {
+    "digest": "d054c9e1bd047a4dceca84b5fc1c4a266cfacf886dfbdc20175c2c7f6229d58c",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/guides/zodziu-mokymasis-su-savo-sarasais/": {
+    "digest": "3427fc953d64513b80dac2d4411b397677c9b933385ca696ce790cd9bdd337be",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/kalbu-mokykla-ir-mokymasis/": {
+    "digest": "dcdb6bd4acb2342ad43dcb96669e3884c6d4b04f378d3a3dee40780fa87a08a4",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/kasdienybes-pagrindai/": {
+    "digest": "f9409f17fee51cace7df6c3c998c5f6f3bff106e7b1d57929240f24dc733699e",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/keliavimas-mieste-ir-salyje/": {
+    "digest": "8bbdb6f779e1e52d8b2e3388947899adbe12a4878742b9386c38bca6465e4f21",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/maisto-pramone-ir-skerdyklos/": {
+    "digest": "b9c7d833afbb75ebe2b9f5447b000d9e6368ab746ce03ecead409859c4766fa3",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/nestumas-gimdymas-ir-kudikiai/": {
+    "digest": "dada678682e5c79987f4f9d124397cbee138793e51ec4c4e2baccbdf72d45496",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/oro-uostas-ir-antzeminis-aptarnavimas/": {
+    "digest": "85785ac2f83ce0afce55a3b9e8ae169e5c0c84cf5a6288e232bb58136d7d8fa8",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/pagalbinis-darbas-ligonineje/": {
+    "digest": "0e62f1445c8ad0a47566952487a8b6ec2020ca3caabc0974c704cbba57c9405a",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/pagyvenusiu-zmoniu-prieziura/": {
+    "digest": "93922277c898e186e51527e0bb3ea4fe328ff6f7bac0824527bf59e158f62381",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/parduotuve-ir-prekybos-centras/": {
+    "digest": "520edbec772da51f67f63c6755f4a13f07d621873a2e31f5ddf9db6c5774b6ee",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/pastatu-prieziura/": {
+    "digest": "2971319a78769a012dbb07fdb0fc3c2e4cb0c656d3944d42fcf295b845be110d",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/pinigai-bankas-ir-sukciavimas/": {
+    "digest": "c6be11e6f71c0043f59d2781c96fd766f5dee28cf6b565801e92206f2bff163a",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/restoranas-ir-virtuve/": {
+    "digest": "d0a00b057054545e3986a10318de491d6b4cb03aee89f8f33e4a295da97a7f6f",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/sandelis-ir-gamyba/": {
+    "digest": "b70d1a7fe2350967167bc5f2ae455277b56af5e3b2a22db0d60f826fa6c1ab03",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/skubus-atvejai-ir-policija/": {
+    "digest": "c71753daaf691e29178fa344d76bc5f104461a740fe6551b67bc756735e0902a",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/statyba-ir-amatai/": {
+    "digest": "03edf92d1b1a10ec3499bc2361b4a989ed6d5fed0ceac584496500d6d0cb46e4",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/sunkvezimio-vairavimas-ir-tarptautinis-transportas/": {
+    "digest": "7ed786267c34d47cca261342b305652a0e64547655cb89e65beddf27c4bd44d2",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/sveikata-ir-gydytojas/": {
+    "digest": "76329055f7e2f021a74e9a78cdd65ef5514693c5671cea4defb08757bfea2daa",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/vaikai-mokykla-ir-darzelis/": {
+    "digest": "f28020f3753ffa85d29a080559d3f0123375c81d6ac3b9070ab0892e523287c7",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/vairavimo-egzaminas/": {
+    "digest": "30f399d0aaace6657e85a31693687fb2e97e2dc50499f52f0b435f24d0b3025f",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/vairuotojas-ir-kurjeris/": {
+    "digest": "258b451c233b3291e7d610d5e120092dabb2d8dc2ade4df4bb622b308cc94086",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/valymas/": {
+    "digest": "9ecd09ba4b3ad56c0d0dafc06e6c97843a3554517d510c5d27b1d52d41f2f676",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/viesbutis-ir-kambariu-tvarkymas/": {
+    "digest": "e21ecb83e2793b1648dcb6be75d96d54428a251727d77761a6b73c964378a80c",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/zemes-ukis-ir-maisto-gamyba/": {
+    "digest": "87f493c29b19ad15fe876445035e85b55cdf1983a4b81b3e259f5e21ea415e10",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/": {
+    "digest": "4559083e362d792666d71acd27fcf881c2dc0586cebeea9c788c5360be515c86",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/budownictwo-i-rzemioslo/": {
+    "digest": "f0f376b1428a8ecd84299ba5f835d819b9719b52488ee71fe66755aa6ed0c33b",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/ciaza-porod-i-niemowleta/": {
+    "digest": "c12e28afe0e91b24fd2857653399ddad70327f1d8377bebbc93be240ef6c7042",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/ciezarowka-i-transport-miedzynarodowy/": {
+    "digest": "640288079d1d9f956c1a1d471df9f7776d489778829dbb10047078b6405b6774",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/dzieci-szkola-i-przedszkole/": {
+    "digest": "a96e4499033ba23c1b366de71c0a932d6bbf6d47de9e9443b905660adbced74d",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/": {
+    "digest": "fbd398ab4e7eb9101eaab1d0f52b69977089684ba6eb452b73bc7b2c5e18d410",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/dunski-w-pierwszej-pracy/": {
+    "digest": "f6f5df54b9e0958ca0cd687356d936264b96a1a2d516f1f37c229e77328f487e",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/dunskie-slowa-na-rozmowe-o-prace/": {
+    "digest": "9a8d6aa113f70b3db43790c13694bd54e8d49219e4a9fb6b4730f37d392d15cd",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/dunskie-slownictwo-na-lekcje-jazdy/": {
+    "digest": "204093542be7bf632bae1c16cd50c3ab2c4156a32e0bb9a8eca00a856a597b84",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/liczby-godziny-i-daty-po-dunsku/": {
+    "digest": "777cb59f182301cb6d196e04922aebdd050da0c493b11a88650c4ae33dc19ba1",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/nauka-slownictwa-z-wlasnymi-listami/": {
+    "digest": "e49af35e31af4a757abc1fb3be955a7f9edb8b2041f9d600b3c467b1badadf9c",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/guides/rozumienie-dunskich-polecen-w-pracy/": {
+    "digest": "85f5d89a9fb00cbb60a24fbe9d96b09c4d94288d1ff660dcf2c86320588857c6",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/hotel-i-sprzatanie-pokoi/": {
+    "digest": "95016641da08ec4d05fbc9dee882e90b69b6b785128ad740f791627f615bd53a",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/kierowca-autobusu/": {
+    "digest": "61eced30242363a99ed4b5c09905bb46223ae6f442b64518c761c7b2d9da8bd7",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/kierowca-i-kurier/": {
+    "digest": "5f2c32af963d66a15b3dbb1f30aad121a3ffb0144326080de912f66b5991deef",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/komunikacja-na-co-dzien/": {
+    "digest": "69b18dd2f28c1ffdef67709d81a99362a36c090d379b244ef2f3fa2f696c65e5",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/lotnisko-i-obsluga-naziemna/": {
+    "digest": "ddf4f08de77f252634c05baa4d9ce8dd6a9d0abde8ea9c89bd6dc29d9bae2e85",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/magazyn-i-produkcja/": {
+    "digest": "2deef1e50457328878c6d559187d49dbca274e31575c223b0dc3736cafca1d92",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/mieszkanie-i-urzedy/": {
+    "digest": "5309d6937424614ef8019e292ad278341b0e41b3637a462652219a8e774f8cc2",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/obsluga-nieruchomosci-i-konserwator/": {
+    "digest": "67341b1d8ea99d5e6e0056800bce2e201da50df53fc7752df0873efa83c74e2a",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/opieka-nad-osobami-starszymi/": {
+    "digest": "3f53717c48e31f4ac8dd85b84f121c2d2b7f51490de64016e8980704b8b45869",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/pieniadze-bank-i-oszustwa/": {
+    "digest": "cc8e416584c9a426c1fb291ec771605c95b40084734f353ff9e08b63ed755526",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/podstawy-na-co-dzien/": {
+    "digest": "101414d009b25f32a92b0b742ed7e33cca45a7dcc4e9da195046cefbe3dd3e4c",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/pomoc-w-zlobku-i-przedszkolu/": {
+    "digest": "ceb795b48b4956166d5bc6530567f85632e1e0021a114ad223c8a0905d4555f4",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/praca-i-prawa-pracownika/": {
+    "digest": "cfba3db915b734ba9bf1974eea3b4f8fcefd3e25a86fe49712f51fc136751c60",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/prawo-jazdy/": {
+    "digest": "c6f141eafbe34fecfe712588a54586918a2431687723ae4a40a5029b021070db",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/przemysl-spozywczy-i-zaklad-miesny/": {
+    "digest": "8e89566d917f0fc0c63724c64856c4329ade5a2833681d8bf111f4f4baa2876a",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/restauracja-i-kuchnia/": {
+    "digest": "11eeb14e040850e69dbd27c5e767c31799eb0ef2af3278b626e423d3cb106dec",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/rolnictwo-i-produkcja-zywnosci/": {
+    "digest": "41a236bd9e8c33e0465653ece5b3b63ab108fa0b48fa9ab1ed0428209a3f544d",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/sklep-i-supermarket/": {
+    "digest": "323fabb475f37fab09888f98a7cb830ba208b455ba452dcf3e69361c7b5d5f2a",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/sprzatanie/": {
+    "digest": "62a5442889693841cc92c43a03f5896c163832ed95144619f127692227d7d8ed",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/sytuacje-nagle-i-policja/": {
+    "digest": "1e44ede9c1fce6fdda05ca7c74f5db4b7d680a3659336034dab4db5c171e1c56",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/szkola-jezykowa-i-ksztalcenie/": {
+    "digest": "e85c823560d769f8f202a434859b4807a780c5ff72b9dc2856748d71371acb29",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/szpital-i-obsluga/": {
+    "digest": "0d2d0118c36fcd7a3e0ef9f2fe55097aeb036100a8962f3e413ba782597f9884",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/szukanie-pracy/": {
+    "digest": "70fc0a79e03aaafbf37e69af7a5a3f706faa80b29d63cc42b736d58e63f9fe16",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/zakupy-i-prawa-konsumenta/": {
+    "digest": "2588393f151e0fc90d57628b6d6fada1d215bab0f022c865e1268fbe9156b944",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/zdrowie-i-lekarz/": {
+    "digest": "1cf06ca65e2f57507f099a8c95272d5c7382dbc959eb50fd480b5feef66156d7",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/": {
+    "digest": "3243efd2f6a7a9ee7af4b0837ff524b126a260458ad3cce23b1683f013005f03",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/aeroport-si-handling-la-sol/": {
+    "digest": "961b3927173c6cc4ec3947aa3f0583bf50fe50d185c1fd75f69a8949b82377e5",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/agricultura-si-productie-alimentara/": {
+    "digest": "f7bec95d7d49e4f14ae4e74e09937145e207bd830e05841107eb6b2a92703bcf",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/asistent-in-cresa-si-gradinita/": {
+    "digest": "a449bf125927d4b5bb4aacc96a3d0ffe0657eced7517208bce546ca25a261351",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/bani-banca-si-fraude/": {
+    "digest": "0bc4afa7511749e4991df3e3d31d97b291fc36c962b6b685c2698fdbca3ad917",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/camion-si-transport-international/": {
+    "digest": "134fabf64833b7c789c8d4541b2986b7d8f0e61a85948a49c05a2bd1be8ce864",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/cautarea-unui-loc-de-munca/": {
+    "digest": "46bcafaebb3c788a4540539ed119eb0053fb5b1e31ce32ab47c3de166fe94793",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/constructii-si-meserii/": {
+    "digest": "6589fa84083bcc8744716a813af69c1b06032d7db5b1c901e88b9f80efd1e4af",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/copii-scoala-si-gradinita/": {
+    "digest": "49f49879b5aa22a364b0ccf9f3a56880d4fdec7b02a5b985b4c0a8a4528603bc",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/cumparaturi-si-drepturile-consumatorului/": {
+    "digest": "bd4a607f674a0279a6080126da626e9081e3f4e0b6debbe08823c8dda7b7a32a",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/curatenie/": {
+    "digest": "c7fcceb7584f0805aff9e514fb440fbc0c36f7cb0be01b593b972b1ceabaa353",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/depozit-si-productie/": {
+    "digest": "decb527b01cbc2ebd13c375067fb7316a59b9fd8c7e81c780ff3032950329cf9",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/examenul-auto/": {
+    "digest": "afad3a996d6ccfdcf93ce37a71983c5c0a6a2c5f522f98d8064f5f192642e164",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/": {
+    "digest": "037c94a1cf156eaf8e66950593a670cd8dbcee32c9c64f9300e48ece3ce9d801",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/cuvinte-daneze-pentru-interviul-de-angajare/": {
+    "digest": "b42b69f953f671b91dc48f787ba942d148ba172d448677d3b6ca032843adbc75",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/daneza-pentru-primul-loc-de-munca/": {
+    "digest": "869fabfa9c025a7c445c3468a21bca540332a087aa8387872911d800f8037e4f",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/exerseaza-vocabularul-cu-liste-personale/": {
+    "digest": "ead380fd62b6dba846645893ebd406fe338dbc696e41a96218443aba46c565bc",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/intelege-instructiunile-daneze-la-lucru/": {
+    "digest": "62bb49cf6adfa9e3a79ab90bff12d4aa44bca4a82d3318aedfac2a364c094209",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/numere-ore-si-date-in-daneza/": {
+    "digest": "e660c891784020a5cb654b6c316065a0a40e9d1a89b4fd029c0af140449a0cac",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/guides/vocabular-danez-pentru-lectiile-de-conducere/": {
+    "digest": "5b440804a87be495198cb539b2ffb3826da99a8b771399788e62571825f38cec",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/hotel-si-curatenia-camerelor/": {
+    "digest": "863753786ae6f6fc0424fffdd551a47a03504336a6e8c8985d7695ab42882961",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/industria-alimentara-si-abatoare/": {
+    "digest": "89625a5ccc20ddf72249c5058a9a114d72e67fd2739bdbbcec9ac7a6f4dc828e",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/ingrijirea-persoanelor-varstnice/": {
+    "digest": "8bb3a5ccf803babae40f2271e95c983e4216034fc5ba69c4ebdfe4ce1ad588c6",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/intretinerea-cladirilor-si-ingrijitor/": {
+    "digest": "80304cb949571736ced60f332a1b42984ca08fee8d1b887dec7ed11bcd20c01a",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/locuinta-si-autoritati/": {
+    "digest": "d2eb725b5e2cb1eaca5a093449907b6c2bb3de7414ae51da01e3b22513f7b94b",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/magazin-si-supermarket/": {
+    "digest": "3c54a562571e485ac40acbfed2279b184dd0442f5e681750ac364adf55fd83cd",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/notiuni-de-baza-pentru-viata-de-zi-cu-zi/": {
+    "digest": "7367be896bb61e014821e5b79d02ab3db204eb274c4204de65051ddd5011f20e",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/restaurant-si-bucatarie/": {
+    "digest": "61d40c9ae404cded322736b079a0b87d1ae7ec9fe4e40fe732b9f9f8759edaf8",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/sanatatea-si-medicul/": {
+    "digest": "977c77497902f08e16222ebfc1e917739769dc162675e397e1a47173cd5fd870",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/sarcina-nasterea-si-bebelusii/": {
+    "digest": "77d653b43f788bcadd9e57a722378e0459a3aa44a8cd41049a1c05da4209ad27",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/scoala-de-limbi-si-studii/": {
+    "digest": "b49034e14abab2aebb76053b9dcb7b339fab13084cb4321274695eb22e14b9cb",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/sofer-de-autobuz/": {
+    "digest": "9070ee5aa6997b50e0fb08a6c928c6fe88444bd5f5e02d9d144c7ee967aeab95",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/sofer-si-curier/": {
+    "digest": "8d68012687c0cb67890330774f9e3740385e23817856628e326029ccce07f94d",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/spital-si-servicii/": {
+    "digest": "6d67c1f2487240a056c7a94b66e69883da51f9628333547e4b98f567d1bb1f46",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/transportul-de-zi-cu-zi/": {
+    "digest": "052a16756bc202f0a747e4452606b3155b2606236fccaf6dc8c33c91548242c8",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/urgente-si-politia/": {
+    "digest": "3f6ae19e12c380925bbd81ae787ff332475bc789cc69dc350980d8ce574fec4a",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/viata-profesionala-si-drepturi/": {
+    "digest": "a7bd089b0fb124ee0128b7bb3c0e9f6fcd4eee65d2c5fb895f235dc6d8875fca",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/": {
+    "digest": "00df5476370662377d98537bb462d7db2642e34db553b86aef2eef04fdcc6e75",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/agriculture/": {
+    "digest": "535ca7f6bc2594a01fbfa229b04dec4e53d096f764051fc6862c4f0fbbd98bd3",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/airport/": {
+    "digest": "00f20faec06cda2d0c274ff56cc964afa8f21b027b4f249758d55d6f17a2a564",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/authorities/": {
+    "digest": "6c0b6f27f8f17743c494b165faca6abe43a492ed35081a45926c742f0142b9fc",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/bus/": {
+    "digest": "99544005c21966145971493b1b5c9f93d59cfd4af621743c90e9dd66a30acd9a",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/care/": {
+    "digest": "a868e7735f60fec89d379fadc0cf32a51ba9cfe2356750fe31f79668d50fab68",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/childcare/": {
+    "digest": "b4d1856015ede96d3bf45469accdce77fdfb53b26c1e5d3301439276d167c981",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/children/": {
+    "digest": "f113fb90789e0dcb3a10f627ef202b4294302e066cb22d44fd49c724a8ac320a",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/cleaning/": {
+    "digest": "64ba07d4fe36f44bc66802aa7c314242a414e23cd6b7e18e0ebb7950401b2607",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/construction/": {
+    "digest": "f2e183484b1644fc171c877215ec3c4224b6fefd763b38fc8626d7b69e669aa0",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/driving/": {
+    "digest": "034d0ee1a55d8002abe59ba86bd71dff4b178fcb7bd4537fc055c413f4a31f63",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/emergency/": {
+    "digest": "0be6ed8c8e24610c0a466ea70a683d44a42cd4c6db7b5c28d3e8321912709d06",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/essentials/": {
+    "digest": "238ddd43456adea281acc67fa2fa7d7b22d8b0b131677a4ba2cf574760235729",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/foodindustry/": {
+    "digest": "5be943ca9528c3dca4629aa7e8bc850c74b3576f00ab26867328c60d25342a10",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/getaround/": {
+    "digest": "833c4d92ca7ec183ced16ec0d087f9c9f317f88a7920c66fd48820cf3e2c6079",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/": {
+    "digest": "e10289b192b345441e40b0ad4d9c3cf4af82ddf11cca17931dc2955477a5764b",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/chisla-vremya-i-daty-na-datskom/": {
+    "digest": "7f9a4a1bb79cc6e8a391031e6fb30d7a3138154d8ccfd6a3725f07073f294924",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/datskie-slova-dlya-sobesedovaniya/": {
+    "digest": "d83bfbba13bb5914a77c2c19fd5a0b421079dc8fbdad79767b5f165109b06419",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/datskie-slova-dlya-urokov-vozhdeniya/": {
+    "digest": "a463790d53cd118675aef11c2c22f45f37b790a186111b23259f0a5938581504",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/datskiy-dlya-pervoy-raboty/": {
+    "digest": "bdb93acc24d48d8baaf0f48d655c9a98e89b57a4c9307396ee067ecc360d7d7a",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/kak-uchit-slova-so-svoimi-spiskami/": {
+    "digest": "d04fe9e437253d4636cc2c2f52fc2311249ac2f330f28f1154841d0186a48e74",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/guides/ponimat-datskie-instruktsii-na-rabote/": {
+    "digest": "2a159c8de6a0ace0e5610e3c9aee67f66117e64482ebc67b4e557266b5517893",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/health/": {
+    "digest": "e47b53fbad4b726b21bf9775d48baf3067d6ee3a5d4c26efab7d1df9b56e389d",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/hospital/": {
+    "digest": "29ae51fd66e22d51de6ab88a20713f987928ff1a7f463832e93cacce5ce6e77d",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/hotel/": {
+    "digest": "ca154bcc93797e481c4cbd14c86dc97a6874e15d674b8d41b72f8345e635b136",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/jobsearch/": {
+    "digest": "7e11b8d48e2a88f723b9ff85e88debb2b72c383ee883121371bd8fc5d3a9b5ed",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/money/": {
+    "digest": "584d8742103ac5b94949f3714e1191aa289e2ff21b9bae8dfbbaf33b071138ef",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/pregnancy/": {
+    "digest": "23b7851c0cbf4123aae441a34a18997c48323ac7864c40c3cb7e1e44bbbd617a",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/propertyservice/": {
+    "digest": "66eb118b93ed25e85daf2844c38fb12c766bb8cf242bca97a6e6b74418d49c2d",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/restaurant/": {
+    "digest": "3714aa8789868c7e853409af6f9c46fb90909f1b1e88b9efcaf2ae8b901e8c91",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/retail/": {
+    "digest": "7645f146fb65f1d10ed45e2dc2319c71f73f0afc8f1a872f01411120e3b2d9f5",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/school/": {
+    "digest": "856f38aee92ecae77ad78d316a278b107fdabbcc115fc333c98355cc5be97752",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/shopping/": {
+    "digest": "360cab8e42f35461f76eb34c0ce2d68b3c1acb156d9f429133bb97c27f7ef77b",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/transport/": {
+    "digest": "6586f698027e6bc4d314856930050efd5fb38cbdefa451075599296f4ec8da25",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/trucking/": {
+    "digest": "52ece8d199e983fbc2f0eb58d4817ea3fd60191cc2559519f2d9fdfcc8cb8e27",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/warehouse/": {
+    "digest": "8d3cd0f2547ff959c42ab0b198a78e5b9481fbc9e28e6a66e5a3354cea724f1d",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/worklife/": {
+    "digest": "e947e4c943888b20e4e0779a34530a467656363581f591c0f855ffc304835f9c",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/": {
+    "digest": "13f801960e74407f119601478d6395aef3addd331ca47f2723dcd505a304d3ee",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/agriculture/": {
+    "digest": "a1ef22c40c6fe5069d5f457cf2e115adc1a08087565d7569ae83252d3c40d153",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/airport/": {
+    "digest": "1062e3a60c9c9278f848aa33232fa98d04059aa37c9bdfa2e8d495a291c079fa",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/authorities/": {
+    "digest": "9f6cd89b525a63c6ea3f447ca5db83417f49b2fdf4560bac780ba49eefe65cda",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/bus/": {
+    "digest": "0ab2132138ac6b7392ced12c05c0f844bee34c0e414f49a1769133198eeee071",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/care/": {
+    "digest": "96761f59c2c1d4d5c18bc967f61864f675c7fafd2a3ccf2ed3056550f26ab388",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/childcare/": {
+    "digest": "1b0692cb79444c4fa9a4880908ec1f419ddb9c8f1bab9a3375946677e57fce02",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/children/": {
+    "digest": "1b0339fc7463cb8f4929f0884e5d2775d17ed92b2a59cb323cfe75414d98c8ec",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/cleaning/": {
+    "digest": "a2613ee2ebb05362ce9fc7feb1d9de99ff0bf9fbc0badfe2e1ad35a9f742d34e",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/construction/": {
+    "digest": "081e572b6021954613efd3d3b8a53008a380e8627e9478bcb5a993abcc839d9c",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/driving/": {
+    "digest": "86d3a55da90be0dfad83ae543bc007ec41aaee597f0aff3c8a4dfff4d362aad5",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/emergency/": {
+    "digest": "2de917f22ddbc4b4429e5c3d95001d8af1bdd6a044e04596b9f80b3133538ef1",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/essentials/": {
+    "digest": "7eb02211751b7388016765dd617793c53dff7ff51ce105c031dbe9287a5bb525",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/foodindustry/": {
+    "digest": "473487e235fcb0ecc6f829b93528e3d5662b8b23061cc3dcc56a4c629e16a9de",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/getaround/": {
+    "digest": "f2e43cd7699608436598c5bd95c62c90479faa8e780b539df4f1fa92d02bad52",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/": {
+    "digest": "33430f0c11a35ef0b833c330537f3e6c5e498bae98974234a68ad8b3c691eb31",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/chysla-chas-i-daty-danskoiu/": {
+    "digest": "22221ec2f97e917644efb9dd7292e80a4ac0051396bf588ed6f96fd5ab8e55a0",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/danska-dlia-pershoi-roboty/": {
+    "digest": "6f2122c12972f448f2453cd9450eecd27593f3d6e3d0d5a30f43a37a5e30a9e8",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/danski-slova-dlia-spivbesidy/": {
+    "digest": "b1c3d8cb628ef963cf1746ede26d30eae83e364e4b829bb2baf66d54c5c280b9",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/danski-slova-dlia-urokiv-vodinnia/": {
+    "digest": "7b91709d51ffd33fa71d6b168066482ce4b2b5773802cbc2244c48ed40183b86",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/rozumity-danski-instruktsii-na-roboti/": {
+    "digest": "0550862bf34cb028c94ba6d77a1f56db60bd0b9007e40b83b7db50740f0a7e2c",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/guides/yak-trenuvaty-slova-z-vlasnymy-spyskamy/": {
+    "digest": "5b1275d63711c1fe1f7ce5ef97d419557a36180c2e6ea09508c136c83b308fce",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/health/": {
+    "digest": "614ae457a3500fac145b97f436b46408dadb58e6e0594cbe6ecb69ee11e948d7",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/hospital/": {
+    "digest": "26cc80cc6350d1b07cb9d484a4153e4b93c4e19f540237e93b0298d9cfe0804a",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/hotel/": {
+    "digest": "2b33f097330d4da490b73af3311090710296515a602d2e5dc285e8ec8b8c4bec",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/jobsearch/": {
+    "digest": "d68aa6edf5f6d78e3e56b7665c711349a5093bce909e8f2844cf791beae77bcf",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/money/": {
+    "digest": "21c4d0b07c9b33150d94880f52e0496c7999daaaf59f74cb4d4373c6ed3e4ab0",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/pregnancy/": {
+    "digest": "a9476d107dc780ea5b644df6d3c1b2c06fcdb1a659c31bffec492d41e016bba8",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/propertyservice/": {
+    "digest": "7b1c766a8b700cf0376a253468a553e92af34c27228c04e8dc8517af5a1607f8",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/restaurant/": {
+    "digest": "a1375d4a9f530d08cc2b140264c1e08f843006f52ed9f891b502312cad0e4f55",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/retail/": {
+    "digest": "d735a597224ca66eb2456a1fcfa4f3bf8d6fc28837af3ffb7f41ddd2b6fd3ba5",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/school/": {
+    "digest": "665847fe03fcd75cd37dd948e2c5e20b253255564d714f0ceedb5ed410cf3926",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/shopping/": {
+    "digest": "ff8129a02d3af023cc0e682db004321e17ffa681435818613c4abaab6bce92fc",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/transport/": {
+    "digest": "ffea974bbbb04ac888fe06596540a1376e40a61d952b950a34caf3555efabe85",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/trucking/": {
+    "digest": "b6b5f537c576bc68d5b0e8e194f141c943c9f3ca511b2002b97ae2adc99e7bdc",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/warehouse/": {
+    "digest": "7460f7b17c41a8b4106801c2b9f185b5b9a8f054f69b7509cefbf860f777ec55",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/worklife/": {
+    "digest": "2db7edfe5d3cd5cee6fd3be00f4ab19569f7ad98efcddc51cc9160e325ca577c",
+    "lastmod": "2026-11-21"
+  }
+}

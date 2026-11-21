@@ -6,6 +6,8 @@ const vm = require('vm');
 const crypto = require('crypto');
 const catalog = require('../catalog');
 const seo = require('./seo-pages');
+const courseRoutes = require('./course-routes');
+const {writeSitemap} = require('./build-sitemap');
 
 const ROOT = path.join(__dirname, '..');
 const SITE = 'https://jobvocabulary.com';
@@ -99,7 +101,9 @@ for(const pack of packs) {
 }
 if(courseOrder.some(id=>!['top','pics'].includes(id)&&!knownPacks.has(id))) throw new Error('Catalogue references a missing course');
 
-const urlOf = (p, lang) => `/${lang}/${['da','en','pl','ro','lt'].includes(lang) ? slugify(p.name[lang]) : p.id}/`;
+const routeFile=path.join(__dirname,'course-urls.json');
+const routes=courseRoutes(packs,LANGS,fs.existsSync(routeFile)?JSON.parse(fs.readFileSync(routeFile,'utf8')):{},slugify);
+const urlOf = (p,lang) => routes[p.id][lang];
 
 // Prioritet 1 på skift mellem emnerne (samme rækkefølge som i appen).
 function sample(p, type, n) {
@@ -278,12 +282,6 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
 
 const guideOutput = seo.buildGuides({root:ROOT,site:SITE,packs,urlOf});
 urls.push(...guideOutput.urls);
-// --- sitemap ---
-fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
-</urlset>
-`);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
 const assets = ['style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, asset))).digest('hex').slice(0, 12)]));
@@ -296,3 +294,5 @@ for (const file of pages) {
   fs.writeFileSync(file, html);
 }
 console.log(`${pages.length} sider skrevet, sitemap med ${urls.length} adresser`);
+fs.writeFileSync(routeFile,JSON.stringify(routes,null,2)+'\n');
+writeSitemap(ROOT,SITE,urls);

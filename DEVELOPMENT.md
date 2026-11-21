@@ -22,6 +22,17 @@ node --test tests/*.test.cjs
 `build-packs.js` validates the eight-language course files and updates the small
 `packs/index.js` manifest. Courses are loaded only when selected.
 
+`build-pages.js` preserves published course paths in `data/course-urls.json`.
+Correcting a translated title does not rename its URL. Keep retired paths reserved;
+an intentional URL move requires a redirect plan, rather than deleting this registry.
+The builder rejects path collisions and routes outside their language namespace.
+
+Sitemap update dates are recorded in `data/page-updates.json`. Initial dates come
+from Git history; actual content, structured-data, link or app changes advance the
+date. Rebuilding unchanged pages or changing only a stylesheet/icon cache token
+does not refresh it. Historical dates without evidence are omitted. Keep this
+registry checked in so routine builds do not invent new modification dates.
+
 `build-lexicon.js` creates `lexicon-v4.json` and its small version/count manifest.
 The dictionary is loaded only for saved words or personal lists. Version 4 uses
 one record per distinct eight-language meaning and numeric alias references.
