@@ -5,7 +5,8 @@ var CourseKnowledge = (()=>{
     const index=new Map();
     for(const group of groups){
       const peers=group.ids.map(id=>({id,pack:id.includes(':')?id.slice(0,id.indexOf(':')):'top'}));
-      for(const {id}of peers)index.set(id,{key:group.key,peers});
+      const keys=new Set([group.key,...(group.keys||[])]);
+      for(const {id}of peers)index.set(id,{key:group.key,keys,peers});
     }
     function mark(card,id){
       const group=index.get(id);
@@ -24,7 +25,7 @@ var CourseKnowledge = (()=>{
         for(const peer of group.peers){
           const key=progressKey({...settings,pack:peer.pack});
           const card=state.progress[key]?.cards?.[peer.id];
-          if(!card||card.meaningKey&&card.meaningKey!==group.key)continue;
+          if(!card||card.meaningKey&&!group.keys.has(card.meaningKey))continue;
           const right=card.right??0,wrong=card.wrong??0;
           if(!Number.isFinite(right)||right<0||!Number.isFinite(wrong)||wrong<0||right+wrong===0)continue;
           const at=Number.isFinite(card.time)?card.time:card.memory?.last;

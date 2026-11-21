@@ -81,18 +81,30 @@ test('a changed meaning fingerprint needs fresh evidence before transfer',()=>{
   assert.equal(f.seed(),1);
 });
 
-test('the generated compact index groups exact eight-language meanings and preserves phrase distinctions',()=>{
+test('the generated compact index groups eight-language meanings and preserves phrase distinctions',()=>{
   const groups=require('../shared-word-groups'),records=new Map(),languages=['da','en','ru','uk','pl','ro','lt','bg'];
+  const meanings=new Map();
   const signature=(words,phrase)=>crypto.createHash('sha256').update(JSON.stringify(languages.map(lang=>(words[lang]||'').trim().toLocaleLowerCase()))+'|'+Number(phrase)).digest('hex').slice(0,16);
-  for(const word of require('../words').CONCEPTS)records.set(word.id,signature(word.words,false));
+  const record=(id,words,phrase)=>{
+    records.set(id,signature(words,phrase));
+    meanings.set(id,JSON.stringify(languages.map(lang=>{
+      const value=(words[lang]||'').trim().toLocaleLowerCase();
+      return lang==='da'&&!phrase?value.replace(/^(en|et)\s+(.+)$/u,'$2'):value;
+    }))+'|'+Number(phrase));
+  };
+  for(const word of require('../words').CONCEPTS)record(word.id,word.words,false);
   const context={};for(const file of fs.readdirSync(require('node:path').join(__dirname,'../packs')).filter(file=>file.endsWith('.js')&&file!=='index.js'))vm.runInNewContext(fs.readFileSync(require.resolve('../packs/'+file),'utf8'),context);
   const stable=require('../data/stable-word-ids.json');
   for(const pack of Object.values(context.PACKS))for(const category of pack.categories)for(const row of category.rows){
     const id=stable[pack.id]?.[row[1]]||pack.id+':'+row[1];
-    records.set(id,signature(Object.fromEntries(languages.map((lang,i)=>[lang,row[i+1]])),category.type==='phrase'));
+    record(id,Object.fromEntries(languages.map((lang,i)=>[lang,row[i+1]])),category.type==='phrase');
   }
   const seen=new Set();
-  for(const group of groups){assert.ok(group.ids.length>1);for(const id of group.ids){assert.equal(records.get(id),group.key,id);assert.equal(seen.has(id),false,id);seen.add(id);}}
+  for(const group of groups){assert.ok(group.ids.length>1);for(const id of group.ids){
+    assert.ok([group.key,...(group.keys||[])].includes(records.get(id)),id);
+    assert.equal(meanings.get(id),meanings.get(group.ids[0]),id);
+    assert.equal(seen.has(id),false,id);seen.add(id);
+  }}
   assert.ok(groups.length>300);assert.ok(fs.statSync(require.resolve('../shared-word-groups')).size<100000);
 });
 
