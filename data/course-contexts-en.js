@@ -287,5 +287,14 @@ module.exports={
       "Recognise names of vehicle parts, fluids and tools.",
       "Explain whether the car is ready or you are waiting for a part."
     ]
+  ],
+  "bakery": [
+    "Danish for bakery and pastry work",
+    "In a bakery you need to understand a recipe, coordinate with colleagues and keep track of orders. Start with ingredients and equipment, then put the words into questions about dough, baking and quantities. In the shop, practise taking an order and checking ingredients when a customer asks.",
+    [
+      "Recognise ingredients, baking equipment and different breads.",
+      "Ask a colleague about a recipe, proofing time or consistency.",
+      "Confirm the quantity, name and collection details for an order."
+    ]
   ]
 };

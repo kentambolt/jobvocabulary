@@ -1,10 +1,10 @@
 {
   "/": {
-    "digest": "bd1ecb9de689c54598dd0b0701964dbfc3a5d9472776a3499cd4eee46fd4aeca",
+    "digest": "8218d3da48bf82a3706fcb9093c9876ff8856aa2d4b2e21136b5ab9a46646222",
     "lastmod": "2026-11-21"
   },
   "/bg/": {
-    "digest": "b565b318744e08d3f56ce1d388362531ec4fe9801601ea82498d9dff28ccaee4",
+    "digest": "44702743bc4f04c6747e6479c474d257825496fdc3baf3693148fa635d96a2b1",
     "lastmod": "2026-11-21"
   },
   "/bg/agriculture/": {
@@ -21,6 +21,10 @@
   },
   "/bg/automotive/": {
     "digest": "f6ada76efef4eeed81b8d825741599d7f43676a007afc844b0ac3fc4a10f66d2",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/bakery/": {
+    "digest": "55fa73d539bf6e09e56cf53996ac0611efdcf9e1d4866a937c1fadc417c0f49a",
     "lastmod": "2026-11-21"
   },
   "/bg/bus/": {
@@ -60,7 +64,7 @@
     "lastmod": "2026-11-21"
   },
   "/bg/foodindustry/": {
-    "digest": "685d686f8111e6adec2b1283738b46404c240443dac3325903d5957d25b7ba5e",
+    "digest": "a63773533d4362d0779045ba900ffc1a99181b615f0918884a089487ecb41f1d",
     "lastmod": "2026-11-21"
   },
   "/bg/getaround/": {
@@ -140,7 +144,7 @@
     "lastmod": "2026-11-21"
   },
   "/bg/restaurant/": {
-    "digest": "ccd02df0e22c4bba5a9e0f52357813186b779d7f0a3ae7ffd2f42681e49e8c14",
+    "digest": "1d3cfe9fd7ba675f9222baa28f95cb6fbd9ee99704c94ab1d3f8203f0073806c",
     "lastmod": "2026-11-21"
   },
   "/bg/retail/": {
@@ -172,7 +176,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/": {
-    "digest": "cce03572a2fa273ce72192565a74a748cc9baa599e9b1dadc5c5cf83d7a998a4",
+    "digest": "56e8f4fdf537132fc121bd71092f512667ac4464439bf7172ae80622fc801303",
     "lastmod": "2026-11-21"
   },
   "/da/aeldrepleje/": {
@@ -185,6 +189,10 @@
   },
   "/da/autovaerksted-og-mekaniker/": {
     "digest": "7f4620a62dda29e64162fd2eaeb02e9dcbb66b0a5379cbcb7a1f3378375f181a",
+    "lastmod": "2026-11-21"
+  },
+  "/da/bageri-og-konditori/": {
+    "digest": "2f003e4df13b373b7195398ae00420a0426ad5d77c9881c637068a3533250e33",
     "lastmod": "2026-11-21"
   },
   "/da/boern-skole-og-daginstitution/": {
@@ -220,7 +228,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/foedevareindustri-og-slagteri/": {
-    "digest": "e5370edbff49d1bc2663158983ab0cb56a3818c8b97f5ebb819f6fd451b5b04b",
+    "digest": "a41d9e340d2c21fa0f49c6d1164c4df607192fb69f2953c74770e9b9ad153b2c",
     "lastmod": "2026-11-21"
   },
   "/da/graviditet-foedsel-og-spaedboern/": {
@@ -324,7 +332,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/restaurant-og-koekken/": {
-    "digest": "23facaa3d863dcabb9ae17efff1fa1c3cf0c8e9d4ac4f01fbf77aeb9a7a93bc4",
+    "digest": "bad770448fd6a7e524f5119aa8392bcadfffb5b8218c79f3725024ae32d5022f",
     "lastmod": "2026-11-21"
   },
   "/da/sprogskole-og-uddannelse/": {
@@ -340,11 +348,15 @@
     "lastmod": "2026-11-21"
   },
   "/en/": {
-    "digest": "eea545aecfd007ae686c054d6dc4ae14214771438838daad2306f5814d3c2347",
+    "digest": "d78f7f5c60255b2cb072e59caefead08a0063f4dc166dd13e1f667482ec32db4",
     "lastmod": "2026-11-21"
   },
   "/en/airport-and-ground-handling/": {
     "digest": "9f317576a211b0d4e38446e74f27a65dbcd9b13789bbf94a2168850d04d3a33b",
+    "lastmod": "2026-11-21"
+  },
+  "/en/bakery-and-pastry-work/": {
+    "digest": "a540f94f7ceac5000335c187f71f050477c4a86d412659e0ce1eb3405df6a629",
     "lastmod": "2026-11-21"
   },
   "/en/bus-driver/": {
@@ -396,7 +408,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/food-industry-and-slaughterhouses/": {
-    "digest": "030a02183058910af655390bc5c8522b378cf045dffbe4d8b6488a1ea785cad2",
+    "digest": "6cd6c56792462e703d03b724a78bf5b01b58d1958fdd49533dee9604922d2a36",
     "lastmod": "2026-11-21"
   },
   "/en/getting-around/": {
@@ -488,7 +500,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/restaurant-and-kitchen/": {
-    "digest": "928e3009213d41f0634d9d82e5c2cb1e98122cede14c9af049e6e15b5fe8697f",
+    "digest": "18ed917176b1254f7718ab27c70ea166d04e494c3e021f7f90aba4e8b6eb7f32",
     "lastmod": "2026-11-21"
   },
   "/en/shop-and-supermarket/": {
@@ -508,7 +520,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/": {
-    "digest": "4fcca09141f6bb0caa0b8c0c157c3467b85af784c03e9965622a21ce52d095f3",
+    "digest": "faff565050ae17a4b61a61a24338a2755bd79d3a6623679ca28df489d69a3453",
     "lastmod": "2026-11-21"
   },
   "/lt/apsipirkimas-ir-vartotojo-teises/": {
@@ -595,8 +607,12 @@
     "digest": "ae17638a7f672d923b2c2ea24a1c7964ec4a53438c2e70ac0c59de0397b1aac5",
     "lastmod": "2026-11-21"
   },
+  "/lt/kepykla-ir-konditerija/": {
+    "digest": "399ce705db975c4ba4b911bbe7eee93891db6b7d2acd3d4214028164ec46656c",
+    "lastmod": "2026-11-21"
+  },
   "/lt/maisto-pramone-ir-skerdyklos/": {
-    "digest": "07e68c4b531e6925a29e146124b6ad8509da013451a9b60b85fae99f33ab7b32",
+    "digest": "cef53ecf0121be8af4812547b4f2703465bc4021389dc599956101fdfbe73630",
     "lastmod": "2026-11-21"
   },
   "/lt/nestumas-gimdymas-ir-kudikiai/": {
@@ -628,7 +644,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/restoranas-ir-virtuve/": {
-    "digest": "c5f0b11afc3bad0f9ce4550b883e4c2109df43e634dbd0cdb427f57df668a54a",
+    "digest": "283ab845ab2e188bc8919832caa7fae79da9f568bf2602745323ee5e0402ac4f",
     "lastmod": "2026-11-21"
   },
   "/lt/sandelis-ir-gamyba/": {
@@ -676,7 +692,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/": {
-    "digest": "6c26e0ef4cccc4d7190db0970ae2d3429b663697c72cfa969d1592a3654fe3be",
+    "digest": "36b81a43a570394e2485b384e2189e48ed5ed67ba550cfed848aa1d0fa0e7d19",
     "lastmod": "2026-11-21"
   },
   "/pl/biuro-i-obsluga-klienta/": {
@@ -771,6 +787,10 @@
     "digest": "4785b59b35d530078c21b4180fa29d3b302c53f3046ea807e1c3055ebaacf8e5",
     "lastmod": "2026-11-21"
   },
+  "/pl/piekarnia-i-cukiernia/": {
+    "digest": "2ac2aad423a58e097916cecc5cc081893330bee0702727c4b5945f04310ffd78",
+    "lastmod": "2026-11-21"
+  },
   "/pl/pieniadze-bank-i-oszustwa/": {
     "digest": "8ef9cbffdbec970b8a0d71ebe95bad139b19b569ae34399c55d56b4bde7514d4",
     "lastmod": "2026-11-21"
@@ -792,11 +812,11 @@
     "lastmod": "2026-11-21"
   },
   "/pl/przemysl-spozywczy-i-zaklad-miesny/": {
-    "digest": "6859e3d39fff3256a0768d661ac43965386b05145d0ec367a5a394f70ec08655",
+    "digest": "b2785ab794ed4eb3f63b9fdd44e0aa3e48539573a6ce407fad4241241f1b47ef",
     "lastmod": "2026-11-21"
   },
   "/pl/restauracja-i-kuchnia/": {
-    "digest": "8be0ff120b288b5e3a9223d41ed4e78a3bfd210f5a7c0758e6e2dafd65d11666",
+    "digest": "d5fa614f3a0b71a2615527f86482473214f475158ac4fa2258cd09089e937f0a",
     "lastmod": "2026-11-21"
   },
   "/pl/rolnictwo-i-produkcja-zywnosci/": {
@@ -844,7 +864,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/": {
-    "digest": "f24cc263f80284f30183a19cf792e1c8d9483d1f0b36bd7697c439bac058776e",
+    "digest": "49455939d8e63a39ed40c13e502f49f1aa263807234a4f86be99d4195d0f5c63",
     "lastmod": "2026-11-21"
   },
   "/ro/aeroport-si-handling-la-sol/": {
@@ -873,6 +893,10 @@
   },
   "/ro/birou-si-relatii-cu-clientii/": {
     "digest": "403a778ef229cd3ae6fb800a46fbd856af7deeb161e85e3c4e4f9117bea961c2",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/brutarie-si-cofetarie/": {
+    "digest": "f8712fadfea25021a71b10a1ccf8cd4a5475f3342fe750fc244db790fdd5076a",
     "lastmod": "2026-11-21"
   },
   "/ro/camion-si-transport-international/": {
@@ -948,7 +972,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/industria-alimentara-si-abatoare/": {
-    "digest": "061894328bd5c49ac21eb8fa9ec0e4c704db550cbba16465edc6b0037f3201f9",
+    "digest": "04661a84f2342fd0e7bf2e3086221a56b857fa4c9d06e5cbcf65378ee385fb51",
     "lastmod": "2026-11-21"
   },
   "/ro/ingrijirea-persoanelor-varstnice/": {
@@ -972,7 +996,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/restaurant-si-bucatarie/": {
-    "digest": "5fe597f8d50e271e3f17389419ad330d0dfcd97eb7a77197dbf8187ee232f704",
+    "digest": "e96b58ee4f003af3d51ade17b065916416422d08c0f8329a3f2d53de9c1c54c0",
     "lastmod": "2026-11-21"
   },
   "/ro/sanatatea-si-medicul/": {
@@ -1012,7 +1036,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/": {
-    "digest": "52995ba1504f5a314205d046dc371b456f663459886c1b41aca64c25429a6570",
+    "digest": "0817fba0c1c6d0a57e75b80756ea9fc676c6c26d3818a8c9859fb2f3c1d3ecba",
     "lastmod": "2026-11-21"
   },
   "/ru/agriculture/": {
@@ -1029,6 +1053,10 @@
   },
   "/ru/automotive/": {
     "digest": "423826c5ae6a575a32b9e993fc09bb3f7443244977a5d64956c65cdc87ef8951",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/bakery/": {
+    "digest": "9055d7a776c0102d14e05c89bdca36b3fc91f5787459a2c1ab020423bf3b767b",
     "lastmod": "2026-11-21"
   },
   "/ru/bus/": {
@@ -1068,7 +1096,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/foodindustry/": {
-    "digest": "4a68294712c1ef8495a7b23475abdf7d02f63e494799da8b0865693b67a26169",
+    "digest": "5b3c8db0ac98ff626fa1c3be53bcfc804becbd5a7ef9492f23fe0f3e0ceb965a",
     "lastmod": "2026-11-21"
   },
   "/ru/getaround/": {
@@ -1148,7 +1176,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/restaurant/": {
-    "digest": "310048932018e54291f58e12a0a077bb116cfc71547c01a296b8ca7843e3e179",
+    "digest": "858760537f3f1b11064b8bde810600ac1c6a58b58961eaeb189127629e6ecb10",
     "lastmod": "2026-11-21"
   },
   "/ru/retail/": {
@@ -1180,7 +1208,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/": {
-    "digest": "116055faaaf26017e68b2af948558e525afe8b88190df3460eb75dc023b7ef51",
+    "digest": "de2d1d458c629cb2bcd27b57a72f20c067d11a0268312a59b51a69b44f9baaf0",
     "lastmod": "2026-11-21"
   },
   "/uk/agriculture/": {
@@ -1197,6 +1225,10 @@
   },
   "/uk/automotive/": {
     "digest": "0a6f74b6c91157e5b5f667a1b2700958af29c830bb41b059d2ca89af9d2ff6f6",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/bakery/": {
+    "digest": "0b0d86fd54e87525217ce65060fcbaecf49d9606aaadc2ad7bcb9c0db1cf1922",
     "lastmod": "2026-11-21"
   },
   "/uk/bus/": {
@@ -1236,7 +1268,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/foodindustry/": {
-    "digest": "cff2899a9c8c3dd75146a3122ca2dd69ef0e702380cbaa324e012ddece02676f",
+    "digest": "a494c6b9ad22fc8c6979fa93e5e3a755e8dfa11f162a5aaa41ae6f831f49ae8f",
     "lastmod": "2026-11-21"
   },
   "/uk/getaround/": {
@@ -1316,7 +1348,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/restaurant/": {
-    "digest": "4f69dd066e5da8e28ae22b9058223a05919f55ecaee611b7201cbc1ea3075e43",
+    "digest": "075adfa22b978d18110f861cce069aaf2d5795a6db1147a9e60b380b9e20c668",
     "lastmod": "2026-11-21"
   },
   "/uk/retail/": {

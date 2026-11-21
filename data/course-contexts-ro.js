@@ -287,5 +287,14 @@ module.exports={
       "Recunoaște denumirile pieselor auto, lichidelor și uneltelor.",
       "Explică dacă mașina este gata sau dacă așteptați o piesă."
     ]
+  ],
+  "bakery": [
+    "Daneza pentru brutărie și cofetărie",
+    "În brutărie trebuie să înțelegi o rețetă, să te coordonezi cu colegii și să urmărești comenzile. Începe cu ingredientele și echipamentele, apoi formulează întrebări despre aluat, coacere și cantități. În magazin, exersează preluarea unei comenzi și verificarea ingredientelor când un client întreabă.",
+    [
+      "Recunoaște ingredientele, echipamentele de coacere și tipurile de pâine.",
+      "Întreabă un coleg despre rețetă, timpul de dospire sau consistență.",
+      "Confirmă cantitatea, numele și detaliile ridicării unei comenzi."
+    ]
   ]
 };
