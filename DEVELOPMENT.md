@@ -214,6 +214,10 @@ are available before course/list practice and from the navigation menu.
 Writing mode uses letter tasks for eligible single words and word tiles for
 multiword terms and sentences, including their first appearance. A first sentence
 build creates a card only after an actual answer; revealing it records exposure.
+Single-word spelling supports 1–32 letters and at most 36 total characters. Long
+words wrap their letter cells inside the same 60 px response strip; whole answer
+labels keep their existing unbroken-word layout. Keep the minimum letter size
+and test bounded prefixes as well as real long words when changing the strip.
 
 `node data/simulate-learning.cjs` reproduces the synthetic baseline comparisons
 and one-year coverage checks in `data/reports/learning-simulation.json`. The report
