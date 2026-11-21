@@ -48,6 +48,17 @@ date. Rebuilding unchanged pages or changing only a stylesheet/icon cache token
 does not refresh it. Historical dates without evidence are omitted. Keep this
 registry checked in so routine builds do not invent new modification dates.
 
+Guide Article timestamps live in `data/guide-times.json`. They use documented
+first-parent publication commits, including their actual timezone, rather than
+inventing midnight from a calendar date. The copy hash covers the article's own
+heading, introduction, sections and examples; changing navigation or related links
+does not refresh its modification time. Refresh the timestamp evidence from Git
+after publishing new or changed copy. Until documented times are available, the
+builder omits unknown Article timestamps; changed copy also suppresses a stale
+modification time. The visible publication date remains available.
+The reproducible history reader is private:
+`node .private/jobvocabulary-private/data/build-guide-times.cjs .`.
+
 `build-lexicon.js` creates `lexicon-v4.json` and its small version/count manifest.
 The dictionary is loaded only for saved words or personal lists. Version 4 uses
 one record per distinct eight-language meaning and numeric alias references.

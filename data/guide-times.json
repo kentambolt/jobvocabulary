@@ -1,0 +1,442 @@
+{
+  "/da/guides/dansk-til-dit-foerste-arbejde/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "7bc48eaf1123a256d633a000db236fc26f5f6c217f56be2732f382d15b1c60d4"
+  },
+  "/en/guides/danish-for-your-first-job/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "c52e79d3b1425df3697d5f2711d731c93b53ebfe5aae3e68489fe1836d541a49"
+  },
+  "/ru/guides/datskiy-dlya-pervoy-raboty/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "79d11fbeb7c09bd1f72df04586fbcf0b32d16641cb4c7a3dd37427c9370c0270"
+  },
+  "/uk/guides/danska-dlia-pershoi-roboty/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "24bd1be2a0b5b1eaf53b394943278995be0fd5ac5b4c5901f52d8eaf916feaaf"
+  },
+  "/pl/guides/dunski-w-pierwszej-pracy/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "a5cb69b89610fb23db7618125956547dc7db837e89ca3f2449a17557301bf064"
+  },
+  "/ro/guides/daneza-pentru-primul-loc-de-munca/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "870553609b88af1a948f74640f0076995a5e74faa6bf0132a08e1890938cd9c9"
+  },
+  "/lt/guides/danu-kalba-pirmajam-darbui/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "1a4c1d92a1ec2ce45d874703af5fb15ed4f9bc2c46b33dd88f192aa97109ca07"
+  },
+  "/bg/guides/datski-za-parvata-rabota/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "3c1f455c2727416b37c3ded73cc209c6f8cf53adc7954d332a1ba8592ee3414a"
+  },
+  "/da/guides/forstaa-instruktioner-paa-arbejdet/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "0663ef1654498b08d09a05dba4cfdf61b026a0c80657951119eac01aeb8c92f3"
+  },
+  "/en/guides/understand-danish-workplace-instructions/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "af38486cfd8d612d4f8d21a343914b74c76d40183b9e3dc815070c180cf623ab"
+  },
+  "/ru/guides/ponimat-datskie-instruktsii-na-rabote/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "1938d6a8734d4533b0507949301095e117d1a8baa608c2f28fc3510bf3868fbb"
+  },
+  "/uk/guides/rozumity-danski-instruktsii-na-roboti/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "fae4b7ac80889e1b2d2e1607a9f28927ed91c9f1b134454812fe754d494702f7"
+  },
+  "/pl/guides/rozumienie-dunskich-polecen-w-pracy/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "9525c2206560f2dd7dc4493a42ef400bcccda9f76a165fddd7df2349c2eb0f63"
+  },
+  "/ro/guides/intelege-instructiunile-daneze-la-lucru/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "6dbe2e8c7c51edfa95c5c3e6bc3e7013bf8e5fcd9c5b5934334341fa18b79879"
+  },
+  "/lt/guides/danu-nurodymai-darbe/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "71104435d295f5e83816d51c80fb0659223e3225e9f75a44df971eb36c2d4107"
+  },
+  "/bg/guides/datski-instruktsii-na-rabota/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "c0ea6ed9c903afcf58d872f0c05103120d31a768a75be81a3f85d61a38c75aff"
+  },
+  "/da/guides/danske-ord-til-jobsamtalen/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "a51b6f3238291a2b4b168d04565de16da89d7d4d80910e232d8883ee55e14ae3"
+  },
+  "/en/guides/danish-vocabulary-for-job-interviews/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "b34fb57abddcdb8336c307b8b56283a42bb97bc767f002364a7eecd80cb0b3eb"
+  },
+  "/ru/guides/datskie-slova-dlya-sobesedovaniya/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "2aca5c8775e27ce069399f469a505b85d00b5f9da8d91b4b0a71423de278280a"
+  },
+  "/uk/guides/danski-slova-dlia-spivbesidy/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "3b161e2a8ffa8ff99f41b8d2fae1c1171580607827f8add18b25d4343e837647"
+  },
+  "/pl/guides/dunskie-slowa-na-rozmowe-o-prace/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "2f19efe43d23a399f73a9d73d4be912f7cfc8bdf638135c6a9421f08d3079157"
+  },
+  "/ro/guides/cuvinte-daneze-pentru-interviul-de-angajare/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "82330389639f4152ad92fd52780889b6332591806c0444fc32353f6edd35e688"
+  },
+  "/lt/guides/danu-zodziai-darbo-pokalbiui/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "893e06c851e7e74fada05d361bdfcc105f44e086a19f2147a28284822bd1750b"
+  },
+  "/bg/guides/datski-dumi-za-intervyu-za-rabota/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "dac8544655f21671af195cc699d3cc77355f03eabb0c1fe63d2c8b827cddd070"
+  },
+  "/da/guides/tal-tid-og-datoer-paa-dansk/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "a522660cc40cae04781d22fb7f822f6720e74f982ae362046b7aab8f9e936911"
+  },
+  "/en/guides/numbers-time-and-dates-in-danish/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "34a869e55dae0a4869bfacc7cc1bd9ca730d24d7c941229c166989fd5f352d3e"
+  },
+  "/ru/guides/chisla-vremya-i-daty-na-datskom/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "4aacc612f3f67492d888eb986028724de743070834bbe1dcd5599640c6638a50"
+  },
+  "/uk/guides/chysla-chas-i-daty-danskoiu/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "32f28e1ebbecf3a7929b0a4685883620b7f68511777e27df14e24e4c288e105f"
+  },
+  "/pl/guides/liczby-godziny-i-daty-po-dunsku/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "f89ad42e50a06249456729c92e5f544549e0e5bb414c0496894dd82ab57b04a6"
+  },
+  "/ro/guides/numere-ore-si-date-in-daneza/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "46b291f0f4748de4297888cbacbc53de463243ddb61a7a7769539519a2d36986"
+  },
+  "/lt/guides/skaiciai-laikas-ir-datos-danu-kalba/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "0cf4707c3e50299a0bbf17d629f2e91345a61115dd17982d6e65bb4592033a51"
+  },
+  "/bg/guides/chisla-chas-i-dati-na-datski/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "07831672eea44613180cbd05af5c2d5dc10539b3dff3d73475f5faeb407e6725"
+  },
+  "/da/guides/danske-ord-til-koerekort/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "fcda4373adb4919ee9360c92a038b946bb80b26884d49d605601614e4c4114ea"
+  },
+  "/en/guides/danish-vocabulary-for-driving-lessons/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "a372c340be4c0979cbc8dfba5c827c5e77f5ba961235b7c049cfe2677035d0b3"
+  },
+  "/ru/guides/datskie-slova-dlya-urokov-vozhdeniya/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "1faec5abf32c66db33678bbcc6d9128f388fe428e8b804a69981edc5815ff106"
+  },
+  "/uk/guides/danski-slova-dlia-urokiv-vodinnia/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "738f8da1924f00952cf537a4d4b65af7c8bd80c0231c10b3a9e34c5feecf1521"
+  },
+  "/pl/guides/dunskie-slownictwo-na-lekcje-jazdy/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "dee6b34ee105d12a9566fa088a9ba2ab17f103f2f11a8e240adc2a950f5b35cf"
+  },
+  "/ro/guides/vocabular-danez-pentru-lectiile-de-conducere/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "223acdf27d648435158b37e59c28d879b103d5b3f12534c30ad5fb15a89ddc0c"
+  },
+  "/lt/guides/danu-zodziai-vairavimo-pamokoms/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "61e19bb1abb64a52b4d6c677cd5c7de3e7689f3b990f6cb52f8cc80f52cfafe3"
+  },
+  "/bg/guides/datski-dumi-za-shofyorski-urotsi/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "9682f5771a471f6382ee285fc2dd20f6278868198eea68bbba23410fe8b127a7"
+  },
+  "/da/guides/saadan-traener-du-ord-og-egne-lister/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-20T22:54:29+01:00",
+    "articleHash": "94f45fb464c9699bc60abdc8757b30e2f8fe922cf2246bc1bcf1706dda5dad86"
+  },
+  "/en/guides/practise-vocabulary-with-personal-word-lists/": {
+    "publishedAt": "2026-11-20T22:54:29+01:00",
+    "modifiedAt": "2026-11-20T22:54:29+01:00",
+    "articleHash": "0252e188d713b48068206553031b681821ee64e954e537a0748e27f8ef19161c"
+  },
+  "/ru/guides/kak-uchit-slova-so-svoimi-spiskami/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-20T23:33:09+01:00",
+    "articleHash": "32fce82bd38d141fb252639823bbfbcaeeb348b382611a702a2a6a6b1263a212"
+  },
+  "/uk/guides/yak-trenuvaty-slova-z-vlasnymy-spyskamy/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-20T23:33:09+01:00",
+    "articleHash": "174d1912f03f7242aac62f3faecf619ccbb53d70187adf44d99dea4c402ba7f0"
+  },
+  "/pl/guides/nauka-slownictwa-z-wlasnymi-listami/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-20T23:33:09+01:00",
+    "articleHash": "9a378e8fa6a46508b72aa2d054317fddc3bca13e9798e2c37f112f2acc6010f6"
+  },
+  "/ro/guides/exerseaza-vocabularul-cu-liste-personale/": {
+    "publishedAt": "2026-11-20T23:33:09+01:00",
+    "modifiedAt": "2026-11-20T23:33:09+01:00",
+    "articleHash": "11c1b27f1098a7e8a74ff4a3c5672d46ece27164912c85f833743e63a631c333"
+  },
+  "/lt/guides/zodziu-mokymasis-su-savo-sarasais/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T00:47:56+01:00",
+    "articleHash": "9feb2f464c1f0cf526467fa7bc195838b2181d6de10832b83ed0c665491635a1"
+  },
+  "/bg/guides/uchene-na-dumi-s-lichni-spisatsi/": {
+    "publishedAt": "2026-11-21T00:47:56+01:00",
+    "modifiedAt": "2026-11-21T00:47:56+01:00",
+    "articleHash": "17eac880076029b4252cb6049835d04b8b5441f76b7a3031eae4711c703c354d"
+  },
+  "/da/guides/telefonsamtaler-paa-dansk-paa-arbejdet/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "cc74026951e271b9781abfce5b57ea5df8317912a5d6b62c44249d5ed070d338"
+  },
+  "/en/guides/phone-calls-in-danish-at-work/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "6b6e3212e191f143864b6346572153bede4bf267c546773bc68e140d69d80e62"
+  },
+  "/ru/guides/telefonnye-razgovory-na-datskom-na-rabote/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "824ad0beea76bfd7d7ad979ff540189b2a96e38a8a886cc889092e5d03b0fd32"
+  },
+  "/uk/guides/telefonni-rozmovy-danskoiu-na-roboti/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "cde9bbb7fc3af48ab80c68e4f22f6d19cdf3cacb44c22dfdf8b94fb681dd251c"
+  },
+  "/pl/guides/rozmowy-telefoniczne-po-dunsku-w-pracy/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "d2f145491330840081e772eeac68e0072446d888dc3d74d4a24f3854548d2113"
+  },
+  "/ro/guides/convorbiri-telefonice-in-daneza-la-serviciu/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "a5f625809a6a1b48461577ef353e69867ef28ddf314483c8fad5e268905ebe6c"
+  },
+  "/lt/guides/pokalbiai-telefonu-daniskai-darbe/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "6586ade41aa03647c92f9a20081edde4092b2c79ff516e245094bfd0f9b1fa0f"
+  },
+  "/bg/guides/telefonni-razgovori-na-datski-na-rabota/": {
+    "publishedAt": "2026-11-21T02:40:21+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "d3c4f9ec2b942b992b440bcf333657b8a80720a68ee73488216a7f9b3c518305"
+  },
+  "/da/guides/forstaa-en-dansk-jobannonce/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "5089fef96208710cb99da709fb11da43f23eda3c37578f2b669ef4193d8cad8c"
+  },
+  "/en/guides/understand-a-danish-job-advert/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "7ec069eb6e7b0c4c40ce7bc83cb03538e9a7309353b0513d01d3da48d76865d1"
+  },
+  "/ru/guides/kak-ponyat-datskuyu-vakansiyu/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "473e28a041873bbe3dcb5e94ce7039460493b233b9da60cad1debfe9cbc7958d"
+  },
+  "/uk/guides/yak-zrozumity-danske-oholoshennia-pro-robotu/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "831aafc94082aad750259fbf40db127d95c926eb06996f2aeb5cf75bd4ee3525"
+  },
+  "/pl/guides/jak-zrozumiec-dunskie-ogloszenie-o-prace/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "23c05729e17137624cc698e3f33ede6d36508bf8115788e150a6fbafe16ee9f0"
+  },
+  "/ro/guides/cum-intelegi-un-anunt-de-angajare-in-daneza/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "3a7da4cfd7c99b406ef5e88611695a5714d2ecaa5f500a0a37227318016cc986"
+  },
+  "/lt/guides/kaip-suprasti-daniska-darbo-skelbima/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "a0735bfc71a81c9eb1ac933b3c37ba9eb94b7b0bf49c30f68974e0dc9c40e3c0"
+  },
+  "/bg/guides/kak-da-razberete-obyava-za-rabota-na-datski/": {
+    "publishedAt": "2026-11-21T03:38:17+01:00",
+    "modifiedAt": "2026-11-21T05:25:11+01:00",
+    "articleHash": "d0a182da2f69d24cf63e4d4dc86b46b350c7967f0affca6658c01db96bfaab9e"
+  },
+  "/da/guides/e-mails-og-beskeder-paa-arbejdet/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "2e2f8ed461175345776e247b90fd1d35a08f74f10c8f8db863666d703b540505"
+  },
+  "/en/guides/emails-and-messages-in-danish-at-work/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "6ec9687a9178dabdbae9e683d7039f7ba991d1a05723f47047bc0a9c7eba9b86"
+  },
+  "/ru/guides/pisma-i-soobshcheniya-na-datskom/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "1ff3df69e7d56f85fdebe39497e12105dc87f38db25c3f76959ab85962ee08ea"
+  },
+  "/uk/guides/lysty-i-povidomlennia-danskoiu/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "2624f3e5205773986c2761669c78bb38188c3fbdf1af09aa19943fbfe56bf3d6"
+  },
+  "/pl/guides/e-maile-i-wiadomosci-po-dunsku-w-pracy/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "a776286982a9463b42f086e06cdaa42f937caf1ec877f3a2fb150047d047b999"
+  },
+  "/ro/guides/e-mailuri-si-mesaje-in-daneza-la-serviciu/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "0eeb999b789fb049848c8c9a487cbb072c461edc24897032238132ff0ba9cdd7"
+  },
+  "/lt/guides/elektroniniai-laiskai-ir-zinutes-daniskai/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "eb20e07efb0268f941c4b71e68b17269bdefcb9c7fd6666c079776a19df60608"
+  },
+  "/bg/guides/imeyli-i-saobshteniya-na-datski/": {
+    "publishedAt": "2026-11-21T05:30:15+01:00",
+    "modifiedAt": "2026-11-21T05:30:15+01:00",
+    "articleHash": "f9d3b39e4510b937b505587ea786680162a511e0bd8f3ecd49f4da0cce2c3bf1"
+  },
+  "/da/guides/vagtplan-og-arbejdstid-paa-dansk/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "ee75d6bd1301d01784782b888d4a0516d0f45841b23e2171c32aaa1a9df8ce89"
+  },
+  "/en/guides/shift-rotas-and-working-hours-in-danish/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "661b6bb2a5a60b3ed314a3ec0ee01292d61536b4faa97d5e7f8343ecf9f013c5"
+  },
+  "/ru/guides/grafik-smen-i-rabochee-vremya-na-datskom/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "f23f9dd709c7bbc7ffb9b1d6d5664123de721bab90b532a447e5adcb31ae090b"
+  },
+  "/uk/guides/hrafik-zmin-i-robochyi-chas-danskoiu/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "ec5ceeddeca25e65c92e835037b124adcd2ead85f8ae301874df14f72e2d65d0"
+  },
+  "/pl/guides/grafik-zmian-i-czas-pracy-po-dunsku/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "4372f2233e53c5aaccc419a3c6ab95da77ac5b19941b8f99f0bcb63e8c3ffe22"
+  },
+  "/ro/guides/programul-de-ture-si-orele-de-lucru-in-daneza/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "831b0e287a8c2f41aa1a47c10e58f1ccd9803137df4cc8c9ddea8504f1aa15f4"
+  },
+  "/lt/guides/pamainu-grafikas-ir-darbo-laikas-daniskai/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "a1571a6344144d1abfdac116037168fee4d6cad345a3d26cece7b8c3fce8ec67"
+  },
+  "/bg/guides/grafik-na-smenite-i-rabotno-vreme-na-datski/": {
+    "publishedAt": "2026-11-21T07:03:08+01:00",
+    "modifiedAt": "2026-11-21T07:03:08+01:00",
+    "articleHash": "7b8b4bec6ce2b71b43aceab60114fc1356d742aa682beb4810617cf35b249f61"
+  },
+  "/da/guides/korte-kundesamtaler-paa-dansk/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "1507a1b41c5efb1963ba0cbb2d8c731d9fd4d7f41f829edc18c454631e4c9bdf"
+  },
+  "/en/guides/short-customer-conversations-in-danish/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "d5c168f4e1c1c8aa91ef42c112dc29670cf3762d74edcd95814d96092fc6a474"
+  },
+  "/ru/guides/korotkie-razgovory-s-klientami-na-datskom/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "021dd3cf8064aca911d04bc39995726368803fac9a55e0d29881f98afbbb7f06"
+  },
+  "/uk/guides/korotki-rozmovy-z-kliientamy-danskoiu/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "ef8788ab9380688412632740b9dcebff2c23859cf5d398b33ae2442e248e046d"
+  },
+  "/pl/guides/krotkie-rozmowy-z-klientami-po-dunsku/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "7b5c7c0324291255f09eb09a79329137ebfa68daa684d63a1a460ada212ede7d"
+  },
+  "/ro/guides/conversatii-scurte-cu-clientii-in-daneza/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "adfa1ffd55823d82c8b8e5705244667895349537ac6dbfb015981aa4d1ae6809"
+  },
+  "/lt/guides/trumpi-pokalbiai-su-klientais-daniskai/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "1e8f96b2f792734cae263767ac2af0316d4fb92f553b8aa2f51bd59fb9db01a2"
+  },
+  "/bg/guides/kratki-razgovori-s-klienti-na-datski/": {
+    "publishedAt": "2026-11-21T08:54:36+01:00",
+    "modifiedAt": "2026-11-21T08:54:36+01:00",
+    "articleHash": "2e01cb24d75e163ad24e62ff4990ceec428d5da5a82d41c64242f1f6bbc79fa5"
+  }
+}
