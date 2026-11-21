@@ -15,15 +15,39 @@ var WordEntry = class WordEntry {
     if (form===query) return true;
     return lang === 'da' && !entry.phrase && form.replace(/^(en|et|at)\s+(.+)$/, '$2') === query;
   }
-  static search(entries, query, pair, limit = 20) {
+  static equivalenceKey(entry) {
+    // Presentation only: keep every stored ID and distinguish senses/qualifiers.
+    // All eight translations must agree; a matching pair alone is not enough.
+    const languages=['da','en','ru','uk','pl','ro','lt','bg'];
+    if(!entry || entry.phrase || languages.some(lang=>!WordEntry.norm(entry.words?.[lang])))return null;
+    return JSON.stringify(languages.map(lang=>{
+      const value=WordEntry.norm(entry.words[lang]);
+      return lang==='da'?value.replace(/^(en|et)\s+(.+)$/u,'$2'):value;
+    }));
+  }
+  static search(entries, query, pair, limit = 20, preferredIds = []) {
     const q = WordEntry.norm(query);
-    if (!q) return [];
+    if (!q || limit <= 0) return [];
     const exact = (entry) => Number(WordEntry.exact(entry, pair.target, query) || WordEntry.exact(entry, pair.base, query));
-    return entries.filter((entry) => typeof entry?.id === 'string' && /^(lex:|user:)/.test(entry.id)
+    const preferred=new Set(preferredIds),saved=new Map();
+    if(preferred.size)for(const entry of entries)if(preferred.has(entry?.id)){
+      const key=WordEntry.equivalenceKey(entry);
+      if(key&&!saved.has(key))saved.set(key,entry);
+    }
+    const matches=entries.filter((entry) => typeof entry?.id === 'string' && /^(lex:|user:)/.test(entry.id)
       && typeof entry.words?.[pair.target] === 'string' && entry.words[pair.target]
       && typeof entry.words?.[pair.base] === 'string' && entry.words[pair.base]
       && [pair.target, pair.base].some((lang) => WordEntry.norm(entry.words[lang]).includes(q)))
-      .sort((a, b) => exact(b) - exact(a)).slice(0, limit);
+      .sort((a, b) => exact(b) - exact(a));
+    const grouped=new Map();
+    for(const entry of matches){
+      const key=WordEntry.equivalenceKey(entry)||'id:'+entry.id;
+      if(!grouped.has(key)){
+        grouped.set(key,saved.get(key)||entry);
+        if(grouped.size>=limit)break;
+      }
+    }
+    return [...grouped.values()].slice(0,limit);
   }
   constructor(entries, pair, editing = null) {
     this.entries = entries;
@@ -83,7 +107,7 @@ var WordEntry = class WordEntry {
     this.lookup();
   }
   knownId() {
-    const matches = WordEntry.search(this.entries, this.word, this, Number.MAX_SAFE_INTEGER)
+    const matches = WordEntry.search(this.entries, this.word, this, Number.MAX_SAFE_INTEGER, this.selectedId ? [this.selectedId] : [])
       .filter((entry) => WordEntry.exact(entry, this.target, this.word) && WordEntry.exact(entry, this.base, this.translation));
     return matches.find((entry) => entry.id === this.selectedId)?.id || (matches.length === 1 ? matches[0].id : null);
   }

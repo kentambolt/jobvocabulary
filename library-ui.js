@@ -307,7 +307,7 @@ function startLibraryPractice(id, pair, options = {}) {
   saveState(); current = null; placement = null; lastFeedback = null; levelNotice = null; go('play');
 }
 function dictionaryMatches(query, pair, limit = 20) {
-  return WordEntry.search(Object.values(ITEM), query, pair, limit);
+  return WordEntry.search(Object.values(ITEM), query, pair, limit, wordLibrary.list(libraryActive)?.items || []);
 }
 function saveToListDialog(sourceId) {
   clearTimeout(timer);
