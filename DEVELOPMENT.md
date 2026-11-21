@@ -189,8 +189,10 @@ no fabricated log.
 Actual placement answers are logged; inferred skipped words have zero observed
 answers and are spread over days. Explicit reveals persist an exposure immediately
 and Continue never counts it twice. A wrong answer changes only its own card.
-Completing the eligible pool automatically unlocks the next difficulty that adds
-words, preserving the language pair, categories, course and exercise mode. Lists
+Covering the whole eligible pool with at least 80% learned automatically unlocks
+the next difficulty that adds words. Unseen words block promotion, and existing
+weak cards remain in the expanded pool without changing their errors or schedule.
+This preserves the language pair, categories, course and exercise mode. Lists
 have no automatic difficulty change. Existing word levels and IDs are preserved.
 Incorrect answers require an explicit next action. Held keyboard keys cannot
 answer several tasks; normal repeat behaviour remains available in text inputs.
@@ -204,7 +206,8 @@ before loading the dictionary and blocks exercise shortcuts while open.
 and the optional `repeatLearned` setting (default true). Multi-mode practice rotates
 after each completed task, storing its cursor in `state.modeTurns`; legacy settings
 without `modes` retain their single `dir`. Each mode uses its existing progress key.
-Combined progress and promotion require mastery in every selected mode. Disabling
+Combined learned counts require mastery in every selected mode. Promotion requires
+coverage in every selected mode and at least 80% of words learned across them. Disabling
 learned repetitions still permits retries of incorrect or unfinished words. A fully
 completed selection stops with an explicit option to enable repetitions. Options
 are available before course/list practice and from the navigation menu.

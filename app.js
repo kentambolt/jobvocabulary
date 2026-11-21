@@ -46,9 +46,9 @@ const UI = {
     nativeShort: 'modersmål',
     switchDir: 'Skift retning',
     progress: '{n} af {m} lært',
-    levelAdvanced: '{from} er gennemført. Du fortsætter nu på {to}.',
+    levelAdvanced: '{from} er gennemgået. Du fortsætter på {to}.',
     howTitle: 'Sådan virker det',
-    explainSimple: 'Nye ord og ord, du kæmper med, kommer først. Kendte ord dukker op som spredte kontroller, mens du lærer nyt. En fejl påvirker kun det ord, du svarede på. Når du kan alle ordene på et niveau, fortsætter du automatisk til det næste.',
+    explainSimple: 'Nye ord og ord, du kæmper med, kommer først. Kendte ord dukker op som spredte kontroller, mens du lærer nyt. En fejl påvirker kun det ord, du svarede på.',
     formula: 'Den præcise formel',
     learnQ: 'Hvilket sprog vil du lære?',
     baseQ: 'Hvilket sprog forstår du bedst?',
@@ -138,9 +138,9 @@ const UI = {
     nativeShort: 'first language',
     switchDir: 'Switch direction',
     progress: '{n} of {m} learned',
-    levelAdvanced: '{from} is complete. You are now practising {to}.',
+    levelAdvanced: '{from} covered. You are now practising {to}.',
     howTitle: 'How it works',
-    explainSimple: 'New words and words you find difficult come first. Familiar words appear as occasional checks while you learn new ones. A mistake affects only the word you answered. Once you know every word at a level, you automatically move on to the next.',
+    explainSimple: 'New words and words you find difficult come first. Familiar words appear as occasional checks while you learn new ones. A mistake affects only the word you answered.',
     formula: 'The exact formula',
     learnQ: 'Which language do you want to learn?',
     baseQ: 'Which language do you understand best?',
@@ -230,9 +230,9 @@ const UI = {
     nativeShort: 'родной язык',
     switchDir: 'Сменить направление',
     progress: 'Выучено {n} из {m}',
-    levelAdvanced: 'Уровень «{from}» завершён. Вы перешли на уровень «{to}».',
+    levelAdvanced: 'Вы познакомились со словами уровня «{from}». Теперь уровень «{to}».',
     howTitle: 'Как это работает',
-    explainSimple: 'Сначала идут новые слова и слова, которые вызывают трудности. Знакомые слова появляются время от времени для проверки. Ошибка влияет только на слово, на которое вы отвечали. Когда вы знаете все слова уровня, вы автоматически переходите к следующему.',
+    explainSimple: 'Сначала идут новые слова и слова, которые вызывают трудности. Знакомые слова появляются время от времени для проверки. Ошибка влияет только на слово, на которое вы отвечали.',
     formula: 'Точная формула',
     learnQ: 'Какой язык вы хотите учить?',
     baseQ: 'Какой язык вы понимаете лучше всего?',
@@ -322,9 +322,9 @@ const UI = {
     nativeShort: 'рідна мова',
     switchDir: 'Змінити напрямок',
     progress: 'Вивчено {n} з {m}',
-    levelAdvanced: 'Рівень «{from}» завершено. Ви перейшли на рівень «{to}».',
+    levelAdvanced: 'Ви ознайомилися зі словами рівня «{from}». Тепер рівень «{to}».',
     howTitle: 'Як це працює',
-    explainSimple: 'Спочатку йдуть нові слова та слова, які викликають труднощі. Знайомі слова час від часу з’являються для перевірки. Помилка впливає лише на слово, на яке ви відповідали. Коли ви знаєте всі слова рівня, ви автоматично переходите до наступного.',
+    explainSimple: 'Спочатку йдуть нові слова та слова, які викликають труднощі. Знайомі слова час від часу з’являються для перевірки. Помилка впливає лише на слово, на яке ви відповідали.',
     formula: 'Точна формула',
     learnQ: 'Яку мову ви хочете вивчати?',
     baseQ: 'Яку мову ви розумієте найкраще?',
@@ -409,10 +409,10 @@ const PRACTICE_TEXT = {
 };
 for (const [lang, text] of Object.entries(PRACTICE_TEXT)) Object.assign(UI[lang], text);
 const MEMORY_TEXT = {
-  da: { readyTitle: 'Godt arbejde. Tag gerne en pause.', readyHint: 'Der er ingen ord, der skal øves lige nu. Gentagelser bliver klar, når det er tid. Du kan også vælge et andet kursus eller ændre sværhedsgrad eller opgavetype.', nextReview: 'Næste mulighed for gentagelse', checkAgain: 'Tjek igen', formula: 'Sådan vælges ordene', explainSimple: 'Du får fortrinsvis nye ord. Svære ord kommer igen efter en pause. Når repetition er slået til, kontrolleres lærte ord med længere mellemrum. En fejl påvirker kun det ord, du svarede på.', explain: 'Dine svar og tiden mellem dem bestemmer pausen for hvert ord. Sikre ord får længere pauser, og hyppige ord kontrolleres lidt oftere. Når alle grupper er tilgængelige, er fordelingen cirka 70 % nye ord, 20 % svære ord og 10 % lærte ord. Rækkefølgen varierer, og der er et loft over gentagelser af samme ord i én session.' },
-  en: { readyTitle: 'Good work. This is a good time for a break.', readyHint: 'No words need practice right now. Reviews become available when they are due. You can also choose another course, difficulty or task type.', nextReview: 'Next review opportunity', checkAgain: 'Check again', formula: 'How words are selected', explainSimple: 'Most tasks introduce new words. Difficult words return after a pause. When review is enabled, learned words are checked at longer intervals. A mistake affects only the word you answered.', explain: 'Your answers and the time between them determine each word’s interval. Confident answers earn longer gaps, and common words are checked a little more often. When all groups are available, the mix is about 70% new words, 20% difficult words and 10% learned words. The order varies, with a limit on repetitions of one word per session.' },
-  ru: { readyTitle: 'Хорошая работа. Можно сделать перерыв.', readyHint: 'Сейчас нет слов для повторения. Они появятся, когда придёт время. Можно выбрать другой курс, уровень сложности или тип заданий.', nextReview: 'Следующая возможность повторения', checkAgain: 'Проверить снова', formula: 'Как выбираются слова', explainSimple: 'Большинство заданий знакомит с новыми словами. Сложные слова возвращаются после паузы. Если повторение включено, выученные слова проверяются с большими интервалами. Ошибка влияет только на текущее слово.', explain: 'Ответы и время между ними определяют интервал для каждого слова. Уверенные ответы увеличивают паузу, а частые слова проверяются немного чаще. Когда доступны все группы, около 70% заданий посвящено новым словам, 20% сложным и 10% выученным. Порядок меняется, а число повторений одного слова за занятие ограничено.' },
-  uk: { readyTitle: 'Гарна робота. Можна зробити перерву.', readyHint: 'Зараз немає слів для повторення. Вони з’являться, коли настане час. Можна вибрати інший курс, рівень складності або тип завдань.', nextReview: 'Наступна можливість повторення', checkAgain: 'Перевірити знову', formula: 'Як вибираються слова', explainSimple: 'Більшість завдань знайомить із новими словами. Складні слова повертаються після паузи. Якщо повторення ввімкнено, вивчені слова перевіряються з більшими інтервалами. Помилка впливає лише на поточне слово.', explain: 'Відповіді й час між ними визначають інтервал для кожного слова. Упевнені відповіді збільшують паузу, а часті слова перевіряються трохи частіше. Коли доступні всі групи, близько 70% завдань присвячено новим словам, 20% складним і 10% вивченим. Порядок змінюється, а кількість повторень одного слова за заняття обмежена.' }
+  da: { readyTitle: 'Godt arbejde. Tag gerne en pause.', readyHint: 'Der er ingen ord, der skal øves lige nu. Gentagelser bliver klar, når det er tid. Du kan også vælge et andet kursus eller ændre sværhedsgrad eller opgavetype.', nextReview: 'Næste mulighed for gentagelse', checkAgain: 'Tjek igen', formula: 'Sådan vælges ordene', explainSimple: 'Du får fortrinsvis nye ord. Svære ord kommer igen efter en pause. Når repetition er slået til, kontrolleres lærte ord med længere mellemrum. En fejl påvirker kun det ord, du svarede på. Når alle ord på et niveau er vist, og mindst 80 % er lært, fortsætter du automatisk. De resterende svære ord følger med.', explain: 'Dine svar og tiden mellem dem bestemmer pausen for hvert ord. Sikre ord får længere pauser, og hyppige ord kontrolleres lidt oftere. Når alle grupper er tilgængelige, er fordelingen cirka 70 % nye ord, 20 % svære ord og 10 % lærte ord. Rækkefølgen varierer, og der er et loft over gentagelser af samme ord i én session.' },
+  en: { readyTitle: 'Good work. This is a good time for a break.', readyHint: 'No words need practice right now. Reviews become available when they are due. You can also choose another course, difficulty or task type.', nextReview: 'Next review opportunity', checkAgain: 'Check again', formula: 'How words are selected', explainSimple: 'Most tasks introduce new words. Difficult words return after a pause. When review is enabled, learned words are checked at longer intervals. A mistake affects only the word you answered. When every word at a level has been introduced and at least 80% are learned, you move on automatically. Remaining difficult words stay in your practice.', explain: 'Your answers and the time between them determine each word’s interval. Confident answers earn longer gaps, and common words are checked a little more often. When all groups are available, the mix is about 70% new words, 20% difficult words and 10% learned words. The order varies, with a limit on repetitions of one word per session.' },
+  ru: { readyTitle: 'Хорошая работа. Можно сделать перерыв.', readyHint: 'Сейчас нет слов для повторения. Они появятся, когда придёт время. Можно выбрать другой курс, уровень сложности или тип заданий.', nextReview: 'Следующая возможность повторения', checkAgain: 'Проверить снова', formula: 'Как выбираются слова', explainSimple: 'Большинство заданий знакомит с новыми словами. Сложные слова возвращаются после паузы. Если повторение включено, выученные слова проверяются с большими интервалами. Ошибка влияет только на текущее слово. Когда все слова уровня уже показаны и выучено не менее 80%, вы автоматически переходите дальше. Остальные сложные слова остаются в тренировке.', explain: 'Ответы и время между ними определяют интервал для каждого слова. Уверенные ответы увеличивают паузу, а частые слова проверяются немного чаще. Когда доступны все группы, около 70% заданий посвящено новым словам, 20% сложным и 10% выученным. Порядок меняется, а число повторений одного слова за занятие ограничено.' },
+  uk: { readyTitle: 'Гарна робота. Можна зробити перерву.', readyHint: 'Зараз немає слів для повторення. Вони з’являться, коли настане час. Можна вибрати інший курс, рівень складності або тип завдань.', nextReview: 'Наступна можливість повторення', checkAgain: 'Перевірити знову', formula: 'Як вибираються слова', explainSimple: 'Більшість завдань знайомить із новими словами. Складні слова повертаються після паузи. Якщо повторення ввімкнено, вивчені слова перевіряються з більшими інтервалами. Помилка впливає лише на поточне слово. Коли всі слова рівня вже показано й вивчено щонайменше 80%, ви автоматично переходите далі. Решта складних слів залишається в тренуванні.', explain: 'Відповіді й час між ними визначають інтервал для кожного слова. Упевнені відповіді збільшують паузу, а часті слова перевіряються трохи частіше. Коли доступні всі групи, близько 70% завдань присвячено новим словам, 20% складним і 10% вивченим. Порядок змінюється, а кількість повторень одного слова за заняття обмежена.' }
 };
 for (const [lang, text] of Object.entries(MEMORY_TEXT)) Object.assign(UI[lang], text);
 for (const [lang, locale] of Object.entries(EXTRA_LOCALES)) UI[lang] = locale.ui;
@@ -1037,8 +1037,9 @@ function combinedCards(settings, pool) {
   const modes = PracticeOptions.modes(settings);
   const progress=modes.map(dir=>progressFor({...settings,dir},pool));
   return Object.fromEntries(pool.map((word) => {
+    const seen=progress.every(prog=>Object.hasOwn(prog.cards,word.id));
     const known = progress.every(prog=>prog.cards[word.id]&&isLearned(prog.cards[word.id]));
-    return [word.id, { ok: known, lvl: known ? CONFIG.learnedLevel : 0 }];
+    return [word.id, { seen, ok: known, lvl: known ? CONFIG.learnedLevel : 0 }];
   }));
 }
 function renderPracticeComplete(c) {

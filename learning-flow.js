@@ -14,7 +14,10 @@ var LearningFlow = (() => {
   };
   return {
     nextDifficulty(difficulty, pool, cards, poolAt, learned) {
-      if (!pool.length || !pool.every(word => cards[word.id] && learned(cards[word.id]))) return null;
+      // Cover the whole level, then carry remaining weak words into the next one.
+      // Requiring perfect recall traps learners with a few persistent blind spots.
+      if (!pool.length || pool.some(word => !cards[word.id] || cards[word.id].seen === false)) return null;
+      if (pool.filter(word => learned(cards[word.id])).length < Math.ceil(pool.length * 0.8)) return null;
       const ids = new Set(pool.map(word => word.id));
       for (let diff = difficulty + 1; diff <= 3; diff++) {
         const expanded = poolAt(diff);
