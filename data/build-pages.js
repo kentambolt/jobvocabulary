@@ -115,7 +115,7 @@ function page(p, lang) {
   const total = p.categories.reduce((s, c) => s + c.rows.length, 0);
   const url = SITE + urlOf(p, lang);
   const related = (catalog.related[p.id] || []).map(id=>packs.find(pack=>pack.id===id)).filter(Boolean);
-  const cols = lang === 'da' ? LANGS : ['da', lang];
+  const cols = ['da',lang === 'da' ? 'en' : lang];
   const col = (l) => LANGS.indexOf(l) + 1;
   const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th>${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
 ${rows.map((r) => `<tr>${cols.map((l) => `<td lang="${l}"${l === 'da' ? ' class="da"' : ''}>${esc(r[col(l)])}</td>`).join('')}</tr>`).join('\n')}
