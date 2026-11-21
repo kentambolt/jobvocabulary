@@ -129,7 +129,8 @@ test('meaning annotations stay out of exercises, speech, spelling and false alte
   assert.equal(result.spec.chars.join(''),'tak');
   assert.doesNotMatch(result.html,/word-sense|odpowiedź/);
   assert.match(result.html,/>tak<\/span>/);
-  assert.equal(a.run("lexicalForm({phrase:true,words:{pl:'Znalazłem(-am) telefon.'}},'pl')"),'Znalazłem(-am) telefon.');
+  assert.equal(a.run("lexicalForm({phrase:true,words:{pl:'Znalazłem(-am) telefon.'}},'pl')"),'Znalazłem telefon.');
+  assert.equal(a.run("lexicalForm({phrase:true,words:{pl:'Przeczytaj dokument (uważnie).'}},'pl')"),'Przeczytaj dokument (uważnie).');
   a.run("state.settings.target='ro';");
   assert.equal(a.run("writeSpec(ctx(),{phrase:false,words:{ro:'a face (a crea)'}}).chars.join('')"),'face');
   assert.equal(a.run("splitPrefix(ctx(),{phrase:false,words:{ro:'a face (a crea)'}}).prefix"),'a');

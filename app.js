@@ -96,6 +96,10 @@ const UI = {
     qRecN: 'Hvilket billede passer til ordet?',
     qProdN: 'Hvilket ord passer til billedet?',
     qBuild: 'Byg det på {T}',
+    qBuildM: "Byg i hankøn ({T})",
+    qBuildF: "Byg i hunkøn ({T})",
+    qWriteM: "Skriv i hankøn ({T})",
+    qWriteF: "Skriv i hunkøn ({T})",
     checkBtn: 'Tjek',
     rank: 'Nr. {n} på listen',
     seen: '{n} mødt',
@@ -188,6 +192,10 @@ const UI = {
     qRecN: 'Which picture matches the word?',
     qProdN: 'Which word matches the picture?',
     qBuild: 'Build it in {T}',
+    qBuildM: "Build the masculine form ({T})",
+    qBuildF: "Build the feminine form ({T})",
+    qWriteM: "Spell the masculine form ({T})",
+    qWriteF: "Spell the feminine form ({T})",
     checkBtn: 'Check',
     rank: 'No. {n} on the list',
     seen: '{n} seen',
@@ -280,6 +288,10 @@ const UI = {
     qRecN: 'Какая картинка подходит к слову?',
     qProdN: 'Какое слово подходит к картинке?',
     qBuild: 'Соберите на языке: {T}',
+    qBuildM: "Составьте (м. р.): {T}",
+    qBuildF: "Составьте (ж. р.): {T}",
+    qWriteM: "Напишите (м. р.): {T}",
+    qWriteF: "Напишите (ж. р.): {T}",
     checkBtn: 'Проверить',
     rank: '№ {n} в списке',
     seen: 'встречено: {n}',
@@ -372,6 +384,10 @@ const UI = {
     qRecN: 'Яка картинка підходить до слова?',
     qProdN: 'Яке слово підходить до картинки?',
     qBuild: 'Складіть мовою: {T}',
+    qBuildM: "Складіть (ч. р.): {T}",
+    qBuildF: "Складіть (ж. р.): {T}",
+    qWriteM: "Напишіть (ч. р.): {T}",
+    qWriteF: "Напишіть (ж. р.): {T}",
     checkBtn: 'Перевірити',
     rank: '№ {n} у списку',
     seen: 'зустрінуто: {n}',
@@ -824,8 +840,8 @@ function makeOptions(c, x, qdir) { return shuffle([x, ...pickDistractors(c, x, q
 
 // ----- Byg sætninger -----
 // Sætninger (og flerordsudtryk) bygges af ordbrikker. Enkeltord skrives på bogstav-tastaturet.
-function splitPrefix(c, x) {
-  const full = lexicalForm(x,c.s.target);
+function splitPrefix(c, x, feminine) {
+  const full = lexicalForm(x,c.s.target,feminine);
   if (!x.phrase && c.s.target === 'da') {
     const m = full.match(/^(en|et|at)\s+(.+)$/);
     if (m) return { prefix: m[1], rest: m[2] };
@@ -836,8 +852,8 @@ function splitPrefix(c, x) {
   }
   return { prefix: '', rest: full };
 }
-function buildSpec(c, x) {
-  const { prefix, rest } = splitPrefix(c, x);
+function buildSpec(c, x, feminine) {
+  const { prefix, rest } = splitPrefix(c, x, feminine);
   const words = rest.split(/\s+/).filter(Boolean);
   if (!x.phrase && words.length < 2) return null;
   const tokens = words.map((w) => w.replace(/[.,!?;:]+$/, '')).filter(Boolean);
@@ -848,7 +864,8 @@ function buildSpec(c, x) {
 }
 function makeTiles(c, x, spec) {
   const extra = [];
-  const inAnswer = new Set(spec.answer.map((a) => a.toLowerCase()));
+  const otherForm=buildSpec(c,x,!current?.feminine);
+  const inAnswer = new Set([...spec.answer,...(otherForm?.answer||[])].map((a) => a.toLowerCase()));
   const others = shuffle(c.pool.filter((o) => o.id !== x.id && o.phrase === x.phrase).slice(0, 80));
   for (const o of others) {
     for (const w of shuffle(lexicalForm(o,c.s.target).split(/\s+/).slice(1))) {
@@ -889,7 +906,6 @@ function alphabetOf(lang) {
   return alphabets[lang];
 }
 function writeSpec(c, x) {
-  if (x.phrase) return null;
   const { prefix, rest } = splitPrefix(c, x);
   if (/\s/.test(rest.trim())) return null;
   const chars = Array.from(rest.trim());
@@ -1352,7 +1368,7 @@ function renderPlay() {
     else { $('app').innerHTML = `<p class="task-q" role="status">${esc(t('empty'))}</p><button class="secondary" id="emptySetup">${esc(t('settings'))}</button>`; $('emptySetup').onclick = () => go('setup'); }
     return;
   }
-    current = { ...next, answered: null };
+    current = { ...next, answered: null, feminine: chooseExerciseForm(c,next.concept) };
     if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {
       current.spec = buildSpec(c, next.concept);
@@ -1366,10 +1382,14 @@ function renderPlay() {
 
 }
 
-function wordParts(x,language) {
-  return WordEntry.parts(x,language);
+function wordParts(x,language,feminine=!!current?.feminine) {
+  return WordEntry.exerciseParts(x,language,feminine);
 }
-function lexicalForm(x,language) { return wordParts(x,language).text; }
+function chooseExerciseForm(c,x) {
+  const varied=[c.s.target,c.s.base].some(lang=>WordEntry.exerciseParts(x,lang,false).text!==WordEntry.exerciseParts(x,lang,true).text);
+  return varied && Math.random()<0.5;
+}
+function lexicalForm(x,language,feminine) { return wordParts(x,language,feminine).text; }
 function wordHTML(x,language) {
   const parts=wordParts(x,language);
   return `<span class="w${x.phrase || parts.text.length>22 ? ' long' : ''}" lang="${language}">${esc(parts.text)}</span>`;
@@ -1383,6 +1403,9 @@ const targetHTML = (c, x) => wordHTML(x,c.s.target);
 
 function questionText(c, x, kind) {
   const T = exerciseLanguage(c.s.target);
+  if((kind==='build'||kind==='write')
+    && WordEntry.exerciseParts(x,c.s.target,false).text!==WordEntry.exerciseParts(x,c.s.target,true).text)
+    return t((kind==='build'?'qBuild':'qWrite')+(current?.feminine?'F':'M'),{T});
   if (kind === 'build') return t('qBuild', { T });
   if (kind === 'write') return c.pics ? t('qWriteN') : t('qWrite', { T });
   const rec = current.qdir === 'rec';
@@ -1418,7 +1441,7 @@ function practiceReadingClass(c) {
   const candidates = isPack(c.s) ? source.filter(x=>types.has(x.phrase)) : scope;
   let longest = 0;
   for (const item of candidates) for (const lang of [c.s.target,c.s.base]) {
-    if (item.words[lang]) longest = Math.max(longest,lexicalForm(item,lang).length);
+    if (item.words[lang]) longest = Math.max(longest,...[false,true].map(form=>WordEntry.exerciseParts(item,lang,form).text.length));
   }
   // A saved phrase can draw wrong choices from the shared dictionary.
   if (isList(c.s) && types.has(true)) longest = Math.max(longest,131);
@@ -1718,7 +1741,7 @@ function dontKnow() {
     MemoryScheduler.record(MemoryScheduler.session(state, c.s, Date.now()), x.id, Date.now());
     c.prog.task += 1;
     c.prog.lastId = x.id;
-    current = { kind: 'intro', concept: x, answered: null, exposureRecorded: true };
+    current = { kind: 'intro', concept: x, answered: null, exposureRecorded: true, feminine: current.feminine };
     saveState();
     renderPlayView();
     speakTarget(x);
@@ -1816,7 +1839,8 @@ function renderPlace() {
     const x = P.queue.shift();
     // Niveautesten er altid valgmuligheder: "forstå"-retningen, undtagen når man øver at sige/skrive selv.
     const qdir = c.s.dir === 'prod' || c.s.dir === 'write' ? 'prod' : 'rec';
-    current = { kind: 'place', concept: x, qdir, options: makeOptions(c, x, qdir), answered: null };
+    current = { kind: 'place', concept: x, qdir, options: [], answered: null, feminine: chooseExerciseForm(c,x) };
+    current.options=makeOptions(c,x,qdir);
     P.total++;
   }
   const x = current.concept;
