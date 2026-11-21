@@ -296,5 +296,14 @@ module.exports={
       "Spørg en kollega om opskrift, hævetid eller konsistens.",
       "Bekræft antal, navn og afhentning på en bestilling."
     ]
+  ],
+  "salon": [
+    "Dansk til frisør og salon",
+    "I salonen begynder arbejdet med at forstå kundens ønsker. Øv spørgsmål om længde, frisure og farve, og lær navnene på de redskaber og produkter, kollegerne bruger. Fortsæt med korte sætninger til hårvask, komfort, tidsbestilling og betaling. Du kan vælge et enkelt emne og træne den del af kundesamtalen, du har brug for.",
+    [
+      "Afklar hvor meget hår kunden ønsker klippet af.",
+      "Forstå navnene på kam, saks, føntørrer og hårprodukter.",
+      "Aftal en tid, forklar hvad der indgår i prisen og afslut besøget."
+    ]
   ]
 };

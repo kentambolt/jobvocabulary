@@ -296,5 +296,14 @@ module.exports={
       "Ask a colleague about a recipe, proofing time or consistency.",
       "Confirm the quantity, name and collection details for an order."
     ]
+  ],
+  "salon": [
+    "Danish for hairdressers and salon work",
+    "Salon work starts with understanding what the customer wants. Practise questions about length, style and colour, and learn the names of tools and products used by colleagues. Continue with short phrases for hair washing, comfort, booking and payment. Choose one topic to rehearse the part of a customer conversation you need.",
+    [
+      "Clarify how much hair the customer wants cut off.",
+      "Recognise combs, scissors, hairdryers and hair products by name.",
+      "Arrange an appointment, clarify what the price includes and finish the visit."
+    ]
   ]
 };

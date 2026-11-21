@@ -269,6 +269,16 @@
     "ru": "/ru/retail/",
     "uk": "/uk/retail/"
   },
+  "salon": {
+    "bg": "/bg/salon/",
+    "da": "/da/frisoer-og-salon/",
+    "en": "/en/hairdressing-and-salon-work/",
+    "lt": "/lt/kirpykla-ir-salonas/",
+    "pl": "/pl/fryzjerstwo-i-salon/",
+    "ro": "/ro/coafura-si-salon/",
+    "ru": "/ru/salon/",
+    "uk": "/uk/salon/"
+  },
   "school": {
     "bg": "/bg/school/",
     "da": "/da/sprogskole-og-uddannelse/",

@@ -1,10 +1,10 @@
 {
   "/": {
-    "digest": "46a72e2b59d9892f5bc38c1b797a05e60a5f1a3aaed929bd1e24499ee48985a3",
+    "digest": "cc1d6a05977688b56bfae5b6f30bdf17a47f89350d292b561b16e0809fbee030",
     "lastmod": "2026-11-21"
   },
   "/bg/": {
-    "digest": "9b00999a870a3c3f6c8facdee04a36e59cceeac72e8beea4b144046403e02f62",
+    "digest": "cc4175db8d453300a89f509d2eef67d7d90190d7a7e702885a43668c92930aa1",
     "lastmod": "2026-11-21"
   },
   "/bg/agriculture/": {
@@ -151,6 +151,10 @@
     "digest": "9131798cefcf0bfe81990f39e992a6b851705ce0ee346c6e71d34e0eb25bdb66",
     "lastmod": "2026-11-21"
   },
+  "/bg/salon/": {
+    "digest": "c59bb5e0a9874ad31c56314e9589fb78d6ac7539eb09b36e54f4c96f8d011b4b",
+    "lastmod": "2026-11-21"
+  },
   "/bg/school/": {
     "digest": "643efd8000444852b674349fba7b95b83347463d26fe3375e361fbba671c0bd5",
     "lastmod": "2026-11-21"
@@ -176,7 +180,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/": {
-    "digest": "fc40eaa9a4f197bc3c63b99f773ff152a7743a624690755efd7f0a0d89e36fe5",
+    "digest": "c7d7a4431b587efbeb41fb50ea0659890924ad380ef5fea17720e1a26da88de6",
     "lastmod": "2026-11-21"
   },
   "/da/aeldrepleje/": {
@@ -229,6 +233,10 @@
   },
   "/da/foedevareindustri-og-slagteri/": {
     "digest": "52343640a2de42cb68cea043920744f370335372d2b8ed233e6636e3bbae0820",
+    "lastmod": "2026-11-21"
+  },
+  "/da/frisoer-og-salon/": {
+    "digest": "b90abdb0c47de998e4bce393688fb0547e0cc23f13de0e51bf40b6f22db8f62d",
     "lastmod": "2026-11-21"
   },
   "/da/graviditet-foedsel-og-spaedboern/": {
@@ -348,7 +356,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/": {
-    "digest": "411e0914bc6b10cac89bdd3f4b2cce7e514b52206c0b9f3b658a0fe02d50d0a4",
+    "digest": "f345a24d28df62e24848cecbab8a6524ec47927eefb02da7c575433a29aee810",
     "lastmod": "2026-11-21"
   },
   "/en/airport-and-ground-handling/": {
@@ -451,6 +459,10 @@
     "digest": "b187a261d59b48c01d71c557b424a2a2c1194659ff0cbcf0a0ebe7eb86c4211b",
     "lastmod": "2026-11-21"
   },
+  "/en/hairdressing-and-salon-work/": {
+    "digest": "da786ed5d398595de664ea2033d832582c7f7f927dc004609d72963612f572c3",
+    "lastmod": "2026-11-21"
+  },
   "/en/health-and-the-doctor/": {
     "digest": "2ea1e461a178b546e577d9ba77d6b53aa947e976f24025ab2deb59fc65313f27",
     "lastmod": "2026-11-21"
@@ -520,7 +532,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/": {
-    "digest": "28710afeed809bfed274008874a3c34fa1ba84125fafc926423930b707c4a27c",
+    "digest": "08de1c95ce4a8eb36f013f53f874bcaad4b391c4e2a25aee4c3fa9cc7367f9c7",
     "lastmod": "2026-11-21"
   },
   "/lt/apsipirkimas-ir-vartotojo-teises/": {
@@ -611,6 +623,10 @@
     "digest": "2bb6b99191f28b738a40b58d53972fa37b08660c246b746493f467f48a190a53",
     "lastmod": "2026-11-21"
   },
+  "/lt/kirpykla-ir-salonas/": {
+    "digest": "dd64412c98e3d89aea5d421a8b546ab76a5a7d566f13b56dc7ac618bce18ccc6",
+    "lastmod": "2026-11-21"
+  },
   "/lt/maisto-pramone-ir-skerdyklos/": {
     "digest": "7ce6be8db6e5891592588780bbc67c5e7ca87bae0ffc0e3aa15c492a6efb340d",
     "lastmod": "2026-11-21"
@@ -692,7 +708,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/": {
-    "digest": "082c5c55317c09d2ac753db2ef838e7d0de8242c0a1e48132fb54208bdfa09eb",
+    "digest": "9c75f1db9cf2dcd833963941c46660b138bd51eee4742f25999430c404a51cc0",
     "lastmod": "2026-11-21"
   },
   "/pl/biuro-i-obsluga-klienta/": {
@@ -713,6 +729,10 @@
   },
   "/pl/dzieci-szkola-i-przedszkole/": {
     "digest": "53739308adcab8b0a1c079f126b6912c7e576b78bc92bf151bc4719bff7727d0",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/fryzjerstwo-i-salon/": {
+    "digest": "00d3df2ded0c224f4c5f865f7eb79bd510ccb8d1205d00528e2686b3aededef6",
     "lastmod": "2026-11-21"
   },
   "/pl/guides/": {
@@ -864,7 +884,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/": {
-    "digest": "456a479b602db747b523948301a5236363876c12d1fc5425ed87b8995c0f7659",
+    "digest": "e4afa712519c2565d376d4991bf165cef3ec131949bf29c2681c6cce7668dec2",
     "lastmod": "2026-11-21"
   },
   "/ro/aeroport-si-handling-la-sol/": {
@@ -905,6 +925,10 @@
   },
   "/ro/cautarea-unui-loc-de-munca/": {
     "digest": "b1916f0c1c05c81236e0947c5c8a8cf1ebb7e40c45a3756706be8831d20f81f8",
+    "lastmod": "2026-11-21"
+  },
+  "/ro/coafura-si-salon/": {
+    "digest": "86389e9884c897007b60f51a40cc04642c4a60aa9bbce7cfba33aae52f2f74d0",
     "lastmod": "2026-11-21"
   },
   "/ro/constructii-si-meserii/": {
@@ -1036,7 +1060,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/": {
-    "digest": "690d6cb7c58ee207b31d3d703b7bce245886155b81a177f223e5eb616c318af0",
+    "digest": "f515e7646a82f0667a30dd4b1980d431d298c02659ab681a1c02b0352a65e890",
     "lastmod": "2026-11-21"
   },
   "/ru/agriculture/": {
@@ -1183,6 +1207,10 @@
     "digest": "26a2825cb618cce7a38c43e31ca2ef30addc48a3886e7999893abae39cedb8d8",
     "lastmod": "2026-11-21"
   },
+  "/ru/salon/": {
+    "digest": "82cc717f0104056384da0f372355b696391c6057dfac9e379f388bfd82e8fc00",
+    "lastmod": "2026-11-21"
+  },
   "/ru/school/": {
     "digest": "b1a48b48c6c9a119db1a455bb4a879e12c9e01a0758e11d0abfae53b460f30c8",
     "lastmod": "2026-11-21"
@@ -1208,7 +1236,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/": {
-    "digest": "94f8c5c5d8c0b2d2e29d53017f896f96fef91484dffe4ac6566eb9d7677f57df",
+    "digest": "ddd95ef1a1342b407e734bca11b67f89334f0e8df14dd8d2f7671495c3ec5357",
     "lastmod": "2026-11-21"
   },
   "/uk/agriculture/": {
@@ -1353,6 +1381,10 @@
   },
   "/uk/retail/": {
     "digest": "db852e8c6d1f79834645fe88f24ebdc7f771020711a36a1bc67742a2c7e732d7",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/salon/": {
+    "digest": "356ff2cf628aae1085b0c66cb578c89342026300f36aca11aec7ca68a4fcc900",
     "lastmod": "2026-11-21"
   },
   "/uk/school/": {
