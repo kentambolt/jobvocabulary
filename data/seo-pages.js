@@ -99,7 +99,7 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
       <p class="guide-byline">JobVocabulary · <time datetime="${published}">${published.split('-').reverse().join('.')}</time></p>
       <p><a class="primary cta" href="${start}">${esc(l.start)}</a></p>
       ${g.sections.map(([heading,...paragraphs]) => `<section><h2>${esc(heading)}</h2>${paragraphs.map(p => `<p>${esc(p)}</p>`).join('')}</section>`).join('\n      ')}
-      ${examples.length ? `<section><h2>${esc(l.examples)}</h2><div class="table-wrap"><table><thead><tr><th>${esc(l.danish)}</th><th>${esc(l.translation)}</th></tr></thead><tbody>${examples.map(([da,translated]) => `<tr><td lang="da">${esc(da)}</td><td lang="${translationLang}">${esc(translated)}</td></tr>`).join('')}</tbody></table></div><p class="course-note">${esc(l.note)}</p></section>` : ''}
+      ${examples.length ? `<section><h2>${esc(l.examples)}</h2><div class="table-wrap"><table><thead><tr><th scope="col">${esc(l.danish)}</th><th scope="col">${esc(l.translation)}</th></tr></thead><tbody>${examples.map(([da,translated]) => `<tr><td lang="da">${esc(da)}</td><td lang="${translationLang}">${esc(translated)}</td></tr>`).join('')}</tbody></table></div><p class="course-note">${esc(l.note)}</p></section>` : ''}
       <section><h2>${esc(l.courses)}</h2><ul class="links">${guide.courses.map(id => {
         const p = packs.find(p => p.id === id);
         if (!p) throw Error('Unknown guide course: '+id);

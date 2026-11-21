@@ -125,7 +125,7 @@ function page(p, lang) {
   const related = (catalog.related[p.id] || []).map(id=>packs.find(pack=>pack.id===id)).filter(Boolean);
   const cols = ['da',lang === 'da' ? 'en' : lang];
   const col = (l) => LANGS.indexOf(l) + 1;
-  const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th>${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
+  const table = (rows) => `<div class="table-wrap"><table><thead><tr>${cols.map((l) => `<th scope="col" lang="${l}">${esc(LANG_NAME[l])}</th>`).join('')}</tr></thead><tbody>
 ${rows.map((r) => `<tr>${cols.map((l) => `<td lang="${l}"${l === 'da' ? ' class="da"' : ''}>${esc(r[col(l)])}</td>`).join('')}</tr>`).join('\n')}
 </tbody></table></div>`;
   const desc = `${p.desc[lang].replace(/[.!?]$/, '')}. ${total} ${catalog.labels[lang].units}.`;
@@ -171,7 +171,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     <ol class="how">${t.how.map((h) => `<li>${esc(h)}</li>`).join('')}</ol>
 
     <h2>${esc(t.topics)}</h2>
-    <ul class="topics">${p.categories.map((c) => `<li>${esc(c.name[lang])} <small>${c.rows.length}</small></li>`).join('')}</ul>
+    <ul class="topics">${p.categories.map((c) => `<li><a href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}&amp;topics=${encodeURIComponent(c.key)}">${esc(c.name[lang])} <small>${c.rows.length}</small></a></li>`).join('')}</ul>
 
     <h2>${esc(t.words)}</h2>
     ${table(sample(p, 'word', 24))}
