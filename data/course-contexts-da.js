@@ -305,5 +305,14 @@ module.exports={
       "Forstå navnene på kam, saks, føntørrer og hårprodukter.",
       "Aftal en tid, forklar hvad der indgår i prisen og afslut besøget."
     ]
+  ],
+  "gardening": [
+    "Dansk til gartnerarbejde og grøn pleje",
+    "Når du arbejder i haver og grønne områder, skal du kunne forbinde arbejdsplanen med de planter, redskaber og materialer, der står foran dig. Øv korte spørgsmål om område, placering og den ønskede højde, før du går videre. Træn også at fortælle en kollega, hvad der mangler, og at afklare oprydningen med kunden.",
+    [
+      "Genkend planter, haveredskaber og materialer ved navn.",
+      "Spørg hvor arbejdet skal begynde, og hvad kunden ønsker.",
+      "Giv besked om udstyr, haveaffald og færdige områder."
+    ]
   ]
 };

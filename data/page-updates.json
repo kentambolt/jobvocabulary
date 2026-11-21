@@ -1,14 +1,14 @@
 {
   "/": {
-    "digest": "0a633d484015db5b3f33cd312a767abd3aa200385e59bab99c94c20b7f46b727",
+    "digest": "2ecee44c489b6ca8c886cd1de7efdfe841aa2fb2b7ce1be318f3d6ef49948686",
     "lastmod": "2026-11-21"
   },
   "/bg/": {
-    "digest": "cc4175db8d453300a89f509d2eef67d7d90190d7a7e702885a43668c92930aa1",
+    "digest": "2a165d827f422abed5d49808edcaf623a7c4705522719b15d39cef70dae43e42",
     "lastmod": "2026-11-21"
   },
   "/bg/agriculture/": {
-    "digest": "cb6e056ae08759464fbc34a377b856519659a6558c30427aa4ed5f7c5d938c8a",
+    "digest": "83fceec8811130f62c9bacd811d717202819dc6d2c9582b05cb8cbb00bfc6cc5",
     "lastmod": "2026-11-21"
   },
   "/bg/airport/": {
@@ -65,6 +65,10 @@
   },
   "/bg/foodindustry/": {
     "digest": "2f34e317e2a76ad29f9d8f5b98e85fdff26f9a044754c9b57b20f0af6ecf5e1b",
+    "lastmod": "2026-11-21"
+  },
+  "/bg/gardening/": {
+    "digest": "1b8c778fe3a56f8a7c0d6e0b1f7a80847e00ca3ba2e41f9a047817ee3e52026e",
     "lastmod": "2026-11-21"
   },
   "/bg/getaround/": {
@@ -144,7 +148,7 @@
     "lastmod": "2026-11-21"
   },
   "/bg/propertyservice/": {
-    "digest": "76db3bd84a0e479f2b23d6258e89208afdfa2e81df05b98725d8050aa0b1d5de",
+    "digest": "4a00ed92179cbe65473f760ddb155f7367d27c168420ec204f1f99b0efa21073",
     "lastmod": "2026-11-21"
   },
   "/bg/restaurant/": {
@@ -184,7 +188,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/": {
-    "digest": "c7d7a4431b587efbeb41fb50ea0659890924ad380ef5fea17720e1a26da88de6",
+    "digest": "2e95e316071a579ce0bfc23169ba5d23ee34af98fccf6d406e626889e18d0ec4",
     "lastmod": "2026-11-21"
   },
   "/da/aeldrepleje/": {
@@ -232,7 +236,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/ejendomsservice-og-vicevaert/": {
-    "digest": "3fde207643c1d35776fe95c16f24e4d5c60898e1a6989431c41e9b8465799cf4",
+    "digest": "192b7049cf1c7b1b6a8e62f837fce4dfc7a0158e6ff347496a730bff587820c0",
     "lastmod": "2026-11-21"
   },
   "/da/foedevareindustri-og-slagteri/": {
@@ -241,6 +245,10 @@
   },
   "/da/frisoer-og-salon/": {
     "digest": "140a90edf812bbf7f1d3b569ebf06f02a1c884391d6ed685ae0771d30eec072e",
+    "lastmod": "2026-11-21"
+  },
+  "/da/gartner-og-groen-pleje/": {
+    "digest": "a51cfcf3c4595dc140a95e1bcbdf748193e67e7fac62de255fc87b9f3b7741d6",
     "lastmod": "2026-11-21"
   },
   "/da/graviditet-foedsel-og-spaedboern/": {
@@ -324,7 +332,7 @@
     "lastmod": "2026-11-21"
   },
   "/da/landbrug-og-foedevarer/": {
-    "digest": "1e33e2cea401cdbaed15b85deb4b70958495db7536de3fc311ab197fb2e90d7c",
+    "digest": "9bd7928536f0d3e40eb2b8382be622752fa42ae6f6ba2c9832244fa464631244",
     "lastmod": "2026-11-21"
   },
   "/da/lastbil-og-international-koersel/": {
@@ -364,7 +372,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/": {
-    "digest": "f345a24d28df62e24848cecbab8a6524ec47927eefb02da7c575433a29aee810",
+    "digest": "388910de9113d48b382b7350d162825e63bd1415f05a9254c1ac4a545106ee98",
     "lastmod": "2026-11-21"
   },
   "/en/airport-and-ground-handling/": {
@@ -420,11 +428,15 @@
     "lastmod": "2026-11-21"
   },
   "/en/farming-and-food-production/": {
-    "digest": "47432f9ba7e467937cadba63a4539078c4a55151133252227a0e19e2672927b8",
+    "digest": "c187addf5b25d6be779a328047b311ea880bbf1965ed2847c7c8de9c65c3e427",
     "lastmod": "2026-11-21"
   },
   "/en/food-industry-and-slaughterhouses/": {
     "digest": "763b0f73b610ac59b7e917069b2ed612d29b9dd6a48c279168621cf5c6dc3327",
+    "lastmod": "2026-11-21"
+  },
+  "/en/gardening-and-grounds-maintenance/": {
+    "digest": "5029f9f7d8990784693dd634963757df5ec9e5bf47bf79a5a5788094e06657c6",
     "lastmod": "2026-11-21"
   },
   "/en/getting-around/": {
@@ -520,7 +532,7 @@
     "lastmod": "2026-11-21"
   },
   "/en/property-maintenance-and-caretaking/": {
-    "digest": "f145cfc023622e82a8485cd96ab6f3008b46a3c05ae3525d2ede4acbd4f5d89a",
+    "digest": "5d2f47590ea96105f2bd2502f0d7b77b43fc9861bd3d46301d9e50533cf89b98",
     "lastmod": "2026-11-21"
   },
   "/en/restaurant-and-kitchen/": {
@@ -544,7 +556,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/": {
-    "digest": "08de1c95ce4a8eb36f013f53f874bcaad4b391c4e2a25aee4c3fa9cc7367f9c7",
+    "digest": "bf26ece8080319022557267ddf9a04ab344fa94e1332d996443d44756176b61e",
     "lastmod": "2026-11-21"
   },
   "/lt/apsipirkimas-ir-vartotojo-teises/": {
@@ -668,7 +680,7 @@
     "lastmod": "2026-11-21"
   },
   "/lt/pastatu-prieziura/": {
-    "digest": "117ea527304f8d432a9eeee2b3814ebbc4408b7ccc788bd7aca9209502170f2f",
+    "digest": "ae63673c5815cd5a3a8b35cbe5ffa736c3395ebad17695962c731420abd1fb5f",
     "lastmod": "2026-11-21"
   },
   "/lt/pinigai-bankas-ir-sukciavimas/": {
@@ -685,6 +697,10 @@
   },
   "/lt/skubus-atvejai-ir-policija/": {
     "digest": "8923ba6819b60c6a7a7691d9fa0c3d3b7955644e9b37f567e0ea0cecb498d0e8",
+    "lastmod": "2026-11-21"
+  },
+  "/lt/sodininkyste-ir-zeldynu-prieziura/": {
+    "digest": "7a1e6954d85961abfebc932b6ff842106c7f0546153aa42ce869f30ae731c741",
     "lastmod": "2026-11-21"
   },
   "/lt/statyba-ir-amatai/": {
@@ -720,11 +736,11 @@
     "lastmod": "2026-11-21"
   },
   "/lt/zemes-ukis-ir-maisto-gamyba/": {
-    "digest": "59eb487225c615cb29784d9e92a84562cd5534eabb437e2ca03b0c7ed1cee1a1",
+    "digest": "00bee3384d84f25666a6f520c678a3ae2cf32cc515ecb169b62f44e70803e107",
     "lastmod": "2026-11-21"
   },
   "/pl/": {
-    "digest": "9c75f1db9cf2dcd833963941c46660b138bd51eee4742f25999430c404a51cc0",
+    "digest": "171e4b133c958f6a5ce9c6968560d65fb60b1b605792b0b3659022f7eae5ee97",
     "lastmod": "2026-11-21"
   },
   "/pl/biuro-i-obsluga-klienta/": {
@@ -820,7 +836,11 @@
     "lastmod": "2026-11-21"
   },
   "/pl/obsluga-nieruchomosci-i-konserwator/": {
-    "digest": "9fe1bba9ab3a6cc05e905aca0c03baa89572086e5a637badcbe8a8f592d30f67",
+    "digest": "531b0946b631bf1fa773351d78775344c60035a082e07c10d8e1e48b087d8cef",
+    "lastmod": "2026-11-21"
+  },
+  "/pl/ogrodnictwo-i-pielegnacja-zieleni/": {
+    "digest": "ad2b092357f794704ef006ce7c5d8c8c3f20f8f1334937828d22edfb0a49495c",
     "lastmod": "2026-11-21"
   },
   "/pl/opieka-nad-osobami-starszymi/": {
@@ -860,7 +880,7 @@
     "lastmod": "2026-11-21"
   },
   "/pl/rolnictwo-i-produkcja-zywnosci/": {
-    "digest": "dd82394c510fac3dd960500d023c797774f7c982f407ad6d74bcf566f67f04ff",
+    "digest": "01c6b03c6e0288bbdd0bb599381a8f3af008757f41f4eb858a4bec569aec433c",
     "lastmod": "2026-11-21"
   },
   "/pl/sklep-i-supermarket/": {
@@ -904,7 +924,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/": {
-    "digest": "e4afa712519c2565d376d4991bf165cef3ec131949bf29c2681c6cce7668dec2",
+    "digest": "305a2db5df895c8bfccb2964962f835b0ec1577d9b0cc7ce352e7ca48d8570fd",
     "lastmod": "2026-11-21"
   },
   "/ro/aeroport-si-handling-la-sol/": {
@@ -912,7 +932,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/agricultura-si-productie-alimentara/": {
-    "digest": "325241967cd15ecc354d2c0b988a78d0d4f0b36bf8365eac757789784477b99e",
+    "digest": "a6ef69410d8b1650912e4cde4d764c35f20b91a634710d4788dd4428d046d109",
     "lastmod": "2026-11-21"
   },
   "/ro/asistent-in-cresa-si-gradinita/": {
@@ -975,6 +995,10 @@
     "digest": "6aec2e41c6afa4d0576ce1eb5268c079496759fdb731eae65d411fd4d7d331cd",
     "lastmod": "2026-11-21"
   },
+  "/ro/gradinarit-si-intretinerea-spatiilor-verzi/": {
+    "digest": "958ab3a25c40863feca3f2d412559fedd297a63af67f2c031f149eede814966e",
+    "lastmod": "2026-11-21"
+  },
   "/ro/guides/": {
     "digest": "a8c8ebe5049aac80a6d353b763b6109604488d6dd7695458f744fa91211b2342",
     "lastmod": "2026-11-21"
@@ -1028,7 +1052,7 @@
     "lastmod": "2026-11-21"
   },
   "/ro/intretinerea-cladirilor-si-ingrijitor/": {
-    "digest": "cc1fef2d5b65d2f1aac126d5cf615aae19ebd7bded132eb99e0a50e912b06d52",
+    "digest": "940fdf1e09ebbdf720533ce9a43a3f8788a523a6742da6153446be5f697dd2b2",
     "lastmod": "2026-11-21"
   },
   "/ro/locuinta-si-autoritati/": {
@@ -1084,11 +1108,11 @@
     "lastmod": "2026-11-21"
   },
   "/ru/": {
-    "digest": "f515e7646a82f0667a30dd4b1980d431d298c02659ab681a1c02b0352a65e890",
+    "digest": "9957655c3aea5b9eff94fc4a72bb886cec9fc5ad85e4a9120523cc2ecf9de60c",
     "lastmod": "2026-11-21"
   },
   "/ru/agriculture/": {
-    "digest": "0e5b1626bee10df8a3ea43470c55ccda79f6e756eeab04900ae35c6f96070055",
+    "digest": "9174b9e5d7769348d754937ca744c197514d63074fc62a28a268acec0aca3109",
     "lastmod": "2026-11-21"
   },
   "/ru/airport/": {
@@ -1145,6 +1169,10 @@
   },
   "/ru/foodindustry/": {
     "digest": "b9a1085a7ed5be6c1c3a4b9cc24794943fd5315de1ddfd5a95cf985e219e9980",
+    "lastmod": "2026-11-21"
+  },
+  "/ru/gardening/": {
+    "digest": "97e5d75fd512f9cc2a5430e78e393f137b4f2ae687de4b966209b79e81cf04e9",
     "lastmod": "2026-11-21"
   },
   "/ru/getaround/": {
@@ -1224,7 +1252,7 @@
     "lastmod": "2026-11-21"
   },
   "/ru/propertyservice/": {
-    "digest": "f45d9a9ec9b07121b57fbb0d17d4a863024047d14d89504bcb25a88519b0e71d",
+    "digest": "d42a6bb0a16eb8d6c7ab615334086d33de2c28bef0c13bb820ede230f33f9fcd",
     "lastmod": "2026-11-21"
   },
   "/ru/restaurant/": {
@@ -1264,11 +1292,11 @@
     "lastmod": "2026-11-21"
   },
   "/uk/": {
-    "digest": "ddd95ef1a1342b407e734bca11b67f89334f0e8df14dd8d2f7671495c3ec5357",
+    "digest": "02df4e980b11fdd8cd528c55246e5e2e1c8fd97641c137e9d172bdee57fe9b9b",
     "lastmod": "2026-11-21"
   },
   "/uk/agriculture/": {
-    "digest": "f6719b106b4626127e9926b3edd57953740b35099a308dd9734a53c524f4752e",
+    "digest": "fbd3c6240b34bdcb88ffa328c44822f4c508b7264db60d6be7d306e61e0c2814",
     "lastmod": "2026-11-21"
   },
   "/uk/airport/": {
@@ -1325,6 +1353,10 @@
   },
   "/uk/foodindustry/": {
     "digest": "a474c9835635db39877832fb5f4631e1cbc8ab3466f6eb6bf1cd70ad4e7f809e",
+    "lastmod": "2026-11-21"
+  },
+  "/uk/gardening/": {
+    "digest": "a62eaf84f5a9375ac1be377a376b5ad96195db6748b12ba5d37d3ebb31cd03b1",
     "lastmod": "2026-11-21"
   },
   "/uk/getaround/": {
@@ -1404,7 +1436,7 @@
     "lastmod": "2026-11-21"
   },
   "/uk/propertyservice/": {
-    "digest": "14e7d745410ed7e1d5a9dcc4df58606b5b1cad33d37415f71dfdbed54eaae963",
+    "digest": "acd1e16d15311cbd2d7a6de91f315f341b44dd2630935a37289e9cbbe6222fe7",
     "lastmod": "2026-11-21"
   },
   "/uk/restaurant/": {

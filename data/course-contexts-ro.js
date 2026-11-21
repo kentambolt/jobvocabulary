@@ -305,5 +305,14 @@ module.exports={
       "Recunoașteți denumirile pieptenilor, foarfecelor, uscătoarelor și produselor de păr.",
       "Stabiliți o programare, clarificați ce include prețul și încheiați vizita."
     ]
+  ],
+  "gardening": [
+    "Daneză pentru grădinărit și întreținerea spațiilor verzi",
+    "Când lucrați în grădini și spații verzi, trebuie să legați planul de lucru de plantele, uneltele și materialele din fața dumneavoastră. Exersați întrebări scurte despre zonă, poziție și înălțimea dorită înainte de a continua. Exersați și cum să spuneți unui coleg ce lipsește și să clarificați cu clientul curățenia de la final.",
+    [
+      "Recunoașteți denumirile plantelor, uneltelor de grădină și materialelor.",
+      "Întrebați de unde începeți și ce dorește clientul.",
+      "Comunicați despre echipamente, deșeuri de grădină și zone terminate."
+    ]
   ]
 };

@@ -149,6 +149,16 @@
     "ru": "/ru/foodindustry/",
     "uk": "/uk/foodindustry/"
   },
+  "gardening": {
+    "bg": "/bg/gardening/",
+    "da": "/da/gartner-og-groen-pleje/",
+    "en": "/en/gardening-and-grounds-maintenance/",
+    "lt": "/lt/sodininkyste-ir-zeldynu-prieziura/",
+    "pl": "/pl/ogrodnictwo-i-pielegnacja-zieleni/",
+    "ro": "/ro/gradinarit-si-intretinerea-spatiilor-verzi/",
+    "ru": "/ru/gardening/",
+    "uk": "/uk/gardening/"
+  },
   "getaround": {
     "bg": "/bg/getaround/",
     "da": "/da/transport-som-borger/",

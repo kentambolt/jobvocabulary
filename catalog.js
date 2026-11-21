@@ -168,7 +168,7 @@ for (const [lang, locale] of Object.entries(extraCatalogLocales)) {
   COURSE_CATALOG.home[lang] = locale.home;
   COURSE_CATALOG.groups.forEach((group,index)=>{group.name[lang]=locale.groups[index].name;group.desc[lang]=locale.groups[index].desc;});
 }
-COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','itsupport','office','salon','bakery','automotive','trucking','foodindustry','jobsearch','worklife');
+COURSE_CATALOG.groups[0].packs.push('childcare','hotel','hospital','airport','bus','propertyservice','gardening','itsupport','office','salon','bakery','automotive','trucking','foodindustry','jobsearch','worklife');
 COURSE_CATALOG.groups[1].packs.push('authorities','health','children','getaround','money','shopping','school','emergency','pregnancy');
 COURSE_CATALOG.related = {
   cleaning:['hotel','propertyservice','hospital','worklife','essentials'],
@@ -176,7 +176,7 @@ COURSE_CATALOG.related = {
   warehouse:['trucking','transport','foodindustry','airport','worklife'],
   construction:['propertyservice','warehouse','worklife','jobsearch','essentials'],
   care:['health','hospital','childcare','worklife','essentials'],
-  agriculture:['foodindustry','warehouse','restaurant','worklife','essentials'],
+  agriculture:['gardening','foodindustry','warehouse','restaurant','worklife','essentials'],
   retail:['shopping','restaurant','warehouse','salon','worklife','jobsearch'],
   transport:['trucking','bus','getaround','warehouse','driving'],
   childcare:['children','school','care','health','worklife'],
@@ -184,7 +184,8 @@ COURSE_CATALOG.related = {
   hospital:['health','care','cleaning','worklife','emergency'],
   airport:['transport','warehouse','bus','hotel','worklife'],
   bus:['getaround','transport','driving','trucking','worklife'],
-  propertyservice:['construction','cleaning','authorities','worklife','essentials'],
+  propertyservice:['gardening','construction','cleaning','authorities','worklife','essentials'],
+  gardening:['propertyservice','agriculture','construction','cleaning','worklife'],
   itsupport:['worklife','jobsearch','school','essentials','money'],
   office:['itsupport','worklife','jobsearch','retail','hotel','salon'],
   bakery:['restaurant','foodindustry','retail','worklife','jobsearch'],

@@ -305,5 +305,14 @@ module.exports={
       "Rozpoznawaj nazwy grzebieni, nożyczek, suszarek i produktów do włosów.",
       "Umów wizytę, wyjaśnij, co obejmuje cena, i zakończ obsługę."
     ]
+  ],
+  "gardening": [
+    "Duński do ogrodnictwa i pielęgnacji zieleni",
+    "Pracując w ogrodach i na terenach zielonych, trzeba powiązać plan pracy z roślinami, narzędziami i materiałami przed sobą. Ćwicz krótkie pytania o obszar, położenie i oczekiwaną wysokość przed przejściem dalej. Przećwicz też informowanie zespołu o brakach oraz ustalanie z klientem porządkowania po pracy.",
+    [
+      "Rozpoznawaj nazwy roślin, narzędzi ogrodniczych i materiałów.",
+      "Pytaj, od czego zacząć i czego oczekuje klient.",
+      "Informuj o sprzęcie, odpadach ogrodowych i gotowych obszarach."
+    ]
   ]
 };
