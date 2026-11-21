@@ -29,3 +29,12 @@ test('program and app are not marked as wrong answers for each other',()=>{
     assert.equal(result.some(value=>['program','app'].includes(value)),false);
   }
 });
+
+test('overlapping office terms do not compete as wrong alternatives',()=>{
+  const a=app();
+  a.run(fs.readFileSync(path.join(__dirname,'../packs/office.js'),'utf8')+';registerPack(PACKS.office);state.settings={pack:"office",target:"da",base:"en",diff:3,dir:"rec"};');
+  for(const group of [['forklare','afklare'],['møde','aftale']])for(const source of group)for(const direction of ['rec','prod']) {
+    Object.assign(a.context,{group,source,direction});
+    assert.equal(a.run('(()=>{const c=ctx(),word=c.pool.find(x=>answerSource(x)===source);return makeOptions(c,word,direction).some(x=>x.id!==word.id&&group.includes(answerSource(x)));})()'),false);
+  }
+});

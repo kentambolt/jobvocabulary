@@ -148,6 +148,8 @@ const guides = [
   },
 ];
 
+guides.push(require('./guides/phone-work'));
+
 const contexts = {};
 
 // Every course describes concrete practice situations in every interface language.
@@ -167,7 +169,7 @@ for(const lang of ['ru','uk','pl','ro','lt','bg']) {
   const translations=require(`./guides-${lang}`);
   if(Object.keys(translations).some(id=>!guides.some(g=>g.id===id))) throw Error(`Unknown guide in ${lang}`);
   for(const guide of guides) {
-    const text=translations[guide.id];
+    const text=translations[guide.id] || guide[lang];
     if(!text || !text.slug || !text.title || !text.description || !text.intro
       || text.sections?.length!==guide.en.sections.length
       || text.sections.some((section,index)=>section.length!==guide.en.sections[index].length || section.some(p=>typeof p!=='string'||!p.trim()))

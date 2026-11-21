@@ -269,5 +269,14 @@ module.exports={
       "Podaj krótką instrukcję dotyczącą pliku, połączenia lub ponownego uruchomienia.",
       "Wyjaśnij, co stanie się ze zgłoszeniem dalej."
     ]
+  ],
+  "office": [
+    "Duński w biurze i obsłudze klienta",
+    "Dzień w biurze może łączyć telefony, e-maile, spotkania i pomoc klientowi. Zacznij od komunikatów potrzebnych na Twoim stanowisku. Następnie ćwicz potwierdzanie nazwiska, godziny lub dokumentu, aby każde zgłoszenie miało jasny kolejny krok.",
+    [
+      "Odbierz telefon i zapytaj, z kim klient chce rozmawiać.",
+      "Potwierdź spotkanie lub poproś o brakującą informację.",
+      "Przekaż współpracownikowi, co wymaga dalszego kontaktu."
+    ]
   ]
 };

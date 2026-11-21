@@ -16,6 +16,43 @@ test('a direct course start for a returning learner reaches a task without anoth
   assert.equal(a.run('placement'), null);
 });
 
+test('a focused guide link starts the requested topics directly and validates category keys',()=>{
+  const a=app(undefined,{initialState:{},hash:'#start=office&topics=phone%2Cappointments%2Cphone%2Cunknown&base=pl'});
+  assert.equal(a.run('view'),'play');
+  assert.equal(a.run('state.settings.base'),'pl');
+  assert.deepEqual(JSON.parse(a.run('JSON.stringify(state.settings.cats)')),['phone','appointments']);
+  a.run(fs.readFileSync(path.join(__dirname,'../packs/office.js'),'utf8')+';registerPack(PACKS.office);renderPlay();');
+  assert.equal(a.run('current.concept.cat'),'phone');
+  assert.equal(a.run('ctx().pool.every(word=>["phone","appointments"].includes(word.cat))'),true);
+  const invalid=app(undefined,{initialState:{},hash:'#start=office&base=pl&topics=unknown,__proto__'});
+  assert.equal(invalid.run('state.settings.cats'),null);
+});
+
+test('a focused link retains topic choices during first-time helper selection',()=>{
+  const a=app(undefined,{initialState:{},hash:'#start=office&topics=phone,appointments'});
+  assert.equal(a.run('view'),'setup');
+  assert.equal(a.run('draft.base'),null);
+  assert.deepEqual(JSON.parse(a.run('JSON.stringify(draft.cats)')),['phone','appointments']);
+});
+
+test('course links accept only explicitly supported helper languages',()=>{
+  for(const base of ['constructor','__proto__','en-extra','xx']) {
+    const a=app(undefined,{initialState:{},hash:'#start=office&base='+base+'&topics=phone'});
+    assert.equal(a.run('view'),'setup',base);
+    assert.equal(a.run('draft.base'),null,base);
+    assert.deepEqual(JSON.parse(a.run('JSON.stringify(draft.cats)')),['phone']);
+  }
+});
+
+test('a focused guide changes the scope without discarding existing course cards',()=>{
+  const a=app({pack:'office',target:'da',base:'en',diff:2,dir:'rec'});
+  a.run(fs.readFileSync(path.join(__dirname,'../packs/office.js'),'utf8')+';registerPack(PACKS.office);ctx().prog.cards["office:en kunde"]=newCard(ctx(),2,true);');
+  const before=a.run('JSON.stringify(ctx().prog.cards)');
+  a.run('location.hash="#start=office&base=en&topics=phone,appointments";applyCourseLink();');
+  assert.equal(a.run('JSON.stringify(ctx().prog.cards)'),before);
+  assert.equal(a.run('state.settings.diff'),2);
+});
+
 test('starting from setup reaches a task without a second placement-choice screen', () => {
   const a = app(undefined, { initialState: {} });
   const soundBefore = a.run('state.sound');
