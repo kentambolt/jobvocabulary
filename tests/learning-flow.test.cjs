@@ -63,6 +63,40 @@ test('unfinished words prevent promotion; empty or unchanged levels never loop',
   assert.equal(next.diff, 3, 'skip an empty intermediate tier');
 });
 
+test('a covered level can progress at eighty percent while unseen words and lower confidence still block it',()=>{
+  const pool=Array.from({length:10},(_,i)=>({id:'word'+i}));
+  const cards=Object.fromEntries(pool.map((word,i)=>[word.id,i<8?card():{seen:true,ok:false,lvl:0}]));
+  const learned=entry=>entry.ok&&entry.lvl>=2;
+  const expanded=[...pool,{id:'medium-word'}];
+  assert.equal(LearningFlow.nextDifficulty(1,pool,cards,()=>expanded,learned).diff,2);
+  cards.word7.ok=false;
+  assert.equal(LearningFlow.nextDifficulty(1,pool,cards,()=>expanded,learned),null);
+  cards.word7.ok=true;
+  cards.word9.seen=false;
+  assert.equal(LearningFlow.nextDifficulty(1,pool,cards,()=>expanded,learned),null);
+  delete cards.word9;
+  assert.equal(LearningFlow.nextDifficulty(1,pool,cards,()=>expanded,learned),null);
+});
+
+test('real course progression carries weak cards forward without erasing errors or marking them learned',()=>{
+  const a=app();
+  a.run(`(()=>{const c=ctx(),n=Math.ceil(c.pool.length*.8);for(let i=0;i<c.pool.length;i++){const known=i<n;c.prog.cards[c.pool[i].id]={lvl:known?3:0,ok:known,right:known?3:0,wrong:known?0:2,time:Date.now()-86400000,task:0};MemoryScheduler.ensure(c.prog.cards[c.pool[i].id],Date.now());}c.prog.offered=true;})()`);
+  const before=a.run('JSON.stringify(ctx().prog.cards)');
+  const weak=a.run('ctx().pool.filter(word=>!isLearned(ctx().prog.cards[word.id])).map(word=>word.id)');
+  a.run('renderPlay();');
+  assert.equal(a.run('state.settings.diff'),2);
+  assert.equal(a.run('JSON.stringify(ctx().prog.cards)'),before);
+  for(const id of weak){a.context.weakId=id;assert.equal(a.run('ctx().pool.some(word=>word.id===weakId)'),true);assert.equal(a.run('isLearned(ctx().prog.cards[weakId])'),false);}
+});
+
+test('mixed-mode progression requires coverage in every selected task type',()=>{
+  const a=app({target:'da',base:'en',pack:'top',dir:'rec',diff:1,modes:['rec','write']});
+  a.run(`(()=>{const s=state.settings,pool=buildPool(s);for(const dir of ['rec','write']){const c=ctx({...s,dir});c.prog.offered=true;for(let i=0;i<pool.length-(dir==='write'?1:0);i++){c.prog.cards[pool[i].id]={lvl:3,ok:true,right:2,wrong:0,time:Date.now(),task:0};}}renderPlay();})()`);
+  assert.equal(a.run('state.settings.diff'),1);
+  a.run(`(()=>{const c=ctx({...state.settings,dir:'write'}),word=c.pool.at(-1);c.prog.cards[word.id]={lvl:0,ok:false,right:0,wrong:1,time:Date.now(),task:0};current=null;renderPlay();})()`);
+  assert.equal(a.run('state.settings.diff'),2);
+});
+
 test('progression honours category-filtered pools and personal lists have no automatic level change', () => {
   const settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', diff: 1 };
   const a = app(settings);
