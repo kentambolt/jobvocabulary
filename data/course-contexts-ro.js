@@ -260,5 +260,14 @@ module.exports={
       "Descrie o observație despre tine sau copil.",
       "Recunoaște termeni despre programări, concediu și înregistrare."
     ]
+  ],
+  "itsupport": [
+    "Daneza pentru asistență IT și helpdesk",
+    "O conversație de asistență începe adesea cu o descriere clară a problemei. Exersează întrebări despre program, mesajul de eroare și momentul apariției, împreună cu denumirile echipamentelor utilizatorului. Apoi învață instrucțiuni scurte și o explicație clară a pasului următor.",
+    [
+      "Cere utilizatorului să arate sau să citească mesajul de eroare.",
+      "Dă o instrucțiune scurtă despre un fișier, o conexiune sau o repornire.",
+      "Explică ce se va întâmpla în continuare cu tichetul de asistență."
+    ]
   ]
 };

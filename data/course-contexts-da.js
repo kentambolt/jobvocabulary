@@ -260,5 +260,14 @@ module.exports={
       "Øv beskeder om transport og praktiske opgaver.",
       "Træn spørgsmål til kolleger."
     ]
+  ],
+  "itsupport": [
+    "Dansk i IT-support og helpdesk",
+    "En supportsamtale begynder ofte med at få problemet beskrevet. Øv spørgsmål om program, fejlmeddelelse og tidspunkt, og forbind dem med navnene på det udstyr, brugeren arbejder med. Træn derefter korte instruktioner og en tydelig besked om næste skridt.",
+    [
+      "Bed brugeren vise eller læse en fejlmeddelelse.",
+      "Giv en kort instruktion om en fil, forbindelse eller genstart.",
+      "Forklar, hvad der sker med supportsagen bagefter."
+    ]
   ]
 };

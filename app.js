@@ -724,6 +724,7 @@ const OVERLAPPING_ANSWERS = [
   ['job','arbejde','stilling','ledig stilling'],
   ['chef','leder'],
   ['ansat','medarbejder','lønmodtager','arbejdstager'],
+  ['program','app','applikation'],
 ];
 const answerSource = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
 function pickDistractors(c, concept, qdir, n = 3) {

@@ -157,7 +157,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     ${seo.breadcrumbs(SITE,[[t.home,'/'],[catalog.labels[lang].catalog,`/${lang}/`],[name,urlOf(p,lang)]],lang)}
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
-    <p>${esc(p.desc[lang])}. ${esc(t.intro(total, p.categories.length))}</p>
+    <p class="course-intro">${esc(p.desc[lang].replace(/[.!?]\s*$/, ''))}. ${esc(t.intro(total, p.categories.length))}</p>
     <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
     <p class="tagline">${esc(t.free)}</p>
     ${p.id === 'driving' ? `<p class="course-note">${esc(catalog.labels[lang].safety)}</p>` : ''}

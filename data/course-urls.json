@@ -169,6 +169,16 @@
     "ru": "/ru/hotel/",
     "uk": "/uk/hotel/"
   },
+  "itsupport": {
+    "bg": "/bg/itsupport/",
+    "da": "/da/it-support-og-helpdesk/",
+    "en": "/en/it-support-and-helpdesk/",
+    "lt": "/lt/it-pagalba-ir-pagalbos-tarnyba/",
+    "pl": "/pl/wsparcie-it-i-helpdesk/",
+    "ro": "/ro/asistenta-it-si-helpdesk/",
+    "ru": "/ru/itsupport/",
+    "uk": "/uk/itsupport/"
+  },
   "jobsearch": {
     "bg": "/bg/jobsearch/",
     "da": "/da/jobsoegning/",

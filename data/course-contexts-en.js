@@ -260,5 +260,14 @@ module.exports={
       "Learn messages about transport and practical tasks.",
       "Practise questions for colleagues."
     ]
+  ],
+  "itsupport": [
+    "Danish for IT support and helpdesk work",
+    "A support conversation often starts by getting a clear description of the problem. Practise questions about the program, error message and timing alongside the equipment the user works with. Then learn short instructions and a clear explanation of the next step.",
+    [
+      "Ask the user to show or read an error message.",
+      "Give a short instruction about a file, connection or restart.",
+      "Explain what will happen to the support ticket next."
+    ]
   ]
 };

@@ -260,5 +260,14 @@ module.exports={
       "Apibūdink pastebėjimą apie save ar kūdikį.",
       "Atpažink vizitų, tėvystės atostogų ir registravimo žodžius."
     ]
+  ],
+  "itsupport": [
+    "Danų kalba IT pagalbos tarnybai",
+    "Pagalbos pokalbis dažnai prasideda nuo aiškaus problemos apibūdinimo. Mokykitės klausimų apie programą, klaidos pranešimą ir problemos pradžią kartu su naudotojo įrangos pavadinimais. Tada išmokite trumpus nurodymus ir aiškiai paaiškinkite kitą žingsnį.",
+    [
+      "Paprašykite naudotojo parodyti arba perskaityti klaidos pranešimą.",
+      "Duokite trumpą nurodymą apie failą, ryšį ar paleidimą iš naujo.",
+      "Paaiškinkite, kas toliau vyks su pagalbos užklausa."
+    ]
   ]
 };
