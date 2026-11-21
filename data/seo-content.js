@@ -152,6 +152,7 @@ guides.push(require('./guides/phone-work'));
 guides.push(require('./guides/job-advert'));
 guides.push(require('./guides/email-work'));
 guides.push(require('./guides/shift-work'));
+guides.push(require('./guides/customer-talk'));
 
 const contexts = {};
 
