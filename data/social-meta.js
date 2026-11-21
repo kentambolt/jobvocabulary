@@ -3,11 +3,12 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {CONCEPTS}=require('../words');
 const WordEntry=require('../word-entry');
-const locales={da:'da_DK',en:'en_GB',ru:'ru_RU',uk:'uk_UA',pl:'pl_PL',ro:'ro_RO',lt:'lt_LT',bg:'bg_BG'};
+const metadata=require('../catalog').metadata;
+const locales=Object.fromEntries(Object.entries(metadata).map(([lang,copy])=>[lang,copy.locale]));
 const courses={cleaning:'cleaning',restaurant:'kitchen',warehouse:'warehouse',construction:'hammer',care:'grandmother',agriculture:'cow',retail:'shop',transport:'car',childcare:'toy',hotel:'bed',hospital:'hospital',airport:'airplane',bus:'bus',propertyservice:'house',itsupport:'computer',office:'phone',automotive:'car',bakery:'bread',salon:'scissors',trucking:'trucking',foodindustry:'meat',jobsearch:'letter',worklife:'clock',essentials:'clock',driving:'car',authorities:'house',health:'doctor',children:'family',getaround:'train',money:'money',shopping:'buy',school:'book',emergency:'police',pregnancy:'baby'};
 const guides={'first-job':'people',instructions:'speak',interview:'people',time:'clock','driving-language':'car',practice:'book','phone-work':'phone','job-advert':'letter','email-work':'computer'};
 const custom={
-  study:{file:'/images/site/study-corner.jpg',type:'image/jpeg',width:1536,height:1024,alt:{da:'Studiehjørne med bøger, notesbog og kaffe',en:'Study corner with books, a notebook and coffee',ru:'Учебный уголок с книгами, блокнотом и кофе',uk:'Місце для навчання з книжками, записником і кавою',pl:'Kącik do nauki z książkami, notesem i kawą',ro:'Colț de studiu cu cărți, caiet și cafea',lt:'Mokymosi kampelis su knygomis, užrašine ir kava',bg:'Кът за учене с книги, тетрадка и кафе'}},
+  study:{file:'/images/site/study-corner.jpg',type:'image/jpeg',width:1536,height:1024,alt:Object.fromEntries(Object.entries(metadata).map(([lang,copy])=>[lang,copy.imageAlt]))},
   cleaning:{file:'/images/site/course-cleaning.png',type:'image/png',width:1254,height:1254,alt:{da:'Kost',en:'Broom',ru:'Метла',uk:'Мітла',pl:'Miotła',ro:'Mătură',lt:'Šluota',bg:'Метла'}},
   warehouse:{file:'/images/site/course-warehouse.png',type:'image/png',width:1254,height:1254,alt:{da:'Palle med papkasser',en:'Pallet with cardboard boxes',ru:'Поддон с картонными коробками',uk:'Піддон із картонними коробками',pl:'Paleta z kartonami',ro:'Palet cu cutii de carton',lt:'Padėklas su kartoninėmis dėžėmis',bg:'Палет с картонени кутии'}},
   trucking:{file:'/images/site/course-trucking.png',type:'image/png',width:1254,height:1254,alt:{da:'Lastbil med sættevogn',en:'Articulated lorry',ru:'Седельный тягач с полуприцепом',uk:'Сідельний тягач з напівпричепом',pl:'Ciągnik siodłowy z naczepą',ro:'Cap tractor cu semiremorcă',lt:'Vilkikas su puspriekabe',bg:'Влекач с полуремарке'}}

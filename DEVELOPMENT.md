@@ -308,6 +308,11 @@ content. Do not add invented search volumes, credentials, reviews or ratings.
 Run `node --test tests/seo-pages.test.cjs` after changing public page generation.
 It validates sitemap destinations, unique titles/descriptions, canonical URLs,
 structured JSON, reciprocal guide translations and internal navigation links.
+The root app keeps one static canonical URL. `COURSE_CATALOG.metadata` supplies
+its general-language title, description and social image descriptions in all
+eight interfaces. The build writes a complete Danish fallback; app rendering
+updates the same metadata to match the visible language without creating extra
+indexable query/fragment variants or changing the learning pair.
 Google Search Console uses the `jobvocabulary.com` Domain property. Preserve its
 Google verification TXT record in Simply.com and the existing HTTPS sitemap URL.
 

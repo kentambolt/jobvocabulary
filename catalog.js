@@ -206,3 +206,17 @@ COURSE_CATALOG.related = {
   emergency:['health','getaround','driving','authorities','worklife'],
   pregnancy:['health','children','authorities','worklife','essentials']
 };
+COURSE_CATALOG.metadata = {
+  da:{title:'JobVocabulary: Sprog til job og hverdag',description:'Lær ord og sætninger til job, transport og hverdag. Vælg mellem {courses} kurser og {languages} sprog, og træn i dit eget tempo.',locale:'da_DK',imageAlt:'Studiehjørne med bøger, notesbog og kaffe'},
+  en:{title:'JobVocabulary: Languages for work and everyday life',description:'Learn words and phrases for work, transport and everyday life. Choose from {courses} courses and {languages} languages, then practise at your own pace.',locale:'en_GB',imageAlt:'Study corner with books, a notebook and coffee'},
+  ru:{title:'JobVocabulary: Языки для работы и повседневной жизни',description:'Учите слова и фразы для работы, транспорта и повседневной жизни. Курсы: {courses}. Языки: {languages}. Практикуйтесь в своём темпе.',locale:'ru_RU',imageAlt:'Учебный уголок с книгами, блокнотом и кофе'},
+  uk:{title:'JobVocabulary: Мови для роботи й повсякденного життя',description:'Вивчайте слова й фрази для роботи, транспорту та повсякденного життя. Курсів: {courses}. Мов: {languages}. Практикуйтеся у власному темпі.',locale:'uk_UA',imageAlt:'Місце для навчання з книжками, записником і кавою'},
+  pl:{title:'JobVocabulary: Języki do pracy i codziennego życia',description:'Ucz się słów i zwrotów do pracy, podróży i codziennego życia. Kursy: {courses}. Języki: {languages}. Ćwicz we własnym tempie.',locale:'pl_PL',imageAlt:'Kącik do nauki z książkami, notesem i kawą'},
+  ro:{title:'JobVocabulary: Limbi pentru muncă și viața de zi cu zi',description:'Învață cuvinte și expresii pentru muncă, transport și viața de zi cu zi. Cursuri: {courses}. Limbi: {languages}. Exersează în ritmul tău.',locale:'ro_RO',imageAlt:'Colț de studiu cu cărți, caiet și cafea'},
+  lt:{title:'JobVocabulary: Kalbos darbui ir kasdienybei',description:'Mokykitės žodžių ir sakinių darbui, transportui bei kasdienybei. Kursų: {courses}. Kalbų: {languages}. Praktikuokite savo tempu.',locale:'lt_LT',imageAlt:'Mokymosi kampelis su knygomis, užrašine ir kava'},
+  bg:{title:'JobVocabulary: Езици за работа и ежедневие',description:'Учи думи и изречения за работа, транспорт и ежедневие. Избери от {courses} курса и {languages} езика и упражнявай със собствено темпо.',locale:'bg_BG',imageAlt:'Кът за учене с книги, тетрадка и кафе'}
+};
+COURSE_CATALOG.siteMetadata = function(lang,courseCount) {
+  const copy=this.metadata[Object.hasOwn(this.metadata,lang)?lang:'en'];
+  return {...copy,description:copy.description.replace('{courses}',courseCount).replace('{languages}',Object.keys(this.metadata).length)};
+};
