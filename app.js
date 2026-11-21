@@ -657,9 +657,7 @@ function progKey(s) {
   if (s.pack === PICS && s.base !== s.target) return `${PICS}|${s.target}|${s.base}|${s.dir}`;
   return `${s.target}|${s.base}|${s.dir}`;
 }
-function ctx(settings = state.settings) {
-  const s = settings;
-  const native = s.base === s.target;
+function progressFor(s,pool) {
   const key = progKey(s);
   const prog = (state.progress[key] = state.progress[key] || { task: 0, cards: {}, lastId: null });
   const scope = JSON.stringify([s.diff, s.cats || null]);
@@ -667,7 +665,12 @@ function ctx(settings = state.settings) {
     prog.reviewScope = scope;
     prog.lastLearnedReviewTask = prog.task;
   }
-  return { s, native, pics: isPics(s), key, prog, pool: buildPool(s) };
+  if(typeof CourseKnowledge!=='undefined')CourseKnowledge.seed({state,settings:s,pool,progress:prog,learned:isLearned,progressKey:progKey,now:Date.now()});
+  return prog;
+}
+function ctx(settings = state.settings) {
+  const pool=buildPool(settings);
+  return {s:settings,native:settings.base===settings.target,pics:isPics(settings),key:progKey(settings),prog:progressFor(settings,pool),pool};
 }
 function dueness(card, prog, now) {
   const at = MemoryScheduler.dueAt(card, isLearned(card), now);
@@ -1032,8 +1035,9 @@ function completeModeTurn(settings) {
 }
 function combinedCards(settings, pool) {
   const modes = PracticeOptions.modes(settings);
+  const progress=modes.map(dir=>progressFor({...settings,dir},pool));
   return Object.fromEntries(pool.map((word) => {
-    const known = modes.every((dir) => { const card = state.progress[progKey({ ...settings, dir })]?.cards[word.id]; return card && isLearned(card); });
+    const known = progress.every(prog=>prog.cards[word.id]&&isLearned(prog.cards[word.id]));
     return [word.id, { ok: known, lvl: known ? CONFIG.learnedLevel : 0 }];
   }));
 }
@@ -1586,6 +1590,7 @@ function finishTask(c, x, before) {
   const correct = current.answered === x.id || current.answered === 'ok';
   const now = Date.now();
   MemoryScheduler.review(c.prog.cards[x.id], correct, now, { word: x, learned: isLearned(c.prog.cards[x.id]), evidence: current.kind === 'write' ? 2 : current.kind === 'build' ? 3 : 1, rng: Math.random });
+  if(typeof CourseKnowledge!=='undefined')CourseKnowledge.mark(c.prog.cards[x.id],x.id);
   MemoryScheduler.record(MemoryScheduler.session(state, c.s, now), x.id, now);
   if (current.maintenance) c.prog.lastLearnedReviewTask = c.prog.task;
   c.prog.lastId = x.id;
@@ -1761,6 +1766,7 @@ function placementAnswer(correct) {
   if (c.prog.cards[x.id]) grade(c, x, correct);
   else c.prog.cards[x.id] = newCard(c, correct ? CONFIG.knownStartLevel : 0, correct, { verify: correct });
   MemoryScheduler.review(c.prog.cards[x.id], correct, now, { word: x, learned: isLearned(c.prog.cards[x.id]), evidence: 4, rng: Math.random });
+  if(typeof CourseKnowledge!=='undefined')CourseKnowledge.mark(c.prog.cards[x.id],x.id);
   MemoryScheduler.record(MemoryScheduler.session(state, c.s, now), x.id, now);
   saveState();
   lastFeedback = correct ? { id: current.concept.id, word: current.concept.words[c.s.target], meaning: current.concept.words[c.s.base], lang: c.s.target } : null;
@@ -1871,7 +1877,7 @@ function renderStats() {
   if (pa) pa.onclick = () => { go('play'); startPlacement(); };
   $('resetBtn').onclick = () => {
     if (!confirm(t('resetQ'))) return;
-    delete state.progress[c.key];
+    state.progress[c.key]={task:0,cards:{},lastId:null,knowledgeResetAt:Date.now()};
     saveState();
     current = null;
     go('play');
