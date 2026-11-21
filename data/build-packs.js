@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const crypto = require('crypto');
+const textAssetVersion=require('./text-asset-version');
 
 const DIR = path.join(__dirname, '..', 'packs');
 const stableIds = require('./stable-word-ids.json');
@@ -59,7 +59,7 @@ for (const f of files) {
       }
       cats.push({ key: cat.key, type: cat.type, name: cat.name, n });
     }
-    const v = crypto.createHash('md5').update(code).digest('hex').slice(0, 8);
+    const v = textAssetVersion(code,'md5',8);
     const sourceIds = stableIds[p.id] || {};
     for (const [text,id] of Object.entries(sourceIds)) {
       if (!seen['da|'+text.toLowerCase()]) warn(`stabilt id har ingen kilde: ${text}`);

@@ -242,14 +242,31 @@ links and stable URLs. Personal list states use fragment routes and are not
 included in the public sitemap. Do not redirect visitors based on inferred language.
 The driving course is language practice and supplements driving instruction.
 
-`data/seo-content.js` contains the public Danish/English editorial guides and
-course-specific usage sections. `data/guides-{ru,uk,pl,ro}.js` supplies complete
-guide translations and translated examples; `data/guide-ui.js` defines navigation
-in all six languages. `data/seo-pages.js` renders their static HTML,
+`data/seo-content.js` assembles the public editorial guides and course-specific
+usage sections. `data/guides-{ru,uk,pl,ro,lt,bg}.js` supplies the original guide
+translations; new complete guides can live in `data/guides/`. Course contexts in
+`data/course-contexts-{da,en,ru,uk,pl,ro,lt,bg}.js` cover every course. Navigation
+is defined in `data/guide-ui.js` for all eight languages. `data/seo-pages.js` renders static HTML,
 reciprocal language links, visible breadcrumbs and Article/CollectionPage data.
 `build-pages.js` adds these pages to the sitemap and links them from courses and
 catalogues. The app exposes guides inside its existing menu. Keep the landing
 page free of extra SEO blocks and keep course start links above editorial content.
+
+A guide can define `startTopics` using category keys from its first course.
+Its primary link then starts those topics directly; the app validates keys against
+the public manifest and retains the learner's existing cards and level choice.
+
+`data/social-meta.js` selects relevant existing topic illustrations or generated
+course images and writes static Open Graph metadata, image dimensions, locale and
+translated alt descriptions. Every new course or guide needs an explicit image
+mapping. Use an image that represents the subject, with no overlaid slogan or
+generic logo. These images are metadata assets and are not added to the practice
+screen. Keep project images in the repository rather than referencing a local
+image-generation output path.
+
+Text asset versions use `data/text-asset-version.js` to normalize Windows/Linux
+line endings. Use that helper for shared scripts, styles, pack versions and JSON
+cache URLs so a checkout does not invalidate otherwise unchanged content.
 
 Only add hreflang targets for translations that actually exist. Guide dates are
 editorial dates, not build timestamps; update them only after meaningful changes.

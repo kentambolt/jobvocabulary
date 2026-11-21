@@ -2,6 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { guides, contexts } = require('./seo-content');
+const {socialMetadata,guideImage}=require('./social-meta');
 const guideUI = require('./guide-ui');
 const guideLanguages = Object.keys(guideUI);
 const guideLabels = Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides]));
@@ -36,7 +37,7 @@ function buildGuides({root, site, packs, urlOf}) {
     pages.push(file);
     urls.push(site+rel);
   }
-  function head(lang, title, desc, rel, alternates, structured) {
+  function head(lang, title, desc, rel, alternates, structured, image='study') {
     return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -52,7 +53,7 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(desc)}">
   <meta property="og:url" content="${site+rel}">
-  <meta name="twitter:card" content="summary">
+  ${socialMetadata(lang,image,site)}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +91,7 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
         mainEntityOfPage:site+rel,datePublished:published,dateModified:modified,
         author:{'@type':'Organization',name:'JobVocabulary',url:site+'/'},
         publisher:{'@type':'Organization',name:'JobVocabulary',url:site+'/'},
-      })}
+      },guideImage(guide.id))}
   <main>
     <article>
       ${breadcrumbs(site,[[l.home,'/'],[l.guides,index],[g.title,rel]],lang)}
