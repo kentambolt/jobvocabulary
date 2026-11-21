@@ -80,7 +80,8 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
     for (const guide of guides) {
       const g = guide[lang], rel = guidePath(guide,lang), first = guide.courses[0];
       const published=g.datePublished||'2026-11-20',modified=g.dateModified||published;
-      const start = `/?ui=${lang}#start=${first}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
+      if (guide.startTopics && (!Array.isArray(guide.startTopics) || !guide.startTopics.length || guide.startTopics.some(topic=>!packs.find(pack=>pack.id===first)?.categories.some(category=>category.key===topic)))) throw Error('Unknown guide practice topic: '+guide.id);
+      const start = `/?ui=${lang}#start=${first}${lang === 'da' ? '' : `&amp;base=${lang}`}${guide.startTopics ? `&amp;topics=${encodeURIComponent(guide.startTopics.join(','))}` : ''}`;
       const related = guides.filter(o => o !== guide).sort((a,b) => b.courses.filter(id => guide.courses.includes(id)).length-a.courses.filter(id => guide.courses.includes(id)).length).slice(0,3);
       const examples = guide.examples.map(([da,en],i) => [da, g.exampleTranslations?.[i] || en]);
       const translationLang = lang === 'da' ? 'en' : lang;

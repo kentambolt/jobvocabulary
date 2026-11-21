@@ -269,5 +269,14 @@ module.exports={
       "Giv en kort instruktion om en fil, forbindelse eller genstart.",
       "Forklar, hvad der sker med supportsagen bagefter."
     ]
+  ],
+  "office": [
+    "Dansk til kontor og kundeservice",
+    "På et kontor kan du skifte mellem telefon, e-mail, aftaler og hjælp til en kunde. Begynd med de beskeder, du skal kunne give eller forstå i din funktion. Øv derefter at bekræfte et navn, et tidspunkt eller et dokument, så en henvendelse får et klart næste skridt.",
+    [
+      "Tag imod et opkald, og spørg, hvem kunden vil tale med.",
+      "Bekræft en aftale eller bed om en manglende oplysning.",
+      "Giv en kollega besked om, hvad der skal følges op på."
+    ]
   ]
 };

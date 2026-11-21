@@ -199,6 +199,16 @@
     "ru": "/ru/money/",
     "uk": "/uk/money/"
   },
+  "office": {
+    "bg": "/bg/office/",
+    "da": "/da/kontor-og-kundeservice/",
+    "en": "/en/office-and-customer-service/",
+    "lt": "/lt/biuras-ir-klientu-aptarnavimas/",
+    "pl": "/pl/biuro-i-obsluga-klienta/",
+    "ro": "/ro/birou-si-relatii-cu-clientii/",
+    "ru": "/ru/office/",
+    "uk": "/uk/office/"
+  },
   "pregnancy": {
     "bg": "/bg/pregnancy/",
     "da": "/da/graviditet-foedsel-og-spaedboern/",

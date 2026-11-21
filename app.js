@@ -514,10 +514,13 @@ applyInterfaceLink();
 // Direct course links teach Danish with the explicitly selected helper language.
 // A complete pair starts immediately; an unspecified helper still opens setup.
 function applyCourseLink() {
-  const m = location.hash.match(/^#start=([a-z][a-z0-9-]*)(?:&base=([a-z]{2}))?/);
-  if (!m) return;
-  const [, pack, base] = m;
+  if (!location.hash.startsWith('#start=')) return;
+  const parameters = new URLSearchParams(location.hash.slice(1));
+  const pack = parameters.get('start'), requestedBase = parameters.get('base');
+  const base = Object.hasOwn(LANGS,requestedBase) ? requestedBase : null;
   if (![TOP, PICS].includes(pack) && !PACK_LIST.some((p) => p.id === pack)) return;
+  const availableTopics = PACK_LIST.find(p=>p.id===pack)?.categories.map(category=>category.key) || [];
+  const topics = [...new Set((parameters.get('topics') || '').split(',').filter(topic=>availableTopics.includes(topic)))];
   selectedCourseLink = true;
   CoursePreferences.remember(state);
   if (base && Object.hasOwn(UI, base)) state.uiLang = base;
@@ -525,16 +528,17 @@ function applyCourseLink() {
   placement = null;
   lastFeedback = null;
   const s = state.settings;
-  const preferred = base && LANGS[base] && base !== 'da' ? base : s?.base && LANGS[s.base] && s.base !== 'da' ? s.base : null;
+  const preferred = base && base !== 'da' ? base : s?.base && Object.hasOwn(LANGS,s.base) && s.base !== 'da' ? s.base : null;
   if (preferred) {
     history.replaceState(null, '', location.pathname + location.search);
     state.settings = CoursePreferences.resolve(state, { pack, target: 'da', base: preferred });
+    if (topics.length) state.settings.cats = topics;
     // A course page's start button already expresses the intent to practise.
     for (const dir of PracticeOptions.modes(state.settings)) ctx({ ...state.settings, dir }).prog.offered = true;
     saveState();
     view = 'play';
   } else {
-    draft = { target: 'da', base: base && LANGS[base] && base !== 'da' ? base : null, pack, dir: 'rec', diff: 1, cats: null };
+    draft = { target: 'da', base: base && LANGS[base] && base !== 'da' ? base : null, pack, dir: 'rec', diff: 1, cats: topics.length ? topics : null };
     saveState();
     view = 'setup';
   }
@@ -725,6 +729,8 @@ const OVERLAPPING_ANSWERS = [
   ['chef','leder'],
   ['ansat','medarbejder','lønmodtager','arbejdstager'],
   ['program','app','applikation'],
+  ['forklare','afklare'],
+  ['møde','aftale'],
 ];
 const answerSource = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
 function pickDistractors(c, concept, qdir, n = 3) {

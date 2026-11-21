@@ -269,5 +269,14 @@ module.exports={
       "Give a short instruction about a file, connection or restart.",
       "Explain what will happen to the support ticket next."
     ]
+  ],
+  "office": [
+    "Danish for office and customer service work",
+    "An office day can move between calls, emails, appointments and helping a customer. Start with the messages you need to give or understand in your role. Then practise confirming a name, time or document so that each enquiry has a clear next step.",
+    [
+      "Answer a call and ask who the customer wants to speak to.",
+      "Confirm an appointment or ask for missing information.",
+      "Tell a colleague what needs following up."
+    ]
   ]
 };

@@ -269,5 +269,14 @@ module.exports={
       "Duokite trumpą nurodymą apie failą, ryšį ar paleidimą iš naujo.",
       "Paaiškinkite, kas toliau vyks su pagalbos užklausa."
     ]
+  ],
+  "office": [
+    "Danų kalba biurui ir klientų aptarnavimui",
+    "Biuro dieną gali tekti atsakinėti į skambučius, rašyti el. laiškus, derinti susitikimus ir padėti klientui. Pradėkite nuo savo pareigoms reikalingų pranešimų. Tada mokykitės patikslinti vardą, laiką ar dokumentą, kad būtų aiškus kitas užklausos žingsnis.",
+    [
+      "Atsiliepkite ir paklauskite, su kuo klientas nori kalbėti.",
+      "Patvirtinkite susitikimą arba paprašykite trūkstamos informacijos.",
+      "Pasakykite kolegai, kuo reikia pasidomėti toliau."
+    ]
   ]
 };

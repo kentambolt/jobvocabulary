@@ -269,5 +269,14 @@ module.exports={
       "Dă o instrucțiune scurtă despre un fișier, o conexiune sau o repornire.",
       "Explică ce se va întâmpla în continuare cu tichetul de asistență."
     ]
+  ],
+  "office": [
+    "Daneza pentru birou și relații cu clienții",
+    "O zi la birou poate combina apeluri, e-mailuri, programări și ajutor pentru clienți. Începe cu mesajele de care ai nevoie în rolul tău. Apoi exersează confirmarea unui nume, a unei ore sau a unui document, pentru ca fiecare solicitare să aibă un pas următor clar.",
+    [
+      "Răspunde la un apel și întreabă cu cine dorește clientul să vorbească.",
+      "Confirmă o programare sau cere o informație care lipsește.",
+      "Spune unui coleg ce necesită urmărire."
+    ]
   ]
 };
