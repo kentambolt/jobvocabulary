@@ -839,6 +839,7 @@ html:has(> .landing) { scrollbar-gutter: auto; }
 .practice-stage > .answer-receipt { grid-area: receipt; margin: 0; }
 .practice-stage > .answer-receipt.level-notice { padding: 3px 8px; font-size: 12px; line-height: 18px; }
 #app > .practice-stage > .prompt { grid-area: prompt; height: 100%; min-height: 0; margin: 0; padding-top: 52px; padding-bottom: 20px; }
+#app > .practice-stage > .prompt.pics { height: 100%; min-height: 0; }
 #app > .practice-stage > .task-q { grid-area: question; margin: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; line-height: 20px; }
 .practice-stage > .options { grid-area: response; align-self: start; }
 .practice-stage > .revealed-meaning { grid-area: response; height: 100%; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-align: center; }
@@ -855,7 +856,8 @@ html:has(> .landing) { scrollbar-gutter: auto; }
 .practice-stage > .feedback .msg { margin: 0; }
 @media (max-width: 600px) {
   .practice-stage { --practice-prompt: 140px; --practice-response: 216px; }
-  .practice-stage.has-pictures { --practice-prompt: 280px; --practice-response: 264px; }
+  .practice-stage.has-pictures { --practice-prompt: 264px; --practice-response: 216px; }
+  .practice-stage.has-pictures .prompt.pics .pic { width: 140px; height: 140px; }
 }
 :is(#app, .practice-stage) > .prompt { height: 170px; min-height: 170px; }
 :is(#app, .practice-stage) > .prompt.pics { height: 340px; min-height: 340px; }
@@ -880,8 +882,8 @@ html:has(> .landing) { scrollbar-gutter: auto; }
   :is(#app, .practice-stage) > .options:not(.pics) .opt { height: var(--practice-option, 48px); min-height: var(--practice-option, 48px); flex-direction: row; text-align: left; justify-content: flex-start; padding: 6px 10px; gap: 10px; }
   :is(#app, .practice-stage) > .options:not(.pics) .w { flex: 1; line-height: 1.2; }
   :is(#app, .practice-stage) > .options:not(.pics) .key { display: none; }
-  :is(#app, .practice-stage) > .options.pics .opt { height: 128px; min-height: 128px; }
-  :is(#app, .practice-stage) > .options.pics .pic { width: 100px; height: 100px; }
+  :is(#app, .practice-stage) > .options.pics .opt { height: 104px; min-height: 104px; }
+  :is(#app, .practice-stage) > .options.pics .pic { width: 80px; height: 80px; }
 }
 @media (max-width: 359px) {
   .practice-stage.reading-space { --practice-option: 88px; --practice-response: 376px; }
