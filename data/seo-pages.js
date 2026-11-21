@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { guides, contexts } = require('./seo-content');
-const {socialMetadata,guideImage}=require('./social-meta');
+const {socialMetadata,guideImage,imageInfo}=require('./social-meta');
 const guideUI = require('./guide-ui');
 const guideLanguages = Object.keys(guideUI);
 const guideLabels = Object.fromEntries(guideLanguages.map(lang => [lang, guideUI[lang].guides]));
@@ -90,6 +90,7 @@ ${guideLanguages.map(other => `  <link rel="alternate" hreflang="${other}" href=
       write(rel, `${head(lang,g.title,g.description,rel,other => guidePath(guide,other),{
         '@type':'Article',headline:g.title,description:g.description,inLanguage:lang,url:site+rel,
         mainEntityOfPage:site+rel,datePublished:published,dateModified:modified,
+        image:site+imageInfo(guideImage(guide.id),lang).file,
         author:{'@type':'Organization',name:'JobVocabulary',url:site+'/'},
         publisher:{'@type':'Organization',name:'JobVocabulary',url:site+'/'},
       },guideImage(guide.id))}
