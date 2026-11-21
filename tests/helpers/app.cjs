@@ -22,7 +22,7 @@ function app(settings = { target: 'da', base: 'en', pack: 'top', dir: 'rec', dif
   const clock = { now: options.now ?? Date.now() };
   const ClockDate = class extends Date { constructor(...args) { super(...(args.length ? args : [clock.now])); } static now() { return clock.now; } };
   const context = vm.createContext({
-    ...words, WordLibrary, LearningFlow, CoursePreferences, WordEntry, PracticeOptions, MemoryScheduler, CourseKnowledge, EXTRA_LOCALES: require('../../locales'), Date: ClockDate,
+    ...words, WordLibrary, LearningFlow, CoursePreferences, WordEntry, PracticeOptions, MemoryScheduler, CourseKnowledge, StarterPaths: require('../../starter-paths'), AggregateTransport: require('../../aggregate-transport'), ActivationMeter: {create:()=>require('../../activation-meter').create(options.sendActivation)}, EXTRA_LOCALES: require('../../locales'), Date: ClockDate,
     COURSE_CATALOG: require('../../catalog'),
     localStorage: { getItem: (key) => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     navigator: { language: 'en' }, location, URLSearchParams,

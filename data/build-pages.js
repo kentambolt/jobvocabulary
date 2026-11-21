@@ -5,6 +5,7 @@ const path = require('path');
 const vm = require('vm');
 const textAssetVersion=require('./text-asset-version');
 const catalog = require('../catalog');
+const starterPaths = require('../starter-paths');
 const seo = require('./seo-pages');
 const courseRoutes = require('./course-routes');
 const courseSearchAliases = require('./course-search-aliases.json');
@@ -92,6 +93,10 @@ for (const f of fs.readdirSync(path.join(ROOT, 'packs')).filter((f) => f.endsWit
 vm.runInContext('this.P = PACKS;', ctx);
 const courseOrder = catalog.groups.flatMap(group => group.packs);
 const packs = Object.values(ctx.P).sort((a, b) => courseOrder.indexOf(a.id) - courseOrder.indexOf(b.id));
+for (const [id,words] of Object.entries(starterPaths.paths)) {
+  const rows=packs.find(p=>p.id===id)?.categories.flatMap(c=>c.rows) || [];
+  if (words.length!==20 || new Set(words).size!==20 || words.some(word=>!rows.some(row=>row[1]===word && row[0]===1 && row.slice(1).every(Boolean)))) throw Error('Invalid starter path: '+id);
+}
 const knownPacks=new Set(packs.map(pack=>pack.id));
 for(const pack of packs) {
   if(courseOrder.filter(id=>id===pack.id).length!==1) throw new Error('Course must belong to exactly one catalogue group: '+pack.id);
@@ -157,7 +162,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
     <h1>${esc(name)}</h1>
     <p class="lead">${esc(t.sub)}</p>
     <p class="course-intro">${esc(p.desc[lang].replace(/[.!?]\s*$/, ''))}. ${esc(courseCounts.intro(lang,total,p.categories.length))}</p>
-    <p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>
+    ${Object.hasOwn(starterPaths.paths,p.id) ? `<div class="row actions"><a class="primary cta" href="${esc(starterPaths.link(p.id,lang))}">${esc(starterPaths.copy[lang][1])}</a><a class="secondary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></div>` : `<p><a class="primary cta" href="/?ui=${lang}#start=${p.id}${lang === 'da' ? '' : `&amp;base=${lang}`}">${esc(t.cta)}</a></p>`}
     <p class="tagline">${esc(t.free)}</p>
     ${p.id === 'driving' ? `<p class="course-note">${esc(catalog.labels[lang].safety)}</p>` : ''}
     ${seo.courseExtras(p.id,lang,SITE)}
@@ -234,7 +239,7 @@ for (const lang of LANGS) {
     ru: { resume: 'Продолжите с того места, где остановились', action: 'Продолжить занятия', words: 'Мои слова', favorites: 'Сохранённые слова' },
     uk: { resume: 'Продовжте з того місця, де зупинилися', action: 'Продовжити навчання', words: 'Мої слова', favorites: 'Збережені слова' },
   }[lang] || extraLocales[lang].personal;
-  const resumeNames = { ...Object.fromEntries(packs.map((p) => [p.id, p.name[lang]])), top: l.general, pics: l.pictures, favorites: personal.favorites };
+  const resumeNames = { ...Object.fromEntries(packs.map((p) => [p.id, p.name[lang]])), ...Object.fromEntries(Object.keys(starterPaths.paths).map(id=>[id+'-first-steps',packs.find(p=>p.id===id).name[lang]+' · '+starterPaths.copy[lang][0]])), top: l.general, pics: l.pictures, favorites: personal.favorites };
   const card = (id) => {
     const p = packs.find((p) => p.id === id);
     const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
@@ -294,7 +299,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
 const guideOutput = seo.buildGuides({root:ROOT,site:SITE,packs,urlOf});
 urls.push(...guideOutput.urls);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
-const assets = ['not-found.js', 'style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'shared-word-groups.js', 'course-knowledge.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
+const assets = ['aggregate-transport.js', 'activation-meter.js', 'starter-paths.js', 'not-found.js', 'style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'shared-word-groups.js', 'course-knowledge.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, textAssetVersion(fs.readFileSync(path.join(ROOT, asset)))]));
 const pages = [indexPath, path.join(ROOT,'404.html'), path.join(ROOT,'dictionary/attribution.html'), ...guideOutput.pages, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {

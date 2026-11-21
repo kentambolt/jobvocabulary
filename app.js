@@ -512,6 +512,8 @@ const confusable = (a, b) => CONFUSE.some((g) => g.includes(a) && g.includes(b))
 const packOf = (s) => PACK_LIST.find((p) => p.id === s.pack);
 // Antal ord/sætninger for et valg – fra oversigten, så pakken ikke skal hentes for at vise tallet.
 function countPool(s) {
+  const starter = StarterPaths.get(s);
+  if (starter) return PACK_ITEMS[s.pack] ? buildPool(s).length : starter.ids.length;
   if (!isPack(s)) return buildPool(s).length;
   const p = packOf(s);
   if (!p) return 0;
@@ -531,6 +533,8 @@ let pendingPlacement = false;
 let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
+// Transport remains disabled until the shared aggregate endpoint is ready.
+const activation = ActivationMeter.create(AggregateTransport.create({enabled:false}));
 
 // Public language pages can hand their explicit interface choice to the app
 // before a course/language pair exists. Consume this UI hint without changing progress.
@@ -554,11 +558,13 @@ function applyCourseLink() {
   const pack = parameters.get('start'), requestedBase = parameters.get('base'), requestedTarget=parameters.get('target');
   if(parameters.has('target')&&!Object.hasOwn(LANGS,requestedTarget))return;
   const target=requestedTarget||'da';
+  const starterPath = StarterPaths.get({pack,starterPath:parameters.get('path')})?.id;
   const base = Object.hasOwn(LANGS,requestedBase) ? requestedBase : null;
   if (![TOP, PICS].includes(pack) && !PACK_LIST.some((p) => p.id === pack)) return;
   const availableTopics = PACK_LIST.find(p=>p.id===pack)?.categories.map(category=>category.key) || [];
   const topics = [...new Set((parameters.get('topics') || '').split(',').filter(topic=>availableTopics.includes(topic)))];
   selectedCourseLink = true;
+  activation.reset();
   CoursePreferences.remember(state);
   if (base && Object.hasOwn(UI, base)) state.uiLang = base;
   current = null;
@@ -569,14 +575,14 @@ function applyCourseLink() {
   const preferred=compatibleBase(base)?base:base===target?null:compatibleBase(s?.base)?s.base:null;
   if (preferred) {
     history.replaceState(null, '', location.pathname + location.search);
-    state.settings = CoursePreferences.resolve(state, { pack, target, base: preferred });
+    state.settings = CoursePreferences.resolve(state, { pack, target, base: preferred, starterPath });
     if (topics.length) state.settings.cats = topics;
     // A course page's start button already expresses the intent to practise.
     for (const dir of PracticeOptions.modes(state.settings)) ctx({ ...state.settings, dir }).prog.offered = true;
     saveState();
     view = 'play';
   } else {
-    draft = { target, base: null, pack, dir: 'rec', diff: 1, cats: topics.length ? topics : null };
+    draft = { target, base: null, pack, dir: 'rec', diff: 1, cats: topics.length ? topics : null, ...(starterPath ? {starterPath} : {}) };
     saveState();
     view = 'setup';
   }
@@ -689,8 +695,10 @@ const norm = (s) => s.toLowerCase().replace(/[.,!?;:«»"“”]/g, '').replace(
 function buildPool(s) {
   if (isList(s)) return listPool(s.pack.slice(5), s);
   if (isPack(s)) {
-    return (PACK_ITEMS[s.pack] || []).filter((x) => x.diff <= s.diff && x.words[s.target] && x.words[s.base]
-      && (!s.cats || s.cats.includes(x.cat)));
+    const starter = StarterPaths.get(s);
+    const items = starter ? starter.ids.map(id=>ITEM[id]).filter(Boolean) : PACK_ITEMS[s.pack] || [];
+    return items.filter((x) => x.diff <= s.diff && x.words[s.target] && x.words[s.base]
+      && (starter || !s.cats || s.cats.includes(x.cat)));
   }
   const pics = isPics(s);
   return ORDER[s.target].map((id) => ITEM[id])
@@ -705,7 +713,7 @@ function progKey(s) {
 function progressFor(s,pool) {
   const key = progKey(s);
   const prog = (state.progress[key] = state.progress[key] || { task: 0, cards: {}, lastId: null });
-  const scope = JSON.stringify([s.diff, s.cats || null]);
+  const scope = JSON.stringify([s.diff, s.cats || null, s.starterPath || null]);
   if (prog.reviewScope !== scope) {
     prog.reviewScope = scope;
     prog.lastLearnedReviewTask = prog.task;
@@ -755,8 +763,14 @@ function pickNext(c) {
   if (!selected) return null;
   if (selected.review) return { ...reviewTask(c, selected.word), maintenance: selected.maintenance };
   const fresh = selected.word;
-  // Børn (modersmål) ser altid ordet først. Andre prøver først, om de kender det.
-  if (c.native) return { kind: 'intro', concept: fresh };
+  // An introduction is shared across task types, never a correct answer.
+  if (c.native) {
+    const introduced = ['path','rec','prod','write'].some(dir =>
+      state.progress[progKey({...c.s,dir})]?.cards[fresh.id]);
+    if (!introduced) return { kind: 'intro', concept: fresh };
+    c.prog.cards[fresh.id] = newCard(c, 0, false, { wrong: 0 });
+    return reviewTask(c, fresh);
+  }
   if (c.s.dir === 'write') {
     if (writeSpec(c, fresh)) return { kind: 'write', concept: fresh, qdir: 'prod', isNew: true };
     if (buildSpec(c, fresh)) return { kind: 'build', concept: fresh, qdir: 'prod', isNew: true };
@@ -1159,16 +1173,32 @@ function renderPracticeComplete(c) {
   $('app').innerHTML = `<section class="practice-complete"><h1>${esc(t('completeTitle'))}</h1><p>${esc(t('completeHint'))}</p><div class="row actions"><a class="primary cta" href="/${uiLang()}/">${esc(COURSE_CATALOG.labels[uiLang()].catalog)}</a><button class="secondary" id="enableReview">${esc(t('enableReview'))}</button>${isList(c.s) && lastCourseSettings() ? `<button class="secondary" id="completeReturn">${esc(lt('backToCourse'))}</button>` : ''}</div></section>`;
   $('enableReview').onclick = () => { state.settings.repeatLearned = true; saveState(); current = null; renderPlay(); };
   if ($('completeReturn')) $('completeReturn').onclick = returnToCourse;
+  offerFullCourse(c);
 }
 function renderPracticeWait(c, at) {
   const date = new Date(at).toLocaleString(uiLang(), { dateStyle: 'medium', timeStyle: 'short' });
   $('app').innerHTML = `<section class="practice-complete"><h1>${esc(t('readyTitle'))}</h1><p>${esc(t('readyHint'))}</p><p role="status">${esc(t('nextReview'))}: ${esc(date)}</p><div class="row actions"><a class="primary cta" href="/${uiLang()}/">${esc(COURSE_CATALOG.labels[uiLang()].catalog)}</a><button class="secondary" id="checkPractice">${esc(t('checkAgain'))}</button>${isList(c.s) && lastCourseSettings() ? `<button class="secondary" id="waitReturn">${esc(lt('backToCourse'))}</button>` : ''}</div></section>`;
   $('checkPractice').onclick = () => { current = null; renderPlay(); };
   if ($('waitReturn')) $('waitReturn').onclick = returnToCourse;
+  offerFullCourse(c);
   saveState();
   clearTimeout(timer);
   // One asynchronous wake-up, capped below the browser's 32-bit timer limit.
   timer = setTimeout(() => { if (view === 'play' && !current) renderPlay(); }, Math.min(2147483000, Math.max(1000, at - Date.now())));
+}
+function continueFullCourse() {
+  const {pack,target,base} = state.settings;
+  CoursePreferences.remember(state);
+  state.settings = CoursePreferences.resolve(state,{pack,target,base});
+  for (const dir of PracticeOptions.modes(state.settings)) ctx({...state.settings,dir}).prog.offered = true;
+  current = null; lastFeedback = null; saveState(); render();
+}
+function offerFullCourse(c) {
+  if (!StarterPaths.get(c.s)) return;
+  const actions = $('app').querySelector('.actions');
+  if (!actions) return;
+  actions.insertAdjacentHTML('afterbegin', `<button class="primary" id="starterContinue">${esc(StarterPaths.copy[uiLang()][2])}</button>`);
+  $('starterContinue').onclick = continueFullCourse;
 }
 function languageName(lang, name) {
   const flags = {
@@ -1225,7 +1255,7 @@ function renderSetup() {
 
   if (d.target && d.base) {
     const native = d.base === d.target;
-    if (native) d.pack = TOP;
+    if (native) { d.pack = TOP; delete d.starterPath; }
     if (d.pack === TOP && !countPool(d) && !native) d.pack = 'essentials';
     const nPicWords = buildPool({ ...d, base: d.target, pack: TOP, diff: 3 }).length;
     if (d.pack === PICS && nPicWords < 8) d.pack = TOP;
@@ -1235,7 +1265,10 @@ function renderSetup() {
       const selectedName = isList(d) ? libraryTitle(d.pack.slice(5)) : selectedPack ? selectedPack.name[ul] : d.pack === PICS ? t('picsB') : t('topB');
       html += `<div class="step course-picker"><h2><label for="courseSelect">${esc(t('whatQ'))}</label></h2><div class="course-select-wrap"><select id="courseSelect">`;
       if (isList(d)) html += `<option value="${esc(d.pack)}" selected>${esc(selectedName)}</option>`;
-      const courseOption = (id, name) => `<option value="${id}"${d.pack === id ? ' selected' : ''}>${esc(name)}</option>`;
+      const courseOption = (id, name) => `<option value="${id}"${(d.starterPath || d.pack) === id ? ' selected' : ''}>${esc(name)}</option>`;
+      html += `<optgroup label="${esc(StarterPaths.copy[ul][0])}">`;
+      for (const id of Object.keys(StarterPaths.paths)) html += courseOption(id+'-first-steps', packOf({pack:id}).name[ul] + ' · 20');
+      html += '</optgroup>';
       for (const group of COURSE_CATALOG.groups) {
         html += `<optgroup label="${esc(group.name[ul])}">`;
         for (const id of group.packs) {
@@ -1252,7 +1285,7 @@ function renderSetup() {
       html += '</select></div></div>';
     }
     const pack = isPack(d) ? packOf(d) : null;
-    if (pack) {
+    if (pack && !StarterPaths.get(d)) {
       const home = COURSE_CATALOG.home[ul];
       const selected = pack.categories.filter((cat) => !d.cats || d.cats.includes(cat.key)).length;
       const summary = selected === pack.categories.length ? `${home.allTopics} · ${selected}` : selected ? fill(home.selectedTopics, { n: selected, total: pack.categories.length }) : home.pickTopics;
@@ -1301,9 +1334,12 @@ function renderSetup() {
     if (saved) Object.assign(d, saved, { modes: PracticeOptions.modes(saved), repeatLearned: saved.repeatLearned !== false });
   });
   if ($('courseSelect')) $('courseSelect').onchange = () => {
-    const pack = $('courseSelect').value;
-    if (d.pack === pack) return;
-    const saved = CoursePreferences.resolve(state, { ...d, pack });
+    const value = $('courseSelect').value;
+    const pack = value.replace(/-first-steps$/, '');
+    const starterPath = StarterPaths.get({pack,starterPath:value})?.id;
+    if (d.pack === pack && d.starterPath === starterPath) return;
+    const saved = CoursePreferences.resolve(state, { ...d, pack, starterPath });
+    delete d.starterPath;
     if (saved) Object.assign(d, saved, { modes: PracticeOptions.modes(saved), repeatLearned: saved.repeatLearned !== false });
     render(); window.scrollTo(0, 0); $('courseSelect').focus({ preventScroll: true });
   };
@@ -1328,6 +1364,7 @@ function renderSetup() {
   const cancel = $('cancelBtn');
   if (cancel) cancel.onclick = () => { draft = null; go('play'); };
   const startPractice = ({ test = false } = {}) => {
+    activation.reset();
     state.settings = PracticeOptions.apply(d);
     state.uiLang = d.base;
     saveState();
@@ -1382,7 +1419,12 @@ function renderPlay() {
     else { $('app').innerHTML = `<p class="task-q" role="status">${esc(t('empty'))}</p><button class="secondary" id="emptySetup">${esc(t('settings'))}</button>`; $('emptySetup').onclick = () => go('setup'); }
     return;
   }
-    current = { ...next, answered: null, feminine: chooseExerciseForm(c,next.concept) };
+    presentTask(c, next);
+}
+
+function presentTask(c, next, feminine = chooseExerciseForm(c,next.concept)) {
+    if (!isList(c.s)) activation.start(JSON.stringify([c.s.pack,c.s.target,c.s.base,c.s.starterPath||null,c.s.cats||null]));
+    current = { ...next, answered: null, feminine };
     if (next.kind === 'quiz' || next.kind === 'new') current.options = makeOptions(c, next.concept, next.qdir);
     if (next.kind === 'build') {
       current.spec = buildSpec(c, next.concept);
@@ -1432,7 +1474,7 @@ function metaHTML(c, x) {
   const progress=practiceProgress(c.s,c.pool);
   const score=progress.learnedWords;
   void x;
-  const course = isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(isPics(c.s) ? 'picsB' : 'topB');
+  const course = StarterPaths.title(c.s, isList(c.s) ? libraryTitle(c.s.pack.slice(5)) : isPack(c.s) ? packOf(c.s).name[uiLang()] : t(isPics(c.s) ? 'picsB' : 'topB'), uiLang());
   const difficulty = isList(c.s) ? '' : t(isPack(c.s) ? 'packDiff' : 'diff')[c.s.diff];
   const label=t('progress', { n: score, m: c.pool.length });
   const hint=progress.mixed?t('progressMixedHint'):'';
@@ -1710,6 +1752,7 @@ function grade(c, x, correct) {
   card.time = Date.now();
 }
 function finishTask(c, x, before) {
+  if (!isList(c.s)) activation.answer(current);
   c.prog.task += 1;
   completeModeTurn(c.s);
   const correct = current.answered === x.id || current.answered === 'ok';
@@ -1794,11 +1837,19 @@ function advance() {
     if (!current.exposureRecorded) {
       c.prog.cards[current.concept.id] = newCard(c, 0, false, { wrong: 0 });
       MemoryScheduler.expose(c.prog.cards[current.concept.id], Date.now());
-      MemoryScheduler.record(MemoryScheduler.session(state, c.s, Date.now()), current.concept.id, Date.now());
+      if (!c.native) MemoryScheduler.record(MemoryScheduler.session(state, c.s, Date.now()), current.concept.id, Date.now());
       c.prog.task += 1;
     }
-    completeModeTurn(c.s);
     c.prog.lastId = current.concept.id;
+    saveState();
+    if (c.native) {
+      // Practise the word just introduced before selecting another new word.
+      // Exposure alone leaves right/wrong and mastery unchanged.
+      const x = current.concept, feminine = current.feminine;
+      presentTask(c, reviewTask(c, x), feminine);
+      return;
+    }
+    completeModeTurn(c.s);
     saveState();
   }
   current = null;
