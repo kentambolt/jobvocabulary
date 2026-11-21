@@ -1,4 +1,4 @@
-// Laver en statisk side pr. pakke på 6 sprog (til søgemaskiner), opdaterer linklisten på
+// Laver en statisk side pr. pakke på 8 sprog (til søgemaskiner), opdaterer linklisten på
 // forsiden og sitemap.xml. Kør efter ændringer i pakkerne: node data/build-pages.js
 const fs = require('fs');
 const path = require('path');
@@ -20,7 +20,6 @@ const ORDER = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'a
 
 const T = {
   da: {
-    title: (n) => `${n}: Lær de danske ord og sætninger | Job Vocabulary`,
     sub: 'Lær de danske ord og sætninger ét ad gangen',
     intro: (total, cats) => `${total} ord og sætninger i ${cats} emner, med oversættelse til engelsk, russisk, ukrainsk, polsk, rumænsk, litauisk og bulgarsk. Det vigtigste kommer først, og det du kan, kommer sjældnere igen.`,
     cta: 'Start med at øve gratis',
@@ -35,7 +34,6 @@ const T = {
     n: (k) => `${k}`,
   },
   en: {
-    title: (n) => `${n}: Learn the Danish words and phrases | Job Vocabulary`,
     sub: 'Learn the Danish words and phrases one at a time',
     intro: (total, cats) => `${total} words and phrases in ${cats} topics, translated into English, Russian, Ukrainian, Polish, Romanian, Lithuanian and Bulgarian. The most important come first, and what you know comes back less often.`,
     cta: 'Start practising for free',
@@ -49,7 +47,6 @@ const T = {
     others: 'Other topics', langs: 'Read this page in', home: 'Home', free: 'Free · no login · works on your phone',
   },
   ru: {
-    title: (n) => `${n}: датские слова и фразы | Job Vocabulary`,
     sub: 'Учите датские слова и фразы по одной за раз',
     intro: (total, cats) => `${total} слов и фраз в ${cats} темах с переводами на русский, украинский, английский, польский, румынский, литовский и болгарский. Сначала самое важное, а то, что вы знаете, повторяется реже.`,
     cta: 'Начать учить бесплатно',
@@ -63,7 +60,6 @@ const T = {
     others: 'Другие темы', langs: 'Эта страница на других языках', home: 'Главная', free: 'Бесплатно · без регистрации · работает на телефоне',
   },
   uk: {
-    title: (n) => `${n}: данські слова і фрази | Job Vocabulary`,
     sub: 'Вивчайте данські слова і фрази по одній за раз',
     intro: (total, cats) => `${total} слів і фраз у ${cats} темах із перекладами українською, російською, англійською, польською, румунською, литовською та болгарською. Спочатку найважливіше, а те, що ви знаєте, повторюється рідше.`,
     cta: 'Почати вчити безкоштовно',
@@ -80,9 +76,14 @@ const T = {
 
 const extraLocales = require('../locales');
 for (const [lang, locale] of Object.entries(extraLocales)) T[lang] = { ...locale.page,
-  title: name => locale.page.titleSuffix ? `${name}: ${locale.page.titleSuffix} | Job Vocabulary` : lang === 'pl' ? `${name}: duńskie słowa i zwroty | Job Vocabulary` : `${name}: cuvinte și expresii în daneză | Job Vocabulary`,
   intro: (total,topics) => locale.page.intro ? locale.page.intro.replace('{total}',total).replace('{topics}',topics) : lang === 'pl' ? `${total} słów i zwrotów w ${topics} tematach, z tłumaczeniem na polski. Najważniejsze są na początku, a znane słowa wracają rzadziej.` : `${total} cuvinte și expresii în ${topics} teme, cu traducere în română. Cele mai importante apar primele, iar cele cunoscute revin mai rar.`
 };
+// Keep the subject first and the repeated suffix short. Do not truncate course names.
+const courseTitleSubject = {
+  da: 'Dansk ordforråd', en: 'Danish vocabulary', ru: 'Датская лексика', uk: 'Данська лексика',
+  pl: 'Duńskie słownictwo', ro: 'Vocabular danez', lt: 'Danų kalbos žodynas', bg: 'Датска лексика',
+};
+for (const lang of LANGS) T[lang].title = name => `${name}: ${courseTitleSubject[lang]} | JobVocabulary`;
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const slugify = (s) => s.toLowerCase().replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa').replace(/ł/g, 'l')
   .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -150,7 +151,7 @@ ${LANGS.map((l) => `  <link rel="alternate" hreflang="${l}" href="${SITE + urlOf
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <script type="application/ld+json">${JSON.stringify({
-    '@context': 'https://schema.org', '@type': 'Course', '@id': url+'#course', url, name: t.title(name).replace(' | Job Vocabulary', ''), description: desc, inLanguage: [...new Set(['da',lang])],
+    '@context': 'https://schema.org', '@type': 'Course', '@id': url+'#course', url, name: t.title(name).replace(' | JobVocabulary', ''), description: desc, inLanguage: [...new Set(['da',lang])],
     isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Job Vocabulary', url: SITE + '/' },
   })}</script>
 </head>
