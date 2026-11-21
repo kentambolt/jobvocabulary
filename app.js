@@ -777,12 +777,21 @@ function pickDistractors(c, concept, qdir, n = 3) {
   const seen = (x) => !!c.prog.cards[x.id];
   const samePos = (x) => x.pos === concept.pos;
   const near = new Set(c.pool.slice(0, Math.max(40, c.pool.indexOf(concept) + 20)).map((x) => x.id));
+  // Keep personal-list fallbacks readable beside a short answer. Shuffle within
+  // this band rather than always selecting the same nearest-length words.
+  const answerLength = Array.from(answer).length;
+  const readableFallback = isList(c.s) ? cand.filter((x) => {
+    const length = Array.from(optionLabel(c, x, qdir)).length;
+    return length >= Math.max(1, Math.floor(answerLength / 2))
+      && length <= Math.max(answerLength + 6, Math.ceil(answerLength * 1.8));
+  }) : [];
   const tiers = [
     scoped.filter((x) => seen(x) && samePos(x)),
     scoped.filter((x) => !seen(x) && samePos(x) && near.has(x.id)),
     scoped.filter((x) => seen(x)),
     scoped.filter((x) => near.has(x.id)),
     scoped,
+    readableFallback,
     // A small selected topic may need other same-course words as wrong choices.
     // These are never added to the question pool or promoted above the chosen level.
     cand,
