@@ -19,3 +19,17 @@ test('job and position remain separate learning words without appearing as wrong
     }
   }
 });
+
+test('hotel room attendants and chambermaids never compete as wrong alternatives in any language pair',()=>{
+  const a=app();
+  a.run(fs.readFileSync(path.join(__dirname,'../packs/hotel.js'),'utf8')+';registerPack(PACKS.hotel);');
+  const languages=['da','en','ru','uk','pl','ro','lt','bg'];
+  for(const target of languages)for(const base of languages.filter(lang=>lang!==target))for(const source of ['stuepige','værelsesassistent'])for(const direction of ['rec','prod']){
+    Object.assign(a.context,{pair:{pack:'hotel',target,base,diff:1,dir:'rec',cats:['people']},source,direction});
+    const result=a.run(`(()=>{const c=ctx(pair),word=c.pool.find(x=>answerSource(x)===source);const other=c.pool.find(x=>answerSource(x)===(source==='stuepige'?'værelsesassistent':'stuepige'));const options=makeOptions(c,word,direction);return {separate:word.id!==other.id,choices:options.length,correct:options.filter(x=>x.id===word.id).length,wrongOverlap:pickDistractors(c,word,direction,1000).some(x=>x.id===other.id)}})()`);
+    assert.equal(result.separate,true);
+    assert.equal(result.choices,4);
+    assert.equal(result.correct,1);
+    assert.equal(result.wrongOverlap,false,JSON.stringify({target,base,source,direction}));
+  }
+});
