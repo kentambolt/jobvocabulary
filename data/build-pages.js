@@ -7,6 +7,7 @@ const crypto = require('crypto');
 const catalog = require('../catalog');
 const seo = require('./seo-pages');
 const courseRoutes = require('./course-routes');
+const courseSearchAliases = require('./course-search-aliases.json');
 const {writeSitemap} = require('./build-sitemap');
 
 const ROOT = path.join(__dirname, '..');
@@ -232,7 +233,10 @@ for (const lang of LANGS) {
     const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
     const description = p ? p.desc[lang] : id === 'top' ? l.basic : l.pictureDesc;
     const href = p ? urlOf(p, lang) : `/?ui=${lang}#start=${id}${lang === 'da' ? '' : `&amp;base=${lang}`}`;
-    return `<article class="course-card" data-course><a class="course-card-link" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
+    const searchNames = p ? Object.values(p.name) : LANGS.map(code => catalog.labels[code][id === 'top' ? 'general' : 'pictures']);
+    const searchTopics = p ? p.categories.map(c => c.name[lang]) : [];
+    const searchText = [...searchNames, ...searchTopics, courseSearchAliases[id] || '', ...Object.values(routes[id] || {})].join(' ');
+    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${p.categories.reduce((sum, c) => sum + c.rows.length, 0)} ${esc(l.units)} · ${p.categories.length} ${esc(l.topics)}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
   };
   const canonical = `${SITE}/${lang}/`;
   const output = `<!doctype html>
