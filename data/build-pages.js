@@ -99,6 +99,11 @@ for (const [id,words] of Object.entries(starterPaths.paths)) {
   if (words.length!==20 || new Set(words).size!==20 || words.some(word=>!rows.some(row=>row[1]===word && row[0]===1 && row.slice(1).every(Boolean)))) throw Error('Invalid starter path: '+id);
 }
 const knownPacks=new Set(packs.map(pack=>pack.id));
+for(const group of catalog.groups){
+  const sections=catalog.sections(group),ids=sections.flatMap(section=>section.packs);
+  if(new Set(ids).size!==ids.length||JSON.stringify([...ids].sort())!==JSON.stringify([...group.packs].sort()))throw Error('Invalid catalogue subcategories: '+group.id);
+  for(const section of sections)for(const lang of LANGS)if(!section.name[lang]?.trim())throw Error('Missing category translation: '+section.id+'/'+lang);
+}
 for(const pack of packs) {
   if(courseOrder.filter(id=>id===pack.id).length!==1) throw new Error('Course must belong to exactly one catalogue group: '+pack.id);
   const related=catalog.related[pack.id]||[];
@@ -238,7 +243,7 @@ for (const lang of LANGS) {
     uk: { resume: 'Продовжте з того місця, де зупинилися', action: 'Продовжити навчання', words: 'Мої слова', favorites: 'Збережені слова' },
   }[lang] || extraLocales[lang].personal;
   const resumeNames = { ...Object.fromEntries(packs.map((p) => [p.id, p.name[lang]])), ...Object.fromEntries(Object.keys(starterPaths.paths).map(id=>[id+'-first-steps',packs.find(p=>p.id===id).name[lang]+' · '+starterPaths.copy[lang][0]])), top: l.general, pics: l.pictures, favorites: personal.favorites };
-  const card = (id) => {
+  const card = (id,heading='h3') => {
     const p = packs.find((p) => p.id === id);
     const title = p ? p.name[lang] : id === 'top' ? l.general : l.pictures;
     const description = p ? p.desc[lang] : id === 'top' ? l.basic : l.pictureDesc;
@@ -246,7 +251,11 @@ for (const lang of LANGS) {
     const searchNames = p ? Object.values(p.name) : LANGS.map(code => catalog.labels[code][id === 'top' ? 'general' : 'pictures']);
     const searchTopics = p ? p.categories.map(c => c.name[lang]) : [];
     const searchText = [...searchNames, ...searchTopics, courseSearchAliases[id] || '', ...Object.values(routes[id] || {})].join(' ');
-    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" data-pack="${id}" href="${href}" aria-labelledby="course-${id}-title"><h3 id="course-${id}-title">${esc(title)}</h3><p>${esc(description)}</p>${p ? `<p class="course-meta">${esc(courseCounts.count(lang,p.categories.reduce((sum,c)=>sum+c.rows.length,0),p.categories.length))}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
+    return `<article class="course-card" data-course data-search="${esc(searchText)}"><a class="course-card-link" data-pack="${id}" href="${href}" aria-labelledby="course-${id}-title"><${heading} id="course-${id}-title">${esc(title)}</${heading}><p>${esc(description)}</p>${p ? `<p class="course-meta">${esc(courseCounts.count(lang,p.categories.reduce((sum,c)=>sum+c.rows.length,0),p.categories.length))}</p>` : ''}<span class="course-open" aria-hidden="true">${esc(p ? l.open : l.practice)}</span></a></article>`;
+  };
+  const subcategory=section=>{
+    const preview=section.packs.map(id=>packs.find(p=>p.id===id).name[lang]).join(' · ');
+    return `<details class="course-subcategory" id="category-${section.id}" data-course-subcategory><summary><h3 class="subcategory-copy">${esc(section.name[lang])}<span class="subcategory-preview" aria-hidden="true">${esc(preview)}</span></h3><span class="subcategory-count">${section.packs.length}</span><svg class="subcategory-chevron" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="course-grid">${section.packs.map(id=>card(id,'h4')).join('')}</div></details>`;
   };
   const canonical = `${SITE}/${lang}/`;
   const output = `<!doctype html>
@@ -280,7 +289,7 @@ ${LANGS.map((other) => `  <link rel="alternate" hreflang="${other}" href="${SITE
     <div class="catalogue-search"><label for="courseSearch">${esc(l.search)}</label><input id="courseSearch" type="search" autocomplete="off" placeholder="${esc(l.search)}" aria-controls="courseSections"></div>
     <nav class="category-nav" aria-label="${esc(l.catalog)}">${catalog.groups.map((g,i) => `<a href="#${g.id}" aria-label="${esc(g.name[lang])}"><span class="category-full">${esc(g.name[lang])}</span><span class="category-short" aria-hidden="true">${esc(copy.shortGroups[i])}</span></a>`).join('')}</nav>
     <p id="courseEmpty" role="status" hidden>${esc(l.empty)}</p>
-    <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p><div class="course-grid">${g.packs.map(card).join('')}</div></section>`).join('')}</div>
+    <div id="courseSections">${catalog.groups.map((g) => `<section class="catalogue-group" id="${g.id}" data-course-group><h2>${esc(g.name[lang])}</h2><p class="group-description">${esc(g.desc[lang])}</p>${catalog.subcategories.some(category=>category.group===g.id)?`<div class="course-subcategories">${catalog.sections(g).map(subcategory).join('')}</div>`:`<div class="course-grid">${g.packs.map(id=>card(id)).join('')}</div>`}</section>`).join('')}</div>
     <footer class="catalogue-footer">Job Vocabulary · <a href="/?ui=${lang}#forside">${esc(T[lang].home)}</a> · <a href="${seo.guideIndex(lang)}">${esc(seo.guideLabels[lang])}</a> · <a href="/${lang}/privacy/">${esc(privacy.copy[lang].title)}</a></footer>
   </main>
 </body>
