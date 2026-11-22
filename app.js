@@ -1276,17 +1276,19 @@ function renderSetup() {
       for (const id of Object.keys(StarterPaths.paths)) html += courseOption(id+'-first-steps', packOf({pack:id}).name[ul] + ' · 20');
       html += '</optgroup>';
       for (const group of COURSE_CATALOG.groups) {
-        html += `<optgroup label="${esc(group.name[ul])}">`;
-        for (const id of group.packs) {
-          if (id === TOP) { if (countPool({ ...d, pack: TOP })) html += courseOption(TOP, t('topB')); }
-          else if (id === PICS) {
-            if (nPicWords >= 8) html += courseOption(PICS, t('picsB'));
-          } else {
-            const p = PACK_LIST.find((pack) => pack.id === id);
-            if (p) html += courseOption(p.id, p.name[ul]);
+        for (const section of COURSE_CATALOG.sections(group)) {
+          html += `<optgroup label="${esc(section.name[ul])}">`;
+          for (const id of section.packs) {
+            if (id === TOP) { if (countPool({ ...d, pack: TOP })) html += courseOption(TOP, t('topB')); }
+            else if (id === PICS) {
+              if (nPicWords >= 8) html += courseOption(PICS, t('picsB'));
+            } else {
+              const p = PACK_LIST.find((pack) => pack.id === id);
+              if (p) html += courseOption(p.id, p.name[ul]);
+            }
           }
+          html += '</optgroup>';
         }
-        html += '</optgroup>';
       }
       html += '</select></div></div>';
     }
