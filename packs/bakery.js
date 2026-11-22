@@ -130,6 +130,59 @@ PACKS.bakery = {
       [2,"Vi har fået en ny bestilling.","We have received a new order.","Мы получили новый заказ.","Ми отримали нове замовлення.","Otrzymaliśmy nowe zamówienie.","Am primit o comandă nouă.","Gavome naują užsakymą.","Получихме нова поръчка."],
       [3,"Skriv afhentningstidspunktet på bestillingen.","Write the collection time on the order.","Запишите время выдачи в заказе.","Запишіть час видачі в замовленні.","Zapisz godzinę odbioru na zamówieniu.","Scrieți ora ridicării pe comandă.","Užrašykite atsiėmimo laiką užsakyme.","Запишете часа за получаване в поръчката."],
       [3,"Lad os kontrollere antallet, før ordren går ud.","Let us check the quantity before the order leaves.","Давайте проверим количество перед отправкой заказа.","Перевірмо кількість перед відправленням замовлення.","Sprawdźmy liczbę sztuk przed wydaniem zamówienia.","Să verificăm cantitatea înainte ca această comandă să plece.","Patikrinkime kiekį prieš išsiųsdami užsakymą.","Нека проверим количеството, преди поръчката да бъде изпратена."]
+    ] },
+    { key: "takeawayFlourDough", type: "word", name: {"da":"Mel og dej","en":"Flour and dough","ru":"Мука и тесто","uk":"Борошно і тісто","pl":"Mąka i ciasto","ro":"Făină și aluat","lt":"Miltai ir tešla","bg":"Брашно и тесто"}, rows: [
+      [2,"speltmel","spelt flour","мука из спельты","борошно зі спельти","mąka orkiszowa","făină de spelt","speltos miltai","брашно от лимец (спелта)"],
+      [2,"fuldkornsmel","wholemeal flour","цельнозерновая мука","цільнозернове борошно","mąka pełnoziarnista","făină integrală","viso grūdo miltai","пълнозърнесто брашно"],
+      [2,"en melsæk","sack of flour","мешок муки","мішок борошна","worek mąki","sac de făină","miltų maišas","чувал брашно"],
+      [2,"kerner","seeds (for bread)","семена (для хлеба)","насіння (для хліба)","ziarna (do chleba)","semințe (pentru pâine)","sėklos (duonai)","семена (за хляб)"],
+      [2,"kardemomme","cardamom","кардамон","кардамон","kardamon","cardamom","kardamonas","кардамон"],
+      [2,"kanel","cinnamon","корица","кориця","cynamon","scorțișoară","cinamonas","канела"],
+      [2,"remonce","butter and sugar filling","масляно-сахарная начинка","масляно-цукрова начинка","nadzienie z masła i cukru","umplutură din unt și zahăr","sviesto ir cukraus įdaras (remonce)","плънка от масло и захар (remonce)"],
+      [2,"marcipan","marzipan","марципан","марципан","marcepan","marțipan","marcipanas","марципан"],
+      [3,"glasur","icing","глазурь","глазур","lukier","glazură","glajus","глазура"],
+      [3,"flormelis","icing sugar","сахарная пудра","цукрова пудра","cukier puder","zahăr pudră","cukraus pudra","пудра захар"],
+      [3,"vaniljecreme","vanilla custard","заварной крем","заварний крем","krem waniliowy","cremă de vanilie","vanilinis kremas","ванилов крем"]
+    ] },
+    { key: "takeawayBreadCakes", type: "word", name: {"da":"Brød og kager","en":"Bread and cakes","ru":"Хлеб и выпечка","uk":"Хліб і випічка","pl":"Pieczywo i ciasta","ro":"Pâine și prăjituri","lt":"Duona ir pyragai","bg":"Хляб и сладкиши"}, rows: [
+      [1,"en bolle","bread roll","булочка","булочка","bułka","chiflă","bandelė","хлебче"],
+      [1,"en kage","cake","пирог","пиріг","ciasto (wypiek)","prăjitură","pyragas","сладкиш"],
+      [2,"en tebirkes","poppy seed pastry","слойка с маком","листкова булочка з маком","drożdżówka z makiem","foietaj cu mac","sluoksniuota bandelė su aguonomis","многолистно хлебче с мак"],
+      [2,"en kringle","kringle (pretzel-shaped pastry)","крендель","крендель","kringel (duńskie ciasto)","covrig danez (kringle)","kringelis (riestainio formos pyragas)","крингъл (сладкиш във формата на брецел)"],
+      [2,"et surdejsbrød","sourdough bread","хлеб на закваске","хліб на заквасці","chleb na zakwasie","pâine cu maia","raugo duona","хляб с квас"],
+      [3,"en hindbærsnitte","raspberry slice","пирожное с малиновым джемом","тістечко з малиновим джемом","ciastko z dżemem malinowym","prăjitură cu gem de zmeură","pyragaitis su avietių uogiene","сладкиш с малиново сладко"],
+      [3,"en kagemand","person-shaped birthday cake","праздничный торт в форме человечка","святковий торт у формі чоловічка","tort urodzinowy w kształcie ludzika","tort de ziua de naștere în formă de omuleț","pyragas-žmogeliukas (gimtadieniui)","торта-човече (за рожден ден)"],
+      [3,"en fastelavnsbolle","Shrovetide bun","булочка к Масленице","булочка до Масниці","bułka zapustna","chiflă de carnaval","Užgavėnių bandelė","кифла за Заговезни (fastelavnsbolle)"]
+    ] },
+    { key: "takeawayBakeryWork", type: "word", name: {"da":"Bageriet: folk, udstyr og arbejde","en":"The bakery: people, equipment and work","ru":"Пекарня: люди, оборудование и работа","uk":"Пекарня: люди, обладнання і робота","pl":"Piekarnia: ludzie, sprzęt i praca","ro":"Brutăria: oameni, echipamente și muncă","lt":"Kepykla: žmonės, įranga ir darbas","bg":"Пекарната: хора, оборудване и работа"}, rows: [
+      [1,"en ekspedient","shop assistant","продавец","продавець","sprzedawca","vânzător","pardavėjas","продавач"],
+      [1,"at hæve","to prove (rise)","подходить (о тесте)","підходити (про тісто)","rosnąć (o cieście)","a dospi","kilti (apie tešlą)","втасвам (за тесто)"],
+      [2,"at forme","to shape","формовать","формувати","formować","a modela","formuoti","оформям"],
+      [1,"en bageovn","baking oven","хлебопекарная печь","хлібопекарська піч","piec piekarniczy","cuptor de panificație","duonos kepimo krosnis","хлебопекарна пещ"],
+      [1,"en æltemaskine","dough mixer","тестомес","тістоміс","miesiarka do ciasta","malaxor de aluat","tešlos minkymo mašina","тестомесачна машина"],
+      [2,"et hæveskab","proving cabinet","расстоечный шкаф","розстійна шафа","komora garownicza","dulap de dospire","tešlos kildinimo spinta","камера за втасване"],
+      [2,"at drysse","to sprinkle","посыпать","посипати","posypywać","a presăra","barstyti","поръсвам"],
+      [2,"en ovnhandske","oven glove","кухонная рукавица","кухонна рукавиця","rękawica kuchenna","mănușă de cuptor","krosnies pirštinė","ръкавица за фурна"],
+      [1,"en morgenvagt","early shift","ранняя смена","рання зміна","poranna zmiana","tură de dimineață","rytinė pamaina","ранна смяна"],
+      [2,"natarbejde","night work","ночная работа","нічна робота","praca w nocy","muncă de noapte","naktinis darbas","нощна работа"]
+    ] },
+    { key: "takeawayInTheBakery", type: "phrase", name: {"da":"I bageriet","en":"In the bakery","ru":"В пекарне","uk":"У пекарні","pl":"W piekarni","ro":"În brutărie","lt":"Kepykloje","bg":"В пекарната"}, rows: [
+      [1,"Dejen skal hæve i en time.","The dough needs to prove for an hour.","Тесто должно подходить час.","Тісто має підходити годину.","Ciasto musi rosnąć przez godzinę.","Aluatul trebuie să dospească o oră.","Tešla turi kilti valandą.","Тестото трябва да втасва един час."],
+      [1,"Ælt dejen i ti minutter.","Knead the dough for ten minutes.","Меси тесто десять минут.","Міси тісто десять хвилин.","Wyrabiaj ciasto przez dziesięć minut.","Frământă aluatul zece minute.","Minkyk tešlą dešimt minučių.","Меси тестото десет минути."],
+      [1,"Sæt pladerne i ovnen.","Put the trays in the oven.","Поставь противни в печь.","Постав дека в піч.","Wstaw blachy do pieca.","Pune tăvile în cuptor.","Įdėk skardas į krosnį.","Сложи тавите в пещта."],
+      [1,"Tag brødene ud af ovnen.","Take the loaves out of the oven.","Вынь хлеб из печи.","Вийми хліб із печі.","Wyjmij chleby z pieca.","Scoate pâinile din cuptor.","Ištrauk kepalus iš krosnies.","Извади хлябовете от пещта."],
+      [1,"Hvor varm skal ovnen være?","How hot should the oven be?","Какая температура должна быть в печи?","Яка температура має бути в печі?","Jak gorący ma być piec?","Cât de fierbinte trebuie să fie cuptorul?","Kokia turi būti krosnies temperatūra?","На колко градуса трябва да е пещта?"],
+      [1,"Vi starter klokken fire i morgen.","We start at four tomorrow.","Завтра начинаем в четыре.","Завтра починаємо о четвертій.","Jutro zaczynamy o czwartej.","Mâine începem la ora patru.","Rytoj pradedame ketvirtą valandą.","Утре започваме в четири."],
+      [2,"Fodr surdejen.","Feed the sourdough.","Подкорми закваску.","Підгодуй закваску.","Dokarm zakwas.","Hrănește maiaua.","Pamaitink raugą.","Нахрани кваса."],
+      [2,"Brødet er ikke bagt færdigt.","The bread isn't baked through.","Хлеб не допёкся.","Хліб не допікся.","Chleb nie jest dopieczony.","Pâinea nu e coaptă de tot.","Duona neiškepusi iki galo.","Хлябът не е допечен."],
+      [2,"Pensl dem med æg.","Brush them with egg.","Смажь их яйцом.","Змасти їх яйцем.","Posmaruj je jajkiem.","Unge-le cu ou.","Patepk juos kiaušiniu.","Намажи ги с яйце."],
+      [2,"Hvor mange rugbrød skal vi bage i dag?","How many rye loaves are we baking today?","Сколько ржаного хлеба печём сегодня?","Скільки житнього хліба печемо сьогодні?","Ile chlebów żytnich pieczemy dziś?","Câte pâini de secară coacem azi?","Kiek ruginės duonos kepalų šiandien kepame?","Колко ръжени хляба печем днес?"],
+      [2,"Rugbrødet skal køle af, før det bliver skåret.","The rye bread must cool before it's sliced.","Ржаной хлеб должен остыть, прежде чем его нарезать.","Житній хліб має охолонути, перш ніж його нарізати.","Chleb żytni musi ostygnąć, zanim się go pokroi.","Pâinea de secară trebuie să se răcească înainte de a fi feliată.","Ruginė duona turi atvėsti, prieš ją pjaustant.","Ръженият хляб трябва да изстине, преди да се нареже."],
+      [2,"Fyld disken op med rundstykker.","Restock the counter with breakfast rolls.","Пополни витрину булочками.","Поповни вітрину булочками.","Uzupełnij ladę bułkami.","Umple vitrina cu chifle.","Papildyk vitriną pusryčių bandelėmis.","Зареди витрината с хлебчета."],
+      [2,"Jeg er træt, jeg har været her siden klokken tre.","I'm tired, I've been here since three.","Я устал(а), я здесь с трёх часов.","Я втомився(лася), я тут із третьої години.","Jestem zmęczony(-a), jestem tu od trzeciej.","Sunt obosit(ă), sunt aici de la ora trei.","Esu pavargęs (-usi), čia esu nuo trečios ryto.","Уморен(а) съм, тук съм от три сутринта."],
+      [3,"Kagerne skal pyntes før klokken ti.","The cakes must be decorated before ten.","Торты нужно украсить до десяти.","Торти треба прикрасити до десятої.","Torty trzeba udekorować przed dziesiątą.","Torturile trebuie decorate înainte de ora zece.","Tortus reikia papuošti iki dešimtos.","Тортите трябва да се украсят преди десет."],
+      [3,"Jeg har lavet for meget dej.","I've made too much dough.","Я сделал(а) слишком много теста.","Я зробив(ла) забагато тіста.","Zrobiłem(-am) za dużo ciasta.","Am făcut prea mult aluat.","Užmaišiau per daug tešlos.","Направих твърде много тесто."],
+      [1,"Vask hænder, før du rører ved maden.","Wash your hands before you touch the food.","Вымой руки, прежде чем трогать еду.","Помий руки, перш ніж торкатися їжі.","Umyj ręce, zanim dotkniesz jedzenia.","Spală-te pe mâini înainte să atingi mâncarea.","Nusiplauk rankas prieš liesdamas (-a) maistą.","Измий си ръцете, преди да пипаш храната."]
     ] }
   ]
 };

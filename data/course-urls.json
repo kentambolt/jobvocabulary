@@ -69,6 +69,16 @@
     "ru": "/ru/care/",
     "uk": "/uk/care/"
   },
+  "carowner": {
+    "bg": "/bg/carowner/",
+    "da": "/da/bil-som-ejer/",
+    "en": "/en/owning-a-car/",
+    "lt": "/lt/automobilio-turejimas/",
+    "pl": "/pl/wlasny-samochod/",
+    "ro": "/ro/proprietar-de-masina/",
+    "ru": "/ru/carowner/",
+    "uk": "/uk/carowner/"
+  },
   "childcare": {
     "bg": "/bg/childcare/",
     "da": "/da/daginstitution-medhjaelper/",
@@ -98,6 +108,16 @@
     "ro": "/ro/curatenie/",
     "ru": "/ru/cleaning/",
     "uk": "/uk/cleaning/"
+  },
+  "community": {
+    "bg": "/bg/community/",
+    "da": "/da/naboer-foreninger-og-fritid/",
+    "en": "/en/neighbours-clubs-and-leisure/",
+    "lt": "/lt/kaimynai-draugijos-ir-laisvalaikis/",
+    "pl": "/pl/sasiedzi-kluby-i-czas-wolny/",
+    "ro": "/ro/vecini-cluburi-si-timp-liber/",
+    "ru": "/ru/community/",
+    "uk": "/uk/community/"
   },
   "construction": {
     "bg": "/bg/construction/",
@@ -139,6 +159,16 @@
     "ru": "/ru/essentials/",
     "uk": "/uk/essentials/"
   },
+  "fish": {
+    "bg": "/bg/fish/",
+    "da": "/da/fisk-og-fiskeindustri/",
+    "en": "/en/fish-and-the-fishing-industry/",
+    "lt": "/lt/zuvis-ir-zuvies-pramone/",
+    "pl": "/pl/ryby-i-przemysl-rybny/",
+    "ro": "/ro/peste-si-industria-pestelui/",
+    "ru": "/ru/fish/",
+    "uk": "/uk/fish/"
+  },
   "foodindustry": {
     "bg": "/bg/foodindustry/",
     "da": "/da/foedevareindustri-og-slagteri/",
@@ -168,6 +198,16 @@
     "ro": "/ro/transportul-de-zi-cu-zi/",
     "ru": "/ru/getaround/",
     "uk": "/uk/getaround/"
+  },
+  "harbour": {
+    "bg": "/bg/harbour/",
+    "da": "/da/havn-skib-offshore-og-vindmoeller/",
+    "en": "/en/port-ship-offshore-and-wind-turbines/",
+    "lt": "/lt/uostas-laivai-ir-juros-vejo-energetika/",
+    "pl": "/pl/port-statek-offshore-i-turbiny-wiatrowe/",
+    "ro": "/ro/port-nava-offshore-si-turbine-eoliene/",
+    "ru": "/ru/harbour/",
+    "uk": "/uk/harbour/"
   },
   "health": {
     "bg": "/bg/health/",
@@ -229,6 +269,16 @@
     "ru": "/ru/laundry/",
     "uk": "/uk/laundry/"
   },
+  "medicaldanish": {
+    "bg": "/bg/medicaldanish/",
+    "da": "/da/medicinsk-dansk-for-sundhedspersonale/",
+    "en": "/en/medical-danish-for-healthcare-professionals/",
+    "lt": "/lt/medicinine-danu-kalba-sveikatos-prieziuros-darbuotojams/",
+    "pl": "/pl/medyczny-dunski-dla-personelu-medycznego/",
+    "ro": "/ro/daneza-medicala-pentru-personalul-medical/",
+    "ru": "/ru/medicaldanish/",
+    "uk": "/uk/medicaldanish/"
+  },
   "money": {
     "bg": "/bg/money/",
     "da": "/da/penge-bank-og-svindel/",
@@ -249,6 +299,16 @@
     "ru": "/ru/office/",
     "uk": "/uk/office/"
   },
+  "pets": {
+    "bg": "/bg/pets/",
+    "da": "/da/kaeledyr/",
+    "en": "/en/pets/",
+    "lt": "/lt/naminiai-gyvunai/",
+    "pl": "/pl/zwierzeta-domowe/",
+    "ro": "/ro/animale-de-companie/",
+    "ru": "/ru/pets/",
+    "uk": "/uk/pets/"
+  },
   "pregnancy": {
     "bg": "/bg/pregnancy/",
     "da": "/da/graviditet-foedsel-og-spaedboern/",
@@ -268,6 +328,16 @@
     "ro": "/ro/intretinerea-cladirilor-si-ingrijitor/",
     "ru": "/ru/propertyservice/",
     "uk": "/uk/propertyservice/"
+  },
+  "removals": {
+    "bg": "/bg/removals/",
+    "da": "/da/flytning/",
+    "en": "/en/removals/",
+    "lt": "/lt/perkraustymas/",
+    "pl": "/pl/przeprowadzka/",
+    "ro": "/ro/mutarea/",
+    "ru": "/ru/removals/",
+    "uk": "/uk/removals/"
   },
   "restaurant": {
     "bg": "/bg/restaurant/",
@@ -309,6 +379,16 @@
     "ru": "/ru/school/",
     "uk": "/uk/school/"
   },
+  "security": {
+    "bg": "/bg/security/",
+    "da": "/da/vagt-og-sikkerhed/",
+    "en": "/en/security-guard-work/",
+    "lt": "/lt/apsauga-ir-saugumas/",
+    "pl": "/pl/ochrona-i-bezpieczenstwo/",
+    "ro": "/ro/paza-si-securitate/",
+    "ru": "/ru/security/",
+    "uk": "/uk/security/"
+  },
   "shopping": {
     "bg": "/bg/shopping/",
     "da": "/da/indkoeb-og-forbrugerrettigheder/",
@@ -318,6 +398,26 @@
     "ro": "/ro/cumparaturi-si-drepturile-consumatorului/",
     "ru": "/ru/shopping/",
     "uk": "/uk/shopping/"
+  },
+  "trades": {
+    "bg": "/bg/trades/",
+    "da": "/da/byggefag-i-dybden/",
+    "en": "/en/building-trades-in-depth/",
+    "lt": "/lt/statybos-amatai-issamiau/",
+    "pl": "/pl/zawody-budowlane-w-szczegolach/",
+    "ro": "/ro/meserii-din-constructii-in-detaliu/",
+    "ru": "/ru/trades/",
+    "uk": "/uk/trades/"
+  },
+  "traditions": {
+    "bg": "/bg/traditions/",
+    "da": "/da/danske-traditioner-og-hoejtider/",
+    "en": "/en/danish-traditions-and-holidays/",
+    "lt": "/lt/danijos-tradicijos-ir-sventes/",
+    "pl": "/pl/dunskie-tradycje-i-swieta/",
+    "ro": "/ro/traditii-si-sarbatori-daneze/",
+    "ru": "/ru/traditions/",
+    "uk": "/uk/traditions/"
   },
   "transport": {
     "bg": "/bg/transport/",
@@ -348,6 +448,16 @@
     "ro": "/ro/depozit-si-productie/",
     "ru": "/ru/warehouse/",
     "uk": "/uk/warehouse/"
+  },
+  "wellbeing": {
+    "bg": "/bg/wellbeing/",
+    "da": "/da/psykisk-trivsel-og-ensomhed/",
+    "en": "/en/mental-wellbeing-and-loneliness/",
+    "lt": "/lt/psichologine-gerove-ir-vienatve/",
+    "pl": "/pl/dobrostan-psychiczny-i-samotnosc/",
+    "ro": "/ro/starea-de-bine-psihica-si-singuratatea/",
+    "ru": "/ru/wellbeing/",
+    "uk": "/uk/wellbeing/"
   },
   "worklife": {
     "bg": "/bg/worklife/",

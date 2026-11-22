@@ -44,7 +44,10 @@ test('real scissors lookup returns one saved result while all dictionary records
   a.run("wordLibrary.add(canonicalWord('salon:en saks'));");
   const saved=a.run('wordLibrary.data.favorites[0]');
   const result=JSON.parse(a.run('JSON.stringify(dictionaryMatches("nożyczki",state.settings))'));
-  assert.equal(result.length,1);assert.equal(result[0].id,saved);
+  // More specific scissors and whole sentences may also match the search term.
+  // The unqualified meaning still appears once and prefers the saved identity.
+  const exact=result.filter(entry=>WordEntry.exact(entry,'pl','nożyczki'));
+  assert.equal(exact.length,1);assert.equal(exact[0].id,saved);
   assert.equal(a.run('wordLibrary.data.favorites.length'),1);
   assert.equal(a.run('dictionaryData.entries.length'),dictionary.entries.length+common.entries.length);
 });

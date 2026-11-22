@@ -1,5 +1,5 @@
-'use strict';
-module.exports={
+// Course-specific practice situations.
+module.exports = {
   "airport": [
     "Danish for an airport shift",
     "An airport shift can involve baggage, equipment, colleagues and passengers. Start with the places and tools used in your role. Then practise short messages in which you need to recognise both an action and a location.",
@@ -322,6 +322,105 @@ module.exports={
       "Ask how linen should be sorted and folded.",
       "Report stains, holes and machine errors.",
       "Confirm quantities, customer names and collection times."
+    ]
+  ],
+  "carowner": [
+    "Situations you can practise",
+    "Owning a car brings conversations about insurance, registration, parking and workshop visits. Practise describing damage and asking about payment or roadside assistance.",
+    [
+      "Buying and selling a used car",
+      "Parking and paying",
+      "At the pump, the charger and the car wash"
+    ]
+  ],
+  "community": [
+    "Situations you can practise",
+    "Practise conversations with neighbours and at local clubs. Learn to invite someone along, ask about house rules and take part in a tenants’ meeting.",
+    [
+      "Meeting the neighbours",
+      "Noise and house rules",
+      "Laundry, bikes and rubbish"
+    ]
+  ],
+  "fish": [
+    "Situations you can practise",
+    "In fish processing or on board, you need names for ingredients, equipment and tasks. Practise messages about processing, chilling and cleaning.",
+    [
+      "On the filleting line",
+      "Freshness and parasites",
+      "Ice, chilling and freezing"
+    ]
+  ],
+  "harbour": [
+    "Situations you can practise",
+    "At the harbour and on board, short messages can concern cargo, weather, shift changes and equipment. Practise asking precise questions and saying when something needs clarification.",
+    [
+      "Working on the quay",
+      "Everyday life on board",
+      "Alarms and emergencies"
+    ]
+  ],
+  "medicaldanish": [
+    "Situations you can practise",
+    "Practise professional Danish for patient conversations and ward teamwork. Ask about symptoms, explain an examination and hand over to a colleague. Language practice does not replace clinical instructions or professional authorisation.",
+    [
+      "Questions to the patient",
+      "During the examination",
+      "Explaining diagnosis and treatment"
+    ]
+  ],
+  "pets": [
+    "Situations you can practise",
+    "Practise conversations about feeding, walking and looking after a pet. Describe symptoms to a vet and ask about insurance or travel.",
+    [
+      "Buying and adopting",
+      "At the vet",
+      "Walks, leads and rules"
+    ]
+  ],
+  "removals": [
+    "Situations you can practise",
+    "On a removal job, agree on placement, packing and access with the customer. Practise explaining damage and checking which items need moving.",
+    [
+      "On the job (colleagues)",
+      "Lifting and safety",
+      "With the customer: agreement and price"
+    ]
+  ],
+  "security": [
+    "Situations you can practise",
+    "Security work uses language for access control, rounds and handovers. Practise giving clear messages and asking for help during an incident. Language practice does not replace security training or local instructions.",
+    [
+      "Alarms and call-outs",
+      "Radio, handover and night shifts",
+      "Access control and reception"
+    ]
+  ],
+  "trades": [
+    "Situations you can practise",
+    "Explore trade vocabulary for electrical work, plumbing, decorating, bricklaying and carpentry. Practise agreeing on materials, explaining a task and coordinating with other trades. Language practice does not replace vocational training or authorisation.",
+    [
+      "Electrical work",
+      "Plumbing work",
+      "Painters, bricklayers and carpenters at work"
+    ]
+  ],
+  "traditions": [
+    "Situations you can practise",
+    "Danish holidays and family celebrations have their own words and customs. Practise replying to invitations, offering congratulations and asking about a tradition.",
+    [
+      "Greetings and good wishes",
+      "Invitations and presents",
+      "At Christmas and New Year"
+    ]
+  ],
+  "wellbeing": [
+    "Situations you can practise",
+    "Finding words for stress, loneliness or grief can be difficult. Practise explaining how you feel, asking for help and supporting a friend. This course teaches language and does not replace advice or treatment.",
+    [
+      "How I feel",
+      "Talking to your manager about stress",
+      "Making new contacts"
     ]
   ]
 };

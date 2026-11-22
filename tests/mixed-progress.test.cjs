@@ -18,7 +18,7 @@ test('the first real correct mixed-mode answer advances the bar without claiming
   assert.equal(a.run('state.settings.diff'),1);
   const html=a.run('metaHTML(ctx(),current.concept)');
   assert.match(html,/role="progressbar"/);assert.doesNotMatch(html,/aria-valuenow="0"/);
-  assert.match(html,/Išmokta 0 iš 58/);
+  assert.ok(html.includes(`Išmokta 0 iš ${a.run('ctx().pool.length')}`));
 });
 
 test('a word needs every selected mode for full mastery and one later error affects only its own part',()=>{
