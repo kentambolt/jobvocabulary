@@ -9,7 +9,7 @@ function catalogue(initialQuery='',hash='') {
   const empty = {hidden:true};
   const cards = Object.entries(aliases).map(([id, search]) => ({id, textContent:id, dataset:{search}, hidden:false}));
   const groups=require('../catalog').groups.map(group=>({id:group.id,hidden:false,querySelectorAll:()=>cards.filter(card=>group.packs.includes(card.id))}));
-  const subcategories=require('../catalog').subcategories.map(category=>({id:'category-'+category.id,hidden:false,open:false,count:{textContent:String(category.packs.length)},preview:{hidden:false},querySelectorAll:()=>cards.filter(card=>category.packs.includes(card.id)),querySelector(selector){return selector==='.subcategory-count'?this.count:this.preview;}}));
+  const subcategories=require('../catalog').subcategories.map(category=>({id:'category-'+category.id,hidden:false,open:false,preview:{hidden:false},querySelectorAll:()=>cards.filter(card=>category.packs.includes(card.id)),querySelector(){return this.preview;}}));
   const links=groups.map(group=>({hidden:false,attributes:{href:'#'+group.id},getAttribute(name){return this.attributes[name];},setAttribute(name,value){this.attributes[name]=value;},removeAttribute(name){delete this.attributes[name];}}));
   const listeners={},window={location:{hash},addEventListener(name,fn){listeners[name]=fn;}};
   const document = {
@@ -77,11 +77,11 @@ test('search opens matching subcategories, hides empty ones and restores the pre
   const page=catalogue(),food=page.subcategories.find(c=>c.id==='category-food'),logistics=page.subcategories.find(c=>c.id==='category-logistics');
   food.open=true;
   assert.deepEqual(page.search('driver truck'),['trucking']);
-  assert.equal(logistics.open,true);assert.equal(logistics.hidden,false);assert.equal(logistics.count.textContent,'1');
+  assert.equal(logistics.open,true);assert.equal(logistics.hidden,false);
   assert.equal(food.hidden,true);assert.equal(food.open,false);assert.equal(food.preview.hidden,true);
   page.search('zzzznomatchingcourse');assert.ok(page.subcategories.every(c=>c.hidden&&!c.open));
   page.search('');assert.equal(food.open,true);assert.equal(logistics.open,false);
-  assert.ok(page.subcategories.every(c=>!c.hidden&&!c.preview.hidden));assert.equal(food.count.textContent,'4');
+  assert.ok(page.subcategories.every(c=>!c.hidden&&!c.preview.hidden));
 });
 
 test('every published course has exactly one translated subcategory and stays linked without JavaScript',()=>{
@@ -93,6 +93,10 @@ test('every published course has exactly one translated subcategory and stays li
   }
   for(const lang of languages){const html=fs.readFileSync(require.resolve('../'+lang+'/index.html'),'utf8');
     assert.equal((html.match(/data-course-subcategory/g)||[]).length,catalog.subcategories.length);
+    assert.doesNotMatch(html,/subcategory-count/);
+    assert.equal((html.match(/class="catalogue-language-picker"/g)||[]).length,1);
+    assert.equal((html.match(/class="language-flag"/g)||[]).length,9);
+    assert.doesNotMatch(html,/<nav class="language-nav"/);
     assert.equal((html.match(/<details class="course-subcategory"[^>]*\bopen\b/g)||[]).length,0);
     for(const category of catalog.subcategories)assert.ok(html.includes(`id="category-${category.id}"`));
   }

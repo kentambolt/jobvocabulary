@@ -1207,17 +1207,7 @@ function offerFullCourse(c) {
   $('starterContinue').onclick = continueFullCourse;
 }
 function languageName(lang, name) {
-  const flags = {
-    da: '<path fill="#c8102e" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="3" d="M10 0v20M0 10h30"/>',
-    en: '<path fill="#012169" d="M0 0h30v20H0z"/><path stroke="#fff" stroke-width="5" d="m0 0 30 20m0-20L0 20"/><path stroke="#c8102e" stroke-width="2" d="m0 0 30 20m0-20L0 20"/><path stroke="#fff" stroke-width="7" d="M15 0v20M0 10h30"/><path stroke="#c8102e" stroke-width="4" d="M15 0v20M0 10h30"/>',
-    ru: '<path fill="#fff" d="M0 0h30v20H0z"/><path fill="#0039a6" d="M0 6.67h30v6.67H0z"/><path fill="#d52b1e" d="M0 13.33h30V20H0z"/>',
-    uk: '<path fill="#0057b7" d="M0 0h30v10H0z"/><path fill="#ffd700" d="M0 10h30v10H0z"/>',
-    pl: '<path fill="#fff" d="M0 0h30v10H0z"/><path fill="#dc143c" d="M0 10h30v10H0z"/>',
-    ro: '<path fill="#002b7f" d="M0 0h10v20H0z"/><path fill="#fcd116" d="M10 0h10v20H10z"/><path fill="#ce1126" d="M20 0h10v20H20z"/>',
-    lt: '<path fill="#fdb913" d="M0 0h30v6.67H0z"/><path fill="#006a44" d="M0 6.67h30v6.66H0z"/><path fill="#c1272d" d="M0 13.33h30V20H0z"/>',
-    bg: '<path fill="#fff" d="M0 0h30v6.67H0z"/><path fill="#00966e" d="M0 6.67h30v6.66H0z"/><path fill="#d62612" d="M0 13.33h30V20H0z"/>',
-  };
-  return `<svg class="language-flag" viewBox="0 0 30 20" aria-hidden="true" focusable="false">${flags[lang] || ''}</svg><span>${esc(name)}</span>`;
+  return `${COURSE_CATALOG.flag(lang)}<span>${esc(name)}</span>`;
 }
 
 function renderHomeStart() {
