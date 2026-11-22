@@ -49,7 +49,7 @@ const searchableGroups = [...document.querySelectorAll('[data-course-group]')].m
 const categoryLinks=[...document.querySelectorAll('.category-nav a')];
 const searchableSubcategories=[...document.querySelectorAll('[data-course-subcategory]')].map(section=>({
   section,cards:[...section.querySelectorAll('[data-course]')],
-  count:section.querySelector('.subcategory-count'),preview:section.querySelector('.subcategory-preview')
+  preview:section.querySelector('.subcategory-preview')
 }));
 let openBeforeSearch=null;
 function syncCategoryLinks(){
@@ -78,10 +78,9 @@ function filterCourses() {
   });
   const searching=tokens.length>0;
   if(searching&&openBeforeSearch===null)openBeforeSearch=new Map(searchableSubcategories.map(({section})=>[section,section.open]));
-  for(const {section,cards,count,preview}of searchableSubcategories){
+  for(const {section,cards,preview}of searchableSubcategories){
     const visible=cards.filter(card=>!card.hidden).length;
     section.hidden=visible===0;
-    if(count)count.textContent=String(visible);
     if(preview)preview.hidden=searching;
     if(searching)section.open=visible>0;
     else if(openBeforeSearch)section.open=openBeforeSearch.get(section)||false;
