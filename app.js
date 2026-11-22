@@ -803,6 +803,10 @@ const OVERLAPPING_ANSWERS = [
   ['vaskepulver','vaskemiddel'],
   ['etiket','vaskemærkning'],
   ['arbejdstøj','uniform'],
+  ['skruenøgle','gaffelnøgle'],
+  ['bolle','rundstykke'],
+  ['vagtmand','vagtfunktionær','objektvagt','butiksdetektiv','dørmand','eventvagt','udrykningsvagt','vagtkollega','kommunal tryghedsvagt','værditransportvagt'],
+  ['vagtchef','sikkerhedschef'],
 ];
 const answerSource = item => lexicalForm(item,'da').toLowerCase().replace(/^(en|et|at)\s+/,'');
 function pickDistractors(c, concept, qdir, n = 3) {

@@ -1,5 +1,5 @@
-'use strict';
-module.exports={
+// Course-specific practice situations.
+module.exports = {
   "cleaning": [
     "Daneza pentru munca de curățenie",
     "La curățenie primești instrucțiuni despre încăperi, ustensile, materiale și următoarea sarcină. Exersează denumirile echipamentelor împreună cu mesaje scurte, ca să legi cuvintele de activitățile din timpul turei.",
@@ -322,6 +322,105 @@ module.exports={
       "Întreabă cum trebuie sortată și împăturită lenjeria.",
       "Raportează pete, găuri și erori ale mașinilor.",
       "Confirmă cantitatea, numele clientului și ora preluării."
+    ]
+  ],
+  "carowner": [
+    "Situații pe care le poți exersa",
+    "Ca proprietar de mașină, ai nevoie de cuvinte despre asigurare, înmatriculare, parcare și vizite la service. Exersează descrierea daunelor și întrebările despre plată sau asistență rutieră.",
+    [
+      "Cumpărarea și vânzarea unei mașini la mâna a doua",
+      "Parcare și plată",
+      "La pompă, la încărcător și la spălătorie"
+    ]
+  ],
+  "community": [
+    "Situații pe care le poți exersa",
+    "Exersează conversații cu vecinii și în asociațiile locale. Învață să inviți pe cineva, să întrebi despre regulamentul blocului și să participi la ședința locatarilor.",
+    [
+      "Cunoștință cu vecinii",
+      "Zgomot și regulamentul blocului",
+      "Spălătorie, biciclete și gunoi"
+    ]
+  ],
+  "fish": [
+    "Situații pe care le poți exersa",
+    "În prelucrarea peștelui și la bord, ai nevoie de denumiri pentru materii prime, echipamente și sarcini. Exersează mesaje despre prelucrare, răcire și curățenie.",
+    [
+      "La linia de filetare",
+      "Prospețime și paraziți",
+      "Gheață, răcire și congelare"
+    ]
+  ],
+  "harbour": [
+    "Situații pe care le poți exersa",
+    "În port și la bord, mesajele scurte pot privi marfa, vremea, schimburile și echipamentele. Exersează întrebări precise și cereri de clarificare.",
+    [
+      "Munca pe chei",
+      "Viața de zi cu zi la bord",
+      "Alarme și situații de urgență"
+    ]
+  ],
+  "medicaldanish": [
+    "Situații pe care le poți exersa",
+    "Exersează daneza profesională pentru discuții cu pacienții și colaborarea în secție. Întreabă despre simptome, explică o examinare și transmite informații unui coleg. Învățarea limbii nu înlocuiește instrucțiunile clinice sau autorizația profesională.",
+    [
+      "Întrebări pentru pacient",
+      "În timpul examinării",
+      "Explicarea diagnosticului și a tratamentului"
+    ]
+  ],
+  "pets": [
+    "Situații pe care le poți exersa",
+    "Exersează discuții despre hrană, plimbări și îngrijirea unui animal. Descrie simptome veterinarului și întreabă despre asigurare sau călătorii.",
+    [
+      "Cumpărare și adopție",
+      "La veterinar",
+      "La plimbare, lesă și reguli"
+    ]
+  ],
+  "removals": [
+    "Situații pe care le poți exersa",
+    "La o mutare, trebuie să stabilești cu clientul amplasarea, ambalarea și accesul. Exersează raportarea daunelor și clarificarea obiectelor care trebuie transportate.",
+    [
+      "La lucru (cu colegii)",
+      "Ridicarea greutăților și siguranța",
+      "Cu clientul: înțelegere și preț"
+    ]
+  ],
+  "security": [
+    "Situații pe care le poți exersa",
+    "În pază, limba este utilă pentru controlul accesului, ronduri și predarea turei. Exersează mesaje clare și cereri de ajutor în timpul unui incident. Învățarea limbii nu înlocuiește pregătirea de pază sau instrucțiunile locale.",
+    [
+      "Alarme și intervenții",
+      "Stația radio, predarea turei și turele de noapte",
+      "Controlul accesului și recepția"
+    ]
+  ],
+  "trades": [
+    "Situații pe care le poți exersa",
+    "Aprofundează vocabularul pentru electricitate, instalații sanitare, zugrăveli, zidărie și dulgherie. Exersează stabilirea materialelor, explicarea sarcinilor și coordonarea echipelor. Învățarea limbii nu înlocuiește pregătirea profesională sau autorizarea.",
+    [
+      "Lucrări electrice",
+      "Lucrări sanitare",
+      "Zugravi, zidari și dulgheri la lucru"
+    ]
+  ],
+  "traditions": [
+    "Situații pe care le poți exersa",
+    "Sărbătorile daneze și evenimentele de familie au propriile cuvinte și obiceiuri. Exersează răspunsuri la invitații, felicitări și întrebări despre tradiții.",
+    [
+      "Urări și felicitări",
+      "Invitații și cadouri",
+      "De Crăciun și de Anul Nou"
+    ]
+  ],
+  "wellbeing": [
+    "Situații pe care le poți exersa",
+    "Poate fi greu să găsești cuvintele pentru stres, singurătate sau doliu. Exersează explicarea stării tale, cererea de ajutor și sprijinirea unui prieten. Cursul predă limba și nu înlocuiește consilierea sau tratamentul.",
+    [
+      "Cum mă simt",
+      "Discuția cu șeful despre stres",
+      "Cunoștințe noi"
     ]
   ]
 };

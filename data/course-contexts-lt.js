@@ -1,5 +1,5 @@
-'use strict';
-module.exports={
+// Course-specific practice situations.
+module.exports = {
   "cleaning": [
     "Danų kalba valymo darbui",
     "Valymo darbe gaunate nurodymų apie patalpas, įrankius, medžiagas ir kitą užduotį. Mokykitės įrangos pavadinimų kartu su trumpais darbo pranešimais, kad žodžiai sietųsi su veiksmais per pamainą.",
@@ -322,6 +322,105 @@ module.exports={
       "Paklausk, kaip rūšiuoti ir lankstyti skalbinius.",
       "Pranešk apie dėmes, skyles ir mašinų klaidas.",
       "Patikslink kiekį, kliento pavadinimą ir atsiėmimo laiką."
+    ]
+  ],
+  "carowner": [
+    "Situacijos, kurias galite praktikuoti",
+    "Automobilio savininkui reikia žodžių apie draudimą, registraciją, stovėjimą ir apsilankymus autoservise. Mokykitės apibūdinti žalą ir klausti apie mokėjimą ar pagalbą kelyje.",
+    [
+      "Naudoto automobilio pirkimas ir pardavimas",
+      "Stovėjimas ir mokėjimas",
+      "Degalinėje, prie įkroviklio ir plovykloje"
+    ]
+  ],
+  "community": [
+    "Situacijos, kurias galite praktikuoti",
+    "Praktikuokite pokalbius su kaimynais ir vietos draugijose. Mokykitės pakviesti kitus, klausti apie namo taisykles ir dalyvauti gyventojų susirinkime.",
+    [
+      "Susipažinimas su kaimynais",
+      "Triukšmas ir vidaus taisyklės",
+      "Skalbykla, dviračiai ir atliekos"
+    ]
+  ],
+  "fish": [
+    "Situacijos, kurias galite praktikuoti",
+    "Žuvies perdirbimo įmonėje ir laive reikia žaliavų, įrangos ir užduočių pavadinimų. Praktikuokite pranešimus apie perdirbimą, šaldymą ir valymą.",
+    [
+      "Filė gamybos linijoje",
+      "Šviežumas ir parazitai",
+      "Ledas, šaldymas ir užšaldymas"
+    ]
+  ],
+  "harbour": [
+    "Situacijos, kurias galite praktikuoti",
+    "Uoste ir laive trumpos žinutės gali būti apie krovinį, orą, pamainas ir įrangą. Mokykitės užduoti tikslius klausimus ir prašyti paaiškinimo.",
+    [
+      "Darbas krantinėje",
+      "Kasdienybė laive",
+      "Pavojaus signalai ir nelaimės"
+    ]
+  ],
+  "medicaldanish": [
+    "Situacijos, kurias galite praktikuoti",
+    "Mokykitės profesinės danų kalbos pokalbiams su pacientais ir darbui skyriuje. Klauskite apie simptomus, paaiškinkite apžiūrą ir perduokite informaciją kolegai. Kalbos mokymasis nepakeičia klinikinių instrukcijų ar profesinio leidimo.",
+    [
+      "Klausimai pacientui",
+      "Apžiūros metu",
+      "Diagnozės ir gydymo paaiškinimas"
+    ]
+  ],
+  "pets": [
+    "Situacijos, kurias galite praktikuoti",
+    "Praktikuokite pokalbius apie šėrimą, pasivaikščiojimus ir gyvūno priežiūrą. Apibūdinkite simptomus veterinarui ir klauskite apie draudimą ar keliones.",
+    [
+      "Pirkimas ir priglaudimas",
+      "Pas veterinarą",
+      "Pasivaikščiojimai, pavadėliai ir taisyklės"
+    ]
+  ],
+  "removals": [
+    "Situacijos, kurias galite praktikuoti",
+    "Perkraustant su klientu reikia suderinti daiktų vietą, pakavimą ir patekimą. Mokykitės pranešti apie žalą ir išsiaiškinti, ką reikia pervežti.",
+    [
+      "Darbe su kolegomis",
+      "Kėlimas ir sauga",
+      "Su klientu: susitarimas ir kaina"
+    ]
+  ],
+  "security": [
+    "Situacijos, kurias galite praktikuoti",
+    "Apsaugos darbe kalba reikalinga patekimo kontrolei, patruliavimui ir pamainos perdavimui. Praktikuokite aiškius pranešimus ir pagalbos prašymus incidento metu. Kalbos mokymasis nepakeičia apsaugos darbuotojų mokymų ar vietos instrukcijų.",
+    [
+      "Pavojaus signalai ir iškvietimai",
+      "Radijas, pamainos perdavimas ir naktinis darbas",
+      "Patekimo kontrolė ir registratūra"
+    ]
+  ],
+  "trades": [
+    "Situacijos, kurias galite praktikuoti",
+    "Gilinkite elektros, santechnikos, dažymo, mūro ir dailidės darbų žodyną. Mokykitės suderinti medžiagas, paaiškinti užduotis ir bendradarbiauti su kitais meistrais. Kalbos mokymasis nepakeičia profesinio mokymo ar leidimo.",
+    [
+      "Elektros darbai",
+      "Santechnikos darbai",
+      "Dažytojai, mūrininkai ir dailidės darbe"
+    ]
+  ],
+  "traditions": [
+    "Situacijos, kurias galite praktikuoti",
+    "Danijos šventės ir šeimos renginiai turi savus žodžius ir papročius. Mokykitės atsakyti į kvietimus, pasveikinti ir klausti apie tradicijas.",
+    [
+      "Sveikinimai ir linkėjimai",
+      "Kvietimai ir dovanos",
+      "Per Kalėdas ir Naujuosius metus"
+    ]
+  ],
+  "wellbeing": [
+    "Situacijos, kurias galite praktikuoti",
+    "Apie stresą, vienatvę ar netektį kartais sunku kalbėti. Mokykitės apibūdinti savijautą, prašyti pagalbos ir palaikyti draugą. Kursas moko kalbos ir nepakeičia konsultacijos ar gydymo.",
+    [
+      "Kaip jaučiuosi",
+      "Pokalbis su vadovu apie stresą",
+      "Naujos pažintys"
     ]
   ]
 };

@@ -1,6 +1,6 @@
 {
   "cleaning": "cleaner cleaning rengoring rengøring rengøringsassistent уборщик уборщица прибирання прибиральник прибиральниця sprzątanie sprzątacz sprzątaczka curățenie curățenie menaj valymas valytojas valytoja чистене чистач чистачка",
-  "restaurant": "waiter waitress chef cook kitchen tjener kok køkken официант повар кухня офіціант кухар kelner kucharz kelnerka ospătar bucătar padavėjas virėjas virtuvė сервитьор готвач кухня",
+  "restaurant": "waiter waitress chef cook kitchen tjener kok køkken официант повар кухня офіціант кухар kelner kucharz kelnerka ospătar bucătar padavėjas virėjas virtuvė сервитьор готвач кухня pizzeria takeaway pizza kebab delivery",
   "warehouse": "warehouse forklift picker packer logistics lager truckfører pluk pak склад кладовщик комплектовщик склад комірник magazyn magazynier wózek widłowy depozit stivuitor sandėlis sandėlininkas krautuvas склад мотокар",
   "construction": "builder carpenter painter plumber construction tømrer maler murer VVS håndværker строитель плотник маляр сантехник будівельник столяр будова budowa budowlaniec stolarz malarz instalator construcții tâmplar zugrav instalator statyba statybininkas stalius dažytojas строител дърводелец бояджия водопроводчик",
   "care": "caregiver carer care assistant nursing home SOSU plejehjem sosuhjælper omsorg уход сиделка догляд доглядальник opieka opiekun opiekunka îngrijire îngrijitor slauga slaugytojo padėjėjas грижи болногледач",
@@ -83,7 +83,18 @@
     "пекарна",
     "сладкар"
   ],
-  "salon": "frisør frisørassistent frisørelev frisørsalon barber hår hårklipning hairdresser hairdressing hair stylist salon barber haircut парикмахер парикмахерская стрижка перукар перукарня fryzjer fryzjerka fryzjerstwo coafor frizer coafură kirpėjas kirpėja kirpykla фризьор фризьорка фризьорски салон",
-  "gardening": "gartner anlægsgartner have grøn pleje gartneriarbejder landscaper gardener gardening landscape groundskeeper garden park садовник садовод озеленитель садівник озеленювач ogrodnik ogrodnictwo zieleń grădinar peisagist grădinărit sodininkas sodininkė želdynai градинар озеленител зелени площи",
-  "laundry": "vaskeri vaskerimedarbejder vaskeriassistent linned tekstilservice laundry linen textile service pralnia spălătorie skalbykla прачечная пральня пералня"
+  "salon": "frisør frisørassistent frisørelev frisørsalon barber hår hårklipning hairdresser hairdressing hair stylist salon barber haircut парикмахер парикмахерская стрижка перукар перукарня fryzjer fryzjerka fryzjerstwo coafor frizer coafură kirpėjas kirpėja kirpykla фризьор фризьорка фризьорски салон kosmetik negle nails beauty",
+  "gardening": "gartner anlægsgartner have grøn pleje gartneriarbejder landscaper gardener gardening landscape groundskeeper garden park садовник садовод озеленитель садівник озеленювач ogrodnik ogrodnictwo zieleń grădinar peisagist grădinărit sodininkas sodininkė želdynai градинар озеленител зелени площи park vej vintervedligeholdelse road maintenance",
+  "laundry": "vaskeri vaskerimedarbejder vaskeriassistent linned tekstilservice laundry linen textile service pralnia spălătorie skalbykla прачечная пральня пералня",
+  "carowner": "bilejer bilforsikring bilkøb parkering owning a car insurance parking владелец автомобиля власник авто właściciel samochodu proprietar auto automobilio draudimas автомобил застраховка",
+  "community": "nabo forening fritid neighbours clubs leisure соседи сусіди sąsiedzi vecini kaimynai съседи",
+  "fish": "fiskeri fiskeindustri fiskefabrik fishing fish processing рыба риба ryby pește žuvis риба",
+  "harbour": "havn skib offshore vindmøller harbour port ship wind turbines порт судно порт судно port statek port navă uostas laivas пристанище кораб",
+  "medicaldanish": "medicinsk dansk læge sygeplejerske medical danish doctor nurse медицинский медицинська lekarz pielęgniarka medic asistent medical gydytojas slaugytojas лекар медицинска сестра",
+  "pets": "kæledyr hund kat dyrlæge pets dog cat vet питомцы тварини zwierzęta animale gyvūnai любимци",
+  "removals": "flytning flyttemand flyttefirma removals mover moving company переезд переїзд przeprowadzki mutări perkraustymas хамали преместване",
+  "security": "vagt sikkerhed security guard охранник охоронець ochroniarz paznic apsauga охранител",
+  "trades": "elektriker vvs maler murer tømrer electrician plumber painter bricklayer carpenter электрик електрик elektryk electrician elektrikas електротехник",
+  "traditions": "traditioner højtider jul påske traditions holidays christmas easter традиции традиції tradycje tradiții tradicijos традиции",
+  "wellbeing": "trivsel ensomhed stress mental wellbeing loneliness одиночество самотність samotność singurătate vienatvė самота"
 }

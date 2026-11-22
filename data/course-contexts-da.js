@@ -1,5 +1,5 @@
-'use strict';
-module.exports={
+// Course-specific practice situations.
+module.exports = {
   "airport": [
     "Dansk til en vagt i lufthavnen",
     "På en lufthavnsvagt kan du skifte mellem bagage, udstyr, kolleger og passagerer. Begynd med de steder og redskaber, der hører til din funktion. Øv derefter korte beskeder, hvor du skal genkende både en handling og en placering.",
@@ -322,6 +322,105 @@ module.exports={
       "Spørg, hvordan linned skal sorteres og foldes.",
       "Fortæl om pletter, huller og fejl på en maskine.",
       "Afklar antal, kundenavn og tidspunkt for afhentning."
+    ]
+  ],
+  "carowner": [
+    "Situationer du kan øve",
+    "Når du ejer en bil, får du brug for at tale om forsikring, registrering, parkering og værkstedsbesøg. Øv at forklare en skade og spørge om betaling eller vejhjælp.",
+    [
+      "Køb og salg af brugt bil",
+      "Parkér og betal",
+      "Ved pumpen, laderen og i vaskehallen"
+    ]
+  ],
+  "community": [
+    "Situationer du kan øve",
+    "Træn samtaler med naboer og i foreninger. Øv at invitere nogen med, spørge til husordenen og deltage i et beboermøde.",
+    [
+      "Mød naboerne",
+      "Støj og husorden",
+      "Vaskeri, cykler og affald"
+    ]
+  ],
+  "fish": [
+    "Situationer du kan øve",
+    "På en fiskefabrik eller om bord skal du kunne navngive råvarer, udstyr og arbejdsopgaver. Træn beskeder om forarbejdning, køl og rengøring.",
+    [
+      "Ved filetlinjen",
+      "Friskhed og parasitter",
+      "Is, køl og frost"
+    ]
+  ],
+  "harbour": [
+    "Situationer du kan øve",
+    "På havnen og om bord kan korte beskeder handle om last, vejr, vagtskifte og udstyr. Træn at stille præcise spørgsmål og fortælle, når noget skal afklares.",
+    [
+      "Arbejde på kajen",
+      "Hverdag om bord",
+      "Alarm og nødsituationer"
+    ]
+  ],
+  "medicaldanish": [
+    "Situationer du kan øve",
+    "Træn fagligt dansk til mødet med patienten og samarbejdet på afdelingen. Øv spørgsmål om symptomer, forklaring af en undersøgelse og overlevering til en kollega. Sprogtræningen erstatter ikke kliniske instrukser eller faglig autorisation.",
+    [
+      "Spørgsmål til patienten",
+      "Under undersøgelsen",
+      "Forklar diagnose og behandling"
+    ]
+  ],
+  "pets": [
+    "Situationer du kan øve",
+    "Øv samtaler om fodring, gåture og pasning af et kæledyr. Træn også at forklare symptomer til dyrlægen og stille spørgsmål om forsikring og rejser.",
+    [
+      "Køb og adoption",
+      "Hos dyrlægen",
+      "På tur, snor og regler"
+    ]
+  ],
+  "removals": [
+    "Situationer du kan øve",
+    "På en flytteopgave skal du kunne aftale placering, emballering og adgang med kunden. Træn at forklare en skade og afklare, hvilke ting der skal flyttes.",
+    [
+      "På opgaven (kolleger)",
+      "Løft og sikkerhed",
+      "Med kunden: aftale og pris"
+    ]
+  ],
+  "security": [
+    "Situationer du kan øve",
+    "Som vagt bruger du sproget ved adgangskontrol, rundering og overlevering. Øv at give en tydelig besked og bede om hjælp ved en hændelse. Sprogtræningen erstatter ikke vagtuddannelse eller lokale instrukser.",
+    [
+      "Alarm og udrykning",
+      "Radio, vagtskifte og nattevagt",
+      "Adgangskontrol og reception"
+    ]
+  ],
+  "trades": [
+    "Situationer du kan øve",
+    "Gå i dybden med fagord til el, VVS, malerarbejde, murerarbejde og tømrerarbejde. Træn at aftale materialer, forklare en opgave og koordinere med andre fag. Sprogtræningen erstatter ikke faglig oplæring eller autorisation.",
+    [
+      "Elarbejde",
+      "VVS-arbejde",
+      "Maler, murer og tømrer i gang"
+    ]
+  ],
+  "traditions": [
+    "Situationer du kan øve",
+    "Danske højtider og familiefester har deres egne ord og skikke. Træn at svare på en invitation, ønske tillykke og spørge til en tradition.",
+    [
+      "Hilsner og lykønskninger",
+      "Invitationer og gaver",
+      "Til jul og nytår"
+    ]
+  ],
+  "wellbeing": [
+    "Situationer du kan øve",
+    "Det kan være svært at finde ordene til stress, ensomhed eller sorg. Øv at fortælle, hvordan du har det, spørge efter hjælp og støtte en ven. Kurset træner sprog og erstatter ikke rådgivning eller behandling.",
+    [
+      "Sådan har jeg det",
+      "Tal med lederen om stress",
+      "Nye kontakter"
     ]
   ]
 };

@@ -11,7 +11,7 @@ const DIR = path.join(__dirname, '..', 'packs');
 const stableIds = require('./stable-word-ids.json');
 const LANGS = ['da', 'en', 'ru', 'uk', 'pl', 'ro', 'lt', 'bg'];
 // Bevidste synonymer: samme oversættelse er tilladt for disse danske par.
-const SYNONYMS = new Set(['mug|skimmel', 'stoppet|tilstoppet']);
+const SYNONYMS = new Set(['mug|skimmel', 'stoppet|tilstoppet', 'en bolle|et rundstykke', 'en gaffelnøgle|en skruenøgle']);
 // Rækkefølge i appen (resten alfabetisk efter).
 const FIRST = ['cleaning', 'restaurant', 'warehouse', 'construction', 'care', 'agriculture', 'retail', 'transport', 'childcare', 'hotel', 'hospital', 'essentials', 'driving', 'worklife', 'authorities', 'health', 'children'];
 

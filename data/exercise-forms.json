@@ -187,6 +187,90 @@
     "ca cetățean străin, puteți cere să fiți asimilat(ă) cetățenilor danezi, ca să puteți primi su.": [
       "Ca cetățean străin, puteți cere să fiți asimilat cetățenilor danezi, ca să puteți primi SU.",
       "Ca cetățeană străină, puteți cere să fiți asimilată cetățenilor danezi, ca să puteți primi SU."
+    ],
+    "plecat(ă)": [
+      "plecat",
+      "plecată"
+    ],
+    "voluntar(ă)": [
+      "voluntar",
+      "voluntară"
+    ],
+    "încălțat(ă)": [
+      "încălțat",
+      "încălțată"
+    ],
+    "vegetarian(ă)": [
+      "vegetarian",
+      "vegetariană"
+    ],
+    "ud(ă)": [
+      "ud",
+      "udă"
+    ],
+    "operat(ă)": [
+      "operat",
+      "operată"
+    ],
+    "externat(ă)": [
+      "externat",
+      "externată"
+    ],
+    "nemișcat(ă)": [
+      "nemișcat",
+      "nemișcată"
+    ],
+    "ucenic(ă)": [
+      "ucenic",
+      "ucenică"
+    ],
+    "frustrat(ă)": [
+      "frustrat",
+      "frustrată"
+    ],
+    "băut(ă)": [
+      "băut",
+      "băută"
+    ],
+    "aprobat(ă)": [
+      "aprobat",
+      "aprobată"
+    ],
+    "invitat(ă)": [
+      "invitat",
+      "invitată"
+    ],
+    "stresat(ă)": [
+      "stresat",
+      "stresată"
+    ],
+    "fericit(ă)": [
+      "fericit",
+      "fericită"
+    ],
+    "agitat(ă)": [
+      "agitat",
+      "agitată"
+    ],
+    "epuizat(ă)": [
+      "epuizat",
+      "epuizată"
+    ],
+    "calm(ă)": [
+      "calm",
+      "calmă"
+    ],
+    "abătut(ă)": [
+      "abătut",
+      "abătută"
+    ],
+    "iritabil(ă)": [
+      "iritabil",
+      "iritabilă"
+    ],
+    "exclus(ă)": [
+      "exclus",
+      "exclusă"
     ]
   },
   "bg": {
@@ -353,6 +437,98 @@
     "ядосан(а)": [
       "ядосан",
       "ядосана"
+    ],
+    "палил(а)": [
+      "палил",
+      "палила"
+    ],
+    "инструктиран(а)": [
+      "инструктиран",
+      "инструктирана"
+    ],
+    "карал(а)": [
+      "карал",
+      "карала"
+    ],
+    "обучен(а)": [
+      "обучен",
+      "обучена"
+    ],
+    "навършил(а)": [
+      "навършил",
+      "навършила"
+    ],
+    "повишен(а)": [
+      "повишен",
+      "повишена"
+    ],
+    "понижен(а)": [
+      "понижен",
+      "понижена"
+    ],
+    "доброкачествен(а)": [
+      "доброкачествен",
+      "доброкачествена"
+    ],
+    "злокачествен(а)": [
+      "злокачествен",
+      "злокачествена"
+    ],
+    "съгласен(на)": [
+      "съгласен",
+      "съгласна"
+    ],
+    "свободен(на)": [
+      "свободен",
+      "свободна"
+    ],
+    "раздразнен(а)": [
+      "раздразнен",
+      "раздразнена"
+    ],
+    "пиян(а)": [
+      "пиян",
+      "пияна"
+    ],
+    "одобрен(а)": [
+      "одобрен",
+      "одобрена"
+    ],
+    "задържал(а)": [
+      "задържал",
+      "задържала"
+    ],
+    "поканен(а)": [
+      "поканен",
+      "поканена"
+    ],
+    "празнувал(а)": [
+      "празнувал",
+      "празнувала"
+    ],
+    "притеснен(а)": [
+      "притеснен",
+      "притеснена"
+    ],
+    "стресиран(а)": [
+      "стресиран",
+      "стресирана"
+    ],
+    "изтощен(а)": [
+      "изтощен",
+      "изтощена"
+    ],
+    "потиснат(а)": [
+      "потиснат",
+      "потисната"
+    ],
+    "познат(а)": [
+      "познат",
+      "позната"
+    ],
+    "изключен(а)": [
+      "изключен",
+      "изключена"
     ]
   },
   "ru": {
@@ -675,6 +851,134 @@
     "ударился(-ась)": [
       "ударился",
       "ударилась"
+    ],
+    "обнаружил(а)": [
+      "обнаружил",
+      "обнаружила"
+    ],
+    "стоял(а)": [
+      "стоял",
+      "стояла"
+    ],
+    "заправил(а)": [
+      "заправил",
+      "заправила"
+    ],
+    "заводил(а)": [
+      "заводил",
+      "заводила"
+    ],
+    "задел(а)": [
+      "задел",
+      "задела"
+    ],
+    "нашёл(нашла)": [
+      "нашёл",
+      "нашла"
+    ],
+    "упал(а)": [
+      "упал",
+      "упала"
+    ],
+    "промок(ла)": [
+      "промок",
+      "промокла"
+    ],
+    "порезался(-ась)": [
+      "порезался",
+      "порезалась"
+    ],
+    "проходил(а)": [
+      "проходил",
+      "проходила"
+    ],
+    "принимал(а)": [
+      "принимал",
+      "принимала"
+    ],
+    "создал(а)": [
+      "создал",
+      "создала"
+    ],
+    "сказал(а)": [
+      "сказал",
+      "сказала"
+    ],
+    "согласен(на)": [
+      "согласен",
+      "согласна"
+    ],
+    "свободен(на)": [
+      "свободен",
+      "свободна"
+    ],
+    "покормил(а)": [
+      "покормил",
+      "покормила"
+    ],
+    "поставил(а)": [
+      "поставил",
+      "поставила"
+    ],
+    "задержал(а)": [
+      "задержал",
+      "задержала"
+    ],
+    "отключил(а)": [
+      "отключил",
+      "отключила"
+    ],
+    "занят(а)": [
+      "занят",
+      "занята"
+    ],
+    "встречал(а)": [
+      "встречал",
+      "встречала"
+    ],
+    "обеспокоенный(-ая)": [
+      "обеспокоенный",
+      "обеспокоенная"
+    ],
+    "одиноким(-ой)": [
+      "одиноким",
+      "одинокой"
+    ],
+    "взволнованный(-ая)": [
+      "взволнованный",
+      "взволнованная"
+    ],
+    "измотанный(-ая)": [
+      "измотанный",
+      "измотанная"
+    ],
+    "спокойный(-ая)": [
+      "спокойный",
+      "спокойная"
+    ],
+    "подавленный(-ая)": [
+      "подавленный",
+      "подавленная"
+    ],
+    "раздражительный(-ая)": [
+      "раздражительный",
+      "раздражительная"
+    ],
+    "лишним(-ей)": [
+      "лишним",
+      "лишней"
+    ],
+    "принял(а)": [
+      "принял",
+      "приняла"
+    ],
+    "одному(-ой)": [
+      "одному",
+      "одной"
+    ],
+    "одинок(а)": [
+      "одинок",
+      "одинока"
     ]
   },
   "uk": {
@@ -1017,6 +1321,138 @@
     "здоровий(-а)": [
       "здоровий",
       "здорова"
+    ],
+    "виявив(ла)": [
+      "виявив",
+      "виявила"
+    ],
+    "стояв(ла)": [
+      "стояв",
+      "стояла"
+    ],
+    "заправив(ла)": [
+      "заправив",
+      "заправила"
+    ],
+    "заводив(ла)": [
+      "заводив",
+      "заводила"
+    ],
+    "зачепив(ла)": [
+      "зачепив",
+      "зачепила"
+    ],
+    "впав(ла)": [
+      "впав",
+      "впала"
+    ],
+    "змок(ла)": [
+      "змок",
+      "змокла"
+    ],
+    "проходив(ла)": [
+      "проходив",
+      "проходила"
+    ],
+    "приймав(ла)": [
+      "приймав",
+      "приймала"
+    ],
+    "створив(ла)": [
+      "створив",
+      "створила"
+    ],
+    "сказав(ла)": [
+      "сказав",
+      "сказала"
+    ],
+    "зазначив(ла)": [
+      "зазначив",
+      "зазначила"
+    ],
+    "згоден(на)": [
+      "згоден",
+      "згодна"
+    ],
+    "вільний(а)": [
+      "вільний",
+      "вільна"
+    ],
+    "погодував(ла)": [
+      "погодував",
+      "погодувала"
+    ],
+    "готовий(-а)": [
+      "готовий",
+      "готова"
+    ],
+    "поставив(ла)": [
+      "поставив",
+      "поставила"
+    ],
+    "затримав(ла)": [
+      "затримав",
+      "затримала"
+    ],
+    "вимкнув(ла)": [
+      "вимкнув",
+      "вимкнула"
+    ],
+    "зайнятий(а)": [
+      "зайнятий",
+      "зайнята"
+    ],
+    "святкував(ла)": [
+      "святкував",
+      "святкувала"
+    ],
+    "стурбований(-а)": [
+      "стурбований",
+      "стурбована"
+    ],
+    "самотнім(-ьою)": [
+      "самотнім",
+      "самотньою"
+    ],
+    "схвильований(-а)": [
+      "схвильований",
+      "схвильована"
+    ],
+    "виснажений(-а)": [
+      "виснажений",
+      "виснажена"
+    ],
+    "спокійний(-а)": [
+      "спокійний",
+      "спокійна"
+    ],
+    "пригнічений(-а)": [
+      "пригнічений",
+      "пригнічена"
+    ],
+    "дратівливий(-а)": [
+      "дратівливий",
+      "дратівлива"
+    ],
+    "зайвим(-ою)": [
+      "зайвим",
+      "зайвою"
+    ],
+    "втомленим(-ою)": [
+      "втомленим",
+      "втомленою"
+    ],
+    "втратив(ла)": [
+      "втратив",
+      "втратила"
+    ],
+    "прийняв(ла)": [
+      "прийняв",
+      "прийняла"
+    ],
+    "самому(-ій)": [
+      "самому",
+      "самій"
     ]
   },
   "pl": {
@@ -1503,6 +1939,206 @@
     "przeszedłem(-am)": [
       "przeszedłem",
       "przeszłam"
+    ],
+    "wspomniał(a)": [
+      "wspomniał",
+      "wspomniała"
+    ],
+    "stałem(-am)": [
+      "stałem",
+      "stałam"
+    ],
+    "zatankowałem(-am)": [
+      "zatankowałem",
+      "zatankowałam"
+    ],
+    "uruchamiałem(-am)": [
+      "uruchamiałem",
+      "uruchamiałam"
+    ],
+    "chciałbym(-łabym)": [
+      "chciałbym",
+      "chciałabym"
+    ],
+    "wjechał(a)": [
+      "wjechał",
+      "wjechała"
+    ],
+    "upadłem(-am)": [
+      "upadłem",
+      "upadłam"
+    ],
+    "przemokłem(-am)": [
+      "przemokłem",
+      "przemokłam"
+    ],
+    "pracowałeś(-aś)": [
+      "pracowałeś",
+      "pracowałaś"
+    ],
+    "uszkodziłem(-am)": [
+      "uszkodziłem",
+      "uszkodziłam"
+    ],
+    "sprawdziłeś(-aś)": [
+      "sprawdziłeś",
+      "sprawdziłaś"
+    ],
+    "poczułem(-am)": [
+      "poczułem",
+      "poczułam"
+    ],
+    "brałem(-am)": [
+      "brałem",
+      "brałam"
+    ],
+    "przeszkolony(-a)": [
+      "przeszkolony",
+      "przeszkolona"
+    ],
+    "utworzyłem(-am)": [
+      "utworzyłem",
+      "utworzyłam"
+    ],
+    "kliknąłem(-am)": [
+      "kliknąłem",
+      "kliknęłam"
+    ],
+    "panu(-i)": [
+      "panu",
+      "pani"
+    ],
+    "operowany(-a)": [
+      "operowany",
+      "operowana"
+    ],
+    "pana(-i)": [
+      "pana",
+      "pani"
+    ],
+    "pana(-ią)": [
+      "pana",
+      "panią"
+    ],
+    "powiedziałem(-am)": [
+      "powiedziałem",
+      "powiedziałam"
+    ],
+    "odnotowałem(-am)": [
+      "odnotowałem",
+      "odnotowałam"
+    ],
+    "zdobyłeś(-aś)": [
+      "zdobyłeś",
+      "zdobyłaś"
+    ],
+    "nakarmiłem(-am)": [
+      "nakarmiłem",
+      "nakarmiłam"
+    ],
+    "zmieniłem(-am)": [
+      "zmieniłem",
+      "zmieniłam"
+    ],
+    "uzbroiłem(-am)": [
+      "uzbroiłem",
+      "uzbroiłam"
+    ],
+    "zapisałem(-am)": [
+      "zapisałem",
+      "zapisałam"
+    ],
+    "pana(i)": [
+      "pana",
+      "pani"
+    ],
+    "zdenerwowany(-a)": [
+      "zdenerwowany",
+      "zdenerwowana"
+    ],
+    "pijany(-a)": [
+      "pijany",
+      "pijana"
+    ],
+    "panu(i)": [
+      "panu",
+      "pani"
+    ],
+    "zatrzymałeś(-aś)": [
+      "zatrzymałeś",
+      "zatrzymałaś"
+    ],
+    "wyłączyłeś(-aś)": [
+      "wyłączyłeś",
+      "wyłączyłaś"
+    ],
+    "zaproszony(-a)": [
+      "zaproszony",
+      "zaproszona"
+    ],
+    "obchodziłem(-am)": [
+      "obchodziłem",
+      "obchodziłam"
+    ],
+    "smutnym(-ą)": [
+      "smutnym",
+      "smutną"
+    ],
+    "zmartwiony(-a)": [
+      "zmartwiony",
+      "zmartwiona"
+    ],
+    "zestresowany(-a)": [
+      "zestresowany",
+      "zestresowana"
+    ],
+    "samotnym(-ą)": [
+      "samotnym",
+      "samotną"
+    ],
+    "zmęczonym(-ą)": [
+      "zmęczonym",
+      "zmęczoną"
+    ],
+    "wyczerpany(-a)": [
+      "wyczerpany",
+      "wyczerpana"
+    ],
+    "spokojny(-a)": [
+      "spokojny",
+      "spokojna"
+    ],
+    "przygnębiony(-a)": [
+      "przygnębiony",
+      "przygnębiona"
+    ],
+    "drażliwy(-a)": [
+      "drażliwy",
+      "drażliwa"
+    ],
+    "wykluczonym(-ą)": [
+      "wykluczonym",
+      "wykluczoną"
+    ],
+    "wolontariuszem(-ką)": [
+      "wolontariuszem",
+      "wolontariuszką"
+    ],
+    "samotny(-a)": [
+      "samotny",
+      "samotna"
+    ],
+    "straciłem(-am)": [
+      "straciłem",
+      "straciłam"
+    ],
+    "zażyłem(-am)": [
+      "zażyłem",
+      "zażyłam"
+    ],
+    "aktywnym(-ą)": [
+      "aktywnym",
+      "aktywną"
     ]
   },
   "lt": {
@@ -1653,6 +2289,178 @@
     "vienam (-ai)": [
       "vienam",
       "vienai"
+    ],
+    "lįsdamas (-a)": [
+      "lįsdamas",
+      "lįsdama"
+    ],
+    "naudodamas (-a)": [
+      "naudodamas",
+      "naudodama"
+    ],
+    "dirbdamas (-a)": [
+      "dirbdamas",
+      "dirbdama"
+    ],
+    "pradėdamas (-a)": [
+      "pradėdamas",
+      "pradėdama"
+    ],
+    "liesdamas (-a)": [
+      "liesdamas",
+      "liesdama"
+    ],
+    "važiuodamas (-a)": [
+      "važiuodamas",
+      "važiuodama"
+    ],
+    "instruktuotas (-a)": [
+      "instruktuotas",
+      "instruktuota"
+    ],
+    "vairavęs (-usi)": [
+      "vairavęs",
+      "vairavusi"
+    ],
+    "užvesdamas (-a)": [
+      "užvesdamas",
+      "užvesdama"
+    ],
+    "baigęs (-usi)": [
+      "baigęs",
+      "baigusi"
+    ],
+    "išmokytas (-a)": [
+      "išmokytas",
+      "išmokyta"
+    ],
+    "normalus (-i)": [
+      "normalus",
+      "normali"
+    ],
+    "padidėjęs (-usi)": [
+      "padidėjęs",
+      "padidėjusi"
+    ],
+    "sumažėjęs (-usi)": [
+      "sumažėjęs",
+      "sumažėjusi"
+    ],
+    "gerybinis (-ė)": [
+      "gerybinis",
+      "gerybinė"
+    ],
+    "piktybinis (-ė)": [
+      "piktybinis",
+      "piktybinė"
+    ],
+    "laisvas (-a)": [
+      "laisvas",
+      "laisva"
+    ],
+    "keisdamas (-a)": [
+      "keisdamas",
+      "keisdama"
+    ],
+    "manikiūrininkas (-ė)": [
+      "manikiūrininkas",
+      "manikiūrininkė"
+    ],
+    "kosmetologas (-ė)": [
+      "kosmetologas",
+      "kosmetologė"
+    ],
+    "prižiūrimas (-a)": [
+      "prižiūrimas",
+      "prižiūrima"
+    ],
+    "neįleistam (-ai)": [
+      "neįleistam",
+      "neįleistai"
+    ],
+    "susierzinęs (-usi)": [
+      "susierzinęs",
+      "susierzinusi"
+    ],
+    "išgėręs (-usi)": [
+      "išgėręs",
+      "išgėrusi"
+    ],
+    "patvirtintas (-a)": [
+      "patvirtintas",
+      "patvirtinta"
+    ],
+    "jaunesnis (-ė)": [
+      "jaunesnis",
+      "jaunesnė"
+    ],
+    "apsaugininkas (-ė)": [
+      "apsaugininkas",
+      "apsaugininkė"
+    ],
+    "pakviestas (-a)": [
+      "pakviestas",
+      "pakviesta"
+    ],
+    "šventęs (-usi)": [
+      "šventęs",
+      "šventusi"
+    ],
+    "susirūpinęs (-usi)": [
+      "susirūpinęs",
+      "susirūpinusi"
+    ],
+    "patiriantis (-i)": [
+      "patiriantis",
+      "patirianti"
+    ],
+    "vienišam (-ai)": [
+      "vienišam",
+      "vienišai"
+    ],
+    "pavargusiam (-iai)": [
+      "pavargusiam",
+      "pavargusiai"
+    ],
+    "susijaudinęs (-usi)": [
+      "susijaudinęs",
+      "susijaudinusi"
+    ],
+    "išsekęs (-usi)": [
+      "išsekęs",
+      "išsekusi"
+    ],
+    "ramus (-i)": [
+      "ramus",
+      "rami"
+    ],
+    "prislėgtas (-a)": [
+      "prislėgtas",
+      "prislėgta"
+    ],
+    "irzlus (-i)": [
+      "irzlus",
+      "irzli"
+    ],
+    "pažįstamas (-a)": [
+      "pažįstamas",
+      "pažįstama"
+    ],
+    "atskirtam (-ai)": [
+      "atskirtam",
+      "atskirtai"
+    ],
+    "anoniminis (-ė)": [
+      "anoniminis",
+      "anoniminė"
+    ],
+    "nemokamas (-a)": [
+      "nemokamas",
+      "nemokama"
+    ],
+    "vienišas (-a)": [
+      "vienišas",
+      "vieniša"
     ]
   }
 }

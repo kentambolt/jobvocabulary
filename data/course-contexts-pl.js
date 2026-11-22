@@ -1,5 +1,5 @@
-'use strict';
-module.exports={
+// Course-specific practice situations.
+module.exports = {
   "cleaning": [
     "Duński w pracy przy sprzątaniu",
     "Podczas sprzątania otrzymujesz polecenia dotyczące pomieszczeń, sprzętu, materiałów i kolejnych zadań. Ucz się nazw wyposażenia wraz z krótkimi komunikatami, aby łączyć słowa z czynnościami wykonywanymi na zmianie.",
@@ -322,6 +322,105 @@ module.exports={
       "Zapytaj, jak sortować i składać bieliznę.",
       "Zgłaszaj plamy, dziury i błędy maszyn.",
       "Potwierdzaj liczbę sztuk, nazwę klienta i czas odbioru."
+    ]
+  ],
+  "carowner": [
+    "Sytuacje do przećwiczenia",
+    "Właściciel samochodu potrzebuje słów dotyczących ubezpieczenia, rejestracji, parkowania i wizyt w warsztacie. Ćwicz opisywanie uszkodzeń i pytania o płatność lub pomoc drogową.",
+    [
+      "Kupno i sprzedaż używanego samochodu",
+      "Parkowanie i płacenie",
+      "Przy dystrybutorze, ładowarce i na myjni"
+    ]
+  ],
+  "community": [
+    "Sytuacje do przećwiczenia",
+    "Ćwicz rozmowy z sąsiadami i w lokalnych stowarzyszeniach. Ucz się zapraszać innych, pytać o regulamin domu i uczestniczyć w zebraniu mieszkańców.",
+    [
+      "Poznajemy sąsiadów",
+      "Hałas i regulamin domu",
+      "Pralnia, rowery i śmieci"
+    ]
+  ],
+  "fish": [
+    "Sytuacje do przećwiczenia",
+    "W przetwórstwie rybnym i na pokładzie potrzebne są nazwy surowców, sprzętu i zadań. Ćwicz komunikaty o przetwarzaniu, chłodzeniu i sprzątaniu.",
+    [
+      "Na linii filetowania",
+      "Świeżość i pasożyty",
+      "Lód, chłodzenie i mrożenie"
+    ]
+  ],
+  "harbour": [
+    "Sytuacje do przećwiczenia",
+    "W porcie i na pokładzie krótkie komunikaty dotyczą ładunku, pogody, zmiany załogi i sprzętu. Ćwicz precyzyjne pytania i proszenie o wyjaśnienia.",
+    [
+      "Praca na nabrzeżu",
+      "Codzienność na statku",
+      "Alarmy i sytuacje awaryjne"
+    ]
+  ],
+  "medicaldanish": [
+    "Sytuacje do przećwiczenia",
+    "Ćwicz duński zawodowy w rozmowach z pacjentami i we współpracy na oddziale. Pytaj o objawy, wyjaśniaj badanie i przekazuj informacje współpracownikowi. Nauka języka nie zastępuje instrukcji klinicznych ani uprawnień zawodowych.",
+    [
+      "Pytania do pacjenta",
+      "Podczas badania",
+      "Wyjaśnianie diagnozy i leczenia"
+    ]
+  ],
+  "pets": [
+    "Sytuacje do przećwiczenia",
+    "Ćwicz rozmowy o karmieniu, spacerach i opiece nad zwierzęciem. Opisuj objawy weterynarzowi i pytaj o ubezpieczenie lub podróże.",
+    [
+      "Kupno i adopcja",
+      "U weterynarza",
+      "Na spacerze, smycz i przepisy"
+    ]
+  ],
+  "removals": [
+    "Sytuacje do przećwiczenia",
+    "Przy przeprowadzce trzeba uzgodnić z klientem ustawienie rzeczy, pakowanie i dostęp. Ćwicz zgłaszanie uszkodzeń i ustalanie, co należy przewieźć.",
+    [
+      "Przy pracy (z kolegami)",
+      "Podnoszenie i bezpieczeństwo",
+      "Z klientem: ustalenia i cena"
+    ]
+  ],
+  "security": [
+    "Sytuacje do przećwiczenia",
+    "W ochronie język przydaje się przy kontroli dostępu, obchodach i przekazywaniu zmiany. Ćwicz jasne komunikaty i proszenie o pomoc podczas incydentu. Nauka języka nie zastępuje szkolenia ochroniarskiego ani lokalnych instrukcji.",
+    [
+      "Alarm i interwencja",
+      "Krótkofalówka, zmiana i nocne dyżury",
+      "Kontrola dostępu i recepcja"
+    ]
+  ],
+  "trades": [
+    "Sytuacje do przećwiczenia",
+    "Poznaj słownictwo elektryczne, hydrauliczne, malarskie, murarskie i ciesielskie. Ćwicz uzgadnianie materiałów, wyjaśnianie zadań i współpracę między ekipami. Nauka języka nie zastępuje szkolenia zawodowego ani uprawnień.",
+    [
+      "Prace elektryczne",
+      "Prace hydrauliczne",
+      "Malarze, murarze i cieśle przy pracy"
+    ]
+  ],
+  "traditions": [
+    "Sytuacje do przećwiczenia",
+    "Duńskie święta i uroczystości rodzinne mają własne słowa i zwyczaje. Ćwicz odpowiadanie na zaproszenia, składanie życzeń i pytania o tradycje.",
+    [
+      "Życzenia i pozdrowienia",
+      "Zaproszenia i prezenty",
+      "W święta i w sylwestra"
+    ]
+  ],
+  "wellbeing": [
+    "Sytuacje do przećwiczenia",
+    "Trudno czasem znaleźć słowa na stres, samotność czy żałobę. Ćwicz opisywanie samopoczucia, proszenie o pomoc i wspieranie przyjaciela. Kurs uczy języka i nie zastępuje porady ani leczenia.",
+    [
+      "Jak się czuję",
+      "Rozmowa z przełożonym o stresie",
+      "Nowe znajomości"
     ]
   ]
 };

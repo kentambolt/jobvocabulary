@@ -110,6 +110,12 @@ all record IDs and source aliases match between projections.
 changing the previous six fields. Metadata lives in `data/course-labels-lt-bg.json`.
 Use `import-new-courses.js` for explicitly selected new courses, then add their
 language overlays before building. It refuses to replace existing courses.
+Course expansion retains every published row, category key and course ID.
+The mechanic, hairdresser and parks deliveries extend automotive, salon and
+gardening. Takeaway content is split between bakery and restaurant; international
+office content between office and itsupport. Added category keys carry their
+source prefix. Unpublished synonyms reuse existing terms; narrower meanings stay
+separate and must not compete as misleading wrong answers.
 The historical `import-course-content.js` is not a recurring synchronization job.
 `import-dictionary-languages.js` extends the separately licensed common-word
 collection at `dictionary/common-words-v2.json`; its old four-language URL stays
