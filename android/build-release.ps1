@@ -3,8 +3,8 @@ param(
  [Parameter(Mandatory)][string]$GradlePath,
  [switch]$InitializeUploadKey,
  [switch]$Offline,
- [int]$VersionCode = 1,
- [string]$VersionName = '1.0.0'
+ [int]$VersionCode = 2,
+ [string]$VersionName = '1.0.1'
 )
 $ErrorActionPreference = 'Stop'
 $keyDir = Join-Path $PSScriptRoot '.keys'

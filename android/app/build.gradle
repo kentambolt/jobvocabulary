@@ -9,8 +9,8 @@ android {
         applicationId 'com.jobvocabulary.app'
         minSdk 26
         targetSdk 36
-        versionCode = (project.findProperty('jvVersionCode') ?: '1').toInteger()
-        versionName = project.findProperty('jvVersionName') ?: '1.0.0'
+        versionCode = (project.findProperty('jvVersionCode') ?: '2').toInteger()
+        versionName = project.findProperty('jvVersionName') ?: '1.0.1'
     }
     signingConfigs {
         debug {

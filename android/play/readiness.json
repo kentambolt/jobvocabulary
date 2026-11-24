@@ -1,7 +1,7 @@
 {
   "date": "2026-11-24",
   "source": "88633fdb570ea4f91216af962834b09996a8e082",
-  "phase": "internal test release available; final device QA outstanding",
+  "phase": "1.0.1 icon spacing update active in internal testing",
   "candidateTechnology": "Trusted Web Activity",
   "candidatePackage": "com.jobvocabulary.app",
   "packageReserved": true,
@@ -21,25 +21,24 @@
   "privacy": "existing three aggregate daily event counters; no added telemetry",
   "playSubmitted": false,
   "playPublished": false,
-  "nativeStartupPassed": false,
-  "googleSignedApkTested": false,
+  "nativeStartupPassed": true,
+  "googleSignedApkTested": true,
   "audienceConfirmed": true,
   "playAccountVerified": true,
   "playDeveloperId": "7174859766662181721",
   "localBuildPassed": true,
   "localBuild": {
     "tasks": [
-      "assembleDebug",
-      "lintDebug",
+      "lintRelease",
       "bundleRelease"
     ],
     "releaseBundleSigned": true,
     "lintErrors": 0,
     "lintWarnings": 0,
-    "cleanBuild": true,
+    "cleanBuild": false,
     "releaseLintErrors": 0,
     "releaseLintWarnings": 0,
-    "bundleSha256": "A4FE6D36B53687B4EEB9075B5C523C6EC4605DC85D46BC4D129D43C9FCE2F38D"
+    "bundleSha256": "24F71BC8CA66EB007D28499068772E254512F35D5FE13A89B385D6DD98553EE8"
   },
   "packageAvailable": true,
   "webRegression": {
@@ -50,8 +49,13 @@
     "installed": true,
     "amColdStartStatus": "ok",
     "fullFlowPassed": false,
-    "observedBlocker": "two emulator starts reached Android System UI/Pixel Launcher ANR; full app flow and Google-signed APK remain untested",
-    "productionTelemetryGenerated": false
+    "observedBlocker": "emulator System UI/Pixel Launcher ANR; owner phone confirmed version 1 works",
+    "productionTelemetryGenerated": false,
+    "ownerDeviceConfirmation": {
+      "versionCode": 1,
+      "result": "opens and reaches first exercise",
+      "source": "owner confirmed app works perfectly in this chat on 2026-11-24"
+    }
   },
   "storeAssets": {
     "icon": "icon-512.png",
@@ -64,8 +68,8 @@
   "ownerApprovedCreationDeclarations": true,
   "privacyPolicySaved": "https://jobvocabulary.com/en/privacy/",
   "playBundleAccepted": {
-    "versionCode": 1,
-    "versionName": "1.0.0",
+    "versionCode": 2,
+    "versionName": "1.0.1",
     "targetSdk": 36,
     "minSdk": 26
   },
@@ -76,7 +80,7 @@
     "audience": "16-17 and 18+"
   },
   "internalTestReleased": true,
-  "internalTestVersionCode": 1,
+  "internalTestVersionCode": 2,
   "internalTestTrackId": "4700325534829880701",
   "internalTestOptInUrl": "https://play.google.com/apps/internaltest/4700325534829880701",
   "internalTestOwnerListSaved": true,
@@ -84,12 +88,25 @@
   "internalTestStatus": "active",
   "googlePlayAppCertificateSha256": "67:FF:D4:66:13:B2:4F:71:47:8F:C4:20:38:DB:00:A7:B1:07:EE:E7:CC:F6:77:05:CD:D8:9B:33:C9:1B:CF:1E",
   "digitalAssetLinksPrepared": true,
-  "digitalAssetLinksDeployed": false,
+  "digitalAssetLinksDeployed": true,
   "googleSignedApkDownloaded": true,
   "googleSignedApkSignatureVerified": true,
   "googleSignedApkPermissions": [
     "android.permission.INTERNET",
     "com.jobvocabulary.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
     "com.android.vending.CHECK_LICENSE"
-  ]
+  ],
+  "iconUpdate": {
+    "versionCode": 2,
+    "versionName": "1.0.1",
+    "nativeScaleBefore": 0.75,
+    "nativeScaleAfter": 0.65,
+    "rasterScale": 0.9,
+    "releaseLintErrors": 0,
+    "releaseLintWarnings": 0,
+    "bundleSha256": "24F71BC8CA66EB007D28499068772E254512F35D5FE13A89B385D6DD98553EE8",
+    "ownerDeviceRetest": false,
+    "internallyReleased": true,
+    "metadataTestsPassed": 3
+  }
 }

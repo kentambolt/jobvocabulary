@@ -2,8 +2,8 @@ param(
     [Parameter(Mandatory)][string]$SdkPath,
     [Parameter(Mandatory)][string]$GradlePath,
     [switch]$Offline,
-    [int]$VersionCode = 1,
-    [string]$VersionName = '1.0.0'
+    [int]$VersionCode = 2,
+    [string]$VersionName = '1.0.1'
 )
 $ErrorActionPreference = 'Stop'
 Push-Location $PSScriptRoot
