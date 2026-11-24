@@ -4,7 +4,7 @@ Trusted Web Activity around https://jobvocabulary.com/. Existing browser exercis
 
 ## Identity and current state
 
-Proposed production package: com.jobvocabulary.app. Google Play reports it available, but it has not been reserved. QA uses com.jobvocabulary.app.qa. Target audience confirmed by the owner: 16–17 and 18+. Developer account: Kent Caspersen, ID 7174859766662181721. No release has been submitted.
+Production package: com.jobvocabulary.app. Created on the confirmed developer account on 24 November 2026, app ID 4973223720542746046. QA uses com.jobvocabulary.app.qa. Target audience confirmed by the owner: 16–17 and 18+. Developer account: Kent Caspersen, ID 7174859766662181721. No release has been submitted.
 
 Android 8/API 26 minimum, Android 16/API 36 target. Android Browser Helper 2.7.4. The launcher requires ManageDataLauncherActivity to be declared. Do not remove it. Native permissions: INTERNET only. The merged dependency manifest must also be checked for each release.
 
@@ -26,3 +26,7 @@ The web host excludes android/ through _config.yml. The web manifest and images/
 6. Capture real Android screenshots. Complete truthful Data Safety, target audience, rating and store listing declarations. Submit only after the actual checks pass.
 
 See play/readiness.json for evidence status. Local compilation is not startup, installation or Google-signed release testing.
+
+## Local upload signing
+
+On Windows, build-release.ps1 can initialize a separate upload key with -InitializeUploadKey. The password is encrypted with Windows DPAPI for the current user in ignored android/.keys/. Reuse the key without that switch on subsequent builds. Never replace an existing key automatically. A DPAPI file is tied to its Windows profile; a recoverable, authorized off-device key/password backup is still required before public release. No key material belongs in Git.

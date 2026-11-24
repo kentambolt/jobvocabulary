@@ -5,7 +5,7 @@ android {
     compileSdk 36
     buildToolsVersion '36.0.0'
     defaultConfig {
-        // Proposed identity. Do not upload before the release identity is confirmed.
+        // Permanent package confirmed by the owner and created in Google Play.
         applicationId 'com.jobvocabulary.app'
         minSdk 26
         targetSdk 36

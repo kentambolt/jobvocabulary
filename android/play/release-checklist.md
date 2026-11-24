@@ -1,6 +1,6 @@
 # Google Play release checklist
 
-Status: preparation only. Age decision confirmed: 16–17 and 18+. App/free selected on the creation form; no binding declarations accepted and no app created.
+Status: preparation only. Age decision confirmed: 16–17 and 18+. Free app created with package com.jobvocabulary.app after the owner explicitly approved the development-policy and US export declarations. Privacy-policy URL saved; no release uploaded or submitted.
 
 ## Store material
 

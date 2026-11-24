@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jobvocabulary.app",
+      "sha256_cert_fingerprints": [
+        "67:FF:D4:66:13:B2:4F:71:47:8F:C4:20:38:DB:00:A7:B1:07:EE:E7:CC:F6:77:05:CD:D8:9B:33:C9:1B:CF:1E"
+      ]
+    }
+  }
+]
