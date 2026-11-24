@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-24",
+  "source": "88633fdb570ea4f91216af962834b09996a8e082",
+  "phase": "local build passed; Play creation awaits owner confirmation",
+  "candidateTechnology": "Trusted Web Activity",
+  "candidatePackage": "com.jobvocabulary.app",
+  "packageReserved": false,
+  "audience": "16-17 and 18+",
+  "web": {
+    "courseCount": 47,
+    "languages": 8,
+    "login": false,
+    "ads": false,
+    "purchases": false,
+    "localProgress": true,
+    "speech": "browser SpeechSynthesis",
+    "microphone": false,
+    "serviceWorker": false,
+    "offlineCourseAvailability": "not promised"
+  },
+  "privacy": "existing three aggregate daily event counters; no added telemetry",
+  "playSubmitted": false,
+  "playPublished": false,
+  "nativeStartupPassed": false,
+  "googleSignedApkTested": false,
+  "audienceConfirmed": true,
+  "playAccountVerified": true,
+  "playDeveloperId": "7174859766662181721",
+  "localBuildPassed": true,
+  "localBuild": {
+    "tasks": [
+      "assembleDebug",
+      "lintDebug",
+      "bundleRelease"
+    ],
+    "releaseBundleSigned": false,
+    "lintErrors": 0,
+    "lintWarnings": 0,
+    "cleanBuild": true
+  },
+  "packageAvailable": true,
+  "webRegression": {
+    "passed": 12,
+    "failed": 0
+  },
+  "nativeTest": {
+    "installed": true,
+    "amColdStartStatus": "ok",
+    "fullFlowPassed": false,
+    "observedBlocker": "isolated emulator Pixel Launcher ANR; Chrome first-run pending",
+    "productionTelemetryGenerated": false
+  },
+  "storeAssets": {
+    "icon": "icon-512.png",
+    "featureGraphic": "feature-graphic-en.png",
+    "androidScreenshotsReady": false
+  }
+}
