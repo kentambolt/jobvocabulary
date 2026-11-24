@@ -8,3 +8,6 @@ exclude:
   - DEVELOPMENT.md
   - README.md
   - pr-description.tmp
+  - android
+include:
+  - .well-known

@@ -1,3 +1,13 @@
 data/.cache/
 .claude/
 .private/
+android/.gradle/
+android/.gradle-cache/
+android/.keys/
+android/.tools/
+android/local.properties
+android/**/build/
+android/*.apk
+android/*.aab
+android/*.jks
+android/*.keystore
