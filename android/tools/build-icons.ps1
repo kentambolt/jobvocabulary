@@ -11,6 +11,10 @@ function Write-BrandIcon([int]$Size, [string]$RelativePath) {
         $graphics.Clear([Drawing.ColorTranslator]::FromHtml('#153f2e'))
         $graphics.SmoothingMode = [Drawing.Drawing2D.SmoothingMode]::AntiAlias
         $graphics.ScaleTransform($Size / 64.0, $Size / 64.0)
+        # Keep the mark inset when the icon is cropped to a circle.
+        $graphics.TranslateTransform(32,32)
+        $graphics.ScaleTransform(0.9,0.9)
+        $graphics.TranslateTransform(-32,-32)
         $pen = [Drawing.Pen]::new([Drawing.Color]::White, 5)
         $pen.StartCap = [Drawing.Drawing2D.LineCap]::Round
         $pen.EndCap = [Drawing.Drawing2D.LineCap]::Round
