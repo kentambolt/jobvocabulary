@@ -26,12 +26,17 @@ unique people or cross-visit retention. Personal-list
 practice does not emit course activation milestones. Actual graded placement
 answers are included; opening an offer or showing an introduction is not an answer.
 
-`AggregateTransport.enabled` is the single production switch. Privacy pages in
-all eight languages reflect that switch at build time; rebuild before publishing
-any change. The transport only accepts the canonical HTTPS origin. Explicit
-local QA uses `jobvocabulary-staging`, never production counters. It sends only
-the two approved fields, omits credentials/referrer, respects DNT/GPC, aborts
-after two seconds and never retries. Keep this independent of Umami sessions.
+`measurement-policy.js` gates all voluntary statistics behind one explicit, versioned opt-in. Only the choice and its timestamp are stored for up to 180 days under `jobvocabulary.statistics.v1`; there is no client visitor ID.
+
+`TrafficMetrics.enabled` is the master production switch. The aggregate transport keeps its existing operational switch too. Both transports stop on refusal, withdrawal, DNT/GPC, bots, prerender, preview and capture. Nothing is replayed from before consent.
+
+`traffic-metrics.js` uses the existing Systems endpoint with only a random per-event delivery ID, type (pageview/used/heartbeat) and category (home/catalog/test). A restored exercise must not emit a fictional home pageview. Repeated questions do not emit pageviews. The three course events retain the existing {project,event} contract and separate history. Both transports omit credentials/referrer, time out after two seconds and never retry. A failure cannot block training.
+
+The Android TWA shares the web origin and controls; no exact web/Android split is claimed. Its Google Play Data Safety declaration must cover the consented web traffic processing before public submission, even though there is no native analytics SDK.
+
+Privacy pages in all eight languages use the same master switch. `data/statistics-privacy-copy.js` reflects confirmed server handling: Systems events 30 days, course aggregates 90 calendar days, encrypted backups 14 days. Internal Umami history currently has no automatic expiry. Do not claim 90 days for Umami or daily salt rotation. Rebuild pages after changes. Every public entrypoint loads the local consent controls once and provides a persistent privacy link.
+
+For local UI QA, run `node tests/helpers/statistics-server.cjs` on 127.0.0.1:8775: capture-only, all measurement blocked. `--staging` explicitly opts only this localhost fixture into the provisioned `jobvocabulary-staging` profiles. Ordinary localhost copies and GitHub previews cannot send production events. Preserve actual browser bot/DNT/GPC settings. Never create synthetic production traffic.
 
 DM Sans and Lora are hosted locally in `fonts/`, with their SIL OFL 1.1 licences.
 The `@font-face` rules retain the existing weights, Unicode subsets and swap

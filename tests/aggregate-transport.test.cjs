@@ -1,9 +1,10 @@
 const test=require('node:test');
 const assert=require('node:assert/strict');
 const Transport=require('../aggregate-transport');
+const Policy=require('../measurement-policy');
 function fixture(origin='https://jobvocabulary.com') {
   const calls=[],timers=[];
-  const environment={location:{origin},navigator:{},AbortController,setTimeout:fn=>{timers.push(fn);return timers.length},clearTimeout:()=>{},fetch:(...args)=>{calls.push(args);return Promise.resolve({status:202})}};
+  const environment={location:{origin},navigator:{},MeasurementPolicy:Policy,TrafficMetrics:require('../traffic-metrics'),localStorage:{getItem:()=>JSON.stringify({version:1,choice:'granted',at:Date.now()-1000})},AbortController,setTimeout:fn=>{timers.push(fn);return timers.length},clearTimeout:()=>{},fetch:(...args)=>{calls.push(args);return Promise.resolve({status:202})}};
   return {calls,timers,environment};
 }
 test('aggregate requests contain only the approved project and event, with credentials and referrer omitted',async()=>{

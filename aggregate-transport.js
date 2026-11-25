@@ -7,20 +7,24 @@ var AggregateTransport = {
     const origin = environment.location?.origin;
     const project = origin === 'https://jobvocabulary.com' ? 'jobvocabulary'
       : allowStaging && ['http://127.0.0.1:8775','http://localhost:8775'].includes(origin) ? 'jobvocabulary-staging' : null;
+    const pending = new Set();
+    const policy = environment.MeasurementPolicy;
+    policy?.subscribe(environment, () => { if (!policy.allows(environment)) for (const controller of pending) controller.abort(); });
     return event => {
       const nav=environment.navigator;
-      if (!enabled || !project || !events.has(event) || nav?.globalPrivacyControl === true
+      if (!enabled || environment.TrafficMetrics?.enabled !== true || !project || !events.has(event) || !environment.MeasurementPolicy?.allows(environment) || nav?.globalPrivacyControl === true
         || ['1','yes'].includes(nav?.doNotTrack) || ['1','yes'].includes(environment.doNotTrack)) return;
-      let timeout;
+      let timeout, controller;
       try {
-        const controller=new environment.AbortController();
+        controller=new environment.AbortController();
+        pending.add(controller);
         timeout=environment.setTimeout(()=>controller.abort(),2000);
         return Promise.resolve(environment.fetch('https://munthesystems.dk/systems/v1/aggregate',{
           method:'POST',headers:{'Content-Type':'application/json'},
           body:JSON.stringify({project,event}),credentials:'omit',referrerPolicy:'no-referrer',
           mode:'cors',keepalive:true,signal:controller.signal
-        })).catch(()=>{}).finally(()=>environment.clearTimeout(timeout));
-      } catch { if (timeout !== undefined) environment.clearTimeout(timeout); }
+        })).catch(()=>{}).finally(()=>{ pending.delete(controller); environment.clearTimeout(timeout); });
+      } catch { if (controller) pending.delete(controller); if (timeout !== undefined) environment.clearTimeout(timeout); }
     };
   }
 };
