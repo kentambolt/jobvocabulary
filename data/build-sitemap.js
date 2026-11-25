@@ -6,7 +6,10 @@ const {execFileSync}=require('node:child_process');
 
 function pageDigest(html) {
   // A stylesheet/icon cache refresh alone is not a content update.
-  const content=html.replace(/<link\b(?=[^>]*\brel="(?:stylesheet|icon)")[^>]*>/g,tag=>tag.replace(/\?v=[^"\s]*/g,''))
+  // Consent scripts and privacy-navigation chrome do not update the lesson content.
+  const learningContent=html.replace(/<!-- STATISTICS -->[\s\S]*?<!-- \/STATISTICS -->/g,'')
+    .replace(/<footer class="statistics-footer">[\s\S]*?<\/footer>/g,'');
+  const content=learningContent.replace(/<link\b(?=[^>]*\brel="(?:stylesheet|icon)")[^>]*>/g,tag=>tag.replace(/\?v=[^"\s]*/g,''))
     .replace(/\s+/g,' ').trim();
   return crypto.createHash('sha256').update(content).digest('hex');
 }

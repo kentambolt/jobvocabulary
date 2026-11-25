@@ -7,6 +7,7 @@ const textAssetVersion=require('./text-asset-version');
 const catalog = require('../catalog');
 const starterPaths = require('../starter-paths');
 const privacy = require('./privacy-pages');
+const statisticsPages = require('./statistics-pages');
 const seo = require('./seo-pages');
 const courseRoutes = require('./course-routes');
 const courseSearchAliases = require('./course-search-aliases.json');
@@ -304,11 +305,12 @@ const guideOutput = seo.buildGuides({root:ROOT,site:SITE,packs,urlOf});
 const privacyPages = privacy.build(ROOT);
 urls.push(...guideOutput.urls);
 // Refresh only changed shared assets after a deployment, retaining browser caching.
-const assets = ['aggregate-transport.js', 'activation-meter.js', 'starter-paths.js', 'not-found.js', 'style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'shared-word-groups.js', 'course-knowledge.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
+const assets = ['measurement-policy.js', 'traffic-metrics.js', 'statistics-copy.js', 'statistics-controls.js', 'aggregate-transport.js', 'activation-meter.js', 'starter-paths.js', 'not-found.js', 'style.css', 'favicon.svg', 'app.js', 'locales.js', 'core-translations.js', 'practice-options.js', 'vendor/ts-fsrs-5.4.2.js', 'memory-scheduler.js', 'learning-flow.js', 'shared-word-groups.js', 'course-knowledge.js', 'course-preferences.js', 'word-entry.js', 'words.js', 'packs/index.js', 'images/words/manifest.js', 'catalog.js', 'catalog-search.js', 'practice-resume.js', 'lexicon-index.js', 'library.js', 'library-ui.js'];
 const versions = Object.fromEntries(assets.map((asset) => [asset, textAssetVersion(fs.readFileSync(path.join(ROOT, asset)))]));
 const pages = [indexPath, path.join(ROOT,'404.html'), path.join(ROOT,'dictionary/attribution.html'), ...guideOutput.pages, ...privacyPages, ...LANGS.flatMap((lang) => [path.join(ROOT, lang, 'index.html'), ...packs.map((p) => path.join(ROOT, urlOf(p, lang), 'index.html'))])];
 for (const file of pages) {
-  const html = fs.readFileSync(file, 'utf8').replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
+  const isApp = file === indexPath;
+  const html = statisticsPages.inject(fs.readFileSync(file, 'utf8'), {app:isApp,page:isApp?'home':'catalog'}).replace(/(href|src)="([^"#?]+)(?:\?v=[^"]*)?"/g, (match, attr, asset) => {
     const version = versions[asset.replace(/^\//, '')];
     return version ? `${attr}="${asset}?v=${version}"` : match;
   });

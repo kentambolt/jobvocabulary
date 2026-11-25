@@ -534,7 +534,7 @@ let selectedCourseLink = false;
 let lastFeedback = null;
 let levelNotice = null;
 // Three best-effort daily counters, independent of learning and visitor tracking.
-const activation = ActivationMeter.create(AggregateTransport.create({enabled:AggregateTransport.enabled}));
+const activation = ActivationMeter.create(AggregateTransport.create({enabled:AggregateTransport.enabled,allowStaging:window.JobVocabularyMetrics?.staging === true}));
 
 // Public language pages can hand their explicit interface choice to the app
 // before a course/language pair exists. Consume this UI hint without changing progress.
@@ -1016,6 +1016,7 @@ function render() {
   renderSiteMetadata(ul);
   $('mainNav').setAttribute('aria-label', t('navigation'));
   const inGame = !!state.settings && !['home', 'setup', 'library'].includes(view);
+  window.JobVocabularyMetrics?.page(inGame ? 'test' : 'home');
   $('score').hidden = !inGame;
   $('statsBtn').hidden = !state.settings;
   $('setupBtn').hidden = !state.settings;

@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "source": "88633fdb570ea4f91216af962834b09996a8e082",
   "phase": "1.0.1 icon spacing update active in internal testing",
   "candidateTechnology": "Trusted Web Activity",
@@ -18,7 +18,7 @@
     "serviceWorker": false,
     "offlineCourseAvailability": "not promised"
   },
-  "privacy": "existing three aggregate daily event counters; no added telemetry",
+  "privacy": "Prepared consent-gated web/TWA traffic estimates and three course aggregates; no native analytics SDK. Production activation awaits traffic PR release.",
   "playSubmitted": false,
   "playPublished": false,
   "nativeStartupPassed": true,
@@ -108,5 +108,13 @@
     "ownerDeviceRetest": false,
     "internallyReleased": true,
     "metadataTestsPassed": 3
+  },
+  "webTraffic": {
+    "clientRelease": "pending",
+    "separatePlatform": false,
+    "consentRequired": true,
+    "clientVisitorId": false,
+    "playDataSafetyTask": "incomplete, read-only Console audit 2026-11-25",
+    "newAndroidBinaryRequired": false
   }
 }
